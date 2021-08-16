@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>install grub at a img file</title>
+    <title>在磁盘映像文件上安装 Grub 2</title>
     <url>/2021/08/15/install-grub-at-a-img-file/</url>
-    <content><![CDATA[<h1 id="%E5%9C%A8%E7%A3%81%E7%9B%98%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E5%AE%89%E8%A3%85-grub-2">在磁盘映像文件上安装 Grub 2</h1>
+    <content><![CDATA[<h1 id=""></h1>
 <blockquote>
 <p>本文操作环境为 Arch Linux</p>
 </blockquote>
@@ -12,6 +12,7 @@
 <li>文中的 Grub 均指 Grub 2，而非 Grub Legacy</li>
 <li>文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki</li>
 <li>分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M</li>
+<li>请在了解执行的命令的作用之后再执行操作</li>
 </ol>
 <h3 id="%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6" id="使用-dd-创建一个映像文件">使用 dd 创建一个映像文件</h3>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dd <span class="keyword">if</span>=/dev/zero of=os.img bs=1M count=20</span></span><br></pre></td></tr></table></figure>
@@ -65,7 +66,7 @@
 <li><code>-f</code> 查找第一个未使用的设备</li>
 </ul>
 <p>显示的设备名不一定是 <code>/dev/loop0</code><br>
-在后问出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称</p>
+在后文出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称</p>
 <h3 id="%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA" id="格式化并挂载分区">格式化并挂载分区</h3>
 <blockquote>
 <p>在文中实例中，需要格式化的是第二个分区，对应的 loop 设备为 <code>/dev/loop0p2</code><br>
@@ -81,7 +82,8 @@
 <p>没有消息就是最好的消息</p>
 <h3 id="%E5%AE%89%E8%A3%85-grub" id="安装-Grub">安装 Grub</h3>
 <blockquote>
-<p>下面的操作具有一定的风险，请执行命令前一定要确认</p>
+<p>下面的操作在执行命令前一定要确认<br>
+误操作可能会影响本机的 <code>/boot</code> 分区</p>
 </blockquote>
 <p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br>
 使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
@@ -114,7 +116,7 @@
   </entry>
   <entry>
     <title>Learn Markdown</title>
-    <url>/2020/11/08/markdown/</url>
+    <url>/2020/11/08/learn-markdown/</url>
     <content><![CDATA[<h2 id="%E6%A0%87%E9%A2%98" id="标题">标题</h2>
 <p>共有两种方法</p>
 <ol>
@@ -552,9 +554,9 @@ _   下划线<br>
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9766481"><label class="task-list-item-label" for="task-item-9766481"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-874766"><label class="task-list-item-label" for="task-item-874766"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-4826353"><label class="task-list-item-label" for="task-item-4826353"> Next</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9621751"><label class="task-list-item-label" for="task-item-9621751"> First</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2715469"><label class="task-list-item-label" for="task-item-2715469"> Seconde</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5789555"><label class="task-list-item-label" for="task-item-5789555"> Next</label></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -570,6 +572,169 @@ _   下划线<br>
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 防火墙</title>
+    <url>/2021/02/18/linux-firewall/</url>
+    <content><![CDATA[<blockquote>
+<p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
+</blockquote>
+<h2 id="netfilter-porject" id="Netfilter-Porject">Netfilter Porject</h2>
+<p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
+<blockquote>
+<p>官网<a href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br>
+“<em>The netfilter project is a community-driven collaborative FOSS project that<br>
+provides packet filtering software for the Linux 2.4.x and later kernel series.<br>
+The netfilter project is commonly associated with iptables.</em>”</p>
+</blockquote>
+<h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" id="四表五链概念">四表五链概念</h2>
+<blockquote>
+<p>参考 <code>man iptables</code>，以及网络资料</p>
+</blockquote>
+<p>存在 <code>表(tables)</code>、<code>链(chain)</code> 和 <code>规则(rules)</code> 三个层面</p>
+<ul>
+<li><code>表(tables)</code> 指的是不同类型的数据包处理流程，<code>表</code> 中可以存在多个 <code>链</code></li>
+<li><code>链(chain)</code> 中包含若干 <code>规则</code></li>
+<li><code>规则(rules)</code> 规定数据包的处理方式<br>
+系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></li>
+</ul>
+<h3 id="%E5%9B%9B%E8%A1%A8" id="四表"><strong>四表</strong></h3>
+<p>四表用于管理链路规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表名</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Filter表</td>
+<td style="text-align:left">过滤数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">NAT表</td>
+<td style="text-align:left">用于网络地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">Mangle表</td>
+<td style="text-align:left">修改数据包服务类型、TTL、并且可以配置路由实现QOS</td>
+</tr>
+<tr>
+<td style="text-align:left">Raw表</td>
+<td style="text-align:left">决定数据包是否被状态跟踪机制处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E4%BA%94%E9%93%BE" id="五链"><strong>五链</strong></h3>
+<p>五条链用于存放链路规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链名</th>
+<th style="text-align:left">作用对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">进来的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">发出的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left">转发的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">OREROUTING链</td>
+<td style="text-align:left">作路由选择前的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">POSTROUNTING链</td>
+<td style="text-align:left">作路由选择后的数据包</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" id="四表五链之间的联系"><strong>四表五链之间的联系</strong></h3>
+<p>四表里存放的是功能一致的规则，即存放着链<br>
+表中存放的规则如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Filter表</th>
+<th style="text-align:left">NAT表</th>
+<th style="text-align:left">Mangle表</th>
+<th style="text-align:left">Raw表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">OUTPUT链</td>
+</tr>
+<tr>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">PREROUTING链</td>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">PREROUTING链</td>
+</tr>
+<tr>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left">POSTROUTING链</td>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PREROUTING链</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">POSTROUTING链</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E7%AE%A1%E7%90%86-firewall" id="管理-firewall">管理 firewall</h2>
+<p>下面列出的是运用最广泛的防火墙管理软件，以及他们之间的联系</p>
+<ul>
+<li><code>netfilter</code> 是一个 Linux 内核的软件框架，用于管理网络数据包<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，运行在内核空间</li>
+<li><code>iptables</code> 是运行在用户空间的软件，通过控制 netfilter 模块来管理网络数据包的处理和转发<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
+<li><code>nftables</code> 是 iptables 的后继者<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
+<li><code>uncomplicated ftrewall(UFW)</code> 的使用更加简单方便，依赖于 iptables 来管理网络包<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
+<li><code>firewalld</code> 作为 nftables 的前端，并通过其来管理网络包，也可以一使用 iptables<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Netfilter">维基百科 Netfilter</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Iptables">维基百科 Iptables</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>在 Netfilter 项目官网主页指出: <em>nftables is the successor of iptables</em> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Uncomplicated_Firewalld">维基百科 Uncomplicated Firewall</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Firewalld">维基百科 Firewalld</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Firewall</tag>
       </tags>
   </entry>
   <entry>
@@ -660,7 +825,7 @@ $$</p>
 建议在需要对舵机进行精确的控制时再考虑，比如做一个机器人时<br>
 驱动模块能提供有更好的的表现<s>虽然贵啊</s><br>
 另外，使用驱动模块并不使用树莓派的 PWM<br>
-一般使用 i2c $ \left(I^{2}C\right) $ 与树莓派通信</p>
+一般使用 i2c 协议与树莓派通信</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -674,9 +839,10 @@ $$</p>
   </entry>
   <entry>
     <title>树莓派热点</title>
-    <url>/2021/03/11/raspiap/</url>
+    <url>/2021/03/11/raspbrrypi-access-point/</url>
     <content><![CDATA[<blockquote>
-<p><em>参考自<a href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">Setting up a Raspberry Pi as a routed wireless access point</a></em></p>
+<p>简单介绍如何在树莓派开启热点<br>
+<em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
 </blockquote>
 <p>需要的软件列表：</p>
 <ul>
@@ -692,13 +858,13 @@ $$</p>
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd">配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line">hw_mode=g</span><br><span class="line">channel=7</span><br><span class="line">macaddr_acl=0</span><br><span class="line">auth_algs=1</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line">nohook wap_supplicant</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># 网卡地址</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line"># 不要执行这个脚本 </span><br><span class="line">nohook wpa_supplicant</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq">配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">address=/raspberry.me/192.168.10.1</span><br><span class="line">interface=wlan0</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line">domain-wlan</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 为这个网卡开启服务</span><br><span class="line">interface=wlan0</span><br><span class="line"># 不要在这个网卡开启服务</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line"># 本机域</span><br><span class="line">domain=wlan</span><br><span class="line"># IP 地址分配范围</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
 <h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" id="设置数据包转发">设置数据包转发</h3>
 <ol>
 <li>
@@ -724,6 +890,7 @@ $$</p>
 <h3 id="%E9%87%8D%E5%90%AF" id="重启">重启</h3>
 <p>设置完成后重启</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> reboot</span></span><br></pre></td></tr></table></figure>
+<p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -734,8 +901,8 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>Vim 使用向导简单笔记</title>
-    <url>/2021/02/19/vim/</url>
+    <title>Vim 简单笔记</title>
+    <url>/2021/02/19/vim-simple-note/</url>
     <content><![CDATA[<blockquote>
 <p>本文总结自 vim 使用向导程序 <code>vimtutor</code></p>
 </blockquote>
@@ -1171,8 +1338,8 @@ $$</p>
 </ol>
 ]]></content>
       <categories>
-        <category>笔记</category>
         <category>Linux</category>
+        <category>笔记</category>
       </categories>
       <tags>
         <tag>Vim</tag>
@@ -1187,8 +1354,8 @@ $$</p>
 详情请参见原文</p>
 </blockquote>
 <h3 id="%E5%89%8D%E8%A8%80" id="前言">前言</h3>
-<p>学习 <em>计算机组成原理</em> 有助于理解本文</p>
-<h3 id="%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90" id="一些资源">一些资源</h3>
+<p>学习计算机组成原理有助于理解本文</p>
+<p>一些资源</p>
 <ul>
 <li><a href="http://www.cs.virginia.edu/~evans/cs216/guides/vsasm.html">在 Visual Studio 使用汇编</a></li>
 <li><a href="http://www.felixcloutier.com/x86/">Intel x86 汇编指令集参考</a></li>
@@ -1198,17 +1365,17 @@ $$</p>
 <p>现代 x86 处理器中，有 8 个通用寄存器<br>
 在历史上，它们按照不同的用途命名，如 <code>EAX</code> 叫做“累加器”，因为它常被用作加法计算<br>
 在现代，尽管它们并没有什么区别，但习惯上仍沿用历史的做法<br>
-对于 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>，它们是 32 位的<br>
-但我们可以单独访问它们的低 16 位，或者更低的位数<br>
-如 <code>EAX</code> 中，通过</p>
+对于 32 位的 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code><br>
+我们也可以单独访问它们的低 16 位或者更低的位数<br>
+如 <code>EAX</code> ，通过</p>
 <ul>
 <li><code>AX</code> 可访问低 16 位(0~15)</li>
 <li><code>AH</code> 可访问低 16 位中的高 8 位(8~15)</li>
 <li><code>AL</code> 可访问低 16 中的低 8 位(0~7)</li>
 </ul>
-<p><em>E</em> 是 <em>Extended</em>，即 <em>拓展</em> 的意思，说明 <code>EAX</code>(32位) 是 <code>AX</code>(16位) 的拓展<br>
-<em>X</em> 其实也是 <em>拓展</em> 的意思，但它是指从 <code>AL</code>(8位) 拓展到 <code>AX</code>(16位)</p>
-<p><em>8 个寄存器的名称</em></p>
+<p><strong>E</strong> 是 <strong>Extended</strong>，即 <strong>拓展</strong> 的意思，说明 <code>EAX</code>(32位) 是 <code>AX</code>(16位) 的拓展<br>
+<strong>X</strong> 其实也是 <strong>拓展</strong> 的意思，但它是指从 <code>AL</code>(8位) 拓展到 <code>AX</code>(16位)</p>
+<p><strong>8 个寄存器的名称</strong></p>
 <ul>
 <li><code>EAX</code>(accumulator): 累加寄存器</li>
 <li><code>EBX</code>(base): 基址寄存器</li>
@@ -1222,9 +1389,9 @@ $$</p>
 <h3 id="%E5%86%85%E5%AD%98%E4%B8%8E%E5%AF%BB%E5%9D%80%E6%A8%A1%E5%BC%8F" id="内存与寻址模式">内存与寻址模式</h3>
 <p>寻址模式可分为：<br>
 直接寻找、间接寻址、变址寻址</p>
-<p><em>直接寻址</em>：给出的地址是存放的是 <em>数据</em><br>
-<em>间接寻址</em>：给出的地址是存放的是 <em>数据的地址</em><br>
-<em>变址寻址</em>：给出的地址作为基准，使用偏移得到数据的真实地址，进而得到数据</p>
+<p><strong>直接寻址</strong>：给出的地址是存放的是 <strong>数据</strong><br>
+<strong>间接寻址</strong>：给出的地址是存放的是 <strong>数据的地址</strong><br>
+<strong>变址寻址</strong>：给出的地址作为基准，使用偏移得到数据的真实地址，进而得到数据</p>
 <h4 id="%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80" id="内存寻址">内存寻址</h4>
 <p>使用 <code>[]</code> 表示进行寻址，即: 如 <code>[eax]</code> 指的是将 <code>eax</code> 中存储的数据作为内存地址，随后读取该内存地址中存储的数据，这属于寄存器间接寻址<br>
 现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据<br>
@@ -1441,8 +1608,8 @@ $$</p>
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      栈增长方向</span><br><span class="line">+------------------+</span><br><span class="line">| saved ESI        | &lt;--- ESP</span><br><span class="line">+------------------+</span><br><span class="line">| saved EDI        |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 3 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 2 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 1 | &lt;--- EBP + 4</span><br><span class="line">+------------------+</span><br><span class="line">| saved EBP        | &lt;--- EBP</span><br><span class="line">+------------------+</span><br><span class="line">| return address   |</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 1      | &lt;--- EBP + 8</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 2      | &lt;--- EBP + 12</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 3      | &lt;--- EBP + 16</span><br><span class="line">+------------------+</span><br><span class="line">      高地址方向</span><br></pre></td></tr></table></figure>
-<p>在上面的示意图中，调用者向子程序传递了 3 个参数 parameter 1 - 3<br>
-子程序有三个自己的局部变量 local variable 1 - 3<br>
+<p>在上面的示意图中，调用者向子程序传递了 3 个参数 <code>parameter 1 - 3</code><br>
+子程序有三个自己的局部变量 <code>local variable 1 - 3</code><br>
 堆栈中每个单元是 32 位宽的内存位置，故相邻的单元格相隔 4 个字节<br>
 传入子程序的第一个参数位置在 EBP 偏移 8 个字节的偏移处<br>
 在传入参数的上方与基指针（图中EBP）的下方是返回地址<br>

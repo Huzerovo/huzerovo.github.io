@@ -11,12 +11,13 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="HuLingOAO,"> 
     <meta name="description" content="
-参考自Setting up a Raspberry Pi as a routed wireless access point
+简单介绍如何在树莓派开启热点
+参考自Setting up a routed wireless access point
 
 需要的软件列表：
 
 hostapd：用于开启热点
-dnsmasq：用,"> 
+dnsmasq：用于开启,"> 
     <meta name="author" content="HuLingOAO"> 
     
     <link rel="icon" href="/img/favicon.png"> 
@@ -59,7 +60,8 @@ dnsmasq：用,">
         </div>
         <div class="content markdown">
             <blockquote>
-<p><em>参考自<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md">Setting up a Raspberry Pi as a routed wireless access point</a></em></p>
+<p>简单介绍如何在树莓派开启热点<br>
+<em>参考自<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
 </blockquote>
 <p>需要的软件列表：</p>
 <ul>
@@ -75,13 +77,13 @@ dnsmasq：用,">
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd">配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line">hw_mode=g</span><br><span class="line">channel=7</span><br><span class="line">macaddr_acl=0</span><br><span class="line">auth_algs=1</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line">nohook wap_supplicant</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># 网卡地址</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line"># 不要执行这个脚本 </span><br><span class="line">nohook wpa_supplicant</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq">配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">address=/raspberry.me/192.168.10.1</span><br><span class="line">interface=wlan0</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line">domain-wlan</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 为这个网卡开启服务</span><br><span class="line">interface=wlan0</span><br><span class="line"># 不要在这个网卡开启服务</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line"># 本机域</span><br><span class="line">domain=wlan</span><br><span class="line"># IP 地址分配范围</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
 <h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" id="设置数据包转发">设置数据包转发</h3>
 <ol>
 <li>
@@ -107,6 +109,7 @@ dnsmasq：用,">
 <h3 id="%E9%87%8D%E5%90%AF" id="重启">重启</h3>
 <p>设置完成后重启</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> reboot</span></span><br></pre></td></tr></table></figure>
+<p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
