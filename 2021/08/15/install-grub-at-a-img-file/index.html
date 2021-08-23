@@ -11,14 +11,13 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="HuLingOAO,"> 
     <meta name="description" content="
-
 本文操作环境为 Arch Linux
 
 前言
 
 文中的 Grub 均指 Grub 2，而非 Grub Legacy
 文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki
-分,"> 
+分区,"> 
     <meta name="author" content="HuLingOAO"> 
     
     <link rel="icon" href="/img/favicon.png"> 
@@ -60,8 +59,7 @@
 
         </div>
         <div class="content markdown">
-            <h1 id=""></h1>
-<blockquote>
+            <blockquote>
 <p>本文操作环境为 Arch Linux</p>
 </blockquote>
 <h3 id="%E5%89%8D%E8%A8%80" id="前言">前言</h3>
@@ -190,7 +188,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.0.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">使用 dd 创建一个映像文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"><span class="toc-number">1.0.3.</span> <span class="toc-text">在 os.img 上创建分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-gdisk"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">使用 gdisk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-fdisk"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">使用 fdisk</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"><span class="toc-number">1.0.4.</span> <span class="toc-text">将 os.img 挂载为 loop 设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-number">1.0.5.</span> <span class="toc-text">格式化并挂载分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-grub"><span class="toc-number">1.0.6.</span> <span class="toc-text">安装 Grub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.7.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87"><span class="toc-number">1.0.8.</span> <span class="toc-text">卸载设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.0.9.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">使用 dd 创建一个映像文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">在 os.img 上创建分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-gdisk"><span class="toc-number">3.1.</span> <span class="toc-text">使用 gdisk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-fdisk"><span class="toc-number">3.2.</span> <span class="toc-text">使用 fdisk</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"><span class="toc-number">4.</span> <span class="toc-text">将 os.img 挂载为 loop 设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-number">5.</span> <span class="toc-text">格式化并挂载分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-grub"><span class="toc-number">6.</span> <span class="toc-text">安装 Grub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87"><span class="toc-number">8.</span> <span class="toc-text">卸载设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">9.</span> <span class="toc-text">参考资料</span></a></li></ol>	
         </div>
     
 </div>

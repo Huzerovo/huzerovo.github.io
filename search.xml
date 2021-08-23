@@ -3,8 +3,7 @@
   <entry>
     <title>在磁盘映像文件上安装 Grub 2</title>
     <url>/2021/08/15/install-grub-at-a-img-file/</url>
-    <content><![CDATA[<h1 id=""></h1>
-<blockquote>
+    <content><![CDATA[<blockquote>
 <p>本文操作环境为 Arch Linux</p>
 </blockquote>
 <h3 id="%E5%89%8D%E8%A8%80" id="前言">前言</h3>
@@ -554,9 +553,9 @@ _   下划线<br>
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9621751"><label class="task-list-item-label" for="task-item-9621751"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2715469"><label class="task-list-item-label" for="task-item-2715469"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5789555"><label class="task-list-item-label" for="task-item-5789555"> Next</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-6753848"><label class="task-list-item-label" for="task-item-6753848"> First</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2004246"><label class="task-list-item-label" for="task-item-2004246"> Seconde</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-9604611"><label class="task-list-item-label" for="task-item-9604611"> Next</label></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -1396,7 +1395,7 @@ $$</p>
 <p>使用 <code>[]</code> 表示进行寻址，即: 如 <code>[eax]</code> 指的是将 <code>eax</code> 中存储的数据作为内存地址，随后读取该内存地址中存储的数据，这属于寄存器间接寻址<br>
 现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据<br>
 <code>mov</code> 指令有两个参数，第一个参数为目的地，第二个是数据源</p>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址，将内存地址中的数据存入EAX</span><br><span class="line">mov     [var], ebx              ; 将 var 中存储的数据作为内存地址，将 EBX 中的数据存入内存地址</span><br><span class="line">mov     eax, [esi - 4]          ; 将 ESI 中存储的数据加上 -4 作为内存地址，将内存地址中的数据存入 EAX</span><br><span class="line">mov     [esi + eax], cl         ; 将 ESI 与 EAX 中的数据相加作为内存地址，将 CL 中存储的数据存入内存地址</span><br><span class="line">mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 (EBX 中的数据 * 4) 作为内存地址，将内存地址中的数据存入 EDX</span><br></pre></td></tr></table></figure>
 <p>注意，以下语法是 <em><strong>错误的</strong></em></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, [ebx - ecx]            ; 寄存器间只能相加</span><br><span class="line">mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加</span><br></pre></td></tr></table></figure>
@@ -1407,7 +1406,7 @@ $$</p>
 <code>DB</code>(declare byte)可以声明 1 字节的数据<br>
 <code>DW</code>(declare word)可以声明 2 字节的数据<br>
 <code>DD</code>(declare dobute word)可以声明 4 字节的数据</p>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.DATA</span><br><span class="line">    var     DB  64      ; 声明一个 1 字节，名为 var，值为 64 的数据</span><br><span class="line">    var2    DB  ?       ; 声明一个 1 字节，名为 var2，值未初始化的数据</span><br><span class="line">            DB  10      ; 声明一个 1 字节，没有名字，使用 [var2 + 1] 访问，值为 10 的数据</span><br><span class="line">    X       DW  ?       ; 声明一个 2 字节，名为 X，值未初始化的数据</span><br><span class="line">    Y       DD  30000   ; 声明一个 2 字节，名为 Y，值为 30000 的数据</span><br></pre></td></tr></table></figure>
 <h4 id="%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B0%8F" id="指定数据大小">指定数据大小</h4>
 <p>通常来说，数据大小能从给出的寄存器判断得出，例如 <code>AX</code> 即指 16 位数据，也就是 2 字节<br>
@@ -1416,14 +1415,14 @@ $$</p>
 <code>BYTE PTR</code> 指定 1 字节大小<br>
 <code>WORD PTR</code> 指定 2 字节大小<br>
 <code>DWORD PTR</code> 指定 4 字节大小</p>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     BYTE PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 1 字节</span><br><span class="line">mov     WORD PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 2 字节</span><br><span class="line">mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 4 字节</span><br></pre></td></tr></table></figure>
 <h4 id="%E5%A3%B0%E6%98%8E%E6%95%B0%E7%BB%84" id="声明数组">声明数组</h4>
 <p>不像高级编程语言，汇编语言不能按照 <em>下标</em> 对数组进行索引，只能通过 <em>偏移</em> 的方式定位数据<br>
 在汇编中，数组内的所有数据在一块连续的区域，可通过 <em>基址寻址</em> 的方式寻找数据<br>
 数组可以通过 <em>列出连续的数据</em> 来声明，或者通过 <code>DUP</code> 指令 <em>创建连续的数据</em> 进行声明<br>
 <code>DUP</code> 指令告诉汇编器以指定的次数重复地列出一个数据，例如 <code>3 DUP(2)</code> 意味着 <code>2, 2, 2</code></p>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.DATA</span><br><span class="line">    Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组，值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3</span><br><span class="line">    bytes   DB  10  DUP(?)  ; 声明一个具有 10 个 1 字节元素，名为 bytes 的数组，值未初始化</span><br><span class="line">    arr     DD  100 DUP(0)  ; 声明一个具有 100 个 4 字节元素，名为 arr 的数组，值初始化为 0</span><br><span class="line">    str     DB  &#x27;hello&#x27;,0   ; 声明一个具有 6 个 1 字节元素，名为 arr 的数组，值初始化为 ‘hello’ 的 ASCII 字符编码，以及 0</span><br></pre></td></tr></table></figure>
 <h3 id="%E6%8C%87%E4%BB%A4" id="指令">指令</h3>
 <p>指令一般由操作码与操作数组成，其中操作数可以有多个，也有部分指令没有操作数<br>
@@ -1439,103 +1438,103 @@ $$</p>
 <code>&lt;con8&gt;</code>    32位常量（1 字节）<br>
 <code>&lt;con&gt;</code>     任意位数常量</p>
 <h4 id="%E6%95%B0%E6%8D%AE%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4" id="数据转移指令">数据转移指令</h4>
-<h5 id="mov-%E6%8C%87%E4%BB%A4" id="mov-指令">mov 指令</h5>
+<h5 id="mov-%E6%8C%87%E4%BB%A4" id="mov-指令"><code>mov</code> 指令</h5>
 <p>Move (操作码：88, 89, 8A, 8B, 8C, 8E, …)<br>
 <code>mov</code> 指令将它第二个操作数声明的数据复制到第一个操作数指定的位置，这个位置可以是内存或者寄存器</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">mov     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">mov     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">mov     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">mov     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, ebx                ; 将 ebx 中的数据复制到 eax</span><br><span class="line">mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量</span><br></pre></td></tr></table></figure>
-<h5 id="push-%E6%8C%87%E4%BB%A4" id="push-指令">push 指令</h5>
+<h5 id="push-%E6%8C%87%E4%BB%A4" id="push-指令"><code>push</code> 指令</h5>
 <p>压入栈 Push stack (操作码：FF, 89, 8A, 8B, 8C, 8E, …)<br>
 <code>push</code> 指令将它的操作数压入栈堆，存储在特定的寄存器中（一般是存储在 <code>ESP</code>）<br>
 <code>push</code> 首先将 <code>ESP</code> 中的数据减去 4，随后将操作数存储到 <code>ESP</code> 指向的内存地址中<br>
 注：栈里的数据存储在内存中，寄存器 <code>ESP</code> 存储的是内存地址，栈在内存中从高地址向低地址增长</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push    &lt;reg32&gt;</span><br><span class="line">push    &lt;mem&gt;</span><br><span class="line">push    &lt;con32&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push    eax     ; 将 EAX 中的数据压入栈</span><br><span class="line">push    [var]   ; 将名为 var 的变量的值压入栈</span><br></pre></td></tr></table></figure>
-<h5 id="pop-%E6%8C%87%E4%BB%A4" id="pop-指令">pop 指令</h5>
+<h5 id="pop-%E6%8C%87%E4%BB%A4" id="pop-指令"><code>pop</code> 指令</h5>
 <p>弹出栈 Pop stack<br>
 <code>pop</code> 指令将特定寄存器的值（一般是 <code>ESP</code>）弹出，存储到它的操作数指定的位置<br>
 <code>pop</code> 首先读取位于由 <code>ESP</code> 给出的内存地址中的值，将其存入到操作数指定的位置，随后将 <code>ESP</code> 的值加 4</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pop     &lt;reg32&gt;</span><br><span class="line">pop     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pop     edi     ; 将栈顶数据弹出，存储到 EDI</span><br><span class="line">pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址中</span><br></pre></td></tr></table></figure>
-<h5 id="lea-%E6%8C%87%E4%BB%A4" id="lea-指令">lea 指令</h5>
+<h5 id="lea-%E6%8C%87%E4%BB%A4" id="lea-指令"><code>lea</code> 指令</h5>
 <p>取地址 load effective address<br>
 <code>lea</code> 指令将第二操作数的有效地址存入第一个操作数给定的寄存器中<br>
 <code>lea</code> 与 <code>mov</code> 并不同，<code>mov</code> 是将第二操作数给定的数据存入第一操作数给定的位置<br>
 而 <code>lea</code> 是将数据的地址存入第一操作数给定的寄存器</p>
 <p><em>语法</em></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lea     &lt;reg32&gt;, &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lea     edi, [ebx + 4*esi]      ; EBX + 4*ESI 的值作为地址存入 EDI</span><br><span class="line">lea     eax, [var]              ; var 代表的地址存入 EAX</span><br></pre></td></tr></table></figure>
 <h4 id="%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E4%B8%8E%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4" id="算术运算与逻辑指令">算术运算与逻辑指令</h4>
-<h5 id="add-%E6%8C%87%E4%BB%A4" id="add-指令">add 指令</h5>
+<h5 id="add-%E6%8C%87%E4%BB%A4" id="add-指令"><code>add</code> 指令</h5>
 <p><code>add</code> 指令将它的两个操作数的值相加，并将结果存储到第一个操作数指定的位置中<br>
 注意，操作数可以是两个寄存器，但最多只能有一个是内存地址</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">add     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">add     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">add     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">add     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add     eax, 10                     ; eax = eax + 10</span><br><span class="line">add     byte ptr [var], 10          ; var = var + 10</span><br></pre></td></tr></table></figure>
-<h5 id="sub-%E6%8C%87%E4%BB%A4" id="sub-指令">sub 指令</h5>
+<h5 id="sub-%E6%8C%87%E4%BB%A4" id="sub-指令"><code>sub</code> 指令</h5>
 <p>与 <code>add</code> 指令相似，<code>sub</code> 指令将第一个操作数的值减去第二个操作数，结果保存在第一个操作数</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sub     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">sub     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">sub     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">sub     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">sub     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sub     al, ah      ; AL = AL - AH</span><br><span class="line">sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX</span><br></pre></td></tr></table></figure>
-<h5 id="inc-%E4%B8%8E-dec-%E6%8C%87%E4%BB%A4" id="inc-与-dec-指令">inc 与 dec 指令</h5>
+<h5 id="inc-%E4%B8%8E-dec-%E6%8C%87%E4%BB%A4" id="inc-与-dec-指令"><code>inc</code> 与 <code>dec</code> 指令</h5>
 <p><code>inc</code> 指令将操作数的值增加 1 （自增）<br>
 <code>dec</code> 指令将操作数的值减少 1 （自减）</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inc     &lt;reg&gt;</span><br><span class="line">inc     &lt;mem&gt;</span><br><span class="line">dec     &lt;reg&gt;</span><br><span class="line">dec     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inc     eax                 ; 将 EAX 中的值自增 1，结果存入 EAX</span><br><span class="line">dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入 var （代表的地址）</span><br></pre></td></tr></table></figure>
-<h5 id="imul-%E6%8C%87%E4%BB%A4" id="imul-指令">imul 指令</h5>
+<h5 id="imul-%E6%8C%87%E4%BB%A4" id="imul-指令"><code>imul</code> 指令</h5>
 <p>整数相乘 Integer Multiplication<br>
 <code>imul</code> 指令有两种基本的格式，分别为 <em>带 2 个操作数</em>、<em>带 3 个操作数</em></p>
 <p>使用带 2 个操作数的格式时，将两个操作数相乘，结果存入第一个操作数处<br>
 使用带 3 个操作数的格式时，将第 3 个和第 2 个操作数相乘，结果存入第一个操作数处</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">imul    &lt;reg32&gt;, &lt;reg32&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;mem&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;reg32&gt;, &lt;con&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">imul    eax, [var]      ; 将 var 的值与 EAX 的值相乘，结果存入 EAX</span><br><span class="line">imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI</span><br></pre></td></tr></table></figure>
-<h5 id="idiv-%E6%8C%87%E4%BB%A4" id="idiv-指令">idiv 指令</h5>
+<h5 id="idiv-%E6%8C%87%E4%BB%A4" id="idiv-指令"><code>idiv</code> 指令</h5>
 <p><code>idiv</code> 指令将给出的操作数除以存储在 EDX:EAX 的 64 位的整数（EDX 中的值作为高四位，EAX 中的值作为低四位）<br>
 得到的商存储在 EAX 中，余数存储在 EDX 中</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">idiv    &lt;reg32&gt;</span><br><span class="line">idiv    &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">idiv    ebx                 ; 将 EBX 中的值除以 EDX:EAX，商存在 EAX，余数存在 EDX</span><br><span class="line">idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的值除以 EDX:EAX，商存在 EAX，余数存在 EDX</span><br></pre></td></tr></table></figure>
-<h5 id="and%2C-or%2C-xor-%E6%8C%87%E4%BB%A4" id="and-or-xor-指令">and, or, xor 指令</h5>
+<h5 id="and%2C-or%2C-xor-%E6%8C%87%E4%BB%A4" id="and-or-xor-指令"><code>and</code>, <code>or</code>, <code>xor</code> 指令</h5>
 <p>这些指令分别是将两个操作数进行<em>按位与</em>，<em>按位或</em>，<em>按位异或</em>操作<br>
 得到的结果存在第一个操作数</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">and     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">and     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">and     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">and     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">and     &lt;mem&gt;, &lt;con&gt;</span><br><span class="line"></span><br><span class="line">or      &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">or      &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">or      &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">or      &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">or      &lt;mem&gt;, &lt;con&gt;</span><br><span class="line"></span><br><span class="line">xor     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">xor     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">xor     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">xor     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">xor     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">and     EAX, 0fH    ; 只保留 EAX 的低 4 位</span><br><span class="line">xor     EDX, EDX    ; 将 EDX 所有位置 0</span><br></pre></td></tr></table></figure>
-<h5 id="not-%E6%8C%87%E4%BB%A4" id="not-指令">not 指令</h5>
+<h5 id="not-%E6%8C%87%E4%BB%A4" id="not-指令"><code>not</code> 指令</h5>
 <p>进行按位取反操作</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">not     &lt;reg&gt;</span><br><span class="line">not     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">not     BYTE PTR [var]      ; 将 var 地址处的值按位取反</span><br></pre></td></tr></table></figure>
-<h5 id="neg-%E6%8C%87%E4%BB%A4" id="neg-指令">neg 指令</h5>
+<h5 id="neg-%E6%8C%87%E4%BB%A4" id="neg-指令"><code>neg</code> 指令</h5>
 <p>对操作数内容的二进制补码进行按位取反操作</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">neg     &lt;reg&gt;</span><br><span class="line">neg     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">neg     EAX         ; 将得到 -EAX</span><br></pre></td></tr></table></figure>
-<h5 id="shl%2C-shr-%E6%8C%87%E4%BB%A4" id="shl-shr-指令">shl, shr 指令</h5>
+<h5 id="shl%2C-shr-%E6%8C%87%E4%BB%A4" id="shl-shr-指令"><code>shl</code>, <code>shr</code> 指令</h5>
 <p>左移右移指令<br>
 将第一个操作数进行左移或者右移，用 0 填充空位，最多移动 31 位<br>
 移动的位数由第二个操作数决定，第二个操作数可以是 8 位常量或者是 CL 寄存器<br>
 若移动位数大于 31，则按照以 32 为模得出的值进行移位</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shl     &lt;reg&gt;,&lt;con8&gt;</span><br><span class="line">shl     &lt;mem&gt;,&lt;con8&gt;</span><br><span class="line">shl     &lt;reg&gt;, CL</span><br><span class="line">shl     &lt;mem&gt;, CL</span><br><span class="line"></span><br><span class="line">shr     &lt;reg&gt;,&lt;con8&gt;</span><br><span class="line">shr     &lt;mem&gt;,&lt;con8&gt;</span><br><span class="line">shr     &lt;reg&gt;, CL</span><br><span class="line">shr     &lt;mem&gt;, CL</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shl     EAX, 1          ; 将 EAX 乘以 2</span><br><span class="line">shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值</span><br></pre></td></tr></table></figure>
 <h4 id="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6" id="流程控制">流程控制</h4>
 <p>x86 处理器有一个指令寄存器 (instruction pointer register)(IP)<br>
@@ -1551,45 +1550,44 @@ $$</p>
 可以在代码的其他位置使用这个标签来获得标签表示的地址</p>
 <p>在下面的示例中并不会特别指出 <code>&lt;lable&gt;</code> 所代表的指令<br>
 只说明各跳转指令的用法</p>
-<h5 id="jmp-%E6%8C%87%E4%BB%A4" id="jmp-指令">jmp 指令</h5>
-<p>无条件转移指令<br>
-无条件地将程序控制流转移到操作数指示的位置处</p>
-<p><em>用法</em></p>
+<h5 id="jmp-%E6%8C%87%E4%BB%A4" id="jmp-指令"><code>jmp</code> 指令</h5>
+<p>无条件跳转指令<br>
+无条件地将程序控制流跳转到操作数指示的位置处</p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp     &lt;lable&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp     begin       ; 跳转到 begin 处</span><br></pre></td></tr></table></figure>
-<h5 id="jcondition-%E6%8C%87%E4%BB%A4" id="jcondition-指令">j<em>condition</em> 指令</h5>
-<p>条件转移指令<br>
-这是一个统称，代表着一系列根据不同条件判断是否进行转移的指令<br>
+<h5 id="%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4" id="条件跳转指令">条件跳转指令</h5>
+<p>这是一个统称，代表着一系列根据不同条件判断是否进行跳转的指令<br>
 如果符合条件，则会执行跳转，否则将按原来的流程继续执行下一条指令</p>
-<p>条件跳转指令的条件来自最后执行算术运算的信息，如结果是否为 0<br>
+<p>条件跳转指令的条件来自最后执行算术运算的信息，如：结果是否为零<br>
 这些信息保存在一个特殊的寄存器中，称作状态寄存器 <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> (machine status word)</p>
 <p>许多指令的转移条件可以根据上一次执行的操作直观地得出<br>
 这个操作指的是特殊的比较指令 <code>cmp</code> （在下文有说明）<br>
 例如：<code>jle</code> 和 <code>jne</code> 依赖于 <code>cmp</code> 指令对操作数的执行结果<br>
 因此，条件转移指令通常会和 <code>cmp</code> 指令一起使用</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">je      &lt;lable&gt;     ; 相等时跳转</span><br><span class="line">jne     &lt;lable&gt;     ; 不相等时跳转</span><br><span class="line">jz      &lt;lable&gt;     ; 结果为 0 时跳转</span><br><span class="line">jg      &lt;lable&gt;     ; 大于时跳转</span><br><span class="line">jge     &lt;lable&gt;     ; 大于或等于时跳转</span><br><span class="line">jl      &lt;lable&gt;     ; 小于是跳转</span><br><span class="line">jle     &lt;lable&gt;     ; 小于或等于时跳转</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     EAX, EBX</span><br><span class="line">jle     done        ; 如果 EAX 小于或者等于 EBX，则跳转至 done 处</span><br><span class="line">mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的指令</span><br></pre></td></tr></table></figure>
-<h5 id="cmp-%E6%8C%87%E4%BB%A4" id="cmp-指令">cmp 指令</h5>
+<h5 id="cmp-%E6%8C%87%E4%BB%A4" id="cmp-指令"><code>cmp</code> 指令</h5>
 <p>将给出的两个操作数进行对比，并更新状态寄存器<br>
 <code>cmp</code> 指令等效于 <code>sub</code> 指令，唯一区别则在于<br>
 <code>cmp</code> 指令会将结果丢弃而不是存入第一个操作数</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">cmp     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">cmp     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">cmp     &lt;reg&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     DWORD PTR [var], 10</span><br><span class="line">jeq     loop</span><br><span class="line">; 如果 var 的值等于 10，则会跳转到 loop</span><br><span class="line">; 否则执行下一条指令</span><br></pre></td></tr></table></figure>
-<h5 id="call%2C-ret-%E6%8C%87%E4%BB%A4" id="call-ret-指令">call, ret 指令</h5>
+<h5 id="call%2C-ret-%E6%8C%87%E4%BB%A4" id="call-ret-指令"><code>call</code>, <code>ret</code> 指令</h5>
 <p>这两个指令实现了子程序的调用与返回<br>
 <code>call</code> 指令会先将当前代码的位置压入堆栈，然后无条件跳转到标签处<br>
 与简单的 <code>jmp</code> 指令不同，<code>call</code> 指令会保存子程序完成时应返回的位置</p>
 <p><code>ret</code> 实现从子程序中的返回<br>
 它首先将在堆栈中的地址弹出，然后无条件跳转到此地址</p>
 <p>子程序返回后则继续执行下一条指令</p>
-<p><em>用法</em></p>
+<p><strong>用法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; call 用法</span><br><span class="line">call    &lt;lable&gt;</span><br><span class="line"></span><br><span class="line">; ret 用法</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
-<p><em>例子</em></p>
+<p><strong>例子</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">callme: xor     EAX, EAX</span><br><span class="line">        ret                 ; 返回到调用处</span><br><span class="line">call    callme              ; 调用 callme</span><br><span class="line">        xor     EBX, EBX    ; 返回后继续执行指令</span><br></pre></td></tr></table></figure>
 <h3 id="%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A" id="调用约定">调用约定</h3>
 <p>调用约定是为了使程序员之间能够共享代码并开发可以供许多程序使用的库，并简化子程序的使用<br>
@@ -1607,7 +1605,7 @@ $$</p>
 注意：<br>
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      栈增长方向</span><br><span class="line">+------------------+</span><br><span class="line">| saved ESI        | &lt;--- ESP</span><br><span class="line">+------------------+</span><br><span class="line">| saved EDI        |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 3 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 2 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 1 | &lt;--- EBP + 4</span><br><span class="line">+------------------+</span><br><span class="line">| saved EBP        | &lt;--- EBP</span><br><span class="line">+------------------+</span><br><span class="line">| return address   |</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 1      | &lt;--- EBP + 8</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 2      | &lt;--- EBP + 12</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 3      | &lt;--- EBP + 16</span><br><span class="line">+------------------+</span><br><span class="line">      高地址方向</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      栈增长方向</span><br><span class="line">+------------------+</span><br><span class="line">| saved ESI        | &lt;--- ESP</span><br><span class="line">+------------------+</span><br><span class="line">| saved EDI        |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 3 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 2 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 1 | &lt;--- EBP - 4</span><br><span class="line">+------------------+</span><br><span class="line">| saved EBP        | &lt;--- EBP</span><br><span class="line">+------------------+</span><br><span class="line">| return address   |</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 1      | &lt;--- EBP + 8</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 2      | &lt;--- EBP + 12</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 3      | &lt;--- EBP + 16</span><br><span class="line">+------------------+</span><br><span class="line">      高地址方向</span><br></pre></td></tr></table></figure>
 <p>在上面的示意图中，调用者向子程序传递了 3 个参数 <code>parameter 1 - 3</code><br>
 子程序有三个自己的局部变量 <code>local variable 1 - 3</code><br>
 堆栈中每个单元是 32 位宽的内存位置，故相邻的单元格相隔 4 个字节<br>
@@ -1635,7 +1633,7 @@ $$</p>
 <li>将存储在栈中的寄存器（EAX, ECX, EDX）的值弹出，以恢复这些寄存器在调用前的值<br>
 调用方可以假设没有其他寄存器被子程序修改</li>
 </ol>
-<p><em>例子</em><br>
+<p><strong>例子</strong><br>
 下面的代码是一个简单的调用方的示例<br>
 调用方调用了一个名为 <em>_myFunc</em> 的函数，这个函数需要传递三个整数型参数：</p>
 <ul>
@@ -1692,7 +1690,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>指不能通过赋值的方式修改 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>有时也叫做<em>程序状态字</em> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>或者叫做<em>程序状态字</em> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn3" class="footnote-item"><p>这些寄存器被称作 caller-saved 寄存器 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
