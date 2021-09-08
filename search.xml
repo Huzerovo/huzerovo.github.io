@@ -553,9 +553,9 @@ _   下划线<br>
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-6753848"><label class="task-list-item-label" for="task-item-6753848"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2004246"><label class="task-list-item-label" for="task-item-2004246"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-9604611"><label class="task-list-item-label" for="task-item-9604611"> Next</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9281411"><label class="task-list-item-label" for="task-item-9281411"> First</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5021161"><label class="task-list-item-label" for="task-item-5021161"> Seconde</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2545776"><label class="task-list-item-label" for="task-item-2545776"> Next</label></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -838,7 +838,7 @@ $$</p>
   </entry>
   <entry>
     <title>树莓派热点</title>
-    <url>/2021/03/11/raspbrrypi-access-point/</url>
+    <url>/2021/03/11/raspberrypi-access-point/</url>
     <content><![CDATA[<blockquote>
 <p>简单介绍如何在树莓派开启热点<br>
 <em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
@@ -857,7 +857,13 @@ $$</p>
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd">配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># 驱动</span><br><span class="line">driver=nl80211</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
+<p><strong>警告</strong>:<br>
+channel 不可随意选择，不同的国家与地区允许使用的信道不同<br>
+信道的选择请参考 <a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科</a></p>
+<p>注：上面的配置启用的为 2.4GHz 的WiFi<br>
+如需使用 5GHz 的 WiFi，修改以下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#hw_mode=g</span><br><span class="line">hw_mode=a</span><br><span class="line">#channel=7</span><br><span class="line"># 这个信道在中国合法</span><br><span class="line">channel=149</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># 网卡地址</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line"># 不要执行这个脚本 </span><br><span class="line">nohook wpa_supplicant</span><br></pre></td></tr></table></figure>
