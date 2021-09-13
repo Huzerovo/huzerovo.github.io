@@ -192,7 +192,7 @@ ___</p>
 详细格式参考下方语法介绍</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-6" id="语法-例子-7">语法(例子):</h4>
 <blockquote>
-<p>后面的是脚注: [^who]<br>
+<p>后面的是脚注 [^who]<br>
 [^who]: Me!</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-6" id="效果-7">效果:</h4>
@@ -509,9 +509,9 @@ _   下划线<br>
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9281411"><label class="task-list-item-label" for="task-item-9281411"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5021161"><label class="task-list-item-label" for="task-item-5021161"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2545776"><label class="task-list-item-label" for="task-item-2545776"> Next</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-5747915"><label class="task-list-item-label" for="task-item-5747915"> First</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-7744574"><label class="task-list-item-label" for="task-item-7744574"> Seconde</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-691733"><label class="task-list-item-label" for="task-item-691733"> Next</label></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -619,9 +619,30 @@ _   下划线<br>
 
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            preferredFont: "TeX",
+            availableFonts: ["STIX","TeX"],
+            linebreaks: { automatic:true },
+            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+        },
+        tex2jax: {
+            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+            processEscapes: true,
+            ignoreClass: "tex2jax_ignore|dno",
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        TeX: {
+            equationNumbers: {autoNumber: "AMS"},
+            noUndefined: {
+                attributes: {
+                    mathcolor: "red",
+                    mathbackground: "#FFEEEE",
+                    mathsize: "90%"
+                }
+            },
+            Macros: { href: "{}" }
+        },
         messageStyle: "none"
     });
 </script>

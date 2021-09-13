@@ -32,11 +32,17 @@
             <div class="main">
                 <div class="content">
                     <div class="timeline">
-                      <h2 class="timeline-title">归档: 7篇</h2><hr>
+                      <h2 class="timeline-title">归档: 8篇</h2><hr>
                       
                       
                         
                           <h3 class="timeline-subtitle">2021</h3>
+                        
+                        <div class="timeline-item">
+                          <time>2021-09-11</time>
+                          <a target="_self" href="/2021/09/11/linear-regression/">Linear Regression - 线性回归</a>
+                        </div>
+                      
                         
                         <div class="timeline-item">
                           <time>2021-08-15</time>
@@ -156,9 +162,30 @@
 
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            preferredFont: "TeX",
+            availableFonts: ["STIX","TeX"],
+            linebreaks: { automatic:true },
+            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+        },
+        tex2jax: {
+            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+            processEscapes: true,
+            ignoreClass: "tex2jax_ignore|dno",
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        TeX: {
+            equationNumbers: {autoNumber: "AMS"},
+            noUndefined: {
+                attributes: {
+                    mathcolor: "red",
+                    mathbackground: "#FFEEEE",
+                    mathsize: "90%"
+                }
+            },
+            Macros: { href: "{}" }
+        },
         messageStyle: "none"
     });
 </script>

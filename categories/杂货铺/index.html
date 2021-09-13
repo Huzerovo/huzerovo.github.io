@@ -93,9 +93,82 @@
     </div>
     
     <div id="post0">
+        <p>八月 15, 2021</p>
+        <h2><a href="/2021/08/15/install-grub-at-a-img-file/" title="在磁盘映像文件上安装 Grub 2" class="posttitle">在磁盘映像文件上安装 Grub 2</a></h2>
+        <p class="summary">
+本文操作环境为 Arch Linux
+
+前言
+
+文中的 Grub 均指 Grub 2，而非 Grub Legac...</p>
+    </div>
+    
+</div>
+
+    <div id="primary">
+        
+<div class="post">
+    <a href="/2021/03/26/intel-asm/" title="Intel x86 汇编语言">
+        <img src="/img/id=53254364_p0.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>三月 26, 2021</p>
+        <h3><a href="/2021/03/26/intel-asm/" title="Intel x86 汇编语言" class="posttitle">Intel x86 汇编语言</a></h3>
+        <p>
+文章参考自x86 Assembly Guide
+这篇文章只是个人的理解翻译，方便日后参考使用
+详情请参见原文
+
+前言
+学习计算机组成原理有助于理解本文
+...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2021/02/19/vim-simple-note/" title="Vim 简单笔记">
+        <img src="/img/id=53254364_p0.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>二月 19, 2021</p>
+        <h3><a href="/2021/02/19/vim-simple-note/" title="Vim 简单笔记" class="posttitle">Vim 简单笔记</a></h3>
+        <p>
+本文总结自 vim 使用向导程序 vimtutor
+
+前言
+
+
+vim 光标为方块光标，简称“光标”，
+本文将光标方块覆盖字符时的位置称为“光标当前位置...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2021/02/18/linux-firewall/" title="Linux 防火墙">
+        <img src="/img/id=53254364_p0.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>二月 18, 2021</p>
+        <h3><a href="/2021/02/18/linux-firewall/" title="Linux 防火墙" class="posttitle">Linux 防火墙</a></h3>
+        <p>
+本文仅做简单的介绍，不涉及防火墙的实际应用及操作
+
+Netfilter Porject
+Netfilter 项目是一个开源项目，目的是为 Linux 内...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2020/11/08/learn-markdown/" title="Learn Markdown">
+        <img src="/img/id=53254364_p0.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
         <p>十一月 08, 2020</p>
-        <h2><a href="/2020/11/08/learn-markdown/" title="Learn Markdown" class="posttitle">Learn Markdown</a></h2>
-        <p class="summary">标题
+        <h3><a href="/2020/11/08/learn-markdown/" title="Learn Markdown" class="posttitle">Learn Markdown</a></h3>
+        <p>标题
 共有两种方法
 
 
@@ -104,13 +177,16 @@
 符号可以有多个
 语法(例子):
 
-一级...</p>
+一级标题
+=
+二级标题
+-
+二级标题
+---...</p>
     </div>
-    
 </div>
 
-    <div id="primary">
-        
+
     </div>
     
 </div>
@@ -187,9 +263,30 @@
 
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            preferredFont: "TeX",
+            availableFonts: ["STIX","TeX"],
+            linebreaks: { automatic:true },
+            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+        },
+        tex2jax: {
+            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+            processEscapes: true,
+            ignoreClass: "tex2jax_ignore|dno",
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        TeX: {
+            equationNumbers: {autoNumber: "AMS"},
+            noUndefined: {
+                attributes: {
+                    mathcolor: "red",
+                    mathbackground: "#FFEEEE",
+                    mathsize: "90%"
+                }
+            },
+            Macros: { href: "{}" }
+        },
         messageStyle: "none"
     });
 </script>

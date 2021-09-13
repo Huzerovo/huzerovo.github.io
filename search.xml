@@ -107,9 +107,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>杂货铺</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>Grub</tag>
       </tags>
   </entry>
@@ -236,7 +237,7 @@ ___</p>
 详细格式参考下方语法介绍</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-6" id="语法-例子-7">语法(例子):</h4>
 <blockquote>
-<p>后面的是脚注: [^who]<br>
+<p>后面的是脚注 [^who]<br>
 [^who]: Me!</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-6" id="效果-7">效果:</h4>
@@ -553,9 +554,9 @@ _   下划线<br>
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-9281411"><label class="task-list-item-label" for="task-item-9281411"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5021161"><label class="task-list-item-label" for="task-item-5021161"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-2545776"><label class="task-list-item-label" for="task-item-2545776"> Next</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-5747915"><label class="task-list-item-label" for="task-item-5747915"> First</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-7744574"><label class="task-list-item-label" for="task-item-7744574"> Seconde</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-691733"><label class="task-list-item-label" for="task-item-691733"> Next</label></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -566,11 +567,191 @@ _   下划线<br>
 </section>
 ]]></content>
       <categories>
-        <category>笔记</category>
         <category>杂货铺</category>
       </categories>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linear Regression - 线性回归</title>
+    <url>/2021/09/11/linear-regression/</url>
+    <content><![CDATA[<p>本文基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br>
+本文简单解释其中的数学原理</p>
+<h2 id="%E5%9F%BA%E7%A1%80" id="基础">基础</h2>
+<h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D" id="定义-“特征”-与-“标签”">定义 “特征” 与 “标签”</h3>
+<p>这里的定义是为了方便后面的表达</p>
+<p>将监督学习中的一些概念 “重命名”</p>
+<ul>
+<li>特征，定义为输入空间（特征空间）</li>
+<li>标签，定义为输出空间</li>
+</ul>
+<p>对 “特征” 与 “标签” 的理解</p>
+<ol>
+<li>
+<p>从算法定义上</p>
+<ul>
+<li>特征可理解为输入</li>
+<li>标签可理解为输出</li>
+<li>算法的目的就是根据输入，给出输出</li>
+</ul>
+</li>
+<li>
+<p>从直观感觉上</p>
+<ul>
+<li>特征指代一个对象的特点</li>
+<li>标签指代一个对象</li>
+<li>算法的目的即根据特点，猜测对象</li>
+</ul>
+</li>
+</ol>
+<h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB" id="定义-“特征-标签”-关系">定义 “特征-标签” 关系</h3>
+<p>实际生活中，我们知道了 $A, B$ 能够在某种程度上决定 $C$<br>
+且 $A, B$ 各自对 $C$ 的影响有多大，我们并不清楚</p>
+<p>也就是说，我们知道 “特征” 与 “标签” 之间存在某种关系，但无法准确地描述这个关系</p>
+<p>此时我们可以对 $A, B, C$ 建立一个关系<br>
+即：能由 $A, B$ 推出 $C$<br>
+使用数学符号表示： $(A, B) \Rightarrow C$</p>
+<p>若将 $A$ 和 $B$ 称做 $C$ 的特征<br>
+并且将 $C$ 定义为标签<br>
+将 $(A, B) \Rightarrow C$ 称为 “特征-标签” 关系<br>
+则称数据 $(A, B, C)$ 存在 “特征-标签” 关系</p>
+<h3 id="%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98" id="提出问题">提出问题</h3>
+<p>我们希望，给出一组存在 “特征-标签” 的关系的数据<br>
+计算机能够根据这组数据，建立一个存在 “特征-标签” 关系的模型<br>
+随后，给出 “特征” ，计算机能够根据模型，给出比较可靠的、推测的 “标签”</p>
+<h3 id="%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98" id="使用数学语言描述问题">使用数学语言描述问题</h3>
+<p>接下来将问题抽象成为一个数学问题</p>
+<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量</p>
+<p>在比较简单的情况下<br>
+假定 “特征-标签” 是线性关系<br>
+并且这个线性关系为函数 $h$<br>
+则称 $h$ 为 <strong>假设函数 (hypotheses)</strong></p>
+<p>于是得到的函数</p>
+<p>$$<br>
+\begin{equation}<br>
+h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} + \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}<br>
+\end{equation}<br>
+$$</p>
+<p>其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$ 表示 <strong>参数 (parameters)</strong>，或者说是 <strong>权值 (weights)</strong><br>
+这是我们需要求得的值</p>
+<h3 id="%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE" id="引入向量进行表达">引入向量进行表达</h3>
+<p>若用向量表示 $\theta$ ：</p>
+<p>$$<br>
+\vec{\theta} =<br>
+\begin{pmatrix}<br>
+\theta_{0}\\<br>
+\theta_{1}\\<br>
+\vdots\\<br>
+\theta_{n}<br>
+\end{pmatrix}<br>
+$$</p>
+<p>并将特征集合重新定义为特征向量：</p>
+<p>$$<br>
+\vec{x} =<br>
+\begin{pmatrix}<br>
+x_{0}\\<br>
+x_{1}\\<br>
+\vdots\\<br>
+x_{n}<br>
+\end{pmatrix}<br>
+$$</p>
+<p>其中 $x_{0} = 1$<br>
+<strong>为简化符号，记 $\vec{\theta}$ 为 $\theta$ ，$\vec{x}$ 为 $x$</strong><br>
+则函数可表示为：</p>
+<p>$$<br>
+\begin{equation}<br>
+h_{\theta}(x) = \sum_{i=0}^{n}{\theta_{i} x_{i}} = \theta^{T}x<br>
+\end{equation}<br>
+$$</p>
+<p>此时我们的问题就是，求出一个 $\theta$ ，使得函数 $h$ 能够很好地描述 “特征-标签” 关系<br>
+即建立一个合理的模型</p>
+<h2 id="%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98" id="进一步分析问题">进一步分析问题</h2>
+<h3 id="%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5" id="引入数据集与训练集的概念">引入数据集与训练集的概念</h3>
+<p>上面的函数仅表示单个数据中的 “特征与标签” 关系<br>
+若存在多个数据，即 <strong>数据集 (dataset)</strong><br>
+且所有的数据都存在 “特征-标签” 的关系<br>
+即可以构建出一个 <strong>训练集 (training set)</strong><br>
+我们可以使用 <strong>训练集</strong> 对算法进行 <strong>训练</strong> ，最终得出 $\theta$</p>
+<p>定义下面的符号，方便之后的表示：<br>
+设 <strong>训练集大小</strong> 为 $m$ ，令：<br>
+$x_{i}^{(j)}$ 表示训练集中，<strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong><br>
+$x^{(j)}$ 表示训练集中 <strong>第 $j$ 项数据</strong> 的特征向量</p>
+<h3 id="%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98" id="引入最小二乘法转化问题">引入最小二乘法转化问题</h3>
+<p>回顾我们的问题：<br>
+我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系<br>
+换句话说，给出 “特征” ，若 “特征” 存在于训练集中，那么<br>
+由 <strong>函数 $h$</strong> 得出的 “标签”，与训练集中的 “标签”，它们之间的误差最小<br>
+根据 <strong>最小二乘法</strong> ，得：</p>
+<p>$$<br>
+\begin{equation}<br>
+J(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( h_{\theta}(x^{(i)}) - y^{(i)} \right)^{2}<br>
+\end{equation}<br>
+$$</p>
+<p>函数 $J$ 也称为 <strong>cost function</strong></p>
+<p>于是问题转化为：<br>
+需要得到一个 $\theta$ ，使得 $J(\theta)$ 的值最小</p>
+<h2 id="%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98" id="解决问题">解决问题</h2>
+<p>接下来介绍解决这个问题的可行方法</p>
+<h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D" id="梯度下降">梯度下降</h3>
+<p>为了得到 $\theta$ 使函数值 $J(\theta)$ 最小，可以采取 <strong>梯度下降 (gradient descent)</strong> 的方法：<br>
+随机选取一个 $\theta$ 值，随后不断地更新 $\theta$ ，使 $J(\theta)$ 不断减小<br>
+当 $J(\theta)$ 的值达到最小时，得到的 $\theta$ 即是问题的解</p>
+<p>问题在于，如何更新 $\theta$ 才能使得 $J(\theta)$ 的值不断减小<br>
+我们可以这样做<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p>$$<br>
+\begin{equation}<br>
+\theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} (\theta)<br>
+\end{equation}<br>
+$$</p>
+<p>其中 $:=$ 表示赋值，将右边的值赋予左边，而 $=$ 是真值判断，表示等号两边的值或结果是相同的<br>
+$\alpha$ 表示 <strong>学习率 (learning rate)</strong>，或者称 <strong>步长</strong>，是自定义的常数</p>
+<p>对 $J(\theta)$ 进行偏导：<br>
+$$<br>
+\begin{equation}<br>
+\begin{split}<br>
+\frac{\partial}{\partial \theta_{j}} J(\theta)&amp;= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\&amp;= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\&amp;= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\&amp;= (h_{\theta}(x) - y) x_{j}<br>
+\end{split}<br>
+\end{equation}<br>
+$$</p>
+<p>代入 <strong>式 $(4)$</strong> ，得：</p>
+<p>$$<br>
+\begin{equation}<br>
+\theta_{j} := \theta_{j} - \alpha (h_{\theta}(x) - y) x_{j}<br>
+\end{equation}<br>
+$$</p>
+<p>这是单个数据的表示，引入上面介绍的训练集</p>
+<p>$$<br>
+\begin{equation}<br>
+\theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right) x_{j}^{(i)}<br>
+\end{equation}<br>
+$$</p>
+<p>对每一个在向量 $\theta$ 中的分量 $\theta_{i}$ 都进行上述运算<br>
+最终我们会得到一个 $\theta$ ，这个值就是我们希望求得的值</p>
+<h3 id="%E7%89%9B%E9%A1%BF%E6%B3%95" id="牛顿法">牛顿法</h3>
+<p>咕咕咕</p>
+<h3 id="%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95" id="解析解法">解析解法</h3>
+<p>咕咕咕</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>课程链接 <a href="https://see.stanford.edu/Course/CS229">https://see.stanford.edu/Course/CS229</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>其中的原理在于：<br>
+求导后的值为函数斜率，其正负代表方向，当一个数减去这个值时，这个数会沿 $x$ 轴往函数值减小的方向移动 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>监督学习</tag>
+        <tag>线性回归</tag>
+        <tag>咕咕咕ing</tag>
       </tags>
   </entry>
   <entry>
@@ -729,11 +910,11 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </section>
 ]]></content>
       <categories>
-        <category>Linux</category>
-        <category>笔记</category>
+        <category>杂货铺</category>
       </categories>
       <tags>
-        <tag>Firewall</tag>
+        <tag>Linux</tag>
+        <tag>防火墙</tag>
       </tags>
   </entry>
   <entry>
@@ -827,8 +1008,7 @@ $$</p>
 一般使用 i2c 协议与树莓派通信</p>
 ]]></content>
       <categories>
-        <category>笔记</category>
-        <category>Raspberrypi</category>
+        <category>树莓派</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -898,10 +1078,11 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 ]]></content>
       <categories>
-        <category>笔记</category>
-        <category>Raspberrypi</category>
+        <category>树莓派</category>
       </categories>
       <tags>
+        <tag>hostapd</tag>
+        <tag>dnsmasq</tag>
         <tag>Access Point</tag>
       </tags>
   </entry>
@@ -1343,8 +1524,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 </ol>
 ]]></content>
       <categories>
-        <category>Linux</category>
-        <category>笔记</category>
+        <category>杂货铺</category>
       </categories>
       <tags>
         <tag>Vim</tag>
@@ -1710,7 +1890,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 </section>
 ]]></content>
       <categories>
-        <category>笔记</category>
+        <category>杂货铺</category>
       </categories>
       <tags>
         <tag>汇编</tag>
