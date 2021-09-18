@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>梯度下降算法 - HuLingOAO</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="HuLingOAO,"> 
+    <meta name="description" content="
+介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理
+
+步骤
+
+
+随机选取一个初始位置 $x_{0}$
+
+
+对 $x_{0}$ 进行更新，即：
+$$
+x_,"> 
+    <meta name="author" content="HuLingOAO"> 
+    
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+</head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">HuLingOAO</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://hulingovo.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">梯度下降算法</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">梯度下降算法</h1>
+        <div class="stuff">
+            <span>九月 16, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%92%95%E5%92%95%E5%92%95ing/" rel="tag">咕咕咕ing</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
+</blockquote>
+<h2 id="%E6%AD%A5%E9%AA%A4" id="步骤">步骤</h2>
+<ol>
+<li>
+<p>随机选取一个初始位置 $x_{0}$</p>
+</li>
+<li>
+<p>对 $x_{0}$ 进行更新，即：</p>
+<p>$$<br>
+x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})<br>
+$$</p>
+<p>其中 $\alpha$ 是一个正数，称作 “步长”，<br>
+$\frac{\mathrm d}{\mathrm dx}f(x_{0})$ 是 $f(x)$ 在 $x_{0}$ 处的导数</p>
+</li>
+<li>
+<p>重复进行 <code>步骤2</code> 中的更新操作，最终得到 $x_{n}$ 使得 $f(x_{n})$ 最小</p>
+</li>
+</ol>
+<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90" id="数学原理简析">数学原理简析</h2>
+<h3 id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86" id="基本原理">基本原理</h3>
+<p>设函数 $f(x)$ 为二次函数，且在 $x = x_{min}$ 处取得最小值<br>
+在 $x_{n}$ 点处的导数 $\frac{\mathrm d}{\mathrm dx}f(x_{n})$ 为 $k_{n}$<br>
+随机选取一点 $x_{0}$</p>
+<ol>
+<li>
+<p>若 $k_{0} &lt; 0$ ，则 $x_{0} &lt; x_{min}$，<br>
+令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &lt; x_{0}$<br>
+即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
+</li>
+<li>
+<p>若 $k_{0} &gt; 0$ ，则 $x_{0} &gt; x_{min}$，<br>
+令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &gt; x_{0}$<br>
+即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
+</li>
+</ol>
+<p>可知，更新后的 $x_{n}$ 一定从 $x_{n - 1}$ 向 $x_{min}$ 的方向移动</p>
+<h3 id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6" id="使用条件">使用条件</h3>
+<p>在基本原理中可以发现，获得 $x_{n}$ 的过程不依赖于原函数<br>
+只需要知道原函数的一阶导函数</p>
+<p>因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时<br>
+可以考虑采取梯度下降算法</p>
+<h3 id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84" id="不足之处">不足之处</h3>
+<p>设 $f(x) = x^{2}$ ，则<br>
+$k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n$<br>
+函数在 $x_{min} = 0$ 处取得最小值</p>
+<p>取初始值 $x_{0} = 1$ ，则 $x_{1} = x_{0} - k_{0} = -1$<br>
+继续对 $x_{1}$ 进行更新，则 $x_{2} = x_{1} - k_{1} = 1 = x_{0}$</p>
+<p>这导致无论如何更新，最终结果都只是 $x = 1$ 和 $x = -1$ 两个值，永远无法得到 $x_{min} = 0$</p>
+<h3 id="%E6%94%B9%E8%BF%9B" id="改进">改进</h3>
+<p>因此，需要引入 $\alpha$ 控制 $x$ 变化的幅度<br>
+$\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值 $x_{min}$<br>
+一般来说， $\alpha$ 是一个小于 1 但大于 0 的值<br>
+具体的值需要根据实际情况进行调整</p>
+<h2 id="%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B" id="代码示例">代码示例</h2>
+<p>在示例中<br>
+设函数为 $f(x) = 3x^{2} + 4x + 5$<br>
+则 $\frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4$<br>
+最低点为 $x_{min} = - \frac{B}{2A} = - \frac{2}{3}$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">c = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># f(x) = ax^2 + bx + c</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*(x**<span class="number">2</span>) + b*x + c</span><br><span class="line"></span><br><span class="line"><span class="comment"># df(x) = 2ax + b</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">df</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*a*x + b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 最低点</span></span><br><span class="line">    xmin = - b/(<span class="number">2</span>*a)</span><br><span class="line">    <span class="comment"># 步长</span></span><br><span class="line">    alpha = <span class="number">0.1</span></span><br><span class="line">    <span class="comment"># 随机初始值</span></span><br><span class="line">    x = np.random.randint(<span class="number">5</span>)</span><br><span class="line">    <span class="comment"># 递减 100 次</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        x = x - alpha * df(x)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 输出结果</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_n is:&quot;</span> , x)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_min is:&quot;</span>, xmin)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='true'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">数学原理简析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">使用条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="toc-number">2.3.</span> <span class="toc-text">不足之处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B"><span class="toc-number">2.4.</span> <span class="toc-text">改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">代码示例</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            preferredFont: "TeX",
+            availableFonts: ["STIX","TeX"],
+            linebreaks: { automatic:true },
+            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+        },
+        tex2jax: {
+            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+            processEscapes: true,
+            ignoreClass: "tex2jax_ignore|dno",
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        TeX: {
+            equationNumbers: {autoNumber: "AMS"},
+            noUndefined: {
+                attributes: {
+                    mathcolor: "red",
+                    mathbackground: "#FFEEEE",
+                    mathsize: "90%"
+                }
+            },
+            Macros: { href: "{}" }
+        },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/2.7-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
