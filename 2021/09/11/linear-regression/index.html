@@ -10,12 +10,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="HuLingOAO,"> 
-    <meta name="description" content="本文基于 Andrew NG 机器学习 公开课程 [1]
+    <meta name="description" content="
+基于 Andrew NG 机器学习 公开课程 [1]
 线性回归是一种 监督学习 (supervised leaning) 的模型
-本文简单解释其中的数学原理
+简单解释其中的数学原理，方便回顾
+
 基础
-定义 “特征” 与 “标签”
-,"> 
+定义 “特征” 与 “标,"> 
     <meta name="author" content="HuLingOAO"> 
     
     <link rel="icon" href="/img/favicon.png"> 
@@ -57,9 +58,11 @@
 
         </div>
         <div class="content markdown">
-            <p>本文基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<p>线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br>
-本文简单解释其中的数学原理</p>
+            <blockquote>
+<p>基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br>
+线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br>
+简单解释其中的数学原理，方便回顾</p>
+</blockquote>
 <h2 id="%E5%9F%BA%E7%A1%80" id="基础">基础</h2>
 <h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D" id="定义-“特征”-与-“标签”">定义 “特征” 与 “标签”</h3>
 <p>这里的定义是为了方便后面的表达</p>
@@ -104,7 +107,8 @@
 随后，给出 “特征” ，计算机能够根据模型，给出比较可靠的、推测的 “标签”</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98" id="使用数学语言描述问题">使用数学语言描述问题</h3>
 <p>接下来将问题抽象成为一个数学问题</p>
-<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量</p>
+<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量<br>
+$y$ 为特征对应的 “标签”</p>
 <p>在比较简单的情况下<br>
 假定 “特征-标签” 是线性关系<br>
 并且这个线性关系为函数 $h$<br>
@@ -157,8 +161,9 @@ $$</p>
 我们可以使用 <strong>训练集</strong> 对算法进行 <strong>训练</strong> ，最终得出 $\theta$</p>
 <p>定义下面的符号，方便之后的表示：<br>
 设 <strong>训练集大小</strong> 为 $m$ ，令：<br>
-$x_{i}^{(j)}$ 表示训练集中，<strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong><br>
-$x^{(j)}$ 表示训练集中 <strong>第 $j$ 项数据</strong> 的特征向量</p>
+$x_{i}^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong><br>
+$x^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的特征向量<br>
+同理可得 $\theta_{i}^{(j)}$ 与 $\theta^{(j)}$</p>
 <h3 id="%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98" id="引入最小二乘法转化问题">引入最小二乘法转化问题</h3>
 <p>回顾我们的问题：<br>
 我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系<br>
@@ -173,17 +178,19 @@ $$</p>
 <p>函数 $J$ 也称为 <strong>cost function</strong></p>
 <p>于是问题转化为：<br>
 需要得到一个 $\theta$ ，使得 $J(\theta)$ 的值最小</p>
+<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95" id="为什么使用最小二乘法">为什么使用最小二乘法</h3>
+<p>咕咕咕</p>
 <h2 id="%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98" id="解决问题">解决问题</h2>
 <p>接下来介绍解决这个问题的可行方法</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D" id="梯度下降">梯度下降</h3>
 <p>为了得到 $\theta$ 使函数值 $J(\theta)$ 最小，可以采取 <strong>梯度下降 (gradient descent)</strong> 的方法：<br>
 随机选取一个 $\theta$ 值，随后不断地更新 $\theta$ ，使 $J(\theta)$ 不断减小<br>
 当 $J(\theta)$ 的值达到最小时，得到的 $\theta$ 即是问题的解</p>
-<p>问题在于，如何更新 $\theta$ 才能使得 $J(\theta)$ 的值不断减小<br>
-我们可以这样做<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p>$$<br>
+<p>我们可以这样进行更新：<br>
+$$<br>
 \begin{equation}<br>
 \theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} (\theta)<br>
+\label{eq4}<br>
 \end{equation}<br>
 $$</p>
 <p>其中 $:=$ 表示赋值，将右边的值赋予左边，而 $=$ 是真值判断，表示等号两边的值或结果是相同的<br>
@@ -192,11 +199,15 @@ $\alpha$ 表示 <strong>学习率 (learning rate)</strong>，或者称 <strong>�
 $$<br>
 \begin{equation}<br>
 \begin{split}<br>
-\frac{\partial}{\partial \theta_{j}} J(\theta)&amp;= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\&amp;= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\&amp;= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\&amp;= (h_{\theta}(x) - y) x_{j}<br>
+\frac{\partial}{\partial \theta_{j}} J(\theta)<br>
+&amp;= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\<br>
+&amp;= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\<br>
+&amp;= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\<br>
+&amp;= (h_{\theta}(x) - y) x_{j}<br>
 \end{split}<br>
 \end{equation}<br>
 $$</p>
-<p>代入 <strong>式 $(4)$</strong> ，得：</p>
+<p>代入 <strong>$\eqref{eq4}$</strong> ，得：</p>
 <p>$$<br>
 \begin{equation}<br>
 \theta_{j} := \theta_{j} - \alpha (h_{\theta}(x) - y) x_{j}<br>
@@ -208,19 +219,230 @@ $$</p>
 \theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right) x_{j}^{(i)}<br>
 \end{equation}<br>
 $$</p>
-<p>对每一个在向量 $\theta$ 中的分量 $\theta_{i}$ 都进行上述运算<br>
+<p>对每一个在向量 $\theta$ 中的分量 $\theta_{j}$ 都进行上述运算<br>
 最终我们会得到一个 $\theta$ ，这个值就是我们希望求得的值</p>
+<p><em>注： 梯度下降算法的解析可参考另一篇文章</em></p>
 <h3 id="%E7%89%9B%E9%A1%BF%E6%B3%95" id="牛顿法">牛顿法</h3>
-<p>咕咕咕</p>
+<blockquote>
+<p>尚未完成，咕咕咕ing</p>
+</blockquote>
+<p>因为极值点处的一阶导数为 0<br>
+且 $J(\theta)$ 的函数最高次为二次，函数只存在一个极值点<br>
+所以，为了得到 $J(\theta)$ 的最小值，我们可以使用间接的方法<br>
+即：寻找 $J(\theta)$ 导数的零点</p>
+<p>牛顿法的步骤为：</p>
+<blockquote>
+<p>设函数为 $f(x)$</p>
+<ol>
+<li>随机在函数 $f(x)$ 上取一初始点 $P_{0}$</li>
+<li>过点 $P_{0}$ 作函数 $f(x)$ 的切线 $L$</li>
+<li>找到切线 $L$ 与 $x$ 轴的交点 $Q_{0}$</li>
+<li>过交点 $Q_{0}$ 作 $x$ 轴的垂线，并与函数有一交点 $P_{1}$</li>
+<li>将点 $P_{1}$ 作为初始点，回到步骤 2</li>
+<li>当点 $P_{n}$ 与点 $Q_{n}$ 重合时，横坐标即零点</li>
+</ol>
+</blockquote>
 <h3 id="%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95" id="解析解法">解析解法</h3>
-<p>咕咕咕</p>
+<p>实际上，上面的两种方法得到的是一个近似值<br>
+但其精确度能够满足实际应用<br>
+而解析解法能够直接计算出精确值</p>
+<h4 id="%E7%AC%A6%E5%8F%B7%E5%AE%9A%E4%B9%89" id="符号定义">符号定义</h4>
+<blockquote>
+<p>这里的定义均来自 Andrew NG 课程讲义</p>
+</blockquote>
+<p><strong>定义矩阵函数的导函数</strong><br>
+对于函数 $f$ : $\mathbb{R}^{m \times n} \mapsto \mathbb{R}$<br>
+即 $m \times n$ 的矩阵映射至实数的函数关系<br>
+定义函数 $f$ 对矩阵 $A$ 的导数为：</p>
+<p>$$<br>
+\begin{equation}<br>
+\nabla_{A}f(A) =<br>
+\begin{bmatrix}<br>
+\frac{\partial{f}}{\partial A_{11}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{1n}} \\<br>
+\vdots &amp; \ddots &amp; \vdots \\<br>
+\frac{\partial{f}}{\partial A_{m1}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{mn}} \\<br>
+\end{bmatrix}<br>
+\end{equation}<br>
+$$</p>
+<p><em>例子</em><br>
+若矩阵<br>
+$<br>
+A =<br>
+\begin{bmatrix}<br>
+A_{11} &amp; A_{12} \\<br>
+A_{21} &amp; A_{22}<br>
+\end{bmatrix}<br>
+$ ，<br>
+函数 $f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22}$ ，<br>
+那么<br>
+$<br>
+\nabla_{A} f(A) =<br>
+\begin{bmatrix}<br>
+\frac{3}{2} &amp; 10A_{12} \\<br>
+A_{22} &amp; A_{21}<br>
+\end{bmatrix}<br>
+$</p>
+<p><strong>定义 trace 运算</strong></p>
+<p><code>trace</code> 运算简写为 <code>tr</code><br>
+对于 $n \times n$ 的矩阵 $A$ ，定义</p>
+<p>$$<br>
+\begin{equation}<br>
+\mathrm{tr}A = \sum_{i=1}^{n}A_{ii}<br>
+\end{equation}<br>
+$$</p>
+<p>可以知道， <code>trace</code> 运算具有下列运算法则</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{algorithm1}<br>
+\mathrm{tr}ABC = \mathrm{tr}CAB = \mathrm{tr}BCA<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{algorithm2}<br>
+\mathrm{tr}(A+B) = \mathrm{tr}A + \mathrm{tr}B<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{algorithm3}<br>
+\mathrm{tr}aA = a\mathrm{tr}A<br>
+\end{equation}<br>
+$$<br>
+其中 $a$ 是一个实数</p>
+<h4 id="%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86" id="一些定理">一些定理</h4>
+<p>一些 <strong>trace 运算</strong> 与 <strong>矩阵导函数</strong> 相关的定理<br>
+仅列出 <strong>解析式推导过程</strong> 需要用到的一些定理，不作证明</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{theorem1}<br>
+\nabla_{A} \mathrm{tr}AB = B^{T}<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{theorem2}<br>
+\nabla_{A^{T}} f(A) = (\nabla_{A}f(A))^{T}<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{theorem3}<br>
+\nabla_{A} \mathrm{tr} A B A^{T} C = C A B + C^{T} A B^{T}<br>
+\end{equation}<br>
+$$</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{theorem4}<br>
+\nabla_{A} |A| = |A| ( A^{-1} )^{T}<br>
+\end{equation}<br>
+$$</p>
+<h4 id="%E8%A7%A3%E6%9E%90%E5%BC%8F%E6%8E%A8%E5%AF%BC" id="解析式推导">解析式推导</h4>
+<p>使用矩阵表达 “特征” 与 “标签”<br>
+定义矩阵 $X$ 和 $Y$</p>
+<p>$$<br>
+\begin{equation}<br>
+X =<br>
+\begin{bmatrix}<br>
+( x^{(1)} )^{T} \\<br>
+( x^{(2)} )^{T} \\<br>
+\vdots \\<br>
+( x^{(m)} )^{T}<br>
+\end{bmatrix}<br>
+,<br>
+Y =<br>
+\begin{bmatrix}<br>
+y^{(1)} \\<br>
+y^{(2)} \\<br>
+\vdots \\<br>
+y^{(m)}<br>
+\end{bmatrix}<br>
+\end{equation}<br>
+$$</p>
+<blockquote>
+<p>注意，此处 $x$ 表示向量 $\vec{x}$ ， $y$ 表示特征</p>
+</blockquote>
+<p>因为 $h_{\theta}(x^{(i)}) = \theta^{T} x^{(i)} = ( x^{(i)} )^{T} \theta$ ，故</p>
+<p>$$<br>
+\begin{equation}<br>
+h_{\theta}(x)=<br>
+\begin{bmatrix}<br>
+( x^{(1)} )^{T} \theta \\<br>
+( x^{(2)} )^{T} \theta \\<br>
+\vdots \\<br>
+( x^{(m)} )^{T} \theta<br>
+\end{bmatrix}<br>
+= X \theta<br>
+\end{equation}<br>
+$$</p>
+<p>又因为</p>
+<p>$$<br>
+\begin{equation}<br>
+X \theta - Y =<br>
+\begin{bmatrix}<br>
+( x^{(1)} )^{T} \theta \\<br>
+( x^{(2)} )^{T} \theta \\<br>
+\vdots \\<br>
+( x^{(m)} )^{T} \theta<br>
+\end{bmatrix} -<br>
+\begin{bmatrix}<br>
+y^{(1)} \\<br>
+y^{(2)} \\<br>
+\vdots \\<br>
+y^{(m)}<br>
+\end{bmatrix} =<br>
+\begin{bmatrix}<br>
+h_{\theta}(x^{(1)}) - y^{(1)} \\<br>
+h_{\theta}(x^{(2)}) - y^{(2)} \\<br>
+\vdots \\<br>
+h_{\theta}(x^{(m)}) - y^{(m)}<br>
+\end{bmatrix}<br>
+\end{equation}<br>
+$$</p>
+<p>且对于矩阵 $z$ ，有 $z^{T}z = \sum_{i} z_{i}^{2}$<br>
+于是可得</p>
+<p>$$<br>
+\begin{equation}<br>
+\begin{split}<br>
+\frac{1}{2} (X \theta - Y)^{T} (X \theta - Y)<br>
+&amp;= \frac{1}{2} \sum_{i = 1}^{m} ( h_{\theta}(x^{(i)}) - y^{(i)} )^{2} \\<br>
+&amp;= J(\theta)<br>
+\end{split}<br>
+\end{equation}<br>
+$$</p>
+<p>根据 <strong>$\eqref{theorem2}$</strong> 和 <strong>$\eqref{theorem3}$</strong> ，有</p>
+<p>$$<br>
+\begin{equation}<br>
+\label{inference1}<br>
+\nabla_{A^{T}} \mathrm{tr} AB A^{T} C = B^{T} A^{T} C^{T} + B A^{T} C<br>
+\end{equation}<br>
+$$</p>
+<p>于是</p>
+<p>$$<br>
+\begin{equation}<br>
+\begin{split}<br>
+\nabla_{\theta} J(\theta)<br>
+&amp;= \nabla_{\theta} \frac{1}{2} ( X \theta - Y )^{T} (X \theta - Y) \\<br>
+&amp;= \frac{1}{2} \nabla_{\theta} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\<br>
+&amp;= \frac{1}{2} \nabla_{\theta} \mathrm{tr} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\<br>
+&amp;= \frac{1}{2} \nabla_{\theta} ( \mathrm{tr} \theta^{T} X^{T} X \theta - 2 \mathrm{tr} Y^{T} X \theta ) \\<br>
+&amp;= \frac{1}{2} ( X^{T} X \theta + X^{T} X \theta - 2 X^{T} Y ) \\<br>
+&amp;= X^{T}  X \theta - X^{T} Y<br>
+\end{split}<br>
+\end{equation}<br>
+$$</p>
+<p>第三步将 $(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y )$ 视作整体<br>
+可知这是一个实数，可将其看作一个 $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$<br>
+由 <code>trace</code> 定义可知 $\mathrm{tr} A = a$<br>
+第四步使用了 <strong>$\mathrm{tr} A = \mathrm{tr} A^{T}$</strong><br>
+第五步中使用了 <strong>$\eqref{theorem1}$</strong> 和 <strong>$\eqref{inference1}$</strong> ，视 $A^{T} = \theta$ , $B = B^{T} = X^{T} X$ , $C = I$</p>
+<p>使 $J(\theta)$ 最小，则令 $\nabla_{\theta} J(\theta) = 0$<br>
+所以有 $X^{T}  X \theta = X^{T} Y$</p>
+<p>因此，得 $\theta = ( X^{T}X )^{-1} X^{T} Y$</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>课程链接 <a target="_blank" rel="noopener" href="https://see.stanford.edu/Course/CS229">https://see.stanford.edu/Course/CS229</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>其中的原理在于：<br>
-求导后的值为函数斜率，其正负代表方向，当一个数减去这个值时，这个数会沿 $x$ 轴往函数值减小的方向移动 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -251,7 +473,7 @@ $$</p>
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">定义 “特征” 与 “标签”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">定义 “特征-标签” 关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">使用数学语言描述问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE"><span class="toc-number">1.5.</span> <span class="toc-text">引入向量进行表达</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">进一步分析问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">引入数据集与训练集的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">引入最小二乘法转化问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">3.1.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">牛顿法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">解析解法</span></a></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">定义 “特征” 与 “标签”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">定义 “特征-标签” 关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">使用数学语言描述问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE"><span class="toc-number">1.5.</span> <span class="toc-text">引入向量进行表达</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">进一步分析问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">引入数据集与训练集的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">引入最小二乘法转化问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">为什么使用最小二乘法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">3.1.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">牛顿法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">解析解法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%AE%9A%E4%B9%89"><span class="toc-number">3.3.1.</span> <span class="toc-text">符号定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86"><span class="toc-number">3.3.2.</span> <span class="toc-text">一些定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="toc-number">3.3.3.</span> <span class="toc-text">解析式推导</span></a></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
