@@ -1,72 +1,84 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN" class="loading">
+<html lang="zh-CN ">
+
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Linux 防火墙 - HuLingOAO</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
-    <meta name="keywords" content="HuLingOAO,"> 
-    <meta name="description" content="
-本文仅做简单的介绍，不涉及防火墙的实际应用及操作
+    <title> HuLingOAO </title>
 
-Netfilter Porject
-Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能
+    
+<link rel="stylesheet" href="/css/main.css">
 
-官网Netfilt,"> 
-    <meta name="author" content="HuLingOAO"> 
+
     
-    <link rel="icon" href="/img/favicon.png"> 
-    
-    
-<link rel="stylesheet" href="/css/diaspora.css">
 
 </head>
 
-<body class="loading">
-    <span id="config-title" style="display:none">HuLingOAO</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://hulingovo.github.io"></a>
-    <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">Linux 防火墙</h3>
-    <div class="social">
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
-    </div>
-    <div class="scrollbar"></div>
-</div>
 
-    <div class="section">
-        <div class="article">
-    <div class='main'>
-        <h1 class="title">Linux 防火墙</h1>
-        <div class="stuff">
-            <span>二月 18, 2021</span>
+<body>
+    <div id="topbar">
+    <div class="topbar-content">
+        <ul class="topbar-menu">
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-
-
+            
+                
+                <li class="topbar-menu-item">
+                    <a href="/" title="首页">首页</a>
+                </li>
+                
+            
+                
+                <li class="topbar-menu-item">
+                    <a href="/archives" title="归档">归档</a>
+                </li>
+                
+            
+                
+                <li class="topbar-menu-item">
+                    <a href="/categories" title="分类">分类</a>
+                </li>
+                
+            
+                
+                <li class="topbar-menu-item">
+                    <a href="/tags" title="标签">标签</a>
+                </li>
+                
+            
+                
+                <li class="topbar-menu-item">
+                    <a href="/about" title="关于我">关于我</a>
+                </li>
+                
+            
+        </ul>
+        
+        <div class="article-top-bar">
+            <a class="go-back" href="javascript:history.back()">&lt; 返回</a>
+            <a class="go-to-top" href="#top-title">回到顶部</a>
         </div>
-        <div class="content markdown">
-            <blockquote>
+        
+    </div>
+</div>
+<main>
+    <div class="left-sidebar">
+        
+            <p style="text-align: center; font-weight: bold;">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
+        
+    </div>
+
+    <article class="main-content">
+        <h1 style="text-align: center;" id="top-title">Linux 防火墙</h1>
+        <blockquote>
 <p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
 </blockquote>
 <h2 id="netfilter-porject" id="Netfilter-Porject">Netfilter Porject</h2>
 <p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
 <blockquote>
-<p>官网<a target="_blank" rel="noopener" href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br>
-“<em>The netfilter project is a community-driven collaborative FOSS project that<br>
-provides packet filtering software for the Linux 2.4.x and later kernel series.<br>
+<p>官网<a target="_blank" rel="noopener" href="https://www.netfilter.org">Netfilter Project</a>介绍原文:
+“<em>The netfilter project is a community-driven collaborative FOSS project that
+provides packet filtering software for the Linux 2.4.x and later kernel series.
 The netfilter project is commonly associated with iptables.</em>”</p>
 </blockquote>
 <h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" id="四表五链概念">四表五链概念</h2>
@@ -77,7 +89,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <ul>
 <li><code>表(tables)</code> 指的是不同类型的数据包处理流程，<code>表</code> 中可以存在多个 <code>链</code></li>
 <li><code>链(chain)</code> 中包含若干 <code>规则</code></li>
-<li><code>规则(rules)</code> 规定数据包的处理方式<br>
+<li><code>规则(rules)</code> 规定数据包的处理方式
 系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></li>
 </ul>
 <h3 id="%E5%9B%9B%E8%A1%A8" id="四表"><strong>四表</strong></h3>
@@ -141,7 +153,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </tbody>
 </table>
 <h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" id="四表五链之间的联系"><strong>四表五链之间的联系</strong></h3>
-<p>四表里存放的是功能一致的规则，即存放着链<br>
+<p>四表里存放的是功能一致的规则，即存放着链
 表中存放的规则如下</p>
 <table>
 <thead>
@@ -194,7 +206,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <li><code>uncomplicated ftrewall(UFW)</code> 的使用更加简单方便，依赖于 iptables 来管理网络包<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
 <li><code>firewalld</code> 作为 nftables 的前端，并通过其来管理网络包，也可以一使用 iptables<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></li>
 </ul>
-<hr class="footnotes-sep">
+<hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>参考: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Netfilter">维基百科 Netfilter</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
@@ -210,148 +222,35 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </ol>
 </section>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                </ul>
-            
-        </div>
+    </article>
+
+    <div class="right-sidebar">
         
-    <div id='gitalk-container' class="comment link"
-		data-enable='false'
-        data-ae='true'
-        data-ci=''
-        data-cs=''
-        data-r=''
-        data-o=''
-        data-a=''
-        data-d='false'
-    >查看评论</div>
+            <p style="text-align: center; font-weight: bold;">标签</p>
 
 
+<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+
+        
+        
+            <p style="text-align: center; font-weight: bold;">分类</p>
+
+
+<ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+
+        
     </div>
-    
-        <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-number">1.</span> <span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-number">2.2.</span> <span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">2.3.</span> <span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-number">3.</span> <span class="toc-text">管理 firewall</span></a></li></ol>	
-        </div>
-    
-</div>
+</main>
 
-
-    </div>
-</div>
 </body>
 
 
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/typed.js"></script>
-<script src="/js/diaspora.js"></script>
+    
+<link rel="stylesheet" href="/css/article.css">
 
-
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-
-
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            preferredFont: "TeX",
-            availableFonts: ["STIX","TeX"],
-            linebreaks: { automatic:true },
-            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-        },
-        tex2jax: {
-            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-            processEscapes: true,
-            ignoreClass: "tex2jax_ignore|dno",
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        },
-        TeX: {
-            equationNumbers: {autoNumber: "AMS"},
-            noUndefined: {
-                attributes: {
-                    mathcolor: "red",
-                    mathbackground: "#FFEEEE",
-                    mathsize: "90%"
-                }
-            },
-            Macros: { href: "{}" }
-        },
-        messageStyle: "none"
-    });
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/2.7-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
 
 </html>

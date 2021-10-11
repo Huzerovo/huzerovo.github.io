@@ -13,10 +13,10 @@
 </li>
 <li>
 <p>对 $x_{0}$ 进行更新，即：</p>
-<p>$$<br>
-x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})<br>
+<p>$$
+x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
 $$</p>
-<p>其中 $\alpha$ 是一个正数，称作 “步长”，<br>
+<p>其中 $\alpha$ 是一个正数，称作 “步长”，
 $\frac{\mathrm d}{\mathrm dx}f(x_{0})$ 是 $f(x)$ 在 $x_{0}$ 处的导数</p>
 </li>
 <li>
@@ -25,45 +25,78 @@ $\frac{\mathrm d}{\mathrm dx}f(x_{0})$ 是 $f(x)$ 在 $x_{0}$ 处的导数</p>
 </ol>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90" id="数学原理简析">数学原理简析</h2>
 <h3 id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86" id="基本原理">基本原理</h3>
-<p>设函数 $f(x)$ 为二次函数，且在 $x = x_{min}$ 处取得最小值<br>
-在 $x_{n}$ 点处的导数 $\frac{\mathrm d}{\mathrm dx}f(x_{n})$ 为 $k_{n}$<br>
+<p>设函数 $f(x)$ 为二次函数，且在 $x = x_{min}$ 处取得最小值<br />
+在 $x_{n}$ 点处的导数 $\frac{\mathrm d}{\mathrm dx}f(x_{n})$ 为 $k_{n}$<br />
 随机选取一点 $x_{0}$</p>
 <ol>
 <li>
-<p>若 $k_{0} &lt; 0$ ，则 $x_{0} &lt; x_{min}$，<br>
-令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &lt; x_{0}$<br>
+<p>若 $k_{0} &lt; 0$ ，则 $x_{0} &lt; x_{min}$，<br />
+令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &lt; x_{0}$<br />
 即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
 </li>
 <li>
-<p>若 $k_{0} &gt; 0$ ，则 $x_{0} &gt; x_{min}$，<br>
-令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &gt; x_{0}$<br>
+<p>若 $k_{0} &gt; 0$ ，则 $x_{0} &gt; x_{min}$，<br />
+令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &gt; x_{0}$<br />
 即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
 </li>
 </ol>
 <p>可知，更新后的 $x_{n}$ 一定从 $x_{n - 1}$ 向 $x_{min}$ 的方向移动</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6" id="使用条件">使用条件</h3>
-<p>在基本原理中可以发现，获得 $x_{n}$ 的过程不依赖于原函数<br>
+<p>在基本原理中可以发现，获得 $x_{n}$ 的过程不依赖于原函数<br />
 只需要知道原函数的一阶导函数</p>
-<p>因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时<br>
+<p>因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时<br />
 可以考虑采取梯度下降算法</p>
 <h3 id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84" id="不足之处">不足之处</h3>
-<p>设 $f(x) = x^{2}$ ，则<br>
-$k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n$<br>
+<p>设 $f(x) = x^{2}$ ，则<br />
+$k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n$<br />
 函数在 $x_{min} = 0$ 处取得最小值</p>
-<p>取初始值 $x_{0} = 1$ ，则 $x_{1} = x_{0} - k_{0} = -1$<br>
+<p>取初始值 $x_{0} = 1$ ，则 $x_{1} = x_{0} - k_{0} = -1$<br />
 继续对 $x_{1}$ 进行更新，则 $x_{2} = x_{1} - k_{1} = 1 = x_{0}$</p>
 <p>这导致无论如何更新，最终结果都只是 $x = 1$ 和 $x = -1$ 两个值，永远无法得到 $x_{min} = 0$</p>
 <h3 id="%E6%94%B9%E8%BF%9B" id="改进">改进</h3>
-<p>因此，需要引入 $\alpha$ 控制 $x$ 变化的幅度<br>
-$\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值 $x_{min}$<br>
-一般来说， $\alpha$ 是一个小于 1 但大于 0 的值<br>
+<p>因此，需要引入 $\alpha$ 控制 $x$ 变化的幅度<br />
+$\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值 $x_{min}$<br />
+一般来说， $\alpha$ 是一个小于 1 但大于 0 的值<br />
 具体的值需要根据实际情况进行调整</p>
 <h2 id="%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B" id="代码示例">代码示例</h2>
-<p>在示例中<br>
-设函数为 $f(x) = 3x^{2} + 4x + 5$<br>
-则 $\frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4$<br>
+<p>在示例中<br />
+设函数为 $f(x) = 3x^{2} + 4x + 5$<br />
+则 $\frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4$<br />
 最低点为 $x_{min} = - \frac{B}{2A} = - \frac{2}{3}$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">c = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># f(x) = ax^2 + bx + c</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*(x**<span class="number">2</span>) + b*x + c</span><br><span class="line"></span><br><span class="line"><span class="comment"># df(x) = 2ax + b</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">df</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*a*x + b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 最低点</span></span><br><span class="line">    xmin = - b/(<span class="number">2</span>*a)</span><br><span class="line">    <span class="comment"># 步长</span></span><br><span class="line">    alpha = <span class="number">0.1</span></span><br><span class="line">    <span class="comment"># 随机初始值</span></span><br><span class="line">    x = np.random.randint(<span class="number">5</span>)</span><br><span class="line">    <span class="comment"># 递减 100 次</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        x = x - alpha * df(x)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 输出结果</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_n is:&quot;</span> , x)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_min is:&quot;</span>, xmin)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import numpy as np
+
+a = 3
+b = 4
+c = 5
+
+# f(x) = ax^2 + bx + c
+def f(x):
+    return a*(x**2) + b*x + c
+
+# df(x) = 2ax + b
+def df(x):
+    return 2*a*x + b
+
+def main():
+    # 最低点
+    xmin = - b/(2*a)
+    # 步长
+    alpha = 0.1
+    # 随机初始值
+    x = np.random.randint(5)
+    # 递减 100 次
+    for i in range(100):
+        x = x - alpha * df(x)
+    
+    # 输出结果
+    print(&quot;x_n is:&quot; , x)
+    print(&quot;x_min is:&quot;, xmin)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
 ]]></content>
       <categories>
         <category>机器学习</category>
@@ -88,17 +121,30 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 <li>请在了解执行的命令的作用之后再执行操作</li>
 </ol>
 <h3 id="%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6" id="使用-dd-创建一个映像文件">使用 dd 创建一个映像文件</h3>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dd <span class="keyword">if</span>=/dev/zero of=os.img bs=1M count=20</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">$ dd if=/dev/zero of=os.img bs=1M count=20
+</code></pre>
 <p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
 <h3 id="%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA" id="在-os-img-上创建分区">在 os.img 上创建分区</h3>
 <p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
 <h4 id="%E4%BD%BF%E7%94%A8-gdisk" id="使用-gdisk">使用 gdisk</h4>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> gdisk os.img</span></span><br></pre></td></tr></table></figure>
-<p>进入 gdisk 交互界面<br>
+<pre><code class="language-shell">$ gdisk os.img
+</code></pre>
+<p>进入 gdisk 交互界面
 如下所示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GPT fdisk (gdisk) version 1.0.8</span><br><span class="line"></span><br><span class="line">Partition table scan:</span><br><span class="line">  MBR: not present</span><br><span class="line">  BSD: not present</span><br><span class="line">  APM: not present</span><br><span class="line">  GPT: not present</span><br><span class="line"></span><br><span class="line">Creating new GPT entries in memory.</span><br><span class="line"></span><br><span class="line">Command (? for help):</span><br></pre></td></tr></table></figure>
+<pre><code>GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help):
+</code></pre>
 <blockquote>
-<p>根据 <a href="https://wiki.archlinux.org/title/GRUB#BIOS_systems">Arch Linux Wiki</a><br>
+<p>根据 <a href="https://wiki.archlinux.org/title/GRUB#BIOS_systems">Arch Linux Wiki</a>
 需要腾出 1M 空间给 Grub 使用</p>
 </blockquote>
 <p><strong>创建分区简要步骤：</strong></p>
@@ -114,12 +160,67 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 </ul>
 <p>可能会出现一个警告，确认即可</p>
 <p><strong>以下为参考：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GPT fdisk (gdisk) version 1.0.8</span><br><span class="line"></span><br><span class="line">Partition table scan:</span><br><span class="line">  MBR: protective</span><br><span class="line">  BSD: not present</span><br><span class="line">  APM: not present</span><br><span class="line">  GPT: present</span><br><span class="line"></span><br><span class="line">Found valid GPT with protective MBR; using GPT.</span><br><span class="line"></span><br><span class="line">Command (? for help): d</span><br><span class="line">Using 1</span><br><span class="line"></span><br><span class="line">Command (? for help): n</span><br><span class="line">Partition number (1-128, default 1): </span><br><span class="line">First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: +1M</span><br><span class="line">Current type is 8300 (Linux filesystem)</span><br><span class="line">Hex code or GUID (L to show codes, Enter = 8300): ef02</span><br><span class="line">Changed type of partition to &#x27;BIOS boot partition&#x27;</span><br><span class="line"></span><br><span class="line">Command (? for help): n</span><br><span class="line">Partition number (2-128, default 2): </span><br><span class="line">First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Current type is 8300 (Linux filesystem)</span><br><span class="line">Hex code or GUID (L to show codes, Enter = 8300): </span><br><span class="line">Changed type of partition to &#x27;Linux filesystem&#x27;</span><br><span class="line"></span><br><span class="line">Command (? for help): p</span><br><span class="line">Disk ./file.img: 40960 sectors, 20.0 MiB</span><br><span class="line">Sector size (logical): 512 bytes</span><br><span class="line">Disk identifier (GUID): 8AECC85A-5E21-48E1-AB62-1684A9A8BF0D</span><br><span class="line">Partition table holds up to 128 entries</span><br><span class="line">Main partition table begins at sector 2 and ends at sector 33</span><br><span class="line">First usable sector is 34, last usable sector is 40926</span><br><span class="line">Partitions will be aligned on 2048-sector boundaries</span><br><span class="line">Total free space is 2014 sectors (1007.0 KiB)</span><br><span class="line"></span><br><span class="line">Number  Start (sector)    End (sector)  Size       Code  Name</span><br><span class="line">   1            2048            4095   1024.0 KiB  EF02  BIOS boot partition</span><br><span class="line">   2            4096           40926   18.0 MiB    8300  Linux filesystem</span><br><span class="line"></span><br><span class="line">Command (? for help): w</span><br><span class="line"></span><br><span class="line">Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING</span><br><span class="line">PARTITIONS!!</span><br><span class="line"></span><br><span class="line">Do you want to proceed? (Y/N): Y</span><br><span class="line">OK; writing new GUID partition table (GPT) to ./file.img.</span><br><span class="line">Warning: The kernel is still using the old partition table.</span><br><span class="line">The new table will be used at the next reboot or after you</span><br><span class="line">run partprobe(8) or kpartx(8)</span><br><span class="line">The operation has completed successfully.</span><br></pre></td></tr></table></figure>
+<pre><code>GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): d
+Using 1
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;: 
+Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: +1M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): ef02
+Changed type of partition to 'BIOS boot partition'
+
+Command (? for help): n
+Partition number (2-128, default 2): 
+First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;: 
+Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): 
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): p
+Disk ./file.img: 40960 sectors, 20.0 MiB
+Sector size (logical): 512 bytes
+Disk identifier (GUID): 8AECC85A-5E21-48E1-AB62-1684A9A8BF0D
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 40926
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            4095   1024.0 KiB  EF02  BIOS boot partition
+   2            4096           40926   18.0 MiB    8300  Linux filesystem
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to ./file.img.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot or after you
+run partprobe(8) or kpartx(8)
+The operation has completed successfully.
+</code></pre>
 <h4 id="%E4%BD%BF%E7%94%A8-fdisk" id="使用-fdisk">使用 fdisk</h4>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> fdisk ./os.img</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">$ fdisk ./os.img
+</code></pre>
 <p>进入 fdisk 交互界面</p>
 <p>输入 <code>g</code> 新建一个 GPT 分区表</p>
-<p>创建分区过程与 <strong>使用gdisk</strong> 一节类似<br>
+<p>创建分区过程与 <strong>使用gdisk</strong> 一节类似
 但创建分区过程无法选择分区类型，需要在创建分区后进行更改</p>
 <p>在创建分区后</p>
 <ul>
@@ -128,52 +229,80 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 <li>然后输入 <code>4</code> 将分区类型更改为 BIOS Boot</li>
 </ul>
 <p><strong>参考</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">命令(输入 m 获取帮助)：t</span><br><span class="line">分区号 (1,2, 默认  2): 1</span><br><span class="line">分区类型或别名（输入 L 列出所有类型）：4</span><br><span class="line"></span><br><span class="line">已将分区“Linux filesystem”的类型更改为“BIOS boot”。</span><br><span class="line"></span><br><span class="line">命令(输入 m 获取帮助)：</span><br></pre></td></tr></table></figure>
+<pre><code>命令(输入 m 获取帮助)：t
+分区号 (1,2, 默认  2): 1
+分区类型或别名（输入 L 列出所有类型）：4
+
+已将分区“Linux filesystem”的类型更改为“BIOS boot”。
+
+命令(输入 m 获取帮助)：
+</code></pre>
 <p>最后输入 <code>w</code> 确认写入文件</p>
 <h3 id="%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87" id="将-os-img-挂载为-loop-设备">将 os.img 挂载为 loop 设备</h3>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo losetup --show -P -f ./os.img</span></span><br><span class="line">/dev/loop0</span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
+/dev/loop0
+</code></pre>
 <p>命令解释：</p>
 <ul>
 <li><code>--show</code> 在挂载成功后，显示挂载的设备名</li>
 <li><code>-P</code> 创建带分区的 loop 设备</li>
 <li><code>-f</code> 查找第一个未使用的设备</li>
 </ul>
-<p>显示的设备名不一定是 <code>/dev/loop0</code><br>
+<p>显示的设备名不一定是 <code>/dev/loop0</code>
 在后文出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称</p>
 <h3 id="%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA" id="格式化并挂载分区">格式化并挂载分区</h3>
 <blockquote>
-<p>在文中实例中，需要格式化的是第二个分区，对应的 loop 设备为 <code>/dev/loop0p2</code><br>
+<p>在文中实例中，需要格式化的是第二个分区，对应的 loop 设备为 <code>/dev/loop0p2</code>
 如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mkfs.vfat -L <span class="string">&quot;BOOT&quot;</span> /dev/loop0p2</span></span><br></pre></td></tr></table></figure>
-<p>不出意外的话，格式化很快就能完成<br>
+<pre><code class="language-shell">$ sudo mkfs.vfat -L &quot;BOOT&quot; /dev/loop0p2
+</code></pre>
+<p>不出意外的话，格式化很快就能完成
 随后挂载分区</p>
-<p>请选择一个没有正在使用的文件夹<br>
-在本文中选择 <code>/mnt</code> 作为挂载点<br>
+<p>请选择一个没有正在使用的文件夹
+在本文中选择 <code>/mnt</code> 作为挂载点
 这个文件夹在之后会使用到</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo mount /dev/loop0p2 /mnt</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">$ sudo mount /dev/loop0p2 /mnt
+</code></pre>
 <p>没有消息就是最好的消息</p>
 <h3 id="%E5%AE%89%E8%A3%85-grub" id="安装-Grub">安装 Grub</h3>
 <blockquote>
-<p>下面的操作在执行命令前一定要确认<br>
+<p>下面的操作在执行命令前一定要确认
 误操作可能会影响本机的 <code>/boot</code> 分区</p>
 </blockquote>
-<p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br>
+<p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub
 使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo grub-install --target=i386-pc --boot-directory=/mnt</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell">$ sudo grub-install --target=i386-pc --boot-directory=/mnt
+</code></pre>
 <p>命令解释：</p>
 <ul>
 <li><code>target=i386-pc</code> 指出安装架构为 i386</li>
 <li><code>boot-directory=/mnt</code> 指出安装到 <code>/mnt</code> 而不是默认的 <code>/boot</code></li>
 </ul>
-<p>安装需要 13M 左右的空间<br>
+<p>安装需要 13M 左右的空间
 完成后会提示成功</p>
 <h3 id="%E9%85%8D%E7%BD%AE" id="配置">配置</h3>
 <p>照着手册随便糊的一个，<s>能用就行</s></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Grub 的配置文件</span><br><span class="line"></span><br><span class="line"># 设置根分区</span><br><span class="line">set root=&#x27;(hd0,gpt2)&#x27;</span><br><span class="line"></span><br><span class="line"># 选择启动项超时时间，0 即立即启动</span><br><span class="line">set timeout=0</span><br><span class="line"></span><br><span class="line"># 菜单选项</span><br><span class="line">menuentry EntryName &#123;</span><br><span class="line">    # 载入 file 并启动</span><br><span class="line">    multiboot ($root)/boot/file</span><br><span class="line">    boot</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code># Grub 的配置文件
+
+# 设置根分区
+set root='(hd0,gpt2)'
+
+# 选择启动项超时时间，0 即立即启动
+set timeout=0
+
+# 菜单选项
+menuentry EntryName &#123;
+    # 载入 file 并启动
+    multiboot ($root)/boot/file
+    boot
+&#125;
+</code></pre>
 <h3 id="%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87" id="卸载设备">卸载设备</h3>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo umount /mnt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo losetup -d /dev/loop0</span></span><br></pre></td></tr></table></figure>
-<p>上面的命令将从挂载点卸载 loop 设备<br>
+<pre><code class="language-shell">$ sudo umount /mnt
+$ sudo losetup -d /dev/loop0
+</code></pre>
+<p>上面的命令将从挂载点卸载 loop 设备
 并释放 loop 设备与文件的关联</p>
 <h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" id="参考资料">参考资料</h3>
 <ul>
@@ -195,16 +324,16 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 <p>共有两种方法</p>
 <ol>
 <li>
-<p>用<code>=</code>表示一级标题，或<code>-</code>表示二级标题<br>
-上一行不能为空<br>
+<p>用<code>=</code>表示一级标题，或<code>-</code>表示二级标题
+上一行不能为空
 符号可以有多个</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A" id="语法-例子">语法(例子):</h4>
 <blockquote>
-<p>一级标题<br>
-=<br>
-二级标题<br>
--<br>
-二级标题<br>
+<p>一级标题
+=
+二级标题
+-
+二级标题
 ----</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A" id="效果">效果:</h4>
@@ -215,15 +344,15 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 </blockquote>
 </li>
 <li>
-<p>用不同数量的 <code>#</code> 标记，后接一个空格，再接标题<br>
+<p>用不同数量的 <code>#</code> 标记，后接一个空格，再接标题
 一个 <code>#</code> 表示一级标题，两个表示二级，以此类推</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-1" id="语法-例子-2">语法(例子):</h4>
 <blockquote>
-<p># 一级标题<br>
-## 二级标题<br>
-### 三级标题<br>
-#### 四级标题<br>
-##### 五级标题<br>
+<p># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
 ###### 六级标题</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-1" id="效果-2">效果:</h4>
@@ -238,53 +367,53 @@ $\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得�
 </li>
 </ol>
 <h2 id="%E6%AE%B5%E8%90%BD" id="段落">段落</h2>
-<p>直接在md文件里按普通文档写就行，不用特别的格式<br>
-需要换行时，句子后面加两个空格再回车<br>
+<p>直接在md文件里按普通文档写就行，不用特别的格式
+需要换行时，句子后面加两个空格再回车
 或者空出一行</p>
 <h2 id="%E5%AD%97%E4%BD%93" id="字体">字体</h2>
-<p>用 <code>_</code> 或 <code>*</code> 包裹要标注的一段文字<br>
-一个 <code>_</code> 或 <code>*</code> 表示斜体<br>
-两个表示粗体<br>
+<p>用 <code>_</code> 或 <code>*</code> 包裹要标注的一段文字
+一个 <code>_</code> 或 <code>*</code> 表示斜体
+两个表示粗体
 三个表示斜粗体</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-2" id="语法-例子-3">语法(例子):</h4>
 <blockquote>
-<p>*斜体*<br>
+<p>*斜体*
 _斜体_</p>
-<p>**粗体**<br>
+<p>**粗体**
 __粗体__</p>
-<p>***斜粗体***<br>
+<p>***斜粗体***
 ___斜粗体___</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-2" id="效果-3">效果:</h4>
 <blockquote>
-<p><em>斜体</em><br>
+<p><em>斜体</em>
 <em>斜体</em></p>
-<p><strong>粗体</strong><br>
+<p><strong>粗体</strong>
 <strong>粗体</strong></p>
-<p><em><strong>斜粗体</strong></em><br>
+<p><em><strong>斜粗体</strong></em>
 <em><strong>斜粗体</strong></em></p>
 </blockquote>
 <h2 id="%E5%88%86%E5%89%B2%E7%BA%BF" id="分割线">分割线</h2>
-<p><code>_</code>，<code>*</code>，<code>-</code> 还可以用来表示分割线<br>
-需要三个或三个以上相同的符号，同时行内不能有其他东西，但可以有空格<br>
+<p><code>_</code>，<code>*</code>，<code>-</code> 还可以用来表示分割线
+需要三个或三个以上相同的符号，同时行内不能有其他东西，但可以有空格
 注: <code>-</code> 用作分割线时，上一行应为空行，否则会识别为二级标题</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-3" id="语法-例子-4">语法(例子):</h4>
 <blockquote>
-<p>*\ *\ *<br>
--\ -\ -<br>
+<p>*\ *\ *
+-\ -\ -
 _\ _\ _</p>
-<p>***<br>
----<br>
+<p>***
+---
 ___</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-3" id="效果-4">效果:</h4>
 <blockquote>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
 </blockquote>
 <h2 id="%E5%88%A0%E9%99%A4%E7%BA%BF" id="删除线">删除线</h2>
 <p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
@@ -307,11 +436,11 @@ ___</p>
 <p><u>带下划线文本</u></p>
 </blockquote>
 <h2 id="%E8%84%9A%E6%B3%A8" id="脚注">脚注</h2>
-<p>可以对文本进行补充说明，也可以说是注释<br>
+<p>可以对文本进行补充说明，也可以说是注释
 详细格式参考下方语法介绍</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-6" id="语法-例子-7">语法(例子):</h4>
 <blockquote>
-<p>后面的是脚注 [^who]<br>
+<p>后面的是脚注 [^who]
 [^who]: Me!</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-6" id="效果-7">效果:</h4>
@@ -319,83 +448,83 @@ ___</p>
 <p>后面的是脚注 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 </blockquote>
 <h2 id="%E5%88%97%E8%A1%A8" id="列表">列表</h2>
-<p>显示列表，分为有序与无序<br>
+<p>显示列表，分为有序与无序
 列表可以嵌套，“列表嵌套”一节有详细介绍</p>
-<hr>
-<p>注: 例子中使用 <code>_</code> 代替空格<br>
+<hr />
+<p>注: 例子中使用 <code>_</code> 代替空格
 注: 在“列表嵌套”一节还有更详细的展示</p>
-<hr>
+<hr />
 <h3 id="%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8" id="有序列表">有序列表</h3>
-<p>在一行的首位，数字加 <code>.</code> 标记，如 <code>1.</code>，后接空格，再接列表项即可<br>
+<p>在一行的首位，数字加 <code>.</code> 标记，如 <code>1.</code>，后接空格，再接列表项即可
 注意，数字不必按数学顺序排列，但应以数字 1 开始</p>
-<hr>
+<hr />
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-7" id="语法-例子-8">语法(例子):</h4>
 <blockquote>
-<hr>
-<p>1. 第一项<br>
-2. 第二项<br>
-3. 第三项<br>
+<hr />
+<p>1. 第一项
+2. 第二项
+3. 第三项
 ___带缩进文本</p>
-<hr>
+<hr />
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-7" id="效果-8">效果:</h4>
 <blockquote>
-<hr>
+<hr />
 <ol>
 <li>第一项</li>
 <li>第二项</li>
-<li>第三项<br>
+<li>第三项
 带缩进文本</li>
 </ol>
-<hr>
+<hr />
 </blockquote>
 <h3 id="%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8" id="无序列表">无序列表</h3>
-<p>与有序列表类似，改用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记<br>
+<p>与有序列表类似，改用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记
 注: 实际显示效果可能因主题渲染不同而产生差异</p>
-<hr>
+<hr />
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-8" id="语法-例子-9">语法(例子):</h4>
 <blockquote>
-<hr>
-<p>* 第一项<br>
+<hr />
+<p>* 第一项
 * 第二项</p>
-<hr>
-<p>+ 第一项<br>
+<hr />
+<p>+ 第一项
 + 第二项</p>
-<hr>
-<p>- 第一项<br>
+<hr />
+<p>- 第一项
 - 第二项</p>
-<hr>
+<hr />
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-8" id="效果-9">效果:</h4>
 <blockquote>
-<hr>
+<hr />
 <ul>
 <li>第一项</li>
 <li>第二项</li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li>第一项</li>
 <li>第二项</li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li>第一项</li>
 <li>第二项</li>
 </ul>
-<hr>
+<hr />
 </blockquote>
 <h2 id="%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97" id="列表嵌套">列表嵌套</h2>
-<p>子列表可以用有序或者无序，在希望成为子列表的项前加上三个或以上的空格<br>
+<p>子列表可以用有序或者无序，在希望成为子列表的项前加上三个或以上的空格
 此时，在此之下的段落会与此项对齐</p>
-<hr>
+<hr />
 <h5 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-9" id="语法-例子-10">语法(例子):</h5>
 <blockquote>
-<p>1. 这是第一<br>
-___- 第一个子项<br>
-______- zzzzz<br>
-___- 第二个<br>
-2. 这是第二<br>
+<p>1. 这是第一
+___- 第一个子项
+______- zzzzz
+___- 第二个
+2. 这是第二
 ___- 子项</p>
 </blockquote>
 <h5 id="%E6%95%88%E6%9E%9C%3A-9" id="效果-10">效果:</h5>
@@ -419,7 +548,7 @@ ___- 子项</p>
 </ol>
 </blockquote>
 <h2 id="%E5%8C%BA%E5%9D%97" id="区块">区块</h2>
-<p>用 <code>&gt;</code> 标记，并在后面紧接一个空格<br>
+<p>用 <code>&gt;</code> 标记，并在后面紧接一个空格
 区块里可以嵌套区块(见“区块嵌套”)，列表(“见区块与列表相互嵌套”)等，注意都要接空格</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-10" id="语法-例子-11">语法(例子):</h4>
 <blockquote>
@@ -433,8 +562,8 @@ ___- 子项</p>
 <p>区块可以嵌套区块</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-11" id="语法-例子-12">语法(例子):</h4>
 <blockquote>
-<p>&gt; 第一层<br>
-&gt; &gt; 第二层<br>
+<p>&gt; 第一层
+&gt; &gt; 第二层
 &gt; &gt; &gt; 第三层</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-11" id="效果-12">效果:</h4>
@@ -452,8 +581,8 @@ ___- 子项</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E5%8C%BA%E5%9D%97%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E4%BE%8B%E5%AD%90)%3A" id="语法-区块里嵌套列表例子">语法(区块里嵌套列表例子):</h4>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
-<p>&gt; 1. 父级<br>
-&gt; ___- 子级1<br>
+<p>&gt; 1. 父级
+&gt; ___- 子级1
 &gt; ___- 子集2</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-12" id="效果-13">效果:</h4>
@@ -470,7 +599,7 @@ ___- 子项</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E5%88%97%E8%A1%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%8C%BA%E5%9D%97%E4%BE%8B%E5%AD%90)%3A" id="语法-列表里嵌套区块例子">语法(列表里嵌套区块例子):</h4>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
-<p>- 第一项<br>
+<p>- 第一项
 ___&gt; 区块</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-13" id="效果-14">效果:</h4>
@@ -496,25 +625,31 @@ ___&gt; 区块</p>
 <p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-13" id="语法-例子-14">语法(例子):</h4>
 <blockquote>
-<p>```c<br>
-#include &lt;stdio.h&gt;<br>
-int main()<br>
-{<br>
-____printf(“Hello world”);<br>
-____return 0;<br>
-}<br>
+<p>```c
+#include &lt;stdio.h&gt;
+int main()
+{
+____printf(“Hello world”);
+____return 0;
+}
 ```</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-15" id="效果-16">效果:</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main()
+&#123;
+    printf(&quot;Hello world&quot;);
+    return 0;
+&#125;
+</code></pre>
 <p>或者用四个空格或者制表符(TAB键)</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-14" id="语法-例子-15">语法(例子):</h4>
 <blockquote>
-<p>____#include &lt;stdio.h&gt;<br>
-____int main()<br>
-____{<br>
-________printf(“Hello world”);<br>
-________return 0;<br>
+<p>____#include &lt;stdio.h&gt;
+____int main()
+____{
+________printf(“Hello world”);
+________return 0;
 ____}</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-16" id="效果-17">效果:</h4>
@@ -528,24 +663,24 @@ int main()
 <h2 id="%E9%93%BE%E6%8E%A5" id="链接">链接</h2>
 <h4 id="%E8%AF%AD%E6%B3%95%3A" id="语法">语法:</h4>
 <blockquote>
-<p>[链接名字](链接地址)<br>
-或者<br>
+<p>[链接名字](链接地址)
+或者
 &lt;链接地址&gt;</p>
 </blockquote>
 <h4 id="%E4%BE%8B%E5%AD%90%3A" id="例子">例子:</h4>
 <blockquote>
-<p>[ME](<a href="http://raspberry.me/HuLingOAO">http://raspberry.me/HuLingOAO</a>)<br>
+<p>[ME](<a href="http://raspberry.me/HuLingOAO">http://raspberry.me/HuLingOAO</a>)
 &lt;<a href="http://raspberry.me/test">http://raspberry.me/test</a>&gt;</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-17" id="效果-18">效果:</h4>
 <blockquote>
-<p><a href="http://raspberry.me/HuLingOAO">ME</a><br>
+<p><a href="http://raspberry.me/HuLingOAO">ME</a>
 <a href="http://raspberry.me/test">http://raspberry.me/test</a></p>
 </blockquote>
 <h2 id="%E5%9B%BE%E7%89%87" id="图片">图片</h2>
 <h4 id="%E8%AF%AD%E6%B3%95%3A-1" id="语法-2">语法:</h4>
 <blockquote>
-<p>![alt属性文本(注:找不到图片时显示的文字)](图片地址\“(可选)标题\”)<br>
+<p>![alt属性文本(注:找不到图片时显示的文字)](图片地址\“(可选)标题\”)
 标题可写可不写</p>
 </blockquote>
 <h5 id="%E4%BE%8B%E5%AD%90%3A-1" id="例子-2">例子:</h5>
@@ -554,20 +689,20 @@ int main()
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-18" id="效果-19">效果:</h4>
 <blockquote>
-<p><img src="http://raspberry.me/assets/images/79920160.jpg" alt="图片不见了"></p>
+<p><img src="http://raspberry.me/assets/images/79920160.jpg" alt="图片不见了" /></p>
 </blockquote>
 <h2 id="%E8%A1%A8%E6%A0%BC" id="表格">表格</h2>
-<p>用 <code>|</code> 划分列<br>
+<p>用 <code>|</code> 划分列
 用 <code>-</code> 划分表头和其他行</p>
-<p>可以设置对其方式:<br>
-<code>-:</code> 整列右对齐<br>
-<code>:-</code> 整列左对齐<br>
+<p>可以设置对其方式:
+<code>-:</code> 整列右对齐
+<code>:-</code> 整列左对齐
 <code>:-:</code> 整列居中对齐</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)%3A-15" id="语法-例子-16">语法(例子):</h4>
 <blockquote>
-<p>|表头1|表头2|表头3|<br>
-| : ---- | ---- : | : — : |<br>
-| 靠左| 靠右| 居中|<br>
+<p>|表头1|表头2|表头3|
+| : ---- | ---- : | : — : |
+| 靠左| 靠右| 居中|
 | 列1 | 列2 | 列3 |</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C%3A-19" id="效果-20">效果:</h4>
@@ -594,15 +729,15 @@ int main()
 </table>
 <h2 id="%E5%85%B6%E4%BB%96" id="其他">其他</h2>
 <h3 id="%E6%8A%98%E5%8F%A0%E8%8F%9C%E5%8D%95" id="折叠菜单">折叠菜单</h3>
-<p>使用 <code>&lt;details&gt;</code> 创建一个折叠菜单<br>
-使用 <code>&lt;summary&gt;</code> 设置标题<br>
+<p>使用 <code>&lt;details&gt;</code> 创建一个折叠菜单
+使用 <code>&lt;summary&gt;</code> 设置标题
 并使用 html 关闭标签的方式关闭</p>
 <h4 id="%E8%AF%AD%E6%B3%95(%E4%BE%8B%E5%AD%90)" id="语法-例子-17">语法(例子)</h4>
 <blockquote>
-<p>&lt;details&gt;<br>
-&lt;summary&gt;折叠菜单&lt;summary&gt;<br>
-item1&lt;/br&gt;<br>
-item1&lt;/br&gt;<br>
+<p>&lt;details&gt;
+&lt;summary&gt;折叠菜单&lt;summary&gt;
+item1&lt;/br&gt;
+item1&lt;/br&gt;
 &lt;/details&gt;</p>
 </blockquote>
 <h4 id="%E6%95%88%E6%9E%9C" id="效果-21">效果</h4>
@@ -614,25 +749,25 @@ item2</br>
 <h3 id="markdown%E6%94%AF%E6%8C%81%E9%83%A8%E5%88%86html%E6%A0%87%E7%AD%BE" id="Markdown支持部分html标签">Markdown支持部分html标签</h3>
 <p>目前支持的 HTML 元素有：<code>&lt;kbd&gt;</code>、<code>&lt;b&gt;</code>、<code>&lt;i&gt;</code>、<code>&lt;em&gt;</code>、<code>&lt;sup&gt;</code>、<code>&lt;sub&gt;</code>、<code>&lt;br&gt;</code>等</p>
 <h3 id="%E5%8F%8D%E6%96%9C%E6%9D%A0%E2%80%9C%5C%E2%80%9D%E5%8F%AF%E4%BB%A5%E8%BD%AC%E4%B9%89%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7" id="反斜杠“-”可以转义一些特殊符号">反斜杠“\”可以转义一些特殊符号</h3>
-<p>\   反斜线<br>
-`   反引号<br>
-*   星号<br>
-_   下划线<br>
-{}  花括号<br>
-[]  方括号<br>
-()  小括号<br>
-#   井字号<br>
-+   加号<br>
--   减号<br>
-.   英文句点<br>
+<p>\   反斜线
+`   反引号
+*   星号
+_   下划线
+{}  花括号
+[]  方括号
+()  小括号
+#   井字号
++   加号
+-   减号
+.   英文句点
 !   感叹号</p>
 <h4 id="task-list" id="Task-List">Task List</h4>
 <ul class="contains-task-list">
-<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox" id="task-item-7174281"><label class="task-list-item-label" for="task-item-7174281"> First</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-5178616"><label class="task-list-item-label" for="task-item-5178616"> Seconde</label></li>
-<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox" id="task-item-1461410"><label class="task-list-item-label" for="task-item-1461410"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5494120"><label class="task-list-item-label" for="task-item-5494120"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2288706"><label class="task-list-item-label" for="task-item-2288706"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2283617"><label class="task-list-item-label" for="task-item-2283617"> Next</label></li>
 </ul>
-<hr class="footnotes-sep">
+<hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>Me! <a href="#fnref1" class="footnote-backref">↩︎</a></p>
@@ -651,8 +786,8 @@ _   下划线<br>
     <title>Linear Regression - 线性回归</title>
     <url>/2021/09/11/linear-regression/</url>
     <content><![CDATA[<blockquote>
-<p>基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br>
-线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br>
+<p>基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
+线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br />
 简单解释其中的数学原理，方便回顾</p>
 </blockquote>
 <h2 id="%E5%9F%BA%E7%A1%80" id="基础">基础</h2>
@@ -683,144 +818,144 @@ _   下划线<br>
 </li>
 </ol>
 <h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB" id="定义-“特征-标签”-关系">定义 “特征-标签” 关系</h3>
-<p>实际生活中，我们知道了 $A, B$ 能够在某种程度上决定 $C$<br>
+<p>实际生活中，我们知道了 $A, B$ 能够在某种程度上决定 $C$<br />
 且 $A, B$ 各自对 $C$ 的影响有多大，我们并不清楚</p>
 <p>也就是说，我们知道 “特征” 与 “标签” 之间存在某种关系，但无法准确地描述这个关系</p>
-<p>此时我们可以对 $A, B, C$ 建立一个关系<br>
-即：能由 $A, B$ 推出 $C$<br>
+<p>此时我们可以对 $A, B, C$ 建立一个关系<br />
+即：能由 $A, B$ 推出 $C$<br />
 使用数学符号表示： $(A, B) \Rightarrow C$</p>
-<p>若将 $A$ 和 $B$ 称做 $C$ 的特征<br>
-并且将 $C$ 定义为标签<br>
-将 $(A, B) \Rightarrow C$ 称为 “特征-标签” 关系<br>
+<p>若将 $A$ 和 $B$ 称做 $C$ 的特征<br />
+并且将 $C$ 定义为标签<br />
+将 $(A, B) \Rightarrow C$ 称为 “特征-标签” 关系<br />
 则称数据 $(A, B, C)$ 存在 “特征-标签” 关系</p>
 <h3 id="%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98" id="提出问题">提出问题</h3>
-<p>我们希望，给出一组存在 “特征-标签” 的关系的数据<br>
-计算机能够根据这组数据，建立一个存在 “特征-标签” 关系的模型<br>
+<p>我们希望，给出一组存在 “特征-标签” 的关系的数据<br />
+计算机能够根据这组数据，建立一个存在 “特征-标签” 关系的模型<br />
 随后，给出 “特征” ，计算机能够根据模型，给出比较可靠的、推测的 “标签”</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98" id="使用数学语言描述问题">使用数学语言描述问题</h3>
 <p>接下来将问题抽象成为一个数学问题</p>
-<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量<br>
+<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量<br />
 $y$ 为特征对应的 “标签”</p>
-<p>在比较简单的情况下<br>
-假定 “特征-标签” 是线性关系<br>
-并且这个线性关系为函数 $h$<br>
+<p>在比较简单的情况下<br />
+假定 “特征-标签” 是线性关系<br />
+并且这个线性关系为函数 $h$<br />
 则称 $h$ 为 <strong>假设函数 (hypotheses)</strong></p>
 <p>于是得到的函数</p>
-<p>$$<br>
-\begin{equation}<br>
-h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} + \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} + \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}
+\end{equation}
 $$</p>
-<p>其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$ 表示 <strong>参数 (parameters)</strong>，或者说是 <strong>权值 (weights)</strong><br>
+<p>其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$ 表示 <strong>参数 (parameters)</strong>，或者说是 <strong>权值 (weights)</strong><br />
 这是我们需要求得的值</p>
 <h3 id="%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE" id="引入向量进行表达">引入向量进行表达</h3>
 <p>若用向量表示 $\theta$ ：</p>
-<p>$$<br>
-\vec{\theta} =<br>
-\begin{pmatrix}<br>
-\theta_{0}\\<br>
-\theta_{1}\\<br>
-\vdots\\<br>
-\theta_{n}<br>
-\end{pmatrix}<br>
+<p>$$
+\vec{\theta} =
+\begin{pmatrix}
+\theta_{0}\\
+\theta_{1}\\
+\vdots\\
+\theta_{n}
+\end{pmatrix}
 $$</p>
 <p>并将特征集合重新定义为特征向量：</p>
-<p>$$<br>
-\vec{x} =<br>
-\begin{pmatrix}<br>
-x_{0}\\<br>
-x_{1}\\<br>
-\vdots\\<br>
-x_{n}<br>
-\end{pmatrix}<br>
+<p>$$
+\vec{x} =
+\begin{pmatrix}
+x_{0}\\
+x_{1}\\
+\vdots\\
+x_{n}
+\end{pmatrix}
 $$</p>
-<p>其中 $x_{0} = 1$<br>
-<strong>为简化符号，记 $\vec{\theta}$ 为 $\theta$ ，$\vec{x}$ 为 $x$</strong><br>
+<p>其中 $x_{0} = 1$<br />
+<strong>为简化符号，记 $\vec{\theta}$ 为 $\theta$ ，$\vec{x}$ 为 $x$</strong><br />
 则函数可表示为：</p>
-<p>$$<br>
-\begin{equation}<br>
-h_{\theta}(x) = \sum_{i=0}^{n}{\theta_{i} x_{i}} = \theta^{T}x<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+h_{\theta}(x) = \sum_{i=0}^{n}{\theta_{i} x_{i}} = \theta^{T}x
+\end{equation}
 $$</p>
-<p>此时我们的问题就是，求出一个 $\theta$ ，使得函数 $h$ 能够很好地描述 “特征-标签” 关系<br>
+<p>此时我们的问题就是，求出一个 $\theta$ ，使得函数 $h$ 能够很好地描述 “特征-标签” 关系<br />
 即建立一个合理的模型</p>
 <h2 id="%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98" id="进一步分析问题">进一步分析问题</h2>
 <h3 id="%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5" id="引入数据集与训练集的概念">引入数据集与训练集的概念</h3>
-<p>上面的函数仅表示单个数据中的 “特征与标签” 关系<br>
-若存在多个数据，即 <strong>数据集 (dataset)</strong><br>
-且所有的数据都存在 “特征-标签” 的关系<br>
-即可以构建出一个 <strong>训练集 (training set)</strong><br>
+<p>上面的函数仅表示单个数据中的 “特征与标签” 关系<br />
+若存在多个数据，即 <strong>数据集 (dataset)</strong><br />
+且所有的数据都存在 “特征-标签” 的关系<br />
+即可以构建出一个 <strong>训练集 (training set)</strong><br />
 我们可以使用 <strong>训练集</strong> 对算法进行 <strong>训练</strong> ，最终得出 $\theta$</p>
-<p>定义下面的符号，方便之后的表示：<br>
-设 <strong>训练集大小</strong> 为 $m$ ，令：<br>
-$x_{i}^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong><br>
-$x^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的特征向量<br>
+<p>定义下面的符号，方便之后的表示：<br />
+设 <strong>训练集大小</strong> 为 $m$ ，令：<br />
+$x_{i}^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong><br />
+$x^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的特征向量<br />
 同理可得 $\theta_{i}^{(j)}$ 与 $\theta^{(j)}$</p>
 <h3 id="%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98" id="引入最小二乘法转化问题">引入最小二乘法转化问题</h3>
-<p>回顾我们的问题：<br>
-我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系<br>
-换句话说，给出 “特征” ，若 “特征” 存在于训练集中，那么<br>
-由 <strong>函数 $h$</strong> 得出的 “标签”，与训练集中的 “标签”，它们之间的误差最小<br>
+<p>回顾我们的问题：<br />
+我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系<br />
+换句话说，给出 “特征” ，若 “特征” 存在于训练集中，那么
+由 <strong>函数 $h$</strong> 得出的 “标签”，与训练集中的 “标签”，它们之间的误差最小<br />
 根据 <strong>最小二乘法</strong> ，得：</p>
-<p>$$<br>
-\begin{equation}<br>
-J(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( h_{\theta}(x^{(i)}) - y^{(i)} \right)^{2}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+J(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( h_{\theta}(x^{(i)}) - y^{(i)} \right)^{2}
+\end{equation}
 $$</p>
 <p>函数 $J$ 也称为 <strong>cost function</strong></p>
-<p>于是问题转化为：<br>
+<p>于是问题转化为：<br />
 需要得到一个 $\theta$ ，使得 $J(\theta)$ 的值最小</p>
 <h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95" id="为什么使用最小二乘法">为什么使用最小二乘法</h3>
 <p>咕咕咕</p>
 <h2 id="%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98" id="解决问题">解决问题</h2>
 <p>接下来介绍解决这个问题的可行方法</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D" id="梯度下降">梯度下降</h3>
-<p>为了得到 $\theta$ 使函数值 $J(\theta)$ 最小，可以采取 <strong>梯度下降 (gradient descent)</strong> 的方法：<br>
-随机选取一个 $\theta$ 值，随后不断地更新 $\theta$ ，使 $J(\theta)$ 不断减小<br>
+<p>为了得到 $\theta$ 使函数值 $J(\theta)$ 最小，可以采取 <strong>梯度下降 (gradient descent)</strong> 的方法：<br />
+随机选取一个 $\theta$ 值，随后不断地更新 $\theta$ ，使 $J(\theta)$ 不断减小<br />
 当 $J(\theta)$ 的值达到最小时，得到的 $\theta$ 即是问题的解</p>
-<p>我们可以这样进行更新：<br>
-$$<br>
-\begin{equation}<br>
-\theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} (\theta)<br>
-\label{eq4}<br>
-\end{equation}<br>
+<p>我们可以这样进行更新：
+$$<br />
+\begin{equation}
+\theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} (\theta)
+\label{eq4}
+\end{equation}
 $$</p>
-<p>其中 $:=$ 表示赋值，将右边的值赋予左边，而 $=$ 是真值判断，表示等号两边的值或结果是相同的<br>
+<p>其中 $:=$ 表示赋值，将右边的值赋予左边，而 $=$ 是真值判断，表示等号两边的值或结果是相同的<br />
 $\alpha$ 表示 <strong>学习率 (learning rate)</strong>，或者称 <strong>步长</strong>，是自定义的常数</p>
-<p>对 $J(\theta)$ 进行偏导：<br>
-$$<br>
-\begin{equation}<br>
-\begin{split}<br>
-\frac{\partial}{\partial \theta_{j}} J(\theta)<br>
-&amp;= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\<br>
-&amp;= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\<br>
-&amp;= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\<br>
-&amp;= (h_{\theta}(x) - y) x_{j}<br>
-\end{split}<br>
-\end{equation}<br>
+<p>对 $J(\theta)$ 进行偏导：
+$$
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial \theta_{j}} J(\theta)
+&amp;= \frac{\partial}{\partial \theta_{j}} \frac {1}{2} (h_{\theta}(x) - y)^2 \\
+&amp;= 2 \cdot \frac{1}{2}(h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} (h_{\theta}(x) - y) \\
+&amp;= (h_{\theta}(x) - y) \cdot \frac{\partial}{\partial \theta_{j}} \left( \sum_{i=0}^{n} \theta_{i} x_{i} - y \right) \\
+&amp;= (h_{\theta}(x) - y) x_{j}
+\end{split}
+\end{equation}
 $$</p>
 <p>代入 <strong>$\eqref{eq4}$</strong> ，得：</p>
-<p>$$<br>
-\begin{equation}<br>
-\theta_{j} := \theta_{j} - \alpha (h_{\theta}(x) - y) x_{j}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\theta_{j} := \theta_{j} - \alpha (h_{\theta}(x) - y) x_{j}
+\end{equation}
 $$</p>
 <p>这是单个数据的表示，引入上面介绍的训练集</p>
-<p>$$<br>
-\begin{equation}<br>
-\theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right) x_{j}^{(i)}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\theta_{j} := \theta_{j} - \alpha \sum_{i=1}^{m} \left(h_{\theta}(x^{(i)}) - y^{(i)}\right) x_{j}^{(i)}
+\end{equation}
 $$</p>
-<p>对每一个在向量 $\theta$ 中的分量 $\theta_{j}$ 都进行上述运算<br>
+<p>对每一个在向量 $\theta$ 中的分量 $\theta_{j}$ 都进行上述运算<br />
 最终我们会得到一个 $\theta$ ，这个值就是我们希望求得的值</p>
 <p><em>注： 梯度下降算法的解析可参考另一篇文章</em></p>
 <h3 id="%E7%89%9B%E9%A1%BF%E6%B3%95" id="牛顿法">牛顿法</h3>
 <blockquote>
 <p>尚未完成，咕咕咕ing</p>
 </blockquote>
-<p>因为极值点处的一阶导数为 0<br>
-且 $J(\theta)$ 的函数最高次为二次，函数只存在一个极值点<br>
-所以，为了得到 $J(\theta)$ 的最小值，我们可以使用间接的方法<br>
+<p>因为极值点处的一阶导数为 0<br />
+且 $J(\theta)$ 的函数最高次为二次，函数只存在一个极值点
+所以，为了得到 $J(\theta)$ 的最小值，我们可以使用间接的方法<br />
 即：寻找 $J(\theta)$ 导数的零点</p>
 <p>牛顿法的步骤为：</p>
 <blockquote>
@@ -835,203 +970,203 @@ $$</p>
 </ol>
 </blockquote>
 <h3 id="%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95" id="解析解法">解析解法</h3>
-<p>实际上，上面的两种方法得到的是一个近似值<br>
-但其精确度能够满足实际应用<br>
+<p>实际上，上面的两种方法得到的是一个近似值<br />
+但其精确度能够满足实际应用<br />
 而解析解法能够直接计算出精确值</p>
 <h4 id="%E7%AC%A6%E5%8F%B7%E5%AE%9A%E4%B9%89" id="符号定义">符号定义</h4>
 <blockquote>
 <p>这里的定义均来自 Andrew NG 课程讲义</p>
 </blockquote>
-<p><strong>定义矩阵函数的导函数</strong><br>
-对于函数 $f$ : $\mathbb{R}^{m \times n} \mapsto \mathbb{R}$<br>
-即 $m \times n$ 的矩阵映射至实数的函数关系<br>
+<p><strong>定义矩阵函数的导函数</strong>
+对于函数 $f$ : $\mathbb{R}^{m \times n} \mapsto \mathbb{R}$<br />
+即 $m \times n$ 的矩阵映射至实数的函数关系<br />
 定义函数 $f$ 对矩阵 $A$ 的导数为：</p>
-<p>$$<br>
-\begin{equation}<br>
-\nabla_{A}f(A) =<br>
-\begin{bmatrix}<br>
-\frac{\partial{f}}{\partial A_{11}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{1n}} \\<br>
-\vdots &amp; \ddots &amp; \vdots \\<br>
-\frac{\partial{f}}{\partial A_{m1}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{mn}} \\<br>
-\end{bmatrix}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\nabla_{A}f(A) =
+\begin{bmatrix}
+\frac{\partial{f}}{\partial A_{11}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{1n}} \\
+\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial{f}}{\partial A_{m1}} &amp; \cdots &amp; \frac{\partial{f}}{\partial A_{mn}} \\
+\end{bmatrix}
+\end{equation}
 $$</p>
-<p><em>例子</em><br>
-若矩阵<br>
-$<br>
-A =<br>
-\begin{bmatrix}<br>
-A_{11} &amp; A_{12} \\<br>
-A_{21} &amp; A_{22}<br>
-\end{bmatrix}<br>
-$ ，<br>
-函数 $f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22}$ ，<br>
-那么<br>
-$<br>
-\nabla_{A} f(A) =<br>
-\begin{bmatrix}<br>
-\frac{3}{2} &amp; 10A_{12} \\<br>
-A_{22} &amp; A_{21}<br>
-\end{bmatrix}<br>
+<p><em>例子</em><br />
+若矩阵
+$
+A =
+\begin{bmatrix}
+A_{11} &amp; A_{12} \\
+A_{21} &amp; A_{22}
+\end{bmatrix}
+$ ，
+函数 $f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22}$ ，
+那么
+$
+\nabla_{A} f(A) =
+\begin{bmatrix}
+\frac{3}{2} &amp; 10A_{12} \\
+A_{22} &amp; A_{21}
+\end{bmatrix}
 $</p>
 <p><strong>定义 trace 运算</strong></p>
-<p><code>trace</code> 运算简写为 <code>tr</code><br>
+<p><code>trace</code> 运算简写为 <code>tr</code><br />
 对于 $n \times n$ 的矩阵 $A$ ，定义</p>
-<p>$$<br>
-\begin{equation}<br>
-\mathrm{tr}A = \sum_{i=1}^{n}A_{ii}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\mathrm{tr}A = \sum_{i=1}^{n}A_{ii}
+\end{equation}
 $$</p>
 <p>可以知道， <code>trace</code> 运算具有下列运算法则</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{algorithm1}<br>
-\mathrm{tr}ABC = \mathrm{tr}CAB = \mathrm{tr}BCA<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{algorithm1}
+\mathrm{tr}ABC = \mathrm{tr}CAB = \mathrm{tr}BCA
+\end{equation}
 $$</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{algorithm2}<br>
-\mathrm{tr}(A+B) = \mathrm{tr}A + \mathrm{tr}B<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{algorithm2}
+\mathrm{tr}(A+B) = \mathrm{tr}A + \mathrm{tr}B
+\end{equation}
 $$</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{algorithm3}<br>
-\mathrm{tr}aA = a\mathrm{tr}A<br>
-\end{equation}<br>
-$$<br>
+<p>$$
+\begin{equation}
+\label{algorithm3}
+\mathrm{tr}aA = a\mathrm{tr}A
+\end{equation}
+$$
 其中 $a$ 是一个实数</p>
 <h4 id="%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86" id="一些定理">一些定理</h4>
-<p>一些 <strong>trace 运算</strong> 与 <strong>矩阵导函数</strong> 相关的定理<br>
+<p>一些 <strong>trace 运算</strong> 与 <strong>矩阵导函数</strong> 相关的定理<br />
 仅列出 <strong>解析式推导过程</strong> 需要用到的一些定理，不作证明</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{theorem1}<br>
-\nabla_{A} \mathrm{tr}AB = B^{T}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{theorem1}
+\nabla_{A} \mathrm{tr}AB = B^{T}
+\end{equation}
 $$</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{theorem2}<br>
-\nabla_{A^{T}} f(A) = (\nabla_{A}f(A))^{T}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{theorem2}
+\nabla_{A^{T}} f(A) = (\nabla_{A}f(A))^{T}
+\end{equation}
 $$</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{theorem3}<br>
-\nabla_{A} \mathrm{tr} A B A^{T} C = C A B + C^{T} A B^{T}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{theorem3}
+\nabla_{A} \mathrm{tr} A B A^{T} C = C A B + C^{T} A B^{T}
+\end{equation}
 $$</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{theorem4}<br>
-\nabla_{A} |A| = |A| ( A^{-1} )^{T}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{theorem4}
+\nabla_{A} |A| = |A| ( A^{-1} )^{T}
+\end{equation}
 $$</p>
 <h4 id="%E8%A7%A3%E6%9E%90%E5%BC%8F%E6%8E%A8%E5%AF%BC" id="解析式推导">解析式推导</h4>
-<p>使用矩阵表达 “特征” 与 “标签”<br>
+<p>使用矩阵表达 “特征” 与 “标签”
 定义矩阵 $X$ 和 $Y$</p>
-<p>$$<br>
-\begin{equation}<br>
-X =<br>
-\begin{bmatrix}<br>
-( x^{(1)} )^{T} \\<br>
-( x^{(2)} )^{T} \\<br>
-\vdots \\<br>
-( x^{(m)} )^{T}<br>
-\end{bmatrix}<br>
-,<br>
-Y =<br>
-\begin{bmatrix}<br>
-y^{(1)} \\<br>
-y^{(2)} \\<br>
-\vdots \\<br>
-y^{(m)}<br>
-\end{bmatrix}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+X =
+\begin{bmatrix}
+( x^{(1)} )^{T} \\
+( x^{(2)} )^{T} \\
+\vdots \\
+( x^{(m)} )^{T}
+\end{bmatrix}
+,
+Y =
+\begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(m)}
+\end{bmatrix}
+\end{equation}
 $$</p>
 <blockquote>
 <p>注意，此处 $x$ 表示向量 $\vec{x}$ ， $y$ 表示特征</p>
 </blockquote>
 <p>因为 $h_{\theta}(x^{(i)}) = \theta^{T} x^{(i)} = ( x^{(i)} )^{T} \theta$ ，故</p>
-<p>$$<br>
-\begin{equation}<br>
-h_{\theta}(x)=<br>
-\begin{bmatrix}<br>
-( x^{(1)} )^{T} \theta \\<br>
-( x^{(2)} )^{T} \theta \\<br>
-\vdots \\<br>
-( x^{(m)} )^{T} \theta<br>
-\end{bmatrix}<br>
-= X \theta<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+h_{\theta}(x)=
+\begin{bmatrix}
+( x^{(1)} )^{T} \theta \\
+( x^{(2)} )^{T} \theta \\
+\vdots \\
+( x^{(m)} )^{T} \theta
+\end{bmatrix}
+= X \theta
+\end{equation}
 $$</p>
 <p>又因为</p>
-<p>$$<br>
-\begin{equation}<br>
-X \theta - Y =<br>
-\begin{bmatrix}<br>
-( x^{(1)} )^{T} \theta \\<br>
-( x^{(2)} )^{T} \theta \\<br>
-\vdots \\<br>
-( x^{(m)} )^{T} \theta<br>
-\end{bmatrix} -<br>
-\begin{bmatrix}<br>
-y^{(1)} \\<br>
-y^{(2)} \\<br>
-\vdots \\<br>
-y^{(m)}<br>
-\end{bmatrix} =<br>
-\begin{bmatrix}<br>
-h_{\theta}(x^{(1)}) - y^{(1)} \\<br>
-h_{\theta}(x^{(2)}) - y^{(2)} \\<br>
-\vdots \\<br>
-h_{\theta}(x^{(m)}) - y^{(m)}<br>
-\end{bmatrix}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+X \theta - Y =
+\begin{bmatrix}
+( x^{(1)} )^{T} \theta \\
+( x^{(2)} )^{T} \theta \\
+\vdots \\
+( x^{(m)} )^{T} \theta
+\end{bmatrix} -
+\begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(m)}
+\end{bmatrix} =
+\begin{bmatrix}
+h_{\theta}(x^{(1)}) - y^{(1)} \\
+h_{\theta}(x^{(2)}) - y^{(2)} \\
+\vdots \\
+h_{\theta}(x^{(m)}) - y^{(m)}
+\end{bmatrix}
+\end{equation}
 $$</p>
-<p>且对于矩阵 $z$ ，有 $z^{T}z = \sum_{i} z_{i}^{2}$<br>
+<p>且对于矩阵 $z$ ，有 $z^{T}z = \sum_{i} z_{i}^{2}$<br />
 于是可得</p>
-<p>$$<br>
-\begin{equation}<br>
-\begin{split}<br>
-\frac{1}{2} (X \theta - Y)^{T} (X \theta - Y)<br>
-&amp;= \frac{1}{2} \sum_{i = 1}^{m} ( h_{\theta}(x^{(i)}) - y^{(i)} )^{2} \\<br>
-&amp;= J(\theta)<br>
-\end{split}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\begin{split}
+\frac{1}{2} (X \theta - Y)^{T} (X \theta - Y)
+&amp;= \frac{1}{2} \sum_{i = 1}^{m} ( h_{\theta}(x^{(i)}) - y^{(i)} )^{2} \\
+&amp;= J(\theta)
+\end{split}
+\end{equation}
 $$</p>
 <p>根据 <strong>$\eqref{theorem2}$</strong> 和 <strong>$\eqref{theorem3}$</strong> ，有</p>
-<p>$$<br>
-\begin{equation}<br>
-\label{inference1}<br>
-\nabla_{A^{T}} \mathrm{tr} AB A^{T} C = B^{T} A^{T} C^{T} + B A^{T} C<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\label{inference1}
+\nabla_{A^{T}} \mathrm{tr} AB A^{T} C = B^{T} A^{T} C^{T} + B A^{T} C
+\end{equation}
 $$</p>
 <p>于是</p>
-<p>$$<br>
-\begin{equation}<br>
-\begin{split}<br>
-\nabla_{\theta} J(\theta)<br>
-&amp;= \nabla_{\theta} \frac{1}{2} ( X \theta - Y )^{T} (X \theta - Y) \\<br>
-&amp;= \frac{1}{2} \nabla_{\theta} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\<br>
-&amp;= \frac{1}{2} \nabla_{\theta} \mathrm{tr} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\<br>
-&amp;= \frac{1}{2} \nabla_{\theta} ( \mathrm{tr} \theta^{T} X^{T} X \theta - 2 \mathrm{tr} Y^{T} X \theta ) \\<br>
-&amp;= \frac{1}{2} ( X^{T} X \theta + X^{T} X \theta - 2 X^{T} Y ) \\<br>
-&amp;= X^{T}  X \theta - X^{T} Y<br>
-\end{split}<br>
-\end{equation}<br>
+<p>$$
+\begin{equation}
+\begin{split}
+\nabla_{\theta} J(\theta)
+&amp;= \nabla_{\theta} \frac{1}{2} ( X \theta - Y )^{T} (X \theta - Y) \\
+&amp;= \frac{1}{2} \nabla_{\theta} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\
+&amp;= \frac{1}{2} \nabla_{\theta} \mathrm{tr} ( \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y ) \\
+&amp;= \frac{1}{2} \nabla_{\theta} ( \mathrm{tr} \theta^{T} X^{T} X \theta - 2 \mathrm{tr} Y^{T} X \theta ) \\
+&amp;= \frac{1}{2} ( X^{T} X \theta + X^{T} X \theta - 2 X^{T} Y ) \\
+&amp;= X^{T}  X \theta - X^{T} Y
+\end{split}
+\end{equation}
 $$</p>
-<p>第三步将 $(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y )$ 视作整体<br>
-可知这是一个实数，可将其看作一个 $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$<br>
-由 <code>trace</code> 定义可知 $\mathrm{tr} A = a$<br>
-第四步使用了 <strong>$\mathrm{tr} A = \mathrm{tr} A^{T}$</strong><br>
+<p>第三步将 $(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T} Y )$ 视作整体<br />
+可知这是一个实数，可将其看作一个 $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$
+由 <code>trace</code> 定义可知 $\mathrm{tr} A = a$<br />
+第四步使用了 <strong>$\mathrm{tr} A = \mathrm{tr} A^{T}$</strong><br />
 第五步中使用了 <strong>$\eqref{theorem1}$</strong> 和 <strong>$\eqref{inference1}$</strong> ，视 $A^{T} = \theta$ , $B = B^{T} = X^{T} X$ , $C = I$</p>
-<p>使 $J(\theta)$ 最小，则令 $\nabla_{\theta} J(\theta) = 0$<br>
+<p>使 $J(\theta)$ 最小，则令 $\nabla_{\theta} J(\theta) = 0$<br />
 所以有 $X^{T}  X \theta = X^{T} Y$</p>
 <p>因此，得 $\theta = ( X^{T}X )^{-1} X^{T} Y$</p>
-<hr class="footnotes-sep">
+<hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>课程链接 <a href="https://see.stanford.edu/Course/CS229">https://see.stanford.edu/Course/CS229</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
@@ -1058,9 +1193,9 @@ $$</p>
 <h2 id="netfilter-porject" id="Netfilter-Porject">Netfilter Porject</h2>
 <p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
 <blockquote>
-<p>官网<a href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br>
-“<em>The netfilter project is a community-driven collaborative FOSS project that<br>
-provides packet filtering software for the Linux 2.4.x and later kernel series.<br>
+<p>官网<a href="https://www.netfilter.org">Netfilter Project</a>介绍原文:
+“<em>The netfilter project is a community-driven collaborative FOSS project that
+provides packet filtering software for the Linux 2.4.x and later kernel series.
 The netfilter project is commonly associated with iptables.</em>”</p>
 </blockquote>
 <h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" id="四表五链概念">四表五链概念</h2>
@@ -1071,7 +1206,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <ul>
 <li><code>表(tables)</code> 指的是不同类型的数据包处理流程，<code>表</code> 中可以存在多个 <code>链</code></li>
 <li><code>链(chain)</code> 中包含若干 <code>规则</code></li>
-<li><code>规则(rules)</code> 规定数据包的处理方式<br>
+<li><code>规则(rules)</code> 规定数据包的处理方式
 系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></li>
 </ul>
 <h3 id="%E5%9B%9B%E8%A1%A8" id="四表"><strong>四表</strong></h3>
@@ -1135,7 +1270,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </tbody>
 </table>
 <h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" id="四表五链之间的联系"><strong>四表五链之间的联系</strong></h3>
-<p>四表里存放的是功能一致的规则，即存放着链<br>
+<p>四表里存放的是功能一致的规则，即存放着链
 表中存放的规则如下</p>
 <table>
 <thead>
@@ -1188,7 +1323,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <li><code>uncomplicated ftrewall(UFW)</code> 的使用更加简单方便，依赖于 iptables 来管理网络包<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
 <li><code>firewalld</code> 作为 nftables 的前端，并通过其来管理网络包，也可以一使用 iptables<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></li>
 </ul>
-<hr class="footnotes-sep">
+<hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Netfilter">维基百科 Netfilter</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
@@ -1220,7 +1355,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </blockquote>
 <h3 id="pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" id="PWM-基础知识">PWM 基础知识</h3>
 <blockquote>
-<p>PWM（Pulse Width Modulation）即脉宽调制，是一种利用数字信号对模拟电路进行控制的一种方法，<s>不是很懂</s><br>
+<p>PWM（Pulse Width Modulation）即脉宽调制，是一种利用数字信号对模拟电路进行控制的一种方法，<s>不是很懂</s>
 详情自行搜索，我也不会</p>
 </blockquote>
 <h4 id="%E9%A2%91%E7%8E%87" id="频率">频率</h4>
@@ -1228,24 +1363,24 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <h4 id="%E5%91%A8%E6%9C%9F" id="周期">周期</h4>
 <p>脉冲信号完成一次变化的时间称作一个周期</p>
 <h4 id="%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB" id="频率与周期的关系">频率与周期的关系</h4>
-<p>$$<br>
-f = \frac{1}{T}<br>
+<p>$$
+f = \frac{1}{T}
 $$</p>
 <p>一个周期为 $ 20ms $ 脉冲信号，其频率为 $ \frac{1}{20 \times 10^{-3}s} $，即 $ 50Hz $</p>
 <h4 id="%E5%8D%A0%E7%A9%BA%E6%AF%94" id="占空比">占空比</h4>
-<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比<br>
+<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比
 设整个周期的时间为 $ T $，高电平持续的时间为 $ t $，则占空比 $ D $ 为：</p>
-<p>$$<br>
-D = \frac{t}{T} \times 100\%<br>
+<p>$$
+D = \frac{t}{T} \times 100\%
 $$</p>
 <p>或</p>
-<p>$$<br>
-D = t \cdot f \times 100\%<br>
+<p>$$
+D = t \cdot f \times 100\%
 $$</p>
 <p>一个周期为 $ 20ms $ 的脉冲信号，其中高电平持续时间为 $ 1.5ms $，则占空比为 $ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $</p>
 <h3 id="pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA" id="PWM-控制舵机">PWM 控制舵机</h3>
-<p>使用 PWM 控制舵机时，一般使用频率为 $ 50Hz $ 的 PWM 信号<br>
-在 $ 180^{\circ} $ 的舵机中，一般以 $ 1.5ms $ 的高电平持续时间作为基准<br>
+<p>使用 PWM 控制舵机时，一般使用频率为 $ 50Hz $ 的 PWM 信号
+在 $ 180^{\circ} $ 的舵机中，一般以 $ 1.5ms $ 的高电平持续时间作为基准
 高电平持续时间 $ 1.5ms\pm1ms $ 作分别为舵机旋转 $ \mp90^{\circ} $ 的控制信号</p>
 <p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度</p>
 <table>
@@ -1275,31 +1410,79 @@ $$</p>
 </tbody>
 </table>
 <h3 id="%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6" id="使用-Python-实现-PWM-控制">使用 Python 实现 PWM 控制</h3>
-<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s><br>
+<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>
 可以通过 Python 来对这些 GPIO 接口进行控制</p>
 <h4 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85" id="导入-GPIO-包">导入 GPIO 包</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+</code></pre>
 <h4 id="%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" id="初始化-GPIO-接口">初始化 GPIO 接口</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用编号 18 的 GPIO 接口</span></span><br><span class="line">pin = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 GPIO 的编号模式，详情参考树莓派官网</span></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭奇奇怪怪的警告</span></span><br><span class="line">GPIO.setwarnings(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化接口</span></span><br><span class="line">GPIO.setup(pin, GPIO.OUT, initial=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python"># 使用编号 18 的 GPIO 接口
+pin = 18
+
+# 设置 GPIO 的编号模式，详情参考树莓派官网
+GPIO.setmode(GPIO.BCM)
+
+# 关闭奇奇怪怪的警告
+GPIO.setwarnings(False)
+
+# 初始化接口
+GPIO.setup(pin, GPIO.OUT, initial=False)
+</code></pre>
 <h4 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" id="创建-PWM-实例">创建 PWM 实例</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建实例</span></span><br><span class="line">hz = <span class="number">50</span></span><br><span class="line">p = GPIO.PWM(pin, hz)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置占空比</span></span><br><span class="line"><span class="comment"># 单位 ms</span></span><br><span class="line">t = <span class="number">1.5</span></span><br><span class="line"><span class="comment"># 乘以0.1,单位修正为 s，与 Hz 单位匹配</span></span><br><span class="line">dc = t * hz * <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 PWM</span></span><br><span class="line">p.start(dc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改占空比</span></span><br><span class="line">p.ChangeDutyCycle(dc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止 PWM</span></span><br><span class="line">p.stop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在程序结束时要释放对 GPIO 接口的控制</span></span><br><span class="line">GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python"># 创建实例
+hz = 50
+p = GPIO.PWM(pin, hz)
+
+# 设置占空比
+# 单位 ms
+t = 1.5
+# 乘以0.1,单位修正为 s，与 Hz 单位匹配
+dc = t * hz * 0.1
+
+# 启动 PWM
+p.start(dc)
+
+# 更改占空比
+p.ChangeDutyCycle(dc)
+
+# 停止 PWM
+p.stop()
+
+# 在程序结束时要释放对 GPIO 接口的控制
+GPIO.cleanup()
+</code></pre>
 <h3 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" id="会产生的问题">会产生的问题</h3>
-<p>正如前面所说，树莓派上实现的 PWM 抖动很大，尤其是频繁地更改占空比时，会非常不稳定<br>
-在使用 <code>p.ChangeDutyCycle(dc)</code> 函数时也可能发生抖动，导致舵机不能转到指定角度<br>
-在 <code>p.start(dc)</code> 后，即使没有任何操作，也仍可能发生抖动<br>
+<p>正如前面所说，树莓派上实现的 PWM 抖动很大，尤其是频繁地更改占空比时，会非常不稳定
+在使用 <code>p.ChangeDutyCycle(dc)</code> 函数时也可能发生抖动，导致舵机不能转到指定角度
+在 <code>p.start(dc)</code> 后，即使没有任何操作，也仍可能发生抖动
 同时控制多个舵机时，不同接口还会产生干扰</p>
 <h3 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" id="解决方法">解决方法</h3>
 <p>一种解决的方法是使用 <code>time</code> 模块中的 <code>sleep()</code> 函数进行延时</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p.start(dc)</span><br><span class="line">sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0.5</span>, <span class="number">2.5</span> + <span class="number">0.1</span>, <span class="number">0.1</span>):</span><br><span class="line">	dc = i * hz * <span class="number">0.1</span></span><br><span class="line">	p.ChangeDutyCycle(dc)</span><br><span class="line">	sleep(<span class="number">0.5</span>)</span><br><span class="line">p.stop()</span><br></pre></td></tr></table></figure>
-<p>但这种方法并不能解决在空闲时出现的抖动<br>
+<pre><code class="language-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+	dc = i * hz * 0.1
+	p.ChangeDutyCycle(dc)
+	sleep(0.5)
+p.stop()
+</code></pre>
+<p>但这种方法并不能解决在空闲时出现的抖动
 也不能去除其他端口的干扰</p>
 <p>另一种方法则是在启动 PWM 后，进过延时就将其关闭</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">p.start(dc)</span><br><span class="line">sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0.5</span>, <span class="number">2.5</span> + <span class="number">0.1</span>, <span class="number">0.1</span>):</span><br><span class="line">	dc = i * hz * <span class="number">0.1</span></span><br><span class="line">	p.start(dc)</span><br><span class="line">	sleep(<span class="number">0.5</span>)</span><br><span class="line">	p.stop()</span><br><span class="line">p.stop()</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+	dc = i * hz * 0.1
+	p.start(dc)
+	sleep(0.5)
+	p.stop()
+p.stop()
+</code></pre>
 <p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动</p>
-<p><s>最终解决方案：放弃树莓派的 GPIO，买一个舵机驱动模块</s><br>
-建议在需要对舵机进行精确的控制时再考虑，比如做一个机器人时<br>
-驱动模块能提供有更好的的表现<s>虽然贵啊</s><br>
-另外，使用驱动模块并不使用树莓派的 PWM<br>
+<p><s>最终解决方案：放弃树莓派的 GPIO，买一个舵机驱动模块</s>
+建议在需要对舵机进行精确的控制时再考虑，比如做一个机器人时
+驱动模块能提供有更好的的表现<s>虽然贵啊</s>
+另外，使用驱动模块并不使用树莓派的 PWM
 一般使用 i2c 协议与树莓派通信</p>
 ]]></content>
       <categories>
@@ -1315,7 +1498,7 @@ $$</p>
     <title>树莓派热点</title>
     <url>/2021/03/11/raspberrypi-access-point/</url>
     <content><![CDATA[<blockquote>
-<p>简单介绍如何在树莓派开启热点<br>
+<p>简单介绍如何在树莓派开启热点
 <em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
 </blockquote>
 <p>需要的软件列表：</p>
@@ -1328,48 +1511,96 @@ $$</p>
 </ul>
 <h3 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" id="安装软件">安装软件</h3>
 <p>运行命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
+</code></pre>
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd">配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># 驱动</span><br><span class="line">driver=nl80211</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
-<p><strong>警告</strong>:<br>
-channel 不可随意选择，不同的国家与地区允许使用的信道不同<br>
+<pre><code># 使用的网卡
+interface=wlan0
+# WiFi 名字
+ssid=YOUR_WIFI_NAME
+# 驱动
+driver=nl80211
+# WiFi 频率模式
+hw_mode=g
+# 信道
+channel=7
+# 是否 mac 过滤
+macaddr_acl=0
+# 认证算法
+auth_algs=1
+# 是否广播 SSID
+ignore_broadcast_ssid=0
+# 加密相关
+wpa=2
+wpa_passphrase=YOUR_WIFI_PASSWORD
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+</code></pre>
+<p><strong>警告</strong>:
+channel 不可随意选择，不同的国家与地区允许使用的信道不同
 信道的选择请参考 <a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科</a></p>
-<p>注：上面的配置启用的为 2.4GHz 的WiFi<br>
+<p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#hw_mode=g</span><br><span class="line">hw_mode=a</span><br><span class="line">#channel=7</span><br><span class="line"># 这个信道在中国合法</span><br><span class="line">channel=149</span><br></pre></td></tr></table></figure>
+<pre><code>#hw_mode=g
+hw_mode=a
+#channel=7
+# 这个信道在中国合法
+channel=149
+</code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># 网卡地址</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line"># 不要执行这个脚本 </span><br><span class="line">nohook wpa_supplicant</span><br></pre></td></tr></table></figure>
+<pre><code># 网卡
+interface=wlan0
+# 网卡地址
+static ip_address=192.168.10.1/24
+# 不要执行这个脚本 
+nohook wpa_supplicant
+</code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq">配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 为这个网卡开启服务</span><br><span class="line">interface=wlan0</span><br><span class="line"># 不要在这个网卡开启服务</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line"># 本机域</span><br><span class="line">domain=wlan</span><br><span class="line"># IP 地址分配范围</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
+<pre><code># 为这个网卡开启服务
+interface=wlan0
+# 不要在这个网卡开启服务
+no-dhcp-interface=eth0
+# 本机域
+domain=wlan
+# IP 地址分配范围
+dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
+</code></pre>
 <h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" id="设置数据包转发">设置数据包转发</h3>
 <ol>
 <li>
-<p>允许包转发<br>
-编辑配置文件 <code>/etc/sysctl.conf</code><br>
+<p>允许包转发
+编辑配置文件 <code>/etc/sysctl.conf</code>
 将 <code>net.ipv4.ip_forward=1</code> 取消注释</p>
 </li>
 <li>
-<p>设置转发规则<br>
+<p>设置转发规则
 运行命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span> </span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+</code></pre>
 </li>
 <li>
-<p>保存规则<br>
+<p>保存规则
 运行命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> netfilter-persistent save</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell"># netfilter-persistent save
+</code></pre>
 </li>
 </ol>
 <h3 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" id="设置systemd启动服务">设置systemd启动服务</h3>
-<p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br>
+<p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code>
 禁用 <code>wpa_supplicant.service</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl unmask hostapd.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> hostapd.service dnsmasq.service netfilter-persistent.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">disable</span> wpa_supplicant</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell"># systemctl unmask hostapd.service
+# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
+# systemctl disable wpa_supplicant
+</code></pre>
 <h3 id="%E9%87%8D%E5%90%AF" id="重启">重启</h3>
 <p>设置完成后重启</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> reboot</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-shell"># reboot
+</code></pre>
 <p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 ]]></content>
       <categories>
@@ -1390,19 +1621,19 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <h3 id="%E5%89%8D%E8%A8%80" id="前言">前言</h3>
 <ol>
 <li>
-<p>vim 光标为方块光标，简称“光标”，<br>
-本文将光标方块覆盖字符时的位置称为“光标当前位置”，此时字符称为“当前字符”，<br>
+<p>vim 光标为方块光标，简称“光标”，
+本文将光标方块覆盖字符时的位置称为“光标当前位置”，此时字符称为“当前字符”，
 光标当前位置的左边称为“光标前”，右边则称为“光标后”。</p>
 </li>
 <li>
 <p>vim 中操作按键区分大小写</p>
 </li>
 <li>
-<p>vim 可分为三种模式<br>
-- 正常模式，启动时进入正常模式，在任何模式按 <code>Esc</code> 可回到正常模式<br>
-- 编辑模式，正常模式下按 <code>a/A</code>、<code>i/I</code>、<code>o/O</code> 可进入编辑模式<br>
-- 命令行模式，正常模式下按 <code>:</code> 可进入命令行模式<br>
-正常模式下可通过单个按键的组合进行操作，在本文中称为命令。<br>
+<p>vim 可分为三种模式
+- 正常模式，启动时进入正常模式，在任何模式按 <code>Esc</code> 可回到正常模式
+- 编辑模式，正常模式下按 <code>a/A</code>、<code>i/I</code>、<code>o/O</code> 可进入编辑模式
+- 命令行模式，正常模式下按 <code>:</code> 可进入命令行模式
+正常模式下可通过单个按键的组合进行操作，在本文中称为命令。
 命令行模式下可运行命令行进行一些更复杂的操作，比如运行外部程序。</p>
 </li>
 </ol>
@@ -1457,8 +1688,8 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <li>
 <p><strong>删除文本</strong></p>
 <ol>
-<li>正常模式下可进行简单的删除操作<br>
-例如，按 <code>x</code> 可删除当前字符<br>
+<li>正常模式下可进行简单的删除操作
+例如，按 <code>x</code> 可删除当前字符
 还有一些高级点的删除操作，使用了正常模式下的命令操作</li>
 <li>编辑模式下就直接编辑删除就行</li>
 </ol>
@@ -1472,7 +1703,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <li><code>:q!</code>：强制退出，不保存更改</li>
 </ul>
 <h4 id="%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9" id="查看帮助">查看帮助</h4>
-<p>遇到不会的就看帮助文档<br>
+<p>遇到不会的就看帮助文档
 <s>虽然全英</s></p>
 <ul>
 <li><code>:help</code>：查看帮助</li>
@@ -1583,7 +1814,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 </table>
 </li>
 <li>
-<p><strong>查找</strong><br>
+<p><strong>查找</strong>
 查找命令比较复杂，往下看详细点的介绍</p>
 <table>
 <thead>
@@ -1656,7 +1887,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 </ol>
 <h4 id="%E5%88%A0%E9%99%A4%E7%B1%BB%E5%91%BD%E4%BB%A4" id="删除类命令">删除类命令</h4>
 <ol>
-<li><strong><code>d</code> 的使用</strong><br>
+<li><strong><code>d</code> 的使用</strong>
 <strong>方法：<code>d+[num]+motion</code></strong>
 <ul>
 <li><code>d</code>: 删除操作符</li>
@@ -1672,49 +1903,49 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <h4 id="%E6%9B%BF%E6%8D%A2%E7%B1%BB%E5%91%BD%E4%BB%A4" id="替换类命令">替换类命令</h4>
 <ol>
 <li>
-<p><strong><code>c</code> 的使用</strong><br>
+<p><strong><code>c</code> 的使用</strong>
 <strong>方法：<code>c+[num]+motion</code></strong></p>
 <ul>
 <li><code>c</code>: 替换操作符</li>
 <li><code>[num]</code>: 可选，操作重复次数</li>
-<li><code>motion</code>：操作对象，可以为<code>w</code>，<code>e</code>，<code>$</code><br>
+<li><code>motion</code>：操作对象，可以为<code>w</code>，<code>e</code>，<code>$</code>
 注：<code>c</code> 命令可以理解为：使用 <code>d</code> 删除了要替换的文本，并自动进入编辑模式</li>
 </ul>
 </li>
 <li>
-<p><strong><code>:s</code> 的使用</strong><br>
-<strong>方法：<code>:s/old/new[/g[c]]</code></strong><br>
-上例中，会将光标所在行的第一个匹配到的<code>old</code> 字符串替换为 <code>new</code><br>
-选项 <code>g</code> 会使此行中的所有 <code>old</code> 替换为 <code>new</code><br>
+<p><strong><code>:s</code> 的使用</strong>
+<strong>方法：<code>:s/old/new[/g[c]]</code></strong>
+上例中，会将光标所在行的第一个匹配到的<code>old</code> 字符串替换为 <code>new</code>
+选项 <code>g</code> 会使此行中的所有 <code>old</code> 替换为 <code>new</code>
 选项 <code>c</code> 会在替换前要求确认</p>
 </li>
 </ol>
 <h4 id="%E6%90%9C%E7%B4%A2%E7%B1%BB%E5%91%BD%E4%BB%A4" id="搜索类命令">搜索类命令</h4>
 <ol>
 <li>
-<p><strong><code>/</code> 的使用</strong><br>
-<strong>方法：<code>/str</code></strong><br>
+<p><strong><code>/</code> 的使用</strong>
+<strong>方法：<code>/str</code></strong>
 输入 <code>/</code> 后接字符串，将在光标处开始往后查询匹配的字符串</p>
 </li>
 <li>
-<p><strong><code>？</code> 的使用</strong><br>
-<strong>方法：<code>？str</code></strong><br>
+<p><strong><code>？</code> 的使用</strong>
+<strong>方法：<code>？str</code></strong>
 与 <code>/</code> 相似，但与 <code>/</code> 的查找方向相反，</p>
 </li>
 <li>
-<p><strong><code>n</code> 与 <code>N</code> 的使用</strong><br>
-输入 <code>n</code> 执行上一次查找<br>
+<p><strong><code>n</code> 与 <code>N</code> 的使用</strong>
+输入 <code>n</code> 执行上一次查找
 输入 <code>N</code> 往相反方向查找与上一次查找相同的字符串</p>
 </li>
 <li>
-<p><strong><code>%</code> 的使用</strong><br>
-将光标移到括号上，按下 <code>%</code> 将跳转至匹配的括号<br>
+<p><strong><code>%</code> 的使用</strong>
+将光标移到括号上，按下 <code>%</code> 将跳转至匹配的括号
 注：没有移到括号上也可以查找，有一定规则，懒得描述，去试一试就清楚了</p>
 </li>
 </ol>
 <h4 id="%E8%B7%B3%E8%BD%AC%E7%B1%BB%E5%91%BD%E4%BB%A4" id="跳转类命令">跳转类命令</h4>
 <ol>
-<li><strong><code>G</code> 的使用</strong><br>
+<li><strong><code>G</code> 的使用</strong>
 <strong>方法：<code>[num]+G</code></strong>
 <ul>
 <li><code>[num]</code>：要跳转至的行数</li>
@@ -1728,29 +1959,29 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <ul>
 <li><code>ic</code>：查找时忽略字母大小写</li>
 <li><code>is</code>：查找短语时显示部分匹配</li>
-<li><code>hls</code>：高亮显示所有匹配部分<br>
+<li><code>hls</code>：高亮显示所有匹配部分
 在选项前加上 <code>no</code> 可关闭选项，如 <code>noic</code> 可关闭忽略大小写</li>
 </ul>
 <h4 id="%E8%BF%90%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4" id="运行外部命令">运行外部命令</h4>
-<p>在正常模式下输入 <code>:!</code>，紧接着输入外部命令即可<br>
+<p>在正常模式下输入 <code>:!</code>，紧接着输入外部命令即可
 例如：<code>:!ls</code> 将列出目录下的文件</p>
 <h4 id="%E5%88%87%E6%8D%A2%E8%87%B3%E5%A4%96%E9%83%A8-shell" id="切换至外部-shell">切换至外部 shell</h4>
-<p>使用<code>：shell</code>可以切换到命令行窗口<br>
+<p>使用<code>：shell</code>可以切换到命令行窗口
 在命令行窗口退出会回到 vim</p>
 <h4 id="%E5%A4%9A%E7%AA%97%E5%8F%A3" id="多窗口">多窗口</h4>
 <ol>
 <li>
-<p>打开多窗口<br>
+<p>打开多窗口
 横行切分窗口</p>
 <ul>
 <li><code>:new [file]</code>：<code>[file]</code> 是打开的文件，若不是存在的文件则在保存后会创建文件</li>
-<li><code>:split [file]</code>：同上，可简写为 <code>:sp [file]</code><br>
+<li><code>:split [file]</code>：同上，可简写为 <code>:sp [file]</code>
 纵向切分窗口</li>
 <li><code>:vsplit [file]</code>：同上，窗口切分方式不同</li>
 </ul>
 </li>
 <li>
-<p>关闭多窗口<br>
+<p>关闭多窗口
 可使用普通窗口的保存与退出的方式，或者以下命令</p>
 <ul>
 <li><code>:close</code>：关闭窗口，但文件存在缓存中，使用 <code>:q!</code> 才算真正退出</li>
@@ -1759,7 +1990,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 </ul>
 </li>
 <li>
-<p>切换窗口<br>
+<p>切换窗口
 首先按下 <code>ctrl-w</code>，后按：</p>
 <ul>
 <li><code>j</code>：切换到下一个窗口</li>
@@ -1795,7 +2026,7 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 </ul>
 </li>
 <li>
-<p>打开多文件<br>
+<p>打开多文件
 在shell中打开文件时，使用 <code>vim a b c</code></p>
 <ul>
 <li><code>:n</code>：跳至下一文件</li>
@@ -1829,8 +2060,8 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
     <title>Intel x86 汇编语言</title>
     <url>/2021/03/26/intel-asm/</url>
     <content><![CDATA[<blockquote>
-<p>文章参考自<a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a><br>
-这篇文章只是个人的理解翻译，方便日后参考使用<br>
+<p>文章参考自<a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a>
+这篇文章只是个人的理解翻译，方便日后参考使用
 详情请参见原文</p>
 </blockquote>
 <h3 id="%E5%89%8D%E8%A8%80" id="前言">前言</h3>
@@ -1842,18 +2073,18 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <li><a href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">Intel Pentium 手册</a></li>
 </ul>
 <h3 id="%E5%AF%84%E5%AD%98%E5%99%A8" id="寄存器">寄存器</h3>
-<p>现代 x86 处理器中，有 8 个通用寄存器<br>
-在历史上，它们按照不同的用途命名，如 <code>EAX</code> 叫做“累加器”，因为它常被用作加法计算<br>
-在现代，尽管它们并没有什么区别，但习惯上仍沿用历史的做法<br>
-对于 32 位的 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code><br>
-我们也可以单独访问它们的低 16 位或者更低的位数<br>
+<p>现代 x86 处理器中，有 8 个通用寄存器
+在历史上，它们按照不同的用途命名，如 <code>EAX</code> 叫做“累加器”，因为它常被用作加法计算
+在现代，尽管它们并没有什么区别，但习惯上仍沿用历史的做法
+对于 32 位的 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>
+我们也可以单独访问它们的低 16 位或者更低的位数
 如 <code>EAX</code> ，通过</p>
 <ul>
 <li><code>AX</code> 可访问低 16 位(0~15)</li>
 <li><code>AH</code> 可访问低 16 位中的高 8 位(8~15)</li>
 <li><code>AL</code> 可访问低 16 中的低 8 位(0~7)</li>
 </ul>
-<p><strong>E</strong> 是 <strong>Extended</strong>，即 <strong>拓展</strong> 的意思，说明 <code>EAX</code>(32位) 是 <code>AX</code>(16位) 的拓展<br>
+<p><strong>E</strong> 是 <strong>Extended</strong>，即 <strong>拓展</strong> 的意思，说明 <code>EAX</code>(32位) 是 <code>AX</code>(16位) 的拓展
 <strong>X</strong> 其实也是 <strong>拓展</strong> 的意思，但它是指从 <code>AL</code>(8位) 拓展到 <code>AX</code>(16位)</p>
 <p><strong>8 个寄存器的名称</strong></p>
 <ul>
@@ -1867,306 +2098,476 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <li><code>EBP</code>(base pointer): 基址指针寄存器</li>
 </ul>
 <h3 id="%E5%86%85%E5%AD%98%E4%B8%8E%E5%AF%BB%E5%9D%80%E6%A8%A1%E5%BC%8F" id="内存与寻址模式">内存与寻址模式</h3>
-<p>寻址模式可分为：<br>
+<p>寻址模式可分为：
 直接寻找、间接寻址、变址寻址</p>
-<p><strong>直接寻址</strong>：给出的地址是存放的是 <strong>数据</strong><br>
-<strong>间接寻址</strong>：给出的地址是存放的是 <strong>数据的地址</strong><br>
+<p><strong>直接寻址</strong>：给出的地址是存放的是 <strong>数据</strong>
+<strong>间接寻址</strong>：给出的地址是存放的是 <strong>数据的地址</strong>
 <strong>变址寻址</strong>：给出的地址作为基准，使用偏移得到数据的真实地址，进而得到数据</p>
 <h4 id="%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80" id="内存寻址">内存寻址</h4>
-<p>使用 <code>[]</code> 表示进行寻址，即: 如 <code>[eax]</code> 指的是将 <code>eax</code> 中存储的数据作为内存地址，随后读取该内存地址中存储的数据，这属于寄存器间接寻址<br>
-现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据<br>
+<p>使用 <code>[]</code> 表示进行寻址，即: 如 <code>[eax]</code> 指的是将 <code>eax</code> 中存储的数据作为内存地址，随后读取该内存地址中存储的数据，这属于寄存器间接寻址
+现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据
 <code>mov</code> 指令有两个参数，第一个参数为目的地，第二个是数据源</p>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址，将内存地址中的数据存入EAX</span><br><span class="line">mov     [var], ebx              ; 将 var 中存储的数据作为内存地址，将 EBX 中的数据存入内存地址</span><br><span class="line">mov     eax, [esi - 4]          ; 将 ESI 中存储的数据加上 -4 作为内存地址，将内存地址中的数据存入 EAX</span><br><span class="line">mov     [esi + eax], cl         ; 将 ESI 与 EAX 中的数据相加作为内存地址，将 CL 中存储的数据存入内存地址</span><br><span class="line">mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 (EBX 中的数据 * 4) 作为内存地址，将内存地址中的数据存入 EDX</span><br></pre></td></tr></table></figure>
+<pre><code>mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址，将内存地址中的数据存入EAX
+mov     [var], ebx              ; 将 var 中存储的数据作为内存地址，将 EBX 中的数据存入内存地址
+mov     eax, [esi - 4]          ; 将 ESI 中存储的数据加上 -4 作为内存地址，将内存地址中的数据存入 EAX
+mov     [esi + eax], cl         ; 将 ESI 与 EAX 中的数据相加作为内存地址，将 CL 中存储的数据存入内存地址
+mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 (EBX 中的数据 * 4) 作为内存地址，将内存地址中的数据存入 EDX
+</code></pre>
 <p>注意，以下语法是 <em><strong>错误的</strong></em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, [ebx - ecx]            ; 寄存器间只能相加</span><br><span class="line">mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加</span><br></pre></td></tr></table></figure>
+<pre><code>mov     eax, [ebx - ecx]            ; 寄存器间只能相加
+mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
+</code></pre>
 <h3 id="%E5%A3%B0%E6%98%8E%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F%E4%B8%8E%E6%95%B0%E6%8D%AE" id="声明静态数据区域与数据">声明静态数据区域与数据</h3>
 <p>使用 <code>.DATA</code> 声明一块数据区域，并在此区域声明静态数据</p>
 <h4 id="%E5%A3%B0%E6%98%8E%E6%95%B0%E6%8D%AE" id="声明数据">声明数据</h4>
-<p>数据可以被给予一个“名字”，如 “var”，这个“名字”代表的其实是此数据在内存中的地址<br>
-<code>DB</code>(declare byte)可以声明 1 字节的数据<br>
-<code>DW</code>(declare word)可以声明 2 字节的数据<br>
+<p>数据可以被给予一个“名字”，如 “var”，这个“名字”代表的其实是此数据在内存中的地址
+<code>DB</code>(declare byte)可以声明 1 字节的数据
+<code>DW</code>(declare word)可以声明 2 字节的数据
 <code>DD</code>(declare dobute word)可以声明 4 字节的数据</p>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.DATA</span><br><span class="line">    var     DB  64      ; 声明一个 1 字节，名为 var，值为 64 的数据</span><br><span class="line">    var2    DB  ?       ; 声明一个 1 字节，名为 var2，值未初始化的数据</span><br><span class="line">            DB  10      ; 声明一个 1 字节，没有名字，使用 [var2 + 1] 访问，值为 10 的数据</span><br><span class="line">    X       DW  ?       ; 声明一个 2 字节，名为 X，值未初始化的数据</span><br><span class="line">    Y       DD  30000   ; 声明一个 2 字节，名为 Y，值为 30000 的数据</span><br></pre></td></tr></table></figure>
+<pre><code>.DATA
+    var     DB  64      ; 声明一个 1 字节，名为 var，值为 64 的数据
+    var2    DB  ?       ; 声明一个 1 字节，名为 var2，值未初始化的数据
+            DB  10      ; 声明一个 1 字节，没有名字，使用 [var2 + 1] 访问，值为 10 的数据
+    X       DW  ?       ; 声明一个 2 字节，名为 X，值未初始化的数据
+    Y       DD  30000   ; 声明一个 2 字节，名为 Y，值为 30000 的数据
+</code></pre>
 <h4 id="%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%A4%A7%E5%B0%8F" id="指定数据大小">指定数据大小</h4>
-<p>通常来说，数据大小能从给出的寄存器判断得出，例如 <code>AX</code> 即指 16 位数据，也就是 2 字节<br>
-但在一些情况下无法判断数据大小，如 <code>mov  [eax], 2</code>, 这种情况下不能明确知道数据的大小<br>
-因此需要在指令中指定数据大小，使用方法如下：<br>
-<code>BYTE PTR</code> 指定 1 字节大小<br>
-<code>WORD PTR</code> 指定 2 字节大小<br>
+<p>通常来说，数据大小能从给出的寄存器判断得出，例如 <code>AX</code> 即指 16 位数据，也就是 2 字节
+但在一些情况下无法判断数据大小，如 <code>mov  [eax], 2</code>, 这种情况下不能明确知道数据的大小
+因此需要在指令中指定数据大小，使用方法如下：
+<code>BYTE PTR</code> 指定 1 字节大小
+<code>WORD PTR</code> 指定 2 字节大小
 <code>DWORD PTR</code> 指定 4 字节大小</p>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     BYTE PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 1 字节</span><br><span class="line">mov     WORD PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 2 字节</span><br><span class="line">mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 4 字节</span><br></pre></td></tr></table></figure>
+<pre><code>mov     BYTE PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 1 字节
+mov     WORD PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 2 字节
+mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 4 字节
+</code></pre>
 <h4 id="%E5%A3%B0%E6%98%8E%E6%95%B0%E7%BB%84" id="声明数组">声明数组</h4>
-<p>不像高级编程语言，汇编语言不能按照 <em>下标</em> 对数组进行索引，只能通过 <em>偏移</em> 的方式定位数据<br>
-在汇编中，数组内的所有数据在一块连续的区域，可通过 <em>基址寻址</em> 的方式寻找数据<br>
-数组可以通过 <em>列出连续的数据</em> 来声明，或者通过 <code>DUP</code> 指令 <em>创建连续的数据</em> 进行声明<br>
+<p>不像高级编程语言，汇编语言不能按照 <em>下标</em> 对数组进行索引，只能通过 <em>偏移</em> 的方式定位数据
+在汇编中，数组内的所有数据在一块连续的区域，可通过 <em>基址寻址</em> 的方式寻找数据
+数组可以通过 <em>列出连续的数据</em> 来声明，或者通过 <code>DUP</code> 指令 <em>创建连续的数据</em> 进行声明
 <code>DUP</code> 指令告诉汇编器以指定的次数重复地列出一个数据，例如 <code>3 DUP(2)</code> 意味着 <code>2, 2, 2</code></p>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.DATA</span><br><span class="line">    Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组，值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3</span><br><span class="line">    bytes   DB  10  DUP(?)  ; 声明一个具有 10 个 1 字节元素，名为 bytes 的数组，值未初始化</span><br><span class="line">    arr     DD  100 DUP(0)  ; 声明一个具有 100 个 4 字节元素，名为 arr 的数组，值初始化为 0</span><br><span class="line">    str     DB  &#x27;hello&#x27;,0   ; 声明一个具有 6 个 1 字节元素，名为 arr 的数组，值初始化为 ‘hello’ 的 ASCII 字符编码，以及 0</span><br></pre></td></tr></table></figure>
+<pre><code>.DATA
+    Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组，值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3
+    bytes   DB  10  DUP(?)  ; 声明一个具有 10 个 1 字节元素，名为 bytes 的数组，值未初始化
+    arr     DD  100 DUP(0)  ; 声明一个具有 100 个 4 字节元素，名为 arr 的数组，值初始化为 0
+    str     DB  'hello',0   ; 声明一个具有 6 个 1 字节元素，名为 arr 的数组，值初始化为 ‘hello’ 的 ASCII 字符编码，以及 0
+</code></pre>
 <h3 id="%E6%8C%87%E4%BB%A4" id="指令">指令</h3>
-<p>指令一般由操作码与操作数组成，其中操作数可以有多个，也有部分指令没有操作数<br>
-指令可分为：数据转移指令、算术运算与逻辑指令、流程控制指令三类<br>
-约定在下文中，使用特定的格式表述不同位数的寄存器、数据、以及内存等<br>
-约定如下：<br>
-<code>&lt;reg32&gt;</code>   32位寄存器，如 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>、<code>ESI</code>、<code>EDI</code>、<code>EBP</code><br>
-<code>&lt;reg16&gt;</code>   16位寄存器，如 <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code><br>
-<code>&lt;reg8&gt;</code>    8位寄存器。如 <code>AH</code>、<code>AL</code>、<code>BH</code>、<code>BL</code>、<code>CH</code>、<code>CL</code>、<code>DH</code>、<code>DL</code><br>
-<code>&lt;mem&gt;</code>     内存，如 <code>[eax]</code>、<code>[var + 4]</code><br>
-<code>&lt;con32&gt;</code>   32位常量（4 字节）<br>
-<code>&lt;con16&gt;</code>   32位常量（2 字节）<br>
-<code>&lt;con8&gt;</code>    32位常量（1 字节）<br>
+<p>指令一般由操作码与操作数组成，其中操作数可以有多个，也有部分指令没有操作数
+指令可分为：数据转移指令、算术运算与逻辑指令、流程控制指令三类
+约定在下文中，使用特定的格式表述不同位数的寄存器、数据、以及内存等
+约定如下：
+<code>&lt;reg32&gt;</code>   32位寄存器，如 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>、<code>ESI</code>、<code>EDI</code>、<code>EBP</code>
+<code>&lt;reg16&gt;</code>   16位寄存器，如 <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>
+<code>&lt;reg8&gt;</code>    8位寄存器。如 <code>AH</code>、<code>AL</code>、<code>BH</code>、<code>BL</code>、<code>CH</code>、<code>CL</code>、<code>DH</code>、<code>DL</code>
+<code>&lt;mem&gt;</code>     内存，如 <code>[eax]</code>、<code>[var + 4]</code>
+<code>&lt;con32&gt;</code>   32位常量（4 字节）
+<code>&lt;con16&gt;</code>   32位常量（2 字节）
+<code>&lt;con8&gt;</code>    32位常量（1 字节）
 <code>&lt;con&gt;</code>     任意位数常量</p>
 <h4 id="%E6%95%B0%E6%8D%AE%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4" id="数据转移指令">数据转移指令</h4>
 <h5 id="mov-%E6%8C%87%E4%BB%A4" id="mov-指令"><code>mov</code> 指令</h5>
-<p>Move (操作码：88, 89, 8A, 8B, 8C, 8E, …)<br>
+<p>Move (操作码：88, 89, 8A, 8B, 8C, 8E, …)
 <code>mov</code> 指令将它第二个操作数声明的数据复制到第一个操作数指定的位置，这个位置可以是内存或者寄存器</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">mov     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">mov     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">mov     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">mov     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>mov     &lt;reg&gt;, &lt;reg&gt;
+mov     &lt;reg&gt;, &lt;mem&gt;
+mov     &lt;mem&gt;, &lt;reg&gt;
+mov     &lt;reg&gt;, &lt;con&gt;
+mov     &lt;mem&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov     eax, ebx                ; 将 ebx 中的数据复制到 eax</span><br><span class="line">mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量</span><br></pre></td></tr></table></figure>
+<pre><code>mov     eax, ebx                ; 将 ebx 中的数据复制到 eax
+mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量
+</code></pre>
 <h5 id="push-%E6%8C%87%E4%BB%A4" id="push-指令"><code>push</code> 指令</h5>
-<p>压入栈 Push stack (操作码：FF, 89, 8A, 8B, 8C, 8E, …)<br>
-<code>push</code> 指令将它的操作数压入栈堆，存储在特定的寄存器中（一般是存储在 <code>ESP</code>）<br>
-<code>push</code> 首先将 <code>ESP</code> 中的数据减去 4，随后将操作数存储到 <code>ESP</code> 指向的内存地址中<br>
+<p>压入栈 Push stack (操作码：FF, 89, 8A, 8B, 8C, 8E, …)
+<code>push</code> 指令将它的操作数压入栈堆，存储在特定的寄存器中（一般是存储在 <code>ESP</code>）
+<code>push</code> 首先将 <code>ESP</code> 中的数据减去 4，随后将操作数存储到 <code>ESP</code> 指向的内存地址中
 注：栈里的数据存储在内存中，寄存器 <code>ESP</code> 存储的是内存地址，栈在内存中从高地址向低地址增长</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push    &lt;reg32&gt;</span><br><span class="line">push    &lt;mem&gt;</span><br><span class="line">push    &lt;con32&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>push    &lt;reg32&gt;
+push    &lt;mem&gt;
+push    &lt;con32&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push    eax     ; 将 EAX 中的数据压入栈</span><br><span class="line">push    [var]   ; 将名为 var 的变量的值压入栈</span><br></pre></td></tr></table></figure>
+<pre><code>push    eax     ; 将 EAX 中的数据压入栈
+push    [var]   ; 将名为 var 的变量的值压入栈
+</code></pre>
 <h5 id="pop-%E6%8C%87%E4%BB%A4" id="pop-指令"><code>pop</code> 指令</h5>
-<p>弹出栈 Pop stack<br>
-<code>pop</code> 指令将特定寄存器的值（一般是 <code>ESP</code>）弹出，存储到它的操作数指定的位置<br>
+<p>弹出栈 Pop stack
+<code>pop</code> 指令将特定寄存器的值（一般是 <code>ESP</code>）弹出，存储到它的操作数指定的位置
 <code>pop</code> 首先读取位于由 <code>ESP</code> 给出的内存地址中的值，将其存入到操作数指定的位置，随后将 <code>ESP</code> 的值加 4</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pop     &lt;reg32&gt;</span><br><span class="line">pop     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>pop     &lt;reg32&gt;
+pop     &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pop     edi     ; 将栈顶数据弹出，存储到 EDI</span><br><span class="line">pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址中</span><br></pre></td></tr></table></figure>
+<pre><code>pop     edi     ; 将栈顶数据弹出，存储到 EDI
+pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址中
+</code></pre>
 <h5 id="lea-%E6%8C%87%E4%BB%A4" id="lea-指令"><code>lea</code> 指令</h5>
-<p>取地址 load effective address<br>
-<code>lea</code> 指令将第二操作数的有效地址存入第一个操作数给定的寄存器中<br>
-<code>lea</code> 与 <code>mov</code> 并不同，<code>mov</code> 是将第二操作数给定的数据存入第一操作数给定的位置<br>
+<p>取地址 load effective address
+<code>lea</code> 指令将第二操作数的有效地址存入第一个操作数给定的寄存器中
+<code>lea</code> 与 <code>mov</code> 并不同，<code>mov</code> 是将第二操作数给定的数据存入第一操作数给定的位置
 而 <code>lea</code> 是将数据的地址存入第一操作数给定的寄存器</p>
 <p><em>语法</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lea     &lt;reg32&gt;, &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>lea     &lt;reg32&gt;, &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lea     edi, [ebx + 4*esi]      ; EBX + 4*ESI 的值作为地址存入 EDI</span><br><span class="line">lea     eax, [var]              ; var 代表的地址存入 EAX</span><br></pre></td></tr></table></figure>
+<pre><code>lea     edi, [ebx + 4*esi]      ; EBX + 4*ESI 的值作为地址存入 EDI
+lea     eax, [var]              ; var 代表的地址存入 EAX
+</code></pre>
 <h4 id="%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E4%B8%8E%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4" id="算术运算与逻辑指令">算术运算与逻辑指令</h4>
 <h5 id="add-%E6%8C%87%E4%BB%A4" id="add-指令"><code>add</code> 指令</h5>
-<p><code>add</code> 指令将它的两个操作数的值相加，并将结果存储到第一个操作数指定的位置中<br>
+<p><code>add</code> 指令将它的两个操作数的值相加，并将结果存储到第一个操作数指定的位置中
 注意，操作数可以是两个寄存器，但最多只能有一个是内存地址</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">add     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">add     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">add     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">add     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>add     &lt;reg&gt;, &lt;reg&gt;
+add     &lt;reg&gt;, &lt;mem&gt;
+add     &lt;mem&gt;, &lt;reg&gt;
+add     &lt;reg&gt;, &lt;con&gt;
+add     &lt;mem&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add     eax, 10                     ; eax = eax + 10</span><br><span class="line">add     byte ptr [var], 10          ; var = var + 10</span><br></pre></td></tr></table></figure>
+<pre><code>add     eax, 10                     ; eax = eax + 10
+add     byte ptr [var], 10          ; var = var + 10
+</code></pre>
 <h5 id="sub-%E6%8C%87%E4%BB%A4" id="sub-指令"><code>sub</code> 指令</h5>
 <p>与 <code>add</code> 指令相似，<code>sub</code> 指令将第一个操作数的值减去第二个操作数，结果保存在第一个操作数</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sub     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">sub     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">sub     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">sub     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">sub     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>sub     &lt;reg&gt;, &lt;reg&gt;
+sub     &lt;reg&gt;, &lt;mem&gt;
+sub     &lt;mem&gt;, &lt;reg&gt;
+sub     &lt;reg&gt;, &lt;con&gt;
+sub     &lt;mem&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sub     al, ah      ; AL = AL - AH</span><br><span class="line">sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX</span><br></pre></td></tr></table></figure>
+<pre><code>sub     al, ah      ; AL = AL - AH
+sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX
+</code></pre>
 <h5 id="inc-%E4%B8%8E-dec-%E6%8C%87%E4%BB%A4" id="inc-与-dec-指令"><code>inc</code> 与 <code>dec</code> 指令</h5>
-<p><code>inc</code> 指令将操作数的值增加 1 （自增）<br>
+<p><code>inc</code> 指令将操作数的值增加 1 （自增）
 <code>dec</code> 指令将操作数的值减少 1 （自减）</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inc     &lt;reg&gt;</span><br><span class="line">inc     &lt;mem&gt;</span><br><span class="line">dec     &lt;reg&gt;</span><br><span class="line">dec     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>inc     &lt;reg&gt;
+inc     &lt;mem&gt;
+dec     &lt;reg&gt;
+dec     &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inc     eax                 ; 将 EAX 中的值自增 1，结果存入 EAX</span><br><span class="line">dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入 var （代表的地址）</span><br></pre></td></tr></table></figure>
+<pre><code>inc     eax                 ; 将 EAX 中的值自增 1，结果存入 EAX
+dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入 var （代表的地址）
+</code></pre>
 <h5 id="imul-%E6%8C%87%E4%BB%A4" id="imul-指令"><code>imul</code> 指令</h5>
-<p>整数相乘 Integer Multiplication<br>
+<p>整数相乘 Integer Multiplication
 <code>imul</code> 指令有两种基本的格式，分别为 <em>带 2 个操作数</em>、<em>带 3 个操作数</em></p>
-<p>使用带 2 个操作数的格式时，将两个操作数相乘，结果存入第一个操作数处<br>
+<p>使用带 2 个操作数的格式时，将两个操作数相乘，结果存入第一个操作数处
 使用带 3 个操作数的格式时，将第 3 个和第 2 个操作数相乘，结果存入第一个操作数处</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">imul    &lt;reg32&gt;, &lt;reg32&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;mem&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;reg32&gt;, &lt;con&gt;</span><br><span class="line">imul    &lt;reg32&gt;, &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>imul    &lt;reg32&gt;, &lt;reg32&gt;
+imul    &lt;reg32&gt;, &lt;mem&gt;
+imul    &lt;reg32&gt;, &lt;reg32&gt;, &lt;con&gt;
+imul    &lt;reg32&gt;, &lt;mem&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">imul    eax, [var]      ; 将 var 的值与 EAX 的值相乘，结果存入 EAX</span><br><span class="line">imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI</span><br></pre></td></tr></table></figure>
+<pre><code>imul    eax, [var]      ; 将 var 的值与 EAX 的值相乘，结果存入 EAX
+imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI
+</code></pre>
 <h5 id="idiv-%E6%8C%87%E4%BB%A4" id="idiv-指令"><code>idiv</code> 指令</h5>
-<p><code>idiv</code> 指令将给出的操作数除以存储在 EDX:EAX 的 64 位的整数（EDX 中的值作为高四位，EAX 中的值作为低四位）<br>
+<p><code>idiv</code> 指令将给出的操作数除以存储在 EDX:EAX 的 64 位的整数（EDX 中的值作为高四位，EAX 中的值作为低四位）
 得到的商存储在 EAX 中，余数存储在 EDX 中</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">idiv    &lt;reg32&gt;</span><br><span class="line">idiv    &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>idiv    &lt;reg32&gt;
+idiv    &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">idiv    ebx                 ; 将 EBX 中的值除以 EDX:EAX，商存在 EAX，余数存在 EDX</span><br><span class="line">idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的值除以 EDX:EAX，商存在 EAX，余数存在 EDX</span><br></pre></td></tr></table></figure>
+<pre><code>idiv    ebx                 ; 将 EBX 中的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
+idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
+</code></pre>
 <h5 id="and%2C-or%2C-xor-%E6%8C%87%E4%BB%A4" id="and-or-xor-指令"><code>and</code>, <code>or</code>, <code>xor</code> 指令</h5>
-<p>这些指令分别是将两个操作数进行<em>按位与</em>，<em>按位或</em>，<em>按位异或</em>操作<br>
+<p>这些指令分别是将两个操作数进行<em>按位与</em>，<em>按位或</em>，<em>按位异或</em>操作
 得到的结果存在第一个操作数</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">and     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">and     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">and     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">and     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">and     &lt;mem&gt;, &lt;con&gt;</span><br><span class="line"></span><br><span class="line">or      &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">or      &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">or      &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">or      &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">or      &lt;mem&gt;, &lt;con&gt;</span><br><span class="line"></span><br><span class="line">xor     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">xor     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">xor     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">xor     &lt;reg&gt;, &lt;con&gt;</span><br><span class="line">xor     &lt;mem&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>and     &lt;reg&gt;, &lt;reg&gt;
+and     &lt;reg&gt;, &lt;mem&gt;
+and     &lt;mem&gt;, &lt;reg&gt;
+and     &lt;reg&gt;, &lt;con&gt;
+and     &lt;mem&gt;, &lt;con&gt;
+
+or      &lt;reg&gt;, &lt;reg&gt;
+or      &lt;reg&gt;, &lt;mem&gt;
+or      &lt;mem&gt;, &lt;reg&gt;
+or      &lt;reg&gt;, &lt;con&gt;
+or      &lt;mem&gt;, &lt;con&gt;
+
+xor     &lt;reg&gt;, &lt;reg&gt;
+xor     &lt;reg&gt;, &lt;mem&gt;
+xor     &lt;mem&gt;, &lt;reg&gt;
+xor     &lt;reg&gt;, &lt;con&gt;
+xor     &lt;mem&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">and     EAX, 0fH    ; 只保留 EAX 的低 4 位</span><br><span class="line">xor     EDX, EDX    ; 将 EDX 所有位置 0</span><br></pre></td></tr></table></figure>
+<pre><code>and     EAX, 0fH    ; 只保留 EAX 的低 4 位
+xor     EDX, EDX    ; 将 EDX 所有位置 0
+</code></pre>
 <h5 id="not-%E6%8C%87%E4%BB%A4" id="not-指令"><code>not</code> 指令</h5>
 <p>进行按位取反操作</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">not     &lt;reg&gt;</span><br><span class="line">not     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>not     &lt;reg&gt;
+not     &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">not     BYTE PTR [var]      ; 将 var 地址处的值按位取反</span><br></pre></td></tr></table></figure>
+<pre><code>not     BYTE PTR [var]      ; 将 var 地址处的值按位取反
+</code></pre>
 <h5 id="neg-%E6%8C%87%E4%BB%A4" id="neg-指令"><code>neg</code> 指令</h5>
 <p>对操作数内容的二进制补码进行按位取反操作</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">neg     &lt;reg&gt;</span><br><span class="line">neg     &lt;mem&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>neg     &lt;reg&gt;
+neg     &lt;mem&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">neg     EAX         ; 将得到 -EAX</span><br></pre></td></tr></table></figure>
+<pre><code>neg     EAX         ; 将得到 -EAX
+</code></pre>
 <h5 id="shl%2C-shr-%E6%8C%87%E4%BB%A4" id="shl-shr-指令"><code>shl</code>, <code>shr</code> 指令</h5>
-<p>左移右移指令<br>
-将第一个操作数进行左移或者右移，用 0 填充空位，最多移动 31 位<br>
-移动的位数由第二个操作数决定，第二个操作数可以是 8 位常量或者是 CL 寄存器<br>
+<p>左移右移指令
+将第一个操作数进行左移或者右移，用 0 填充空位，最多移动 31 位
+移动的位数由第二个操作数决定，第二个操作数可以是 8 位常量或者是 CL 寄存器
 若移动位数大于 31，则按照以 32 为模得出的值进行移位</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shl     &lt;reg&gt;,&lt;con8&gt;</span><br><span class="line">shl     &lt;mem&gt;,&lt;con8&gt;</span><br><span class="line">shl     &lt;reg&gt;, CL</span><br><span class="line">shl     &lt;mem&gt;, CL</span><br><span class="line"></span><br><span class="line">shr     &lt;reg&gt;,&lt;con8&gt;</span><br><span class="line">shr     &lt;mem&gt;,&lt;con8&gt;</span><br><span class="line">shr     &lt;reg&gt;, CL</span><br><span class="line">shr     &lt;mem&gt;, CL</span><br></pre></td></tr></table></figure>
+<pre><code>shl     &lt;reg&gt;,&lt;con8&gt;
+shl     &lt;mem&gt;,&lt;con8&gt;
+shl     &lt;reg&gt;, CL
+shl     &lt;mem&gt;, CL
+
+shr     &lt;reg&gt;,&lt;con8&gt;
+shr     &lt;mem&gt;,&lt;con8&gt;
+shr     &lt;reg&gt;, CL
+shr     &lt;mem&gt;, CL
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shl     EAX, 1          ; 将 EAX 乘以 2</span><br><span class="line">shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值</span><br></pre></td></tr></table></figure>
+<pre><code>shl     EAX, 1          ; 将 EAX 乘以 2
+shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值
+</code></pre>
 <h4 id="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6" id="流程控制">流程控制</h4>
-<p>x86 处理器有一个指令寄存器 (instruction pointer register)(IP)<br>
-这是一个 32 位的寄存器，保存当前执行的指令在内存中的起始地址<br>
-通常来说，它每执行一个指令后会自增，以指向下一个指令的起始地址<br>
+<p>x86 处理器有一个指令寄存器 (instruction pointer register)(IP)
+这是一个 32 位的寄存器，保存当前执行的指令在内存中的起始地址
+通常来说，它每执行一个指令后会自增，以指向下一个指令的起始地址
 指令寄存器不能被直接更改 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，但可以通过流程控制指令进行更新</p>
-<p>在这里约定一个新的符号 <code>&lt;lable&gt;</code>，它用来表示汇编代码中的一个标签<br>
+<p>在这里约定一个新的符号 <code>&lt;lable&gt;</code>，它用来表示汇编代码中的一个标签
 如，在下面的代码中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">        mov     ESI, [EBP + 8]</span><br><span class="line">begin:  xor     ECX, ECX</span><br><span class="line">        mov     EAX, [ESI]</span><br></pre></td></tr></table></figure>
-<p><code>&lt;lable&gt;</code> 可代指 <code>begin</code><br>
-实际上这个标签是一个代表地址的符号，与变量 <code>var</code> 类似<br>
-但标签代表的是指令的地址，而变量代表的是数据的地址<br>
+<pre><code>        mov     ESI, [EBP + 8]
+begin:  xor     ECX, ECX
+        mov     EAX, [ESI]
+</code></pre>
+<p><code>&lt;lable&gt;</code> 可代指 <code>begin</code>
+实际上这个标签是一个代表地址的符号，与变量 <code>var</code> 类似
+但标签代表的是指令的地址，而变量代表的是数据的地址
 可以在代码的其他位置使用这个标签来获得标签表示的地址</p>
-<p>在下面的示例中并不会特别指出 <code>&lt;lable&gt;</code> 所代表的指令<br>
+<p>在下面的示例中并不会特别指出 <code>&lt;lable&gt;</code> 所代表的指令
 只说明各跳转指令的用法</p>
 <h5 id="jmp-%E6%8C%87%E4%BB%A4" id="jmp-指令"><code>jmp</code> 指令</h5>
-<p>无条件跳转指令<br>
+<p>无条件跳转指令
 无条件地将程序控制流跳转到操作数指示的位置处</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp     &lt;lable&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>jmp     &lt;lable&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp     begin       ; 跳转到 begin 处</span><br></pre></td></tr></table></figure>
+<pre><code>jmp     begin       ; 跳转到 begin 处
+</code></pre>
 <h5 id="%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4" id="条件跳转指令">条件跳转指令</h5>
-<p>这是一个统称，代表着一系列根据不同条件判断是否进行跳转的指令<br>
+<p>这是一个统称，代表着一系列根据不同条件判断是否进行跳转的指令
 如果符合条件，则会执行跳转，否则将按原来的流程继续执行下一条指令</p>
-<p>条件跳转指令的条件来自最后执行算术运算的信息，如：结果是否为零<br>
+<p>条件跳转指令的条件来自最后执行算术运算的信息，如：结果是否为零
 这些信息保存在一个特殊的寄存器中，称作状态寄存器 <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> (machine status word)</p>
-<p>许多指令的转移条件可以根据上一次执行的操作直观地得出<br>
-这个操作指的是特殊的比较指令 <code>cmp</code> （在下文有说明）<br>
-例如：<code>jle</code> 和 <code>jne</code> 依赖于 <code>cmp</code> 指令对操作数的执行结果<br>
+<p>许多指令的转移条件可以根据上一次执行的操作直观地得出
+这个操作指的是特殊的比较指令 <code>cmp</code> （在下文有说明）
+例如：<code>jle</code> 和 <code>jne</code> 依赖于 <code>cmp</code> 指令对操作数的执行结果
 因此，条件转移指令通常会和 <code>cmp</code> 指令一起使用</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">je      &lt;lable&gt;     ; 相等时跳转</span><br><span class="line">jne     &lt;lable&gt;     ; 不相等时跳转</span><br><span class="line">jz      &lt;lable&gt;     ; 结果为 0 时跳转</span><br><span class="line">jg      &lt;lable&gt;     ; 大于时跳转</span><br><span class="line">jge     &lt;lable&gt;     ; 大于或等于时跳转</span><br><span class="line">jl      &lt;lable&gt;     ; 小于是跳转</span><br><span class="line">jle     &lt;lable&gt;     ; 小于或等于时跳转</span><br></pre></td></tr></table></figure>
+<pre><code>je      &lt;lable&gt;     ; 相等时跳转
+jne     &lt;lable&gt;     ; 不相等时跳转
+jz      &lt;lable&gt;     ; 结果为 0 时跳转
+jg      &lt;lable&gt;     ; 大于时跳转
+jge     &lt;lable&gt;     ; 大于或等于时跳转
+jl      &lt;lable&gt;     ; 小于是跳转
+jle     &lt;lable&gt;     ; 小于或等于时跳转
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     EAX, EBX</span><br><span class="line">jle     done        ; 如果 EAX 小于或者等于 EBX，则跳转至 done 处</span><br><span class="line">mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的指令</span><br></pre></td></tr></table></figure>
+<pre><code>cmp     EAX, EBX
+jle     done        ; 如果 EAX 小于或者等于 EBX，则跳转至 done 处
+mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的指令
+</code></pre>
 <h5 id="cmp-%E6%8C%87%E4%BB%A4" id="cmp-指令"><code>cmp</code> 指令</h5>
-<p>将给出的两个操作数进行对比，并更新状态寄存器<br>
-<code>cmp</code> 指令等效于 <code>sub</code> 指令，唯一区别则在于<br>
+<p>将给出的两个操作数进行对比，并更新状态寄存器
+<code>cmp</code> 指令等效于 <code>sub</code> 指令，唯一区别则在于
 <code>cmp</code> 指令会将结果丢弃而不是存入第一个操作数</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">cmp     &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">cmp     &lt;mem&gt;, &lt;reg&gt;</span><br><span class="line">cmp     &lt;reg&gt;, &lt;con&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>cmp     &lt;reg&gt;, &lt;reg&gt;
+cmp     &lt;reg&gt;, &lt;mem&gt;
+cmp     &lt;mem&gt;, &lt;reg&gt;
+cmp     &lt;reg&gt;, &lt;con&gt;
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmp     DWORD PTR [var], 10</span><br><span class="line">jeq     loop</span><br><span class="line">; 如果 var 的值等于 10，则会跳转到 loop</span><br><span class="line">; 否则执行下一条指令</span><br></pre></td></tr></table></figure>
+<pre><code>cmp     DWORD PTR [var], 10
+jeq     loop
+; 如果 var 的值等于 10，则会跳转到 loop
+; 否则执行下一条指令
+</code></pre>
 <h5 id="call%2C-ret-%E6%8C%87%E4%BB%A4" id="call-ret-指令"><code>call</code>, <code>ret</code> 指令</h5>
-<p>这两个指令实现了子程序的调用与返回<br>
-<code>call</code> 指令会先将当前代码的位置压入堆栈，然后无条件跳转到标签处<br>
+<p>这两个指令实现了子程序的调用与返回
+<code>call</code> 指令会先将当前代码的位置压入堆栈，然后无条件跳转到标签处
 与简单的 <code>jmp</code> 指令不同，<code>call</code> 指令会保存子程序完成时应返回的位置</p>
-<p><code>ret</code> 实现从子程序中的返回<br>
+<p><code>ret</code> 实现从子程序中的返回
 它首先将在堆栈中的地址弹出，然后无条件跳转到此地址</p>
 <p>子程序返回后则继续执行下一条指令</p>
 <p><strong>用法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; call 用法</span><br><span class="line">call    &lt;lable&gt;</span><br><span class="line"></span><br><span class="line">; ret 用法</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+<pre><code>; call 用法
+call    &lt;lable&gt;
+
+; ret 用法
+ret
+</code></pre>
 <p><strong>例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">callme: xor     EAX, EAX</span><br><span class="line">        ret                 ; 返回到调用处</span><br><span class="line">call    callme              ; 调用 callme</span><br><span class="line">        xor     EBX, EBX    ; 返回后继续执行指令</span><br></pre></td></tr></table></figure>
+<pre><code>callme: xor     EAX, EAX
+        ret                 ; 返回到调用处
+call    callme              ; 调用 callme
+        xor     EBX, EBX    ; 返回后继续执行指令
+</code></pre>
 <h3 id="%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A" id="调用约定">调用约定</h3>
-<p>调用约定是为了使程序员之间能够共享代码并开发可以供许多程序使用的库，并简化子程序的使用<br>
-是一组约定如何调用以及如何返回的协议<br>
-在给定规则的情况下，程序员无需了解子程序的定义，只需按照约定进行调用即可<br>
+<p>调用约定是为了使程序员之间能够共享代码并开发可以供许多程序使用的库，并简化子程序的使用
+是一组约定如何调用以及如何返回的协议
+在给定规则的情况下，程序员无需了解子程序的定义，只需按照约定进行调用即可
 并且，可以使高级语言的汇编器遵从约定，使得手工编写的汇编代码能够调用高级语言编写的函数</p>
-<p>最为广泛使用的是 C 语言的调用约定<br>
-遵从这个约定，我们可以调用定义在 C 或者 C++ 程序里的函数<br>
+<p>最为广泛使用的是 C 语言的调用约定
+遵从这个约定，我们可以调用定义在 C 或者 C++ 程序里的函数
 并且还能够调用 C 的库函数</p>
-<p>C 调用约定很大程度上基于硬件支持堆栈的使用<br>
-它基于 <code>push</code>、<code>pop</code>、<code>call</code> 和 <code>ret</code> 指令，子程序参数在堆栈上传递<br>
-寄存器保存在栈上，子程序使用的局部变量放在栈上的内存中<br>
+<p>C 调用约定很大程度上基于硬件支持堆栈的使用
+它基于 <code>push</code>、<code>pop</code>、<code>call</code> 和 <code>ret</code> 指令，子程序参数在堆栈上传递
+寄存器保存在栈上，子程序使用的局部变量放在栈上的内存中
 在大多数处理器上实现的绝大多数高级过程语言使用都使用类似的调用约定</p>
-<p>调用约定分为两组，一组规则由调用者使用，另一组由被调用者<br>
-注意：<br>
+<p>调用约定分为两组，一组规则由调用者使用，另一组由被调用者
+注意：
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">      栈增长方向</span><br><span class="line">+------------------+</span><br><span class="line">| saved ESI        | &lt;--- ESP</span><br><span class="line">+------------------+</span><br><span class="line">| saved EDI        |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 3 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 2 |</span><br><span class="line">+------------------+</span><br><span class="line">| local variable 1 | &lt;--- EBP - 4</span><br><span class="line">+------------------+</span><br><span class="line">| saved EBP        | &lt;--- EBP</span><br><span class="line">+------------------+</span><br><span class="line">| return address   |</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 1      | &lt;--- EBP + 8</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 2      | &lt;--- EBP + 12</span><br><span class="line">+------------------+</span><br><span class="line">| parameter 3      | &lt;--- EBP + 16</span><br><span class="line">+------------------+</span><br><span class="line">      高地址方向</span><br></pre></td></tr></table></figure>
-<p>在上面的示意图中，调用者向子程序传递了 3 个参数 <code>parameter 1 - 3</code><br>
-子程序有三个自己的局部变量 <code>local variable 1 - 3</code><br>
-堆栈中每个单元是 32 位宽的内存位置，故相邻的单元格相隔 4 个字节<br>
-传入子程序的第一个参数位置在 EBP 偏移 8 个字节的偏移处<br>
-在传入参数的上方与基指针（图中EBP）的下方是返回地址<br>
+<pre><code>      栈增长方向
++------------------+
+| saved ESI        | &lt;--- ESP
++------------------+
+| saved EDI        |
++------------------+
+| local variable 3 |
++------------------+
+| local variable 2 |
++------------------+
+| local variable 1 | &lt;--- EBP - 4
++------------------+
+| saved EBP        | &lt;--- EBP
++------------------+
+| return address   |
++------------------+
+| parameter 1      | &lt;--- EBP + 8
++------------------+
+| parameter 2      | &lt;--- EBP + 12
++------------------+
+| parameter 3      | &lt;--- EBP + 16
++------------------+
+      高地址方向
+</code></pre>
+<p>在上面的示意图中，调用者向子程序传递了 3 个参数 <code>parameter 1 - 3</code>
+子程序有三个自己的局部变量 <code>local variable 1 - 3</code>
+堆栈中每个单元是 32 位宽的内存位置，故相邻的单元格相隔 4 个字节
+传入子程序的第一个参数位置在 EBP 偏移 8 个字节的偏移处
+在传入参数的上方与基指针（图中EBP）的下方是返回地址
 当使用 <code>ret</code> 指令从子程序返回时，会跳转至这个返回地址</p>
 <h4 id="%E8%B0%83%E7%94%A8%E6%96%B9%E8%A7%84%E5%88%99" id="调用方规则">调用方规则</h4>
 <p>为了进行调用，调用方应该：</p>
 <ol>
-<li>调用前，调用方应该保存 EAX, ECX, EDX 这些<em>调用方保存寄存器</em> <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> 的值<br>
-因为子程序能够更改这些寄存器的值<br>
-如果调用方需要在子程序返回后继续使用这些值，那么调用方必须将这些值压入栈<br>
+<li>调用前，调用方应该保存 EAX, ECX, EDX 这些<em>调用方保存寄存器</em> <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> 的值
+因为子程序能够更改这些寄存器的值
+如果调用方需要在子程序返回后继续使用这些值，那么调用方必须将这些值压入栈
 以便在子程序返回后恢复这些值</li>
-<li>在调用前将参数压入栈，以传递给子程序使用<br>
-应以相反的顺序将参数压入栈，如：最后一个参数应第一个压入栈<br>
-因为栈遵从先进后出原则，所以第一个参数处于低地址处 <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup><br>
+<li>在调用前将参数压入栈，以传递给子程序使用
+应以相反的顺序将参数压入栈，如：最后一个参数应第一个压入栈
+因为栈遵从先进后出原则，所以第一个参数处于低地址处 <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>
 这种参数倒置的方式在历史上被用于允许函数传递可变数量的参数</li>
-<li>使用 <code>call</code> 指令调用子程序<br>
+<li>使用 <code>call</code> 指令调用子程序
 这个指令会先将返回的地址压入堆栈，然后切换到子程序执行指令</li>
 </ol>
-<p>在子程序返回后，调用方能从 EAX 寄存器中获得子程序的返回值<br>
+<p>在子程序返回后，调用方能从 EAX 寄存器中获得子程序的返回值
 为了将程序恢复到调用前的状态，调用方此时应该：</p>
 <ol>
 <li>从栈中移除传递的参数，将栈恢复到调用前的状态</li>
-<li>将存储在栈中的寄存器（EAX, ECX, EDX）的值弹出，以恢复这些寄存器在调用前的值<br>
+<li>将存储在栈中的寄存器（EAX, ECX, EDX）的值弹出，以恢复这些寄存器在调用前的值
 调用方可以假设没有其他寄存器被子程序修改</li>
 </ol>
-<p><strong>例子</strong><br>
-下面的代码是一个简单的调用方的示例<br>
+<p><strong>例子</strong>
+下面的代码是一个简单的调用方的示例
 调用方调用了一个名为 <em>_myFunc</em> 的函数，这个函数需要传递三个整数型参数：</p>
 <ul>
 <li>第一个参数存储在 EAX 寄存器</li>
 <li>第二个参数是常量 216</li>
 <li>第三个参数是存储在内存地址 <em>var</em> 中的值</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push    [var]           ; 传递第三个参数</span><br><span class="line">push    216             ; 传递第二个参数</span><br><span class="line">push    EAX             ; 传递第一个参数</span><br><span class="line"></span><br><span class="line">call    _myFunc         ; 调用子程序</span><br><span class="line"></span><br><span class="line">add     ESP, 12         ; 清理传入的参数</span><br></pre></td></tr></table></figure>
+<pre><code>push    [var]           ; 传递第三个参数
+push    216             ; 传递第二个参数
+push    EAX             ; 传递第一个参数
+
+call    _myFunc         ; 调用子程序
+
+add     ESP, 12         ; 清理传入的参数
+</code></pre>
 <blockquote>
-<p>注意：从子程序返回后，EBP 的值也恢复到了 <em>saved EBP</em> （见上方的示意图）表示的值<br>
+<p>注意：从子程序返回后，EBP 的值也恢复到了 <em>saved EBP</em> （见上方的示意图）表示的值
 ESP 则指向 <em>return address</em> 处</p>
 </blockquote>
-<p>在代码的最后，使用了 <code>add</code> 指令修改了 ESP 的值，这是为了清理传入的参数<br>
-在上面提到，一个单元格为 32 位，即 4 字节<br>
-我们传入了 3 个参数，使用了 3 * 4 = 12 字节<br>
+<p>在代码的最后，使用了 <code>add</code> 指令修改了 ESP 的值，这是为了清理传入的参数
+在上面提到，一个单元格为 32 位，即 4 字节
+我们传入了 3 个参数，使用了 3 * 4 = 12 字节
 因此我们需要将栈顶指针恢复到 ESP + 12 处</p>
 <p>现在可以通过 EAX 来获取子程序的返回值</p>
-<p>如果调用方还需要原本 EAX, ECX, EDX 的值<br>
-那么则应该在调用前将这些值存入栈<br>
+<p>如果调用方还需要原本 EAX, ECX, EDX 的值
+那么则应该在调用前将这些值存入栈
 并在子程序返回之后恢复这些值</p>
 <h4 id="%E8%A2%AB%E8%B0%83%E7%94%A8%E6%96%B9%E8%A7%84%E5%88%99" id="被调用方规则">被调用方规则</h4>
 <p>下面的规则应用于子程序入口处</p>
 <ol>
-<li>使用下列的指令将 EBP 压入栈，并且将 ESP 的值复制到 EBP<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">push     EBP</span><br><span class="line">mov      EBP, ESP</span><br></pre></td></tr></table></figure>
+<li>使用下列的指令将 EBP 压入栈，并且将 ESP 的值复制到 EBP<pre><code>push     EBP
+mov      EBP, ESP
+</code></pre>
 </li>
-<li>然后，为局部变量分配栈空间，即使用 <code>push</code> 指令将局部变量压入栈<br>
-再次说明，栈往内存地址的低地址方向增长，所以为了获得空闲的内存区域<br>
-栈顶指针应该减去值，应该减去的值由局部变量的数量与大小决定<br>
-比如，如果有 3 个<em>整型</em>的局部变量，那么栈顶指针应该减去 3 * 4 = 12<br>
-以获得足够的内存空间用于存储局部变量<br>
+<li>然后，为局部变量分配栈空间，即使用 <code>push</code> 指令将局部变量压入栈
+再次说明，栈往内存地址的低地址方向增长，所以为了获得空闲的内存区域
+栈顶指针应该减去值，应该减去的值由局部变量的数量与大小决定
+比如，如果有 3 个<em>整型</em>的局部变量，那么栈顶指针应该减去 3 * 4 = 12
+以获得足够的内存空间用于存储局部变量
 和参数相同一样，局部变量也能通过基于基指针的偏移获得</li>
-<li>然后，保存一些<em>被调用方保存寄存器</em> <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> 的值，这些寄存器的值可能会被修改<br>
-因此，使用 <code>push</code> 将它们的值保存在栈中，这些寄存器是 EBX, EDI 和 ESI<br>
+<li>然后，保存一些<em>被调用方保存寄存器</em> <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> 的值，这些寄存器的值可能会被修改
+因此，使用 <code>push</code> 将它们的值保存在栈中，这些寄存器是 EBX, EDI 和 ESI
 ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规则 1）就被保存了</li>
 </ol>
-<p>在完成上述 3 个规则的步骤后，子程序即可进行自己的流程<br>
+<p>在完成上述 3 个规则的步骤后，子程序即可进行自己的流程
 当子程序需要返回时，它应该遵从下方的规则</p>
 <ol>
 <li>将返回值保存至 EAX</li>
-<li>恢复被修改过的<em>被调用方保存寄存器</em>的值，通过 <code>pop</code> 指令将它们从栈中取出并恢复<br>
+<li>恢复被修改过的<em>被调用方保存寄存器</em>的值，通过 <code>pop</code> 指令将它们从栈中取出并恢复
 取出的顺序应和它们保存时的顺序相反（栈的先进后出原则）</li>
-<li>删除局部变量，一个直接的方法即给栈顶指针加上在<em>分配过程中减去的值</em> <sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup><br>
-但是最不容易出错的方式是将基指针的值移动到栈顶指针中 <code>mov   ESP, EBP</code><br>
+<li>删除局部变量，一个直接的方法即给栈顶指针加上在<em>分配过程中减去的值</em> <sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>
+但是最不容易出错的方式是将基指针的值移动到栈顶指针中 <code>mov   ESP, EBP</code>
 这是因为基指针的值永远是<em>在即将分配局部变量前</em>的栈顶指针的值</li>
-<li>在即将返回前，使用 <code>pop</code> 指令恢复先前保存在栈中的旧的 EBP 的值<br>
+<li>在即将返回前，使用 <code>pop</code> 指令恢复先前保存在栈中的旧的 EBP 的值
 这是属于调用方的 EBP，弹出 EBP 后，此时 ESP 指向返回地址</li>
 <li>最后调用 <code>ret</code> 指令，这个指令会读取 ESP 指向的返回的地址，将其地址存入指令寄存器，在返回后会删除此地址</li>
 </ol>
-<p>注意，被调用者的规则完全分为两半，它们基本上是彼此的镜像<br>
-规则的前半部分适用于子程序的开头，通常被称为定义子程序的序言<br>
+<p>注意，被调用者的规则完全分为两半，它们基本上是彼此的镜像
+规则的前半部分适用于子程序的开头，通常被称为定义子程序的序言
 规则的后半部分适用于子程序的结尾，因此通常被称为定义子程序的结尾。</p>
-<hr class="footnotes-sep">
+<hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>指不能通过赋值的方式修改 <a href="#fnref1" class="footnote-backref">↩︎</a></p>

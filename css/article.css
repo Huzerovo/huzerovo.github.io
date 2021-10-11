@@ -1,0 +1,26 @@
+.main-content {
+    line-height: 1.5;
+}
+
+.main-content>p {
+    padding-left: 1em;
+}
+
+.main-content a {
+    text-decoration: none;
+}
+
+blockquote {
+    border-left: 3px solid gray;
+    background-color: white;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 40px;
+    padding-inline-end: 40px;
+    padding-block-start: 6px;
+    padding-block-end: 6px;
+}
+
+pre code {
+    font-size: large;
+}
