@@ -1,3 +1,10 @@
+/*
+ * 主题布局样式
+ * 整体布局与颜色
+ * 
+ * Created by HuLingOAO
+ */
+
 html {
     height: 100%;
     overflow: auto;
@@ -9,7 +16,6 @@ body {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    background-color: whitesmoke;
 }
 
 /* 主体区域 */
@@ -24,7 +30,6 @@ main {
 
 /* 顶部菜单栏 */
 #topbar {
-    background-color: white;
     position: sticky;
     top: 0;
     width: 100%;
@@ -32,7 +37,7 @@ main {
     z-index: 10;
 }
 
-.topbar-content {
+.topbar-container {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -49,21 +54,11 @@ main {
 
 .topbar-menu-item a {
     display: block;
-    color: #000;
     margin: 0;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-.topbar-menu-item a.active {
-    background-color: black;
-    color: white;
-}
-
-.topbar-menu-item a:hover:not(.active) {
-    background-color: gray;
-    color: white;
-}
 
 /* 仅在文章中显示的按钮 */
 .article-top-bar {
@@ -75,19 +70,12 @@ main {
 .go-to-top,
 .go-back {
     text-decoration: none;
-    color: gray;
     margin: 0 1em;
     padding: 8px 16px;
 }
 
-.go-to-top:hover,
-.go-back:hover {
-    color: black;
-}
-
-
 /* 中间显示区域 */
-.main-content {
+.main-container {
     width: 60%;
 }
 
@@ -133,20 +121,6 @@ main {
     width: 1em;
     height: 1em;
     padding: 1em;
-    color: gray;
-    background-color: whitesmoke;
-}
-
-.page-list .prev:hover,
-.page-list .next:hover,
-.page-number:hover {
-    background-color: white;
-    color: black;
-}
-
-.page-number.current {
-    background-color: gray;
-    color: white;
 }
 
 /* 文章列表 */
@@ -161,14 +135,12 @@ main {
     height: 10em;
     margin: 6px auto;
     padding: 1em 2em;
-    background-color: white;
 }
 
 #article-list .article-list-item a {
     display: block;
     width: 100%;
     height: 100%;
-    color: black;
     text-decoration: none;
     overflow: hidden;
 }
@@ -179,10 +151,6 @@ main {
 
 #article-list .article-list-item a p {
     margin: 0;
-}
-
-#article-list .article-list-item a:hover {
-    color: gray;
 }
 
 /* 页面标题 */
@@ -209,17 +177,7 @@ main {
     width: 100%;
     padding: 4px 8px;
     text-decoration: none;
-    color: black;
 }
-
-.post-tags-list-link:hover,
-.post-categories-list-link:hover,
-.site-tags-list-link:hover,
-.site-categories-list-link:hover {
-    background-color: gray;
-    color: white;
-}
-
 
 /* 标签云 */
 .page-tagcloud a {
@@ -240,22 +198,12 @@ main {
     margin: 0 6px;
 }
 
-.page-archive-item-date {
-    color: gray;
-}
-
 .page-archive-item-link {
     box-sizing: border-box;
     text-decoration: none;
     width: 80%;
     padding: 6px;
     margin-left: 3em;
-    color: black;
-}
-
-.page-archive-item-link:hover {
-    background-color: gray;
-    color: white;
 }
 
 /* 分类页面 */
@@ -278,12 +226,6 @@ main {
     width: 100%;
     padding: 1em 2em;
     text-decoration: none;
-    color: black;
-}
-
-.page-category-list-link:hover {
-    background-color: gray;
-    color: white;
 }
 
 /* 目录设置 */
@@ -305,12 +247,10 @@ main {
     display: block;
     margin: 6px 0;
     text-decoration: none;
-    color: gray;
 }
 
 .toc-link:hover {
     font-size: medium;
-    color: black;
 }
 
 .info-title {
@@ -341,96 +281,5 @@ main {
 .inline-list-post-tags-list-link,
 .inline-list-post-categories-list-link {
     box-sizing: border-box;
-    padding: 0 6px;
-    color: gray;
-}
-
-.inline-list-post-tags-list-link:hover,
-.inline-list-post-categories-list-link:hover {
-    color: black;
-}
-
-/* 主体显示部分 */
-@media screen and (max-width: 1200px) {
-    .left-sidebar {
-        width: 20%;
-    }
-
-    .right-sidebar {
-        display: none;
-    }
-
-    .main-content {
-        width: 80%;
-    }
-
-    .inline-list {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    main {
-        width: 100%;
-    }
-
-    .left-sidebar,
-    .right-sidebar {
-        display: none;
-    }
-
-    .main-content {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    main {
-        width: 100%;
-    }
-
-    .left-sidebar,
-    .right-sidebar {
-        display: none;
-    }
-
-    .main-content {
-        width: 90%;
-    }
-}
-
-/* 顶部栏显示 */
-@media screen and (max-width: 800px) {
-    .topbar-content {
-        width: 100%;
-    }
-
-    .topbar-menu {
-        margin: 0;
-    }
-
-    .inline-list {
-        display: block;
-    }
-
-    .article-top-bar {
-        justify-content: space-between;
-        margin: 0;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .topbar-content {
-        flex-direction: column;
-    }
-
-    .topbar-menu {
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .topbar-menu-item a {
-        padding: 2vw 3vw;
-    }
+    padding: 6px;
 }

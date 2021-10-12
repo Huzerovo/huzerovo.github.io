@@ -1,0 +1,87 @@
+/*
+ * 响应式布局样式
+ * 不同屏幕大小的显示布局
+ *
+ * Created by HuLingOAO
+ */
+
+/* 主体显示部分 */
+@media screen and (max-width: 1200px) {
+    .left-sidebar {
+        width: 20%;
+    }
+
+    .right-sidebar {
+        display: none;
+    }
+
+    .main-container {
+        width: 80%;
+    }
+
+    .inline-list {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 100%;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        display: none;
+    }
+
+    .main-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        width: 100%;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        display: none;
+    }
+
+    .main-container {
+        width: 90%;
+    }
+}
+
+/* 顶部栏显示 */
+@media screen and (max-width: 800px) {
+    .topbar-container {
+        width: 100%;
+    }
+
+    .topbar-menu {
+        margin: 0;
+    }
+
+    .article-top-bar {
+        justify-content: space-between;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .topbar-container {
+        flex-direction: column;
+    }
+
+    .topbar-menu {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .topbar-menu-item a {
+        padding: 2vw 3vw;
+    }
+}

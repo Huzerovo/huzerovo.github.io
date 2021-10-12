@@ -1,0 +1,172 @@
+/*
+ * 主题颜色
+ * light 样式
+ *
+ * Created by HuLingOAO
+ */
+
+/* 主体 */
+body {
+    background-color: whitesmoke;
+}
+
+/* 顶部栏 */
+#topbar {
+    background-color: white;
+}
+
+.topbar-menu-item a {
+    color: black;
+}
+
+.topbar-menu-item a.active {
+    background-color: black;
+    color: white;
+}
+
+.topbar-menu-item a:hover:not(.active) {
+    background-color: gray;
+    color: white;
+}
+
+.go-to-top,
+.go-back {
+    color: gray;
+}
+
+.go-to-top:hover,
+.go-back:hover {
+    color: black;
+}
+
+/* 分页 */
+.space,
+.page-list .prev,
+.page-list .next,
+.page-number {
+    color: gray;
+    background-color: whitesmoke;
+}
+
+.page-list .prev:hover,
+.page-list .next:hover,
+.page-number:hover {
+    background-color: white;
+    color: black;
+}
+
+.page-number.current {
+    background-color: gray;
+    color: white;
+}
+
+/* 文章列表 */
+#article-list .article-list-item {
+    background-color: white;
+}
+
+#article-list .article-list-item a {
+    color: black;
+}
+
+#article-list .article-list-item a:hover {
+    color: gray;
+}
+
+.post-tags-list-link,
+.post-categories-list-link,
+.site-tags-list-link,
+.site-categories-list-link {
+    color: black;
+}
+
+.post-tags-list-link:hover,
+.post-categories-list-link:hover,
+.site-tags-list-link:hover,
+.site-categories-list-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 归档页 */
+.page-archive-item-date {
+    color: gray;
+}
+
+.page-archive-item-link {
+    color: black;
+}
+
+.page-archive-item-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 分类页 */
+.page-category-list-link {
+    color: black;
+}
+
+.page-category-list-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 标签云 */
+.tagcloud-0 {color: rgb(180, 180, 180);}
+.tagcloud-1 {color: rgb(160, 160, 160);}
+.tagcloud-2 {color: rgb(140, 140, 140);}
+.tagcloud-3 {color: rgb(120, 120, 120);}
+.tagcloud-4 {color: rgb(100, 100, 100);}
+.tagcloud-5 {color: rgb(80, 80, 80);}
+.tagcloud-6 {color: rgb(60, 60, 60);}
+.tagcloud-7 {color: rgb(40, 40, 40);}
+.tagcloud-8 {color: rgb(20, 20, 20);}
+.tagcloud-9 {color: rgb(0, 0, 0);}
+
+/* 目录 */
+.toc-link {
+    color: gray;
+}
+
+.toc-link:hover {
+    color: black;
+}
+
+/* 文章 */
+article.main-container a {
+    color: orchid;
+}
+
+article.main-container a:hover {
+    color: orange;
+}
+
+article.main-container a:visited {
+    color: #9999ff;
+}
+
+blockquote {
+    border-left-color: gray;
+    border-top-color: whitesmoke;
+    background-color: white;
+}
+
+table {
+    background-color: gray;
+}
+
+table thead {
+    background-color: darkgray;
+    color: white;
+}
+
+table tbody {
+    background-color: white;
+    color: black;
+}
+
+code {
+    background-color: white;
+    color: tomato;
+}

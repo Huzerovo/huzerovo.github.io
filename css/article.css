@@ -1,29 +1,28 @@
-.main-content {
+/*
+ * 文章内容样式
+ * 代码 超链接 等样式
+ *
+ * Created by HuLingOAO
+ */
+
+article.main-container {
     line-height: 1.5;
     padding: 0 1em;
 }
 
-.main-content>p {
+article.main-container>p {
     padding-left: 1em;
 }
 
-.main-content a {
+article.main-container a {
     text-decoration: none;
-    color: orchid;
-}
-
-.main-content a:hover {
-    color: orange;
-}
-
-.main-content a:visited {
-    color: #9999ff;
 }
 
 blockquote {
-    border-left: 3px solid gray;
-    border-top: 3px solid whitesmoke;
-    background-color: white;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-top-width: 3px;
+    border-top-style: solid;
     margin-inline-start: 0;
     margin-inline-end: 0;
     padding-inline-start: 40px;
@@ -32,29 +31,17 @@ blockquote {
     padding-block-end: 6px;
 }
 
-table {
-    background-color: gray;
+table td {
+    box-sizing: border-box;
+    padding: 0 6px;
 }
 
-table>thead {
-    background-color: darkgray;
-    color: white;
-}
-
-table>tbody {
-    background-color: white;
-    color: black;
-}
-
-table td,
 table th {
     box-sizing: border-box;
-    padding: 0 3px;
+    padding: 0 9px;
 }
 
 code {
     font-size: large;
     padding: 0 3px;
-    background-color: white;
-    color: tomato;
 }
