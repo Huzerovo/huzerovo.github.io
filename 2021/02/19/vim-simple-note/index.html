@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title> HuLingOAO </title>
 
     
@@ -63,13 +64,23 @@
 <main>
     <div class="left-sidebar">
         
-            <p style="text-align: center; font-weight: bold;">目录</p>
+            <p class="info-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-text">简单介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-text">移动光标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91"><span class="toc-text">文本编辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%B8%8E%E9%80%80%E5%87%BA"><span class="toc-text">保存与退出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9"><span class="toc-text">查看帮助</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">普通模式下的命令操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%89%E9%94%AE%E5%91%BD%E4%BB%A4"><span class="toc-text">常用按键命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="toc-text">删除类命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="toc-text">替换类命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="toc-text">搜索类命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="toc-text">跳转类命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-text">命令行模式简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9vim%E8%BF%9B%E8%A1%8C%E8%AE%BE%E7%BD%AE"><span class="toc-text">对vim进行设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">运行外部命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E8%87%B3%E5%A4%96%E9%83%A8-shell"><span class="toc-text">切换至外部 shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%AA%97%E5%8F%A3"><span class="toc-text">多窗口</span></a></li></ol></li></ol>
         
     </div>
 
     <article class="main-content">
         <h1 style="text-align: center;" id="top-title">Vim 简单笔记</h1>
+        <div class="inline-list">
+        
+            <p class="inline-list-title">分类</p>
+            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+            
+        
+            <p class="inline-list-title">标签</p>
+            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li></ul>
+        
+        </div>
         <blockquote>
 <p>总结自 vim 使用向导程序 <code>vimtutor</code></p>
 </blockquote>
@@ -508,17 +519,19 @@
 
     <div class="right-sidebar">
         
-            <p style="text-align: center; font-weight: bold;">标签</p>
+            <p class="info-title">标签</p>
 
 
-<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li></ul>
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li></ul>
 
         
         
-            <p style="text-align: center; font-weight: bold;">分类</p>
+            <p class="info-title">分类</p>
 
 
-<ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
 
         
     </div>

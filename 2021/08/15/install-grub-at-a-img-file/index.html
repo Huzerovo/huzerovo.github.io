@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title> HuLingOAO </title>
 
     
@@ -63,13 +64,23 @@
 <main>
     <div class="left-sidebar">
         
-            <p style="text-align: center; font-weight: bold;">目录</p>
+            <p class="info-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-text">使用 dd 创建一个映像文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"><span class="toc-text">在 os.img 上创建分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-gdisk"><span class="toc-text">使用 gdisk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-fdisk"><span class="toc-text">使用 fdisk</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"><span class="toc-text">将 os.img 挂载为 loop 设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-text">格式化并挂载分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-grub"><span class="toc-text">安装 Grub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87"><span class="toc-text">卸载设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
         
     </div>
 
     <article class="main-content">
         <h1 style="text-align: center;" id="top-title">在磁盘映像文件上安装 Grub 2</h1>
+        <div class="inline-list">
+        
+            <p class="inline-list-title">分类</p>
+            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+            
+        
+            <p class="inline-list-title">标签</p>
+            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+        
+        </div>
         <blockquote>
 <p>操作环境为 Arch Linux</p>
 </blockquote>
@@ -273,17 +284,19 @@ $ sudo losetup -d /dev/loop0
 
     <div class="right-sidebar">
         
-            <p style="text-align: center; font-weight: bold;">标签</p>
+            <p class="info-title">标签</p>
 
 
-<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
 
         
         
-            <p style="text-align: center; font-weight: bold;">分类</p>
+            <p class="info-title">分类</p>
 
 
-<ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
 
         
     </div>
