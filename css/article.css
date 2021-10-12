@@ -1,4 +1,4 @@
-article.main-content {
+.main-content {
     line-height: 1.5;
     padding: 0 1em;
 }
@@ -9,10 +9,20 @@ article.main-content {
 
 .main-content a {
     text-decoration: none;
+    color: orchid;
+}
+
+.main-content a:hover {
+    color: orange;
+}
+
+.main-content a:visited {
+    color: #9999ff;
 }
 
 blockquote {
     border-left: 3px solid gray;
+    border-top: 3px solid whitesmoke;
     background-color: white;
     margin-inline-start: 0;
     margin-inline-end: 0;
@@ -22,6 +32,29 @@ blockquote {
     padding-block-end: 6px;
 }
 
-pre code {
+table {
+    background-color: gray;
+}
+
+table>thead {
+    background-color: darkgray;
+    color: white;
+}
+
+table>tbody {
+    background-color: white;
+    color: black;
+}
+
+table td,
+table th {
+    box-sizing: border-box;
+    padding: 0 3px;
+}
+
+code {
     font-size: large;
+    padding: 0 3px;
+    background-color: white;
+    color: tomato;
 }

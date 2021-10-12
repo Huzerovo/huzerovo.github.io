@@ -119,9 +119,11 @@ main {
 
 .page-list {
     display: flex;
+    flex-wrap: wrap;
     margin: 0 auto;
 }
 
+.space,
 .page-list .prev,
 .page-list .next,
 .page-number {
@@ -131,6 +133,7 @@ main {
     width: 1em;
     height: 1em;
     padding: 1em;
+    color: gray;
     background-color: whitesmoke;
 }
 
@@ -138,6 +141,7 @@ main {
 .page-list .next:hover,
 .page-number:hover {
     background-color: white;
+    color: black;
 }
 
 .page-number.current {
