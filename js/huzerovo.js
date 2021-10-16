@@ -30,10 +30,11 @@ function switchTheme() {
 }
 
 function setTheme() {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        localStorage.setItem("currentTheme", switchToDarkMode());
-    }
     if (localStorage.getItem("currentTheme") === null) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            localStorage.setItem("currentTheme", switchToDarkMode());
+            return;
+        }
         localStorage.setItem("currentTheme", "light");
         let root = document.getElementById("root");
         root.setAttribute("class", "light");
