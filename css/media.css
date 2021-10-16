@@ -6,9 +6,15 @@
  */
 
 /* 主体显示部分 */
+@media screen and (max-width: 1300px) {
+    main {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .left-sidebar {
-        width: 20%;
+        width: 30%;
     }
 
     .right-sidebar {
@@ -16,7 +22,7 @@
     }
 
     .main-container {
-        width: 80%;
+        width: 70%;
     }
 
     .inline-list {
@@ -29,59 +35,33 @@
         width: 100%;
     }
 
-    .left-sidebar,
-    .right-sidebar {
+    .left-sidebar {
         display: none;
-    }
-
-    .main-container {
-        width: 80%;
     }
 }
 
 @media screen and (max-width: 800px) {
-    main {
-        width: 100%;
-    }
-
-    .left-sidebar,
-    .right-sidebar {
-        display: none;
-    }
-
     .main-container {
         width: 90%;
     }
 }
 
-/* 顶部栏显示 */
+/* 导航栏显示 */
 @media screen and (max-width: 800px) {
     .topbar-container {
         width: 100%;
-    }
-
-    .topbar-menu {
-        margin: 0;
-    }
-
-    .article-top-bar {
-        justify-content: space-between;
-        margin: 0;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .topbar-container {
-        flex-direction: column;
-    }
-
-    .topbar-menu {
         justify-content: center;
     }
-}
 
-@media screen and (max-width: 320px) {
-    .topbar-menu-item a {
-        padding: 2vw 3vw;
+    #side-nav {
+        display: block;
+    }
+    
+    .topbar-menu {
+        display: none;
+    }
+
+    .side-menu-button {
+        display: unset;
     }
 }

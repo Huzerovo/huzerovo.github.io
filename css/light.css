@@ -1,172 +1,190 @@
 /*
- * 主题颜色
- * light 样式
+ * 主题颜色 Light 样式
  *
  * Created by HuLingOAO
  */
 
 /* 主体 */
-body {
+.light body {
     background-color: whitesmoke;
 }
 
 /* 顶部栏 */
-#topbar {
+.light #topbar {
     background-color: white;
 }
 
-.topbar-menu-item a {
+.light .side-menu-item a,
+.light .topbar-menu-item a {
     color: black;
 }
 
-.topbar-menu-item a.active {
+.light .side-menu-item a.active,
+.light .topbar-menu-item a.active {
     background-color: black;
     color: white;
 }
 
-.topbar-menu-item a:hover:not(.active) {
+.light .side-menu-item a:hover:not(.active),
+.light .topbar-menu-item a:hover:not(.active) {
     background-color: gray;
     color: white;
 }
 
-.go-to-top,
-.go-back {
+.light .switch-theme-button,
+.light .side-menu-button,
+.light .go-to-top,
+.light .go-back {
     color: gray;
 }
 
-.go-to-top:hover,
-.go-back:hover {
+.light .switch-theme-button:hover,
+.light .side-menu-button:hover,
+.light .go-to-top:hover,
+.light .go-back:hover {
     color: black;
 }
 
+.light #side-nav {
+    background-color: rgba(240, 240, 240, 0.9);
+}
+
 /* 分页 */
-.space,
-.page-list .prev,
-.page-list .next,
-.page-number {
+.light .space,
+.light .page-list .prev,
+.light .page-list .next,
+.light .page-number {
     color: gray;
     background-color: whitesmoke;
 }
 
-.page-list .prev:hover,
-.page-list .next:hover,
-.page-number:hover {
+.light .page-list .prev:hover,
+.light .page-list .next:hover,
+.light .page-number:hover {
     background-color: white;
     color: black;
 }
 
-.page-number.current {
+.light .page-number.current {
     background-color: gray;
     color: white;
 }
 
 /* 文章列表 */
-#article-list .article-list-item {
+.light #article-list .article-list-item {
     background-color: white;
 }
 
-#article-list .article-list-item a {
+.light #article-list .article-list-item a {
     color: black;
 }
 
-#article-list .article-list-item a:hover {
+.light #article-list .article-list-item a:hover {
     color: gray;
 }
 
-.post-tags-list-link,
-.post-categories-list-link,
-.site-tags-list-link,
-.site-categories-list-link {
+.light .post-tags-list-link,
+.light .post-categories-list-link,
+.light .site-tags-list-link,
+.light .site-categories-list-link {
     color: black;
 }
 
-.post-tags-list-link:hover,
-.post-categories-list-link:hover,
-.site-tags-list-link:hover,
-.site-categories-list-link:hover {
+.light .post-tags-list-link:hover,
+.light .post-categories-list-link:hover,
+.light .site-tags-list-link:hover,
+.light .site-categories-list-link:hover {
     background-color: gray;
     color: white;
 }
 
 /* 归档页 */
-.page-archive-item-date {
+.light .page-archive-item-date {
     color: gray;
 }
 
-.page-archive-item-link {
+.light .page-archive-item-link {
     color: black;
 }
 
-.page-archive-item-link:hover {
+.light .page-archive-item-link:hover {
     background-color: gray;
     color: white;
 }
 
 /* 分类页 */
-.page-category-list-link {
+.light .page-category-list-link {
     color: black;
 }
 
-.page-category-list-link:hover {
+.light .page-category-list-link:hover {
     background-color: gray;
     color: white;
 }
 
 /* 标签云 */
-.tagcloud-0 {color: rgb(180, 180, 180);}
-.tagcloud-1 {color: rgb(160, 160, 160);}
-.tagcloud-2 {color: rgb(140, 140, 140);}
-.tagcloud-3 {color: rgb(120, 120, 120);}
-.tagcloud-4 {color: rgb(100, 100, 100);}
-.tagcloud-5 {color: rgb(80, 80, 80);}
-.tagcloud-6 {color: rgb(60, 60, 60);}
-.tagcloud-7 {color: rgb(40, 40, 40);}
-.tagcloud-8 {color: rgb(20, 20, 20);}
-.tagcloud-9 {color: rgb(0, 0, 0);}
+.light .tagcloud-0 {color: rgb(180, 180, 180);}
+.light .tagcloud-1 {color: rgb(160, 160, 160);}
+.light .tagcloud-2 {color: rgb(140, 140, 140);}
+.light .tagcloud-3 {color: rgb(120, 120, 120);}
+.light .tagcloud-4 {color: rgb(100, 100, 100);}
+.light .tagcloud-5 {color: rgb(80, 80, 80);}
+.light .tagcloud-6 {color: rgb(60, 60, 60);}
+.light .tagcloud-7 {color: rgb(40, 40, 40);}
+.light .tagcloud-8 {color: rgb(20, 20, 20);}
+.light .tagcloud-9 {color: rgb(0, 0, 0);}
 
 /* 目录 */
-.toc-link {
+.light .toc-link {
     color: gray;
 }
 
-.toc-link:hover {
+.light .toc-link:hover {
     color: black;
 }
 
 /* 文章 */
-article.main-container a {
+.light article.main-container a {
     color: orchid;
 }
 
-article.main-container a:hover {
+.light article.main-container a:hover {
     color: orange;
 }
 
-article.main-container a:visited {
+.light article.main-container a:visited {
     color: #9999ff;
 }
 
-blockquote {
-    border-left-color: gray;
+.light blockquote {
+    border-left-color: lightgray;
     border-top-color: whitesmoke;
     background-color: white;
 }
 
-table {
+.light table {
     background-color: gray;
 }
 
-table thead {
+.light table thead {
     background-color: darkgray;
     color: white;
 }
 
-table tbody {
+.light table tbody {
     background-color: white;
     color: black;
 }
 
-code {
+.light code:not([class*="language"]) {
     background-color: white;
-    color: tomato;
+    color: peru;
+}
+
+.light .footer-link {
+    color: #9999ff;
+}
+
+.light .footer-link:hover {
+    color: #66ccff;
 }

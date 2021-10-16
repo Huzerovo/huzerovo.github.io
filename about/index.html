@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN ">
+<html  id="root" lang="zh-CN ">
 
 <head>
     <meta charset="UTF-8" />
@@ -17,56 +17,112 @@
 <link rel="stylesheet" href="/css/media.css">
 
     
-<link rel="stylesheet" href="/css/light.css">
-
+<script src="/js/huzerovo.js"></script>
 
     
+<link rel="stylesheet" href="/css/light.css">
 
-</head>
+    
+<link rel="stylesheet" href="/css/dark.css">
+
+    
+    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll(); </script>
+    
+    
+
+    <script>
+        let codeStyle = {};
+        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
+        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
+        window.onload = setTheme();
+    </script>
+</head>    
 
 
 <body>
     
-    <div id="topbar">
+    <nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
-            
-            
-                
-                <li class="topbar-menu-item">
-                    <a href="/" title="首页">首页</a>
-                </li>
-                
-            
-                
-                <li class="topbar-menu-item">
-                    <a href="/archives" title="归档">归档</a>
-                </li>
-                
-            
-                
-                <li class="topbar-menu-item">
-                    <a href="/categories" title="分类">分类</a>
-                </li>
-                
-            
-                
-                <li class="topbar-menu-item">
-                    <a href="/tags" title="标签">标签</a>
-                </li>
-                
-            
-                 
-                <li class="topbar-menu-item">
-                    <a href="/about" title="关于我" class="active">关于我</a>
-                </li>
-                
-            
-        </ul>
         
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/" title="首页">首页</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/archives" title="归档">归档</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/categories" title="分类">分类</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/tags" title="标签">标签</a>
+            </li>
+            
+        
+             
+            <li class="topbar-menu-item">
+                <a href="/about" title="关于我" class="active">关于我</a>
+            </li>
+            
+        
+        </ul>
+        <div class="topbar-nav-bar">
+            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
+            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+            <a class="go-back" href="javascript: history.back()">返回</a>
+        </div>
     </div>
-</div>
-
+</nav>
+<aside id="side-nav" class="hidden">
+    <ul class="side-menu">
+    
+    
+        
+        <li class="side-menu-item">
+            <a href="/" title="首页">首页</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/archives" title="归档">归档</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/categories" title="分类">分类</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/tags" title="标签">标签</a>
+        </li>
+        
+    
+         
+        <li class="side-menu-item">
+            <a href="/about" title="关于我" class="active">关于我</a>
+        </li>
+        
+    
+    </ul>
+</aside>
 <main>
     <article class="main-container">
         <h1 class = "page-title">关于我</h1>
@@ -74,39 +130,40 @@
 <p>笔记 flags:</p>
 <p>Raspberry 人脸识别</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9012424"><label class="task-list-item-label" for="task-item-9012424"> 复习 Python</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5800438"><label class="task-list-item-label" for="task-item-5800438"> PWM 相关</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4425375"><label class="task-list-item-label" for="task-item-4425375"> 舵机控制</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6849384"><label class="task-list-item-label" for="task-item-6849384"> opencv 摄像头控制</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7903006"><label class="task-list-item-label" for="task-item-7903006"> Python 网络通讯</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6338688"><label class="task-list-item-label" for="task-item-6338688"> 复习 Python</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-736553"><label class="task-list-item-label" for="task-item-736553"> PWM 相关</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7567185"><label class="task-list-item-label" for="task-item-7567185"> 舵机控制</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4570469"><label class="task-list-item-label" for="task-item-4570469"> opencv 摄像头控制</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8369437"><label class="task-list-item-label" for="task-item-8369437"> Python 网络通讯</label></li>
 </ul>
 <p>学习 flags:</p>
 <p>内核相关</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2884243"><label class="task-list-item-label" for="task-item-2884243"> Inter 汇编</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8083700"><label class="task-list-item-label" for="task-item-8083700"> AMDv8 汇编</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-289072"><label class="task-list-item-label" for="task-item-289072"> 内核相关</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-230538"><label class="task-list-item-label" for="task-item-230538"> Inter 汇编</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8444471"><label class="task-list-item-label" for="task-item-8444471"> AMDv8 汇编</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3114391"><label class="task-list-item-label" for="task-item-3114391"> 内核相关</label></li>
 </ul>
 <p>Android</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1389917"><label class="task-list-item-label" for="task-item-1389917"> 写一个 hello.apk</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5922172"><label class="task-list-item-label" for="task-item-5922172"> 写一个 hello.apk</label></li>
 </ul>
 <p>杂</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9909864"><label class="task-list-item-label" for="task-item-9909864"> 网盘</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-907215"><label class="task-list-item-label" for="task-item-907215"> 媒体中心</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3235206"><label class="task-list-item-label" for="task-item-3235206"> rsync 备份</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9012885"><label class="task-list-item-label" for="task-item-9012885"> 网盘</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2222994"><label class="task-list-item-label" for="task-item-2222994"> 媒体中心</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9683107"><label class="task-list-item-label" for="task-item-9683107"> rsync 备份</label></li>
 </ul>
 
     </article>
 </main>
 
+    <footer>
+        <p> Copyright 2021 @HuLingOAO</p>
+        <p>
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+        </p>
+        <br>
+    </footer>
 </body>
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
 
 </html>

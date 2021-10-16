@@ -5,36 +5,18 @@
  * Created by HuLingOAO
  */
 
-html {
-    height: 100%;
-    overflow: auto;
-}
-
 body {
     height: 100%;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-}
-
-/* 主体区域 */
-main {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    padding: 0 1em;
-    margin: 0 auto;
 }
 
 /* 顶部菜单栏 */
 #topbar {
+    width: 100%;
+    margin: 0;
     position: sticky;
     top: 0;
-    width: 100%;
-    margin-bottom: 1em;
-    z-index: 10;
+    z-index: 5;
 }
 
 .topbar-container {
@@ -53,25 +35,76 @@ main {
 }
 
 .topbar-menu-item a {
+    width: fit-content;
     display: block;
     margin: 0;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-
-/* 仅在文章中显示的按钮 */
-.article-top-bar {
+/* 导航栏 */
+.topbar-nav-bar {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
 }
 
+.switch-theme-button,
+.side-menu-button,
 .go-to-top,
 .go-back {
     text-decoration: none;
-    margin: 0 1em;
-    padding: 8px 16px;
+    padding: 6px 12px;
+}
+
+.side-menu-button {
+    display: none;
+}
+
+/* 侧边导航 */
+#side-nav {
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    transition: 0.3s all;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu-item {
+    width: 100%;
+}
+
+.side-menu-item a {
+    display: block;
+    padding: 8px 16px ;
+    text-decoration: none;
+}
+
+.hidden {
+    left: -100%;
+}
+
+.show {
+    left: 0;
+}
+
+/* 主体区域 */
+main {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    padding: 0 1em;
+    margin: 0 auto;
 }
 
 /* 中间显示区域 */
@@ -179,6 +212,11 @@ main {
     text-decoration: none;
 }
 
+.sidebar-list-title {
+    text-align: center;
+    font-weight: bold;
+}
+
 /* 标签云 */
 .page-tagcloud a {
     display: inline-block;
@@ -253,11 +291,13 @@ main {
     font-size: medium;
 }
 
-.info-title {
-    text-align: center;
-    font-weight: bold;
+/* 文章时间信息 */
+.article-date-info {
+    font-size: small;
+    font-style: italic;
 }
 
+/* 文章内标签 */
 .inline-list {
     display: none;
 }
@@ -282,4 +322,9 @@ main {
 .inline-list-post-categories-list-link {
     box-sizing: border-box;
     padding: 6px;
+}
+
+/* 网站页尾 */
+footer {
+    text-align: center;
 }

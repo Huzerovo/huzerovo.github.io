@@ -12,6 +12,7 @@ article.main-container {
 
 article.main-container>p {
     padding-left: 1em;
+    overflow: auto;
 }
 
 article.main-container a {
@@ -39,6 +40,10 @@ table td {
 table th {
     box-sizing: border-box;
     padding: 0 9px;
+}
+
+img {
+    max-width: 100%;
 }
 
 code {

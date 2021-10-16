@@ -1,0 +1,202 @@
+/*
+ * 主题颜色 Dark 样式
+ *
+ * Created by HuLingOAO
+ */
+
+/* 主体 */
+.dark body {
+    background-color: rgb(50, 50, 50);
+    color: lightgray;
+}
+
+/* 顶部栏 */
+.dark #topbar {
+    background-color: rgb(30, 30, 30);
+}
+
+.dark .side-menu-item a,
+.dark .topbar-menu-item a {
+    color: white;
+}
+
+
+.dark .side-menu-item a.active,
+.dark .topbar-menu-item a.active {
+    background-color: gray;
+    color: white;
+}
+
+.dark .side-menu-item a:hover:not(.active),
+.dark .topbar-menu-item a:hover:not(.active) {
+    background-color: lightgray;
+    color: black;
+}
+
+.dark .switch-theme-button,
+.dark .side-menu-button,
+.dark .go-to-top,
+.dark .go-back {
+    color: lightgray;
+}
+
+.dark #side-nav {
+    background-color: rgba(40, 40, 40, 0.9);
+}
+
+/* 分页 */
+.dark .space,
+.dark .page-list .prev,
+.dark .page-list .next,
+.dark .page-number {
+    background-color: gray;
+    color: black;
+}
+
+.dark .page-list .prev:hover,
+.dark .page-list .next:hover,
+.dark .page-number:hover {
+    background-color: gray;
+    color: white;
+}
+
+.dark .page-number.current {
+    background-color: dimgray;
+    color: black;
+}
+
+/* 文章列表 */
+.dark #article-list .article-list-item {
+    background-color: gray;
+}
+
+.dark #article-list .article-list-item a {
+    color: black;
+}
+
+.dark #article-list .article-list-item a:hover {
+    color: lightgray;
+}
+
+.dark .post-tags-list-link,
+.dark .post-categories-list-link,
+.dark .site-tags-list-link,
+.dark .site-categories-list-link {
+    color: darkgray;
+}
+
+.dark .post-tags-list-link:hover,
+.dark .post-categories-list-link:hover,
+.dark .site-tags-list-link:hover,
+.dark .site-categories-list-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 归档页 */
+.dark .page-archive-item-date {
+    color: gray;
+}
+
+.dark .page-archive-item-link {
+    color: lightgray;
+}
+
+.dark .page-archive-item-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 分类页 */
+.dark .page-category-list-link {
+    color: lightgray;
+}
+
+.dark .page-category-list-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 标签云 */
+.dark .tagcloud-0 {color: rgb(120, 120, 120);}
+.dark .tagcloud-1 {color: rgb(135, 135, 135);}
+.dark .tagcloud-2 {color: rgb(150, 150, 150);}
+.dark .tagcloud-3 {color: rgb(165, 165, 165);}
+.dark .tagcloud-4 {color: rgb(180, 180, 180);}
+.dark .tagcloud-5 {color: rgb(195, 195, 195);}
+.dark .tagcloud-6 {color: rgb(210, 210, 210);}
+.dark .tagcloud-7 {color: rgb(225, 225, 225);}
+.dark .tagcloud-8 {color: rgb(240, 240, 240);}
+.dark .tagcloud-9 {color: rgb(255, 255, 255);}
+
+.dark .tagcloud-0:hover,
+.dark .tagcloud-1:hover,
+.dark .tagcloud-2:hover,
+.dark .tagcloud-3:hover,
+.dark .tagcloud-4:hover,
+.dark .tagcloud-5:hover,
+.dark .tagcloud-6:hover,
+.dark .tagcloud-7:hover,
+.dark .tagcloud-8:hover,
+.dark .tagcloud-9:hover {
+    color: white;
+}
+
+/* 目录 */
+.dark .toc-link {
+    color: lightgray;
+}
+
+.dark .toc-link:hover {
+    color: white;
+}
+
+/* 文章 */
+.dark article.main-container a {
+    color: orchid;
+}
+
+.dark article.main-container a:hover {
+    color: orange;
+}
+
+.dark article.main-container a:visited {
+    color: #9999ff;
+}
+
+.dark blockquote {
+    border-left-color: rgb(150, 150, 150);
+    border-top-color: rgb(50, 50, 50);
+    background-color: dimgray;
+}
+
+.dark table {
+    background-color: black;
+}
+
+.dark table thead {
+    background-color: rgb(80, 80, 80);
+    color: white;
+}
+
+.dark table tbody {
+    background-color: dimgray;
+    color: lightgray;
+}
+
+.dark img {
+    filter: brightness(0.8);
+}
+
+.dark code:not([class*="language"]) {
+    background-color: dimgray;
+    color: azure;
+}
+
+.dark .footer-link {
+    color: #9999ff;
+}
+
+.dark .footer-link:hover {
+    color: #66ccff;
+}
