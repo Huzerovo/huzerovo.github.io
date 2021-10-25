@@ -29,6 +29,17 @@ function switchTheme() {
     }
 }
 
+function switchToMode() {
+	let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	let lightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+	let currentTheme = localStorage.getItem("currentTheme");
+	if (currentTheme === "light" && darkMode) {
+		switchTheme()
+	} else if (currentTheme === "dark" && lightMode) {
+		switchTheme()
+	}
+}
+
 function setTheme() {
     if (localStorage.getItem("currentTheme") === null) {
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {

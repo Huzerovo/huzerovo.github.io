@@ -37,6 +37,7 @@
         codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
         codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
         window.onload = setTheme();
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
     </script>
 </head>    
 
