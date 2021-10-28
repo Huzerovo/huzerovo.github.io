@@ -787,9 +787,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6533207"><label class="task-list-item-label" for="task-item-6533207"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9698081"><label class="task-list-item-label" for="task-item-9698081"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8525705"><label class="task-list-item-label" for="task-item-8525705"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9897828"><label class="task-list-item-label" for="task-item-9897828"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3580261"><label class="task-list-item-label" for="task-item-3580261"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6390578"><label class="task-list-item-label" for="task-item-6390578"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -1575,9 +1575,10 @@ channel 不可随意选择，不同的国家与地区允许使用的信道不同
 <pre><code>#hw_mode=g
 hw_mode=a
 #channel=7
-# 在内核启用 CONFIG_ACS 编译选项后
+# 在内核启 CONFIG_ACS 编译选项后
 # 该选项设置为 0 时会自动选择信道
-channel=0
+# 树莓派似乎不支持......
+channel=149
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
