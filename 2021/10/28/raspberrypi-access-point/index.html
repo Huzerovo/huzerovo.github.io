@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title> HuLingOAO </title>
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/article.css">
+
+    
+<link rel="stylesheet" href="/css/media.css">
+
+    
+<script src="/js/huzerovo.js"></script>
+
+    
+<link rel="stylesheet" href="/css/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark.css">
+
+    
+    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll(); </script>
+    
+    
+
+    <script>
+        let codeStyle = {};
+        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
+        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
+        window.onload = setTheme();
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+    </script>
+</head>    
+
+
+<body>
+    <nav id="topbar">
+    <div class="topbar-container">
+        <ul class="topbar-menu">
+        
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/" title="首页">首页</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/archives" title="归档">归档</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/categories" title="分类">分类</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/tags" title="标签">标签</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/about" title="关于我">关于我</a>
+            </li>
+            
+        
+        </ul>
+        <div class="topbar-nav-bar">
+            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
+            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+            <a class="go-back" href="javascript: history.back()">返回</a>
+        </div>
+    </div>
+</nav>
+<aside id="side-nav" class="hidden">
+    <ul class="side-menu">
+    
+    
+        
+        <li class="side-menu-item">
+            <a href="/" title="首页">首页</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/archives" title="归档">归档</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/categories" title="分类">分类</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/tags" title="标签">标签</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/about" title="关于我">关于我</a>
+        </li>
+        
+    
+    </ul>
+</aside>
+<main>
+    <div class="left-sidebar">
+        
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
+        
+    </div>
+
+    <article class="main-container">
+        <h1 style="text-align: center;" id="top-title">树莓派热点</h1>
+        <div class="article-date-info">
+            <p> 发布: 2021-10-28</p>
+            <p>上次更新: 2021-10-28</p>
+        </div>
+        <div class="inline-list">
+        
+            <p class="inline-list-title">分类</p>
+            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+            
+        
+            <p class="inline-list-title">标签</p>
+            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
+        
+        </div>
+        <blockquote>
+<p>简单介绍如何在树莓派开启热点<br />
+<em>参考自<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
+</blockquote>
+<p>需要的软件列表：</p>
+<ul>
+<li><code>hostapd</code>：用于开启热点</li>
+<li><code>dnsmasq</code>：用于开启DHCP服务与DNS服务</li>
+<li><code>iptables</code>：设置数据包转发规则</li>
+<li><code>netfilter-persistent</code>：将 <code>iptables</code> 设置的规则持久化</li>
+<li><code>iptables-persistent</code>：<code>netfilter-persistent</code> 插件</li>
+</ul>
+<h3 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" id="安装软件">安装软件</h3>
+<p>运行命令</p>
+<pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
+</code></pre>
+<p>等待安装完成</p>
+<h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd">配置hostapd</h3>
+<p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
+<pre><code># 使用的网卡
+interface=wlan0
+# WiFi 名字
+ssid=YOUR_WIFI_NAME
+# 驱动
+driver=nl80211
+# WiFi 频率模式
+hw_mode=g
+# 信道
+channel=7
+# 是否 mac 过滤
+macaddr_acl=0
+# 认证算法
+auth_algs=1
+# 是否广播 SSID
+ignore_broadcast_ssid=0
+# 加密相关
+wpa=2
+wpa_passphrase=YOUR_WIFI_PASSWORD
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+</code></pre>
+<p><strong>警告</strong>:
+channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
+<p>注：上面的配置启用的为 2.4GHz 的WiFi
+如需使用 5GHz 的 WiFi，修改以下配置：</p>
+<pre><code>#hw_mode=g
+hw_mode=a
+#channel=7
+# 在内核启用 CONFIG_ACS 编译选项后
+# 该选项设置为 0 时会自动选择信道
+channel=0
+</code></pre>
+<h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd">配置dhcpcd</h3>
+<p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
+<pre><code># 网卡
+interface=wlan0
+# 网卡地址
+static ip_address=192.168.10.1/24
+# 不要执行这个脚本 
+nohook wpa_supplicant
+</code></pre>
+<h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq">配置dnsmasq</h3>
+<p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
+<pre><code># 为这个网卡开启服务
+interface=wlan0
+# 不要在这个网卡开启服务
+no-dhcp-interface=eth0
+# 本机域
+domain=wlan
+# IP 地址分配范围
+dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
+</code></pre>
+<h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" id="设置数据包转发">设置数据包转发</h3>
+<ol>
+<li>
+<p>允许包转发<br />
+编辑配置文件 <code>/etc/sysctl.conf</code><br />
+将 <code>net.ipv4.ip_forward=1</code> 取消注释</p>
+</li>
+<li>
+<p>设置转发规则
+运行命令</p>
+<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+</code></pre>
+</li>
+<li>
+<p>保存规则
+运行命令</p>
+<pre><code class="language-shell"># netfilter-persistent save
+</code></pre>
+</li>
+</ol>
+<h3 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" id="设置systemd启动服务">设置systemd启动服务</h3>
+<p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
+禁用 <code>wpa_supplicant.service</code></p>
+<pre><code class="language-shell"># systemctl unmask hostapd.service
+# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
+# systemctl disable wpa_supplicant
+</code></pre>
+<h3 id="%E9%87%8D%E5%90%AF" id="重启">重启</h3>
+<p>设置完成后重启</p>
+<pre><code class="language-shell"># reboot
+</code></pre>
+<p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
+<h2 id="%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5" id="参考链接">参考链接</h2>
+<p><a target="_blank" rel="noopener" href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf 设置说明</a><br />
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科：WLAN channel</a></p>
+
+    </article>
+
+    <div class="right-sidebar">
+        
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+
+        
+    </div>
+</main>
+
+    <footer>
+        <p> Copyright 2021 @HuLingOAO</p>
+        <p>
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+        </p>
+        <br>
+    </footer>
+</body>
+
+</html>
