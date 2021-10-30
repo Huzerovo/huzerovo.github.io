@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title> HuLingOAO </title>
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+<link rel="stylesheet" href="/css/article.css">
+
+    
+<link rel="stylesheet" href="/css/media.css">
+
+    
+<script src="/js/huzerovo.js"></script>
+
+    
+<link rel="stylesheet" href="/css/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark.css">
+
+    
+    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll(); </script>
+    
+    
+
+    <script>
+        let codeStyle = {};
+        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
+        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
+        window.onload = setTheme();
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+    </script>
+</head>    
+
+
+<body>
+    <nav id="topbar">
+    <div class="topbar-container">
+        <ul class="topbar-menu">
+        
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/" title="首页">首页</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/archives" title="归档">归档</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/categories" title="分类">分类</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/tags" title="标签">标签</a>
+            </li>
+            
+        
+            
+            <li class="topbar-menu-item">
+                <a href="/about" title="关于我">关于我</a>
+            </li>
+            
+        
+        </ul>
+        <div class="topbar-nav-bar">
+            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
+            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+            <a class="go-back" href="javascript: history.back()">返回</a>
+        </div>
+    </div>
+</nav>
+<aside id="side-nav" class="hidden">
+    <ul class="side-menu">
+    
+    
+        
+        <li class="side-menu-item">
+            <a href="/" title="首页">首页</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/archives" title="归档">归档</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/categories" title="分类">分类</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/tags" title="标签">标签</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/about" title="关于我">关于我</a>
+        </li>
+        
+    
+    </ul>
+</aside>
+<main>
+    <div class="left-sidebar">
+        
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">过拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol>
+        
+    </div>
+
+    <article class="main-container">
+        <h1 style="text-align: center;" id="top-title">欠拟合与过拟合</h1>
+        <div class="article-date-info">
+            <p> 发布: 2021-10-26</p>
+            <p>上次更新: 2021-10-30</p>
+        </div>
+        <div class="inline-list">
+        
+            <p class="inline-list-title">分类</p>
+            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+            
+        
+            <p class="inline-list-title">标签</p>
+            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li></ul>
+        
+        </div>
+        <h2 id="%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88" id="欠拟合与过拟合"><a class="header-anchor" href="#欠拟合与过拟合">¶ </a>欠拟合与过拟合</h2>
+<h3 id="%E6%AC%A0%E6%8B%9F%E5%90%88" id="欠拟合"><a class="header-anchor" href="#欠拟合">¶ </a>欠拟合</h3>
+<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
+<p>问题的原因在于训练时，用于训练的模型不是很好，
+当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
+比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" /></p>
+<h3 id="%E8%BF%87%E6%8B%9F%E5%90%88" id="过拟合"><a class="header-anchor" href="#过拟合">¶ </a>过拟合</h3>
+<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
+但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
+<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
+下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" /></p>
+<p>或许加上原数据之间的连线更能体现：</p>
+<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" /></p>
+<h2 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" id="解决方法"><a class="header-anchor" href="#解决方法">¶ </a>解决方法</h2>
+<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
+非参数学习算法的一个特点是，它的参数数量随训练集的大小而增加<br />
+<strong>局部加权回归算法</strong> 则属于这一类算法<br />
+详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="这篇文章">这篇文章</a></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </article>
+
+    <div class="right-sidebar">
+        
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+
+        
+    </div>
+</main>
+
+    <footer>
+        <p> Copyright 2021 @HuLingOAO</p>
+        <p>
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+        </p>
+        <br>
+    </footer>
+</body>
+
+</html>
