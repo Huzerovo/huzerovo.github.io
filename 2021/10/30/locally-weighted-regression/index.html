@@ -10,6 +10,9 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
+	
+<link rel="stylesheet" href="/css/animation.css">
+
     
 <link rel="stylesheet" href="/css/article.css">
 
@@ -189,7 +192,7 @@ $$
 w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
 $$</p>
 <p>这里将 $e^{x}$ 记作 $\exp{(x)}$ ， $e$ 为 <strong>自然常数</strong></p>
-<p><em>注： $x$ 指需要进行预测的位置，可看作是 $x$ 轴上的一个坐标点</em></p>
+<p>注： $x$ 指需要进行预测的位置，可看作是 $x$ 轴上的一个坐标点</p>
 <p>并且可知<br />
 若 $\mid x^{(i)} - x \mid $ 越小，则有 $ w^{i} \approx 1 $<br />
 若 $\mid x^{(i)} - x \mid $ 越大，则有 $ w^{i} \approx 0 $</p>
@@ -208,7 +211,7 @@ $$</p>
 <p>其中 $\tau$ 被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度<br />
 下图是一个例子：</p>
 <p><img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
-<p><em>注： 上图中的 t 代表 $\tau$</em></p>
+<p>注：上图中的 $t$ 代表 $\tau$</p>
 <h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题">¶ </a>需要注意的问题</h2>
 <p>首先，需要明确指出，局部加权回归 <strong>不能完全避免</strong> 欠拟合与过拟合的问题，
 原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
@@ -254,7 +257,7 @@ $\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指�
 </main>
 
     <footer>
-        <p> Copyright 2021 @HuLingOAO</p>
+        <p> Copyright 2022 @HuLingOAO</p>
         <p>
             Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
         </p>

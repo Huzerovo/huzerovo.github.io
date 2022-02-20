@@ -10,6 +10,9 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
+	
+<link rel="stylesheet" href="/css/animation.css">
+
     
 <link rel="stylesheet" href="/css/article.css">
 
@@ -145,7 +148,7 @@
     <div class="left-sidebar">
         
             <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">PWM 基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87"><span class="toc-text">频率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%A8%E6%9C%9F"><span class="toc-text">周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">频率与周期的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%A0%E7%A9%BA%E6%AF%94"><span class="toc-text">占空比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA"><span class="toc-text">PWM 控制舵机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6"><span class="toc-text">使用 Python 实现 PWM 控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85"><span class="toc-text">导入 GPIO 包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3"><span class="toc-text">初始化 GPIO 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B"><span class="toc-text">创建 PWM 实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">会产生的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">PWM 基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87"><span class="toc-text">频率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%A8%E6%9C%9F"><span class="toc-text">周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">频率与周期的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%A0%E7%A9%BA%E6%AF%94"><span class="toc-text">占空比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA"><span class="toc-text">PWM 控制舵机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6"><span class="toc-text">使用 Python 实现 PWM 控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93"><span class="toc-text">使用 RPi.GPIO 库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3"><span class="toc-text">导入 GPIO 包并初始化 GPIO 接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B"><span class="toc-text">创建 PWM 实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">会产生的问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-pigpio"><span class="toc-text">使用 pigpio</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">导入包并初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pwm-%E8%AE%BE%E7%BD%AE"><span class="toc-text">PWM 设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">优缺点</span></a></li></ol></li></ol></li></ol>
         
     </div>
 
@@ -193,7 +196,8 @@ $$</p>
 <p>$$
 D = t \cdot f \times 100\%
 $$</p>
-<p>一个周期为 $ 20ms $ 的脉冲信号，其中高电平持续时间为 $ 1.5ms $，则占空比为 $ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $</p>
+<p>一个周期为 $ 20ms $ 的脉冲信号，其中高电平持续时间为 $ 1.5ms $，
+则占空比为 $ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $</p>
 <h3 id="pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA" id="PWM-控制舵机"><a class="header-anchor" href="#PWM-控制舵机">¶ </a>PWM 控制舵机</h3>
 <p>使用 PWM 控制舵机时，一般使用频率为 $ 50Hz $ 的 PWM 信号<br />
 在 $ 180^{\circ} $ 的舵机中，一般以 $ 1.5ms $ 的高电平持续时间作为基准<br />
@@ -228,11 +232,12 @@ $$</p>
 <h3 id="%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6" id="使用-Python-实现-PWM-控制"><a class="header-anchor" href="#使用-Python-实现-PWM-控制">¶ </a>使用 Python 实现 PWM 控制</h3>
 <p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s><br />
 可以通过 Python 来对这些 GPIO 接口进行控制</p>
-<h4 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85" id="导入-GPIO-包"><a class="header-anchor" href="#导入-GPIO-包">¶ </a>导入 GPIO 包</h4>
+<h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库">¶ </a>使用 RPi.GPIO 库</h4>
+<p>参考 <a target="_blank" rel="noopener" href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a></p>
+<h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口">¶ </a>导入 GPIO 包并初始化 GPIO 接口</h5>
 <pre><code class="language-python">import RPi.GPIO as GPIO
-</code></pre>
-<h4 id="%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" id="初始化-GPIO-接口"><a class="header-anchor" href="#初始化-GPIO-接口">¶ </a>初始化 GPIO 接口</h4>
-<pre><code class="language-python"># 使用编号 18 的 GPIO 接口
+
+# 使用编号 18 的 GPIO 接口
 pin = 18
 
 # 设置 GPIO 的编号模式，详情参考树莓派官网
@@ -244,7 +249,7 @@ GPIO.setwarnings(False)
 # 初始化接口
 GPIO.setup(pin, GPIO.OUT, initial=False)
 </code></pre>
-<h4 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" id="创建-PWM-实例"><a class="header-anchor" href="#创建-PWM-实例">¶ </a>创建 PWM 实例</h4>
+<h5 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" id="创建-PWM-实例"><a class="header-anchor" href="#创建-PWM-实例">¶ </a>创建 PWM 实例</h5>
 <pre><code class="language-python"># 创建实例
 hz = 50
 p = GPIO.PWM(pin, hz)
@@ -267,19 +272,20 @@ p.stop()
 # 在程序结束时要释放对 GPIO 接口的控制
 GPIO.cleanup()
 </code></pre>
-<h3 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" id="会产生的问题"><a class="header-anchor" href="#会产生的问题">¶ </a>会产生的问题</h3>
-<p>正如前面所说，树莓派上实现的 PWM 抖动很大，尤其是频繁地更改占空比时，会非常不稳定<br />
+<h5 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" id="会产生的问题"><a class="header-anchor" href="#会产生的问题">¶ </a>会产生的问题</h5>
+<p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
+因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
 在使用 <code>p.ChangeDutyCycle(dc)</code> 函数时也可能发生抖动，导致舵机不能转到指定角度<br />
 在 <code>p.start(dc)</code> 后，即使没有任何操作，也仍可能发生抖动<br />
 同时控制多个舵机时，不同接口还会产生干扰</p>
-<h3 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" id="解决方法"><a class="header-anchor" href="#解决方法">¶ </a>解决方法</h3>
+<h5 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" id="解决方法"><a class="header-anchor" href="#解决方法">¶ </a>解决方法</h5>
 <p>一种解决的方法是使用 <code>time</code> 模块中的 <code>sleep()</code> 函数进行延时</p>
 <pre><code class="language-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
-	dc = i * hz * 0.1
-	p.ChangeDutyCycle(dc)
-	sleep(0.5)
+    dc = i * hz * 0.1
+    p.ChangeDutyCycle(dc)
+    sleep(0.5)
 p.stop()
 </code></pre>
 <p>但这种方法并不能解决在空闲时出现的抖动<br />
@@ -288,18 +294,52 @@ p.stop()
 <pre><code class="language-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
-	dc = i * hz * 0.1
-	p.start(dc)
-	sleep(0.5)
-	p.stop()
+    dc = i * hz * 0.1
+    p.start(dc)
+    sleep(0.5)
+    p.stop()
 p.stop()
 </code></pre>
 <p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动</p>
-<p><s>最终解决方案：放弃树莓派的 GPIO，买一个舵机驱动模块</s><br />
-建议在需要对舵机进行精确的控制时再考虑，比如做一个机器人时<br />
-驱动模块能提供有更好的的表现，<s>虽然贵</s><br />
-另外，使用驱动模块并不使用树莓派的 PWM<br />
-一般使用 i2c 协议与树莓派通信</p>
+<p>还有一种方法：使用 pigpio 库</p>
+<h4 id="%E4%BD%BF%E7%94%A8-pigpio" id="使用-pigpio"><a class="header-anchor" href="#使用-pigpio">¶ </a>使用 pigpio</h4>
+<p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
+能显著地提高 PWM 的抗干扰性</p>
+<p>参考 <a target="_blank" rel="noopener" href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
+<h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" id="启动服务"><a class="header-anchor" href="#启动服务">¶ </a>启动服务</h5>
+<p>使用 pigpio 库需要启动 pigpiod 服务</p>
+<pre><code class="language-shell">sudo systemctl start pigpiod.service
+</code></pre>
+<h5 id="%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96" id="导入包并初始化"><a class="header-anchor" href="#导入包并初始化">¶ </a>导入包并初始化</h5>
+<pre><code class="language-python">import pigpio
+
+# 使用编号 18 的接口
+# 注意：使用接口的 BCM 编号
+pin = 18
+
+# 创建连接 pigpio 连接
+pi = pigpio.pi()
+
+# 设置 GPIO 接口输出模式
+pi.set_mode(pin, pigpio.OUTPUT)
+</code></pre>
+<h5 id="pwm-%E8%AE%BE%E7%BD%AE" id="PWM-设置"><a class="header-anchor" href="#PWM-设置">¶ </a>PWM 设置</h5>
+<pre><code class="language-python"># 设置 PWM 频率为 50 Hz
+pi.set_PWM_frequency(pin, 50)
+
+# 设置 PWM 范围 0~100
+# 与占空比相结合，范围 0~100
+pi.set_PWM_range(pin, 100)
+
+# 设置占空比设置为 25 即 25/100 = 1/4
+pi.set_PWM_dutycycle(25)
+
+# 关闭 PWM
+pi.set_PWM_dutycycle(0)
+</code></pre>
+<h5 id="%E4%BC%98%E7%BC%BA%E7%82%B9" id="优缺点"><a class="header-anchor" href="#优缺点">¶ </a>优缺点</h5>
+<p>使用 pigpio 时必须启动 pigpiod 服务，
+但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰</p>
 
     </article>
 
@@ -324,7 +364,7 @@ p.stop()
 </main>
 
     <footer>
-        <p> Copyright 2021 @HuLingOAO</p>
+        <p> Copyright 2022 @HuLingOAO</p>
         <p>
             Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
         </p>

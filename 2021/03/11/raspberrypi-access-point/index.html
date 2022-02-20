@@ -10,6 +10,9 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
+	
+<link rel="stylesheet" href="/css/animation.css">
+
     
 <link rel="stylesheet" href="/css/article.css">
 
@@ -166,7 +169,7 @@
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd"><a class="header-anchor" href="#配置hostapd">¶ </a>配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code># 使用的网卡
+<pre><code class="language-shell"># 使用的网卡
 interface=wlan0
 # WiFi 名字
 ssid=YOUR_WIFI_NAME
@@ -193,7 +196,7 @@ rsn_pairwise=CCMP
 channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
 <p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code>#hw_mode=g
+<pre><code class="language-shell">#hw_mode=g
 hw_mode=a
 #channel=7
 # 在内核启 CONFIG_ACS 编译选项后
@@ -203,7 +206,7 @@ channel=149
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd">¶ </a>配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code># 网卡
+<pre><code class="language-shell"># 网卡
 interface=wlan0
 # 网卡地址
 static ip_address=192.168.10.1/24
@@ -212,7 +215,7 @@ nohook wpa_supplicant
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq">¶ </a>配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code># 为这个网卡开启服务
+<pre><code class="language-shell"># 为这个网卡开启服务
 interface=wlan0
 # 不要在这个网卡开启服务
 no-dhcp-interface=eth0
@@ -280,7 +283,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 </main>
 
     <footer>
-        <p> Copyright 2021 @HuLingOAO</p>
+        <p> Copyright 2022 @HuLingOAO</p>
         <p>
             Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
         </p>
