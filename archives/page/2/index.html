@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,24 +23,29 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -84,12 +89,13 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -125,9 +131,12 @@
         
     
     </ul>
+
+    
 </aside>
+
 <main>
-    <div class = "main-container">
+    <div class = "center-container">
         <h1 class="page-title">归档</h1>
         
         
@@ -135,7 +144,24 @@
             
             
                 
+                <div class="page-archive-year">2022</div>
+            
+            <div class="page-archive-item" >
+                <div class="page-archive-item-date">03-05</div>
+                <a href="/2022/03/05/smali-language/" class="page-archive-item-link">smali 语法</a>
+            </div>
+        
+            
+            
+                
                 <div class="page-archive-year">2021</div>
+            
+            <div class="page-archive-item" >
+                <div class="page-archive-item-date">11-25</div>
+                <a href="/2021/11/25/logistic-regression/" class="page-archive-item-link">逻辑回归</a>
+            </div>
+        
+            
             
             <div class="page-archive-item" >
                 <div class="page-archive-item-date">11-04</div>

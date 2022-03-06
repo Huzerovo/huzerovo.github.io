@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,24 +23,29 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -84,12 +89,15 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
+            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -125,15 +133,33 @@
         
     
     </ul>
+
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
+    
 </aside>
+
 <main>
-    <div class="left-sidebar">
+     <div class="left-sidebar">
         
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+
         
     </div>
-
+    <div class="center-container">
     <article class="main-container">
         <h1 style="text-align: center;" id="top-title">Linux 防火墙</h1>
         <div class="article-date-info">
@@ -307,25 +333,15 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </section>
 
     </article>
-
+    </div>
     <div class="right-sidebar">
         
-            <p class="sidebar-list-title">标签</p>
-
-
-
-<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-
-        
-        
-            <p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
-
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
         
     </div>
+
+
 </main>
 
     <footer>

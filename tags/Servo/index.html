@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,16 +23,21 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
     <script>
     MathJax = {
@@ -55,10 +60,10 @@
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -102,12 +107,15 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
+            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -143,7 +151,10 @@
         
     
     </ul>
+
+    
 </aside>
+
 <main>
 <div class="left-sidebar">
     <p class="sidebar-list-title">分类</p>
@@ -154,7 +165,7 @@
 
 </div>
 
-<div class="main-container">
+<div class="center-container">
     <h1 class="page-title">标签: Servo</h1>
     <div class="pager">
     <div class="page-list">
@@ -214,10 +225,11 @@ PWM（Pulse Width Modulation）即脉宽调制
 
 
 
-<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/PWM/" rel="tag">PWM</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Servo/" rel="tag">Servo</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%92%95%E5%92%95%E5%92%95ing/" rel="tag">咕咕咕ing</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/" rel="tag">回归算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/PWM/" rel="tag">PWM</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Servo/" rel="tag">Servo</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/smali/" rel="tag">smali</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/" rel="tag">回归算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
 
 </div>
 </main>
+
     <footer>
         <p> Copyright 2022 @HuLingOAO</p>
         <p>

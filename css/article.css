@@ -2,7 +2,7 @@
  * 文章内容样式
  * 代码 超链接 等样式
  *
- * Created by HuLingOAO
+ * Created by 狐zerOAO
  */
 
 article.main-container {
@@ -32,13 +32,20 @@ blockquote {
     padding-block-end: 6px;
 }
 
+table {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
 table td {
-    box-sizing: border-box;
+    border: 1px solid;
     padding: 0 6px;
 }
 
 table th {
-    box-sizing: border-box;
+    border: 1px solid;
     padding: 0 9px;
 }
 
@@ -49,4 +56,10 @@ img {
 code {
     font-size: large;
     padding: 0 3px;
+}
+
+pre>code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
 }

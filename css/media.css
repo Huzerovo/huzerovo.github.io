@@ -2,27 +2,28 @@
  * 响应式布局样式
  * 不同屏幕大小的显示布局
  *
- * Created by HuLingOAO
+ * Created by 狐zerOAO
  */
 
-/* 主体显示部分 */
+/* 1300px */
 @media screen and (max-width: 1300px) {
     main {
         width: 90%;
     }
 }
 
+/* 1000px */
 @media screen and (max-width: 1000px) {
-    .left-sidebar {
+    .right-sidebar {
         width: 30%;
     }
 
-    .right-sidebar {
+    .left-sidebar {
         display: none;
     }
 
-    .main-container {
-        width: 70%;
+    .center-container {
+        width: 80%;
     }
 
     .inline-list {
@@ -30,19 +31,21 @@
     }
 }
 
+/* 800px */
 @media screen and (max-width: 800px) {
     main {
         width: 100%;
     }
 
-    .left-sidebar {
+    .right-sidebar {
         display: none;
     }
+
 }
 
 @media screen and (max-width: 800px) {
-    .main-container {
-        width: 90%;
+    .center-container {
+        width: 100%;
     }
 }
 
@@ -63,5 +66,9 @@
 
     .side-menu-button {
         display: unset;
+    }
+
+    .switch-sidebar {
+        display: none;
     }
 }

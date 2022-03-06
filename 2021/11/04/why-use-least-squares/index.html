@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,16 +23,21 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
     <script>
     MathJax = {
@@ -55,10 +60,10 @@
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -102,12 +107,15 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
+            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -143,15 +151,33 @@
         
     
     </ul>
+
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE"><span class="toc-text">了解一下误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-text">最大化预测期望等价于最小化误差</span></a></li></ol>
+    
 </aside>
+
 <main>
-    <div class="left-sidebar">
+     <div class="left-sidebar">
         
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE"><span class="toc-text">了解一下误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-text">最大化预测期望等价于最小化误差</span></a></li></ol>
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+
         
     </div>
-
+    <div class="center-container">
     <article class="main-container">
         <h1 style="text-align: center;" id="top-title">为什么使用最小二乘法</h1>
         <div class="article-date-info">
@@ -165,7 +191,7 @@
             
         
             <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E5%92%95%E5%92%95%E5%92%95ing/" rel="tag">咕咕咕ing</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
         
         </div>
         <blockquote>
@@ -252,25 +278,15 @@ $$</p>
 </section>
 
     </article>
-
+    </div>
     <div class="right-sidebar">
         
-            <p class="sidebar-list-title">标签</p>
-
-
-
-<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%92%95%E5%92%95%E5%92%95ing/" rel="tag">咕咕咕ing</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-        
-        
-            <p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
-
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE"><span class="toc-text">了解一下误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-text">最大化预测期望等价于最小化误差</span></a></li></ol>
         
     </div>
+
+
 </main>
 
     <footer>

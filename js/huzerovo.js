@@ -1,69 +1,80 @@
-function switchToDarkMode() {
-    let root = document.getElementById("root");
-    root.setAttribute("class", "dark");
-    let codeStyleCSS = document.getElementById("code-style");
-    if (codeStyleCSS !== null) {
-        codeStyleCSS.setAttribute("href", codeStyle.dark);
-    }
-    return "dark";
-}
-
-function switchToLightMode() {
-    let root = document.getElementById("root");
-    root.setAttribute("class", "light");
-    let codeStyleCSS = document.getElementById("code-style");
-    if (codeStyleCSS !== null) {
-        codeStyleCSS.setAttribute("href", codeStyle.light);
-    }
-    return "light";
-}
-
-function switchTheme() {
-    let currentTheme = localStorage.getItem("currentTheme");
-    if (currentTheme === "light") {
-        localStorage.setItem("currentTheme", switchToDarkMode());
-    } else if (currentTheme === "dark") {
-        localStorage.setItem("currentTheme", switchToLightMode());
+// Coolie 读取写入
+function hasCookie(key) {
+    if (localStorage.getItem(key) === null) {
+        return false;
     } else {
-        console.log("Switch theme style failed");
+        return true;
     }
 }
 
-function switchToMode() {
-	let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-	let lightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
-	let currentTheme = localStorage.getItem("currentTheme");
-	if (currentTheme === "light" && darkMode) {
+function getCookie(key) {
+    return localStorage.getItem(key);
+}
+
+function setCookie(key, value) {
+    localStorage.setItem(key, value)
+}
+
+// 主题切换
+function switchTheme() {
+    if (getCookie('currentTheme') === 'light') {
+        setTheme('dark');
+    } else {
+        setTheme('light')
+    }
+}
+
+function setTheme(theme) {
+    let root = $('#root');
+    if (theme === 'light') {
+        root.addClass('light');
+        root.removeClass('dark');
+        $('#code-style').attr('href', codeStyle.light);
+    } else {
+        root.addClass('dark');
+        root.removeClass('light');
+        $('#code-style').attr('href', codeStyle.dark);
+    }
+    setCookie('currentTheme', theme)
+}
+
+function followTheme() {
+	let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	let lightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+	let theme = getCookie('currentTheme');
+
+	if (theme === 'light' && darkMode) {
 		switchTheme()
-	} else if (currentTheme === "dark" && lightMode) {
-		switchTheme()
+	} else if (theme === 'dark' && lightMode) {
+		switchTheme();
 	}
 }
 
-function setTheme() {
-    if (localStorage.getItem("currentTheme") === null) {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            localStorage.setItem("currentTheme", switchToDarkMode());
-            return;
-        }
-        localStorage.setItem("currentTheme", "light");
-        let root = document.getElementById("root");
-        root.setAttribute("class", "light");
-    } else if (localStorage.getItem("currentTheme") === "dark") {
-        localStorage.setItem("currentTheme", switchToDarkMode());
-    } else if (localStorage.getItem("currentTheme") === "light") {
-        localStorage.setItem("currentTheme", switchToLightMode());
+function initTheme() {
+    if (hasCookie('currentTheme')) {
+        setTheme(getCookie('currentTheme'));
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
     } else {
-        console.log("Unknow Theme:" + localStorage.getItem("currentTheme"));
+        setTheme('light');
+    }
+}
+
+// 导航栏，侧边栏切换
+function hideOrShow(e) {
+    if (e.hasClass('hidden')) {
+        e.removeClass('hidden');
+        e.addClass('show');
+    } else {
+        e.removeClass('show');
+        e.addClass('hidden');
     }
 }
 
 function changeMenu() {
-    let menu = document.getElementById("side-nav");
-    console.log(menu.getAttribute("class"));
-    if (menu.getAttribute("class") === "hidden") {
-        menu.setAttribute("class", "show");
-    } else {
-        menu.setAttribute("class", "hidden");
-    }
+    hideOrShow($('#side-nav'));
+}
+
+function switchSidebar() {
+    hideOrShow($('.left-sidebar, .right-sidebar'));
 }

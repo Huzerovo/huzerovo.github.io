@@ -1,7 +1,7 @@
 /*
  * 主题颜色 Dark 样式
  *
- * Created by HuLingOAO
+ * Created by 狐zerOAO
  */
 
 /* 主体 */
@@ -36,7 +36,7 @@
 .dark .switch-theme-button,
 .dark .side-menu-button,
 .dark .go-to-top,
-.dark .go-back {
+.dark .switch-sidebar {
     color: lightgray;
 }
 
@@ -170,13 +170,9 @@
     background-color: dimgray;
 }
 
-.dark table {
-    background-color: black;
-}
-
 .dark table thead {
     background-color: rgb(80, 80, 80);
-    color: white;
+    color: lightgray;
 }
 
 .dark table tbody {
@@ -191,6 +187,10 @@
 .dark code:not([class*="language"]) {
     background-color: dimgray;
     color: azure;
+}
+
+.dark pre>code:not([class~="hljs"]) {
+    background-color: black;
 }
 
 .dark .footer-link {

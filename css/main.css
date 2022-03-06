@@ -1,8 +1,7 @@
 /*
- * 主题布局样式
- * 整体布局与颜色
- * 
- * Created by HuLingOAO
+ * 主题整体布局样式
+ *
+ * Created by 狐zerOAO
  */
 
 body {
@@ -52,7 +51,7 @@ body {
 .switch-theme-button,
 .side-menu-button,
 .go-to-top,
-.go-back {
+.switch-sidebar {
     text-decoration: none;
     padding: 6px 12px;
 }
@@ -71,6 +70,10 @@ body {
     z-index: 1;
     position: fixed;
     transition: 0.3s all;
+}
+
+#side-nav .toc {
+    padding-left: 2em;
 }
 
 .side-menu {
@@ -92,6 +95,7 @@ body {
 
 .hidden {
     left: -100%;
+    display: none;
 }
 
 .show {
@@ -109,7 +113,7 @@ main {
 }
 
 /* 中间显示区域 */
-.main-container {
+.center-container {
     width: 60%;
 }
 

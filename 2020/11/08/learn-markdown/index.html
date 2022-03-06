@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,24 +23,29 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -84,12 +89,15 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
+            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -125,12 +133,30 @@
         
     
     </ul>
+
+    
 </aside>
+
 <main>
-    <div class="left-sidebar">
+     <div class="left-sidebar">
+        
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+
         
     </div>
-
+    <div class="center-container">
     <article class="main-container">
         <h1 style="text-align: center;" id="top-title">Learn Markdown</h1>
         <div class="article-date-info">
@@ -270,7 +296,7 @@ ___</p>
 取消缩进后还可在行首添加三个空格重新缩进<br />
 列表可以嵌套，“列表嵌套”一节有详细介绍</p>
 <blockquote>
-<p>注:<br />
+<p>注:
 例子中使用 <code>_</code> 代替空格</p>
 </blockquote>
 <h3 id="%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8" id="有序列表"><a class="header-anchor" href="#有序列表">¶ </a>有序列表</h3>
@@ -384,7 +410,7 @@ ___- 子项</p>
 </blockquote>
 <h2 id="%E5%8C%BA%E5%9D%97%E4%B8%8E%E5%88%97%E8%A1%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E5%B5%8C%E5%A5%97" id="区块与列表的相互嵌套"><a class="header-anchor" href="#区块与列表的相互嵌套">¶ </a>区块与列表的相互嵌套</h2>
 <p>区块可以与列表相互嵌套</p>
-<h4 id="%E8%AF%AD%E6%B3%95(%E5%8C%BA%E5%9D%97%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E4%BE%8B%E5%AD%90)%3A" id="语法-区块里嵌套列表例子"><a class="header-anchor" href="#语法-区块里嵌套列表例子">¶ </a>语法(区块里嵌套列表例子):</h4>
+<h3 id="%E8%AF%AD%E6%B3%95(%E5%8C%BA%E5%9D%97%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E4%BE%8B%E5%AD%90)" id="语法-区块里嵌套列表例子"><a class="header-anchor" href="#语法-区块里嵌套列表例子">¶ </a>语法(区块里嵌套列表例子)</h3>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
 <p>&gt; 1. 父级<br />
@@ -402,7 +428,7 @@ ___- 子项</p>
 </li>
 </ol>
 </blockquote>
-<h4 id="%E8%AF%AD%E6%B3%95(%E5%88%97%E8%A1%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%8C%BA%E5%9D%97%E4%BE%8B%E5%AD%90)%3A" id="语法-列表里嵌套区块例子"><a class="header-anchor" href="#语法-列表里嵌套区块例子">¶ </a>语法(列表里嵌套区块例子):</h4>
+<h3 id="%E8%AF%AD%E6%B3%95(%E5%88%97%E8%A1%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%8C%BA%E5%9D%97%E4%BE%8B%E5%AD%90)" id="语法-列表里嵌套区块例子"><a class="header-anchor" href="#语法-列表里嵌套区块例子">¶ </a>语法(列表里嵌套区块例子)</h3>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
 <p>- 第一项<br />
@@ -427,7 +453,7 @@ ___&gt; 区块</p>
 </blockquote>
 <p><strong>效果:</strong></p>
 <blockquote>
-<p>C语言人口函数:<code>main()</code></p>
+<p>C语言入口函数:<code>main()</code></p>
 </blockquote>
 <h3 id="%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97" id="代码区块"><a class="header-anchor" href="#代码区块">¶ </a>代码区块</h3>
 <p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言</p>
@@ -500,7 +526,7 @@ int main()
 </blockquote>
 <p><strong>效果:</strong></p>
 <blockquote>
-<p><img src="https://pixiv.cat/89004882-4.jpg" alt="不愧是我.jpg" /></p>
+<p><img src="id=89004882_p3.jpg" alt="不愧是我.jpg" /></p>
 </blockquote>
 <h2 id="%E8%A1%A8%E6%A0%BC" id="表格"><a class="header-anchor" href="#表格">¶ </a>表格</h2>
 <p>用 <code>|</code> 划分列
@@ -615,9 +641,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2080617"><label class="task-list-item-label" for="task-item-2080617"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7885750"><label class="task-list-item-label" for="task-item-7885750"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2587753"><label class="task-list-item-label" for="task-item-2587753"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3702455"><label class="task-list-item-label" for="task-item-3702455"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6951948"><label class="task-list-item-label" for="task-item-6951948"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7679665"><label class="task-list-item-label" for="task-item-7679665"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -629,25 +655,12 @@ int main()
 </section>
 
     </article>
-
+    </div>
     <div class="right-sidebar">
         
-            <p class="sidebar-list-title">标签</p>
-
-
-
-<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
-
-        
-        
-            <p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
-
-        
     </div>
+
+
 </main>
 
     <footer>

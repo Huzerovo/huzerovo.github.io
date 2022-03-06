@@ -1,7 +1,7 @@
 /*
  * 主题颜色 Light 样式
  *
- * Created by HuLingOAO
+ * Created by 狐zerOAO
  */
 
 /* 主体 */
@@ -34,14 +34,14 @@
 .light .switch-theme-button,
 .light .side-menu-button,
 .light .go-to-top,
-.light .go-back {
+.light .switch-sidebar {
     color: gray;
 }
 
 .light .switch-theme-button:hover,
 .light .side-menu-button:hover,
 .light .go-to-top:hover,
-.light .go-back:hover {
+.light .switch-sidebar:hover {
     color: black;
 }
 
@@ -162,13 +162,9 @@
     background-color: white;
 }
 
-.light table {
-    background-color: gray;
-}
-
 .light table thead {
-    background-color: darkgray;
-    color: white;
+    background-color: lightgray;
+    color: black;
 }
 
 .light table tbody {
@@ -179,6 +175,10 @@
 .light code:not([class*="language"]) {
     background-color: white;
     color: peru;
+}
+
+.light pre>code:not([class~="hljs"]) {
+    background-color: white;
 }
 
 .light .footer-link {

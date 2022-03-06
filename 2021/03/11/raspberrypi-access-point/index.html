@@ -10,7 +10,7 @@
     
 <link rel="stylesheet" href="/css/main.css">
 
-	
+    
 <link rel="stylesheet" href="/css/animation.css">
 
     
@@ -23,24 +23,29 @@
 <script src="/js/huzerovo.js"></script>
 
     
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+    
 <link rel="stylesheet" href="/css/light.css">
 
     
 <link rel="stylesheet" href="/css/dark.css">
 
+
     
-    <link id="code-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
     <script>hljs.highlightAll(); </script>
     
+
     
 
     <script>
         let codeStyle = {};
-        codeStyle.dark = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css";
-        codeStyle.light = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css";
-        window.onload = setTheme();
-		window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchToMode);
+        codeStyle.dark = "/css/github-dark.min.css";
+        codeStyle.light = "/css/github.min.css";
+        window.onload = initTheme();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
 </head>    
 
@@ -84,12 +89,15 @@
         </ul>
         <div class="topbar-nav-bar">
             <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
+            
+            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
+            
             <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
             <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
-            <a class="go-back" href="javascript: history.back()">返回</a>
         </div>
     </div>
 </nav>
+
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
     
@@ -125,15 +133,33 @@
         
     
     </ul>
+
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
+    
 </aside>
+
 <main>
-    <div class="left-sidebar">
+     <div class="left-sidebar">
         
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
+            <p class="sidebar-list-title">标签</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
+
+        
+        
+            <p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+
         
     </div>
-
+    <div class="center-container">
     <article class="main-container">
         <h1 style="text-align: center;" id="top-title">树莓派热点</h1>
         <div class="article-date-info">
@@ -169,7 +195,7 @@
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd"><a class="header-anchor" href="#配置hostapd">¶ </a>配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code class="language-shell"># 使用的网卡
+<pre><code class="language-conf"># 使用的网卡
 interface=wlan0
 # WiFi 名字
 ssid=YOUR_WIFI_NAME
@@ -196,7 +222,7 @@ rsn_pairwise=CCMP
 channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
 <p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code class="language-shell">#hw_mode=g
+<pre><code class="language-conf">#hw_mode=g
 hw_mode=a
 #channel=7
 # 在内核启 CONFIG_ACS 编译选项后
@@ -206,7 +232,7 @@ channel=149
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd">¶ </a>配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code class="language-shell"># 网卡
+<pre><code class="language-conf"># 网卡
 interface=wlan0
 # 网卡地址
 static ip_address=192.168.10.1/24
@@ -215,7 +241,7 @@ nohook wpa_supplicant
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq">¶ </a>配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code class="language-shell"># 为这个网卡开启服务
+<pre><code class="language-conf"># 为这个网卡开启服务
 interface=wlan0
 # 不要在这个网卡开启服务
 no-dhcp-interface=eth0
@@ -261,25 +287,15 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科：WLAN channel</a></p>
 
     </article>
-
+    </div>
     <div class="right-sidebar">
         
-            <p class="sidebar-list-title">标签</p>
-
-
-
-<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
-
-        
-        
-            <p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
-
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
         
     </div>
+
+
 </main>
 
     <footer>

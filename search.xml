@@ -442,7 +442,7 @@ ___</p>
 取消缩进后还可在行首添加三个空格重新缩进<br />
 列表可以嵌套，“列表嵌套”一节有详细介绍</p>
 <blockquote>
-<p>注:<br />
+<p>注:
 例子中使用 <code>_</code> 代替空格</p>
 </blockquote>
 <h3 id="%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8" id="有序列表"><a class="header-anchor" href="#有序列表">¶ </a>有序列表</h3>
@@ -556,7 +556,7 @@ ___- 子项</p>
 </blockquote>
 <h2 id="%E5%8C%BA%E5%9D%97%E4%B8%8E%E5%88%97%E8%A1%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E5%B5%8C%E5%A5%97" id="区块与列表的相互嵌套"><a class="header-anchor" href="#区块与列表的相互嵌套">¶ </a>区块与列表的相互嵌套</h2>
 <p>区块可以与列表相互嵌套</p>
-<h4 id="%E8%AF%AD%E6%B3%95(%E5%8C%BA%E5%9D%97%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E4%BE%8B%E5%AD%90)%3A" id="语法-区块里嵌套列表例子"><a class="header-anchor" href="#语法-区块里嵌套列表例子">¶ </a>语法(区块里嵌套列表例子):</h4>
+<h3 id="%E8%AF%AD%E6%B3%95(%E5%8C%BA%E5%9D%97%E9%87%8C%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E4%BE%8B%E5%AD%90)" id="语法-区块里嵌套列表例子"><a class="header-anchor" href="#语法-区块里嵌套列表例子">¶ </a>语法(区块里嵌套列表例子)</h3>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
 <p>&gt; 1. 父级<br />
@@ -574,7 +574,7 @@ ___- 子项</p>
 </li>
 </ol>
 </blockquote>
-<h4 id="%E8%AF%AD%E6%B3%95(%E5%88%97%E8%A1%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%8C%BA%E5%9D%97%E4%BE%8B%E5%AD%90)%3A" id="语法-列表里嵌套区块例子"><a class="header-anchor" href="#语法-列表里嵌套区块例子">¶ </a>语法(列表里嵌套区块例子):</h4>
+<h3 id="%E8%AF%AD%E6%B3%95(%E5%88%97%E8%A1%A8%E9%87%8C%E5%B5%8C%E5%A5%97%E5%8C%BA%E5%9D%97%E4%BE%8B%E5%AD%90)" id="语法-列表里嵌套区块例子"><a class="header-anchor" href="#语法-列表里嵌套区块例子">¶ </a>语法(列表里嵌套区块例子)</h3>
 <p>注: <code>_</code> 代替空格</p>
 <blockquote>
 <p>- 第一项<br />
@@ -599,7 +599,7 @@ ___&gt; 区块</p>
 </blockquote>
 <p><strong>效果:</strong></p>
 <blockquote>
-<p>C语言人口函数:<code>main()</code></p>
+<p>C语言入口函数:<code>main()</code></p>
 </blockquote>
 <h3 id="%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97" id="代码区块"><a class="header-anchor" href="#代码区块">¶ </a>代码区块</h3>
 <p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言</p>
@@ -672,7 +672,7 @@ int main()
 </blockquote>
 <p><strong>效果:</strong></p>
 <blockquote>
-<p><img src="https://pixiv.cat/89004882-4.jpg" alt="不愧是我.jpg" /></p>
+<p><img src="id=89004882_p3.jpg" alt="不愧是我.jpg" /></p>
 </blockquote>
 <h2 id="%E8%A1%A8%E6%A0%BC" id="表格"><a class="header-anchor" href="#表格">¶ </a>表格</h2>
 <p>用 <code>|</code> 划分列
@@ -787,9 +787,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2080617"><label class="task-list-item-label" for="task-item-2080617"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7885750"><label class="task-list-item-label" for="task-item-7885750"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2587753"><label class="task-list-item-label" for="task-item-2587753"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3702455"><label class="task-list-item-label" for="task-item-3702455"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6951948"><label class="task-list-item-label" for="task-item-6951948"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7679665"><label class="task-list-item-label" for="task-item-7679665"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -1219,7 +1219,6 @@ $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
       <tags>
         <tag>监督学习</tag>
         <tag>线性回归</tag>
-        <tag>咕咕咕ing</tag>
       </tags>
   </entry>
   <entry>
@@ -1468,6 +1467,71 @@ $\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指�
       </tags>
   </entry>
   <entry>
+    <title>逻辑回归</title>
+    <url>/2021/11/25/logistic-regression/</url>
+    <content><![CDATA[<h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足">¶ </a>线性回归的不足</h2>
+<p>当数据的分布情况是这样子的时候，
+线性回归得出的模型效果不好：
+<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
+<p>于是我们希望有数学模型能够描述这种关系，
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}}$</p>
+<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" id="数学原理"><a class="header-anchor" href="#数学原理">¶ </a>数学原理</h2>
+<h3 id="%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0" id="概率函数"><a class="header-anchor" href="#概率函数">¶ </a>概率函数</h3>
+<p>设 $h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}}$ ，
+$P(y = 1 \mid x ; \theta) = h_{\theta}(x)$ ，
+$P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x)$</p>
+<p>当 $y \in {0, 1}$ 时，我们可以这样子优化一下：
+$$
+P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
+$$</p>
+<p>当 $y = 1$ 时，$P(y \mid x; \theta) = h_{\theta}(x)$ ，即 $y = 1$ 的概率<br />
+当 $y = 0$ 时，$P(y \mid x; \theta) = 1 - h_{\theta}(x)$ ，即 $y = 0$ 的概率</p>
+<p>优雅！</p>
+<h3 id="%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" id="进行极大似然估计"><a class="header-anchor" href="#进行极大似然估计">¶ </a>进行极大似然估计</h3>
+<p>设似然函数
+$$
+L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
+$$</p>
+<p>$$
+l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
+$$</p>
+<p>可得<br />
+$$
+\frac{\partial}{\partial \theta_{j}} l(\theta) =
+\sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
+$$</p>
+<h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3" id="梯度上升求解"><a class="header-anchor" href="#梯度上升求解">¶ </a>梯度上升求解</h3>
+<p>咕咕咕ing
+类似梯度下降，当函数具有最大值时，
+使 随机选取的点 $x{0}$ 进行如下更新<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p>$$
+x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
+$$</p>
+<p>即可得到：</p>
+<p>$$
+\theta_{j} = \theta_{j} +
+\partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
+$$</p>
+<h2 id="%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E5%AF%B9%E6%AF%94" id="与线性回归的对比"><a class="header-anchor" href="#与线性回归的对比">¶ </a>与线性回归的对比</h2>
+<p>最后推导得出的公式与线性回归的推导公式十分相似，
+但实际上 $ h_{\theta}(x) $ 表示的函数不再是线性的，
+因此，逻辑回归与线性回归实际上是不相同的</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>详情见文章 <a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PWM 舵机控制</title>
     <url>/2021/03/18/pwm-servo/</url>
     <content><![CDATA[<blockquote>
@@ -1674,7 +1738,7 @@ pi.set_PWM_dutycycle(0)
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" id="配置hostapd"><a class="header-anchor" href="#配置hostapd">¶ </a>配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code class="language-shell"># 使用的网卡
+<pre><code class="language-conf"># 使用的网卡
 interface=wlan0
 # WiFi 名字
 ssid=YOUR_WIFI_NAME
@@ -1701,7 +1765,7 @@ rsn_pairwise=CCMP
 channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
 <p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code class="language-shell">#hw_mode=g
+<pre><code class="language-conf">#hw_mode=g
 hw_mode=a
 #channel=7
 # 在内核启 CONFIG_ACS 编译选项后
@@ -1711,7 +1775,7 @@ channel=149
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd">¶ </a>配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code class="language-shell"># 网卡
+<pre><code class="language-conf"># 网卡
 interface=wlan0
 # 网卡地址
 static ip_address=192.168.10.1/24
@@ -1720,7 +1784,7 @@ nohook wpa_supplicant
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq">¶ </a>配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code class="language-shell"># 为这个网卡开启服务
+<pre><code class="language-conf"># 为这个网卡开启服务
 interface=wlan0
 # 不要在这个网卡开启服务
 no-dhcp-interface=eth0
@@ -1772,6 +1836,200 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
         <tag>hostapd</tag>
         <tag>dnsmasq</tag>
         <tag>Access Point</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>smali 语法</title>
+    <url>/2022/03/05/smali-language/</url>
+    <content><![CDATA[<blockquote>
+<p>记录一下 smali 的基本语法，方便回顾</p>
+</blockquote>
+<h2 id="%E5%89%8D%E8%A8%80" id="前言"><a class="header-anchor" href="#前言">¶ </a>前言</h2>
+<p>smali 语法与汇编语法挺相似的，
+简要做一些笔记，仅仅只是一些简单的语法，
+更多信息请查看文末的链接</p>
+<h2 id="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" id="数据类型"><a class="header-anchor" href="#数据类型">¶ </a>数据类型</h2>
+<p>以下是一些基本数据类型的表示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">char</td>
+</tr>
+<tr>
+<td style="text-align:left">S</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">J</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">V</td>
+<td style="text-align:left">void</td>
+</tr>
+<tr>
+<td style="text-align:left">F</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">L</td>
+<td style="text-align:left">object</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">byte</td>
+</tr>
+<tr>
+<td style="text-align:left">[</td>
+<td style="text-align:left">数组</td>
+<td style="text-align:left">[[</td>
+<td style="text-align:left">二维数组</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<p><code>[I</code> 表示 int[] ，整型数组<br />
+<code>Ljava/lang/String</code> 表示 String 类型，在 Java 中，
+String 为 java.lang 包中的一个对象</p>
+<h2 id="%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6" id="流程控制"><a class="header-anchor" href="#流程控制">¶ </a>流程控制</h2>
+<h3 id="%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD" id="条件判断"><a class="header-anchor" href="#条件判断">¶ </a>条件判断</h3>
+<p>语法如下：<br />
+<code>if-&#123;cond&#125; v1, v0, :cond_0</code></p>
+<p><code>&#123;cond&#125;</code> 是判断条件，在后面会列出<br />
+<code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
+<p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
+<code>if-ge v0, v1, :cond_0</code></p>
+<p>全部条件判断语句：<br />
+<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <code>eq</code>ual<br />
+<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <code>n</code>o <code>e</code>qula<br />
+<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <code>g</code>reater than or <code>e</code>qual<br />
+<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <code>l</code>ess than or <code>e</code>qual<br />
+<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <code>g</code>reater <code>t</code>han<br />
+<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <code>l</code>ess <code>t</code>han</p>
+<h3 id="%E5%BE%AA%E7%8E%AF" id="循环"><a class="header-anchor" href="#循环">¶ </a>循环</h3>
+<p>直接代码解释比较方便，例子参见文末链接</p>
+<pre><code class="language-java">public void smaliWhile() &#123;
+    int a = 0;
+    while(a &lt;= 3) &#123;
+        a++;
+    &#125;
+
+    int b = 0;
+    for(int i = 0;i&lt;3;i++)&#123;
+        b++;
+    &#125;
+
+    int c = 0;
+    do&#123;
+        c++;
+    &#125;while (c &lt;= 3);
+&#125;
+</code></pre>
+<p>对应的 smali 语法</p>
+<pre><code class="language-smali">.method public smaliWhile()V
+    .locals 5
+
+    .line 62
+    // 4 字节常量，值为 0
+    const/4 v0, 0x0
+
+    // 赋值给 a
+    move v1, v0
+
+    .line 63
+    .local v1, &quot;a&quot;:I
+    // goto 标签
+    :goto_0
+    const/4 v2, 0x3
+
+    // if (a &gt; 3), goto cond_0
+    if-gt v1, v2, :cond_0
+
+    .line 64
+    // else v1 = v1 + 1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 68
+    :cond_0
+    const/4 v3, 0x0
+
+    .line 69
+    .local v3, &quot;b&quot;:I
+    move v4, v3
+
+    move v3, v0
+
+    .local v3, &quot;i&quot;:I
+    .local v4, &quot;b&quot;:I
+    :goto_1
+    if-ge v3, v2, :cond_1
+
+    .line 70
+    add-int/lit8 v4, v4, 0x1
+
+    .line 69
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_1
+
+    .line 74
+    .end local v3
+    :cond_1
+    nop
+
+    .line 76
+    .local v0, &quot;c&quot;:I
+    :cond_2
+    add-int/lit8 v0, v0, 0x1
+
+    .line 77
+    if-le v0, v2, :cond_2
+
+    .line 78
+    return-void
+.end method
+</code></pre>
+<p>与汇编语法挺相似的，不多解释<br />
+<s>其实是懒得写笔记</s></p>
+<h2 id="%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89" id="函数定义"><a class="header-anchor" href="#函数定义">¶ </a>函数定义</h2>
+<p>一般定义长这个样子:
+<code>funcName (paraType1paraType2...)returnType</code></p>
+<ul>
+<li><code>funcName</code> 表示函数名</li>
+<li><code>paraType1</code> 和 <code>paraType2</code> 表示传入参数的类型，他们之间<strong>没有</strong>空格</li>
+<li><code>returnType</code> 表示返回值类型</li>
+</ul>
+<p>例子</p>
+<p><code>foo (IF)Z</code> 是 <code>boolean foo (int, float)</code></p>
+<p><code>bar([ILjava/lang/String)Z</code> 是 <code>boolean bar(int[], String)</code></p>
+<h2 id="%E5%86%85%E9%83%A8%E7%B1%BB" id="内部类"><a class="header-anchor" href="#内部类">¶ </a>内部类</h2>
+<p>smali 使用 <code>$</code> 表示内部类，像这样子
+<code>LpackageName/objectName$subObjName</code></p>
+<h2 id="%E5%8F%82%E8%80%83" id="参考"><a class="header-anchor" href="#参考">¶ </a>参考</h2>
+<ol>
+<li><a href="https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735">Smali coding guide for beginners</a></li>
+<li><a href="https://programmer.help/blogs/smali-introduction-manual.html">Smali Introduction Manual</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>smali</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -2083,7 +2341,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <td style="text-align:left">在查找后，跳转到较晚(新)查找到的位置</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>ctrl-w ctrl-w</code></td>
+<td style="text-align:left"><code>ctrl-w</code>x2</td>
 <td style="text-align:left">可切换窗口</td>
 </tr>
 </tbody>
@@ -2354,7 +2612,6 @@ $$</p>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>咕咕咕ing</tag>
         <tag>最小二乘法</tag>
         <tag>概率论</tag>
       </tags>
@@ -2821,7 +3078,7 @@ call    callme              ; 调用 callme
 注意：<br />
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
-<pre><code class="language-none">      栈增长方向
+<pre><code class="language-shell">      栈增长方向
 +------------------+
 | saved ESI        | &lt;--- ESP
 +------------------+
