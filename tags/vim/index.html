@@ -86,15 +86,15 @@
             </li>
             
         
-             
+            
             <li class="topbar-menu-item">
-                <a href="/categories" title="分类" class="active">分类</a>
+                <a href="/categories" title="分类">分类</a>
             </li>
             
         
-            
+             
             <li class="topbar-menu-item">
-                <a href="/tags" title="标签">标签</a>
+                <a href="/tags" title="标签" class="active">标签</a>
             </li>
             
         
@@ -132,15 +132,15 @@
         </li>
         
     
-         
+        
         <li class="side-menu-item">
-            <a href="/categories" title="分类" class="active">分类</a>
+            <a href="/categories" title="分类">分类</a>
         </li>
         
     
-        
+         
         <li class="side-menu-item">
-            <a href="/tags" title="标签">标签</a>
+            <a href="/tags" title="标签" class="active">标签</a>
         </li>
         
     
@@ -156,19 +156,18 @@
 </aside>
 
 <main>
-    <div class="left-sidebar">
-        <p class="sidebar-list-title">分类</p>
+<div class="left-sidebar">
+    <p class="sidebar-list-title">分类</p>
 
 
 
 <ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
 
-    </div>
-    
-    <div class="center-container">
-        <h1 class="page-title">分类: 机器学习</h1>
+</div>
 
-        <div class="pager">
+<div class="center-container">
+    <h1 class="page-title">标签: vim</h1>
+    <div class="pager">
     <div class="page-list">
         
             <span class="extend prev"><</span>
@@ -180,127 +179,30 @@
     </div>
 </div>
 
-            
-        <article id="article-list">
-            
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/11/25/logistic-regression/">
-
-            <h3>逻辑回归</h3>
-            <p>
-                ¶ 线性回归的不足
-当数据的分布情况是这样子的时候，
-线性回归得出的模型效果不好：
-
-于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x...
-            </p>
-        </a>
-    </article>
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/11/04/why-use-least-squares/">
-
-            <h3>为什么使用最小二乘法</h3>
-            <p>
-                
-解释为什么最小二乘法能减小误差
-
-¶ 了解一下误差
-假设预测结果与实际结果存在误差，即
-$$
-\begin{equation}
-\label{eq1}
-...
-            </p>
-        </a>
-    </article>
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/10/30/locally-weighted-regression/">
-
-            <h3>局部加权回归</h3>
-            <p>
-                
-简单介绍局部加权回归算法的思想
-
-¶ 基本思想
-文章 欠拟合与过拟合
-简单介绍了欠拟合与过拟合的相关概念，
-其中我们可以发现，如果选择的模型的阶比较低，...
-            </p>
-        </a>
-    </article>
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/10/26/underfitting-and-overfitting/">
-
-            <h3>欠拟合与过拟合</h3>
-            <p>
-                ¶ 欠拟合与过拟合
-¶ 欠拟合
-欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律
-问题的原因在于训练时，用于训练的模型不是很好，
-当尝试用低阶模型去...
-            </p>
-        </a>
-    </article>
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/09/16/gradient-descent/">
-
-            <h3>梯度下降算法</h3>
-            <p>
-                
-介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理
-
-¶ 步骤
-
-
-随机选取一个初始位置 $x_{0}$
-
-...
-            </p>
-        </a>
-    </article>
-
-
-    
-
-    <article class="article-list-item">
-        <a href="/2021/09/11/linear-regression/">
-
-            <h3>线性回归</h3>
-            <p>
-                
-基于 Andrew NG 机器学习 公开课程 [1]
-线性回归是一种 监督学习 (supervised leaning) 的模型
-简单解释其中的数学原理...
-            </p>
-        </a>
-    </article>
-
-
-
-        </article>
         
-        <div class="pager">
+    <article id="article-list">
+        
+
+
+    
+
+    <article class="article-list-item">
+        <a href="/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/">
+
+            <h3>将init.vim迁移至init.lua</h3>
+            <p>
+                
+本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
+详细的内容可在nvim中使用命令:help lua-guide进...
+            </p>
+        </a>
+    </article>
+
+
+
+    </article>
+
+    <div class="pager">
     <div class="page-list">
         
             <span class="extend prev"><</span>
@@ -312,16 +214,16 @@ $$
     </div>
 </div>
 
-    </div>
-    
-    <div class="right-sidebar">
-        <p class="sidebar-list-title">标签</p>
+</div>
+
+<div class="right-sidebar">
+    <p class="sidebar-list-title">标签</p>
 
 
 
 <ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/PWM/" rel="tag">PWM</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Servo/" rel="tag">Servo</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/neovim/" rel="tag">neovim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/smali/" rel="tag">smali</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/" rel="tag">回归算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
 
-    </div>
+</div>
 </main>
 
     <footer>

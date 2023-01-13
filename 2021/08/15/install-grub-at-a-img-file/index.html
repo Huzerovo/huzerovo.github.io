@@ -322,7 +322,7 @@ The operation has completed successfully.
 对应的 loop 设备为 <code>/dev/loop0p2</code><br />
 如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
 </blockquote>
-<pre><code class="language-shell">sudo mkfs.vfat -L &quot;BOOT&quot; /dev/loop0p2
+<pre><code class="language-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
 </code></pre>
 <p>不出意外的话，格式化很快就能完成<br />
 随后挂载分区</p>
@@ -339,12 +339,12 @@ The operation has completed successfully.
 </blockquote>
 <p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br />
 使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
-<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt
+<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
 </code></pre>
 <p>命令解释：</p>
 <ul>
 <li><code>target=i386-pc</code> 指出安装架构为 i386</li>
-<li><code>boot-directory=/mnt</code> 指出安装到 <code>/mnt</code> 而不是默认的 <code>/boot</code></li>
+<li><code>boot-directory=/mnt/boot</code> 指出安装到 <code>/mnt/boot</code> 而不是默认的 <code>/boot</code></li>
 </ul>
 <p>安装需要 13M 左右的空间<br />
 完成后会提示成功</p>
@@ -389,7 +389,7 @@ sudo losetup -d /dev/loop0
 </main>
 
     <footer>
-        <p> Copyright 2022 @HuLingOAO</p>
+        <p> Copyright 2023 @HuLingOAO</p>
         <p>
             Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
         </p>

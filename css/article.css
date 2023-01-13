@@ -55,7 +55,9 @@ img {
 
 code {
     font-size: large;
-    padding: 0 3px;
+    padding: 0 5px;
+    border-radius: 10px;
+    margin: 0 3px;
 }
 
 pre>code {
