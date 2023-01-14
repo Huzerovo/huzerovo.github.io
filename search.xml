@@ -787,9 +787,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6179104"><label class="task-list-item-label" for="task-item-6179104"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2110622"><label class="task-list-item-label" for="task-item-2110622"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6158606"><label class="task-list-item-label" for="task-item-6158606"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7828603"><label class="task-list-item-label" for="task-item-7828603"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8271410"><label class="task-list-item-label" for="task-item-8271410"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4519999"><label class="task-list-item-label" for="task-item-4519999"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -1587,7 +1587,7 @@ vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, &quot;pumvisable() ? '\&l
 vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, function()
     if vim.fn.pumvisable() == 1 then
         return &quot;&lt;C-n&gt;&quot;
-    elseif check_back_space() == 0 then
+    elseif check_back_space() then
         return &quot;&lt;TAB&gt;&quot;
     end
 end, opts)
@@ -1620,6 +1620,21 @@ vim.fn['plug#end']()
 </code></pre>
 <p>实际上可以封装成一个函数，如<code>Plug('example/plug')</code>，
 这样子看起来挺像原生的vim-plug的方法。owo</p>
+<h2 id="%E5%85%B6%E4%BB%96" id="其他"><a class="header-anchor" href="#其他">¶ </a>其他</h2>
+<p>最后为了能格式化lua的配置文件，使用<a href="https://github.com/sumneko/lua-language-server">sumneko/lua-language-server</a>
+作为LSP服务器，在参考了<a href="https://github.com/neoclide/coc.nvim/wiki/Language-servers#lua">coc的配置例子</a>后，
+使用的配置如下：</p>
+<pre><code class="language-json">&#123;
+  &quot;languageserver&quot;: &#123;
+    &quot;lua&quot;: &#123;
+      &quot;command&quot;: &quot;lua-language-server&quot;,
+      &quot;args&quot;: [],
+      &quot;filetypes&quot;: [&quot;lua&quot;]
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>注</strong>：我是从ArchLinux软件源中安装的，因此<code>lua-language-server</code>可直接调用 =w=</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -1635,6 +1650,7 @@ vim.fn['plug#end']()
         <tag>vim</tag>
         <tag>neovim</tag>
         <tag>配置</tag>
+        <tag>lua</tag>
       </tags>
   </entry>
   <entry>
