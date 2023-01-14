@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html  id="root" lang="zh-CN ">
 
@@ -53,7 +54,8 @@
 
 
 <body>
-    <nav id="topbar">
+    
+<nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
         
@@ -162,23 +164,25 @@
         
     </div>
     <div class="center-container">
-    <article class="main-container">
-        <h1 style="text-align: center;" id="top-title">Linux 防火墙</h1>
-        <div class="article-date-info">
-            <p> 发布: 2021-02-18</p>
-            <p>上次更新: 2021-10-29</p>
-        </div>
-        <div class="inline-list">
-        
-            <p class="inline-list-title">分类</p>
-            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+        <article class="main-container">
+            <h1 style="text-align: center;" id="top-title">Linux 防火墙</h1>
+            <div class="article-date-info">
+                <p> 发布: 2021-02-18</p>
+                <p>上次更新: 2021-10-29</p>
+            </div>
+            <div class="inline-list">
             
-        
-            <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-        
-        </div>
-        <blockquote>
+            
+                <p class="inline-list-title">分类</p>
+                <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                
+            
+            
+                <p class="inline-list-title">标签</p>
+                <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+            
+            </div>
+            <blockquote>
 <p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
 </blockquote>
 <h2 id="netfilter-porject" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject">¶ </a>Netfilter Porject</h2>
@@ -334,16 +338,27 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </ol>
 </section>
 
+        </article>
+        
+<div>
     <div id="gitalk-container"></div>
-    </article>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        
+        let gitalk = new Gitalk({"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"HuzerovoGitalk","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false});
+        gitalk.render("gitalk-container");
+    </script>
+</div>
+
+
+    </div>
     <div class="right-sidebar">
         
             <p class="sidebar-list-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
         
     </div>
-
-
 </main>
 
     <footer>
@@ -355,20 +370,5 @@ The netfilter project is commonly associated with iptables.</em>”</p>
     </footer>
 </body>
 
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
 
-
-const gitalk = new Gitalk({
-  clientID: '8430fc1311285afb9029',
-  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
-  repo: 'HuzerovoGitalk',      // The repository of store comments,
-  owner: 'HuzerOVO',
-  admin: ['HuzerOVO'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-
-gitalk.render('gitalk-container')
-    </script>
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html  id="root" lang="zh-CN ">
 
@@ -71,7 +72,8 @@
 
 
 <body>
-    <nav id="topbar">
+    
+<nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
         
@@ -180,23 +182,25 @@
         
     </div>
     <div class="center-container">
-    <article class="main-container">
-        <h1 style="text-align: center;" id="top-title">线性回归</h1>
-        <div class="article-date-info">
-            <p> 发布: 2021-09-11</p>
-            <p>上次更新: 2021-11-04</p>
-        </div>
-        <div class="inline-list">
-        
-            <p class="inline-list-title">分类</p>
-            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+        <article class="main-container">
+            <h1 style="text-align: center;" id="top-title">线性回归</h1>
+            <div class="article-date-info">
+                <p> 发布: 2021-09-11</p>
+                <p>上次更新: 2021-11-04</p>
+            </div>
+            <div class="inline-list">
             
-        
-            <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li></ul>
-        
-        </div>
-        <blockquote>
+            
+                <p class="inline-list-title">分类</p>
+                <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+                
+            
+            
+                <p class="inline-list-title">标签</p>
+                <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li></ul>
+            
+            </div>
+            <blockquote>
 <p>基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
 线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br />
 简单解释其中的数学原理，方便回顾</p>
@@ -599,16 +603,27 @@ $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
 </ol>
 </section>
 
+        </article>
+        
+<div>
     <div id="gitalk-container"></div>
-    </article>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        
+        let gitalk = new Gitalk({"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"HuzerovoGitalk","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false});
+        gitalk.render("gitalk-container");
+    </script>
+</div>
+
+
+    </div>
     <div class="right-sidebar">
         
             <p class="sidebar-list-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D"><span class="toc-text">定义 “特征” 与 “标签”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB"><span class="toc-text">定义 “特征-标签” 关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98"><span class="toc-text">使用数学语言描述问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE"><span class="toc-text">引入向量进行表达</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98"><span class="toc-text">进一步分析问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">引入数据集与训练集的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-text">引入最小二乘法转化问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="toc-text">为什么使用最小二乘法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-text">解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95"><span class="toc-text">牛顿法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95"><span class="toc-text">解析解法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%AE%9A%E4%B9%89"><span class="toc-text">符号定义</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%9F%A9%E9%98%B5%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E5%87%BD%E6%95%B0"><span class="toc-text">定义矩阵函数的导函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-trace-%E8%BF%90%E7%AE%97"><span class="toc-text">定义 trace 运算</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86"><span class="toc-text">一些定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="toc-text">解析式推导</span></a></li></ol></li></ol></li></ol>
         
     </div>
-
-
 </main>
 
     <footer>
@@ -620,20 +635,5 @@ $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
     </footer>
 </body>
 
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
 
-
-const gitalk = new Gitalk({
-  clientID: '8430fc1311285afb9029',
-  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
-  repo: 'HuzerovoGitalk',      // The repository of store comments,
-  owner: 'HuzerOVO',
-  admin: ['HuzerOVO'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-
-gitalk.render('gitalk-container')
-    </script>
 </html>

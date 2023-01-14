@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html  id="root" lang="zh-CN ">
 
@@ -53,7 +54,8 @@
 
 
 <body>
-    <nav id="topbar">
+    
+<nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
         
@@ -159,23 +161,25 @@
         
     </div>
     <div class="center-container">
-    <article class="main-container">
-        <h1 style="text-align: center;" id="top-title">Learn Markdown</h1>
-        <div class="article-date-info">
-            <p> 发布: 2020-11-08</p>
-            <p>上次更新: 2021-10-29</p>
-        </div>
-        <div class="inline-list">
-        
-            <p class="inline-list-title">分类</p>
-            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+        <article class="main-container">
+            <h1 style="text-align: center;" id="top-title">Learn Markdown</h1>
+            <div class="article-date-info">
+                <p> 发布: 2020-11-08</p>
+                <p>上次更新: 2021-10-29</p>
+            </div>
+            <div class="inline-list">
             
-        
-            <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
-        
-        </div>
-        <h2 id="%E6%A0%87%E9%A2%98" id="标题"><a class="header-anchor" href="#标题">¶ </a>标题</h2>
+            
+                <p class="inline-list-title">分类</p>
+                <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                
+            
+            
+                <p class="inline-list-title">标签</p>
+                <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+            
+            </div>
+            <h2 id="%E6%A0%87%E9%A2%98" id="标题"><a class="header-anchor" href="#标题">¶ </a>标题</h2>
 <p>共有两种方法</p>
 <ol>
 <li>
@@ -643,9 +647,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8858076"><label class="task-list-item-label" for="task-item-8858076"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2095765"><label class="task-list-item-label" for="task-item-2095765"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-542828"><label class="task-list-item-label" for="task-item-542828"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9281041"><label class="task-list-item-label" for="task-item-9281041"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3127515"><label class="task-list-item-label" for="task-item-3127515"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5011166"><label class="task-list-item-label" for="task-item-5011166"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -656,13 +660,24 @@ int main()
 </ol>
 </section>
 
+        </article>
+        
+<div>
     <div id="gitalk-container"></div>
-    </article>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        
+        let gitalk = new Gitalk({"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"HuzerovoGitalk","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false});
+        gitalk.render("gitalk-container");
+    </script>
+</div>
+
+
+    </div>
     <div class="right-sidebar">
         
     </div>
-
-
 </main>
 
     <footer>
@@ -674,20 +689,5 @@ int main()
     </footer>
 </body>
 
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
 
-
-const gitalk = new Gitalk({
-  clientID: '8430fc1311285afb9029',
-  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
-  repo: 'HuzerovoGitalk',      // The repository of store comments,
-  owner: 'HuzerOVO',
-  admin: ['HuzerOVO'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-
-gitalk.render('gitalk-container')
-    </script>
 </html>

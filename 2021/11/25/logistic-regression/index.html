@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html  id="root" lang="zh-CN ">
 
@@ -71,7 +72,8 @@
 
 
 <body>
-    <nav id="topbar">
+    
+<nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
         
@@ -180,23 +182,25 @@
         
     </div>
     <div class="center-container">
-    <article class="main-container">
-        <h1 style="text-align: center;" id="top-title">逻辑回归</h1>
-        <div class="article-date-info">
-            <p> 发布: 2021-11-25</p>
-            <p>上次更新: 2021-11-25</p>
-        </div>
-        <div class="inline-list">
-        
-            <p class="inline-list-title">分类</p>
-            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+        <article class="main-container">
+            <h1 style="text-align: center;" id="top-title">逻辑回归</h1>
+            <div class="article-date-info">
+                <p> 发布: 2021-11-25</p>
+                <p>上次更新: 2021-11-25</p>
+            </div>
+            <div class="inline-list">
             
-        
-            <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-        
-        </div>
-        <h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足">¶ </a>线性回归的不足</h2>
+            
+                <p class="inline-list-title">分类</p>
+                <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+                
+            
+            
+                <p class="inline-list-title">标签</p>
+                <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+            
+            </div>
+            <h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足">¶ </a>线性回归的不足</h2>
 <p>当数据的分布情况是这样子的时候，
 线性回归得出的模型效果不好：
 <img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
@@ -251,16 +255,27 @@ $$</p>
 </ol>
 </section>
 
+        </article>
+        
+<div>
     <div id="gitalk-container"></div>
-    </article>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        
+        let gitalk = new Gitalk({"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"HuzerovoGitalk","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false});
+        gitalk.render("gitalk-container");
+    </script>
+</div>
+
+
+    </div>
     <div class="right-sidebar">
         
             <p class="sidebar-list-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-text">线性回归的不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-text">数学原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0"><span class="toc-text">概率函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-text">进行极大似然估计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3"><span class="toc-text">梯度上升求解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">与线性回归的对比</span></a></li></ol>
         
     </div>
-
-
 </main>
 
     <footer>
@@ -272,20 +287,5 @@ $$</p>
     </footer>
 </body>
 
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
 
-
-const gitalk = new Gitalk({
-  clientID: '8430fc1311285afb9029',
-  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
-  repo: 'HuzerovoGitalk',      // The repository of store comments,
-  owner: 'HuzerOVO',
-  admin: ['HuzerOVO'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-
-gitalk.render('gitalk-container')
-    </script>
 </html>

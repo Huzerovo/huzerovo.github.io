@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html  id="root" lang="zh-CN ">
 
@@ -53,7 +54,8 @@
 
 
 <body>
-    <nav id="topbar">
+    
+<nav id="topbar">
     <div class="topbar-container">
         <ul class="topbar-menu">
         
@@ -162,23 +164,25 @@
         
     </div>
     <div class="center-container">
-    <article class="main-container">
-        <h1 style="text-align: center;" id="top-title">树莓派热点</h1>
-        <div class="article-date-info">
-            <p> 发布: 2021-03-11</p>
-            <p>上次更新: 2021-10-29</p>
-        </div>
-        <div class="inline-list">
-        
-            <p class="inline-list-title">分类</p>
-            <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+        <article class="main-container">
+            <h1 style="text-align: center;" id="top-title">树莓派热点</h1>
+            <div class="article-date-info">
+                <p> 发布: 2021-03-11</p>
+                <p>上次更新: 2021-10-29</p>
+            </div>
+            <div class="inline-list">
             
-        
-            <p class="inline-list-title">标签</p>
-            <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
-        
-        </div>
-        <blockquote>
+            
+                <p class="inline-list-title">分类</p>
+                <ul class="inline-list-post-categories-list"><li class="inline-list-post-categories-list-item"><a class="inline-list-post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+                
+            
+            
+                <p class="inline-list-title">标签</p>
+                <ul class="inline-list-post-tags-list" itemprop="keywords"><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="inline-list-post-tags-list-item"><a class="inline-list-post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
+            
+            </div>
+            <blockquote>
 <p>简单介绍如何在树莓派开启热点<br />
 <em>参考自<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
 </blockquote>
@@ -288,16 +292,27 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <p><a target="_blank" rel="noopener" href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf 设置说明</a><br />
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科：WLAN channel</a></p>
 
+        </article>
+        
+<div>
     <div id="gitalk-container"></div>
-    </article>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        
+        let gitalk = new Gitalk({"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"HuzerovoGitalk","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false});
+        gitalk.render("gitalk-container");
+    </script>
+</div>
+
+
+    </div>
     <div class="right-sidebar">
         
             <p class="sidebar-list-title">目录</p>
             <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
         
     </div>
-
-
 </main>
 
     <footer>
@@ -309,20 +324,5 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
     </footer>
 </body>
 
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
 
-
-const gitalk = new Gitalk({
-  clientID: '8430fc1311285afb9029',
-  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
-  repo: 'HuzerovoGitalk',      // The repository of store comments,
-  owner: 'HuzerOVO',
-  admin: ['HuzerOVO'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-
-gitalk.render('gitalk-container')
-    </script>
 </html>
