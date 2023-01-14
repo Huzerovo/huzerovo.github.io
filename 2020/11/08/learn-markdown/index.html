@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title> HuLingOAO </title>
 
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+    
+    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll(); </script>
+    
+
     
 <link rel="stylesheet" href="/css/main.css">
 
@@ -20,9 +28,6 @@
 <link rel="stylesheet" href="/css/media.css">
 
     
-<script src="/js/huzerovo.js"></script>
-
-    
 <script src="/js/jquery-3.6.0.min.js"></script>
 
     
@@ -31,12 +36,9 @@
     
 <link rel="stylesheet" href="/css/dark.css">
 
+    
+<script src="/js/huzerovo.js"></script>
 
-    
-    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
-    <script src="/js/highlight.min.js"></script>
-    <script>hljs.highlightAll(); </script>
-    
 
     
 
@@ -641,9 +643,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7828603"><label class="task-list-item-label" for="task-item-7828603"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8271410"><label class="task-list-item-label" for="task-item-8271410"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4519999"><label class="task-list-item-label" for="task-item-4519999"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3734289"><label class="task-list-item-label" for="task-item-3734289"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8630319"><label class="task-list-item-label" for="task-item-8630319"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9886625"><label class="task-list-item-label" for="task-item-9886625"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -654,8 +656,8 @@ int main()
 </ol>
 </section>
 
+    <div id="gitalk-container"></div>
     </article>
-    </div>
     <div class="right-sidebar">
         
     </div>
@@ -672,4 +674,20 @@ int main()
     </footer>
 </body>
 
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+
+const gitalk = new Gitalk({
+  clientID: '8430fc1311285afb9029',
+  clientSecret: '6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a',
+  repo: 'HuzerOVO/HuzerovoGitalk',      // The repository of store comments,
+  owner: 'HuzerOVO',
+  admin: ['HuzerOVO'],
+  id: location.pathname,      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+
+gitalk.render('gitalk-container')
+    </script>
 </html>
