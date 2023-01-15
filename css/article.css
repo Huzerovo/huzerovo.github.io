@@ -23,7 +23,7 @@ article.main-container a {
     text-align: center;
 }
 
-blockquote {
+article blockquote {
     border-left-width: 3px;
     border-left-style: solid;
     border-top-width: 3px;
@@ -36,35 +36,35 @@ blockquote {
     padding-block-end: 6px;
 }
 
-table {
+article table {
     width: 90%;
     margin: 0 auto;
     border: 1px solid;
     border-collapse: collapse;
 }
 
-table td {
+article table td {
     border: 1px solid;
     padding: 0 6px;
 }
 
-table th {
+article table th {
     border: 1px solid;
     padding: 0 9px;
 }
 
-img {
+article img {
     max-width: 100%;
 }
 
-code {
+article code {
     font-size: large;
     padding: 0 5px;
     border-radius: 10px;
     margin: 0 3px;
 }
 
-pre>code {
+article pre>code {
     display: block;
     overflow-x: auto;
     padding: 1em;

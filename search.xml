@@ -801,9 +801,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6699208"><label class="task-list-item-label" for="task-item-6699208"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9601353"><label class="task-list-item-label" for="task-item-9601353"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8334998"><label class="task-list-item-label" for="task-item-8334998"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4215632"><label class="task-list-item-label" for="task-item-4215632"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7474928"><label class="task-list-item-label" for="task-item-7474928"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9704951"><label class="task-list-item-label" for="task-item-9704951"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -819,251 +819,6 @@ int main()
       </categories>
       <tags>
         <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 防火墙</title>
-    <url>/2021/02/18/linux-firewall/</url>
-    <content><![CDATA[<blockquote>
-<p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
-</blockquote>
-<h2 id="netfilter-porject" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject">¶ </a>Netfilter Porject</h2>
-<p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
-<blockquote>
-<p>官网<a href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br />
-“<em>The netfilter project is a community-driven collaborative FOSS project that
-provides packet filtering software for the Linux 2.4.x and later kernel series.
-The netfilter project is commonly associated with iptables.</em>”</p>
-</blockquote>
-<h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" id="四表五链概念"><a class="header-anchor" href="#四表五链概念">¶ </a>四表五链概念</h2>
-<blockquote>
-<p>参考 <code>man iptables</code>，以及网络资料</p>
-</blockquote>
-<p>存在 <code>表(tables)</code>、<code>链(chain)</code> 和 <code>规则(rules)</code> 三个层面</p>
-<ul>
-<li><code>表(tables)</code> 指的是不同类型的数据包处理流程，<code>表</code> 中可以存在多个 <code>链</code></li>
-<li><code>链(chain)</code> 中包含若干 <code>规则</code></li>
-<li><code>规则(rules)</code> 规定数据包的处理方式</li>
-</ul>
-<p>系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></p>
-<h3 id="%E5%9B%9B%E8%A1%A8" id="四表"><a class="header-anchor" href="#四表">¶ </a>四表</h3>
-<p>四表用于管理链路规则</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">表名</th>
-<th style="text-align:left">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Filter表</td>
-<td style="text-align:left">过滤数据包</td>
-</tr>
-<tr>
-<td style="text-align:left">NAT表</td>
-<td style="text-align:left">用于网络地址转换</td>
-</tr>
-<tr>
-<td style="text-align:left">Mangle表</td>
-<td style="text-align:left">修改数据包服务类型、TTL、并且可以配置路由实现QOS</td>
-</tr>
-<tr>
-<td style="text-align:left">Raw表</td>
-<td style="text-align:left">决定数据包是否被状态跟踪机制处理</td>
-</tr>
-</tbody>
-</table>
-<h3 id="%E4%BA%94%E9%93%BE" id="五链"><a class="header-anchor" href="#五链">¶ </a>五链</h3>
-<p>五条链用于存放链路规则</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">链名</th>
-<th style="text-align:left">作用对象</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">INPUT链</td>
-<td style="text-align:left">进来的数据包</td>
-</tr>
-<tr>
-<td style="text-align:left">OUTPUT链</td>
-<td style="text-align:left">发出的数据包</td>
-</tr>
-<tr>
-<td style="text-align:left">FORWARD链</td>
-<td style="text-align:left">转发的数据包</td>
-</tr>
-<tr>
-<td style="text-align:left">OREROUTING链</td>
-<td style="text-align:left">作路由选择前的数据包</td>
-</tr>
-<tr>
-<td style="text-align:left">POSTROUNTING链</td>
-<td style="text-align:left">作路由选择后的数据包</td>
-</tr>
-</tbody>
-</table>
-<h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" id="四表五链之间的联系"><a class="header-anchor" href="#四表五链之间的联系">¶ </a>四表五链之间的联系</h3>
-<p>四表里存放的是功能一致的规则，即存放着链<br />
-表中存放的规则如下</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Filter表</th>
-<th style="text-align:left">NAT表</th>
-<th style="text-align:left">Mangle表</th>
-<th style="text-align:left">Raw表</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">INPUT链</td>
-<td style="text-align:left">OUTPUT链</td>
-<td style="text-align:left">INPUT链</td>
-<td style="text-align:left">OUTPUT链</td>
-</tr>
-<tr>
-<td style="text-align:left">OUTPUT链</td>
-<td style="text-align:left">PREROUTING链</td>
-<td style="text-align:left">OUTPUT链</td>
-<td style="text-align:left">PREROUTING链</td>
-</tr>
-<tr>
-<td style="text-align:left">FORWARD链</td>
-<td style="text-align:left">POSTROUTING链</td>
-<td style="text-align:left">FORWARD链</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left">PREROUTING链</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left">POSTROUTING链</td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="%E7%AE%A1%E7%90%86-firewall" id="管理-firewall"><a class="header-anchor" href="#管理-firewall">¶ </a>管理 firewall</h2>
-<p>下面列出的是运用最广泛的防火墙管理软件，以及他们之间的联系</p>
-<ul>
-<li><code>netfilter</code> 是一个 Linux 内核的软件框架<br />
-用于管理网络数据包<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，运行在内核空间</li>
-<li><code>iptables</code> 是运行在用户空间的软件<br />
-通过控制 netfilter 模块来管理网络数据包的处理和转发<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
-<li><code>nftables</code> 是 iptables 的后继者<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
-<li><code>uncomplicated ftrewall(UFW)</code> 的使用更加简单方便<br />
-依赖于 iptables 来管理网络包<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
-<li><code>firewalld</code> 作为 nftables 的前端，并通过其来管理网络包<br />
-也可以使用 iptables<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></li>
-</ul>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Netfilter">维基百科 Netfilter</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Iptables">维基百科 Iptables</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>在 Netfilter 项目官网主页指出: <em>nftables is the successor of iptables</em> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Uncomplicated_Firewalld">维基百科 Uncomplicated Firewall</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn5" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Firewalld">维基百科 Firewalld</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>防火墙</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>局部加权回归</title>
-    <url>/2021/10/30/locally-weighted-regression/</url>
-    <content><![CDATA[<blockquote>
-<p>简单介绍局部加权回归算法的思想</p>
-</blockquote>
-<h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" id="基本思想"><a class="header-anchor" href="#基本思想">¶ </a>基本思想</h2>
-<p>文章 <a href="/2021/10/26/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>
-简单介绍了欠拟合与过拟合的相关概念，
-其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
-但如果过高，则又会出现过拟合的情况</p>
-<p>因此，局部加权回归的思想就是，只关注 <strong>在预测点附近</strong> 的样本点，
-忽略或者减小离预测点较远的样本的影响</p>
-<p>如果把样本局限在预测点的附近，就可以将这些样本点 <strong>近似</strong> 看做是线性的
-（这有点像微分，或者是切线的概念），
-这样就可以使用线性模型进行拟合，而无需考虑模型的阶</p>
-<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" id="数学原理"><a class="header-anchor" href="#数学原理">¶ </a>数学原理</h2>
-<h3 id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC" id="引入权值"><a class="header-anchor" href="#引入权值">¶ </a>引入权值</h3>
-<p>在这个算法中，我们将 <strong>假设函数 (hypotheses)</strong> 设为
-$
-\sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
-$</p>
-<p>其中， $w^{i}$ 为权值<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>且有<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>
-$$
-w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
-$$</p>
-<p>这里将 $e^{x}$ 记作 $\exp{(x)}$ ， $e$ 为 <strong>自然常数</strong></p>
-<p>注： $x$ 指需要进行预测的位置，可看作是 $x$ 轴上的一个坐标点</p>
-<p>并且可知<br />
-若 $\mid x^{(i)} - x \mid $ 越小，则有 $ w^{i} \approx 1 $<br />
-若 $\mid x^{(i)} - x \mid $ 越大，则有 $ w^{i} \approx 0 $</p>
-<p>$w^{i}$ 是一个钟形曲线，下图所示的为
-$
-e^{- \frac{1}{2} (x - 1)^{2}}
-$</p>
-<p><img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
-<p>在这个例子中，离 $x = 1$ 越近，它的权值越大，越远则权值越小，
-于是，离 $x = 1$ 近的点得到重视，而离 $x$ 较远的点的影响被降低</p>
-<h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" id="一般化"><a class="header-anchor" href="#一般化">¶ </a>一般化</h3>
-<p>将权值函数写成更一般的方式：
-$$
-w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
-$$</p>
-<p>其中 $\tau$ 被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度<br />
-下图是一个例子：</p>
-<p><img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
-<p>注：上图中的 $t$ 代表 $\tau$</p>
-<h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题">¶ </a>需要注意的问题</h2>
-<p>首先，需要明确指出，局部加权回归 <strong>不能完全避免</strong> 欠拟合与过拟合的问题，
-原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
-即 $\tau$ 很大，算法实际上仍受到大部分数据的影响，
-但总体上看来，它仍比普通的线性回归更能避免欠拟合与过拟合的问题</p>
-<p>其次，算法实际上 <strong>并没有</strong> 建立一个永久模型<br />
-换句话说，每一次预测，算法都需要重新遍历训练集，
-然后才进行 <strong>加权</strong> 计算，最后给出预测<br />
-这与普通的线性回归不同，在线性回归中，我们得出了 $\theta$ ，
-实际上就得出了一个能用来预测的模型，无须在每次预测时又重新进行训练</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>在<a href="/2021/09/11/linear-regression/" title="线性回归">线性回归</a>一文中提到，
-$\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指的是输入特征的权值，
-而 $w^{i}$ 指的是训练集中不同样本的权值 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>选择这个函数的理由是：根据经验，它具有普遍性（<s>概率论的奇妙之处</s>） <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>回归算法</tag>
-        <tag>算法优化</tag>
       </tags>
   </entry>
   <entry>
@@ -1478,6 +1233,251 @@ $1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
       <tags>
         <tag>监督学习</tag>
         <tag>线性回归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 防火墙</title>
+    <url>/2021/02/18/linux-firewall/</url>
+    <content><![CDATA[<blockquote>
+<p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
+</blockquote>
+<h2 id="netfilter-porject" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject">¶ </a>Netfilter Porject</h2>
+<p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
+<blockquote>
+<p>官网<a href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br />
+“<em>The netfilter project is a community-driven collaborative FOSS project that
+provides packet filtering software for the Linux 2.4.x and later kernel series.
+The netfilter project is commonly associated with iptables.</em>”</p>
+</blockquote>
+<h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" id="四表五链概念"><a class="header-anchor" href="#四表五链概念">¶ </a>四表五链概念</h2>
+<blockquote>
+<p>参考 <code>man iptables</code>，以及网络资料</p>
+</blockquote>
+<p>存在 <code>表(tables)</code>、<code>链(chain)</code> 和 <code>规则(rules)</code> 三个层面</p>
+<ul>
+<li><code>表(tables)</code> 指的是不同类型的数据包处理流程，<code>表</code> 中可以存在多个 <code>链</code></li>
+<li><code>链(chain)</code> 中包含若干 <code>规则</code></li>
+<li><code>规则(rules)</code> 规定数据包的处理方式</li>
+</ul>
+<p>系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></p>
+<h3 id="%E5%9B%9B%E8%A1%A8" id="四表"><a class="header-anchor" href="#四表">¶ </a>四表</h3>
+<p>四表用于管理链路规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表名</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Filter表</td>
+<td style="text-align:left">过滤数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">NAT表</td>
+<td style="text-align:left">用于网络地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">Mangle表</td>
+<td style="text-align:left">修改数据包服务类型、TTL、并且可以配置路由实现QOS</td>
+</tr>
+<tr>
+<td style="text-align:left">Raw表</td>
+<td style="text-align:left">决定数据包是否被状态跟踪机制处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E4%BA%94%E9%93%BE" id="五链"><a class="header-anchor" href="#五链">¶ </a>五链</h3>
+<p>五条链用于存放链路规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">链名</th>
+<th style="text-align:left">作用对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">进来的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">发出的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left">转发的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">OREROUTING链</td>
+<td style="text-align:left">作路由选择前的数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">POSTROUNTING链</td>
+<td style="text-align:left">作路由选择后的数据包</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" id="四表五链之间的联系"><a class="header-anchor" href="#四表五链之间的联系">¶ </a>四表五链之间的联系</h3>
+<p>四表里存放的是功能一致的规则，即存放着链<br />
+表中存放的规则如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Filter表</th>
+<th style="text-align:left">NAT表</th>
+<th style="text-align:left">Mangle表</th>
+<th style="text-align:left">Raw表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">INPUT链</td>
+<td style="text-align:left">OUTPUT链</td>
+</tr>
+<tr>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">PREROUTING链</td>
+<td style="text-align:left">OUTPUT链</td>
+<td style="text-align:left">PREROUTING链</td>
+</tr>
+<tr>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left">POSTROUTING链</td>
+<td style="text-align:left">FORWARD链</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PREROUTING链</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">POSTROUTING链</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E7%AE%A1%E7%90%86-firewall" id="管理-firewall"><a class="header-anchor" href="#管理-firewall">¶ </a>管理 firewall</h2>
+<p>下面列出的是运用最广泛的防火墙管理软件，以及他们之间的联系</p>
+<ul>
+<li><code>netfilter</code> 是一个 Linux 内核的软件框架<br />
+用于管理网络数据包<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，运行在内核空间</li>
+<li><code>iptables</code> 是运行在用户空间的软件<br />
+通过控制 netfilter 模块来管理网络数据包的处理和转发<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
+<li><code>nftables</code> 是 iptables 的后继者<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
+<li><code>uncomplicated ftrewall(UFW)</code> 的使用更加简单方便<br />
+依赖于 iptables 来管理网络包<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
+<li><code>firewalld</code> 作为 nftables 的前端，并通过其来管理网络包<br />
+也可以使用 iptables<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></li>
+</ul>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Netfilter">维基百科 Netfilter</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>参考: <a href="https://zh.wikipedia.org/wiki/Iptables">维基百科 Iptables</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>在 Netfilter 项目官网主页指出: <em>nftables is the successor of iptables</em> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Uncomplicated_Firewalld">维基百科 Uncomplicated Firewall</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>参考: <a href="https://en.wikipedia.org/wiki/Firewalld">维基百科 Firewalld</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>防火墙</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>局部加权回归</title>
+    <url>/2021/10/30/locally-weighted-regression/</url>
+    <content><![CDATA[<blockquote>
+<p>简单介绍局部加权回归算法的思想</p>
+</blockquote>
+<h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" id="基本思想"><a class="header-anchor" href="#基本思想">¶ </a>基本思想</h2>
+<p>文章 <a href="/2021/10/26/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>
+简单介绍了欠拟合与过拟合的相关概念，
+其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
+但如果过高，则又会出现过拟合的情况</p>
+<p>因此，局部加权回归的思想就是，只关注 <strong>在预测点附近</strong> 的样本点，
+忽略或者减小离预测点较远的样本的影响</p>
+<p>如果把样本局限在预测点的附近，就可以将这些样本点 <strong>近似</strong> 看做是线性的
+（这有点像微分，或者是切线的概念），
+这样就可以使用线性模型进行拟合，而无需考虑模型的阶</p>
+<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" id="数学原理"><a class="header-anchor" href="#数学原理">¶ </a>数学原理</h2>
+<h3 id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC" id="引入权值"><a class="header-anchor" href="#引入权值">¶ </a>引入权值</h3>
+<p>在这个算法中，我们将 <strong>假设函数 (hypotheses)</strong> 设为
+$
+\sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
+$</p>
+<p>其中， $w^{i}$ 为权值<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>且有<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>
+$$
+w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
+$$</p>
+<p>这里将 $e^{x}$ 记作 $\exp{(x)}$ ， $e$ 为 <strong>自然常数</strong></p>
+<p>注： $x$ 指需要进行预测的位置，可看作是 $x$ 轴上的一个坐标点</p>
+<p>并且可知<br />
+若 $\mid x^{(i)} - x \mid $ 越小，则有 $ w^{i} \approx 1 $<br />
+若 $\mid x^{(i)} - x \mid $ 越大，则有 $ w^{i} \approx 0 $</p>
+<p>$w^{i}$ 是一个钟形曲线，下图所示的为
+$
+e^{- \frac{1}{2} (x - 1)^{2}}
+$</p>
+<p><img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
+<p>在这个例子中，离 $x = 1$ 越近，它的权值越大，越远则权值越小，
+于是，离 $x = 1$ 近的点得到重视，而离 $x$ 较远的点的影响被降低</p>
+<h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" id="一般化"><a class="header-anchor" href="#一般化">¶ </a>一般化</h3>
+<p>将权值函数写成更一般的方式：
+$$
+w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
+$$</p>
+<p>其中 $\tau$ 被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度<br />
+下图是一个例子：</p>
+<p><img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
+<p>注：上图中的 $t$ 代表 $\tau$</p>
+<h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题">¶ </a>需要注意的问题</h2>
+<p>首先，需要明确指出，局部加权回归 <strong>不能完全避免</strong> 欠拟合与过拟合的问题，
+原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
+即 $\tau$ 很大，算法实际上仍受到大部分数据的影响，
+但总体上看来，它仍比普通的线性回归更能避免欠拟合与过拟合的问题</p>
+<p>其次，算法实际上 <strong>并没有</strong> 建立一个永久模型<br />
+换句话说，每一次预测，算法都需要重新遍历训练集，
+然后才进行 <strong>加权</strong> 计算，最后给出预测<br />
+这与普通的线性回归不同，在线性回归中，我们得出了 $\theta$ ，
+实际上就得出了一个能用来预测的模型，无须在每次预测时又重新进行训练</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>在<a href="/2021/09/11/linear-regression/" title="线性回归">线性回归</a>一文中提到，
+$\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指的是输入特征的权值，
+而 $w^{i}$ 指的是训练集中不同样本的权值 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>选择这个函数的理由是：根据经验，它具有普遍性（<s>概率论的奇妙之处</s>） <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>回归算法</tag>
+        <tag>算法优化</tag>
       </tags>
   </entry>
   <entry>

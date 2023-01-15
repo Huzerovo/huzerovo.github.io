@@ -156,28 +156,28 @@
     color: #9999ff;
 }
 
-.light blockquote {
-    border-left-color: lightgray;
+.light article article blockquote {
+    border-left-color:.light articlegray;
     border-top-color: whitesmoke;
     background-color: white;
 }
 
-.light table thead {
-    background-color: lightgray;
+.light article table thead {
+    background-color:.light articlegray;
     color: black;
 }
 
-.light table tbody {
+.light article table tbody {
     background-color: white;
     color: black;
 }
 
-.light code:not([class*="language"]) {
+.light article code:not([class*="language"]) {
     background-color: white;
     color: peru;
 }
 
-.light pre>code:not([class~="hljs"]) {
+.light article pre>code:not([class~="hljs"]) {
     background-color: white;
 }
 

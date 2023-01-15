@@ -164,32 +164,32 @@
     color: #9999ff;
 }
 
-.dark blockquote {
+.dark article blockquote {
     border-left-color: rgb(150, 150, 150);
     border-top-color: rgb(50, 50, 50);
     background-color: dimgray;
 }
 
-.dark table thead {
+.dark article table thead {
     background-color: rgb(80, 80, 80);
     color: lightgray;
 }
 
-.dark table tbody {
+.dark article table tbody {
     background-color: dimgray;
     color: lightgray;
 }
 
-.dark img {
+.dark article img {
     filter: brightness(0.8);
 }
 
-.dark code:not([class*="language"]) {
+.dark article code:not([class*="language"]) {
     background-color: dimgray;
     color: azure;
 }
 
-.dark pre>code:not([class~="hljs"]) {
+.dark article pre>code:not([class~="hljs"]) {
     background-color: black;
 }
 
