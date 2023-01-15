@@ -645,9 +645,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6301226"><label class="task-list-item-label" for="task-item-6301226"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-631542"><label class="task-list-item-label" for="task-item-631542"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2691714"><label class="task-list-item-label" for="task-item-2691714"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6699208"><label class="task-list-item-label" for="task-item-6699208"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9601353"><label class="task-list-item-label" for="task-item-9601353"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8334998"><label class="task-list-item-label" for="task-item-8334998"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -661,9 +661,20 @@ int main()
         </article>
         
 
-    <div class="article-comment">
-        <p>已禁用评论=w=</p>
-    </div>
+    
+    
+    
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+    <script>
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "Learn Markdown"
+        c.id = md5("2020/11/08/learn-markdown/index.html");
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
 
 
     </div>

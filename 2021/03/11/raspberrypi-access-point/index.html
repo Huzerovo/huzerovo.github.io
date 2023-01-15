@@ -293,9 +293,20 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
         </article>
         
 
-    <div class="article-comment">
-        <p>已禁用评论=w=</p>
-    </div>
+    
+    
+    
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+    <script>
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "树莓派热点"
+        c.id = md5("2021/03/11/raspberrypi-access-point/index.html");
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
 
 
     </div>
