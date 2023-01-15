@@ -19,6 +19,10 @@ article.main-container a {
     text-decoration: none;
 }
 
+.article-comment {
+    text-align: center;
+}
+
 blockquote {
     border-left-width: 3px;
     border-left-style: solid;
