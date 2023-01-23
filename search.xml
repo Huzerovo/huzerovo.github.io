@@ -801,9 +801,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4215632"><label class="task-list-item-label" for="task-item-4215632"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7474928"><label class="task-list-item-label" for="task-item-7474928"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9704951"><label class="task-list-item-label" for="task-item-9704951"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-929736"><label class="task-list-item-label" for="task-item-929736"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1336239"><label class="task-list-item-label" for="task-item-1336239"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4704212"><label class="task-list-item-label" for="task-item-4704212"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
@@ -2047,12 +2047,12 @@ String 为 java.lang 包中的一个对象</p>
 <p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
 <code>if-ge v0, v1, :cond_0</code></p>
 <p>全部条件判断语句：<br />
-<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <code>eq</code>ual<br />
-<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <code>n</code>o <code>e</code>qula<br />
-<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <code>g</code>reater than or <code>e</code>qual<br />
-<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <code>l</code>ess than or <code>e</code>qual<br />
-<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <code>g</code>reater <code>t</code>han<br />
-<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <code>l</code>ess <code>t</code>han</p>
+<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <strong>eq</strong>ual<br />
+<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <strong>n</strong>o <strong>e</strong>qula<br />
+<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <strong>g</strong>reater than or <strong>e</strong>qual<br />
+<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <strong>l</strong>ess than or <strong>e</strong>qual<br />
+<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <strong>g</strong>reater <strong>t</strong>han<br />
+<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
 <h3 id="%E5%BE%AA%E7%8E%AF" id="循环"><a class="header-anchor" href="#循环">¶ </a>循环</h3>
 <p>直接代码解释比较方便，例子来源参见文末链接1</p>
 <pre><code class="language-java">public void smaliWhile() &#123;
