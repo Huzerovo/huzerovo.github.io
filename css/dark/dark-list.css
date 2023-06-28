@@ -1,0 +1,27 @@
+/* 文章列表 */
+.dark #article-list .article-list-item {
+    background-color: gray;
+}
+
+.dark #article-list .article-list-item a {
+    color: black;
+}
+
+.dark #article-list .article-list-item a:hover {
+    color: lightgray;
+}
+
+.dark .post-tags-list-link,
+.dark .post-categories-list-link,
+.dark .site-tags-list-link,
+.dark .site-categories-list-link {
+    color: darkgray;
+}
+
+.dark .post-tags-list-link:hover,
+.dark .post-categories-list-link:hover,
+.dark .site-tags-list-link:hover,
+.dark .site-categories-list-link:hover {
+    background-color: gray;
+    color: white;
+}

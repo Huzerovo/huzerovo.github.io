@@ -4,101 +4,22 @@
  * Created by 狐zerOAO
  */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
 }
 
-/* 顶部菜单栏 */
-#topbar {
-    width: 100%;
-    margin: 0;
-    position: sticky;
-    top: 0;
-    z-index: 5;
-}
-
-.topbar-container {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-
-.topbar-menu {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.topbar-menu-item a {
-    width: fit-content;
-    display: block;
-    margin: 0;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-/* 导航栏 */
-.topbar-nav-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-}
-
-.switch-theme-button,
-.side-menu-button,
-.go-to-top,
-.switch-sidebar {
-    text-decoration: none;
-    padding: 6px 12px;
-}
-
-.side-menu-button {
-    display: none;
-}
-
-/* 侧边导航 */
-#side-nav {
-    display: none;
-    box-sizing: border-box;
-	overflow: auto;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+#goto-top {
     position: fixed;
-    transition: 0.3s all;
-}
-
-#side-nav .toc {
-    padding-left: 2em;
-}
-
-.side-menu {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-}
-
-.side-menu-item {
-    width: 100%;
-}
-
-.side-menu-item a {
-    display: block;
-    padding: 8px 16px ;
-    text-decoration: none;
-}
-
-.hidden {
-    left: -100%;
-    display: none;
-}
-
-.show {
-    left: 0;
+    right: 8%;
+    bottom: 8%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 
 /* 主体区域 */
@@ -114,14 +35,6 @@ main {
 /* 中间显示区域 */
 .center-container {
     width: 60%;
-}
-
-/* 侧边栏 */
-.left-sidebar,
-.right-sidebar {
-    width: 20%;
-    height: 100%;
-    /* margin: 0 auto; */
 }
 
 /* 分页选择 */
@@ -182,32 +95,6 @@ main {
 /* 页面标题 */
 .page-title {
     text-align: center;
-}
-
-/* 侧边栏标签与分类样式 */
-
-.post-tags-list,
-.post-categories-list,
-.site-tags-list,
-.site-categories-list {
-    list-style: none;
-    padding: 0;
-}
-
-.post-tags-list-link,
-.post-categories-list-link,
-.site-tags-list-link,
-.site-categories-list-link {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 100%;
-    padding: 4px 8px;
-    text-decoration: none;
-}
-
-.sidebar-list-title {
-    text-align: center;
-    font-weight: bold;
 }
 
 /* 标签云 */

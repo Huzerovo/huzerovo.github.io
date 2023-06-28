@@ -14,14 +14,6 @@
 
 /* 1000px */
 @media screen and (max-width: 1000px) {
-    .right-sidebar {
-        width: 30%;
-    }
-
-    .left-sidebar {
-        display: none;
-    }
-
     .center-container {
         width: 80%;
     }
@@ -37,38 +29,7 @@
         width: 100%;
     }
 
-    .right-sidebar {
-        display: none;
-    }
-
-}
-
-@media screen and (max-width: 800px) {
     .center-container {
         width: 100%;
-    }
-}
-
-/* 导航栏显示 */
-@media screen and (max-width: 800px) {
-    .topbar-container {
-        width: 100%;
-        justify-content: center;
-    }
-
-    #side-nav {
-        display: block;
-    }
-    
-    .topbar-menu {
-        display: none;
-    }
-
-    .side-menu-button {
-        display: unset;
-    }
-
-    .switch-sidebar {
-        display: none;
     }
 }

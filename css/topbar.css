@@ -1,0 +1,65 @@
+/* 顶部菜单栏 */
+#topbar {
+    width: 100%;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.topbar-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topbar-menu {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar-menu-item a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.topbar-icon-buttons {
+    display: flex;
+    align-content: center;
+}
+
+.icon-button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.icon-button img {
+    display: inherit;
+}
+
+.btn-side-menu {
+    display: none;
+}
+
+/* 导航栏显示 */
+@media screen and (max-width: 800px) {
+    .topbar-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .topbar-menu {
+        display: none;
+    }
+
+    .btn-side-menu {
+        display: unset;
+    }
+}

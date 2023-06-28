@@ -1,0 +1,41 @@
+/* 文章 */
+.dark article.main-container a {
+    color: orchid;
+}
+
+.dark article.main-container a:hover {
+    color: orange;
+}
+
+.dark article.main-container a:visited {
+    color: #9999ff;
+}
+
+.dark article blockquote {
+    border-left-color: rgb(150, 150, 150);
+    border-top-color: rgb(50, 50, 50);
+    background-color: dimgray;
+}
+
+.dark article table thead {
+    background-color: rgb(80, 80, 80);
+    color: lightgray;
+}
+
+.dark article table tbody {
+    background-color: dimgray;
+    color: lightgray;
+}
+
+.dark article img {
+    filter: brightness(0.8);
+}
+
+.dark article code:not([class*="language"]) {
+    background-color: dimgray;
+    color: azure;
+}
+
+.dark article pre>code:not([class~="hljs"]) {
+    background-color: black;
+}

@@ -1,5 +1,5 @@
-// Coolie 读取写入
-function hasCookie(key) {
+// LocalStorage 读写
+function hasStorage(key) {
     if (localStorage.getItem(key) === null) {
         return false;
     } else {
@@ -7,17 +7,17 @@ function hasCookie(key) {
     }
 }
 
-function getCookie(key) {
+function getStorage(key) {
     return localStorage.getItem(key);
 }
 
-function setCookie(key, value) {
+function setStorage(key, value) {
     localStorage.setItem(key, value)
 }
 
 // 主题切换
 function switchTheme() {
-    if (getCookie('currentTheme') === 'light') {
+    if (getStorage('currentTheme') === 'light') {
         setTheme('dark');
     } else {
         setTheme('light')
@@ -30,18 +30,30 @@ function setTheme(theme) {
         root.addClass('light');
         root.removeClass('dark');
         $('#code-style').attr('href', codeStyle.light);
+        setLightThemeIcon();
     } else {
         root.addClass('dark');
         root.removeClass('light');
         $('#code-style').attr('href', codeStyle.dark);
+        setDarkThemeIcon();
     }
-    setCookie('currentTheme', theme)
+    setStorage('currentTheme', theme)
+}
+
+function setDarkThemeIcon() {
+    $('#icon-search').attr('src', '/img/light-search.svg');
+    $('#icon-theme').attr('src', '/img/moon.svg');
+}
+
+function setLightThemeIcon() {
+    $('#icon-search').attr('src', '/img/dark-search.svg');
+    $('#icon-theme').attr('src', '/img/sun.svg');
 }
 
 function followTheme() {
 	let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	let lightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-	let theme = getCookie('currentTheme');
+	let theme = getStorage('currentTheme');
 
 	if (theme === 'light' && darkMode) {
 		switchTheme()
@@ -50,9 +62,9 @@ function followTheme() {
 	}
 }
 
-function initTheme() {
-    if (hasCookie('currentTheme')) {
-        setTheme(getCookie('currentTheme'));
+function myLoading() {
+    if (hasStorage('currentTheme')) {
+        setTheme(getStorage('currentTheme'));
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         setTheme('dark');
     } else {
@@ -60,21 +72,32 @@ function initTheme() {
     }
 }
 
-// 导航栏，侧边栏切换
-function hideOrShow(e) {
-    if (e.hasClass('hidden')) {
-        e.removeClass('hidden');
-        e.addClass('show');
-    } else {
-        e.removeClass('show');
-        e.addClass('hidden');
-    }
-}
+function myFinished() {
+    // 页面载入后设置icon
+    setTheme(getStorage('currentTheme'));
+    // 监听事件
+    $('#btn-switch-theme').click(function() {switchTheme()});
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        if (e.hasClass('hidden')) {
+            e.removeClass('hidden');
+            e.addClass('show');
+        } else {
+            e.removeClass('show');
+            e.addClass('hidden');
+        }
+    });
+    $('#btn-search').click(function() {console.log('Searching...')});
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
 
-function changeMenu() {
-    hideOrShow($('#side-nav'));
-}
-
-function switchSidebar() {
-    hideOrShow($('.left-sidebar, .right-sidebar'));
+    $('#goto-top').hide();
+    window.onscroll = function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    };
 }

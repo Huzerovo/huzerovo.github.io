@@ -1,0 +1,22 @@
+/* 顶部栏 */
+.light #topbar {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.light .topbar-menu-item a,
+.dark .btn-switch-theme,
+.dark .btn-side-menu,
+.dark .btn-search {
+    color: black;
+}
+
+.light .topbar-menu-item .active {
+    background-color: black;
+    color: white;
+}
+
+.light .topbar-menu-item a:hover:not(.active) {
+    background-color: gray;
+    color: white;
+}
+

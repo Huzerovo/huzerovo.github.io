@@ -1,0 +1,24 @@
+/* 标签云 */
+.dark .tagcloud-0 {color: rgb(120, 120, 120);}
+.dark .tagcloud-1 {color: rgb(135, 135, 135);}
+.dark .tagcloud-2 {color: rgb(150, 150, 150);}
+.dark .tagcloud-3 {color: rgb(165, 165, 165);}
+.dark .tagcloud-4 {color: rgb(180, 180, 180);}
+.dark .tagcloud-5 {color: rgb(195, 195, 195);}
+.dark .tagcloud-6 {color: rgb(210, 210, 210);}
+.dark .tagcloud-7 {color: rgb(225, 225, 225);}
+.dark .tagcloud-8 {color: rgb(240, 240, 240);}
+.dark .tagcloud-9 {color: rgb(255, 255, 255);}
+
+.dark .tagcloud-0:hover,
+.dark .tagcloud-1:hover,
+.dark .tagcloud-2:hover,
+.dark .tagcloud-3:hover,
+.dark .tagcloud-4:hover,
+.dark .tagcloud-5:hover,
+.dark .tagcloud-6:hover,
+.dark .tagcloud-7:hover,
+.dark .tagcloud-8:hover,
+.dark .tagcloud-9:hover {
+    color: white;
+}

@@ -1,0 +1,42 @@
+/* 主体 */
+.light body {
+    background-color: whitesmoke;
+}
+
+.light #goto-top {
+    background-color: black;
+    color: white;
+    opacity: 50%;
+}
+
+/* 归档页 */
+.light .page-archive-item-date {
+    color: gray;
+}
+
+.light .page-archive-item-link {
+    color: black;
+}
+
+.light .page-archive-item-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* 分类页 */
+.light .page-category-list-link {
+    color: black;
+}
+
+.light .page-category-list-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+.light .footer-link {
+    color: #9999ff;
+}
+
+.light .footer-link:hover {
+    color: #66ccff;
+}

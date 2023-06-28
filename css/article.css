@@ -6,6 +6,7 @@
  */
 
 article.main-container {
+    font-family: sans;
     line-height: 1.5;
     padding: 0 1em;
 }
@@ -59,13 +60,18 @@ article img {
 
 article code {
     font-size: large;
-    padding: 0 5px;
-    border-radius: 10px;
+    padding: 0px 8px;
+    border-radius: 6px;
     margin: 0 3px;
 }
 
 article pre>code {
     display: block;
     overflow-x: auto;
-    padding: 1em;
+    padding: 16px;
+}
+
+.article-toc {
+    position: sticky;
+    top: 38px;
 }

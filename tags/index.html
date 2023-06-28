@@ -9,7 +9,7 @@
     <title> HuLingOAO </title>
 
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     
     <link id="code-style" rel="stylesheet" href="/css/github.min.css">
@@ -18,7 +18,10 @@
     
 
     
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
 
     
 <link rel="stylesheet" href="/css/animation.css">
@@ -27,13 +30,16 @@
 <link rel="stylesheet" href="/css/article.css">
 
     
+<link rel="stylesheet" href="/css/main.css">
+
+    
 <link rel="stylesheet" href="/css/media.css">
 
     
-<link rel="stylesheet" href="/css/light.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 
     
-<link rel="stylesheet" href="/css/dark.css">
+<link rel="stylesheet" href="/css/topbar.css">
 
     
 <script src="/js/huzerovo.js"></script>
@@ -45,61 +51,89 @@
         let codeStyle = {};
         codeStyle.dark = "/css/github-dark.min.css";
         codeStyle.light = "/css/github.min.css";
-        window.onload = initTheme();
+        window.load = myLoading();
         window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
-</head>    
-
+</head>
 
 <body>
     
 
+
+
+
+
     
-    
+
+
+
+
+
+
+
+
+
+
+
 <nav id="topbar">
     <div class="topbar-container">
+        
         <ul class="topbar-menu">
         
-        
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/" title="首页">首页</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/archives" title="归档">归档</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/categories" title="分类">分类</a>
-            </li>
             
+            </li>
         
+            <li class="topbar-menu-item">
+            
              
-            <li class="topbar-menu-item">
                 <a href="/tags" title="标签" class="active">标签</a>
-            </li>
             
+            </li>
         
-            
             <li class="topbar-menu-item">
-                <a href="/about" title="关于我">关于我</a>
-            </li>
             
+            
+                <a href="/about" title="关于我">关于我</a>
+            
+            </li>
         
         </ul>
-        <div class="topbar-nav-bar">
-            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
-            
-            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
-            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-side-menu" class="icon-button btn-side-menu">
+                菜单
+            </button>
+            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
+                
+                <img id="icon-theme" alt="theme" src="" />
+            </button>
+            <button id="btn-search" class="icon-button btn-search" class="icon-button">
+                
+                <img id="icon-search" alt="search" src="" />
+            </button>
         </div>
     </div>
 </nav>
+
 
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
@@ -151,14 +185,18 @@
 
 
 
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
     <footer>
         <p> Copyright 2023 @HuLingOAO</p>
         <p>
-            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
         </p>
         <br>
     </footer>
 </body>
-
-
+<script>
+    myFinished();
+</script>
 </html>

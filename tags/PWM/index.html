@@ -9,7 +9,7 @@
     <title> HuLingOAO </title>
 
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     
     <link id="code-style" rel="stylesheet" href="/css/github.min.css">
@@ -18,7 +18,10 @@
     
 
     
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
 
     
 <link rel="stylesheet" href="/css/animation.css">
@@ -27,20 +30,24 @@
 <link rel="stylesheet" href="/css/article.css">
 
     
+<link rel="stylesheet" href="/css/main.css">
+
+    
 <link rel="stylesheet" href="/css/media.css">
 
     
-<link rel="stylesheet" href="/css/light.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 
     
-<link rel="stylesheet" href="/css/dark.css">
+<link rel="stylesheet" href="/css/topbar.css">
 
     
 <script src="/js/huzerovo.js"></script>
 
 
     
-    <script>
+        
+<script>
     MathJax = {
         tex: {
             tags: 'ams',
@@ -63,60 +70,83 @@
         let codeStyle = {};
         codeStyle.dark = "/css/github-dark.min.css";
         codeStyle.light = "/css/github.min.css";
-        window.onload = initTheme();
+        window.load = myLoading();
         window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
-</head>    
-
+</head>
 
 <body>
     
+
+
+
+
+
+
+
+
+
+
+
 <nav id="topbar">
     <div class="topbar-container">
+        
         <ul class="topbar-menu">
         
-        
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/" title="首页">首页</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/archives" title="归档">归档</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/categories" title="分类">分类</a>
-            </li>
             
+            </li>
         
+            <li class="topbar-menu-item">
+            
              
-            <li class="topbar-menu-item">
                 <a href="/tags" title="标签" class="active">标签</a>
-            </li>
             
+            </li>
         
-            
             <li class="topbar-menu-item">
-                <a href="/about" title="关于我">关于我</a>
-            </li>
             
+            
+                <a href="/about" title="关于我">关于我</a>
+            
+            </li>
         
         </ul>
-        <div class="topbar-nav-bar">
-            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
-            
-            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
-            
-            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
-            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-side-menu" class="icon-button btn-side-menu">
+                菜单
+            </button>
+            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
+                
+                <img id="icon-theme" alt="theme" src="" />
+            </button>
+            <button id="btn-search" class="icon-button btn-search" class="icon-button">
+                
+                <img id="icon-search" alt="search" src="" />
+            </button>
         </div>
     </div>
 </nav>
+
 
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
@@ -158,18 +188,22 @@
 </aside>
 
 <main>
-<div class="left-sidebar">
-    <p class="sidebar-list-title">分类</p>
+    <div class="left-sidebar">
+        
+<p class="sidebar-list-title">分类</p>
 
 
 
 <ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
 
-</div>
-
-<div class="center-container">
-    <h1 class="page-title">标签: PWM</h1>
-    <div class="pager">
+    </div>
+    
+    <div class="center-container">
+        <h1 class="page-title">
+            标签: PWM
+        </h1>
+        
+<div class="pager">
     <div class="page-list">
         
             <span class="extend prev"><</span>
@@ -181,16 +215,17 @@
     </div>
 </div>
 
-        
-    <article id="article-list">
-        
+        <article id="article-list">
+            
+
+
+
+
 
 
     
-
     <article class="article-list-item">
         <a href="/2021/03/18/pwm-servo/">
-
             <h3>PWM 舵机控制</h3>
             <p>
                 
@@ -205,10 +240,9 @@ PWM（Pulse Width Modulation）即脉宽调制
     </article>
 
 
-
-    </article>
-
-    <div class="pager">
+        </article>
+        
+<div class="pager">
     <div class="page-list">
         
             <span class="extend prev"><</span>
@@ -220,26 +254,37 @@ PWM（Pulse Width Modulation）即脉宽调制
     </div>
 </div>
 
-</div>
+    </div>
+    
+    <div class="right-sidebar">
+        
 
-<div class="right-sidebar">
-    <p class="sidebar-list-title">标签</p>
+
+
+<p class="sidebar-list-title">
+    标签
+</p>
 
 
 
 <ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Gitalk/" rel="tag">Gitalk</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/PWM/" rel="tag">PWM</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Servo/" rel="tag">Servo</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/lua/" rel="tag">lua</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/neovim/" rel="tag">neovim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/smali/" rel="tag">smali</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/" rel="tag">回归算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%BC%80%E5%8F%91/" rel="tag">开发</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
 
-</div>
+
+    </div>
 </main>
 
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
     <footer>
         <p> Copyright 2023 @HuLingOAO</p>
         <p>
-            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
         </p>
         <br>
     </footer>
 </body>
-
-
+<script>
+    myFinished();
+</script>
 </html>

@@ -1,0 +1,37 @@
+/* 文章 */
+.light article.main-container a {
+    color: orchid;
+}
+
+.light article.main-container a:hover {
+    color: orange;
+}
+
+.light article.main-container a:visited {
+    color: #9999ff;
+}
+
+.light article blockquote {
+    border-left-color:.light articlegray;
+    border-top-color: whitesmoke;
+    background-color: white;
+}
+
+.light article table thead {
+    background-color:.light articlegray;
+    color: black;
+}
+
+.light article table tbody {
+    background-color: white;
+    color: black;
+}
+
+.light article code:not([class*="language"]) {
+    background-color: white;
+    color: peru;
+}
+
+.light article pre>code:not([class~="hljs"]) {
+    background-color: white;
+}

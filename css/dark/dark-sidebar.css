@@ -1,0 +1,26 @@
+/* 侧栏 */
+.dark .side-menu-item a {
+    color: lightgray;
+}
+
+.dark .side-menu-item .active {
+    background-color: gray;
+}
+
+.dark .side-menu-item a:hover:not(.active) {
+    background-color: lightgray;
+    color: black;
+}
+.dark #side-nav {
+    background-color: rgba(40, 40, 40, 0.9);
+}
+
+/* 目录 */
+.dark .toc-link {
+    color: lightgray;
+}
+
+.dark .toc-link:hover {
+    color: white;
+}
+

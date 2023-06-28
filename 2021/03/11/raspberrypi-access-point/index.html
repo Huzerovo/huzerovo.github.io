@@ -9,7 +9,7 @@
     <title> HuLingOAO </title>
 
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     
     <link id="code-style" rel="stylesheet" href="/css/github.min.css">
@@ -18,7 +18,10 @@
     
 
     
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
 
     
 <link rel="stylesheet" href="/css/animation.css">
@@ -27,13 +30,16 @@
 <link rel="stylesheet" href="/css/article.css">
 
     
+<link rel="stylesheet" href="/css/main.css">
+
+    
 <link rel="stylesheet" href="/css/media.css">
 
     
-<link rel="stylesheet" href="/css/light.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 
     
-<link rel="stylesheet" href="/css/dark.css">
+<link rel="stylesheet" href="/css/topbar.css">
 
     
 <script src="/js/huzerovo.js"></script>
@@ -45,60 +51,83 @@
         let codeStyle = {};
         codeStyle.dark = "/css/github-dark.min.css";
         codeStyle.light = "/css/github.min.css";
-        window.onload = initTheme();
+        window.load = myLoading();
         window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
-</head>    
-
+</head>
 
 <body>
     
+
+
+
+
+
+
+
+
+
+
+
 <nav id="topbar">
     <div class="topbar-container">
+        
         <ul class="topbar-menu">
         
-        
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/" title="首页">首页</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/archives" title="归档">归档</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/categories" title="分类">分类</a>
+            
             </li>
-            
         
-            
             <li class="topbar-menu-item">
+            
+            
                 <a href="/tags" title="标签">标签</a>
-            </li>
             
+            </li>
         
-            
             <li class="topbar-menu-item">
-                <a href="/about" title="关于我">关于我</a>
-            </li>
             
+            
+                <a href="/about" title="关于我">关于我</a>
+            
+            </li>
         
         </ul>
-        <div class="topbar-nav-bar">
-            <a class="side-menu-button" href="javascript: changeMenu()">菜单</a>
-            
-            <a class="switch-sidebar" href="javascript: switchSidebar()">切换侧边栏</a>
-            
-            <a class="switch-theme-button" href="javascript: switchTheme()">切换主题</a>
-            <a class="go-to-top" href="javascript: scrollTo(top)">回到顶部</a>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-side-menu" class="icon-button btn-side-menu">
+                菜单
+            </button>
+            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
+                
+                <img id="icon-theme" alt="theme" src="" />
+            </button>
+            <button id="btn-search" class="icon-button btn-search" class="icon-button">
+                
+                <img id="icon-search" alt="search" src="" />
+            </button>
         </div>
     </div>
 </nav>
+
 
 <aside id="side-nav" class="hidden">
     <ul class="side-menu">
@@ -143,22 +172,10 @@
 </aside>
 
 <main>
-     <div class="left-sidebar">
+     <div class="left-sidebar article-toc">
         
-            <p class="sidebar-list-title">标签</p>
-
-
-
-<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
-
-        
-        
-            <p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
-
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
         
     </div>
     <div class="center-container">
@@ -312,20 +329,44 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
     </div>
     <div class="right-sidebar">
         
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhostapd"><span class="toc-text">配置hostapd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdhcpcd"><span class="toc-text">配置dhcpcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdnsmasq"><span class="toc-text">配置dnsmasq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"><span class="toc-text">设置数据包转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">设置systemd启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AF"><span class="toc-text">重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
+            
+
+
+
+<p class="sidebar-list-title">
+    标签
+</p>
+
+
+
+<ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li></ul>
+
+
+        
+        
+            
+<p class="sidebar-list-title">分类</p>
+
+
+
+<ul class="post-categories-list"><li class="post-categories-list-item"><a class="post-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+
         
     </div>
 </main>
 
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
     <footer>
         <p> Copyright 2023 @HuLingOAO</p>
         <p>
-            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by HuLingOAO.
+            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
         </p>
         <br>
     </footer>
 </body>
-
-
+<script>
+    myFinished();
+</script>
 </html>
