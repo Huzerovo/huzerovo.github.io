@@ -1,13 +1,13 @@
 /* 文章列表 */
-.light #article-list .article-list-item {
+.light .article-list .article-list-item {
     background-color: white;
 }
 
-.light #article-list .article-list-item a {
+.light .article-list .article-list-item a {
     color: black;
 }
 
-.light #article-list .article-list-item a:hover {
+.light .article-list .article-list-item a:hover {
     color: gray;
 }
 

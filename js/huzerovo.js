@@ -71,33 +71,3 @@ function myLoading() {
         setTheme('light');
     }
 }
-
-function myFinished() {
-    // 页面载入后设置icon
-    setTheme(getStorage('currentTheme'));
-    // 监听事件
-    $('#btn-switch-theme').click(function() {switchTheme()});
-    $('#btn-side-menu').click(function() {
-        let e = $('#side-nav');
-        if (e.hasClass('hidden')) {
-            e.removeClass('hidden');
-            e.addClass('show');
-        } else {
-            e.removeClass('show');
-            e.addClass('hidden');
-        }
-    });
-    $('#btn-search').click(function() {console.log('Searching...')});
-    $('#goto-top').click(function() {
-        $('#root').scrollTop(0);
-    });
-
-    $('#goto-top').hide();
-    window.onscroll = function() {
-        if ($('#root').scrollTop() > 300) {
-            $('#goto-top').show();
-        } else {
-            $('#goto-top').hide();
-        }
-    };
-}

@@ -31,12 +31,12 @@
     text-decoration: none;
 }
 
-.hidden {
+.side-menu-hidden {
     left: -100%;
     display: none;
 }
 
-.show {
+.side-menu-show {
     left: 0;
 }
 

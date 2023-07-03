@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title> HuLingOAO </title>
+    <title> 狐zerOAO </title>
 
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -44,6 +44,9 @@
     
 <script src="/js/huzerovo.js"></script>
 
+    
+<script src="/js/search.js"></script>
+
 
     
 
@@ -63,13 +66,136 @@
 
 
 
+    
+
+
+
+
+
+
+
+
+
+
+
+<nav id="topbar">
+    <div class="topbar-container">
+        
+        <ul class="topbar-menu">
+        
+            <li class="topbar-menu-item">
+            
+            
+                <a href="/" title="首页">首页</a>
+            
+            </li>
+        
+            <li class="topbar-menu-item">
+            
+            
+                <a href="/archives" title="归档">归档</a>
+            
+            </li>
+        
+            <li class="topbar-menu-item">
+            
+            
+                <a href="/categories" title="分类">分类</a>
+            
+            </li>
+        
+            <li class="topbar-menu-item">
+            
+            
+                <a href="/tags" title="标签">标签</a>
+            
+            </li>
+        
+            <li class="topbar-menu-item">
+            
+            
+                <a href="/about" title="关于我">关于我</a>
+            
+            </li>
+        
+        </ul>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-side-menu" class="icon-button btn-side-menu">
+                菜单
+            </button>
+            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
+                
+                <img id="icon-theme" alt="theme" src="" />
+            </button>
+            <a id="btn-search" class="icon-button btn-search" href="/search">
+                
+                <img id="icon-search" alt="search" src="" />
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<aside id="side-nav" class="hidden">
+    <ul class="side-menu">
+    
+    
+        
+        <li class="side-menu-item">
+            <a href="/" title="首页">首页</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/archives" title="归档">归档</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/categories" title="分类">分类</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/tags" title="标签">标签</a>
+        </li>
+        
+    
+        
+        <li class="side-menu-item">
+            <a href="/about" title="关于我">关于我</a>
+        </li>
+        
+    
+    </ul>
+
+    
+</aside>
+
+<main>
+    <div class="center-container">
+        <h1 class = "page-title">搜索</h1>
+        <div class="search-input">
+            <input id="search" placeholder="请输入关键字，使用&#34;/regex/&#34;进行正则搜索..."/>
+        </div>
+        <div id="search-result">
+            <article class="article-list"></article>
+        </div>
+    </div>
+</main>
+
 
 
     <button id="goto-top" type="button" title="回到顶部">
         回到顶部
     </button>
     <footer>
-        <p> Copyright 2023 @HuLingOAO</p>
+        <p> Copyright 2023 @狐zerOAO</p>
         <p>
             Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
         </p>
@@ -77,6 +203,38 @@
     </footer>
 </body>
 <script>
-    myFinished();
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+});
 </script>
 </html>

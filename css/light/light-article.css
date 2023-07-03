@@ -12,13 +12,13 @@
 }
 
 .light article blockquote {
-    border-left-color:.light articlegray;
+    border-left-color: gray;
     border-top-color: whitesmoke;
     background-color: white;
 }
 
 .light article table thead {
-    background-color:.light articlegray;
+    background-color: gray;
     color: black;
 }
 
