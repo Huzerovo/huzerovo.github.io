@@ -1,6 +1,7 @@
 /* 主体 */
 .dark body {
-    background-color: rgb(50, 50, 50);
+    /* background-color: rgb(50, 50, 50); */
+    background-color: black;
     color: lightgray;
 }
 
@@ -39,4 +40,10 @@
 
 .dark .footer-link:hover {
     color: #66ccff;
+}
+
+/* 搜索页 */
+.dark #search {
+    border-color: black;
+    background-color: lightgray;
 }

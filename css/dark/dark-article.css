@@ -15,6 +15,7 @@
     border-left-color: rgb(150, 150, 150);
     border-top-color: rgb(50, 50, 50);
     background-color: dimgray;
+    color: lightgray;
 }
 
 .dark article table thead {
@@ -38,4 +39,8 @@
 
 .dark article pre>code:not([class~="hljs"]) {
     background-color: black;
+}
+
+.dark #gitalk-container {
+    background-color: rgb(50, 50, 50);
 }

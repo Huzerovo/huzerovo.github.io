@@ -41,12 +41,10 @@ function setTheme(theme) {
 }
 
 function setDarkThemeIcon() {
-    $('#icon-search').attr('src', '/img/light-search.svg');
     $('#icon-theme').attr('src', '/img/moon.svg');
 }
 
 function setLightThemeIcon() {
-    $('#icon-search').attr('src', '/img/dark-search.svg');
     $('#icon-theme').attr('src', '/img/sun.svg');
 }
 

@@ -40,3 +40,8 @@
 .light .footer-link:hover {
     color: #66ccff;
 }
+
+/* 搜索页 */
+.light #search {
+    border-color: lightgray;
+}
