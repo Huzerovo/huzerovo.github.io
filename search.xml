@@ -801,9 +801,9 @@ int main()
 <p><strong>效果：</strong></p>
 <blockquote>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5613137"><label class="task-list-item-label" for="task-item-5613137"> First</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-158304"><label class="task-list-item-label" for="task-item-158304"> Seconde</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8694877"><label class="task-list-item-label" for="task-item-8694877"> Next</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5362367"><label class="task-list-item-label" for="task-item-5362367"> First</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1051475"><label class="task-list-item-label" for="task-item-1051475"> Seconde</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9281734"><label class="task-list-item-label" for="task-item-9281734"> Next</label></li>
 </ul>
 </blockquote>
 <hr class="footnotes-sep" />
