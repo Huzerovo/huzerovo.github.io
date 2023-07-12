@@ -1,0 +1,128 @@
+/* 文章页面样式 */
+/* 目录设置 */
+#article-toc {
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  max-width: 15%;
+  height: 80vh;
+  overflow: auto;
+  /* display: inline-block; */
+}
+#article-toc .toc {
+  padding: 0;
+  font-size: small;
+  list-style: none;
+}
+#article-toc .toc-child {
+  padding: 0 8px;
+  list-style: none;
+}
+#article-toc .toc-link {
+  display: block;
+  margin: 6px 0;
+  text-decoration: none;
+}
+@media (max-width: 960px) {
+  #article-toc {
+    position: unset;
+    max-width: 30%;
+    float: left;
+    margin-right: 32px;
+  }
+}
+@media (max-width: 480px) {
+  #article-toc {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+    width: 80%;
+    float: unset;
+    margin: 0 auto;
+  }
+}
+/* 文章内容 */
+article.article-container {
+  font-family: sans;
+  line-height: 1.5;
+  padding: 0 16px;
+}
+article.article-container h1 {
+  text-align: center;
+}
+article.article-container p {
+  text-indent: 32px;
+}
+article.article-container a {
+  transition: 0ms;
+  text-decoration: none;
+}
+article.article-container blockquote {
+  border-left-width: 3px;
+  border-left-style: solid;
+  margin: 8px 0px;
+  padding: 8px 32px;
+  width: calc(100% - 64px - 3px);
+  display: inline-block;
+}
+article.article-container blockquote p {
+  text-indent: 0px;
+}
+article.article-container table {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+article.article-container table td {
+  border: 1px solid;
+  padding: 0 6px;
+}
+article.article-container table th {
+  border: 1px solid;
+  padding: 0 9px;
+}
+article.article-container img {
+  max-width: 100%;
+}
+article.article-container code {
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin: 8px;
+}
+article.article-container pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 16px;
+}
+/* 文章标签 */
+.article-meta-info .category-list,
+.article-meta-info .tag-list {
+  margin: 0px;
+}
+.article-meta-info .category-list li,
+.article-meta-info .tag-list li {
+  margin: 0 8px;
+  display: inline-block;
+}
+.article-meta-info a {
+  transition: 0ms;
+  text-decoration: none;
+}
+/* 日期信息 */
+.article-date-info {
+  margin: 8px auto;
+}
+.article-date-info span {
+  font-size: small;
+  font-style: italic;
+  display: block;
+}
+/* 评论 */
+.article-comment {
+  text-align: center;
+  border-radius: 16px;
+  padding: 0px 16px;
+  padding-bottom: 8px;
+  margin: 16px 0px;
+}

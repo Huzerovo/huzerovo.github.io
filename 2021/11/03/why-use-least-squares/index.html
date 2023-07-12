@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="记录一段回忆" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+    
+    
+        
+<script>
+    MathJax = {
+        tex: {
+            tags: 'ams',
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        },
+        chtml: {
+            scale: 1.1
+        }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+    <script>
+        // 设置主题
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-switch-theme" class="icon-button">
+                <i class="bi bi-sun"></i>
+            </button>
+            <a id="btn-search" class="icon-button" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        
+        <div id="article-toc">
+        
+            <p class="sidebar-list-title">目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE"><span class="toc-text">了解一下误差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-text">最大化预测期望等价于最小化误差</span></a></li></ol>
+        
+        </div>
+        
+        <article class="article-container">
+            <h1>为什么使用最小二乘法</h1>
+            <blockquote>
+<p>解释为什么最小二乘法能减小误差</p>
+</blockquote>
+<h2 id="%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE" tabindex="-1" id="了解一下误差"><a class="header-anchor" href="#了解一下误差">¶ </a>了解一下误差</h2>
+<p>假设预测结果与实际结果存在误差，即
+$$
+\begin{equation}
+\label{eq1}
+y^{(i)} = \theta^{T} x^{(i)} + \varepsilon^{(i)}
+\end{equation}
+$$
+其中 $ \varepsilon^{(i)} $ 就称为误差</p>
+<p>如果 $ \varepsilon^{(i)} $ 存在某种分布，
+于是我们可以假设这个分布为 <strong>高斯分布</strong> ，或者说是 <strong>正态分布</strong> <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
+即：
+$$
+\varepsilon^{(i)} \sim N(0, \sigma^{2})
+$$</p>
+<p>于是有：
+$$
+\begin{equation}
+\label{eq2}
+P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma}
+\exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
+\end{equation}
+$$</p>
+<h2 id="%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE" tabindex="-1" id="最大化预测期望等价于最小化误差"><a class="header-anchor" href="#最大化预测期望等价于最小化误差">¶ </a>最大化预测期望等价于最小化误差</h2>
+<p>由 $\eqref{eq1}$ 和 $\eqref{eq2}$ 得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
+$$
+\begin{equation}
+\label{eq3}
+P(y^{i} \mid x^{i} ; \theta)
+= \frac{1}{\sqrt{2 \pi} \sigma}
+\exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
+\end{equation}
+$$</p>
+<p>于是得到：
+$
+(y^{i} \mid x^{i} ; \theta) \sim N(\theta^{T} x^{(i)}, \sigma^{2})
+$</p>
+<p>我们又假设， $\varepsilon^{i}$ 之间相互独立，且具有相同的分布，
+然后我们使用 <strong>极大似然估计</strong> 将 $\eqref{eq3}$ 最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>设
+$$
+\begin{equation}
+\begin{split}
+L(\theta)
+&amp; = P(Y \mid X ; \theta) \\
+&amp; = \prod_{i=1}^{m} P(y^{i} \mid x^{i} ; \theta) \\
+&amp; = \prod_{i=1}^{m} \frac{1}{\sqrt{2 \pi} \sigma}
+\exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
+\end{split}
+\end{equation}
+$$</p>
+<p>那么
+$$
+\begin{equation}
+\begin{split}
+l(\theta)
+&amp; = \log{L(\theta)} \\
+&amp; = \sum_{i=1}^{m} \log{ \frac{1}{ \sqrt{2 \pi} \sigma }
+\exp{( - \frac{( y^{(i)} - \theta^{T} x^{(i)} )^{2}}{ 2 \sigma^{2} } )}} \\
+&amp; = m \log{\frac{1}{\sqrt{2 \pi} \sigma}} + \sum_{i=1}^{m} -( \frac{y^{(i)}
+- \theta^{T} x^{(i)}}{2 \sigma^{2}} )
+\end{split}
+\end{equation}
+$$</p>
+<p>由于 $\sigma^{2} &gt; 0$ 恒成立，
+故最大化 $l(\theta)$ 等价于最小化 $\sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2}$</p>
+<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的 <strong>cost function</strong></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>根据 <strong>中心极限定理</strong> 可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>这是 <strong>极大似然估计</strong> 里的表示方式， $\theta$ 表示一个参数，
+随后求得 $\theta$ 使 $P(y^{i} \mid x^{i})$ 最大 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>应当注意： $\eqref{eq3}$ 中自然常数的指数为负数 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+        </article>
+        
+        <div class="article-meta-info">
+            
+                <span>分类</span>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li></ul>
+                
+            
+                <span>标签</span>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+            
+        </div>
+        
+        <div class="article-date-info">
+            <span>发布日期: 2021-11-03</span>
+            <span>更新日期: 2021-11-03</span>
+        </div>
+        <div class="article-comment">
+            
+
+    
+    
+    
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+    <!-- Gitalk style -->
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+    
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+    <script>
+        let c = {"css":"https://unpkg.com/gitalk/dist/gitalk.css","js":"https://unpkg.com/gitalk/dist/gitalk.min.js","md5js":"https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js","enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "为什么使用最小二乘法"
+        c.id = md5("2021/11/03/why-use-least-squares/index.html");
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
+
+
+        </div>
+    </div>
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2023 @狐zerOAO</p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+});
+</script>
+</html>

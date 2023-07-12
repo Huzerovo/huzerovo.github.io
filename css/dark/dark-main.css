@@ -1,49 +1,148 @@
 /* 主体 */
-.dark body {
-    /* background-color: rgb(50, 50, 50); */
-    background-color: black;
-    color: lightgray;
+main {
+  /* 归档页 */
+  /* 文章列表 */
+  /* 分类页 */
+  /* 文章 */
+  /* 目录 */
+  /* 文章标签 */
+  /* 日期信息 */
+  /* 评论 */
+  /* 搜索页 */
+  /* 标签云 */
 }
-
-.dark #goto-top {
-    background-color: gray;
-    opacity: 50%;
+main .page-archive-item .page-archive-item-date {
+  color: gray;
 }
-
-/* 归档页 */
-.dark .page-archive-item-date {
-    color: gray;
+main .page-archive-item a {
+  color: lightgray;
 }
-
-.dark .page-archive-item-link {
-    color: lightgray;
+main .page-archive-item a:hover {
+  background-color: #1e1e1e;
+  color: white;
 }
-
-.dark .page-archive-item-link:hover {
-    background-color: gray;
-    color: white;
+main .articles-list .articles-list-item {
+  background-color: #1e1e1e;
 }
-
-/* 分类页 */
-.dark .page-category-list-link {
-    color: lightgray;
+main .articles-list .articles-list-item a {
+  color: gray;
 }
-
-.dark .page-category-list-link:hover {
-    background-color: gray;
-    color: white;
+main .articles-list .articles-list-item a:hover {
+  color: lightgray;
 }
-
-.dark .footer-link {
-    color: #9999ff;
+main .page-category {
+  color: gray;
 }
-
-.dark .footer-link:hover {
-    color: #66ccff;
+main .page-category a {
+  color: lightgray;
 }
-
-/* 搜索页 */
-.dark #search {
-    border-color: black;
-    background-color: lightgray;
+main .page-category a:hover {
+  background-color: #1e1e1e;
+  color: white;
+}
+main #article-toc a {
+  color: gray;
+}
+main #article-toc a:hover {
+  color: white;
+}
+main article.article-container a {
+  color: orchid;
+}
+main article.article-container a:visited {
+  color: #9999ff;
+}
+main article.article-container a:hover {
+  color: orange;
+}
+main article.article-container blockquote {
+  border-left-color: #969696;
+  background-color: #282828;
+  color: gray;
+}
+main article.article-container hr {
+  color: gray;
+}
+main article.article-container table thead {
+  background-color: #505050;
+  color: lightgray;
+}
+main article.article-container table tbody {
+  background-color: dimgray;
+  color: lightgray;
+}
+main article.article-container img {
+  filter: brightness(0.8);
+}
+main article.article-container code:not([class*="language"]) {
+  background-color: #323232;
+  color: sandybrown;
+}
+main article.article-container pre code:not([class~="hljs"]) {
+  background-color: black;
+}
+main .article-meta-info {
+  color: gray;
+}
+main .article-meta-info a {
+  color: orchid;
+}
+main .article-meta-info a:visited {
+  color: #9999ff;
+}
+main .article-meta-info a:hover {
+  color: orange;
+}
+main .article-date-info {
+  color: gray;
+}
+main .article-comment {
+  background-color: #323232;
+}
+main #search {
+  background-color: #1e1e1e;
+  border-color: gray;
+  color: lightgray;
+}
+main .tagcloud-0 {
+  color: #787878;
+}
+main .tagcloud-1 {
+  color: #878787;
+}
+main .tagcloud-2 {
+  color: #969696;
+}
+main .tagcloud-3 {
+  color: #a5a5a5;
+}
+main .tagcloud-4 {
+  color: #b4b4b4;
+}
+main .tagcloud-5 {
+  color: #c3c3c3;
+}
+main .tagcloud-6 {
+  color: #d2d2d2;
+}
+main .tagcloud-7 {
+  color: #e1e1e1;
+}
+main .tagcloud-8 {
+  color: #f0f0f0;
+}
+main .tagcloud-9 {
+  color: #ffffff;
+}
+main .tagcloud-0:hover,
+main .tagcloud-1:hover,
+main .tagcloud-2:hover,
+main .tagcloud-3:hover,
+main .tagcloud-4:hover,
+main .tagcloud-5:hover,
+main .tagcloud-6:hover,
+main .tagcloud-7:hover,
+main .tagcloud-8:hover,
+main .tagcloud-9:hover {
+  color: white;
 }

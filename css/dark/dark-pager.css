@@ -1,21 +1,18 @@
 /* 分页 */
-.dark .space,
-.dark .page-list .prev,
-.dark .page-list .next,
-.dark .page-number {
-    background-color: gray;
-    color: black;
+.space,
+.page-list .prev,
+.page-list .next,
+.page-number {
+  background-color: gray;
+  color: black;
 }
-
-.dark .page-list .prev:hover,
-.dark .page-list .next:hover,
-.dark .page-number:hover {
-    background-color: gray;
-    color: white;
+.page-list .prev:hover,
+.page-list .next:hover,
+.page-number:hover {
+  background-color: gray;
+  color: white;
 }
-
-.dark .page-number.current {
-    background-color: dimgray;
-    color: black;
+.page-number.current {
+  background-color: dimgray;
+  color: black;
 }
-

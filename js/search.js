@@ -68,7 +68,7 @@ function search_with_keywords(keywords, article) {
                 end = Math.min(120, content.length);
             }
             html_str = `
-        <article class="article-list-item">
+        <article class="articles-list-item">
             <a href="${article.url}">
                 <h3>${title}</h3>
                 <p>
@@ -83,7 +83,7 @@ function search_with_keywords(keywords, article) {
 
 // 这个实现在具有大量文章时可能表现不佳
 function searchArticle(path) {
-    $('.article-list').empty();
+    $('#search-result .articles-list').empty();
     clear_error();
     // 空格分割字符
     let pattern = $('#search').val().trim();
@@ -131,7 +131,7 @@ function searchArticle(path) {
                     html_str = search_with_keywords(keywords, article);
                 }
                 if (html_str !== '') {
-                    $('.article-list').append(html_str);
+                    $('#search-result .articles-list').append(html_str);
                 }
             })
         }, // success END

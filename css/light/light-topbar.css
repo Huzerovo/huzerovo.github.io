@@ -1,22 +1,19 @@
-/* 顶部栏 */
-.light #topbar {
-    background-color: rgba(255, 255, 255, 0.9);
+/* 顶部导航栏 */
+.topbar {
+  background-color: rgba(255, 255, 255, 0.9);
 }
-
-.light .topbar-menu-item a,
-.dark .btn-switch-theme,
-.dark .btn-side-menu,
-.dark .btn-search {
-    color: black;
+.topbar #active-page {
+  background-color: black;
+  color: white;
 }
-
-.light .topbar-menu-item .active {
-    background-color: black;
-    color: white;
+.topbar .topbar-menu a {
+  color: black;
 }
-
-.light .topbar-menu-item a:hover:not(.active) {
-    background-color: gray;
-    color: white;
+.topbar .topbar-menu a:hover:not(.active) {
+  background-color: gray;
+  color: white;
 }
-
+.topbar #btn-switch-theme,
+.topbar #btn-search {
+  color: black;
+}

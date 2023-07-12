@@ -1,0 +1,6 @@
+/* 标签云 */
+.page-tagcloud a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 6px;
+}

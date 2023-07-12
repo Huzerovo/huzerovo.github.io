@@ -4,20 +4,39 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="google" content="notranslate" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="记录一段回忆" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title> 狐zerOAO </title>
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
 
     
-    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
-    <script src="/js/highlight.min.js"></script>
-    <script>hljs.highlightAll(); </script>
     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+    
     
 <link rel="stylesheet" href="/css/light/light.css">
 
@@ -25,52 +44,17 @@
 <link rel="stylesheet" href="/css/dark/dark.css">
 
     
-<link rel="stylesheet" href="/css/animation.css">
-
-    
-<link rel="stylesheet" href="/css/article.css">
-
-    
-<link rel="stylesheet" href="/css/main.css">
-
-    
-<link rel="stylesheet" href="/css/sidebar.css">
-
-    
-<link rel="stylesheet" href="/css/topbar.css">
-
     
 <script src="/js/huzerovo.js"></script>
-
-    
 <script src="/js/search.js"></script>
 
-
     
-        
-<script>
-    MathJax = {
-        tex: {
-            tags: 'ams',
-            inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        svg: {
-            fontCache: 'global'
-        },
-        chtml: {
-            scale: 1.1
-        }
-    };
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
     
-
     <script>
+        // 设置主题
         let codeStyle = {};
-        codeStyle.dark = "/css/github-dark.min.css";
         codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
         window.load = myLoading();
         window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
@@ -89,145 +73,175 @@
 
 
 
-<nav id="topbar">
+<header class="topbar">
     <div class="topbar-container">
         
-        <ul class="topbar-menu">
-        
-            <li class="topbar-menu-item">
+        <nav class="topbar-menu">
+            <ul>
             
-             
-                <a href="/" title="首页" class="active">首页</a>
+                <li>
+                
+                 
+                    <a href="/" title="首页" id="active-page">首页</a>
+                
+                </li>
             
-            </li>
-        
-            <li class="topbar-menu-item">
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
             
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
             
-                <a href="/archives" title="归档">归档</a>
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
             
-            </li>
-        
-            <li class="topbar-menu-item">
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
             
-            
-                <a href="/categories" title="分类">分类</a>
-            
-            </li>
-        
-            <li class="topbar-menu-item">
-            
-            
-                <a href="/tags" title="标签">标签</a>
-            
-            </li>
-        
-            <li class="topbar-menu-item">
-            
-            
-                <a href="/about" title="关于我">关于我</a>
-            
-            </li>
-        
-        </ul>
+            </ul>
+        </nav>
 
         
         <div class="topbar-icon-buttons">
-            <button id="btn-side-menu" class="icon-button btn-side-menu">
-                菜单
+            <button id="btn-switch-theme" class="icon-button">
+                <i class="bi bi-sun"></i>
             </button>
-            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
-                
-                <img id="icon-theme" alt="theme" src="" />
-            </button>
-            <a id="btn-search" class="icon-button btn-search" href="/search">
+            <a id="btn-search" class="icon-button" href="/search">
                 <i class="bi bi-search"></i>
             </a>
         </div>
     </div>
-</nav>
-
-
-<aside id="side-nav" class="side-menu-hidden">
-    <ul class="side-menu">
-    
-    
-         
-        <li class="side-menu-item">
-            <a href="/" title="首页" class="active">首页</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/archives" title="归档">归档</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/categories" title="分类">分类</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/tags" title="标签">标签</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/about" title="关于我">关于我</a>
-        </li>
-        
-    
-    </ul>
-
-    
-</aside>
+</header>
 
 <main>
-    <div class="left-sidebar">
-        
-<p class="sidebar-list-title">分类</p>
-
-
-
-<ul class="site-categories-list"><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li><li class="site-categories-list-item"><a class="site-categories-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
-
-    </div>
-
-    <div class="center-container">
+    <div class="container">
         <h1 class="page-title">
             首页
         </h1>
         
 <div class="pager">
     <div class="page-list">
-        
-            <span class="extend prev">
-                <i class="bi bi-arrow-left-short"></i>
-            </span>
-        
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="bi bi-arrow-right-short"></i></a>
-        
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="bi bi-arrow-right-short"></i></a>
     </div>
 </div>
 
-        <article class="article-list">
-            
+        
 
 
 
 
+<article class="articles-list">
 
 
     
-    <article class="article-list-item">
-        <a href="/2023/01/15/comments-are-enabled/">
-            <h3>开启评论</h3>
-            <p>
+    <article class="articles-list-item">
+        <a href="/2023/07/04/magic-algorithms/">
+            <p class="item-title">
+                编程魔法学
+            </p>
+            <p class="item-content">
+                ¶ 前言
+在这篇文章中记录一些奇奇怪怪的编程技巧。
+可能的话，会基于自己的理解进行一些解释。
+¶ 计算数据中比特1的数量
+在数据中比特1的数量也称为数据的汉明权重[1]
+在这里我们探讨一下计算32位数据的汉明权重。
+¶ 从零开始
+虽然叫从零开始，但如果数据为“0”，那我们也没有问题可以解决。
+从“1”开始呢？假设...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2023/07/02/my-neovim-conf/">
+            <p class="item-title">
+                我的Neovim配置
+            </p>
+            <p class="item-content">
+                ¶ 前言
+在这里记录一下我的为nvim配置的快捷键。
+按键符号采用nvim内的示例，如A表示alt、C表示ctrl、&lt;CR&gt;表示回车等。
+详细内容参考:help keycodes。
+¶ nvim快捷键
+
+
+
+按键
+意义
+
+
+
+
+
+
+
+
+
+
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2023/03/02/GDT-Note/">
+            <p class="item-title">
+                GDT笔记
+            </p>
+            <p class="item-content">
+                ¶ 前言
+根据INTEL 80386 PROGRAMMER’S REFERENCE MANUAL 1986手册，
+一个段描述符(segment descriptor)为 8 字节，
+因此这里的的数据结构大小也应该限制为 8 字节。
+这里的实现使用Intel的Flat模型，
+Intel的平坦模型中，将全部内存看作一...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2023/02/10/Hukernel-MMU/">
+            <p class="item-title">
+                Hukernel: MMU设计与实现
+            </p>
+            <p class="item-content">
+                ¶ 前言
+在vmm中，只实现了对于单个页表的操作。对于多个进程来说，每个进程都需要进行虚拟内存的管理。
+因此设计MMU作为进程级别的内存管理模块。
+¶ 设计思路
+¶ MMU
+MMU作为顶层模块，向进程提供一系列内存操作函数，并维护进程的内存区（见下文）。
+
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2023/01/14/comments-are-enabled/">
+            <p class="item-title">
+                开启评论
+            </p>
+            <p class="item-content">
                 ¶ 正式完成主题的评论功能
 嘻嘻
 
@@ -236,188 +250,147 @@
     </article>
 
     
-    <article class="article-list-item">
-        <a href="/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/">
-            <h3>将init.vim迁移至init.lua</h3>
-            <p>
+    <article class="articles-list-item">
+        <a href="/2023/01/11/migrate-init-vim-to-init-lua-for-neovim/">
+            <p class="item-title">
+                将init.vim迁移至init.lua
+            </p>
+            <p class="item-content">
                 
 本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
-详细的内容可在nvim中使用命令:help lua-guide进...
+详细的内容可在nvim中使用命令:help lua-guide进行查看。
+
+¶ 迁移变量
+
+参考手册 :help lua-guide-variables
+
+首先的第一种类型变量，使用let指令赋值，一般可被分为以下几种：
+
+...
             </p>
         </a>
     </article>
 
     
-    <article class="article-list-item">
-        <a href="/2022/03/05/smali-language/">
-            <h3>smali 语法</h3>
-            <p>
+    <article class="articles-list-item">
+        <a href="/2022/03/04/smali-language/">
+            <p class="item-title">
+                smali 语法
+            </p>
+            <p class="item-content">
                 
 记录一下 smali 的基本语法，方便回顾
 
 ¶ 前言
 smali 语法与汇编语法挺相似的，
 简要做一些笔记，仅仅只是一些简单的语法，
-更多信息请查看文...
+更多信息请查看文末的链接
+¶ 数据类型
+以下是一些基本数据类型的表示
+
+
+
+smali
+Java
+smali
+Java
+
+
+
+
+I
+int
+C
+char
+
+
+S
+short
+Z...
             </p>
         </a>
     </article>
 
     
-    <article class="article-list-item">
-        <a href="/2021/11/25/logistic-regression/">
-            <h3>逻辑回归</h3>
-            <p>
+    <article class="articles-list-item">
+        <a href="/2021/12/14/k-means-algorithm/">
+            <p class="item-title">
+                k-means 算法
+            </p>
+            <p class="item-content">
+                ¶ 原理简析
+对于一组输入数据： $x^{(1)}$ ， $x^{(2)}$ ， $x^{(m)}$ ，
+其中 $x \in R$ ，我们通过观察发现数据可分为 $k$ 个不同的分类，
+那么我们可以初始化 $k$ 个类重心作为不同类的分类依据。
+在初始化类重心后，计算所有数据点到类重心的距离，
+使得点到重心的距离...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2021/12/14/mixtures-of-gaussians-and-the-EM-algorithm/">
+            <p class="item-title">
+                高斯混合模型与EM算法
+            </p>
+            <p class="item-content">
+                ¶ 原理简析
+由 EM 算法我们能够对具有隐含变量的模型进行预测
+当数据的分布由多个高斯分布混合而成，即不同数据分别满足不同的高斯分布
+这就称为 高斯混合模型
+在这个模型中，数据属于某个高斯模型的概率 $\alpha$ 是隐含变量，
+而每个高斯分布则是可观测的，第 $k$ 个模型对应的参数为 $\mu_{k}, ...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2021/11/24/logistic-regression/">
+            <p class="item-title">
+                逻辑回归
+            </p>
+            <p class="item-content">
                 ¶ 线性回归的不足
 当数据的分布情况是这样子的时候，
 线性回归得出的模型效果不好：
 
 于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x...
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}}$
+¶ 数学原理
+¶ 概率函数
+设 $h_{\theta}(x) = \frac{1}{...
             </p>
         </a>
     </article>
 
-    
-    <article class="article-list-item">
-        <a href="/2021/11/04/why-use-least-squares/">
-            <h3>为什么使用最小二乘法</h3>
-            <p>
-                
-解释为什么最小二乘法能减小误差
+</article>
 
-¶ 了解一下误差
-假设预测结果与实际结果存在误差，即
-$$
-\begin{equation}
-\label{eq1}
-...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="article-list-item">
-        <a href="/2021/10/30/locally-weighted-regression/">
-            <h3>局部加权回归</h3>
-            <p>
-                
-简单介绍局部加权回归算法的思想
-
-¶ 基本思想
-文章 欠拟合与过拟合
-简单介绍了欠拟合与过拟合的相关概念，
-其中我们可以发现，如果选择的模型的阶比较低，...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="article-list-item">
-        <a href="/2021/10/26/underfitting-and-overfitting/">
-            <h3>欠拟合与过拟合</h3>
-            <p>
-                ¶ 欠拟合与过拟合
-¶ 欠拟合
-欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律
-问题的原因在于训练时，用于训练的模型不是很好，
-当尝试用低阶模型去...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="article-list-item">
-        <a href="/2021/09/16/gradient-descent/">
-            <h3>梯度下降算法</h3>
-            <p>
-                
-介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理
-
-¶ 步骤
-
-
-随机选取一个初始位置 $x_{0}$
-
-...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="article-list-item">
-        <a href="/2021/09/11/linear-regression/">
-            <h3>线性回归</h3>
-            <p>
-                
-基于 Andrew NG 机器学习 公开课程 [1]
-线性回归是一种 监督学习 (supervised leaning) 的模型
-简单解释其中的数学原理...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="article-list-item">
-        <a href="/2021/08/15/install-grub-at-a-img-file/">
-            <h3>在磁盘映像文件上安装 Grub 2</h3>
-            <p>
-                
-操作环境为 Arch Linux
-
-¶ 前言
-
-文中的 Grub 均指 Grub 2，而非 Grub Legacy
-文中涉及的安装操作仅限于 Arch ...
-            </p>
-        </a>
-    </article>
-
-
-        </article>
         
 <div class="pager">
     <div class="page-list">
-        
-            <span class="extend prev">
-                <i class="bi bi-arrow-left-short"></i>
-            </span>
-        
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="bi bi-arrow-right-short"></i></a>
-        
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="bi bi-arrow-right-short"></i></a>
     </div>
 </div>
 
     </div>
-
-    <div class="right-sidebar">
-        
-
-
-
-<p class="sidebar-list-title">
-    标签
-</p>
-
-
-
-<ul class="site-tags-list" itemprop="keywords"><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Access-Point/" rel="tag">Access Point</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Gitalk/" rel="tag">Gitalk</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Grub/" rel="tag">Grub</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/PWM/" rel="tag">PWM</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Servo/" rel="tag">Servo</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/dnsmasq/" rel="tag">dnsmasq</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/hostapd/" rel="tag">hostapd</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/lua/" rel="tag">lua</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/neovim/" rel="tag">neovim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/smali/" rel="tag">smali</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/" rel="tag">回归算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E5%BC%80%E5%8F%91/" rel="tag">开发</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="tag">最小二乘法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" rel="tag">监督学习</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="tag">线性回归</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li><li class="site-tags-list-item"><a class="site-tags-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-
-
-    </div>
 </main>
 
+    
     <button id="goto-top" type="button" title="回到顶部">
         回到顶部
     </button>
     <footer>
         <p> Copyright 2023 @狐zerOAO</p>
         <p>
-            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
         </p>
         <br>
     </footer>
 </body>
+
 <script>
 $('#goto-top').hide();
 // 页面载入后设置icon

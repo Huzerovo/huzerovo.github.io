@@ -1,66 +1,67 @@
 /* 顶部菜单栏 */
-#topbar {
+.topbar {
+  width: 100%;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+.topbar .topbar-container {
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.topbar .topbar-container .topbar-menu {
+  max-width: 80%;
+  overflow-x: scroll;
+}
+.topbar .topbar-container .topbar-menu ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.topbar .topbar-container .topbar-menu ul li {
+  min-width: fit-content;
+}
+.topbar .topbar-container .topbar-menu a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.topbar .topbar-container .topbar-icon-buttons {
+  max-width: 20%;
+  overflow-x: scroll;
+  display: flex;
+  align-content: center;
+}
+.topbar .topbar-container .topbar-icon-buttons .icon-button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+}
+/* 20 * 16 px */
+@media screen and (max-width: 640px) {
+  .topbar .topbar-container {
     width: 100%;
-    margin: 0;
-    position: sticky;
-    top: 0;
-    z-index: 99;
-}
-
-.topbar-container {
-    width: 80%;
-    height: 40px;
-    margin: 0 auto;
+    justify-content: center;
+  }
+  .topbar .topbar-container .topbar-menu {
+    max-width: unset;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-}
-
-.topbar-menu {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.topbar-menu-item a {
-    display: block;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.topbar-icon-buttons {
-    display: flex;
-    align-content: center;
-}
-
-.icon-button {
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    background: none;
-}
-
-.icon-button {
-    display: inherit;
-}
-
-.btn-side-menu {
-    display: none;
-}
-
-/* 导航栏显示 */
-@media screen and (max-width: 800px) {
-    .topbar-container {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .topbar-menu {
-        display: none;
-    }
-
-    .btn-side-menu {
-        display: unset;
-    }
+    justify-content: center;
+  }
+  .topbar .topbar-container .topbar-icon-buttons {
+    display: grid;
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+  }
 }

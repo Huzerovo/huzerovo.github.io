@@ -1,0 +1,60 @@
+/* 文章 */
+/* 目录 */
+#article-toc a {
+  color: gray;
+}
+#article-toc a:hover {
+  color: black;
+}
+article.article-container a {
+  color: #9999ff;
+}
+article.article-container a:visited {
+  color: orchid;
+}
+article.article-container a:hover {
+  color: orange;
+}
+article.article-container blockquote {
+  background-color: #e6e6e6;
+  color: gray;
+}
+article.article-container hr {
+  color: lightgray;
+}
+article.article-container table thead {
+  background-color: lightgray;
+  color: black;
+}
+article.article-container table tbody {
+  background-color: white;
+  color: black;
+}
+article.article-container code:not([class*="language"]) {
+  background-color: white;
+  color: peru;
+}
+article.article-container pre code:not([class~="hljs"]) {
+  background-color: whitesmoke;
+}
+/* 文章标签 */
+.article-meta-info {
+  color: gray;
+}
+.article-meta-info a {
+  color: #9999ff;
+}
+.article-meta-info a:visited {
+  color: orchid;
+}
+.article-meta-info a:hover {
+  color: orange;
+}
+/* 日期信息 */
+.article-date-info {
+  color: gray;
+}
+/* 评论 */
+.article-comment {
+  background-color: white;
+}

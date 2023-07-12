@@ -1,20 +1,209 @@
 /*
- * 主题颜色 Dark 样式
- *
- * Created by 狐zerOAO
+ * 暗色主题
  */
-
-/* 文章 */
-@import 'dark-article.css';
-/* 列表 */
-@import 'dark-list.css';
-/* 基本样式 */
-@import 'dark-main.css';
-/* 分页器 */
-@import 'dark-pager.css';
-/* 侧边栏 */
-@import 'dark-sidebar.css';
-/* 标签云 */
-@import 'dark-tagcloud.css';
-/* 顶部栏 */
-@import 'dark-topbar.css';
+.dark body {
+  background-color: black;
+  color: #c8c8c8;
+  /* 顶部栏 */
+  /* 顶部导航栏 */
+  /* 基本样式 */
+  /* 主体 */
+  /* 分页器 */
+  /* 分页 */
+}
+.dark body #goto-top {
+  background-color: #505050;
+  color: white;
+  opacity: 50%;
+}
+.dark body .topbar {
+  background-color: rgba(30, 30, 30, 0.9);
+}
+.dark body .topbar #active-page {
+  background-color: gray;
+  color: whitesmoke;
+}
+.dark body .topbar .topbar-menu a {
+  color: lightgray;
+}
+.dark body .topbar .topbar-menu a:hover:not(.active) {
+  background-color: lightgray;
+  color: black;
+}
+.dark body .topbar #btn-switch-theme,
+.dark body .topbar #btn-search {
+  color: lightgray;
+}
+.dark body main {
+  /* 归档页 */
+  /* 文章列表 */
+  /* 分类页 */
+  /* 文章 */
+  /* 目录 */
+  /* 文章标签 */
+  /* 日期信息 */
+  /* 评论 */
+  /* 搜索页 */
+  /* 标签云 */
+}
+.dark body main .page-archive-item .page-archive-item-date {
+  color: gray;
+}
+.dark body main .page-archive-item a {
+  color: lightgray;
+}
+.dark body main .page-archive-item a:hover {
+  background-color: #1e1e1e;
+  color: white;
+}
+.dark body main .articles-list .articles-list-item {
+  background-color: #1e1e1e;
+}
+.dark body main .articles-list .articles-list-item a {
+  color: gray;
+}
+.dark body main .articles-list .articles-list-item a:hover {
+  color: lightgray;
+}
+.dark body main .page-category {
+  color: gray;
+}
+.dark body main .page-category a {
+  color: lightgray;
+}
+.dark body main .page-category a:hover {
+  background-color: #1e1e1e;
+  color: white;
+}
+.dark body main #article-toc a {
+  color: gray;
+}
+.dark body main #article-toc a:hover {
+  color: white;
+}
+.dark body main article.article-container a {
+  color: orchid;
+}
+.dark body main article.article-container a:visited {
+  color: #9999ff;
+}
+.dark body main article.article-container a:hover {
+  color: orange;
+}
+.dark body main article.article-container blockquote {
+  border-left-color: #969696;
+  background-color: #282828;
+  color: gray;
+}
+.dark body main article.article-container hr {
+  color: gray;
+}
+.dark body main article.article-container table thead {
+  background-color: #505050;
+  color: lightgray;
+}
+.dark body main article.article-container table tbody {
+  background-color: dimgray;
+  color: lightgray;
+}
+.dark body main article.article-container img {
+  filter: brightness(0.8);
+}
+.dark body main article.article-container code:not([class*="language"]) {
+  background-color: #323232;
+  color: sandybrown;
+}
+.dark body main article.article-container pre code:not([class~="hljs"]) {
+  background-color: black;
+}
+.dark body main .article-meta-info {
+  color: gray;
+}
+.dark body main .article-meta-info a {
+  color: orchid;
+}
+.dark body main .article-meta-info a:visited {
+  color: #9999ff;
+}
+.dark body main .article-meta-info a:hover {
+  color: orange;
+}
+.dark body main .article-date-info {
+  color: gray;
+}
+.dark body main .article-comment {
+  background-color: #323232;
+}
+.dark body main #search {
+  background-color: #1e1e1e;
+  border-color: gray;
+  color: lightgray;
+}
+.dark body main .tagcloud-0 {
+  color: #787878;
+}
+.dark body main .tagcloud-1 {
+  color: #878787;
+}
+.dark body main .tagcloud-2 {
+  color: #969696;
+}
+.dark body main .tagcloud-3 {
+  color: #a5a5a5;
+}
+.dark body main .tagcloud-4 {
+  color: #b4b4b4;
+}
+.dark body main .tagcloud-5 {
+  color: #c3c3c3;
+}
+.dark body main .tagcloud-6 {
+  color: #d2d2d2;
+}
+.dark body main .tagcloud-7 {
+  color: #e1e1e1;
+}
+.dark body main .tagcloud-8 {
+  color: #f0f0f0;
+}
+.dark body main .tagcloud-9 {
+  color: #ffffff;
+}
+.dark body main .tagcloud-0:hover,
+.dark body main .tagcloud-1:hover,
+.dark body main .tagcloud-2:hover,
+.dark body main .tagcloud-3:hover,
+.dark body main .tagcloud-4:hover,
+.dark body main .tagcloud-5:hover,
+.dark body main .tagcloud-6:hover,
+.dark body main .tagcloud-7:hover,
+.dark body main .tagcloud-8:hover,
+.dark body main .tagcloud-9:hover {
+  color: white;
+}
+.dark body footer a {
+  color: #9999ff;
+}
+.dark body footer a:visited {
+  color: gold;
+}
+.dark body footer a:hover {
+  color: #66ccff;
+}
+.dark body .space,
+.dark body .page-list .prev,
+.dark body .page-list .next,
+.dark body .page-number {
+  background-color: gray;
+  color: black;
+}
+.dark body .page-list .prev:hover,
+.dark body .page-list .next:hover,
+.dark body .page-number:hover {
+  background-color: gray;
+  color: white;
+}
+.dark body .page-number.current {
+  background-color: dimgray;
+  color: black;
+}

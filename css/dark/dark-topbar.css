@@ -1,24 +1,19 @@
-/*
- * 顶栏的暗色模式样式
- *
- * Created by 狐zerOAO
- */
-.dark #topbar {
-    background-color: rgba(30, 30, 30, 0.9);
+/* 顶部导航栏 */
+.topbar {
+  background-color: rgba(30, 30, 30, 0.9);
 }
-
-.dark .topbar-menu-item a,
-.dark .btn-switch-theme,
-.dark .btn-side-menu,
-.dark .btn-search {
-    color: lightgray;
+.topbar #active-page {
+  background-color: gray;
+  color: whitesmoke;
 }
-
-.dark .topbar-menu-item .active {
-    background-color: gray;
+.topbar .topbar-menu a {
+  color: lightgray;
 }
-
-.dark .topbar-menu-item a:hover:not(.active) {
-    background-color: lightgray;
-    color: black;
+.topbar .topbar-menu a:hover:not(.active) {
+  background-color: lightgray;
+  color: black;
+}
+.topbar #btn-switch-theme,
+.topbar #btn-search {
+  color: lightgray;
 }

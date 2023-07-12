@@ -1,236 +1,251 @@
-/*
- * 主题整体布局样式
- *
- * Created by 狐zerOAO
- */
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-}
-
-#goto-top {
-    position: fixed;
-    right: 8%;
-    bottom: 8%;
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-}
-
 /* 主体区域 */
 main {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    padding: 0 1em;
-    margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  padding: 0 16px;
+  margin: 0 auto;
+  /* 中间显示区域 */
 }
-
-.search-input {
-    display: flex;
-
+main .container {
+  width: 100%;
+  /* 页面标题 */
+  /* 默认使用的文章列表 */
+  /* 文章列表 */
+  /* 归档页的样式 */
+  /* 归档页面的样式 */
+  /* 分类页面的样式 */
+  /* 分类页面 */
+  /* 标签云页面的样式 */
+  /* 标签云 */
+  /* 文章样式 */
+  /* 文章页面样式 */
+  /* 目录设置 */
+  /* 文章内容 */
+  /* 文章标签 */
+  /* 日期信息 */
+  /* 评论 */
+  /* 搜索页面 */
+  /* 搜索页样式 */
 }
-
-.search-input input {
-    margin: 16px auto;
-    height: 40px;
-    width: 80%;
-    font-size: 16px;
-    border: solid 1px;
-    border-radius: 16px;
-    padding: 0px 16px;
+main .container .page-title {
+  text-align: center;
 }
-
-/* 中间显示区域 */
-.center-container {
-    width: 60%;
+main .container .articles-list {
+  display: flex;
+  flex-wrap: wrap;
 }
-
-/* 分页选择 */
-.pager {
-    display: flex;
-    overflow: auto;
-    margin: 1em 0;
+main .container .articles-list .articles-list-item {
+  display: block;
+  width: 80%;
+  height: 160px;
+  margin: 8px auto;
+  padding: 32px;
+  border-radius: 16px;
 }
-
-.page-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
+main .container .articles-list .articles-list-item * {
+  transition: 0ms;
 }
-
-.space,
-.page-list .prev,
-.page-list .next,
-.page-number {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    width: 1em;
-    height: 1em;
-    padding: 1em;
+main .container .articles-list .articles-list-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  overflow: hidden;
 }
-
-/* 文章列表 */
-.article-list {
-    display: flex;
-    flex-wrap: wrap;
+main .container .articles-list .articles-list-item .item-title {
+  font-size: 24px;
+  margin-top: 0;
 }
-
-.article-list .article-list-item {
+main .container .articles-list .articles-list-item .item-content {
+  margin: 0;
+}
+main .container .page-archive-year {
+  font-size: 32px;
+}
+main .container .page-archive-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  margin: 0 6px;
+}
+main .container .page-archive-item a {
+  text-decoration: none;
+  width: 80%;
+  padding: 8px;
+  margin-left: 64px;
+  border-radius: 8px;
+  transition: 100ms;
+}
+main .container .page-category ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+main .container .page-category li {
+  margin: 8px;
+  display: inline-block;
+  text-align: center;
+}
+main .container .page-category a {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 16px 32px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+main .container .page-tagcloud a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 6px;
+}
+main .container #article-toc {
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  max-width: 15%;
+  height: 80vh;
+  overflow: auto;
+  /* display: inline-block; */
+}
+main .container #article-toc .toc {
+  padding: 0;
+  font-size: small;
+  list-style: none;
+}
+main .container #article-toc .toc-child {
+  padding: 0 8px;
+  list-style: none;
+}
+main .container #article-toc .toc-link {
+  display: block;
+  margin: 6px 0;
+  text-decoration: none;
+}
+@media (max-width: 960px) {
+  main .container #article-toc {
+    position: unset;
+    max-width: 30%;
+    float: left;
+    margin-right: 32px;
+  }
+}
+@media (max-width: 480px) {
+  main .container #article-toc {
     display: block;
+    max-width: 100%;
+    height: fit-content;
     width: 80%;
-    height: 10em;
-    margin: 8px auto;
-    padding: 16px 32px;
-    border-radius: 16px;
+    float: unset;
+    margin: 0 auto;
+  }
 }
-
-.article-list .article-list-item a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    overflow: hidden;
+main .container article.article-container {
+  font-family: sans;
+  line-height: 1.5;
+  padding: 0 16px;
 }
-
-.article-list .article-list-item a h1 {
-    margin-top: 0;
+main .container article.article-container h1 {
+  text-align: center;
 }
-
-.article-list .article-list-item a p {
-    margin: 0;
+main .container article.article-container p {
+  text-indent: 32px;
 }
-
-/* 页面标题 */
-.page-title {
-    text-align: center;
+main .container article.article-container a {
+  transition: 0ms;
+  text-decoration: none;
 }
-
-/* 标签云 */
-.page-tagcloud a {
-    display: inline-block;
-    text-decoration: none;
-    margin: 0 6px;
+main .container article.article-container blockquote {
+  border-left-width: 3px;
+  border-left-style: solid;
+  margin: 8px 0px;
+  padding: 8px 32px;
+  width: calc(100% - 64px - 3px);
+  display: inline-block;
 }
-
-/* 归档页面 */
-.page-archive-year {
-    font-size: 32px;
+main .container article.article-container blockquote p {
+  text-indent: 0px;
 }
-
-.page-archive-item {
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    margin: 0 6px;
+main .container article.article-container table {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid;
+  border-collapse: collapse;
 }
-
-.page-archive-item-link {
-    box-sizing: border-box;
-    text-decoration: none;
+main .container article.article-container table td {
+  border: 1px solid;
+  padding: 0 6px;
+}
+main .container article.article-container table th {
+  border: 1px solid;
+  padding: 0 9px;
+}
+main .container article.article-container img {
+  max-width: 100%;
+}
+main .container article.article-container code {
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin: 8px;
+}
+main .container article.article-container pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 16px;
+}
+main .container .article-meta-info .category-list,
+main .container .article-meta-info .tag-list {
+  margin: 0px;
+}
+main .container .article-meta-info .category-list li,
+main .container .article-meta-info .tag-list li {
+  margin: 0 8px;
+  display: inline-block;
+}
+main .container .article-meta-info a {
+  transition: 0ms;
+  text-decoration: none;
+}
+main .container .article-date-info {
+  margin: 8px auto;
+}
+main .container .article-date-info span {
+  font-size: small;
+  font-style: italic;
+  display: block;
+}
+main .container .article-comment {
+  text-align: center;
+  border-radius: 16px;
+  padding: 0px 16px;
+  padding-bottom: 8px;
+  margin: 16px 0px;
+}
+main .container .search-input {
+  display: flex;
+}
+main .container .search-input input {
+  margin: 16px auto;
+  height: 40px;
+  width: 80%;
+  font-size: 16px;
+  border: solid 1px;
+  border-radius: 16px;
+  padding: 0px 16px;
+}
+/* 60 * 16 px */
+@media screen and (max-width: 960px) {
+  main {
     width: 80%;
-    padding: 8px;
-    margin-left: 64px;
+  }
 }
-
-/* 分类页面 */
-.page-category-list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    justify-content: space-evenly;
-    padding: 0;
-}
-
-.page-category-list-item {
-    display: inline-block;
-    text-align: center;
-}
-
-.page-category-list-link {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 100%;
-    padding: 16px 32px;
-    text-decoration: none;
-}
-
-/* 文章时间信息 */
-.article-date-info {
-    font-size: small;
-    font-style: italic;
-}
-
-/* 文章内标签 */
-.inline-list {
-    display: none;
-}
-
-.inline-list-title {
-    margin: 0;
-}
-
-.inline-list-post-tags-list,
-.inline-list-post-categories-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.inline-list-post-tags-list-item,
-.inline-list-post-categories-list-item {
-    display: inline-block;
-}
-
-.inline-list-post-tags-list-link,
-.inline-list-post-categories-list-link {
-    box-sizing: border-box;
-    padding: 6px;
-}
-
-.contains-task-list {
-	list-style: none;
-	padding: 0;
-}
-
-/* 网站页尾 */
-footer {
-    text-align: center;
-}
-
-/* 1300px */
-@media screen and (max-width: 1300px) {
-    main {
-        width: 90%;
-    }
-}
-
-
-/* 800px */
-@media screen and (max-width: 800px) {
-    main {
-        width: 100%;
-    }
-
-    .center-container {
-        width: 100%;
-    }
-}
-
-/* 1000px */
-@media screen and (max-width: 1000px) {
-    .center-container {
-        width: 80%;
-    }
-
-    .inline-list {
-        display: block;
-    }
+/* 40 * 16 px */
+@media screen and (max-width: 640px) {
+  main {
+    width: 95%;
+  }
 }

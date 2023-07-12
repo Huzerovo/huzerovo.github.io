@@ -41,23 +41,25 @@ function setTheme(theme) {
 }
 
 function setDarkThemeIcon() {
-    $('#icon-theme').attr('src', '/img/moon.svg');
+    $('#btn-switch-theme i').removeClass('bi-sun');
+    $('#btn-switch-theme i').addClass('bi-moon');
 }
 
 function setLightThemeIcon() {
-    $('#icon-theme').attr('src', '/img/sun.svg');
+    $('#btn-switch-theme i').removeClass('bi-moon');
+    $('#btn-switch-theme i').addClass('bi-sun');
 }
 
 function followTheme() {
-	let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	let lightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-	let theme = getStorage('currentTheme');
+    let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let lightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+    let theme = getStorage('currentTheme');
 
-	if (theme === 'light' && darkMode) {
-		switchTheme()
-	} else if (theme === 'dark' && lightMode) {
-		switchTheme();
-	}
+    if (theme === 'light' && darkMode) {
+        switchTheme()
+    } else if (theme === 'dark' && lightMode) {
+        switchTheme();
+    }
 }
 
 function myLoading() {

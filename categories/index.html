@@ -4,20 +4,39 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="google" content="notranslate" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="记录一段回忆" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title> 狐zerOAO </title>
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
 
     
-    <link id="code-style" rel="stylesheet" href="/css/github.min.css">
-    <script src="/js/highlight.min.js"></script>
-    <script>hljs.highlightAll(); </script>
     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+    
     
 <link rel="stylesheet" href="/css/light/light.css">
 
@@ -25,33 +44,17 @@
 <link rel="stylesheet" href="/css/dark/dark.css">
 
     
-<link rel="stylesheet" href="/css/animation.css">
-
-    
-<link rel="stylesheet" href="/css/article.css">
-
-    
-<link rel="stylesheet" href="/css/main.css">
-
-    
-<link rel="stylesheet" href="/css/sidebar.css">
-
-    
-<link rel="stylesheet" href="/css/topbar.css">
-
     
 <script src="/js/huzerovo.js"></script>
-
-    
 <script src="/js/search.js"></script>
 
-
     
-
+    
     <script>
+        // 设置主题
         let codeStyle = {};
-        codeStyle.dark = "/css/github-dark.min.css";
         codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
         window.load = myLoading();
         window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
     </script>
@@ -71,129 +74,94 @@
 
 
 
-
-
-
-
-
-<nav id="topbar">
+<header class="topbar">
     <div class="topbar-container">
         
-        <ul class="topbar-menu">
-        
-            <li class="topbar-menu-item">
+        <nav class="topbar-menu">
+            <ul>
             
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
             
-                <a href="/" title="首页">首页</a>
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
             
-            </li>
-        
-            <li class="topbar-menu-item">
+                <li>
+                
+                 
+                    <a href="/categories" title="分类" id="active-page">分类</a>
+                
+                </li>
             
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
             
-                <a href="/archives" title="归档">归档</a>
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
             
-            </li>
-        
-            <li class="topbar-menu-item">
-            
-             
-                <a href="/categories" title="分类" class="active">分类</a>
-            
-            </li>
-        
-            <li class="topbar-menu-item">
-            
-            
-                <a href="/tags" title="标签">标签</a>
-            
-            </li>
-        
-            <li class="topbar-menu-item">
-            
-            
-                <a href="/about" title="关于我">关于我</a>
-            
-            </li>
-        
-        </ul>
+            </ul>
+        </nav>
 
         
         <div class="topbar-icon-buttons">
-            <button id="btn-side-menu" class="icon-button btn-side-menu">
-                菜单
+            <button id="btn-switch-theme" class="icon-button">
+                <i class="bi bi-sun"></i>
             </button>
-            <button id="btn-switch-theme" class="icon-button btn-switch-theme">
-                
-                <img id="icon-theme" alt="theme" src="" />
-            </button>
-            <a id="btn-search" class="icon-button btn-search" href="/search">
+            <a id="btn-search" class="icon-button" href="/search">
                 <i class="bi bi-search"></i>
             </a>
         </div>
     </div>
-</nav>
-
-
-<aside id="side-nav" class="side-menu-hidden">
-    <ul class="side-menu">
-    
-    
-        
-        <li class="side-menu-item">
-            <a href="/" title="首页">首页</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/archives" title="归档">归档</a>
-        </li>
-        
-    
-         
-        <li class="side-menu-item">
-            <a href="/categories" title="分类" class="active">分类</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/tags" title="标签">标签</a>
-        </li>
-        
-    
-        
-        <li class="side-menu-item">
-            <a href="/about" title="关于我">关于我</a>
-        </li>
-        
-    
-    </ul>
+</header>
 
     
-</aside>
+
+
+
 
 <main>
-    <div class="center-container">
-        <h1 class = "page-title">分类</h1>
-        <ul class="page-category-list"><li class="page-category-list-item"><a class="page-category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="page-category-list-item"><a class="page-category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li><li class="page-category-list-item"><a class="page-category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul>
+    <div class="container">
+        <h1 class="page-title">
+            分类
+        </h1>
+        <div class="page-category">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%85%E6%A0%B8/">内核</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">3</span></li></ul>
+        </div>
     </div>
 </main>
 
 
 
+    
     <button id="goto-top" type="button" title="回到顶部">
         回到顶部
     </button>
     <footer>
         <p> Copyright 2023 @狐zerOAO</p>
         <p>
-            Powered by <a class="footer-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. Theme by 狐zerOAO.
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
         </p>
         <br>
     </footer>
 </body>
+
 <script>
 $('#goto-top').hide();
 // 页面载入后设置icon

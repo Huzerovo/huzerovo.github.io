@@ -1,0 +1,11 @@
+/* 归档页 */
+.page-archive-item .page-archive-item-date {
+  color: gray;
+}
+.page-archive-item a {
+  color: lightgray;
+}
+.page-archive-item a:hover {
+  background-color: #1e1e1e;
+  color: white;
+}

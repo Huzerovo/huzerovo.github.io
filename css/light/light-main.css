@@ -1,47 +1,142 @@
 /* 主体 */
-.light body {
-    background-color: whitesmoke;
+main {
+  /* 归档页 */
+  /* 文章列表 */
+  /* 分类页 */
+  /* 文章 */
+  /* 目录 */
+  /* 文章标签 */
+  /* 日期信息 */
+  /* 评论 */
+  /* 搜索页 */
+  /* 标签云 */
 }
-
-.light #goto-top {
-    background-color: black;
-    color: white;
-    opacity: 50%;
+main .page-archive-item .page-archive-item-date {
+  color: #969696;
 }
-
-/* 归档页 */
-.light .page-archive-item-date {
-    color: gray;
+main .page-archive-item a {
+  color: #505050;
 }
-
-.light .page-archive-item-link {
-    color: black;
+main .page-archive-item a:hover {
+  background-color: white;
+  color: black;
 }
-
-.light .page-archive-item-link:hover {
-    background-color: gray;
-    color: white;
+main .articles-list .articles-list-item {
+  background-color: white;
 }
-
-/* 分类页 */
-.light .page-category-list-link {
-    color: black;
+main .articles-list .articles-list-item a {
+  color: #323232;
 }
-
-.light .page-category-list-link:hover {
-    background-color: gray;
-    color: white;
+main .articles-list .articles-list-item a:hover {
+  color: gray;
 }
-
-.light .footer-link {
-    color: #9999ff;
+main .page-category {
+  color: #969696;
 }
-
-.light .footer-link:hover {
-    color: #66ccff;
+main .page-category a {
+  color: #505050;
 }
-
-/* 搜索页 */
-.light #search {
-    border-color: lightgray;
+main .page-category a:hover {
+  background-color: white;
+  color: black;
+}
+main #article-toc a {
+  color: gray;
+}
+main #article-toc a:hover {
+  color: black;
+}
+main article.article-container a {
+  color: #9999ff;
+}
+main article.article-container a:visited {
+  color: orchid;
+}
+main article.article-container a:hover {
+  color: orange;
+}
+main article.article-container blockquote {
+  background-color: #e6e6e6;
+  color: gray;
+}
+main article.article-container hr {
+  color: lightgray;
+}
+main article.article-container table thead {
+  background-color: lightgray;
+  color: black;
+}
+main article.article-container table tbody {
+  background-color: white;
+  color: black;
+}
+main article.article-container code:not([class*="language"]) {
+  background-color: white;
+  color: peru;
+}
+main article.article-container pre code:not([class~="hljs"]) {
+  background-color: whitesmoke;
+}
+main .article-meta-info {
+  color: gray;
+}
+main .article-meta-info a {
+  color: #9999ff;
+}
+main .article-meta-info a:visited {
+  color: orchid;
+}
+main .article-meta-info a:hover {
+  color: orange;
+}
+main .article-date-info {
+  color: gray;
+}
+main .article-comment {
+  background-color: white;
+}
+main #search {
+  border-color: lightgray;
+}
+main .tagcloud-0 {
+  color: #b4b4b4;
+}
+main .tagcloud-1 {
+  color: #a0a0a0;
+}
+main .tagcloud-2 {
+  color: #8c8c8c;
+}
+main .tagcloud-3 {
+  color: #787878;
+}
+main .tagcloud-4 {
+  color: #646464;
+}
+main .tagcloud-5 {
+  color: #505050;
+}
+main .tagcloud-6 {
+  color: #3c3c3c;
+}
+main .tagcloud-7 {
+  color: #282828;
+}
+main .tagcloud-8 {
+  color: #141414;
+}
+main .tagcloud-9 {
+  color: #000000;
+}
+main .tagcloud-0:hover,
+main .tagcloud-1:hover,
+main .tagcloud-2:hover,
+main .tagcloud-3:hover,
+main .tagcloud-4:hover,
+main .tagcloud-5:hover,
+main .tagcloud-6:hover,
+main .tagcloud-7:hover,
+main .tagcloud-8:hover,
+main .tagcloud-9:hover {
+  color: black;
 }

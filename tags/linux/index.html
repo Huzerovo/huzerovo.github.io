@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="记录一段回忆" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+    
+    
+    <script>
+        // 设置主题
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-switch-theme" class="icon-button">
+                <i class="bi bi-sun"></i>
+            </button>
+            <a id="btn-search" class="icon-button" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h1 class="page-title">
+            标签: Linux
+        </h1>
+        
+<div class="pager">
+    <div class="page-list">
+        <span class="page-number current">1</span>
+    </div>
+</div>
+
+        
+
+
+
+
+<article class="articles-list">
+
+
+    
+    <article class="articles-list-item">
+        <a href="/2021/08/14/install-grub-at-a-img-file/">
+            <p class="item-title">
+                在磁盘映像文件上安装 Grub 2
+            </p>
+            <p class="item-content">
+                
+操作环境为 Arch Linux
+
+¶ 前言
+
+文中的 Grub 均指 Grub 2，而非 Grub Legacy
+文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki
+分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M
+请在了解执行的命令的作用之后再执行操作
+
+¶ 使用...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2021/02/17/linux-firewall/">
+            <p class="item-title">
+                Linux 防火墙
+            </p>
+            <p class="item-content">
+                
+本文仅做简单的介绍，不涉及防火墙的实际应用及操作
+
+¶ Netfilter Porject
+Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能
+
+官网Netfilter Project介绍原文:
+“The netfilter project is a community-dr...
+            </p>
+        </a>
+    </article>
+
+</article>
+
+        
+<div class="pager">
+    <div class="page-list">
+        <span class="page-number current">1</span>
+    </div>
+</div>
+
+    </div>
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2023 @狐zerOAO</p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+});
+</script>
+</html>

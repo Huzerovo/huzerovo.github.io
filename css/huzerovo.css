@@ -1,0 +1,364 @@
+/*
+ * 网站整体样式框架，不包括颜色设置
+ */
+html {
+  scroll-behavior: smooth;
+}
+html * {
+  transition: 300ms;
+}
+body {
+  margin: 0;
+  /* 顶部菜单栏 */
+  /* 20 * 16 px */
+  /* 主体区域 */
+  /* 60 * 16 px */
+  /* 40 * 16 px */
+  /* 网站页尾 */
+  /* 分页器 */
+}
+body .topbar {
+  width: 100%;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+body .topbar .topbar-container {
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+body .topbar .topbar-container .topbar-menu {
+  max-width: 80%;
+  overflow-x: scroll;
+}
+body .topbar .topbar-container .topbar-menu ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+body .topbar .topbar-container .topbar-menu ul li {
+  min-width: fit-content;
+}
+body .topbar .topbar-container .topbar-menu a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+body .topbar .topbar-container .topbar-icon-buttons {
+  max-width: 20%;
+  overflow-x: scroll;
+  display: flex;
+  align-content: center;
+}
+body .topbar .topbar-container .topbar-icon-buttons .icon-button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+}
+@media screen and (max-width: 640px) {
+  body .topbar .topbar-container {
+    width: 100%;
+    justify-content: center;
+  }
+  body .topbar .topbar-container .topbar-menu {
+    max-width: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  body .topbar .topbar-container .topbar-icon-buttons {
+    display: grid;
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+  }
+}
+body main {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  padding: 0 16px;
+  margin: 0 auto;
+  /* 中间显示区域 */
+}
+body main .container {
+  width: 100%;
+  /* 页面标题 */
+  /* 默认使用的文章列表 */
+  /* 文章列表 */
+  /* 归档页的样式 */
+  /* 归档页面的样式 */
+  /* 分类页面的样式 */
+  /* 分类页面 */
+  /* 标签云页面的样式 */
+  /* 标签云 */
+  /* 文章样式 */
+  /* 文章页面样式 */
+  /* 目录设置 */
+  /* 文章内容 */
+  /* 文章标签 */
+  /* 日期信息 */
+  /* 评论 */
+  /* 搜索页面 */
+  /* 搜索页样式 */
+}
+body main .container .page-title {
+  text-align: center;
+}
+body main .container .articles-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+body main .container .articles-list .articles-list-item {
+  display: block;
+  width: 80%;
+  height: 160px;
+  margin: 8px auto;
+  padding: 32px;
+  border-radius: 16px;
+}
+body main .container .articles-list .articles-list-item * {
+  transition: 0ms;
+}
+body main .container .articles-list .articles-list-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  overflow: hidden;
+}
+body main .container .articles-list .articles-list-item .item-title {
+  font-size: 24px;
+  margin-top: 0;
+}
+body main .container .articles-list .articles-list-item .item-content {
+  margin: 0;
+}
+body main .container .page-archive-year {
+  font-size: 32px;
+}
+body main .container .page-archive-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  margin: 0 6px;
+}
+body main .container .page-archive-item a {
+  text-decoration: none;
+  width: 80%;
+  padding: 8px;
+  margin-left: 64px;
+  border-radius: 8px;
+  transition: 100ms;
+}
+body main .container .page-category ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0;
+}
+body main .container .page-category li {
+  margin: 8px;
+  display: inline-block;
+  text-align: center;
+}
+body main .container .page-category a {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 16px 32px;
+  text-decoration: none;
+  border-radius: 8px;
+}
+body main .container .page-tagcloud a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 6px;
+}
+body main .container #article-toc {
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  max-width: 15%;
+  height: 80vh;
+  overflow: auto;
+  /* display: inline-block; */
+}
+body main .container #article-toc .toc {
+  padding: 0;
+  font-size: small;
+  list-style: none;
+}
+body main .container #article-toc .toc-child {
+  padding: 0 8px;
+  list-style: none;
+}
+body main .container #article-toc .toc-link {
+  display: block;
+  margin: 6px 0;
+  text-decoration: none;
+}
+@media (max-width: 960px) {
+  body main .container #article-toc {
+    position: unset;
+    max-width: 30%;
+    float: left;
+    margin-right: 32px;
+  }
+}
+@media (max-width: 480px) {
+  body main .container #article-toc {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+    width: 80%;
+    float: unset;
+    margin: 0 auto;
+  }
+}
+body main .container article.article-container {
+  font-family: sans;
+  line-height: 1.5;
+  padding: 0 16px;
+}
+body main .container article.article-container h1 {
+  text-align: center;
+}
+body main .container article.article-container p {
+  text-indent: 32px;
+}
+body main .container article.article-container a {
+  transition: 0ms;
+  text-decoration: none;
+}
+body main .container article.article-container blockquote {
+  border-left-width: 3px;
+  border-left-style: solid;
+  margin: 8px 0px;
+  padding: 8px 32px;
+  width: calc(100% - 64px - 3px);
+  display: inline-block;
+}
+body main .container article.article-container blockquote p {
+  text-indent: 0px;
+}
+body main .container article.article-container table {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+body main .container article.article-container table td {
+  border: 1px solid;
+  padding: 0 6px;
+}
+body main .container article.article-container table th {
+  border: 1px solid;
+  padding: 0 9px;
+}
+body main .container article.article-container img {
+  max-width: 100%;
+}
+body main .container article.article-container code {
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin: 8px;
+}
+body main .container article.article-container pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 16px;
+}
+body main .container .article-meta-info .category-list,
+body main .container .article-meta-info .tag-list {
+  margin: 0px;
+}
+body main .container .article-meta-info .category-list li,
+body main .container .article-meta-info .tag-list li {
+  margin: 0 8px;
+  display: inline-block;
+}
+body main .container .article-meta-info a {
+  transition: 0ms;
+  text-decoration: none;
+}
+body main .container .article-date-info {
+  margin: 8px auto;
+}
+body main .container .article-date-info span {
+  font-size: small;
+  font-style: italic;
+  display: block;
+}
+body main .container .article-comment {
+  text-align: center;
+  border-radius: 16px;
+  padding: 0px 16px;
+  padding-bottom: 8px;
+  margin: 16px 0px;
+}
+body main .container .search-input {
+  display: flex;
+}
+body main .container .search-input input {
+  margin: 16px auto;
+  height: 40px;
+  width: 80%;
+  font-size: 16px;
+  border: solid 1px;
+  border-radius: 16px;
+  padding: 0px 16px;
+}
+@media screen and (max-width: 960px) {
+  body main {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 640px) {
+  body main {
+    width: 95%;
+  }
+}
+body #goto-top {
+  position: fixed;
+  right: 8%;
+  bottom: 8%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+body footer {
+  text-align: center;
+}
+body footer a {
+  transition: 0ms;
+}
+body .pager {
+  display: flex;
+  overflow: auto;
+  margin: 16px 0;
+}
+body .pager .page-list {
+  margin: 0 auto;
+}
+body .pager .page-list span,
+body .pager .page-list a {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+}
