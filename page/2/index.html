@@ -137,7 +137,7 @@
         
 <div class="pager">
     <div class="page-list">
-        <a class="extend prev" rel="prev" href="/"><i class="bi bi-arrow-left-short"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="bi bi-arrow-right-short"></i></a>
+        <a class="extend prev" rel="prev" href="/"><i class="bi bi-arrow-left-short"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </div>
 </div>
 
@@ -148,138 +148,6 @@
 
 <article class="articles-list">
 
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/11/03/why-use-least-squares/">
-            <p class="item-title">
-                为什么使用最小二乘法
-            </p>
-            <p class="item-content">
-                
-解释为什么最小二乘法能减小误差
-
-¶ 了解一下误差
-假设预测结果与实际结果存在误差，即
-$$
-\begin{equation}
-\label{eq1}
-y^{(i)} = \theta^{T} x^{(i)} + \varepsilon^{(i)}
-\end{equation}
-$$
-其中 $ \varepsi...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/10/29/locally-weighted-regression/">
-            <p class="item-title">
-                局部加权回归
-            </p>
-            <p class="item-content">
-                
-简单介绍局部加权回归算法的思想
-
-¶ 基本思想
-文章 欠拟合与过拟合
-简单介绍了欠拟合与过拟合的相关概念，
-其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
-但如果过高，则又会出现过拟合的情况
-因此，局部加权回归的思想就是，只关注 在预测点附近 的样本点，
-忽略或者减小离预测点较远的样本的影...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/10/25/underfitting-and-overfitting/">
-            <p class="item-title">
-                欠拟合与过拟合
-            </p>
-            <p class="item-content">
-                ¶ 欠拟合与过拟合
-¶ 欠拟合
-欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律
-问题的原因在于训练时，用于训练的模型不是很好，
-当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况
-比如[1]：
-
-¶ 过拟合
-过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
-但是进行预测的结果...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/09/15/gradient-descent/">
-            <p class="item-title">
-                梯度下降算法
-            </p>
-            <p class="item-content">
-                
-介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理
-
-¶ 步骤
-
-
-随机选取一个初始位置 $x_{0}$
-
-
-对 $x_{0}$ 进行更新，即：
-$$
-x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0}...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/09/10/linear-regression/">
-            <p class="item-title">
-                线性回归
-            </p>
-            <p class="item-content">
-                
-基于 Andrew NG 机器学习 公开课程 [1]
-线性回归是一种 监督学习 (supervised leaning) 的模型
-简单解释其中的数学原理，方便回顾
-
-¶ 基础
-¶ 定义 “特征” 与 “标签”
-这里的定义是为了方便后面的表达
-将监督学习中的一些概念 “重命名”
-
-特征，定义为输入空间（特征空间）...
-            </p>
-        </a>
-    </article>
-
-    
-    <article class="articles-list-item">
-        <a href="/2021/08/14/install-grub-at-a-img-file/">
-            <p class="item-title">
-                在磁盘映像文件上安装 Grub 2
-            </p>
-            <p class="item-content">
-                
-操作环境为 Arch Linux
-
-¶ 前言
-
-文中的 Grub 均指 Grub 2，而非 Grub Legacy
-文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki
-分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M
-请在了解执行的命令的作用之后再执行操作
-
-¶ 使用...
-            </p>
-        </a>
-    </article>
 
     
     <article class="articles-list-item">
@@ -379,12 +247,69 @@ vim 可分为三种模式
         </a>
     </article>
 
+    
+    <article class="articles-list-item">
+        <a href="/2021/02/17/linux-firewall/">
+            <p class="item-title">
+                Linux 防火墙
+            </p>
+            <p class="item-content">
+                
+本文仅做简单的介绍，不涉及防火墙的实际应用及操作
+
+¶ Netfilter Porject
+Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能
+
+官网Netfilter Project介绍原文:
+“The netfilter project is a community-dr...
+            </p>
+        </a>
+    </article>
+
+    
+    <article class="articles-list-item">
+        <a href="/2020/11/07/learn-markdown/">
+            <p class="item-title">
+                Learn Markdown
+            </p>
+            <p class="item-content">
+                ¶ 标题
+共有两种方法
+
+
+用=表示一级标题，或-表示二级标题
+上一行不能为空
+符号可以有多个
+语法(例子):
+
+一级标题
+=
+二级标题
+-
+二级标题
+----
+
+效果:
+
+一级标题
+¶ 二级标题
+¶ 二级标题
+
+
+
+用不同数量的 # 标记，后接一个空格，再接标题
+一个 # 表示一级标题，两个表示二级，以此类推
+...
+            </p>
+        </a>
+    </article>
+
 </article>
 
         
 <div class="pager">
     <div class="page-list">
-        <a class="extend prev" rel="prev" href="/"><i class="bi bi-arrow-left-short"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="bi bi-arrow-right-short"></i></a>
+        <a class="extend prev" rel="prev" href="/"><i class="bi bi-arrow-left-short"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </div>
 </div>
 
