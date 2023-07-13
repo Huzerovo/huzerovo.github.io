@@ -184,20 +184,14 @@
 .light body footer a:hover {
   color: #66ccff;
 }
-.light body .space,
-.light body .page-list .prev,
-.light body .page-list .next,
-.light body .page-number {
+.light body .pager .page-list span,
+.light body .pager .page-list a {
   color: gray;
-  background-color: whitesmoke;
 }
-.light body .page-list .prev:hover,
-.light body .page-list .next:hover,
-.light body .page-number:hover {
-  background-color: white;
+.light body .pager .page-list span:hover,
+.light body .pager .page-list a:hover {
   color: black;
 }
-.light body .page-number.current {
-  background-color: gray;
-  color: white;
+.light body .pager .page-list .current {
+  color: black;
 }

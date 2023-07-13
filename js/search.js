@@ -17,9 +17,6 @@ function search_with_regex(k, article) {
     }
     keywords = keywords.concat(article.title.match(regex));
     keywords = keywords.concat(article.content.match(regex));
-    console.log(regex);
-    console.log(article.title.match(regex));
-    console.log('keywords: ' + keywords);
     return search_with_keywords(keywords, article);
 }
 
@@ -38,11 +35,8 @@ function search_with_keywords(keywords, article) {
         keywords.forEach(function(k) {
             if (!ok.includes(k)) {
                 ok.push(k);
-                console.log('Searching keyword: ' + k);
                 let idx_title = article.title.indexOf(k);
-                console.log(article.title);
                 let idx_content = article.content.indexOf(k);
-                console.log('title index: ' + idx_title + ', contetn index: ' + idx_content);
                 if (idx_title >= 0 || idx_content >= 0) {
                     match = true;
                     title = title.replace(k, '<mark>' + k + '</mark>')
@@ -123,7 +117,6 @@ function searchArticle(path) {
             // 在文章的标题与内容中查找关键字
             articles.forEach(function(article) {
                 let html_str = '';
-                console.log('use regex: ' + use_regex);
                 // 使用正则查找
                 if (use_regex) {
                     html_str = search_with_regex(keywords, article);

@@ -57,13 +57,13 @@
   color: white;
 }
 .dark body main .articles-list .articles-list-item {
-  background-color: #1e1e1e;
+  background-color: #282828;
 }
 .dark body main .articles-list .articles-list-item a {
-  color: gray;
+  color: lightgray;
 }
 .dark body main .articles-list .articles-list-item a:hover {
-  color: lightgray;
+  color: white;
 }
 .dark body main .page-category {
   color: gray;
@@ -190,20 +190,14 @@
 .dark body footer a:hover {
   color: #66ccff;
 }
-.dark body .space,
-.dark body .page-list .prev,
-.dark body .page-list .next,
-.dark body .page-number {
-  background-color: gray;
-  color: black;
+.dark body .pager .page-list span,
+.dark body .pager .page-list a {
+  color: gray;
 }
-.dark body .page-list .prev:hover,
-.dark body .page-list .next:hover,
-.dark body .page-number:hover {
-  background-color: gray;
+.dark body .pager .page-list span:hover,
+.dark body .pager .page-list a:hover {
   color: white;
 }
-.dark body .page-number.current {
-  background-color: dimgray;
-  color: black;
+.dark body .pager .page-list .current {
+  color: white;
 }

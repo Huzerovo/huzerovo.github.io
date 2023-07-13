@@ -12,7 +12,9 @@
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
+    
     <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
+    
 
     
     
@@ -20,7 +22,7 @@
 
     
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     
     
@@ -67,7 +69,6 @@
 
 
 
-    
 
 
 
@@ -120,33 +121,36 @@
 
         
         <div class="topbar-icon-buttons">
-            <button id="btn-switch-theme" class="icon-button">
+            <button id="btn-switch-theme" class="icon-button" title="切换主题">
                 <i class="bi bi-sun"></i>
             </button>
-            <a id="btn-search" class="icon-button" href="/search">
+            
+            <a id="btn-search" class="icon-button" title="搜索" href="/search">
                 <i class="bi bi-search"></i>
             </a>
+            
         </div>
     </div>
 </header>
 
-    
-
-
-
-
 <main>
     <div class="container">
-        <h1 class="page-title">
+        <h1 class = "page-title">
             分类
         </h1>
-        <div class="page-category">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">2</span></li></ul>
-        </div>
+        
+            
+
+
+
+
+<div class="page-category">
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><span class="category-list-count">2</span></li></ul>
+</div>
+
+        
     </div>
 </main>
-
-
 
     
     <button id="goto-top" type="button" title="回到顶部">

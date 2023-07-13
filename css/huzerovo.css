@@ -269,6 +269,8 @@ body main .container article.article-container table th {
 }
 body main .container article.article-container img {
   max-width: 100%;
+  display: block;
+  margin: 8px auto;
 }
 body main .container article.article-container code {
   padding: 3px 6px;
@@ -353,13 +355,12 @@ body .pager {
 }
 body .pager .page-list {
   margin: 0 auto;
+  display: flex;
 }
 body .pager .page-list span,
 body .pager .page-list a {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  padding: 8px;
+  padding: 8px 16px;
 }

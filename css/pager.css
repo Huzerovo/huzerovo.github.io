@@ -6,13 +6,12 @@
 }
 .pager .page-list {
   margin: 0 auto;
+  display: flex;
 }
 .pager .page-list span,
 .pager .page-list a {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  padding: 8px;
+  padding: 8px 16px;
 }

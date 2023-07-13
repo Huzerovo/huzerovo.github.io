@@ -186,6 +186,8 @@ main .container article.article-container table th {
 }
 main .container article.article-container img {
   max-width: 100%;
+  display: block;
+  margin: 8px auto;
 }
 main .container article.article-container code {
   padding: 3px 6px;

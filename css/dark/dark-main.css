@@ -22,13 +22,13 @@ main .page-archive-item a:hover {
   color: white;
 }
 main .articles-list .articles-list-item {
-  background-color: #1e1e1e;
+  background-color: #282828;
 }
 main .articles-list .articles-list-item a {
-  color: gray;
+  color: lightgray;
 }
 main .articles-list .articles-list-item a:hover {
-  color: lightgray;
+  color: white;
 }
 main .page-category {
   color: gray;

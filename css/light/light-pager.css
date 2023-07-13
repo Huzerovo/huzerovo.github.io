@@ -1,18 +1,12 @@
 /* 分页器 */
-.space,
-.page-list .prev,
-.page-list .next,
-.page-number {
+.pager .page-list span,
+.pager .page-list a {
   color: gray;
-  background-color: whitesmoke;
 }
-.page-list .prev:hover,
-.page-list .next:hover,
-.page-number:hover {
-  background-color: white;
+.pager .page-list span:hover,
+.pager .page-list a:hover {
   color: black;
 }
-.page-number.current {
-  background-color: gray;
-  color: white;
+.pager .page-list .current {
+  color: black;
 }

@@ -1,10 +1,10 @@
 /* 文章列表 */
 .articles-list .articles-list-item {
-  background-color: #1e1e1e;
+  background-color: #282828;
 }
 .articles-list .articles-list-item a {
-  color: gray;
+  color: lightgray;
 }
 .articles-list .articles-list-item a:hover {
-  color: lightgray;
+  color: white;
 }
