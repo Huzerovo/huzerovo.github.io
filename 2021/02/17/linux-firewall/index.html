@@ -322,6 +322,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
     
     
     
+    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -334,8 +335,9 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "Linux 防火墙"
+        c.title = "Article: " + "Linux 防火墙";
         c.id = md5("2021/02/17/linux-firewall/index.html");
+        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>

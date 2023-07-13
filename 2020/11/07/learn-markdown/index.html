@@ -644,6 +644,7 @@ int main()
     
     
     
+    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -656,8 +657,9 @@ int main()
 
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "Learn Markdown"
+        c.title = "Article: " + "Learn Markdown";
         c.id = md5("2020/11/07/learn-markdown/index.html");
+        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>

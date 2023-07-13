@@ -275,6 +275,7 @@ vim.fn['plug#end']()
     
     
     
+    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -287,8 +288,9 @@ vim.fn['plug#end']()
 
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "将init.vim迁移至init.lua"
+        c.title = "Article: " + "将init.vim迁移至init.lua";
         c.id = md5("2023/01/11/migrate-init-vim-to-init-lua-for-neovim/index.html");
+        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>

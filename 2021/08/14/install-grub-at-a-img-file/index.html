@@ -366,6 +366,7 @@ sudo losetup -d /dev/loop0
     
     
     
+    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -378,8 +379,9 @@ sudo losetup -d /dev/loop0
 
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "在磁盘映像文件上安装 Grub 2"
+        c.title = "Article: " + "在磁盘映像文件上安装 Grub 2";
         c.id = md5("2021/08/14/install-grub-at-a-img-file/index.html");
+        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>

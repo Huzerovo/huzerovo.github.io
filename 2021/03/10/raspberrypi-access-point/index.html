@@ -276,6 +276,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
     
     
     
+    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -288,8 +289,9 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "树莓派热点"
+        c.title = "Article: " + "树莓派热点";
         c.id = md5("2021/03/10/raspberrypi-access-point/index.html");
+        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>
