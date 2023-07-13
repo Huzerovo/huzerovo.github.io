@@ -254,7 +254,7 @@ $$</p>
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
         c.title = "Article: " + "逻辑回归";
-        c.id = md5("2021/11/24/logistic-regression/index.html");
+        c.id = md5(c.title);
         c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");

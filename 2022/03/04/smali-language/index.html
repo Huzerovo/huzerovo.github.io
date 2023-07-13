@@ -363,7 +363,7 @@ String 为 java.lang 包中的一个对象</p>
     <script>
         let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
         c.title = "Article: " + "smali 语法";
-        c.id = md5("2022/03/04/smali-language/index.html");
+        c.id = md5(c.title);
         c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
