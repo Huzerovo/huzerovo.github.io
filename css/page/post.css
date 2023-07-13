@@ -7,7 +7,6 @@
   max-width: 15%;
   height: 80vh;
   overflow: auto;
-  /* display: inline-block; */
 }
 #article-toc .toc {
   padding: 0;
@@ -27,6 +26,7 @@
   #article-toc {
     position: unset;
     max-width: 30%;
+    height: fit-content;
     float: left;
     margin-right: 32px;
   }
@@ -86,9 +86,10 @@ article.article-container img {
   max-width: 100%;
 }
 article.article-container code {
-  padding: 3px 8px;
+  padding: 3px 6px;
+  font-size: 12px;
   border-radius: 6px;
-  margin: 8px;
+  margin: 3px;
 }
 article.article-container pre code {
   display: block;

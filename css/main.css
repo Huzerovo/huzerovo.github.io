@@ -110,7 +110,6 @@ main .container #article-toc {
   max-width: 15%;
   height: 80vh;
   overflow: auto;
-  /* display: inline-block; */
 }
 main .container #article-toc .toc {
   padding: 0;
@@ -130,6 +129,7 @@ main .container #article-toc .toc-link {
   main .container #article-toc {
     position: unset;
     max-width: 30%;
+    height: fit-content;
     float: left;
     margin-right: 32px;
   }
@@ -188,9 +188,10 @@ main .container article.article-container img {
   max-width: 100%;
 }
 main .container article.article-container code {
-  padding: 3px 8px;
+  padding: 3px 6px;
+  font-size: 12px;
   border-radius: 6px;
-  margin: 8px;
+  margin: 3px;
 }
 main .container article.article-container pre code {
   display: block;
