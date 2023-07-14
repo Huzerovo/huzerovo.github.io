@@ -51,7 +51,7 @@ article.article-container {
 article.article-container h1 {
   text-align: center;
 }
-article.article-container p {
+article.article-container > p {
   text-indent: 32px;
 }
 article.article-container a {
@@ -90,14 +90,14 @@ article.article-container img {
 }
 article.article-container code {
   padding: 3px 6px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 6px;
   margin: 3px;
 }
 article.article-container pre code {
   display: block;
   overflow-x: auto;
-  padding: 16px;
+  padding: 16px 32px;
 }
 @media (max-width: 480px) {
   article.article-container {

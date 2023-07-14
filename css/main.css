@@ -153,7 +153,7 @@ main .container article.article-container {
 main .container article.article-container h1 {
   text-align: center;
 }
-main .container article.article-container p {
+main .container article.article-container > p {
   text-indent: 32px;
 }
 main .container article.article-container a {
@@ -192,14 +192,14 @@ main .container article.article-container img {
 }
 main .container article.article-container code {
   padding: 3px 6px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 6px;
   margin: 3px;
 }
 main .container article.article-container pre code {
   display: block;
   overflow-x: auto;
-  padding: 16px;
+  padding: 16px 32px;
 }
 @media (max-width: 480px) {
   main .container article.article-container {
