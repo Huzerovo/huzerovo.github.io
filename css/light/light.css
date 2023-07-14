@@ -60,7 +60,7 @@
   background-color: white;
 }
 .light body main .articles-list .articles-list-item a {
-  color: #323232;
+  color: black;
 }
 .light body main .articles-list .articles-list-item a:hover {
   color: gray;

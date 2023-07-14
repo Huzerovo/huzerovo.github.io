@@ -25,7 +25,7 @@ main .articles-list .articles-list-item {
   background-color: white;
 }
 main .articles-list .articles-list-item a {
-  color: #323232;
+  color: black;
 }
 main .articles-list .articles-list-item a:hover {
   color: gray;

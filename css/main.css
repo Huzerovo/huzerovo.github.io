@@ -130,8 +130,9 @@ main .container #article-toc .toc-link {
     position: unset;
     max-width: 30%;
     height: fit-content;
+    max-height: 60vh;
     float: left;
-    margin-right: 32px;
+    margin-right: 16px;
   }
 }
 @media (max-width: 480px) {
@@ -199,6 +200,11 @@ main .container article.article-container pre code {
   display: block;
   overflow-x: auto;
   padding: 16px;
+}
+@media (max-width: 480px) {
+  main .container article.article-container {
+    padding: 0px;
+  }
 }
 main .container .article-meta-info .category-list,
 main .container .article-meta-info .tag-list {

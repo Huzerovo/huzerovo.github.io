@@ -3,7 +3,7 @@
   background-color: white;
 }
 .articles-list .articles-list-item a {
-  color: #323232;
+  color: black;
 }
 .articles-list .articles-list-item a:hover {
   color: gray;
