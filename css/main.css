@@ -147,7 +147,7 @@ main .container #article-toc .toc-link {
 }
 main .container article.article-container {
   font-family: sans;
-  line-height: 1.5;
+  line-height: 1.7;
   padding: 0 16px;
 }
 main .container article.article-container h1 {
@@ -179,11 +179,11 @@ main .container article.article-container table {
 }
 main .container article.article-container table td {
   border: 1px solid;
-  padding: 0 6px;
+  padding: 3px 6px;
 }
 main .container article.article-container table th {
   border: 1px solid;
-  padding: 0 9px;
+  padding: 3px 6px;
 }
 main .container article.article-container img {
   max-width: 100%;

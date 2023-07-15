@@ -2015,10 +2015,395 @@ vim.fn['plug#end']()
         <category>杂货铺</category>
       </categories>
       <tags>
-        <tag>配置</tag>
-        <tag>neovim</tag>
         <tag>vim</tag>
+        <tag>neovim</tag>
+        <tag>配置</tag>
         <tag>lua</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的Neovim配置</title>
+    <url>/2023/07/02/my-neovim-conf/</url>
+    <content><![CDATA[<h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言">¶ </a>前言</h2>
+<p>在这里记录一下我的nvim配置。</p>
+<blockquote>
+<p>持续更新中…</p>
+</blockquote>
+<h2 id="%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE" tabindex="-1" id="快捷键配置"><a class="header-anchor" href="#快捷键配置">¶ </a>快捷键配置</h2>
+<p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
+详细内容参考<code>:help keycodes</code>。</p>
+<h3 id="nvim%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="nvim快捷键"><a class="header-anchor" href="#nvim快捷键">¶ </a>nvim快捷键</h3>
+<p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;A-t&gt;</code></td>
+<td style="text-align:left">关闭标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>t</code></td>
+<td style="text-align:left">下一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-t&gt;</code></td>
+<td style="text-align:left">新建标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-t&gt;</code></td>
+<td style="text-align:left">上一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">ni</td>
+<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
+<td style="text-align:left">向上滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ni</td>
+<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
+<td style="text-align:left">向上滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;TAB&gt;</code></td>
+<td style="text-align:left">下/右窗口，映射为<code>&lt;C-W&gt;w</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-TAB&gt;</code></td>
+<td style="text-align:left">上/左窗口，映射为<code>&lt;C-W&gt;W</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gitsigns%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="gitsigns快捷键"><a class="header-anchor" href="#gitsigns快捷键">¶ </a>gitsigns快捷键</h3>
+<p>gitsigns是在文件内对git记录进行快速操作的插件，
+可以快速地重置、保存和查看更改记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>快捷键大部分在normal模式下使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>]c</code></td>
+<td style="text-align:left">下一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c</code></td>
+<td style="text-align:left">上一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsu</code></td>
+<td style="text-align:left">撤销保存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gss</code></td>
+<td style="text-align:left">暂存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsr</code></td>
+<td style="text-align:left">重置记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsS</code></td>
+<td style="text-align:left">暂存缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsR</code></td>
+<td style="text-align:left">重置缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsp</code></td>
+<td style="text-align:left">预览修改</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsd</code></td>
+<td style="text-align:left">相当于<code>git diff</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsD</code></td>
+<td style="text-align:left">相当于<code>git diff HEAD</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gst</code></td>
+<td style="text-align:left">查看/隐藏删除的记录</td>
+</tr>
+</tbody>
+</table>
+<p>这个快捷键使用的模式比较特殊。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ox</td>
+<td style="text-align:left"><code>gsc</code></td>
+<td style="text-align:left">选择整个记录块（<strong>G</strong>it<strong>S</strong>aga <strong>S</strong>elect <strong>C</strong>hunk）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lsp%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="LSP快捷键"><a class="header-anchor" href="#LSP快捷键">¶ </a>LSP快捷键</h3>
+<p>LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;el</code></td>
+<td style="text-align:left">显示行诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ec</code></td>
+<td style="text-align:left">显示光标处诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ea</code></td>
+<td style="text-align:left">显示缓冲区诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]e</code></td>
+<td style="text-align:left">下一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[e</code></td>
+<td style="text-align:left">上一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;M-CR&gt;</code></td>
+<td style="text-align:left">显示代码建议，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
+<td style="text-align:left">符号重命名，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
+<td style="text-align:left">查看符号引用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;gc</code></td>
+<td style="text-align:left">跳转到声明</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;gd</code></td>
+<td style="text-align:left">跳转到定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
+<td style="text-align:left">查看实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;gt</code></td>
+<td style="text-align:left">跳转到类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
+<td style="text-align:left">大纲</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>K</code></td>
+<td style="text-align:left">查看文档</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
+<td style="text-align:left">格式化代码</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="Lspsaga快捷键"><a class="header-anchor" href="#Lspsaga快捷键">¶ </a>Lspsaga快捷键</h4>
+<p>Lspsaga为neovim内置的LSP提供了更友好的界面，
+因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
+在这里列出Lspsaga专有的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ls</code></td>
+<td style="text-align:left">列出符号的所有定义、引用与实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pd</code></td>
+<td style="text-align:left">在悬浮窗口查看符号定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pt</code></td>
+<td style="text-align:left">在悬浮窗口查看类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]E</code></td>
+<td style="text-align:left">下一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[E</code></td>
+<td style="text-align:left">上一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ci</code></td>
+<td style="text-align:left">列出所有调用符号的位置</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;co</code></td>
+<td style="text-align:left">列出符号调用的方法</td>
+</tr>
+</tbody>
+</table>
+<p>Lspsaga在预览窗口的快捷键有些混乱，大部分快捷键作用是相同的，
+但有个别在不同类型的窗口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>内不同，
+加上个人习惯修改了部分按键，这里只列个大概。</p>
+<ul>
+<li><code>&lt;C-d&gt;</code>、<code>&lt;C-u&gt;</code>：窗口内容滚动。对应<code>down</code>和<code>up</code>的意思。</li>
+<li><code>&lt;C-t&gt;</code>：跳出窗口。</li>
+<li><code>q</code>、<code>&lt;ESC&gt;</code>、<code>&lt;C-c&gt;</code>：这些基本都有退出或取消操作的意思。</li>
+<li><code>g</code>：这个大部分情况下是跳转。</li>
+<li><code>o</code>：这个是展示预览或者编辑的意思，如果只是展示则不会跳转，此外还有打开折叠栏的意思。</li>
+<li><code>&lt;CR&gt;</code>：表示执行、跳转等意思。</li>
+<li><code>v</code>、<code>x</code>、<code>t</code>、<code>r</code>：这些都是新建窗口进行下一步操作。
+分别对应<code>vsplit</code>、<code>split</code>、<code>tabedit</code>、<code>tabnew</code>。</li>
+</ul>
+<p><code>o</code>指令与<code>&lt;CR&gt;</code>有功能上的重复，但还是有一些区别。
+如在大纲窗口中，<code>o</code>与<code>&lt;CR&gt;</code>都表现为在编辑区域打开并跳转到函数所在位置。
+但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code Action。</p>
+<h3 id="floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="Floaterm快捷键"><a class="header-anchor" href="#Floaterm快捷键">¶ </a>Floaterm快捷键</h3>
+<p>这是个悬浮终端的插件。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;F12&gt;</code></td>
+<td style="text-align:left">显示/隐藏悬浮终端</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nvim-tree%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="nvim-tree快捷键"><a class="header-anchor" href="#nvim-tree快捷键">¶ </a>nvim-tree快捷键</h3>
+<p>nvim-tree在自己的窗口中有自己的快捷键，使用<code>:help nvim-tree-mapping-default</code>查看。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;F2&gt;</code></td>
+<td style="text-align:left">打开/隐藏文件树</td>
+</tr>
+</tbody>
+</table>
+<h3 id="telescope%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="Telescope快捷键"><a class="header-anchor" href="#Telescope快捷键">¶ </a>Telescope快捷键</h3>
+<p>快捷键都处于normal模式使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;F3&gt;</code></td>
+<td style="text-align:left">查找文件，同时可用于关闭窗口</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
+<td style="text-align:left">查看register内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ch</code></td>
+<td style="text-align:left">查看历史命令</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;sh</code></td>
+<td style="text-align:left">查看搜索历史</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="Nerdcommter快捷键"><a class="header-anchor" href="#Nerdcommter快捷键">¶ </a>Nerdcommter快捷键</h3>
+<p>用于快速注释。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;leader&gt;ca</code></td>
+<td style="text-align:left">切换注释风格，如C的<code>//</code>和<code>/* */</code></td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cc</code></td>
+<td style="text-align:left">注释/取消注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cs</code></td>
+<td style="text-align:left">块注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cu</code></td>
+<td style="text-align:left">取消注释</td>
+</tr>
+</tbody>
+</table>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>在Git中，修改过的记录称为hunk，我习惯称为chunk。此外我还习惯称之为记录块，简称记录。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>指的是“定义预览”、“引用预览”、“实现预览”等窗口。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>neovim</tag>
+        <tag>配置</tag>
+        <tag>nvim</tag>
       </tags>
   </entry>
   <entry>

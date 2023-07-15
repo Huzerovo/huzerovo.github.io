@@ -232,7 +232,7 @@ body main .container #article-toc .toc-link {
 }
 body main .container article.article-container {
   font-family: sans;
-  line-height: 1.5;
+  line-height: 1.7;
   padding: 0 16px;
 }
 body main .container article.article-container h1 {
@@ -264,11 +264,11 @@ body main .container article.article-container table {
 }
 body main .container article.article-container table td {
   border: 1px solid;
-  padding: 0 6px;
+  padding: 3px 6px;
 }
 body main .container article.article-container table th {
   border: 1px solid;
-  padding: 0 9px;
+  padding: 3px 6px;
 }
 body main .container article.article-container img {
   max-width: 100%;

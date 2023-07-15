@@ -45,7 +45,7 @@
 /* 文章内容 */
 article.article-container {
   font-family: sans;
-  line-height: 1.5;
+  line-height: 1.7;
   padding: 0 16px;
 }
 article.article-container h1 {
@@ -77,11 +77,11 @@ article.article-container table {
 }
 article.article-container table td {
   border: 1px solid;
-  padding: 0 6px;
+  padding: 3px 6px;
 }
 article.article-container table th {
   border: 1px solid;
-  padding: 0 9px;
+  padding: 3px 6px;
 }
 article.article-container img {
   max-width: 100%;

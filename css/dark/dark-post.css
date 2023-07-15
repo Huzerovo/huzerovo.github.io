@@ -24,12 +24,10 @@ article.article-container hr {
   color: gray;
 }
 article.article-container table thead {
-  background-color: #505050;
-  color: lightgray;
+  background-color: #141414;
 }
 article.article-container table tbody {
-  background-color: dimgray;
-  color: lightgray;
+  background-color: #232323;
 }
 article.article-container img {
   filter: brightness(0.8);
