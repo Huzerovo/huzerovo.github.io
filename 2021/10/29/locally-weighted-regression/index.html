@@ -167,7 +167,8 @@
             <blockquote>
 <p>简单介绍局部加权回归算法的思想</p>
 </blockquote>
-<h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" tabindex="-1" id="基本思想"><a class="header-anchor" href="#基本思想">¶ </a>基本思想</h2>
+<span id="more"></span>
+<h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" tabindex="-1" id="基本思想"><a class="header-anchor" href="#基本思想"># </a>基本思想</h2>
 <p>文章 <a href="/2021/10/25/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>
 简单介绍了欠拟合与过拟合的相关概念，
 其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
@@ -177,8 +178,8 @@
 <p>如果把样本局限在预测点的附近，就可以将这些样本点 <strong>近似</strong> 看做是线性的
 （这有点像微分，或者是切线的概念），
 这样就可以使用线性模型进行拟合，而无需考虑模型的阶</p>
-<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理">¶ </a>数学原理</h2>
-<h3 id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC" tabindex="-1" id="引入权值"><a class="header-anchor" href="#引入权值">¶ </a>引入权值</h3>
+<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
+<h3 id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC" tabindex="-1" id="引入权值"><a class="header-anchor" href="#引入权值"># </a>引入权值</h3>
 <p>在这个算法中，我们将 <strong>假设函数 (hypotheses)</strong> 设为
 $
 \sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
@@ -199,7 +200,7 @@ $</p>
 <p><img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
 <p>在这个例子中，离 $x = 1$ 越近，它的权值越大，越远则权值越小，
 于是，离 $x = 1$ 近的点得到重视，而离 $x$ 较远的点的影响被降低</p>
-<h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" tabindex="-1" id="一般化"><a class="header-anchor" href="#一般化">¶ </a>一般化</h3>
+<h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" tabindex="-1" id="一般化"><a class="header-anchor" href="#一般化"># </a>一般化</h3>
 <p>将权值函数写成更一般的方式：
 $$
 w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
@@ -208,7 +209,7 @@ $$</p>
 下图是一个例子：</p>
 <p><img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
 <p>注：上图中的 $t$ 代表 $\tau$</p>
-<h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题">¶ </a>需要注意的问题</h2>
+<h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题"># </a>需要注意的问题</h2>
 <p>首先，需要明确指出，局部加权回归 <strong>不能完全避免</strong> 欠拟合与过拟合的问题，
 原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
 即 $\tau$ 很大，算法实际上仍受到大部分数据的影响，

@@ -146,9 +146,10 @@
         <article class="article-container">
             <h1>Linux 防火墙</h1>
             <blockquote>
-<p>本文仅做简单的介绍，不涉及防火墙的实际应用及操作</p>
+<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
 </blockquote>
-<h2 id="netfilter-porject" tabindex="-1" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject">¶ </a>Netfilter Porject</h2>
+<span id="more"></span>
+<h2 id="netfilter-porject" tabindex="-1" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject"># </a>Netfilter Porject</h2>
 <p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
 <blockquote>
 <p>官网<a target="_blank" rel="noopener" href="https://www.netfilter.org">Netfilter Project</a>介绍原文:<br />
@@ -156,7 +157,7 @@
 provides packet filtering software for the Linux 2.4.x and later kernel series.
 The netfilter project is commonly associated with iptables.</em>”</p>
 </blockquote>
-<h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" tabindex="-1" id="四表五链概念"><a class="header-anchor" href="#四表五链概念">¶ </a>四表五链概念</h2>
+<h2 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5" tabindex="-1" id="四表五链概念"><a class="header-anchor" href="#四表五链概念"># </a>四表五链概念</h2>
 <blockquote>
 <p>参考 <code>man iptables</code>，以及网络资料</p>
 </blockquote>
@@ -167,7 +168,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 <li><code>规则(rules)</code> 规定数据包的处理方式</li>
 </ul>
 <p>系统接收到数据包时将根据 <code>链</code> 中的 <code>规则</code> 将包通过 <code>链</code></p>
-<h3 id="%E5%9B%9B%E8%A1%A8" tabindex="-1" id="四表"><a class="header-anchor" href="#四表">¶ </a>四表</h3>
+<h3 id="%E5%9B%9B%E8%A1%A8" tabindex="-1" id="四表"><a class="header-anchor" href="#四表"># </a>四表</h3>
 <p>四表用于管理链路规则</p>
 <table>
 <thead>
@@ -195,7 +196,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </tr>
 </tbody>
 </table>
-<h3 id="%E4%BA%94%E9%93%BE" tabindex="-1" id="五链"><a class="header-anchor" href="#五链">¶ </a>五链</h3>
+<h3 id="%E4%BA%94%E9%93%BE" tabindex="-1" id="五链"><a class="header-anchor" href="#五链"># </a>五链</h3>
 <p>五条链用于存放链路规则</p>
 <table>
 <thead>
@@ -227,7 +228,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </tr>
 </tbody>
 </table>
-<h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" tabindex="-1" id="四表五链之间的联系"><a class="header-anchor" href="#四表五链之间的联系">¶ </a>四表五链之间的联系</h3>
+<h3 id="%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB" tabindex="-1" id="四表五链之间的联系"><a class="header-anchor" href="#四表五链之间的联系"># </a>四表五链之间的联系</h3>
 <p>四表里存放的是功能一致的规则，即存放着链<br />
 表中存放的规则如下</p>
 <table>
@@ -272,7 +273,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </tr>
 </tbody>
 </table>
-<h2 id="%E7%AE%A1%E7%90%86-firewall" tabindex="-1" id="管理-firewall"><a class="header-anchor" href="#管理-firewall">¶ </a>管理 firewall</h2>
+<h2 id="%E7%AE%A1%E7%90%86-firewall" tabindex="-1" id="管理-firewall"><a class="header-anchor" href="#管理-firewall"># </a>管理 firewall</h2>
 <p>下面列出的是运用最广泛的防火墙管理软件，以及他们之间的联系</p>
 <ul>
 <li><code>netfilter</code> 是一个 Linux 内核的软件框架<br />

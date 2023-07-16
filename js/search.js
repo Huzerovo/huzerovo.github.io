@@ -3,8 +3,51 @@ let articles = null;
 function clear_error() {
     $('#search').removeAttr('style');
 }
+
 function regex_error() {
     $('#search').attr('style', 'color: red;');
+}
+
+/*
+ * 对关键字进行预处理：移除首尾空格、移除空字符（strlen == 0）、分割等。
+ * k: 关键字
+ * c: 分割字符，空字符表示不分割
+ * return: string数组
+ */
+function preprocess_keywords(k, c = '') {
+    if (typeof k !== 'string') {
+        return [];
+    }
+
+    if (k === '') {
+        return [];
+    }
+
+    if (c !== '') {
+        k = k.split(c);
+    } else {
+        k = [k];
+    }
+
+    // 移除首尾空格
+    k.forEach(function(e, i, a) {
+        a[i] = e.trim();
+    });
+
+    // 排序
+    k.sort(function(a, b) {
+        return b.length - a.length
+    })
+
+    let ret = [];
+
+    for (i in k) {
+        if (k[i] !== '') {
+            ret.push(k[i]);
+        }
+    }
+
+    return ret;
 }
 
 // 正则搜索
@@ -75,23 +118,38 @@ function search_with_keywords(keywords, article) {
     let match = false;
     if (title !== '' && content !== '') {
         // 按照关键字顺序查找，在第一次查找成功后或者查找失败时跳出
+        // 此时关键字可能包含'&'
         for (let i in keywords) {
-            let k = keywords[i];
-            // 在输入关键字处理时，去除首尾空格可能导致空字符
-            if (k === '') {
+            // 对关键字进行处理
+            // 如果关键字不包含'&'，则ks是只有一个元素的数组，否则是多个元素的数组。
+            let ks = preprocess_keywords(keywords[i], '&');
+            if (ks.length === 0) {
                 continue;
             }
-            let idx_title = title.indexOf(k);
-            let idx_content = content.indexOf(k);
-            if (idx_title >= 0 || idx_content >= 0) {
-                match = true;
-                title = title.replaceAll(k, '<mark>' + k + '</mark>');
-                if (idx_content >= 0) {
-                    let start = Math.max(0, idx_content - 80);
-                    let end = Math.min(content.length, start + 160);
-                    content = content.slice(start, end);
-                    content = content.replaceAll(k, '<mark>' + k + '</mark>');
+            // 匹配到的关键字个数
+            let count = 0;
+            // 标记首次匹配成功位置
+            let start = -1;
+            for (let j in ks) {
+                let k = ks[j];
+                let idx_title = title.indexOf(k);
+                let idx_content = content.indexOf(k);
+                // 当标题或者内容中存在关键字时表示查找成功
+                if (idx_title >= 0 || idx_content >= 0) {
+                    count++;
+                    // 只有第一个关键字匹配才会显示高亮
+                    if (start < 0) {
+                        title = title.replaceAll(k, '<mark>' + k + '</mark>');
+                        start = Math.max(0, idx_content - 80);
+                        let end = Math.min(content.length, start + 160);
+                        content = content.slice(start, end);
+                        content = content.replaceAll(k, '<mark>' + k + '</mark>');
+                    }
                 }
+            }
+            // 包含'&'时，只有当关键字全部匹配时才算成功
+            if (count === ks.length) {
+                match = true;
                 break;
             }
         }
@@ -131,16 +189,10 @@ function searchArticle(path) {
         keywords = pattern.replace(/^\//, '').replace(/\/$/, '');
         use_regex = true;
     } else {
-        // '+'分割字符
-        keywords = pattern.split('+');
-        // 去除首尾空格
-        keywords.forEach(function(e, i, arr){
-            arr[i] = e.trim();
-        });
-        // 按照关键字长度，降序排序
-        keywords.sort(function(a, b) {
-            return b.length - a.length
-        })
+        keywords = preprocess_keywords(pattern, '+');
+        if (keywords.length === 0) {
+            return;
+        }
         use_regex = false;
     }
 

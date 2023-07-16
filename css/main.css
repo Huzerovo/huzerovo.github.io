@@ -39,7 +39,7 @@ main .container .articles-list {
 main .container .articles-list .articles-list-item {
   display: block;
   width: 80%;
-  height: 160px;
+  max-height: 160px;
   margin: 8px auto;
   padding: 32px;
   border-radius: 16px;
@@ -146,7 +146,6 @@ main .container #article-toc .toc-link {
   }
 }
 main .container article.article-container {
-  font-family: sans;
   line-height: 1.7;
   padding: 0 16px;
 }

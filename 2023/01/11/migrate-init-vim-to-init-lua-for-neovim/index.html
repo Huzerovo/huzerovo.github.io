@@ -149,7 +149,8 @@
 <p>本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
 详细的内容可在nvim中使用命令<code>:help lua-guide</code>进行查看。</p>
 </blockquote>
-<h2 id="%E8%BF%81%E7%A7%BB%E5%8F%98%E9%87%8F" tabindex="-1" id="迁移变量"><a class="header-anchor" href="#迁移变量">¶ </a>迁移变量</h2>
+<span id="more"></span>
+<h2 id="%E8%BF%81%E7%A7%BB%E5%8F%98%E9%87%8F" tabindex="-1" id="迁移变量"><a class="header-anchor" href="#迁移变量"># </a>迁移变量</h2>
 <blockquote>
 <p>参考手册 <code>:help lua-guide-variables</code></p>
 </blockquote>
@@ -174,7 +175,7 @@
 在vim中使用<code>set</code>相关的指令进行设置。</p>
 <p>在lua中，使用<code>vim.o</code>、<code>vim.go</code>、<code>vim.bo</code>、<code>vim.wo</code>对这些变量进行访问与设置。
 在我的迁移过程中使用的比较少，请参考手册。</p>
-<h2 id="%E8%BF%81%E7%A7%BB%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84" tabindex="-1" id="迁移按键映射"><a class="header-anchor" href="#迁移按键映射">¶ </a>迁移按键映射</h2>
+<h2 id="%E8%BF%81%E7%A7%BB%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84" tabindex="-1" id="迁移按键映射"><a class="header-anchor" href="#迁移按键映射"># </a>迁移按键映射</h2>
 <blockquote>
 <p>参考手册<code>:help lua-guide-mappings</code></p>
 </blockquote>
@@ -206,7 +207,7 @@ end, opts)
 <p>这个例子可以在<code>:help coc-completion</code>中找到，用到的快捷键，如<code>&lt;C-n&gt;</code>，
 可以在<code>:help coc-list-mappings</code>中找到</p>
 <p>其实大部分的映射可以直接使用，剩下的需要修改的也基本与上述例子相同。</p>
-<h2 id="%E8%BF%81%E7%A7%BBvim%E5%91%BD%E4%BB%A4" tabindex="-1" id="迁移vim命令"><a class="header-anchor" href="#迁移vim命令">¶ </a>迁移vim命令</h2>
+<h2 id="%E8%BF%81%E7%A7%BBvim%E5%91%BD%E4%BB%A4" tabindex="-1" id="迁移vim命令"><a class="header-anchor" href="#迁移vim命令"># </a>迁移vim命令</h2>
 <blockquote>
 <p>参考手册<code>:help lua-guide-vim-commands</code></p>
 </blockquote>
@@ -216,12 +217,12 @@ end, opts)
 有一个<code>silent NERDTreeMirror</code>的命令，
 直接转换成<code>vim.cmd.silent(&quot;NERDTreeMirror&quot;)</code>会失败，
 使用<code>vim.cmd(&quot;silent NERDTreeMirror&quot;)</code>则可以正常使用。</p>
-<h2 id="%E8%BF%81%E7%A7%BB%E5%87%BD%E6%95%B0" tabindex="-1" id="迁移函数"><a class="header-anchor" href="#迁移函数">¶ </a>迁移函数</h2>
+<h2 id="%E8%BF%81%E7%A7%BB%E5%87%BD%E6%95%B0" tabindex="-1" id="迁移函数"><a class="header-anchor" href="#迁移函数"># </a>迁移函数</h2>
 <blockquote>
 <p>参考手册<code>:help lua-guide-vim-functions</code></p>
 </blockquote>
 <p>函数的迁移比较复杂，请参考手册。</p>
-<h2 id="%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6" tabindex="-1" id="迁移插件"><a class="header-anchor" href="#迁移插件">¶ </a>迁移插件</h2>
+<h2 id="%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6" tabindex="-1" id="迁移插件"><a class="header-anchor" href="#迁移插件"># </a>迁移插件</h2>
 <p>这里只记录如何在lua中使用<code>vim-plug</code>作为插件管理器。<br />
 我使用的方法如下：</p>
 <pre><code class="lang-lua">vim.fn['plug#begin']()
@@ -231,7 +232,7 @@ vim.fn['plug#end']()
 </code></pre>
 <p>实际上可以封装成一个函数，如<code>Plug('example/plug')</code>，
 这样子看起来挺像原生的vim-plug的方法。owo</p>
-<h2 id="%E5%85%B6%E4%BB%96" tabindex="-1" id="其他"><a class="header-anchor" href="#其他">¶ </a>其他</h2>
+<h2 id="%E5%85%B6%E4%BB%96" tabindex="-1" id="其他"><a class="header-anchor" href="#其他"># </a>其他</h2>
 <p>最后为了能格式化lua的配置文件，使用<a target="_blank" rel="noopener" href="https://github.com/sumneko/lua-language-server">sumneko/lua-language-server</a>
 作为LSP服务器，在参考了<a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Language-servers#lua">coc的配置例子</a>后，
 使用的配置如下：</p>
