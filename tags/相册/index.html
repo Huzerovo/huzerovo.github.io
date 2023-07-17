@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="记录一段回忆" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    
+    
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
+    
+
+    
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+
+    
+    
+    <script>
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            <button id="btn-switch-theme" class="icon-button" title="切换主题">
+                <i class="bi bi-sun"></i>
+            </button>
+            
+            <a id="btn-search" class="icon-button" title="搜索" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <h1 class="page-title">
+        标签: 相册
+    </h1>
+    
+<div class="pager">
+    <div class="page-list">
+        <span class="page-number current">1</span>
+    </div>
+</div>
+
+    
+
+
+
+
+<article class="articles-list">
+
+
+    
+    <article class="articles-list-item">
+        
+        
+        
+        <div class="item-gallery">
+            
+            <img src="/2023/07/16/post-for-gallery-layout-test/id=90779367_p0.png">
+        </div>
+        
+
+        <a href="/2023/07/16/post-for-gallery-layout-test/">
+            
+            
+            <p class="item-title">
+                图册展示页
+            </p>
+            
+            
+            <p class="item-content">
+                
+                
+                
+                    用于展示一些图片，在Front matter区域中使用photos添加图片。
+                
+                
+            </p>
+        </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2023-07-16</p>
+        </footer>
+    </article>
+
+</article>
+
+    
+<div class="pager">
+    <div class="page-list">
+        <span class="page-number current">1</span>
+    </div>
+</div>
+
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2023 @狐zerOAO</p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+
+    Fancybox.bind(".container img");
+});
+</script>
+</html>

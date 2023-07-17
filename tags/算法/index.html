@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -133,19 +149,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        <h1 class="page-title">
-            标签: 算法
-        </h1>
-        
+<main class="container">
+    <h1 class="page-title">
+        标签: 算法
+    </h1>
+    
 <div class="pager">
     <div class="page-list">
         <span class="page-number current">1</span>
     </div>
 </div>
 
-        
+    
 
 
 
@@ -155,10 +170,17 @@
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2023/07/04/magic-algorithms/">
+            
+            
             <p class="item-title">
                 编程魔法学
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -170,14 +192,28 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2023-07-04</p>
+        </footer>
     </article>
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2021/11/24/logistic-regression/">
+            
+            
             <p class="item-title">
                 逻辑回归
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -189,14 +225,28 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2021-11-24</p>
+        </footer>
     </article>
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2021/11/03/why-use-least-squares/">
+            
+            
             <p class="item-title">
                 为什么使用最小二乘法
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -208,14 +258,28 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2021-11-03</p>
+        </footer>
     </article>
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2021/10/29/locally-weighted-regression/">
+            
+            
             <p class="item-title">
                 局部加权回归
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -227,14 +291,28 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2021-11-03</p>
+        </footer>
     </article>
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2021/10/25/underfitting-and-overfitting/">
+            
+            
             <p class="item-title">
                 欠拟合与过拟合
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -246,14 +324,28 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2021-10-29</p>
+        </footer>
     </article>
 
     
     <article class="articles-list-item">
+        
+        
+
         <a href="/2021/09/15/gradient-descent/">
+            
+            
             <p class="item-title">
                 梯度下降算法
             </p>
+            
+            
             <p class="item-content">
                 
                 
@@ -265,18 +357,24 @@
                 
             </p>
         </a>
+        
+        <footer class="item-footer">
+            <p>
+            <i class="bi bi-calendar-check"></i>
+            更新日期:
+            2021-10-28</p>
+        </footer>
     </article>
 
 </article>
 
-        
+    
 <div class="pager">
     <div class="page-list">
         <span class="page-number current">1</span>
     </div>
 </div>
 
-    </div>
 </main>
 
     
@@ -326,6 +424,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

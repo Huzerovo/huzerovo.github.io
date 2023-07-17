@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> 我的Neovim配置 - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -64,6 +80,7 @@
 
 <body>
     
+
 
 
 
@@ -133,19 +150,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        
-        <div id="article-toc">
-        
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">快捷键配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nvim%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">nvim快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitsigns%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">gitsigns快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lsp%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">LSP快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Lspsaga快捷键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Floaterm快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvim-tree%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">nvim-tree快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#telescope%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Telescope快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Nerdcommter快捷键</span></a></li></ol></li></ol>
-        
-        </div>
-        
-        <article class="article-container">
-            <h1>我的Neovim配置</h1>
-            <p>在这里记录一下我的nvim配置。</p>
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">快捷键配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nvim%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">nvim快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gitsigns%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">gitsigns快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lsp%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">LSP快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Lspsaga快捷键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Floaterm快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvim-tree%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">nvim-tree快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#telescope%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Telescope快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">Nerdcommter快捷键</span></a></li></ol></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>我的Neovim配置</h1>
+        <p>在这里记录一下我的nvim配置。</p>
 <blockquote>
 <p>持续更新中…</p>
 </blockquote>
@@ -518,16 +534,15 @@
 </ol>
 </section>
 
-        </article>
         
         <div class="article-meta-info">
             
                 <span>分类</span>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
                 
             
                 <span>标签</span>
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/neovim/" rel="tag">neovim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvim/" rel="tag">nvim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
+                <a class="article-tags-none-link" href="/tags/neovim/" rel="tag">neovim</a><a class="article-tags-none-link" href="/tags/nvim/" rel="tag">nvim</a><a class="article-tags-none-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a>
             
         </div>
         
@@ -565,7 +580,7 @@
 
 
         </div>
-    </div>
+    </article>
 </main>
 
     
@@ -615,6 +630,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

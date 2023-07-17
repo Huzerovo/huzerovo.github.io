@@ -1,21 +1,28 @@
 /* 分类页面 */
-.page-category ul {
+.page-category .category-list {
+  list-style: none;
+  display: inline-block;
+  padding: 0px;
+  width: 100%;
+}
+.category-list-item {
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  justify-content: space-evenly;
-  padding: 0;
+  justify-content: space-between;
 }
-.page-category li {
-  margin: 8px;
-  display: inline-block;
-  text-align: center;
-}
-.page-category a {
+.category-list-item a {
   box-sizing: border-box;
   display: inline-block;
-  width: 100%;
-  padding: 16px 32px;
+  padding: 8px 16px;
   text-decoration: none;
   border-radius: 8px;
+}
+.category-list-item span {
+  position: floor;
+  padding: 8px;
+}
+.category-list-item .category-list-child {
+  padding-left: 16px;
+  width: 100%;
 }

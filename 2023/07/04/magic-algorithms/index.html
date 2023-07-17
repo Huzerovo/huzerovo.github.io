@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> 编程魔法学 - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -64,6 +80,7 @@
 
 <body>
     
+
 
 
 
@@ -133,19 +150,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        
-        <div id="article-toc">
-        
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">计算数据中比特1的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="toc-text">从零开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B"><span class="toc-text">逐步前进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E6%9B%B4%E9%AB%98%E4%BD%8D%E6%8B%93%E5%B1%95"><span class="toc-text">向更高位拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B"><span class="toc-text">总结规律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C"><span class="toc-text">优化取反操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"><span class="toc-text">特殊优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8A%A0%E6%B3%95"><span class="toc-text">优化加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">更高位的优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C"><span class="toc-text">最终结果</span></a></li></ol></li></ol>
-        
-        </div>
-        
-        <article class="article-container">
-            <h1>编程魔法学</h1>
-            <blockquote>
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">计算数据中比特1的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="toc-text">从零开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B"><span class="toc-text">逐步前进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E6%9B%B4%E9%AB%98%E4%BD%8D%E6%8B%93%E5%B1%95"><span class="toc-text">向更高位拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B"><span class="toc-text">总结规律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C"><span class="toc-text">优化取反操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"><span class="toc-text">特殊优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8A%A0%E6%B3%95"><span class="toc-text">优化加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">更高位的优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C"><span class="toc-text">最终结果</span></a></li></ol></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>编程魔法学</h1>
+        <blockquote>
 <p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
 </blockquote>
 <span id="more"></span>
@@ -490,16 +506,15 @@ unsigned int n = x &amp; 0x3f;
 </ol>
 </section>
 
-        </article>
         
         <div class="article-meta-info">
             
                 <span>分类</span>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
                 
             
                 <span>标签</span>
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+                <a class="article-tags-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
             
         </div>
         
@@ -537,7 +552,7 @@ unsigned int n = x &amp; 0x3f;
 
 
         </div>
-    </div>
+    </article>
 </main>
 
     
@@ -587,6 +602,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

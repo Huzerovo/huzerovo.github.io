@@ -30,6 +30,9 @@ main .articles-list .articles-list-item a {
 main .articles-list .articles-list-item a:hover {
   color: gray;
 }
+main .articles-list .articles-list-item .item-footer {
+  color: dimgray;
+}
 main .page-category {
   color: #969696;
 }

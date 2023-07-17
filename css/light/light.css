@@ -65,6 +65,9 @@
 .light body main .articles-list .articles-list-item a:hover {
   color: gray;
 }
+.light body main .articles-list .articles-list-item .item-footer {
+  color: dimgray;
+}
 .light body main .page-category {
   color: #969696;
 }

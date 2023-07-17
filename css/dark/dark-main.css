@@ -30,6 +30,12 @@ main .articles-list .articles-list-item a {
 main .articles-list .articles-list-item a:hover {
   color: white;
 }
+main .articles-list .articles-list-item img {
+  filter: brightness(0.8);
+}
+main .articles-list .articles-list-item .item-footer {
+  color: gray;
+}
 main .page-category {
   color: gray;
 }

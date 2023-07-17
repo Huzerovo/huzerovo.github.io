@@ -1,16 +1,9 @@
 /* 主体区域 */
-main {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-evenly;
+main.container {
   width: 60%;
-  padding: 0 16px;
   margin: 0 auto;
-  /* 中间显示区域 */
-}
-main .container {
-  width: 100%;
   /* 页面标题 */
+  transition: 300ms;
   /* 默认使用的文章列表 */
   /* 文章列表 */
   /* 归档页的样式 */
@@ -29,48 +22,56 @@ main .container {
   /* 搜索页面 */
   /* 搜索页样式 */
 }
-main .container .page-title {
+main.container .page-title {
   text-align: center;
 }
-main .container .articles-list {
-  display: flex;
-  flex-wrap: wrap;
+main.container * {
+  transition: 300ms;
 }
-main .container .articles-list .articles-list-item {
+main.container .articles-list .articles-list-item {
   display: block;
-  width: 80%;
-  max-height: 160px;
-  margin: 8px auto;
-  padding: 32px;
+  width: 90%;
+  margin: 16px auto;
   border-radius: 16px;
-}
-main .container .articles-list .articles-list-item * {
-  transition: 0ms;
-}
-main .container .articles-list .articles-list-item a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
   overflow: hidden;
 }
-main .container .articles-list .articles-list-item .item-title {
+main.container .articles-list .articles-list-item a {
+  margin: 32px 32px 0 32px;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0ms;
+}
+main.container .articles-list .articles-list-item .item-gallery {
+  margin: 0px;
+}
+main.container .articles-list .articles-list-item .item-gallery img {
+  width: 100%;
+}
+main.container .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
 }
-main .container .articles-list .articles-list-item .item-content {
+main.container .articles-list .articles-list-item .item-content {
   margin: 0;
 }
-main .container .page-archive-year {
+main.container .articles-list .articles-list-item .item-footer {
+  text-align: right;
+  margin: 16px 32px;
+}
+main.container .articles-list .articles-list-item .item-footer p {
+  margin: 0px;
+}
+main.container .page-archive-year {
   font-size: 32px;
 }
-main .container .page-archive-item {
+main.container .page-archive-item {
   display: flex;
   flex-direction: column;
   font-size: 24px;
   margin: 0 6px;
 }
-main .container .page-archive-item a {
+main.container .page-archive-item a {
   text-decoration: none;
   width: 80%;
   padding: 8px;
@@ -78,32 +79,39 @@ main .container .page-archive-item a {
   border-radius: 8px;
   transition: 100ms;
 }
-main .container .page-category ul {
+main.container .page-category .category-list {
+  list-style: none;
+  display: inline-block;
+  padding: 0px;
+  width: 100%;
+}
+main.container .category-list-item {
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  justify-content: space-evenly;
-  padding: 0;
+  justify-content: space-between;
 }
-main .container .page-category li {
-  margin: 8px;
-  display: inline-block;
-  text-align: center;
-}
-main .container .page-category a {
+main.container .category-list-item a {
   box-sizing: border-box;
   display: inline-block;
-  width: 100%;
-  padding: 16px 32px;
+  padding: 8px 16px;
   text-decoration: none;
   border-radius: 8px;
 }
-main .container .page-tagcloud a {
+main.container .category-list-item span {
+  position: floor;
+  padding: 8px;
+}
+main.container .category-list-item .category-list-child {
+  padding-left: 16px;
+  width: 100%;
+}
+main.container .page-tagcloud a {
   display: inline-block;
   text-decoration: none;
   margin: 0 6px;
 }
-main .container #article-toc {
+main.container #article-toc {
   position: fixed;
   top: 40px;
   left: 5%;
@@ -111,22 +119,22 @@ main .container #article-toc {
   height: 80vh;
   overflow: auto;
 }
-main .container #article-toc .toc {
+main.container #article-toc .toc {
   padding: 0;
   font-size: small;
   list-style: none;
 }
-main .container #article-toc .toc-child {
+main.container #article-toc .toc-child {
   padding: 0 8px;
   list-style: none;
 }
-main .container #article-toc .toc-link {
+main.container #article-toc .toc-link {
   display: block;
   margin: 6px 0;
   text-decoration: none;
 }
 @media (max-width: 960px) {
-  main .container #article-toc {
+  main.container #article-toc {
     position: unset;
     max-width: 30%;
     height: fit-content;
@@ -136,7 +144,7 @@ main .container #article-toc .toc-link {
   }
 }
 @media (max-width: 480px) {
-  main .container #article-toc {
+  main.container #article-toc {
     display: block;
     max-width: 100%;
     height: fit-content;
@@ -145,21 +153,22 @@ main .container #article-toc .toc-link {
     margin: 0 auto;
   }
 }
-main .container article.article-container {
+main.container article.article-container {
   line-height: 1.7;
   padding: 0 16px;
+  /* 从官方主题landscape抄来的 */
 }
-main .container article.article-container h1 {
+main.container article.article-container h1 {
   text-align: center;
 }
-main .container article.article-container > p {
+main.container article.article-container > p {
   text-indent: 32px;
 }
-main .container article.article-container a {
+main.container article.article-container a {
   transition: 0ms;
   text-decoration: none;
 }
-main .container article.article-container blockquote {
+main.container article.article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
   margin: 8px 0px;
@@ -167,76 +176,97 @@ main .container article.article-container blockquote {
   width: calc(100% - 64px - 3px);
   display: inline-block;
 }
-main .container article.article-container blockquote p {
+main.container article.article-container blockquote p {
   text-indent: 0px;
 }
-main .container article.article-container table {
+main.container article.article-container blockquote cite {
+  margin: 0px 8px;
+}
+main.container article.article-container table {
   width: 90%;
-  margin: 0 auto;
+  margin: 8px auto;
   border: 1px solid;
   border-collapse: collapse;
 }
-main .container article.article-container table td {
+main.container article.article-container table td {
   border: 1px solid;
   padding: 3px 6px;
 }
-main .container article.article-container table th {
+main.container article.article-container table th {
   border: 1px solid;
   padding: 3px 6px;
 }
-main .container article.article-container img {
-  max-width: 100%;
+main.container article.article-container img {
+  max-width: 80%;
   display: block;
   margin: 8px auto;
 }
-main .container article.article-container code {
+main.container article.article-container code {
   padding: 3px 6px;
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
 }
-main .container article.article-container pre code {
+main.container article.article-container pre code {
   display: block;
   overflow-x: auto;
   padding: 16px 32px;
 }
-@media (max-width: 480px) {
-  main .container article.article-container {
-    padding: 0px;
-  }
-}
-main .container .article-meta-info .category-list,
-main .container .article-meta-info .tag-list {
-  margin: 0px;
-}
-main .container .article-meta-info .category-list li,
-main .container .article-meta-info .tag-list li {
-  margin: 0 8px;
+main.container article.article-container .pullquote {
   display: inline-block;
+  border: none;
+  width: 45%;
+  margin: 16px;
+  padding: 0 16px;
 }
-main .container .article-meta-info a {
+main.container article.article-container .pullquote.left {
+  float: left;
+}
+main.container article.article-container .pullquote.right {
+  float: right;
+}
+main.container article.article-container .video-container {
+  position: relative;
+  padding-top: 50%;
+  height: 0;
+  overflow: hidden;
+}
+main.container article.article-container .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+main.container .article-meta-info span {
+  display: block;
+}
+main.container .article-meta-info a {
+  position: relative;
+  left: 16px;
   transition: 0ms;
   text-decoration: none;
+  margin-left: 16px;
 }
-main .container .article-date-info {
+main.container .article-date-info {
   margin: 8px auto;
 }
-main .container .article-date-info span {
+main.container .article-date-info span {
   font-size: small;
   font-style: italic;
   display: block;
 }
-main .container .article-comment {
+main.container .article-comment {
   text-align: center;
   border-radius: 16px;
-  padding: 0px 16px;
-  padding-bottom: 8px;
+  padding: 16px;
   margin: 16px 0px;
 }
-main .container .search-input {
+main.container .search-input {
   display: flex;
 }
-main .container .search-input input {
+main.container .search-input input {
   margin: 16px auto;
   height: 40px;
   width: 80%;
@@ -247,13 +277,13 @@ main .container .search-input input {
 }
 /* 60 * 16 px */
 @media screen and (max-width: 960px) {
-  main {
+  main.container {
     width: 80%;
   }
 }
 /* 40 * 16 px */
 @media screen and (max-width: 640px) {
-  main {
-    width: 95%;
+  main.container {
+    width: 100%;
   }
 }

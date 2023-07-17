@@ -65,6 +65,12 @@
 .dark body main .articles-list .articles-list-item a:hover {
   color: white;
 }
+.dark body main .articles-list .articles-list-item img {
+  filter: brightness(0.8);
+}
+.dark body main .articles-list .articles-list-item .item-footer {
+  color: gray;
+}
 .dark body main .page-category {
   color: gray;
 }

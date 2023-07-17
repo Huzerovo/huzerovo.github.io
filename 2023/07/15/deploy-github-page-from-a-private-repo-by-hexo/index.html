@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> 使用Hexo从私有仓库部署Github Page - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -64,6 +80,7 @@
 
 <body>
     
+
 
 
 
@@ -133,19 +150,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        
-        <div id="article-toc">
-        
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-text">过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E4%BA%8B"><span class="toc-text">完事</span></a></li></ol>
-        
-        </div>
-        
-        <article class="article-container">
-            <h1>使用Hexo从私有仓库部署Github Page</h1>
-            <blockquote>
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-text">过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E4%BA%8B"><span class="toc-text">完事</span></a></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>使用Hexo从私有仓库部署Github Page</h1>
+        <blockquote>
 <p>将博客源文件迁移至私有仓库</p>
 </blockquote>
 <span id="more"></span>
@@ -205,16 +221,15 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <h2 id="%E5%AE%8C%E4%BA%8B" tabindex="-1" id="完事"><a class="header-anchor" href="#完事"># </a>完事</h2>
 <p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
 
-        </article>
         
         <div class="article-meta-info">
             
                 <span>分类</span>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
                 
             
                 <span>标签</span>
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">Hexo</a></li></ul>
+                <a class="article-tags-none-link" href="/tags/github/" rel="tag">Github</a><a class="article-tags-none-link" href="/tags/hexo/" rel="tag">Hexo</a>
             
         </div>
         
@@ -252,7 +267,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 
 
         </div>
-    </div>
+    </article>
 </main>
 
     
@@ -302,6 +317,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

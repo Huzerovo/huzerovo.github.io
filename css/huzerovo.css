@@ -3,15 +3,12 @@
  */
 html {
   font-family: sans;
-  overflow: scroll;
   scroll-behavior: smooth;
   scroll-padding-top: 50px;
 }
-html * {
-  transition: 300ms;
-}
 body {
   margin: 0;
+  transition: 300ms;
   /* 顶部菜单栏 */
   /* 20 * 16 px */
   /* 主体区域 */
@@ -26,6 +23,10 @@ body .topbar {
   position: sticky;
   top: 0;
   z-index: 9;
+  transition: 300ms;
+}
+body .topbar * {
+  transition: 300ms;
 }
 body .topbar .topbar-container {
   width: 80%;
@@ -85,18 +86,11 @@ body .topbar .topbar-container .topbar-icon-buttons .icon-button {
     left: 5%;
   }
 }
-body main {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-evenly;
+body main.container {
   width: 60%;
-  padding: 0 16px;
   margin: 0 auto;
-  /* 中间显示区域 */
-}
-body main .container {
-  width: 100%;
   /* 页面标题 */
+  transition: 300ms;
   /* 默认使用的文章列表 */
   /* 文章列表 */
   /* 归档页的样式 */
@@ -115,48 +109,56 @@ body main .container {
   /* 搜索页面 */
   /* 搜索页样式 */
 }
-body main .container .page-title {
+body main.container .page-title {
   text-align: center;
 }
-body main .container .articles-list {
-  display: flex;
-  flex-wrap: wrap;
+body main.container * {
+  transition: 300ms;
 }
-body main .container .articles-list .articles-list-item {
+body main.container .articles-list .articles-list-item {
   display: block;
-  width: 80%;
-  max-height: 160px;
-  margin: 8px auto;
-  padding: 32px;
+  width: 90%;
+  margin: 16px auto;
   border-radius: 16px;
-}
-body main .container .articles-list .articles-list-item * {
-  transition: 0ms;
-}
-body main .container .articles-list .articles-list-item a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
   overflow: hidden;
 }
-body main .container .articles-list .articles-list-item .item-title {
+body main.container .articles-list .articles-list-item a {
+  margin: 32px 32px 0 32px;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0ms;
+}
+body main.container .articles-list .articles-list-item .item-gallery {
+  margin: 0px;
+}
+body main.container .articles-list .articles-list-item .item-gallery img {
+  width: 100%;
+}
+body main.container .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
 }
-body main .container .articles-list .articles-list-item .item-content {
+body main.container .articles-list .articles-list-item .item-content {
   margin: 0;
 }
-body main .container .page-archive-year {
+body main.container .articles-list .articles-list-item .item-footer {
+  text-align: right;
+  margin: 16px 32px;
+}
+body main.container .articles-list .articles-list-item .item-footer p {
+  margin: 0px;
+}
+body main.container .page-archive-year {
   font-size: 32px;
 }
-body main .container .page-archive-item {
+body main.container .page-archive-item {
   display: flex;
   flex-direction: column;
   font-size: 24px;
   margin: 0 6px;
 }
-body main .container .page-archive-item a {
+body main.container .page-archive-item a {
   text-decoration: none;
   width: 80%;
   padding: 8px;
@@ -164,32 +166,39 @@ body main .container .page-archive-item a {
   border-radius: 8px;
   transition: 100ms;
 }
-body main .container .page-category ul {
+body main.container .page-category .category-list {
+  list-style: none;
+  display: inline-block;
+  padding: 0px;
+  width: 100%;
+}
+body main.container .category-list-item {
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  justify-content: space-evenly;
-  padding: 0;
+  justify-content: space-between;
 }
-body main .container .page-category li {
-  margin: 8px;
-  display: inline-block;
-  text-align: center;
-}
-body main .container .page-category a {
+body main.container .category-list-item a {
   box-sizing: border-box;
   display: inline-block;
-  width: 100%;
-  padding: 16px 32px;
+  padding: 8px 16px;
   text-decoration: none;
   border-radius: 8px;
 }
-body main .container .page-tagcloud a {
+body main.container .category-list-item span {
+  position: floor;
+  padding: 8px;
+}
+body main.container .category-list-item .category-list-child {
+  padding-left: 16px;
+  width: 100%;
+}
+body main.container .page-tagcloud a {
   display: inline-block;
   text-decoration: none;
   margin: 0 6px;
 }
-body main .container #article-toc {
+body main.container #article-toc {
   position: fixed;
   top: 40px;
   left: 5%;
@@ -197,22 +206,22 @@ body main .container #article-toc {
   height: 80vh;
   overflow: auto;
 }
-body main .container #article-toc .toc {
+body main.container #article-toc .toc {
   padding: 0;
   font-size: small;
   list-style: none;
 }
-body main .container #article-toc .toc-child {
+body main.container #article-toc .toc-child {
   padding: 0 8px;
   list-style: none;
 }
-body main .container #article-toc .toc-link {
+body main.container #article-toc .toc-link {
   display: block;
   margin: 6px 0;
   text-decoration: none;
 }
 @media (max-width: 960px) {
-  body main .container #article-toc {
+  body main.container #article-toc {
     position: unset;
     max-width: 30%;
     height: fit-content;
@@ -222,7 +231,7 @@ body main .container #article-toc .toc-link {
   }
 }
 @media (max-width: 480px) {
-  body main .container #article-toc {
+  body main.container #article-toc {
     display: block;
     max-width: 100%;
     height: fit-content;
@@ -231,21 +240,22 @@ body main .container #article-toc .toc-link {
     margin: 0 auto;
   }
 }
-body main .container article.article-container {
+body main.container article.article-container {
   line-height: 1.7;
   padding: 0 16px;
+  /* 从官方主题landscape抄来的 */
 }
-body main .container article.article-container h1 {
+body main.container article.article-container h1 {
   text-align: center;
 }
-body main .container article.article-container > p {
+body main.container article.article-container > p {
   text-indent: 32px;
 }
-body main .container article.article-container a {
+body main.container article.article-container a {
   transition: 0ms;
   text-decoration: none;
 }
-body main .container article.article-container blockquote {
+body main.container article.article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
   margin: 8px 0px;
@@ -253,76 +263,97 @@ body main .container article.article-container blockquote {
   width: calc(100% - 64px - 3px);
   display: inline-block;
 }
-body main .container article.article-container blockquote p {
+body main.container article.article-container blockquote p {
   text-indent: 0px;
 }
-body main .container article.article-container table {
+body main.container article.article-container blockquote cite {
+  margin: 0px 8px;
+}
+body main.container article.article-container table {
   width: 90%;
-  margin: 0 auto;
+  margin: 8px auto;
   border: 1px solid;
   border-collapse: collapse;
 }
-body main .container article.article-container table td {
+body main.container article.article-container table td {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main .container article.article-container table th {
+body main.container article.article-container table th {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main .container article.article-container img {
-  max-width: 100%;
+body main.container article.article-container img {
+  max-width: 80%;
   display: block;
   margin: 8px auto;
 }
-body main .container article.article-container code {
+body main.container article.article-container code {
   padding: 3px 6px;
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
 }
-body main .container article.article-container pre code {
+body main.container article.article-container pre code {
   display: block;
   overflow-x: auto;
   padding: 16px 32px;
 }
-@media (max-width: 480px) {
-  body main .container article.article-container {
-    padding: 0px;
-  }
-}
-body main .container .article-meta-info .category-list,
-body main .container .article-meta-info .tag-list {
-  margin: 0px;
-}
-body main .container .article-meta-info .category-list li,
-body main .container .article-meta-info .tag-list li {
-  margin: 0 8px;
+body main.container article.article-container .pullquote {
   display: inline-block;
+  border: none;
+  width: 45%;
+  margin: 16px;
+  padding: 0 16px;
 }
-body main .container .article-meta-info a {
+body main.container article.article-container .pullquote.left {
+  float: left;
+}
+body main.container article.article-container .pullquote.right {
+  float: right;
+}
+body main.container article.article-container .video-container {
+  position: relative;
+  padding-top: 50%;
+  height: 0;
+  overflow: hidden;
+}
+body main.container article.article-container .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+body main.container .article-meta-info span {
+  display: block;
+}
+body main.container .article-meta-info a {
+  position: relative;
+  left: 16px;
   transition: 0ms;
   text-decoration: none;
+  margin-left: 16px;
 }
-body main .container .article-date-info {
+body main.container .article-date-info {
   margin: 8px auto;
 }
-body main .container .article-date-info span {
+body main.container .article-date-info span {
   font-size: small;
   font-style: italic;
   display: block;
 }
-body main .container .article-comment {
+body main.container .article-comment {
   text-align: center;
   border-radius: 16px;
-  padding: 0px 16px;
-  padding-bottom: 8px;
+  padding: 16px;
   margin: 16px 0px;
 }
-body main .container .search-input {
+body main.container .search-input {
   display: flex;
 }
-body main .container .search-input input {
+body main.container .search-input input {
   margin: 16px auto;
   height: 40px;
   width: 80%;
@@ -332,16 +363,17 @@ body main .container .search-input input {
   padding: 0px 16px;
 }
 @media screen and (max-width: 960px) {
-  body main {
+  body main.container {
     width: 80%;
   }
 }
 @media screen and (max-width: 640px) {
-  body main {
-    width: 95%;
+  body main.container {
+    width: 100%;
   }
 }
 body #goto-top {
+  transition: 300ms;
   position: fixed;
   right: 8%;
   bottom: 8%;
@@ -352,6 +384,10 @@ body #goto-top {
 }
 body footer {
   text-align: center;
+  transition: 300ms;
+}
+body footer * {
+  transition: 300ms;
 }
 body footer a {
   transition: 0ms;

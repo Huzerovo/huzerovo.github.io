@@ -8,3 +8,9 @@
 .articles-list .articles-list-item a:hover {
   color: white;
 }
+.articles-list .articles-list-item img {
+  filter: brightness(0.8);
+}
+.articles-list .articles-list-item .item-footer {
+  color: gray;
+}

@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> Linux 防火墙 - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -64,6 +80,7 @@
 
 <body>
     
+
 
 
 
@@ -133,19 +150,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        
-        <div id="article-toc">
-        
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
-        
-        </div>
-        
-        <article class="article-container">
-            <h1>Linux 防火墙</h1>
-            <blockquote>
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netfilter-porject"><span class="toc-text">Netfilter Porject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E6%A6%82%E5%BF%B5"><span class="toc-text">四表五链概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8"><span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E9%93%BE"><span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E8%A1%A8%E4%BA%94%E9%93%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-text">四表五链之间的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-firewall"><span class="toc-text">管理 firewall</span></a></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>Linux 防火墙</h1>
+        <blockquote>
 <p>本文仅对防火墙进行简单的介绍，方便回顾</p>
 </blockquote>
 <span id="more"></span>
@@ -302,16 +318,15 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </ol>
 </section>
 
-        </article>
         
         <div class="article-meta-info">
             
                 <span>分类</span>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
                 
             
                 <span>标签</span>
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+                <a class="article-tags-none-link" href="/tags/linux/" rel="tag">Linux</a><a class="article-tags-none-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a>
             
         </div>
         
@@ -349,7 +364,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 
 
         </div>
-    </div>
+    </article>
 </main>
 
     
@@ -399,6 +414,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

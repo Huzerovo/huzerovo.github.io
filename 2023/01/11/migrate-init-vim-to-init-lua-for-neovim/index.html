@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     
+    
     <title> 将init.vim迁移至init.lua - 狐言狐语 | 记录一段回忆 </title>
     
 
@@ -20,9 +21,21 @@
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
 
+
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    
 
     
     
@@ -34,9 +47,11 @@
 
         <script>hljs.highlightAll();</script>
     
+
     
     
 <link rel="stylesheet" href="/css/huzerovo.css">
+
 
     
     
@@ -45,15 +60,16 @@
     
 <link rel="stylesheet" href="/css/dark/dark.css">
 
+
     
     
 <script src="/js/huzerovo.js"></script>
 <script src="/js/search.js"></script>
 
+
     
     
     <script>
-        // 设置主题
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
         codeStyle.dark = "/css/github-dark.min.css";
@@ -64,6 +80,7 @@
 
 <body>
     
+
 
 
 
@@ -133,19 +150,18 @@
     </div>
 </header>
 
-<main>
-    <div class="container">
-        
-        <div id="article-toc">
-        
-            <p class="sidebar-list-title">目录</p>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%8F%98%E9%87%8F"><span class="toc-text">迁移变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84"><span class="toc-text">迁移按键映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BBvim%E5%91%BD%E4%BB%A4"><span class="toc-text">迁移vim命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="toc-text">迁移函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6"><span class="toc-text">迁移插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol>
-        
-        </div>
-        
-        <article class="article-container">
-            <h1>将init.vim迁移至init.lua</h1>
-            <blockquote>
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%8F%98%E9%87%8F"><span class="toc-text">迁移变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84"><span class="toc-text">迁移按键映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BBvim%E5%91%BD%E4%BB%A4"><span class="toc-text">迁移vim命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%87%BD%E6%95%B0"><span class="toc-text">迁移函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6"><span class="toc-text">迁移插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>将init.vim迁移至init.lua</h1>
+        <blockquote>
 <p>本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
 详细的内容可在nvim中使用命令<code>:help lua-guide</code>进行查看。</p>
 </blockquote>
@@ -255,16 +271,15 @@ vim.fn['plug#end']()
 </ol>
 </section>
 
-        </article>
         
         <div class="article-meta-info">
             
                 <span>分类</span>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></li></ul>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
                 
             
                 <span>标签</span>
-                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/" rel="tag">lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/neovim/" rel="tag">neovim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/" rel="tag">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
+                <a class="article-tags-none-link" href="/tags/lua/" rel="tag">lua</a><a class="article-tags-none-link" href="/tags/neovim/" rel="tag">neovim</a><a class="article-tags-none-link" href="/tags/vim/" rel="tag">vim</a><a class="article-tags-none-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a>
             
         </div>
         
@@ -302,7 +317,7 @@ vim.fn['plug#end']()
 
 
         </div>
-    </div>
+    </article>
 </main>
 
     
@@ -352,6 +367,8 @@ $(document).ready(function() {
             $('#goto-top').hide();
         }
     });
+
+    Fancybox.bind(".container img");
 });
 </script>
 </html>

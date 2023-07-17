@@ -5,6 +5,10 @@
   position: sticky;
   top: 0;
   z-index: 9;
+  transition: 300ms;
+}
+.topbar * {
+  transition: 300ms;
 }
 .topbar .topbar-container {
   width: 80%;

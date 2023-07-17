@@ -2493,6 +2493,22 @@ vim.fn['plug#end']()
       </tags>
   </entry>
   <entry>
+    <title>图册展示页</title>
+    <url>/2023/07/16/post-for-gallery-layout-test/</url>
+    <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
+<span id="more"></span>
+<p>然而并不能在文章里面看到，可以用作封面用途。</p>
+<p>可以添加多张，随机挑选。</p>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>相册</tag>
+        <tag>展示</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PWM 舵机控制</title>
     <url>/2021/03/17/pwm-servo/</url>
     <content><![CDATA[<blockquote>
