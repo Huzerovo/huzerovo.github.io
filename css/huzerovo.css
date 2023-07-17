@@ -117,7 +117,7 @@ body main.container * {
 }
 body main.container .articles-list .articles-list-item {
   display: block;
-  width: 90%;
+  width: 80%;
   margin: 16px auto;
   border-radius: 16px;
   overflow: hidden;
@@ -133,6 +133,7 @@ body main.container .articles-list .articles-list-item .item-gallery {
   margin: 0px;
 }
 body main.container .articles-list .articles-list-item .item-gallery img {
+  cursor: pointer;
   width: 100%;
 }
 body main.container .articles-list .articles-list-item .item-title {
@@ -149,16 +150,25 @@ body main.container .articles-list .articles-list-item .item-footer {
 body main.container .articles-list .articles-list-item .item-footer p {
   margin: 0px;
 }
-body main.container .page-archive-year {
+@media (max-width: 480px) {
+  body main.container .articles-list .articles-list-item {
+    width: 90%;
+  }
+}
+body main.container .page-archive {
+  width: 80%;
+  margin: 16px auto;
+}
+body main.container .page-archive .page-archive-year {
   font-size: 32px;
 }
-body main.container .page-archive-item {
+body main.container .page-archive .page-archive-item {
   display: flex;
   flex-direction: column;
   font-size: 24px;
   margin: 0 6px;
 }
-body main.container .page-archive-item a {
+body main.container .page-archive .page-archive-item a {
   text-decoration: none;
   width: 80%;
   padding: 8px;
@@ -166,11 +176,25 @@ body main.container .page-archive-item a {
   border-radius: 8px;
   transition: 100ms;
 }
+@media (max-width: 480px) {
+  body main.container .page-archive {
+    width: 90%;
+  }
+}
+body main.container .page-category {
+  width: 80%;
+  margin: 0 auto;
+}
 body main.container .page-category .category-list {
   list-style: none;
   display: inline-block;
   padding: 0px;
   width: 100%;
+}
+@media (max-width: 480px) {
+  body main.container .page-category {
+    width: 90%;
+  }
 }
 body main.container .category-list-item {
   height: fit-content;
@@ -193,10 +217,19 @@ body main.container .category-list-item .category-list-child {
   padding-left: 16px;
   width: 100%;
 }
+body main.container .page-tagcloud {
+  width: 80%;
+  margin: 16px auto;
+}
 body main.container .page-tagcloud a {
   display: inline-block;
   text-decoration: none;
   margin: 0 6px;
+}
+@media (max-width: 480px) {
+  body main.container .page-tagcloud {
+    width: 90%;
+  }
 }
 body main.container #article-toc {
   position: fixed;
@@ -240,22 +273,22 @@ body main.container #article-toc .toc-link {
     margin: 0 auto;
   }
 }
-body main.container article.article-container {
+body main.container .article-container {
   line-height: 1.7;
   padding: 0 16px;
   /* 从官方主题landscape抄来的 */
 }
-body main.container article.article-container h1 {
+body main.container .article-container h1 {
   text-align: center;
 }
-body main.container article.article-container > p {
+body main.container .article-container > p {
   text-indent: 32px;
 }
-body main.container article.article-container a {
+body main.container .article-container a {
   transition: 0ms;
   text-decoration: none;
 }
-body main.container article.article-container blockquote {
+body main.container .article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
   margin: 8px 0px;
@@ -263,62 +296,63 @@ body main.container article.article-container blockquote {
   width: calc(100% - 64px - 3px);
   display: inline-block;
 }
-body main.container article.article-container blockquote p {
+body main.container .article-container blockquote p {
   text-indent: 0px;
 }
-body main.container article.article-container blockquote cite {
+body main.container .article-container blockquote cite {
   margin: 0px 8px;
 }
-body main.container article.article-container table {
+body main.container .article-container table {
   width: 90%;
   margin: 8px auto;
   border: 1px solid;
   border-collapse: collapse;
 }
-body main.container article.article-container table td {
+body main.container .article-container table td {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main.container article.article-container table th {
+body main.container .article-container table th {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main.container article.article-container img {
+body main.container .article-container img {
   max-width: 80%;
   display: block;
   margin: 8px auto;
+  cursor: pointer;
 }
-body main.container article.article-container code {
+body main.container .article-container code {
   padding: 3px 6px;
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
 }
-body main.container article.article-container pre code {
+body main.container .article-container pre code {
   display: block;
   overflow-x: auto;
   padding: 16px 32px;
 }
-body main.container article.article-container .pullquote {
+body main.container .article-container .pullquote {
   display: inline-block;
   border: none;
   width: 45%;
   margin: 16px;
   padding: 0 16px;
 }
-body main.container article.article-container .pullquote.left {
+body main.container .article-container .pullquote.left {
   float: left;
 }
-body main.container article.article-container .pullquote.right {
+body main.container .article-container .pullquote.right {
   float: right;
 }
-body main.container article.article-container .video-container {
+body main.container .article-container .video-container {
   position: relative;
   padding-top: 50%;
   height: 0;
   overflow: hidden;
 }
-body main.container article.article-container .video-container iframe {
+body main.container .article-container .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -349,6 +383,19 @@ body main.container .article-comment {
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0px;
+}
+body main.container .article-comment #gitalk-container {
+  text-align: left;
+}
+body main.container .article-comment #gitalk-container .gt-meta {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+body main.container .article-comment #gitalk-container .gt-comment-content {
+  border-radius: 8px;
+}
+body main.container .article-comment #gitalk-container .gt-comment-content:hover {
+  box-shadow: unset;
 }
 body main.container .search-input {
   display: flex;

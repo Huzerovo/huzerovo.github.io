@@ -1,0 +1,10 @@
+/* About页 */
+.page-about {
+  width: 80%;
+  margin: 16px auto;
+}
+@media (max-width: 480px) {
+  .page-about {
+    width: 90%;
+  }
+}

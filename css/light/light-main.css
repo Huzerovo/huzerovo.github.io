@@ -49,35 +49,35 @@ main #article-toc a {
 main #article-toc a:hover {
   color: black;
 }
-main article.article-container a {
+main .article-container a {
   color: #9999ff;
 }
-main article.article-container a:visited {
+main .article-container a:visited {
   color: orchid;
 }
-main article.article-container a:hover {
+main .article-container a:hover {
   color: orange;
 }
-main article.article-container blockquote {
+main .article-container blockquote {
   background-color: #e6e6e6;
   color: gray;
 }
-main article.article-container hr {
+main .article-container hr {
   color: lightgray;
 }
-main article.article-container table thead {
+main .article-container table thead {
   background-color: lightgray;
   color: black;
 }
-main article.article-container table tbody {
+main .article-container table tbody {
   background-color: white;
   color: black;
 }
-main article.article-container code:not([class*="language"]) {
+main .article-container code:not([class*="language"]) {
   background-color: white;
   color: peru;
 }
-main article.article-container pre code:not([class~="hljs"]) {
+main .article-container pre code:not([class~="hljs"]) {
   background-color: whitesmoke;
 }
 main .article-meta-info {

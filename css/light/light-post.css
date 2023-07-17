@@ -6,35 +6,35 @@
 #article-toc a:hover {
   color: black;
 }
-article.article-container a {
+.article-container a {
   color: #9999ff;
 }
-article.article-container a:visited {
+.article-container a:visited {
   color: orchid;
 }
-article.article-container a:hover {
+.article-container a:hover {
   color: orange;
 }
-article.article-container blockquote {
+.article-container blockquote {
   background-color: #e6e6e6;
   color: gray;
 }
-article.article-container hr {
+.article-container hr {
   color: lightgray;
 }
-article.article-container table thead {
+.article-container table thead {
   background-color: lightgray;
   color: black;
 }
-article.article-container table tbody {
+.article-container table tbody {
   background-color: white;
   color: black;
 }
-article.article-container code:not([class*="language"]) {
+.article-container code:not([class*="language"]) {
   background-color: white;
   color: peru;
 }
-article.article-container pre code:not([class~="hljs"]) {
+.article-container pre code:not([class~="hljs"]) {
   background-color: whitesmoke;
 }
 /* 文章标签 */

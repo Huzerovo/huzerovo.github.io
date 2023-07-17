@@ -87,37 +87,37 @@
 .dark body main #article-toc a:hover {
   color: white;
 }
-.dark body main article.article-container a {
+.dark body main .article-container a {
   color: orchid;
 }
-.dark body main article.article-container a:visited {
+.dark body main .article-container a:visited {
   color: #9999ff;
 }
-.dark body main article.article-container a:hover {
+.dark body main .article-container a:hover {
   color: orange;
 }
-.dark body main article.article-container blockquote {
+.dark body main .article-container blockquote {
   border-left-color: #969696;
   background-color: #282828;
   color: gray;
 }
-.dark body main article.article-container hr {
+.dark body main .article-container hr {
   color: gray;
 }
-.dark body main article.article-container table thead {
+.dark body main .article-container table thead {
   background-color: #141414;
 }
-.dark body main article.article-container table tbody {
+.dark body main .article-container table tbody {
   background-color: #232323;
 }
-.dark body main article.article-container img {
+.dark body main .article-container img {
   filter: brightness(0.8);
 }
-.dark body main article.article-container code:not([class*="language"]) {
+.dark body main .article-container code:not([class*="language"]) {
   background-color: #323232;
   color: sandybrown;
 }
-.dark body main article.article-container pre code:not([class~="hljs"]) {
+.dark body main .article-container pre code:not([class~="hljs"]) {
   background-color: black;
 }
 .dark body main .article-meta-info {
@@ -136,7 +136,7 @@
   color: gray;
 }
 .dark body main .article-comment {
-  background-color: #323232;
+  background-color: #1e1e1e;
 }
 .dark body main #search {
   background-color: #1e1e1e;

@@ -1,6 +1,15 @@
 /* 标签云 */
+.page-tagcloud {
+  width: 80%;
+  margin: 16px auto;
+}
 .page-tagcloud a {
   display: inline-block;
   text-decoration: none;
   margin: 0 6px;
+}
+@media (max-width: 480px) {
+  .page-tagcloud {
+    width: 90%;
+  }
 }

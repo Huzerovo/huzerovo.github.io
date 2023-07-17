@@ -84,35 +84,35 @@
 .light body main #article-toc a:hover {
   color: black;
 }
-.light body main article.article-container a {
+.light body main .article-container a {
   color: #9999ff;
 }
-.light body main article.article-container a:visited {
+.light body main .article-container a:visited {
   color: orchid;
 }
-.light body main article.article-container a:hover {
+.light body main .article-container a:hover {
   color: orange;
 }
-.light body main article.article-container blockquote {
+.light body main .article-container blockquote {
   background-color: #e6e6e6;
   color: gray;
 }
-.light body main article.article-container hr {
+.light body main .article-container hr {
   color: lightgray;
 }
-.light body main article.article-container table thead {
+.light body main .article-container table thead {
   background-color: lightgray;
   color: black;
 }
-.light body main article.article-container table tbody {
+.light body main .article-container table tbody {
   background-color: white;
   color: black;
 }
-.light body main article.article-container code:not([class*="language"]) {
+.light body main .article-container code:not([class*="language"]) {
   background-color: white;
   color: peru;
 }
-.light body main article.article-container pre code:not([class~="hljs"]) {
+.light body main .article-container pre code:not([class~="hljs"]) {
   background-color: whitesmoke;
 }
 .light body main .article-meta-info {

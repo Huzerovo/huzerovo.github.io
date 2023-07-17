@@ -1,9 +1,18 @@
 /* 分类页面 */
+.page-category {
+  width: 80%;
+  margin: 0 auto;
+}
 .page-category .category-list {
   list-style: none;
   display: inline-block;
   padding: 0px;
   width: 100%;
+}
+@media (max-width: 480px) {
+  .page-category {
+    width: 90%;
+  }
 }
 .category-list-item {
   height: fit-content;
