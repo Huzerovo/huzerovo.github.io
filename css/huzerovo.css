@@ -387,6 +387,12 @@ body main.container .article-comment {
 body main.container .article-comment #gitalk-container {
   text-align: left;
 }
+body main.container .article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+body main.container .article-comment #gitalk-container blockquote {
+  width: 100%;
+}
 body main.container .article-comment #gitalk-container .gt-meta {
   margin-top: 0px;
   padding-top: 0px;

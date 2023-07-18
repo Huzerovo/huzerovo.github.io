@@ -14,3 +14,9 @@
 .articles-list .articles-list-item .item-footer {
   color: gray;
 }
+.articles-list .articles-list-item .item-footer .item-footer-todo {
+  color: sienna;
+}
+.articles-list .articles-list-item .item-footer .item-footer-finished {
+  color: seagreen;
+}

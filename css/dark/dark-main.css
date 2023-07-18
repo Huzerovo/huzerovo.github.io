@@ -36,6 +36,12 @@ main .articles-list .articles-list-item img {
 main .articles-list .articles-list-item .item-footer {
   color: gray;
 }
+main .articles-list .articles-list-item .item-footer .item-footer-todo {
+  color: sienna;
+}
+main .articles-list .articles-list-item .item-footer .item-footer-finished {
+  color: seagreen;
+}
 main .page-category {
   color: gray;
 }
@@ -102,6 +108,12 @@ main .article-date-info {
 }
 main .article-comment {
   background-color: #1e1e1e;
+}
+main .article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+main .article-comment #gitalk-container blockquote {
+  background: #e0e0e9;
 }
 main #search {
   background-color: #1e1e1e;

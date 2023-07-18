@@ -300,6 +300,12 @@ main.container .article-comment {
 main.container .article-comment #gitalk-container {
   text-align: left;
 }
+main.container .article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+main.container .article-comment #gitalk-container blockquote {
+  width: 100%;
+}
 main.container .article-comment #gitalk-container .gt-meta {
   margin-top: 0px;
   padding-top: 0px;

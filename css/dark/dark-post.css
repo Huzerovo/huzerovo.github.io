@@ -60,3 +60,9 @@
 .article-comment {
   background-color: #1e1e1e;
 }
+.article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+.article-comment #gitalk-container blockquote {
+  background: #e0e0e9;
+}

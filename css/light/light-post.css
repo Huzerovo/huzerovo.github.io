@@ -58,3 +58,6 @@
 .article-comment {
   background-color: white;
 }
+.article-comment #gitalk-container blockquote {
+  background: #f0f0f9;
+}

@@ -404,6 +404,122 @@ sudo losetup -d /dev/loop0
       </tags>
   </entry>
   <entry>
+    <title>我的主题介绍</title>
+    <url>/2023/07/16/introduction-to-my-theme/</url>
+    <content><![CDATA[<blockquote>
+<p>关于主题的介绍</p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>主题仍在持续开发中 =v=</p>
+</blockquote>
+<h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
+<p>这篇文章算是我在开发过程中的一些总结与吐槽。</p>
+<p>其实一开始我认为对于博客来说，应当注重于文章本身，而不是花哨的样式，
+这也是我一开始打算写一个自己的主题的原因。
+但后面我发现，过于单调的界面很难让我阅读下去，
+于是我在文章中为特殊的元素，如：链接、表格、代码等地方使用了彩色。
+这确实使得文章好看了一些，也促使我为主题添加更多东西。</p>
+<h2 id="%E5%86%99%E4%BD%9C" tabindex="-1" id="写作"><a class="header-anchor" href="#写作"># </a>写作</h2>
+<p>主题一开始就是基于Markdown渲染出的HTML文档进行开发，
+因此对于普通的，用Markdown写出来的文章，主题的样式应该都是没什么问题的。</p>
+<p>需要特别说明的是，在Hexo的文档<a href="https://hexo.io/docs/tag-plugins">标签插件</a>中提到了许多写作格式（或许可以这样子称呼？），
+如：各种不同的引用、代码块以及图片视频等。
+在我一开始开发主题时并没有看中这些方面的适配，但最近在对主题进行了一系列更新期间，
+我发现了官方用于主题测试的一个<a href="https://hexojs.github.io/hexo-theme-landscape">示例</a><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，
+于是我决定重新设计一些主题的的样式，并现在几乎能够适配示例中提到的各种写作风格。</p>
+<p><strong>除了那个<code>diff</code>样式，还有Hexo内置的带行号的代码高亮</strong>。
+<s>HTML标签一层又一层，真的难写，我本来就不会前端，越写越觉得写了个垃圾</s>。</p>
+<h2 id="%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8" tabindex="-1" id="文章列表"><a class="header-anchor" href="#文章列表"># </a>文章列表</h2>
+<p>主页文章列表用于展示文章所有文章，并提供访问文章的入口。
+此外还有“标签页”以及“分类页”，用于展示具有相同标签或分类的文章。
+注意这些页面用于展示文章，而导航栏指向的页面于展示这些标签或分类。</p>
+<p>在官方示例中，我看到了几个我非常想要的样式：文章摘要、无标题文章、带封面文章<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，
+在主题中也实现了这些样式。</p>
+<h3 id="%E4%B8%80%E8%88%AC%E6%96%87%E7%AB%A0" tabindex="-1" id="一般文章"><a class="header-anchor" href="#一般文章"># </a>一般文章</h3>
+<p>在一开始设计的主页文章列表中，所有的文章都显示为一个标题加上一段文章内容。
+其实我挺不满意这样的实现，因为Hexo提供的内容截取，会把标题也截进去，
+更难受的是一些数学公式会因为被截断，导致不能渲染出来。</p>
+<h4 id="%E6%91%98%E8%A6%81" tabindex="-1" id="摘要"><a class="header-anchor" href="#摘要"># </a>摘要</h4>
+<p>摘要<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>其实就是文章前的一小段文字。之前提到，
+一开始我使用截取一部分文章内容的方式让我挺难受的，
+于是我决定采用摘要作为一般文章的显示。</p>
+<p>这个摘要的写法如下：</p>
+<pre><code class="lang-markdown">这一段文字是摘要。
+
+&lt;!-- more --&gt;
+
+这里开始是正文
+</code></pre>
+<p>在标签<code>&lt;!-- more --&gt;</code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。</p>
+<h3 id="%E6%97%A0%E6%A0%87%E9%A2%98%E6%96%87%E7%AB%A0" tabindex="-1" id="无标题文章"><a class="header-anchor" href="#无标题文章"># </a>无标题文章</h3>
+<p>对于一篇没有标题文章，我认为它的用途就像是能在列表的一篇篇的文章中，
+起到类似于文章内“引用”的作用，你可以写一小段简短的话，作为一个“引用”插入到文章列表中，
+不过其实好像没什么必要。</p>
+<p>此外，我选择实现这种布局另一个原因就是为了适配一下出现无标题文章的情况。
+由于评论功能使用到了文章标题，因此在没有标题的文章里不能使用评论功能（这是强制性的）。</p>
+<p>只需要把文章标题，也就是<code>title</code>设为空字符串就能使用这种样式。</p>
+<h3 id="%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" tabindex="-1" id="带封面文章"><a class="header-anchor" href="#带封面文章"># </a>带封面文章</h3>
+<p>一开始其实是想写个像幻灯片一样文章布局来着的，
+不过我发现这些图片只能在首页显示<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，或许更适合拿来作为文章封面。</p>
+<blockquote>
+<p>值得一提的是，关于这个样式使用到的变量<code>photos</code>只是在<a href="https://hexo.io/docs/variables.html#Page-Variables">这里</a>提到过，
+<strong>而且还没告诉你怎么用…</strong></p>
+</blockquote>
+<p>要为文章添加封面，可以有两种方式</p>
+<ol>
+<li>
+<p>在Hexo配置文件中启用<code>post_asset_folder</code>，
+这会在创建文章时同时生成一个同名的文件夹，
+把封面放入这个文件夹后，在Front matter区域添加：</p>
+<pre><code class="lang-yml">photos:
+   - pic1.jpg
+   - pic2.jpg
+   - pic3.jpg
+</code></pre>
+<p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
+</li>
+<li>
+<blockquote>
+<p>这个还没写…主要是提供一个可供多个文章复用的封面，计划使用固定文件夹下的图片。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0" tabindex="-1" id="外部文章"><a class="header-anchor" href="#外部文章"># </a>外部文章</h3>
+<p>外部文章指的是不在自己博客网站上的文章，也可以是一般的其他网页。
+外部文章有两种：一种是带标题的，另一种是不带标题的。</p>
+<p>带标题的在显示时会显示标题，而不带标题的则直接显示链接。
+使用方式如下：</p>
+<pre><code class="lang-yml"># 标题指定了就是带标题的，置空就是无标题的
+title: ''
+link: https://www.google.com
+</code></pre>
+<p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>让我非常奇怪的是，示例网站里边没有提到生成这些文章的源文件在哪，主题的源码中也没有相关信息。
+在翻了一遍Hexo仓库后才发现原来是这个：<a href="https://github.com/hexojs/hexo-theme-unit-test">hexojs/hexo-theme-unit-test</a>。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>其实是示例中的Gallery，但我发现这些图片没有在文章中出现，或许更适合作为封面。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>在官方文档中，
+摘要在<a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">标签插件</a>一节中被提到。<strong>为什么不是写在“写作”一节呢？？？</strong> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>其实可以通过主题模板，使这些图片也能在文章内显示，但我还是更想让它作为文章封面。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>开发记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Learn Markdown</title>
     <url>/2020/11/07/learn-markdown/</url>
     <content><![CDATA[<blockquote>

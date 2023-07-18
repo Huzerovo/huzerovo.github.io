@@ -71,6 +71,12 @@
 .dark body main .articles-list .articles-list-item .item-footer {
   color: gray;
 }
+.dark body main .articles-list .articles-list-item .item-footer .item-footer-todo {
+  color: sienna;
+}
+.dark body main .articles-list .articles-list-item .item-footer .item-footer-finished {
+  color: seagreen;
+}
 .dark body main .page-category {
   color: gray;
 }
@@ -137,6 +143,12 @@
 }
 .dark body main .article-comment {
   background-color: #1e1e1e;
+}
+.dark body main .article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+.dark body main .article-comment #gitalk-container blockquote {
+  background: #e0e0e9;
 }
 .dark body main #search {
   background-color: #1e1e1e;

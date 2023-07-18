@@ -160,6 +160,12 @@
 .article-comment #gitalk-container {
   text-align: left;
 }
+.article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+.article-comment #gitalk-container blockquote {
+  width: 100%;
+}
 .article-comment #gitalk-container .gt-meta {
   margin-top: 0px;
   padding-top: 0px;

@@ -68,6 +68,12 @@
 .light body main .articles-list .articles-list-item .item-footer {
   color: dimgray;
 }
+.light body main .articles-list .articles-list-item .item-footer .item-footer-todo {
+  color: orange;
+}
+.light body main .articles-list .articles-list-item .item-footer .item-footer-finished {
+  color: limegreen;
+}
 .light body main .page-category {
   color: #969696;
 }
@@ -132,6 +138,9 @@
 }
 .light body main .article-comment {
   background-color: white;
+}
+.light body main .article-comment #gitalk-container blockquote {
+  background: #f0f0f9;
 }
 .light body main #search {
   border-color: lightgray;

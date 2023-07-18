@@ -11,3 +11,9 @@
 .articles-list .articles-list-item .item-footer {
   color: dimgray;
 }
+.articles-list .articles-list-item .item-footer .item-footer-todo {
+  color: orange;
+}
+.articles-list .articles-list-item .item-footer .item-footer-finished {
+  color: limegreen;
+}
