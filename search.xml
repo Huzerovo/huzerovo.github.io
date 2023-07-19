@@ -426,25 +426,23 @@ sudo losetup -d /dev/loop0
 <p>需要特别说明的是，在Hexo的文档<a href="https://hexo.io/docs/tag-plugins">标签插件</a>中提到了许多写作格式（或许可以这样子称呼？），
 如：各种不同的引用、代码块以及图片视频等。
 在我一开始开发主题时并没有看中这些方面的适配，但最近在对主题进行了一系列更新期间，
-我发现了官方用于主题测试的一个<a href="https://hexojs.github.io/hexo-theme-landscape">示例</a><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，
+我发现了官方用于主题测试的一个<a href="https://hexojs.github.io/hexo-theme-landscape">示例</a>，
 于是我决定重新设计一些主题的的样式，并现在几乎能够适配示例中提到的各种写作风格。</p>
 <p><strong>除了那个<code>diff</code>样式，还有Hexo内置的带行号的代码高亮</strong>。
 <s>HTML标签一层又一层，真的难写，我本来就不会前端，越写越觉得写了个垃圾</s>。</p>
 <h2 id="%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8" tabindex="-1" id="文章列表"><a class="header-anchor" href="#文章列表"># </a>文章列表</h2>
-<p>主页文章列表用于展示文章所有文章，并提供访问文章的入口。
+<p>主页文章列表以更新日期为顺序，展示了网站的所有文章，并提供访问文章的入口。
 此外还有“标签页”以及“分类页”，用于展示具有相同标签或分类的文章。
 注意这些页面用于展示文章，而导航栏指向的页面于展示这些标签或分类。</p>
-<p>在官方示例中，我看到了几个我非常想要的样式：文章摘要、无标题文章、带封面文章<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，
+<p>在官方示例中，我看到了几个我非常想要的样式：文章摘要、无标题文章、带封面文章<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，
 在主题中也实现了这些样式。</p>
 <h3 id="%E4%B8%80%E8%88%AC%E6%96%87%E7%AB%A0" tabindex="-1" id="一般文章"><a class="header-anchor" href="#一般文章"># </a>一般文章</h3>
+<p>摘要<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>其实就是文章前的一小段文字。</p>
 <p>在一开始设计的主页文章列表中，所有的文章都显示为一个标题加上一段文章内容。
 其实我挺不满意这样的实现，因为Hexo提供的内容截取，会把标题也截进去，
-更难受的是一些数学公式会因为被截断，导致不能渲染出来。</p>
-<h4 id="%E6%91%98%E8%A6%81" tabindex="-1" id="摘要"><a class="header-anchor" href="#摘要"># </a>摘要</h4>
-<p>摘要<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>其实就是文章前的一小段文字。之前提到，
-一开始我使用截取一部分文章内容的方式让我挺难受的，
+更难受的是一些数学公式会因为被截断，导致不能渲染出来。
 于是我决定采用摘要作为一般文章的显示。</p>
-<p>这个摘要的写法如下：</p>
+<p>想要使用摘要，只需在文章内这样写：</p>
 <pre><code class="lang-markdown">这一段文字是摘要。
 
 &lt;!-- more --&gt;
@@ -461,12 +459,12 @@ sudo losetup -d /dev/loop0
 <p>只需要把文章标题，也就是<code>title</code>设为空字符串就能使用这种样式。</p>
 <h3 id="%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" tabindex="-1" id="带封面文章"><a class="header-anchor" href="#带封面文章"># </a>带封面文章</h3>
 <p>一开始其实是想写个像幻灯片一样文章布局来着的，
-不过我发现这些图片只能在首页显示<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，或许更适合拿来作为文章封面。</p>
+不过我发现这些图片只能在首页显示<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，或许更适合拿来作为文章封面。</p>
 <blockquote>
 <p>值得一提的是，关于这个样式使用到的变量<code>photos</code>只是在<a href="https://hexo.io/docs/variables.html#Page-Variables">这里</a>提到过，
 <strong>而且还没告诉你怎么用…</strong></p>
 </blockquote>
-<p>要为文章添加封面，可以有两种方式</p>
+<p>要为文章添加封面，可以有一下几种方式</p>
 <ol>
 <li>
 <p>在Hexo配置文件中启用<code>post_asset_folder</code>，
@@ -480,9 +478,28 @@ sudo losetup -d /dev/loop0
 <p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
 </li>
 <li>
-<blockquote>
-<p>这个还没写…主要是提供一个可供多个文章复用的封面，计划使用固定文件夹下的图片。</p>
-</blockquote>
+<p>如果不希望启用<code>post_asset_folder</code>，那就可以选择固定文件夹作为存放封面的地方。
+在Front matter中添加：</p>
+<pre><code class="lang-yml">gallery: gallery
+photos:
+   - pic1.jpg
+   - pic2.png
+</code></pre>
+<p>其中<code>gallery</code>可以是多级的路径，如：</p>
+<pre><code class="lang-yml">gallery: 'gallery/sub'
+photos:
+   - pic1.jpg
+</code></pre>
+<p>这将会选择网站根目录下的文件夹<code>/gallery</code>或者<code>/gallery/sub</code>内的文件作为封面。
+如果希望直接使用根目录存储封面，请指定<code>gallery: '/'</code>，置空会被忽略。
+同样的，指定多个文件将会随机选取。这个方式与上一个方式是互斥的，不可混用。</p>
+</li>
+<li>
+<p>如果不希望在博客上存储封面，还可以从网络上获取。在Front matter区域添加：</p>
+<pre><code class="lang-yml">photos:
+   - https://via.placeholder.com/350x150.jpg
+</code></pre>
+<p>这样子就会从网络中获取封面。这个方式可以和之前的两种方式中的任意一个混合使用。</p>
 </li>
 </ol>
 <h3 id="%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0" tabindex="-1" id="外部文章"><a class="header-anchor" href="#外部文章"># </a>外部文章</h3>
@@ -495,18 +512,78 @@ title: ''
 link: https://www.google.com
 </code></pre>
 <p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
+<h3 id="%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0" tabindex="-1" id="置顶文章"><a class="header-anchor" href="#置顶文章"># </a>置顶文章</h3>
+<p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，在加个文章置顶也无所谓，
+于是就写了。</p>
+<p>在文章Front matter区域添加如下字段即可：</p>
+<pre><code class="lang-yml">pin: true
+</code></pre>
+<p>如果有多个置顶的文章，文章将会按照更新日期排序。</p>
+<h3 id="%E8%BF%98%E5%9C%A8%E5%AE%8C%E5%96%84%E7%9A%84%E6%96%87%E7%AB%A0" tabindex="-1" id="还在完善的文章"><a class="header-anchor" href="#还在完善的文章"># </a>还在完善的文章</h3>
+<p>先说怎么用吧，在文章Front matter区域添加：</p>
+<pre><code class="lang-yml">todo: true
+todo_msg: &quot;&quot;
+</code></pre>
+<p>这样就行了，在文章列表中就能看到效果了。顺便解释一下：
+<code>todo</code>设置为<code>true</code>表示文章还未完善，<code>todo_msg</code>可以写一些原因，留空表示使用默认消息。</p>
+<blockquote>
+<p>后面是关于这个功能实现的原因，不感兴趣的话就跳过吧。</p>
+</blockquote>
+<p>这个功能的实现纯属是突发奇想。原因就是这篇文章写到一半时又想着实现置顶、
+修改一些样式或者更改一些其他的功能。导致这篇文章修修改改了几次。
+闲着无聊实现了文章入口的那个更新日期指示后，就想着加多一个样式，
+然后就选了这个。</p>
+<p>其实本来想着按照更新日期来决定样式的，最近更新的就显示绿色，
+一段时间前更新的就显示橙色，长时间没有更新的就显示红色。</p>
+<p>但转念一想，文章写好了就是写好了，顶多来点错别字修改，
+一般不需要一直修改或者更新，那时间长了都变成橙色或者红色，就感觉怪怪的。
+于是就想到了这样的情况：文章没有写完，但已经能够发布了，后面只需要慢慢更新就行。
+这就是这个功能实现的由来了。<s>实际上<code>todo_msg</code>还是在写这一小节时想出来的。</s></p>
+<h2 id="%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD" tabindex="-1" id="一些功能"><a class="header-anchor" href="#一些功能"># </a>一些功能</h2>
+<h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1" id="搜索"><a class="header-anchor" href="#搜索"># </a>搜索</h3>
+<blockquote>
+<p>搜索功能可能还会继续完善。</p>
+</blockquote>
+<p>搜索功能在主题的README.md中似乎说完了，不过还是在这里再一遍。</p>
+<p>目前主题提供两种方式：关键字搜索以及正则搜索。</p>
+<h4 id="%E5%85%B3%E9%94%AE%E5%AD%97%E6%90%9C%E7%B4%A2" tabindex="-1" id="关键字搜索"><a class="header-anchor" href="#关键字搜索"># </a>关键字搜索</h4>
+<p>对于关键字搜索来说，可以使用<strong>查询规则</strong>。</p>
+<h5 id="%E8%AF%AD%E6%B3%95" tabindex="-1" id="语法"><a class="header-anchor" href="#语法"># </a>语法</h5>
+<ul>
+<li><code>key1 + key2</code>将会搜索包含<code>key1</code>或者<code>key2</code>的文章，它们的并集作为搜索结果。</li>
+<li><code>key1 &amp; key2</code>将会搜索同时包含这两个关键字的文章。</li>
+</ul>
+<h5 id="%E4%BC%98%E5%85%88%E7%BA%A7" tabindex="-1" id="优先级"><a class="header-anchor" href="#优先级"># </a>优先级</h5>
+<p><code>+</code>符号优先级最高，其次是<code>&amp;</code>，这意味着<code>key1 &amp; key2 + key3</code>将会搜索<strong>同时包含key1和key2的文章</strong>以及<strong>包含key3的文章</strong>，
+搜索结果为它们的并集。</p>
+<blockquote>
+<p>注：这个优先级规则可能会考虑更改，比如添加<code>()</code>来改变优先级。</p>
+</blockquote>
+<h4 id="%E6%AD%A3%E5%88%99%E6%90%9C%E7%B4%A2" tabindex="-1" id="正则搜索"><a class="header-anchor" href="#正则搜索"># </a>正则搜索</h4>
+<p>目前正则搜索<strong>不支持</strong>标记<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，在搜索过程中强制使用<code>g</code>标记进行搜索。</p>
+<p>关于正则的语法请参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">正则表达式</a>。</p>
+<h3 id="%E8%AF%84%E8%AE%BA" tabindex="-1" id="评论"><a class="header-anchor" href="#评论"># </a>评论</h3>
+<p>评论系统使用<a href="https://github.com/gitalk/gitalk">Gitalk</a>，可以在主题的配置文件中选择开启，
+在启用评论系统的情况下，还应该<strong>在文章中配置开启</strong>。</p>
+<p>在配置文件中：</p>
+<pre><code class="lang-yml">gitalk:
+   enable: true
+</code></pre>
+<p>在文章中：</p>
+<pre><code class="lang-yml">gitalk: true
+</code></pre>
+<p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>让我非常奇怪的是，示例网站里边没有提到生成这些文章的源文件在哪，主题的源码中也没有相关信息。
-在翻了一遍Hexo仓库后才发现原来是这个：<a href="https://github.com/hexojs/hexo-theme-unit-test">hexojs/hexo-theme-unit-test</a>。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>其实是示例中的Gallery，但我发现这些图片没有在文章中出现，或许更适合作为封面。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>其实是示例中的Gallery，但我发现这些图片没有在文章中出现，或许更适合作为封面。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>在官方文档中，
+摘要在<a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">标签插件</a>一节中被提到。<strong>为什么不是写在“写作”一节呢？？？</strong> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>在官方文档中，
-摘要在<a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">标签插件</a>一节中被提到。<strong>为什么不是写在“写作”一节呢？？？</strong> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p>其实可以通过主题模板，使这些图片也能在文章内显示，但我还是更想让它作为文章封面。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p>其实可以通过主题模板，使这些图片也能在文章内显示，但我还是更想让它作为文章封面。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p>一个正则表达式可以视为这种结构<code>/regex/flags</code>，这里的标记就是指<code>flags</code>，如<code>g</code>，<code>i</code>等。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>

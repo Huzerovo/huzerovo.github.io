@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 .articles-list .articles-list-item a {
-  margin: 32px 32px 0 32px;
+  margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
@@ -28,11 +28,17 @@
   margin: 0;
 }
 .articles-list .articles-list-item .item-footer {
-  text-align: right;
-  margin: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
 }
-.articles-list .articles-list-item .item-footer p {
+.articles-list .articles-list-item .item-footer .item-footer-todo {
   margin: 0px;
+  text-align: left;
+}
+.articles-list .articles-list-item .item-footer .item-footer-todo .item-footer-todo-msg {
+  display: inline;
+  margin-right: 8px;
 }
 @media (max-width: 480px) {
   .articles-list .articles-list-item {
