@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>开启评论</title>
+    <url>/2023/01/14/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<blockquote>
@@ -69,20 +83,6 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       <tags>
         <tag>Hexo</tag>
         <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启评论</title>
-    <url>/2023/01/14/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
       </tags>
   </entry>
   <entry>
@@ -433,15 +433,17 @@ sudo losetup -d /dev/loop0
 <h2 id="%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8" tabindex="-1" id="文章列表"><a class="header-anchor" href="#文章列表"># </a>文章列表</h2>
 <p>主页文章列表以更新日期为顺序，展示了网站的所有文章，并提供访问文章的入口。
 此外还有“标签页”以及“分类页”，用于展示具有相同标签或分类的文章。
-注意这些页面用于展示文章，而导航栏指向的页面于展示这些标签或分类。</p>
+<strong>注意</strong>：刚刚提到的“<strong>标签页</strong>”以及“<strong>分类页</strong>”是用于展示文章的，
+而<strong>导航栏指向的页面</strong>用于展示这些<strong>标签或分类</strong>。</p>
 <p>在官方示例中，我看到了几个我非常想要的样式：文章摘要、无标题文章、带封面文章<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，
 在主题中也实现了这些样式。</p>
 <h3 id="%E4%B8%80%E8%88%AC%E6%96%87%E7%AB%A0" tabindex="-1" id="一般文章"><a class="header-anchor" href="#一般文章"># </a>一般文章</h3>
-<p>摘要<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>其实就是文章前的一小段文字。</p>
-<p>在一开始设计的主页文章列表中，所有的文章都显示为一个标题加上一段文章内容。
-其实我挺不满意这样的实现，因为Hexo提供的内容截取，会把标题也截进去，
-更难受的是一些数学公式会因为被截断，导致不能渲染出来。
-于是我决定采用摘要作为一般文章的显示。</p>
+<p>摘要<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>其实就是文章前的一小段文字，比如这篇文章的摘要就是“关于主题的介绍”，
+不过我在这里使用了样式，但在文章列表里只会显示文字。</p>
+<p>在一开始设计的主页文章列表中，所有的文章都显示为一个标题加上一段截取的文章内容。
+其实我挺不满意这样的实现，因为Hexo提供的辅助函数会把标题也截进去，
+更难受的是一些数学公式会因为被截断导致不能渲染出来。
+而我又不想自己写函数处理这些文字，于是我决定采用摘要作为显示方式。</p>
 <p>想要使用摘要，只需在文章内这样写：</p>
 <pre><code class="lang-markdown">这一段文字是摘要。
 
@@ -450,22 +452,23 @@ sudo losetup -d /dev/loop0
 这里开始是正文
 </code></pre>
 <p>在标签<code>&lt;!-- more --&gt;</code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。
-需要注意的是，文章Front matter区域里边可以设置变量<code>excerpt</code>，这将覆盖文章内的摘要。</p>
+需要注意的是，文章Front matter区域里边可以设置变量<code>excerpt</code>，
+这将文章列表中代替文章内的摘要进行显示，而文章内的摘要不变。</p>
 <h3 id="%E6%97%A0%E6%A0%87%E9%A2%98%E6%96%87%E7%AB%A0" tabindex="-1" id="无标题文章"><a class="header-anchor" href="#无标题文章"># </a>无标题文章</h3>
 <p>对于一篇没有标题文章，我认为它的用途就像是能在列表的一篇篇的文章中，
 起到类似于文章内“引用”的作用，你可以写一小段简短的话，作为一个“引用”插入到文章列表中，
 不过其实好像没什么必要。</p>
-<p>此外，我选择实现这种布局另一个原因就是为了适配一下出现无标题文章的情况。
+<p>此外，我选择实现这种布局另一个原因是为了适配一下出现无标题文章的情况。
 由于评论功能使用到了文章标题，因此在没有标题的文章里不能使用评论功能（这是强制性的）。</p>
 <p>只需要把文章标题，也就是<code>title</code>设为空字符串就能使用这种样式。</p>
 <h3 id="%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" tabindex="-1" id="带封面文章"><a class="header-anchor" href="#带封面文章"># </a>带封面文章</h3>
-<p>一开始其实是想写个像幻灯片一样文章布局来着的，
+<p>一开始其实是想写个像幻灯片一样布局来着的，
 不过我发现这些图片只能在首页显示<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，或许更适合拿来作为文章封面。</p>
 <blockquote>
 <p>值得一提的是，关于这个样式使用到的变量<code>photos</code>只是在<a href="https://hexo.io/docs/variables.html#Page-Variables">这里</a>提到过，
 <strong>而且还没告诉你怎么用…</strong></p>
 </blockquote>
-<p>要为文章添加封面，可以有一下几种方式</p>
+<p>要为文章添加封面，可以有以下几种方式</p>
 <ol>
 <li>
 <p>在Hexo配置文件中启用<code>post_asset_folder</code>，
@@ -514,7 +517,7 @@ link: https://www.google.com
 </code></pre>
 <p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
 <h3 id="%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0" tabindex="-1" id="置顶文章"><a class="header-anchor" href="#置顶文章"># </a>置顶文章</h3>
-<p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，在加个文章置顶也无所谓，
+<p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，再加个文章置顶也无所谓，
 于是就写了。</p>
 <p>在文章Front matter区域添加如下字段即可：</p>
 <pre><code class="lang-yml">pin: true
@@ -2367,14 +2370,14 @@ vim.fn['plug#end']()
 <td style="text-align:left">上一个标签页</td>
 </tr>
 <tr>
-<td style="text-align:left">ni</td>
-<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
-<td style="text-align:left">向上滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-j&gt;</code></td>
+<td style="text-align:left">向上滚动，映射为<code>&lt;C-E&gt;&lt;C-E&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left">ni</td>
+<td style="text-align:left">n</td>
 <td style="text-align:left"><code>&lt;C-k&gt;</code></td>
-<td style="text-align:left">向上滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+<td style="text-align:left">向下滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
 </tr>
 <tr>
 <td style="text-align:left">n</td>
@@ -2609,6 +2612,11 @@ vim.fn['plug#end']()
 <td style="text-align:left"><code>&lt;F12&gt;</code></td>
 <td style="text-align:left">显示/隐藏悬浮终端</td>
 </tr>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;leader&gt;f12</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
 </tbody>
 </table>
 <h3 id="nvim-tree%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="nvim-tree快捷键"><a class="header-anchor" href="#nvim-tree快捷键"># </a>nvim-tree快捷键</h3>
@@ -2627,6 +2635,11 @@ vim.fn['plug#end']()
 <td style="text-align:left"><code>&lt;F2&gt;</code></td>
 <td style="text-align:left">打开/隐藏文件树</td>
 </tr>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;leader&gt;f2</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
 </tbody>
 </table>
 <h3 id="telescope%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="Telescope快捷键"><a class="header-anchor" href="#Telescope快捷键"># </a>Telescope快捷键</h3>
@@ -2642,6 +2655,10 @@ vim.fn['plug#end']()
 <tr>
 <td style="text-align:left"><code>&lt;F3&gt;</code></td>
 <td style="text-align:left">查找文件，同时可用于关闭窗口</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;F3</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
@@ -2707,6 +2724,25 @@ vim.fn['plug#end']()
         <tag>neovim</tag>
         <tag>配置</tag>
         <tag>nvim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图册展示页</title>
+    <url>/2023/07/16/post-for-gallery-layout-test/</url>
+    <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
+<span id="more"></span>
+<p>然而并不能在文章里面看到，可以用作封面用途。</p>
+<p>可以添加多张，随机挑选。</p>
+<p>这张图片
+<img src="https://via.placeholder.com/350x150.jpg" alt="350x150.jpg" />
+是从这里来的：<a href="https://via.placeholder.com/350x150.jpg">https://via.placeholder.com/350x150.jpg</a></p>
+]]></content>
+      <categories>
+        <category>开发记录</category>
+      </categories>
+      <tags>
+        <tag>相册</tag>
+        <tag>展示</tag>
       </tags>
   </entry>
   <entry>
@@ -2893,22 +2929,6 @@ pi.set_PWM_dutycycle(0)
         <tag>Python</tag>
         <tag>Servo</tag>
         <tag>PWM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图册展示页</title>
-    <url>/2023/07/16/post-for-gallery-layout-test/</url>
-    <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
-<span id="more"></span>
-<p>然而并不能在文章里面看到，可以用作封面用途。</p>
-<p>可以添加多张，随机挑选。</p>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>相册</tag>
-        <tag>展示</tag>
       </tags>
   </entry>
   <entry>
@@ -3228,6 +3248,20 @@ String 为 java.lang 包中的一个对象</p>
         <tag>smali</tag>
         <tag>Android</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>提问的智慧</title>
+    <url>/2023/07/18/smart-questions/</url>
+    <content><![CDATA[<!-- more -->
+]]></content>
+  </entry>
+  <entry>
+    <title>Github Page时间测试</title>
+    <url>/2022/12/31/time-test/</url>
+    <content><![CDATA[<p>时间格式测试</p>
+<span id="more"></span>
+<p>发现Github Page上的日期比实际的日期少一天。</p>
+]]></content>
   </entry>
   <entry>
     <title>欠拟合与过拟合</title>
