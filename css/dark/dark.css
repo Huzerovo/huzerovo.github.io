@@ -93,6 +93,12 @@
 .dark body main #article-toc a:hover {
   color: white;
 }
+.dark body main #article-toc .toc-level-2 > a.toc-link {
+  color: lightgray;
+}
+.dark body main #article-toc .toc-level-2 > a:hover {
+  color: white;
+}
 .dark body main .article-container a {
   color: orchid;
 }

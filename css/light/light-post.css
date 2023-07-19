@@ -6,6 +6,12 @@
 #article-toc a:hover {
   color: black;
 }
+#article-toc .toc-level-2 > a.toc-link {
+  color: #3c3c3c;
+}
+#article-toc .toc-level-2 > a:hover {
+  color: black;
+}
 .article-container a {
   color: #9999ff;
 }

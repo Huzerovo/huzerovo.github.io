@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>开启评论</title>
-    <url>/2023/01/14/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<blockquote>
@@ -83,6 +69,20 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       <tags>
         <tag>Hexo</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启评论</title>
+    <url>/2023/01/14/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
       </tags>
   </entry>
   <entry>
@@ -449,7 +449,8 @@ sudo losetup -d /dev/loop0
 
 这里开始是正文
 </code></pre>
-<p>在标签<code>&lt;!-- more --&gt;</code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。</p>
+<p>在标签<code>&lt;!-- more --&gt;</code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。
+需要注意的是，文章Front matter区域里边可以设置变量<code>excerpt</code>，这将覆盖文章内的摘要。</p>
 <h3 id="%E6%97%A0%E6%A0%87%E9%A2%98%E6%96%87%E7%AB%A0" tabindex="-1" id="无标题文章"><a class="header-anchor" href="#无标题文章"># </a>无标题文章</h3>
 <p>对于一篇没有标题文章，我认为它的用途就像是能在列表的一篇篇的文章中，
 起到类似于文章内“引用”的作用，你可以写一小段简短的话，作为一个“引用”插入到文章列表中，
@@ -573,6 +574,29 @@ todo_msg: &quot;&quot;
 <pre><code class="lang-yml">gitalk: true
 </code></pre>
 <p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
+<h2 id="%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="参考手册"><a class="header-anchor" href="#参考手册"># </a>参考手册</h2>
+<p>这里列出主题使用到的文章变量作为参考：</p>
+<pre><code class="lang-yml">title: 我的主题介绍
+date: 2023-07-17
+updated: 2023-07-19
+toc: true
+mathjax: false
+gitalk: true
+todo: true
+todo_msg: 主题仍在开发中
+#expert: 主题仍在持续开发中 =v= # 这个会覆盖文章内摘要
+pin: true
+gallery: gallery
+photos:
+- id=89645004_p0.png
+categories:
+  - [开发记录]
+tags:
+  - 主题
+  - Hexo
+# 这个作为外部文章引用
+#link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/
+</code></pre>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -2686,22 +2710,6 @@ vim.fn['plug#end']()
       </tags>
   </entry>
   <entry>
-    <title>图册展示页</title>
-    <url>/2023/07/16/post-for-gallery-layout-test/</url>
-    <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
-<span id="more"></span>
-<p>然而并不能在文章里面看到，可以用作封面用途。</p>
-<p>可以添加多张，随机挑选。</p>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>相册</tag>
-        <tag>展示</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PWM 舵机控制</title>
     <url>/2021/03/17/pwm-servo/</url>
     <content><![CDATA[<blockquote>
@@ -2885,6 +2893,22 @@ pi.set_PWM_dutycycle(0)
         <tag>Python</tag>
         <tag>Servo</tag>
         <tag>PWM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图册展示页</title>
+    <url>/2023/07/16/post-for-gallery-layout-test/</url>
+    <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
+<span id="more"></span>
+<p>然而并不能在文章里面看到，可以用作封面用途。</p>
+<p>可以添加多张，随机挑选。</p>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>相册</tag>
+        <tag>展示</tag>
       </tags>
   </entry>
   <entry>

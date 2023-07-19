@@ -6,6 +6,12 @@
 #article-toc a:hover {
   color: white;
 }
+#article-toc .toc-level-2 > a.toc-link {
+  color: lightgray;
+}
+#article-toc .toc-level-2 > a:hover {
+  color: white;
+}
 .article-container a {
   color: orchid;
 }

@@ -169,7 +169,6 @@
 
 
 
-
     
     <article class="articles-list-item">
         
@@ -177,15 +176,21 @@
             
             
             
-            
-            
                 
                 
                     
+                    
+                        
+                    
                 
             
+            
         <div class="item-gallery">
-            <img src="/gallery/id=89645004_p0.png">
+            <script>
+                document.write("<img loading='lazy' src='" + 
+                    "/gallery/id=89645004_p0.png".split(',').at(Math.floor(Math.random() * 1))
+                +"'>");
+            </script>
         </div>
         
 
@@ -217,7 +222,8 @@
             
             <div class="item-footer-todo">
                 <div class="item-footer-todo-msg">
-                    等待完成
+                    <i class="bi bi-info-circle"></i>
+                    主题仍在开发中
                 </div>
                 <div>
                 <i class="bi bi-calendar-x"></i>

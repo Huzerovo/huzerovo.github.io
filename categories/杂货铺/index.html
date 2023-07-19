@@ -169,7 +169,6 @@
 
 
 
-
     
     <article class="articles-list-item">
         
@@ -177,15 +176,35 @@
             
             
             
-            
+                
+                
+                    
+                    
+                        
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
                 
             
+                
+                
+                    
+                    
+                
+            
+            
         <div class="item-gallery">
-            <img src="/2023/07/16/post-for-gallery-layout-test/id=90724581_p0.jpg">
+            <script>
+                document.write("<img loading='lazy' src='" + 
+                    "/2023/07/16/post-for-gallery-layout-test/id=90724581_p0.jpg,/2023/07/16/post-for-gallery-layout-test/id=90779367_p0.png,https://via.placeholder.com/350x150.jpg".split(',').at(Math.floor(Math.random() * 3))
+                +"'>");
+            </script>
         </div>
         
 
@@ -329,6 +348,7 @@
             
             <div class="item-footer-todo">
                 <div class="item-footer-todo-msg">
+                    <i class="bi bi-info-circle"></i>
                     似乎有些按键需要更新
                 </div>
                 <div>

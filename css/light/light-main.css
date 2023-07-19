@@ -55,6 +55,12 @@ main #article-toc a {
 main #article-toc a:hover {
   color: black;
 }
+main #article-toc .toc-level-2 > a.toc-link {
+  color: #3c3c3c;
+}
+main #article-toc .toc-level-2 > a:hover {
+  color: black;
+}
 main .article-container a {
   color: #9999ff;
 }

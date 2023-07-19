@@ -58,6 +58,12 @@ main #article-toc a {
 main #article-toc a:hover {
   color: white;
 }
+main #article-toc .toc-level-2 > a.toc-link {
+  color: lightgray;
+}
+main #article-toc .toc-level-2 > a:hover {
+  color: white;
+}
 main .article-container a {
   color: orchid;
 }

@@ -169,7 +169,6 @@
 
 
 
-
     
     <article class="articles-list-item">
         
@@ -177,15 +176,21 @@
             
             
             
-            
-            
                 
                 
                     
+                    
+                        
+                    
                 
             
+            
         <div class="item-gallery">
-            <img src="/gallery/id=89645004_p0.png">
+            <script>
+                document.write("<img loading='lazy' src='" + 
+                    "/gallery/id=89645004_p0.png".split(',').at(Math.floor(Math.random() * 1))
+                +"'>");
+            </script>
         </div>
         
 
@@ -217,7 +222,8 @@
             
             <div class="item-footer-todo">
                 <div class="item-footer-todo-msg">
-                    等待完成
+                    <i class="bi bi-info-circle"></i>
+                    主题仍在开发中
                 </div>
                 <div>
                 <i class="bi bi-calendar-x"></i>
@@ -239,15 +245,35 @@
             
             
             
-            
+                
+                
+                    
+                    
+                        
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
                 
             
+                
+                
+                    
+                    
+                
+            
+            
         <div class="item-gallery">
-            <img src="/2023/07/16/post-for-gallery-layout-test/id=90724581_p0.jpg">
+            <script>
+                document.write("<img loading='lazy' src='" + 
+                    "/2023/07/16/post-for-gallery-layout-test/id=90724581_p0.jpg,/2023/07/16/post-for-gallery-layout-test/id=90779367_p0.png,https://via.placeholder.com/350x150.jpg".split(',').at(Math.floor(Math.random() * 3))
+                +"'>");
+            </script>
         </div>
         
 
@@ -391,6 +417,7 @@
             
             <div class="item-footer-todo">
                 <div class="item-footer-todo-msg">
+                    <i class="bi bi-info-circle"></i>
                     似乎有些按键需要更新
                 </div>
                 <div>

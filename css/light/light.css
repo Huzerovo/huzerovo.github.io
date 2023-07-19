@@ -90,6 +90,12 @@
 .light body main #article-toc a:hover {
   color: black;
 }
+.light body main #article-toc .toc-level-2 > a.toc-link {
+  color: #3c3c3c;
+}
+.light body main #article-toc .toc-level-2 > a:hover {
+  color: black;
+}
 .light body main .article-container a {
   color: #9999ff;
 }
