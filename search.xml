@@ -583,7 +583,7 @@ todo_msg: &quot;&quot;
 date: 2023-07-17
 updated: 2023-07-19
 toc: true
-mathjax: false
+katex: false
 gitalk: true
 todo: true
 todo_msg: 主题仍在开发中
@@ -3223,6 +3223,7 @@ String 为 java.lang 包中的一个对象</p>
     <content><![CDATA[<p>时间格式测试</p>
 <span id="more"></span>
 <p>发现Github Page上的日期比实际的日期少一天。</p>
+<p>似乎是时区问题？没有验证。</p>
 ]]></content>
   </entry>
   <entry>

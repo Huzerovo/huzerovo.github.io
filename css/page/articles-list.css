@@ -23,9 +23,11 @@
 .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
+  transition: 0ms;
 }
 .articles-list .articles-list-item .item-content {
   margin: 0;
+  transition: 0ms;
 }
 .articles-list .articles-list-item .item-footer {
   display: flex;

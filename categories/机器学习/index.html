@@ -69,6 +69,32 @@
 
     
     
+        
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+    
     <script>
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
@@ -192,10 +218,16 @@
         
         <footer class="item-footer">
         
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
+        <div class="item-footer-todo">
+            <div class="item-footer-todo-msg">
+                <i class="bi bi-info-circle"></i>
+                检查Katex语法
+            </div>
+            <div>
+                <i class="bi bi-calendar-x"></i>
                 发布日期: 2021-11-25
             </div>
+        </div>
         
         
         </footer>
@@ -223,10 +255,16 @@
         
         <footer class="item-footer">
         
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
+        <div class="item-footer-todo">
+            <div class="item-footer-todo-msg">
+                <i class="bi bi-info-circle"></i>
+                检查Katex语法
+            </div>
+            <div>
+                <i class="bi bi-calendar-x"></i>
                 发布日期: 2021-11-04
             </div>
+        </div>
         
         
         </footer>
@@ -254,10 +292,16 @@
         
         <footer class="item-footer">
         
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
+        <div class="item-footer-todo">
+            <div class="item-footer-todo-msg">
+                <i class="bi bi-info-circle"></i>
+                检查Katex语法
+            </div>
+            <div>
+                <i class="bi bi-calendar-x"></i>
                 发布日期: 2021-10-30
             </div>
+        </div>
         
         
         </footer>
@@ -316,10 +360,16 @@
         
         <footer class="item-footer">
         
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
+        <div class="item-footer-todo">
+            <div class="item-footer-todo-msg">
+                <i class="bi bi-info-circle"></i>
+                检查Katex语法
+            </div>
+            <div>
+                <i class="bi bi-calendar-x"></i>
                 发布日期: 2021-09-16
             </div>
+        </div>
         
         
         </footer>
@@ -349,10 +399,16 @@
         
         <footer class="item-footer">
         
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
+        <div class="item-footer-todo">
+            <div class="item-footer-todo-msg">
+                <i class="bi bi-info-circle"></i>
+                检查Katex语法
+            </div>
+            <div>
+                <i class="bi bi-calendar-x"></i>
                 发布日期: 2021-09-11
             </div>
+        </div>
         
         
         </footer>

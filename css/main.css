@@ -52,9 +52,11 @@ main.container .articles-list .articles-list-item .item-gallery img {
 main.container .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
+  transition: 0ms;
 }
 main.container .articles-list .articles-list-item .item-content {
   margin: 0;
+  transition: 0ms;
 }
 main.container .articles-list .articles-list-item .item-footer {
   display: flex;
@@ -251,6 +253,24 @@ main.container .article-container pre code {
   display: block;
   overflow-x: auto;
   padding: 16px 32px;
+}
+main.container .article-container .katex-display {
+  width: 100%;
+  padding: 8px 0;
+}
+main.container .article-container .katex-display > .katex {
+  overflow: scroll visible;
+}
+main.container .article-container .katex-display > .katex .katex-html {
+  min-width: fit-content;
+  width: 75%;
+  margin: 8px auto;
+}
+main.container .article-container .katex-display > .katex .katex-html .tag {
+  position: absolute;
+  left: 100%;
+  margin-left: 16px;
+  width: fit-content;
 }
 main.container .article-container .pullquote {
   display: inline-block;

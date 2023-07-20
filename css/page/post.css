@@ -103,6 +103,24 @@
   overflow-x: auto;
   padding: 16px 32px;
 }
+.article-container .katex-display {
+  width: 100%;
+  padding: 8px 0;
+}
+.article-container .katex-display > .katex {
+  overflow: scroll visible;
+}
+.article-container .katex-display > .katex .katex-html {
+  min-width: fit-content;
+  width: 75%;
+  margin: 8px auto;
+}
+.article-container .katex-display > .katex .katex-html .tag {
+  position: absolute;
+  left: 100%;
+  margin-left: 16px;
+  width: fit-content;
+}
 .article-container .pullquote {
   display: inline-block;
   border: none;
