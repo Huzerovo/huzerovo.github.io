@@ -279,6 +279,9 @@ main.container .article-container .video-container iframe {
   height: 100%;
   margin-top: 0;
 }
+main.container .article-container .contains-task-list {
+  list-style: none;
+}
 main.container .article-meta-info span {
   display: block;
 }

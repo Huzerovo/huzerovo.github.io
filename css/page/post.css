@@ -130,6 +130,9 @@
   height: 100%;
   margin-top: 0;
 }
+.article-container .contains-task-list {
+  list-style: none;
+}
 /* 文章标签 */
 .article-meta-info span {
   display: block;
