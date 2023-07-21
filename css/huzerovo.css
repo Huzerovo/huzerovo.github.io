@@ -5,6 +5,10 @@ html {
   font-family: sans;
   scroll-behavior: smooth;
   scroll-padding-top: 50px;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 body {
   margin: 0;
@@ -39,6 +43,7 @@ body .topbar .topbar-container {
 body .topbar .topbar-container .topbar-menu {
   max-width: 80%;
   overflow-x: scroll;
+  scrollbar-width: none;
 }
 body .topbar .topbar-container .topbar-menu ul {
   display: flex;
@@ -55,11 +60,15 @@ body .topbar .topbar-container .topbar-menu a {
   padding: 8px 16px;
   text-decoration: none;
 }
+body .topbar .topbar-container .topbar-menu::-webkit-scrollbar {
+  display: none;
+}
 body .topbar .topbar-container .topbar-icon-buttons {
   max-width: 20%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
+  scrollbar-width: none;
 }
 body .topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
@@ -67,6 +76,9 @@ body .topbar .topbar-container .topbar-icon-buttons .icon-button {
   cursor: pointer;
   background: none;
   font-size: 16px;
+}
+body .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
+  display: none;
 }
 @media screen and (max-width: 640px) {
   body .topbar .topbar-container {
@@ -209,17 +221,21 @@ body main.container .category-list-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
 }
-body main.container .category-list-item a {
+body main.container .category-list-item .category-list-link {
   box-sizing: border-box;
   display: inline-block;
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 8px;
+  width: 100%;
+  margin-right: 32px;
 }
-body main.container .category-list-item span {
-  position: floor;
-  padding: 8px;
+body main.container .category-list-item .category-list-count {
+  padding-top: 8px;
+  position: absolute;
+  right: 0px;
 }
 body main.container .category-list-item .category-list-child {
   padding-left: 16px;
@@ -261,6 +277,16 @@ body main.container #article-toc .toc-link {
   margin: 6px 0;
   text-decoration: none;
 }
+body main.container #article-toc::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body main.container #article-toc::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+body main.container #article-toc::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}
 @media (max-width: 960px) {
   body main.container #article-toc {
     position: unset;
@@ -268,7 +294,7 @@ body main.container #article-toc .toc-link {
     height: fit-content;
     max-height: 60vh;
     float: left;
-    margin-right: 16px;
+    margin: 0 16px;
   }
 }
 @media (max-width: 480px) {
@@ -338,15 +364,25 @@ body main.container .article-container code {
 }
 body main.container .article-container pre code {
   display: block;
-  overflow-x: auto;
+  overflow: auto;
   padding: 16px 32px;
+}
+body main.container .article-container pre code::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body main.container .article-container pre code::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+body main.container .article-container pre code::-webkit-scrollbar-thumb {
+  border-radius: 8px;
 }
 body main.container .article-container .katex-display {
   width: 100%;
   padding: 8px 0;
 }
 body main.container .article-container .katex-display > .katex {
-  overflow: scroll visible;
+  overflow: auto visible;
 }
 body main.container .article-container .katex-display > .katex .katex-html {
   min-width: fit-content;
@@ -358,6 +394,16 @@ body main.container .article-container .katex-display > .katex .katex-html .tag 
   left: 100%;
   margin-left: 16px;
   width: fit-content;
+}
+body main.container .article-container .katex-display .katex::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body main.container .article-container .katex-display .katex::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+body main.container .article-container .katex-display .katex::-webkit-scrollbar-thumb {
+  border-radius: 8px;
 }
 body main.container .article-container .pullquote {
   display: inline-block;

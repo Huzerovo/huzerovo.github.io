@@ -12,6 +12,18 @@
 #article-toc .toc-level-2 > a:hover {
   color: white;
 }
+#article-toc::-webkit-scrollbar-track {
+  background: gray;
+}
+#article-toc::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+}
+#article-toc::-webkit-scrollbar-thumb:hover {
+  background: lightgray;
+}
+#article-toc::-webkit-scrollbar-corner {
+  background: #e6e6e6;
+}
 .article-container a {
   color: orchid;
 }
@@ -44,6 +56,30 @@
 }
 .article-container pre code:not([class~="hljs"]) {
   background-color: black;
+}
+.article-container pre code::-webkit-scrollbar-track {
+  background: gray;
+}
+.article-container pre code::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+}
+.article-container pre code::-webkit-scrollbar-thumb:hover {
+  background: lightgray;
+}
+.article-container pre code::-webkit-scrollbar-corner {
+  background: #e6e6e6;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-track {
+  background: gray;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-thumb:hover {
+  background: lightgray;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-corner {
+  background: #e6e6e6;
 }
 /* 文章标签 */
 .article-meta-info {

@@ -21,6 +21,7 @@
 .topbar .topbar-container .topbar-menu {
   max-width: 80%;
   overflow-x: scroll;
+  scrollbar-width: none;
 }
 .topbar .topbar-container .topbar-menu ul {
   display: flex;
@@ -37,11 +38,15 @@
   padding: 8px 16px;
   text-decoration: none;
 }
+.topbar .topbar-container .topbar-menu::-webkit-scrollbar {
+  display: none;
+}
 .topbar .topbar-container .topbar-icon-buttons {
   max-width: 20%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
+  scrollbar-width: none;
 }
 .topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
@@ -49,6 +54,9 @@
   cursor: pointer;
   background: none;
   font-size: 16px;
+}
+.topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
+  display: none;
 }
 /* 20 * 16 px */
 @media screen and (max-width: 640px) {

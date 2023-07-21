@@ -122,17 +122,21 @@ main.container .category-list-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
 }
-main.container .category-list-item a {
+main.container .category-list-item .category-list-link {
   box-sizing: border-box;
   display: inline-block;
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 8px;
+  width: 100%;
+  margin-right: 32px;
 }
-main.container .category-list-item span {
-  position: floor;
-  padding: 8px;
+main.container .category-list-item .category-list-count {
+  padding-top: 8px;
+  position: absolute;
+  right: 0px;
 }
 main.container .category-list-item .category-list-child {
   padding-left: 16px;
@@ -174,6 +178,16 @@ main.container #article-toc .toc-link {
   margin: 6px 0;
   text-decoration: none;
 }
+main.container #article-toc::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+main.container #article-toc::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+main.container #article-toc::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}
 @media (max-width: 960px) {
   main.container #article-toc {
     position: unset;
@@ -181,7 +195,7 @@ main.container #article-toc .toc-link {
     height: fit-content;
     max-height: 60vh;
     float: left;
-    margin-right: 16px;
+    margin: 0 16px;
   }
 }
 @media (max-width: 480px) {
@@ -251,15 +265,25 @@ main.container .article-container code {
 }
 main.container .article-container pre code {
   display: block;
-  overflow-x: auto;
+  overflow: auto;
   padding: 16px 32px;
+}
+main.container .article-container pre code::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+main.container .article-container pre code::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+main.container .article-container pre code::-webkit-scrollbar-thumb {
+  border-radius: 8px;
 }
 main.container .article-container .katex-display {
   width: 100%;
   padding: 8px 0;
 }
 main.container .article-container .katex-display > .katex {
-  overflow: scroll visible;
+  overflow: auto visible;
 }
 main.container .article-container .katex-display > .katex .katex-html {
   min-width: fit-content;
@@ -271,6 +295,16 @@ main.container .article-container .katex-display > .katex .katex-html .tag {
   left: 100%;
   margin-left: 16px;
   width: fit-content;
+}
+main.container .article-container .katex-display .katex::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+main.container .article-container .katex-display .katex::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+main.container .article-container .katex-display .katex::-webkit-scrollbar-thumb {
+  border-radius: 8px;
 }
 main.container .article-container .pullquote {
   display: inline-block;

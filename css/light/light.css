@@ -96,6 +96,18 @@
 .light body main #article-toc .toc-level-2 > a:hover {
   color: black;
 }
+.light body main #article-toc::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+.light body main #article-toc::-webkit-scrollbar-thumb {
+  background: lightgray;
+}
+.light body main #article-toc::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+.light body main #article-toc::-webkit-scrollbar-corner {
+  background: dimgray;
+}
 .light body main .article-container a {
   color: #9999ff;
 }
@@ -126,6 +138,30 @@
 }
 .light body main .article-container pre code:not([class~="hljs"]) {
   background-color: whitesmoke;
+}
+.light body main .article-container pre code::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+.light body main .article-container pre code::-webkit-scrollbar-thumb {
+  background: lightgray;
+}
+.light body main .article-container pre code::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+.light body main .article-container pre code::-webkit-scrollbar-corner {
+  background: dimgray;
+}
+.light body main .article-container .katex-display .katex::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+.light body main .article-container .katex-display .katex::-webkit-scrollbar-thumb {
+  background: lightgray;
+}
+.light body main .article-container .katex-display .katex::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+.light body main .article-container .katex-display .katex::-webkit-scrollbar-corner {
+  background: dimgray;
 }
 .light body main .article-meta-info {
   color: gray;
