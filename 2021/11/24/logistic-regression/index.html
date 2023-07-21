@@ -196,52 +196,53 @@
 线性回归得出的模型效果不好：
 <img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
 <p>于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}}$</p>
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
 <h3 id="%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0" tabindex="-1" id="概率函数"><a class="header-anchor" href="#概率函数"># </a>概率函数</h3>
-<p>设 $h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}}$ ，
-$P(y = 1 \mid x ; \theta) = h_{\theta}(x)$ ，
-$P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x)$</p>
-<p>当 $y \in {0, 1}$ 时，我们可以这样子优化一下：
+<p>设$ h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
+$ P(y = 1 \mid x ; \theta) = h_{\theta}(x) $，
+$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
+当$ y \in {0, 1} $时，我们可以这样子优化一下：
 $$
 P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
 $$</p>
-<p>当 $y = 1$ 时，$P(y \mid x; \theta) = h_{\theta}(x)$ ，即 $y = 1$ 的概率<br />
-当 $y = 0$ 时，$P(y \mid x; \theta) = 1 - h_{\theta}(x)$ ，即 $y = 0$ 的概率</p>
+<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
+<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
 <p>优雅！</p>
 <h3 id="%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" tabindex="-1" id="进行极大似然估计"><a class="header-anchor" href="#进行极大似然估计"># </a>进行极大似然估计</h3>
-<p>设似然函数
+<p>设似然函数：
 $$
 L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
-$$</p>
-<p>$$
+$$
+$$
 l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
-$$</p>
-<p>可得<br />
+$$
+可得：
 $$
 \frac{\partial}{\partial \theta_{j}} l(\theta) =
 \sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
 $$</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3" tabindex="-1" id="梯度上升求解"><a class="header-anchor" href="#梯度上升求解"># </a>梯度上升求解</h3>
-<p>咕咕咕ing
-类似梯度下降，当函数具有最大值时，
-使 随机选取的点 $x{0}$ 进行如下更新<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<p>$$
+<p>类似梯度下降，当函数具有最大值时，
+使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
+$$
 x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$</p>
-<p>即可得到：</p>
-<p>$$
+$$
+即可得到：
+$$
 \theta_{j} = \theta_{j} +
 \partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
 $$</p>
 <h2 id="%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E5%AF%B9%E6%AF%94" tabindex="-1" id="与线性回归的对比"><a class="header-anchor" href="#与线性回归的对比"># </a>与线性回归的对比</h2>
 <p>最后推导得出的公式与线性回归的推导公式十分相似，
-但实际上 $ h_{\theta}(x) $ 表示的函数不再是线性的，
-因此，逻辑回归与线性回归实际上是不相同的</p>
+但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
+因此，逻辑回归与线性回归实际上是不相同的。</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>详情见文章 <a href="/2021/09/15/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/15/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -260,7 +261,7 @@ $$</p>
         
         <div class="article-date-info">
             <span>发布日期: 2021-11-25</span>
-            <span>更新日期: 2021-11-25</span>
+            <span>更新日期: 2023-07-21</span>
         </div>
         <div class="article-comment">
             

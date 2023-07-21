@@ -94,61 +94,54 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <span id="more"></span>
 <h2 id="%E6%AD%A5%E9%AA%A4" tabindex="-1" id="步骤"><a class="header-anchor" href="#步骤"># </a>步骤</h2>
 <ol>
-<li>
-<p>随机选取一个初始位置 $x_{0}$</p>
-</li>
-<li>
-<p>对 $x_{0}$ 进行更新，即：</p>
-<p>$$
+<li>随机选取一个初始位置$ x_{0} $。</li>
+<li>对$ x_{0} $进行更新，即：
+$$
 x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$</p>
-<p>其中 $\alpha$ 是一个正数，称作 “步长”，
-$\frac{\mathrm d}{\mathrm dx}f(x_{0})$ 是 $f(x)$ 在 $x_{0}$ 处的导数</p>
-</li>
-<li>
-<p>重复进行 <code>步骤2</code> 中的更新操作，最终得到 $x_{n}$ 使得 $f(x_{n})$ 最小</p>
-</li>
+$$
+其中$ \alpha $是一个正数，称作 “步长”，
+$ \frac{\mathrm d}{\mathrm dx}f(x_{0}) $是$ f(x) $在$ x_{0} $处的导数。</li>
+<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x_{n} $使得$ f(x_{n}) $最小。</li>
 </ol>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90" tabindex="-1" id="数学原理简析"><a class="header-anchor" href="#数学原理简析"># </a>数学原理简析</h2>
 <h3 id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86" tabindex="-1" id="基本原理"><a class="header-anchor" href="#基本原理"># </a>基本原理</h3>
-<p>设函数 $f(x)$ 为二次函数，且在 $x = x_{min}$ 处取得最小值，
-且设在点 $x_{n}$ 处的导数 $\frac{\mathrm d}{\mathrm dx}f(x_{n}) = k_{n}$<br />
-随机选取一点 $x_{0}$</p>
+<p>设函数$ f(x) $为二次函数，且在$ x = x_{min} $处取得最小值，
+且设在点$ x_{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x_{n}) = k_{n} $
+随机选取一点$ x_{0} $：</p>
 <ol>
 <li>
-<p>若 $k_{0} &lt; 0$ ，则 $x_{0} &lt; x_{min}$，<br />
-令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &lt; x_{0}$<br />
-即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
+<p>若$ k_{0} &lt; 0 $，则$ x_{0} &lt; x_{min} $，
+令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &lt; x_{0} $，
+即$ x_{1} $向$ x_{min} $靠近。</p>
 </li>
 <li>
-<p>若 $k_{0} &gt; 0$ ，则 $x_{0} &gt; x_{min}$，<br />
-令 $x_{1} = x_{0} - k_{0}$ ，则 $x_{1} &gt; x_{0}$<br />
-即 $x_{1}$ 向 $x_{0}$ 到 $x_{min}$ 的方向移动</p>
+<p>若$ k_{0} &gt; 0 $，则$ x_{0} &gt; x_{min} $，
+令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &gt; x_{0} $，
+即$ x_{1} $向$ x_{min} $靠近。</p>
 </li>
 </ol>
-<p>可知，更新后的 $x_{n}$ 一定从 $x_{n - 1}$ 向 $x_{min}$ 的方向移动</p>
+<p>可知，更新后的$ x_{n} $一定从$ x_{n - 1} $向$ x_{min} $的方向移动。</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6" tabindex="-1" id="使用条件"><a class="header-anchor" href="#使用条件"># </a>使用条件</h3>
-<p>在基本原理中可以发现，获得 $x_{n}$ 的过程不依赖于原函数，
-只需要知道原函数的一阶导函数。<br />
+<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
+只需要知道原函数的一阶导函数。
 因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
-可以考虑采取梯度下降算法</p>
+可以考虑采取梯度下降算法。</p>
 <h3 id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84" tabindex="-1" id="不足之处"><a class="header-anchor" href="#不足之处"># </a>不足之处</h3>
-<p>设 $f(x) = x^{2}$ ，
-函数在 $x_{min} = 0$ 处取得最小值，可知
-$k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n$</p>
-<p>取初始值 $x_{0} = 1$ ，则 $x_{1} = x_{0} - k_{0} = -1$<br />
-继续对 $x_{1}$ 进行更新，则 $x_{2} = x_{1} - k_{1} = 1 = x_{0}$</p>
-<p>这导致无论如何更新，最终结果都只是 $x = 1$ 和 $x = -1$ 两个值，永远无法得到 $x_{min} = 0$</p>
+<p>设$ f(x) = x^{2} $，
+函数在$ x_{min} = 0 $处取得最小值，可知
+$ k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n $。
+取初始值$ x_{0} = 1 $，则$ x_{1} = x_{0} - k_{0} = -1 $。
+继续对$ x_{1} $进行更新，则$ x_{2} = x_{1} - k_{1} = 1 = x_{0} $。
+这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
+<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
 <h3 id="%E6%94%B9%E8%BF%9B" tabindex="-1" id="改进"><a class="header-anchor" href="#改进"># </a>改进</h3>
-<p>因此，需要引入 $\alpha$ 控制 $x$ 变化的幅度，
-$\alpha$ 的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值 $x_{min}$<br />
-一般来说， $\alpha$ 是一个小于 1 但大于 0 的值。
-具体的值需要根据实际情况进行调整</p>
+<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
+$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
+一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
 <h2 id="%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B" tabindex="-1" id="代码示例"><a class="header-anchor" href="#代码示例"># </a>代码示例</h2>
-<p>在示例中<br />
-设函数为 $f(x) = 3x^{2} + 4x + 5$<br />
-则 $\frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4$<br />
-最低点为 $x_{min} = - \frac{B}{2A} = - \frac{2}{3}$</p>
+<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
+则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
+最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
 <pre><code class="lang-python">#!/usr/bin/env python3
 
 import numpy as np
@@ -175,7 +168,7 @@ def main():
     # 递减 100 次
     for i in range(100):
         x = x - alpha * df(x)
-    
+
     # 输出结果
     print(&quot;x_n is:&quot; , x)
     print(&quot;x_min is:&quot;, xmin)
@@ -1084,70 +1077,68 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
     <title>线性回归</title>
     <url>/2021/09/10/linear-regression/</url>
     <content><![CDATA[<blockquote>
-<p>基于 Andrew NG 机器学习 公开课程 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
-线性回归是一种 <strong>监督学习 (supervised leaning)</strong> 的模型<br />
-简单解释其中的数学原理，方便回顾</p>
+<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
+线性回归是一种<strong>监督学习</strong>的模型。</p>
 </blockquote>
 <span id="more"></span>
 <h2 id="%E5%9F%BA%E7%A1%80" tabindex="-1" id="基础"><a class="header-anchor" href="#基础"># </a>基础</h2>
-<h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D-%E4%B8%8E-%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D" tabindex="-1" id="定义-“特征”-与-“标签”"><a class="header-anchor" href="#定义-“特征”-与-“标签”"># </a>定义 “特征” 与 “标签”</h3>
-<p>这里的定义是为了方便后面的表达</p>
-<p>将监督学习中的一些概念 “重命名”</p>
+<h3 id="%E5%AE%9A%E4%B9%89%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D%E4%B8%8E%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D" tabindex="-1" id="定义“特征”与“标签”"><a class="header-anchor" href="#定义“特征”与“标签”"># </a>定义“特征”与“标签”</h3>
+<p>定义一些概念，方便后面的表达：</p>
 <ul>
-<li>特征，定义为输入空间（特征空间）</li>
-<li>标签，定义为输出空间</li>
+<li>特征，定义为输入空间（特征空间）。</li>
+<li>标签，定义为输出空间。</li>
 </ul>
-<p>对 “特征” 与 “标签” 的理解</p>
+<p>对“特征”与“标签”的理解：</p>
 <ol>
 <li>
-<p>从算法定义上</p>
+<p>从算法定义上：</p>
 <ul>
-<li>特征可理解为输入</li>
-<li>标签可理解为输出</li>
-<li>算法的目的就是根据输入，给出输出</li>
+<li>特征可理解为输入。</li>
+<li>标签可理解为输出。</li>
+<li>算法的目的就是根据输入，给出输出。</li>
 </ul>
 </li>
 <li>
-<p>从直观感觉上</p>
+<p>从直观感觉上：</p>
 <ul>
-<li>特征指代一个对象的特点</li>
-<li>标签指代一个对象</li>
-<li>算法的目的即根据特点，猜测对象</li>
+<li>特征指代一个对象的特点。</li>
+<li>标签指代一个对象。</li>
+<li>算法的目的即根据特点，猜测对象。</li>
 </ul>
 </li>
 </ol>
-<h3 id="%E5%AE%9A%E4%B9%89-%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D-%E5%85%B3%E7%B3%BB" tabindex="-1" id="定义-“特征-标签”-关系"><a class="header-anchor" href="#定义-“特征-标签”-关系"># </a>定义 “特征-标签” 关系</h3>
-<p>实际生活中，我们知道了 $A, B$ 能够在某种程度上决定 $C$ ，
-且 $A, B$ 各自对 $C$ 的影响有多大，我们并不清楚</p>
-<p>也就是说，我们知道 “特征” 与 “标签” 之间存在某种关系，但无法准确地描述这个关系</p>
-<p>此时我们可以对 $A, B, C$ 建立一个关系，即：能由 $A, B$ 推出 $C$<br />
-使用数学符号表示： $(A, B) \Rightarrow C$</p>
-<p>若将 $A$ 和 $B$ 称做 $C$ 的特征，并且将 $C$ 定义为标签，
-将 $(A, B) \Rightarrow C$ 称为 “特征-标签” 关系，
-则称数据 $(A, B, C)$ 存在 “特征-标签” 关系</p>
+<h3 id="%E5%AE%9A%E4%B9%89%E2%80%9C%E7%89%B9%E5%BE%81-%E6%A0%87%E7%AD%BE%E2%80%9D%E5%85%B3%E7%B3%BB" tabindex="-1" id="定义“特征-标签”关系"><a class="header-anchor" href="#定义“特征-标签”关系"># </a>定义“特征-标签”关系</h3>
+<p>实际生活中，我们知道了$ A $，$ B $能够在某种程度上决定$ C $，
+且$ A $，$ B $各自对$ C $的影响有多大，我们并不清楚。
+也就是说，我们知道“特征”与“标签”之间存在某种关系，但无法准确地描述这个关系。
+此时我们可以对$ A $，$ B $，$ C $建立一个关系，即：能由$ A $，$ B $推出$ C $。
+使用数学符号表示：$ (A, B) \Rightarrow C $</p>
+<p>若将$ A $和$ B $称做$ C $的特征，并且将$ C $定义为标签，
+将$ (A, B) \Rightarrow C $称为“特征-标签”关系，
+则称数据$ (A, B, C) $存在“特征-标签”关系</p>
 <h3 id="%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98" tabindex="-1" id="提出问题"><a class="header-anchor" href="#提出问题"># </a>提出问题</h3>
-<p>我们希望，给出一组存在 “特征-标签” 的关系的数据，
-计算机能够根据这组数据，建立一个存在 “特征-标签” 关系的模型<br />
-随后给出 “特征” ，计算机能够根据模型，给出比较可靠的、推测的 “标签”</p>
+<p>我们希望，给出一组存在“特征-标签”的关系的数据，
+计算机能够根据这组数据，建立一个存在“特征-标签”关系的模型,
+随后给出“特征”，计算机能够根据模型，给出比较可靠的、推测的“标签”。</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98" tabindex="-1" id="使用数学语言描述问题"><a class="header-anchor" href="#使用数学语言描述问题"># </a>使用数学语言描述问题</h3>
-<p>接下来将问题抽象成为一个数学问题</p>
-<p>设所有的特征的集合为 $(x_{1}, x_{2}, \cdots, x_{n})$，其中，$n$ 表示特征的数量，
-$y$ 为特征对应的 “标签”</p>
-<p>在比较简单的情况下，假定 “特征-标签” 是线性关系，并且这个线性关系为函数 $h$ ，
-则称 $h$ 为 <strong>假设函数 (hypotheses)</strong></p>
-<p>于是得到的函数</p>
-<p>$$
+<p>接下来将问题抽象成为一个数学问题。
+设所有的特征的集合为$ (x_{1}, x_{2}, \cdots, x_{n}) $，其中$ n $表示特征的数量，
+$ y $为特征对应的“标签”。
+在比较简单的情况下，假定“特征-标签”是线性关系，并且这个线性关系为函数$ h $，
+则称$ h $为<strong>假设函数（hypotheses）</strong>。
+于是得到的函数：
+$$
 \begin{equation}
 h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} +
 \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}
 \end{equation}
-$$</p>
-<p>其中， $\theta_{0}, \theta_{1}, \cdots, \theta_{n}$
-表示 <strong>参数 (parameters)</strong> ，或者说是 <strong>权值 (weights)</strong>
-这是我们需要求得的值</p>
+$$
+其中，$ \theta_{0} $，$ \theta_{1} $，$ \cdots $，$ \theta_{n} $
+表示<strong>参数（parameters）</strong>，或者说是<strong>权值（weights）</strong>,
+这是我们需要求得的值。</p>
 <h3 id="%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE" tabindex="-1" id="引入向量进行表达"><a class="header-anchor" href="#引入向量进行表达"># </a>引入向量进行表达</h3>
-<p>若用向量表示 $\theta$ ：</p>
-<p>$$
+<p>若用向量表示$ \theta $：
+$$
 \vec{\theta} =
 \begin{pmatrix}
 \theta_{0}\\
@@ -1155,9 +1146,9 @@ $$</p>
 \vdots\\
 \theta_{n}
 \end{pmatrix}
-$$</p>
-<p>并将特征集合重新定义为特征向量：</p>
-<p>$$
+$$
+并将特征集合重新定义为特征向量：
+$$
 \vec{x} =
 \begin{pmatrix}
 x_{0}\\
@@ -1165,43 +1156,42 @@ x_{1}\\
 \vdots\\
 x_{n}
 \end{pmatrix}
-$$</p>
-<p>其中 $x_{0} = 1$，
-<strong>为简化符号，记 $\vec{\theta}$ 为 $\theta$ ，$\vec{x}$ 为 $x$</strong> ，
-则函数可表示为：</p>
-<p>$$
+$$
+其中$ x_{0} = 1 $，
+<strong>为简化符号，记$ \vec{\theta} $为$ \theta $，$ \vec{x} $为$ x $</strong>，
+则函数可表示为：
+$$
 \begin{equation}
 h_{\theta}(x) = \sum_{i=0}^{n}{\theta_{i} x_{i}} = \theta^{T}x
 \end{equation}
 $$</p>
-<p>此时我们的问题就是，求出一个 $\theta$ ，使得函数 $h$ 能够很好地描述 “特征-标签” 关系，
-即建立一个合理的模型</p>
+<p>此时我们的问题就是，求出一个$ \theta $，使得函数$ h $能够很好地描述“特征-标签”关系，
+即建立一个合理的模型。</p>
 <h2 id="%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98" tabindex="-1" id="进一步分析问题"><a class="header-anchor" href="#进一步分析问题"># </a>进一步分析问题</h2>
 <h3 id="%E5%BC%95%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E8%AE%AD%E7%BB%83%E9%9B%86%E7%9A%84%E6%A6%82%E5%BF%B5" tabindex="-1" id="引入数据集与训练集的概念"><a class="header-anchor" href="#引入数据集与训练集的概念"># </a>引入数据集与训练集的概念</h3>
-<p>上面的函数仅表示单个数据中的 “特征与标签” 关系<br />
-若存在多个数据，即 <strong>数据集 (dataset)</strong> ，
-且所有的数据都存在 “特征-标签” 的关系，
-即可以构建出一个 <strong>训练集 (training set)</strong><br />
-那么我们可以使用 <strong>训练集</strong> 对算法进行 <strong>训练</strong> ，最终得出 $\theta$</p>
-<p>定义下面的符号，方便之后的表示：<br />
-设 <strong>训练集大小</strong> 为 $m$ ，令 $x_{i}^{(j)}$ 表示训练集中，
-<strong>第 $j$ 项数据</strong> 的 <strong>第 $i$ 个特征</strong>，
-$x^{(j)}$ 表示训练集中， <strong>第 $j$ 项数据</strong> 的特征向量<br />
-同理可得 $\theta_{i}^{(j)}$ 与 $\theta^{(j)}$</p>
+<p>上面的函数仅表示单个数据中的“特征与标签”关系，
+若存在多个数据，即<strong>数据集（dataset）</strong>，
+且所有的数据都存在“特征-标签”的关系，
+即可以构建出一个<strong>训练集（training set）</strong>，
+那么我们可以使用<strong>训练集</strong>对算法进行<strong>训练</strong>，最终得出$ \theta $。</p>
+<p>定义下面的符号，方便之后的表示：</p>
+<p>设训练集大小为$ m $，令$ x_{i}^{(j)} $表示训练集中第$ j $项数据的第$ i $个特征，
+$ x^{(j)} $表示训练集中第$ j $项数据的特征向量。
+同理可得$  \theta_{i}^{(j)}  $与$  \theta^{(j)}  $。</p>
 <h3 id="%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98" tabindex="-1" id="引入最小二乘法转化问题"><a class="header-anchor" href="#引入最小二乘法转化问题"># </a>引入最小二乘法转化问题</h3>
-<p>回顾我们的问题：<br />
-我们希望得到一个函数 $h$ 能够很好地描述训练集中的每个数据中 “特征-标签” 的关系<br />
-换句话说，给出 “特征” ，若 “特征” 存在于训练集中，那么
-由 <strong>函数 $h$</strong> 得出的 “标签”，与训练集中的 “标签”，它们之间的误差最小<br />
-根据 <strong>最小二乘法</strong> ，得：</p>
+<p>回顾我们的问题：
+我们希望得到一个函数$ h $能够很好地描述训练集中的每个数据中“特征-标签”的关系
+换句话说，给出“特征”，若“特征”存在于训练集中，那么
+由<strong>函数$ h $<strong>得出的“标签”，与训练集中的“标签”，它们之间的误差最小
+根据</strong>最小二乘法</strong>，得：</p>
 <p>$$
 \begin{equation}
 J(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( h_{\theta}(x^{(i)}) - y^{(i)} \right)^{2}
 \end{equation}
 $$</p>
-<p>函数 $J$ 也称为 <strong>cost function</strong></p>
-<p>于是问题转化为：<br />
-需要得到一个 $\theta$ ，使得 $J(\theta)$ 的值最小</p>
+<p>函数$ J $也称为<strong>cost function</strong></p>
+<p>于是问题转化为：
+需要得到一个$ \theta $，使得$ J(\theta) $的值最小</p>
 <h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95" tabindex="-1" id="为什么使用最小二乘法"><a class="header-anchor" href="#为什么使用最小二乘法"># </a>为什么使用最小二乘法</h3>
 <p>参考文章 <a href="/2021/11/03/why-use-least-squares/" title="为什么使用最小二乘法">为什么使用最小二乘法</a></p>
 <h2 id="%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98" tabindex="-1" id="解决问题"><a class="header-anchor" href="#解决问题"># </a>解决问题</h2>
@@ -1210,19 +1200,19 @@ $$</p>
 <blockquote>
 <p>注：梯度下降算法在 <a href="/2021/09/15/gradient-descent/" title="另一篇文章">另一篇文章</a> 中有介绍</p>
 </blockquote>
-<p>为了得到 $\theta$ 使函数值 $J(\theta)$ 最小，可以采取 <strong>梯度下降 (gradient descent)</strong> 的方法：<br />
-随机选取一个 $\theta$ 值，随后不断地更新 $\theta$ ，使 $J(\theta)$ 不断减小，
-当 $J(\theta)$ 的值达到最小时，得到的 $\theta$ 即是问题的解</p>
+<p>为了得到$ \theta $使函数值$ J(\theta) $最小，可以采取**梯度下降 (gradient descent)**的方法：
+随机选取一个$ \theta $值，随后不断地更新$ \theta $，使$ J(\theta) $不断减小，
+当$ J(\theta) $的值达到最小时，得到的$ \theta $即是问题的解</p>
 <p>我们可以这样进行更新：
-$$<br />
+$$
 \begin{equation}
 \theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} J(\theta)
 \label{eq4}
 \end{equation}
 $$</p>
-<p>其中 $:=$ 表示赋值，将右边的值赋予左边，而 $=$ 是真值判断，表示等号两边的值或结果是相同的<br />
-$\alpha$ 表示 <strong>学习率 (learning rate)</strong> ，或者称 <strong>步长</strong> ，是自定义的常数</p>
-<p>对 $J(\theta)$ 进行偏导：
+<p>其中$ := $表示赋值，将右边的值赋予左边，而$ = $是真值判断，表示等号两边的值或结果是相同的
+$ \alpha $表示<strong>学习率 (learning rate)</strong>，或者称<strong>步长</strong>，是自定义的常数</p>
+<p>对$ J(\theta) $进行偏导：
 $$
 \begin{equation}
 \begin{split}
@@ -1236,7 +1226,7 @@ $$
 \end{split}
 \end{equation}
 $$</p>
-<p>代入 $\eqref{eq4}$ ，得：</p>
+<p>代入$ \eqref{eq4} $，得：</p>
 <p>$$
 \begin{equation}
 \theta_{j} := \theta_{j} - \alpha (h_{\theta}(x) - y) x_{j}
@@ -1249,26 +1239,26 @@ $$</p>
 - y^{(i)}\right) x_{j}^{(i)}
 \end{equation}
 $$</p>
-<p>对每一个在向量 $\theta$ 中的分量 $\theta_{j}$ 都进行上述运算<br />
-最终我们会得到一个 $\theta$ ，这个值就是我们希望求得的值</p>
+<p>对每一个在向量$ \theta $中的分量$ \theta_{j} $都进行上述运算
+最终我们会得到一个$ \theta $，这个值就是我们希望求得的值</p>
 <h3 id="%E7%89%9B%E9%A1%BF%E6%B3%95" tabindex="-1" id="牛顿法"><a class="header-anchor" href="#牛顿法"># </a>牛顿法</h3>
 <blockquote>
 <p>尚未完成，咕咕咕ing</p>
 </blockquote>
 <p>因为极值点处的一阶导数为 0 ，
-且 $J(\theta)$ 的函数最高次为二次，函数只存在一个极值点<br />
-所以，为了得到 $J(\theta)$ 的最小值，我们可以使用间接的方法，
-即：寻找 $J(\theta)$ 导数的零点</p>
+且$ J(\theta) $的函数最高次为二次，函数只存在一个极值点
+所以，为了得到$ J(\theta) $的最小值，我们可以使用间接的方法，
+即：寻找$ J(\theta) $导数的零点</p>
 <p>牛顿法的步骤为：</p>
 <blockquote>
-<p>设函数为 $f(x)$</p>
+<p>设函数为$ f(x) $</p>
 <ol>
-<li>随机在函数 $f(x)$ 上取一初始点 $P_{0}$</li>
-<li>过点 $P_{0}$ 作函数 $f(x)$ 的切线 $L$</li>
-<li>找到切线 $L$ 与 $x$ 轴的交点 $Q_{0}$</li>
-<li>过交点 $Q_{0}$ 作 $x$ 轴的垂线，并与函数有一交点 $P_{1}$</li>
-<li>将点 $P_{1}$ 作为初始点，回到步骤 2</li>
-<li>当点 $P_{n}$ 与点 $Q_{n}$ 重合时，横坐标即零点</li>
+<li>随机在函数$ f(x) $上取一初始点$ P_{0} $</li>
+<li>过点$ P_{0} $作函数$ f(x) $的切线$ L $</li>
+<li>找到切线$ L $与$ x $轴的交点$ Q_{0} $</li>
+<li>过交点$ Q_{0} $作$ x $轴的垂线，并与函数有一交点$ P_{1} $</li>
+<li>将点$ P_{1} $作为初始点，回到步骤 2</li>
+<li>当点$ P_{n} $与点$ Q_{n} $重合时，横坐标即零点</li>
 </ol>
 </blockquote>
 <h3 id="%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95" tabindex="-1" id="解析解法"><a class="header-anchor" href="#解析解法"># </a>解析解法</h3>
@@ -1280,9 +1270,9 @@ $$</p>
 <p>这里的定义均来自 Andrew NG 课程讲义</p>
 </blockquote>
 <h5 id="%E5%AE%9A%E4%B9%89%E7%9F%A9%E9%98%B5%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E5%87%BD%E6%95%B0" tabindex="-1" id="定义矩阵函数的导函数"><a class="header-anchor" href="#定义矩阵函数的导函数"># </a>定义矩阵函数的导函数</h5>
-<p>对于函数 $f$ : $\mathbb{R}^{m \times n} \mapsto \mathbb{R}$ ，
-即 $m \times n$ 的矩阵映射至实数的函数关系<br />
-定义函数 $f$ 对矩阵 $A$ 的导数为：</p>
+<p>对于函数$ f $:$ \mathbb{R}^{m \times n} \mapsto \mathbb{R} $，
+即$ m \times n $的矩阵映射至实数的函数关系
+定义函数$ f $对矩阵$ A $的导数为：</p>
 <p>$$
 \begin{equation}
 \nabla_{A}f(A) =
@@ -1295,7 +1285,7 @@ $$</p>
 \end{bmatrix}
 \end{equation}
 $$</p>
-<p><em>例子</em><br />
+<p><em>例子</em>
 若矩阵
 $
 A =
@@ -1303,8 +1293,8 @@ A =
 A_{11} &amp; A_{12} \\
 A_{21} &amp; A_{22}
 \end{bmatrix}
-$ ，
-函数 $f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22}$ ，
+$，
+函数$ f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22} $，
 那么
 $
 \nabla_{A} f(A) =
@@ -1314,8 +1304,8 @@ A_{22} &amp; A_{21}
 \end{bmatrix}
 $</p>
 <h5 id="%E5%AE%9A%E4%B9%89-trace-%E8%BF%90%E7%AE%97" tabindex="-1" id="定义-trace-运算"><a class="header-anchor" href="#定义-trace-运算"># </a>定义 trace 运算</h5>
-<p><code>trace</code> 运算简写为 <code>tr</code><br />
-对于 $n \times n$ 的矩阵 $A$ ，定义</p>
+<p><code>trace</code> 运算简写为 <code>tr</code>
+对于$ n \times n $的矩阵$ A $，定义</p>
 <p>$$
 \begin{equation}
 \mathrm{tr}A = \sum_{i=1}^{n}A_{ii}
@@ -1340,10 +1330,10 @@ $$</p>
 \mathrm{tr}aA = a\mathrm{tr}A
 \end{equation}
 $$
-其中 $a$ 是一个实数</p>
+其中$ a $是一个实数</p>
 <h4 id="%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86" tabindex="-1" id="一些定理"><a class="header-anchor" href="#一些定理"># </a>一些定理</h4>
-<p>一些 <strong>trace 运算</strong> 与 <strong>矩阵导函数</strong> 相关的定理<br />
-仅列出 <strong>解析式推导过程</strong> 需要用到的一些定理，不作证明</p>
+<p>一些<strong>trace 运算</strong>与<strong>矩阵导函数</strong>相关的定理，
+仅列出<strong>解析式推导过程</strong>需要用到的一些定理，不作证明，</p>
 <p>$$
 \begin{equation}
 \label{theorem1}
@@ -1369,8 +1359,8 @@ $$</p>
 \end{equation}
 $$</p>
 <h4 id="%E8%A7%A3%E6%9E%90%E5%BC%8F%E6%8E%A8%E5%AF%BC" tabindex="-1" id="解析式推导"><a class="header-anchor" href="#解析式推导"># </a>解析式推导</h4>
-<p>使用矩阵表达 “特征” 与 “标签”<br />
-定义矩阵 $X$ 和 $Y$</p>
+<p>使用矩阵表达“特征”与“标签”
+定义矩阵$ X $和$ Y $</p>
 <p>$$
 \begin{equation}
 X =
@@ -1391,9 +1381,9 @@ y^{(m)}
 \end{equation}
 $$</p>
 <blockquote>
-<p>注意，此处 $x$ 表示向量 $\vec{x}$ ， $y$ 表示特征</p>
+<p>注意，此处$ x $表示向量$ \vec{x} $，$ y $表示特征</p>
 </blockquote>
-<p>因为 $h_{\theta}(x^{(i)}) = \theta^{T} x^{(i)} = ( x^{(i)} )^{T} \theta$ ，故</p>
+<p>因为$ h_{\theta}(x^{(i)}) = \theta^{T} x^{(i)} = ( x^{(i)} )^{T} \theta $，故</p>
 <p>$$
 \begin{equation}
 h_{\theta}(x)=
@@ -1430,7 +1420,7 @@ h_{\theta}(x^{(m)}) - y^{(m)}
 \end{bmatrix}
 \end{equation}
 $$</p>
-<p>且对于矩阵 $z$ ，有 $z^{T}z = \sum_{i} z_{i}^{2}$ ，
+<p>且对于矩阵$ z $，有$ z^{T}z = \sum_{i} z_{i}^{2} $，
 于是可得</p>
 <p>$$
 \begin{equation}
@@ -1441,7 +1431,7 @@ $$</p>
 \end{split}
 \end{equation}
 $$</p>
-<p>根据 $\eqref{theorem2}$ 和 $\eqref{theorem3}$ ，有</p>
+<p>根据$ \eqref{theorem2} $和$ \eqref{theorem3} $，有</p>
 <p>$$
 \begin{equation}
 \label{inference1}
@@ -1470,15 +1460,15 @@ $(\theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta +
 Y^{T} Y )$
 视作整体，
 可知这是一个实数，可将其看作一个
-$1 \times 1$ 的矩阵 $A = \begin{bmatrix}a\end{bmatrix}$ ，
-由 <code>trace</code> 定义可知 $\mathrm{tr} A = a$</p>
-<p>第四步使用了 $\mathrm{tr} A = \mathrm{tr} A^{T}$ ，
-且由于 $Y^{T}Y$ 项不存在 $\theta$ ，求导后为 $0$</p>
-<p>第五步中使用了 $\eqref{theorem1}$ 和 $\eqref{inference1}$ ，
-视 $A^{T} = \theta$ ， $B = B^{T} = X^{T} X$ , $C = I$</p>
-<p>使 $J(\theta)$ 最小，则令 $\nabla_{\theta} J(\theta) = 0$ ，
-所以有 $X^{T}  X \theta = X^{T} Y$<br />
-因此，得 $\theta = ( X^{T}X )^{-1} X^{T} Y$</p>
+$ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
+由 <code>trace</code> 定义可知$ \mathrm{tr} A = a $</p>
+<p>第四步使用了$ \mathrm{tr} A = \mathrm{tr} A^{T} $，
+且由于$ Y^{T}Y $项不存在$ \theta $，求导后为$ 0 $</p>
+<p>第五步中使用了$ \eqref{theorem1} $和$ \eqref{inference1} $，
+视$ A^{T} = \theta $，$ B = B^{T} = X^{T} X $,$ C = I $</p>
+<p>使$ J(\theta) $最小，则令$ \nabla_{\theta} J(\theta) = 0 $，
+所以有$ X^{T}  X \theta = X^{T} Y $
+因此，得$ \theta = ( X^{T}X )^{-1} X^{T} Y $</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -1671,64 +1661,60 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 </blockquote>
 <span id="more"></span>
 <h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" tabindex="-1" id="基本思想"><a class="header-anchor" href="#基本思想"># </a>基本思想</h2>
-<p>文章 <a href="/2021/10/25/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>
-简单介绍了欠拟合与过拟合的相关概念，
+<p>文章<a href="/2021/10/25/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>简单介绍了欠拟合与过拟合的相关概念，
 其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
-但如果过高，则又会出现过拟合的情况</p>
-<p>因此，局部加权回归的思想就是，只关注 <strong>在预测点附近</strong> 的样本点，
-忽略或者减小离预测点较远的样本的影响</p>
-<p>如果把样本局限在预测点的附近，就可以将这些样本点 <strong>近似</strong> 看做是线性的
-（这有点像微分，或者是切线的概念），
-这样就可以使用线性模型进行拟合，而无需考虑模型的阶</p>
+但如果过高，则又会出现过拟合的情况。</p>
+<p>因此，局部加权回归的思想就是，只关注<strong>在预测点附近</strong>的样本点，
+忽略或者减小离预测点较远的样本的影响。</p>
+<p>如果把样本局限在预测点的附近，就可以将这些样本点<strong>近似</strong>看做是线性的
+（这有点像微分的概念），这样就可以使用线性模型进行拟合，而无需考虑模型的阶。</p>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
 <h3 id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC" tabindex="-1" id="引入权值"><a class="header-anchor" href="#引入权值"># </a>引入权值</h3>
-<p>在这个算法中，我们将 <strong>假设函数 (hypotheses)</strong> 设为
+<p>在这个算法中，
+我们设<strong>假设函数（hypotheses）</strong>：
 $
 \sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
-$</p>
-<p>其中， $w^{i}$ 为权值<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>且有<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>
+$。
+其中$ w^{i} $为权值，且有<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：
 $$
 w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
 $$</p>
-<p>这里将 $e^{x}$ 记作 $\exp{(x)}$ ， $e$ 为 <strong>自然常数</strong></p>
-<p>注： $x$ 指需要进行预测的位置，可看作是 $x$ 轴上的一个坐标点</p>
-<p>并且可知<br />
-若 $\mid x^{(i)} - x \mid $ 越小，则有 $ w^{i} \approx 1 $<br />
-若 $\mid x^{(i)} - x \mid $ 越大，则有 $ w^{i} \approx 0 $</p>
-<p>$w^{i}$ 是一个钟形曲线，下图所示的为
+<p>这里将$ e^{x} $记作$ \exp{(x)} $，$ e $为<strong>自然常数</strong>。$ x $指需要进行预测的位置，可看作是$ x $轴上的一个坐标点。</p>
+<p>$ w^{i} $是一个钟形曲线，比如
 $
 e^{- \frac{1}{2} (x - 1)^{2}}
-$</p>
-<p><img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
-<p>在这个例子中，离 $x = 1$ 越近，它的权值越大，越远则权值越小，
-于是，离 $x = 1$ 近的点得到重视，而离 $x$ 较远的点的影响被降低</p>
+$
+的函数图像为：<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
+<p>容易看出来：
+若$ \mid x^{(i)} - x \mid $越小，则有$ w^{i} \approx 1 $，
+若$ \mid x^{(i)} - x \mid $越大，则有$ w^{i} \approx 0 $。</p>
+<p>在示例的函数中则表现为：离$ x = 1 $越近，它的权值越大，越远则权值越小，
+于是，离$ x = 1 $近的点得到重视，而离$ x $较远的点的影响被降低。</p>
 <h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" tabindex="-1" id="一般化"><a class="header-anchor" href="#一般化"># </a>一般化</h3>
 <p>将权值函数写成更一般的方式：
 $$
 w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
-$$</p>
-<p>其中 $\tau$ 被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度<br />
-下图是一个例子：</p>
-<p><img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
-<p>注：上图中的 $t$ 代表 $\tau$</p>
+$$
+其中$ \tau $被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度。
+下图是一个例子：<img src="Figure_2.svg" alt="Figure 2" title="Figure 2" /></p>
+<p><em>上图中的$ t $代表$ \tau $</em></p>
 <h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题"># </a>需要注意的问题</h2>
-<p>首先，需要明确指出，局部加权回归 <strong>不能完全避免</strong> 欠拟合与过拟合的问题，
+<p>首先，需要明确指出，局部加权回归<strong>不能完全避免</strong>欠拟合与过拟合的问题，
 原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
-即 $\tau$ 很大，算法实际上仍受到大部分数据的影响，
-但总体上看来，它仍比普通的线性回归更能避免欠拟合与过拟合的问题</p>
-<p>其次，算法实际上 <strong>并没有</strong> 建立一个永久模型<br />
+即$ \tau $很大，算法实际上仍受到大部分数据的影响，
+但总体上看来，它仍比普通的线性回归更能避免欠拟合与过拟合的问题。</p>
+<p>其次，算法实际上<strong>并没有</strong>建立一个永久模型。
 换句话说，每一次预测，算法都需要重新遍历训练集，
-然后才进行 <strong>加权</strong> 计算，最后给出预测<br />
-这与普通的线性回归不同，在线性回归中，我们得出了 $\theta$ ，
-实际上就得出了一个能用来预测的模型，无须在每次预测时又重新进行训练</p>
+然后才进行<strong>加权</strong>计算，最后给出预测。
+这与普通的线性回归不同，在线性回归中，我们得出了$ \theta $，
+实际上就得出了一个能用来预测的模型，无须在每次预测时又重新进行训练。</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>在<a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a>一文中提到，
-$\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指的是输入特征的权值，
-而 $w^{i}$ 指的是训练集中不同样本的权值 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>选择这个函数的理由是：根据经验，它具有普遍性（<s>概率论的奇妙之处</s>） <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+$ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指的是输入特征的权值，
+而$ w^{i} $指的是训练集中不同样本的权值，
+而选择这个函数的理由是：根据经验，它具有普遍性（<s>概率论的奇妙之处</s>）。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -1754,52 +1740,53 @@ $\theta$ 也被称为权值，但注意，这两者是不同的。 $\theta$ 指�
 线性回归得出的模型效果不好：
 <img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" /></p>
 <p>于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}}$</p>
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
 <h3 id="%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0" tabindex="-1" id="概率函数"><a class="header-anchor" href="#概率函数"># </a>概率函数</h3>
-<p>设 $h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}}$ ，
-$P(y = 1 \mid x ; \theta) = h_{\theta}(x)$ ，
-$P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x)$</p>
-<p>当 $y \in {0, 1}$ 时，我们可以这样子优化一下：
+<p>设$ h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
+$ P(y = 1 \mid x ; \theta) = h_{\theta}(x) $，
+$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
+当$ y \in {0, 1} $时，我们可以这样子优化一下：
 $$
 P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
 $$</p>
-<p>当 $y = 1$ 时，$P(y \mid x; \theta) = h_{\theta}(x)$ ，即 $y = 1$ 的概率<br />
-当 $y = 0$ 时，$P(y \mid x; \theta) = 1 - h_{\theta}(x)$ ，即 $y = 0$ 的概率</p>
+<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
+<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
 <p>优雅！</p>
 <h3 id="%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" tabindex="-1" id="进行极大似然估计"><a class="header-anchor" href="#进行极大似然估计"># </a>进行极大似然估计</h3>
-<p>设似然函数
+<p>设似然函数：
 $$
 L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
-$$</p>
-<p>$$
+$$
+$$
 l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
-$$</p>
-<p>可得<br />
+$$
+可得：
 $$
 \frac{\partial}{\partial \theta_{j}} l(\theta) =
 \sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
 $$</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3" tabindex="-1" id="梯度上升求解"><a class="header-anchor" href="#梯度上升求解"># </a>梯度上升求解</h3>
-<p>咕咕咕ing
-类似梯度下降，当函数具有最大值时，
-使 随机选取的点 $x{0}$ 进行如下更新<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<p>$$
+<p>类似梯度下降，当函数具有最大值时，
+使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
+$$
 x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$</p>
-<p>即可得到：</p>
-<p>$$
+$$
+即可得到：
+$$
 \theta_{j} = \theta_{j} +
 \partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
 $$</p>
 <h2 id="%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E5%AF%B9%E6%AF%94" tabindex="-1" id="与线性回归的对比"><a class="header-anchor" href="#与线性回归的对比"># </a>与线性回归的对比</h2>
 <p>最后推导得出的公式与线性回归的推导公式十分相似，
-但实际上 $ h_{\theta}(x) $ 表示的函数不再是线性的，
-因此，逻辑回归与线性回归实际上是不相同的</p>
+但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
+因此，逻辑回归与线性回归实际上是不相同的。</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>详情见文章 <a href="/2021/09/15/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/15/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -2711,27 +2698,27 @@ vim.fn['plug#end']()
     <title>PWM 舵机控制</title>
     <url>/2021/03/17/pwm-servo/</url>
     <content><![CDATA[<blockquote>
-<p>介绍如何在树莓派上控制舵机(servo)</p>
+<p>介绍如何在树莓派上控制舵机（servo）</p>
 </blockquote>
 <span id="more"></span>
 <h3 id="pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" tabindex="-1" id="PWM-基础知识"><a class="header-anchor" href="#PWM-基础知识"># </a>PWM 基础知识</h3>
 <blockquote>
-<p>PWM（Pulse Width Modulation）即脉宽调制<br />
-是一种利用数字信号对模拟电路进行控制的一种方法<br />
-详情自行搜索，<s>主要是我也不会</s></p>
+<p>PWM（Pulse Width Modulation）即脉宽调制，
+是一种利用数字信号对模拟电路进行控制的一种方法。
+详情自行搜索，<s>主要是我也不会</s>。</p>
 </blockquote>
 <h4 id="%E9%A2%91%E7%8E%87" tabindex="-1" id="频率"><a class="header-anchor" href="#频率"># </a>频率</h4>
-<p>指 $ 1s $ 内，脉冲信号变化（高电平 $ \to $ 低电平 $ \to $ 高电平）的次数</p>
+<p>指$ 1s $内，脉冲信号变化（高电平$ \to $低电平$ \to $高电平）的次数。</p>
 <h4 id="%E5%91%A8%E6%9C%9F" tabindex="-1" id="周期"><a class="header-anchor" href="#周期"># </a>周期</h4>
-<p>脉冲信号完成一次变化的时间称作一个周期</p>
+<p>脉冲信号完成一次变化的时间称作一个周期。</p>
 <h4 id="%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB" tabindex="-1" id="频率与周期的关系"><a class="header-anchor" href="#频率与周期的关系"># </a>频率与周期的关系</h4>
 <p>$$
 f = \frac{1}{T}
 $$</p>
-<p>一个周期为 $ 20ms $ 脉冲信号，其频率为 $ \frac{1}{20 \times 10^{-3}s} $，即 $ 50Hz $</p>
+<p>一个周期为$ 20ms $脉冲信号，其频率为$ \frac{1}{20 \times 10^{-3}s} $，即$ 50Hz $。</p>
 <h4 id="%E5%8D%A0%E7%A9%BA%E6%AF%94" tabindex="-1" id="占空比"><a class="header-anchor" href="#占空比"># </a>占空比</h4>
-<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比<br />
-设整个周期的时间为 $ T $，高电平持续的时间为 $ t $，则占空比 $ D $ 为：</p>
+<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比。
+设整个周期的时间为$ T $，高电平持续的时间为$ t $，则占空比$ D $为：</p>
 <p>$$
 D = \frac{t}{T} \times 100\%
 $$</p>
@@ -2739,13 +2726,13 @@ $$</p>
 <p>$$
 D = t \cdot f \times 100\%
 $$</p>
-<p>一个周期为 $ 20ms $ 的脉冲信号，其中高电平持续时间为 $ 1.5ms $，
-则占空比为 $ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $</p>
+<p>一个周期为$ 20ms $的脉冲信号，其中高电平持续时间为$ 1.5ms $，
+则占空比为$ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $。</p>
 <h3 id="pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA" tabindex="-1" id="PWM-控制舵机"><a class="header-anchor" href="#PWM-控制舵机"># </a>PWM 控制舵机</h3>
-<p>使用 PWM 控制舵机时，一般使用频率为 $ 50Hz $ 的 PWM 信号<br />
-在 $ 180^{\circ} $ 的舵机中，一般以 $ 1.5ms $ 的高电平持续时间作为基准<br />
-高电平持续时间 $ 1.5ms\pm1ms $ 作分别为舵机旋转 $ \mp90^{\circ} $ 的控制信号</p>
-<p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度</p>
+<p>使用 PWM 控制舵机时，一般使用频率为$ 50Hz $的 PWM 信号，
+在$ 180^{\circ} $的舵机中，一般以$ 1.5ms $的高电平持续时间作为基准，
+高电平持续时间$ 1.5ms\pm1ms $作分别为舵机旋转$ \mp90^{\circ} $的控制信号。</p>
+<p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度。</p>
 <table>
 <thead>
 <tr>
@@ -2757,26 +2744,26 @@ $$</p>
 <tbody>
 <tr>
 <td style="text-align:left">$ 0.5ms $</td>
-<td style="text-align:left">$ 2.5\% $</td>
+<td style="text-align:left">$2.5\%$</td>
 <td style="text-align:left">$ +90^{\circ} $</td>
 </tr>
 <tr>
 <td style="text-align:left">$ 1.5ms $</td>
-<td style="text-align:left">$ 7.5\% $</td>
+<td style="text-align:left">$7.5\%$</td>
 <td style="text-align:left">$ 0^{\circ} $</td>
 </tr>
 <tr>
 <td style="text-align:left">$ 2.5ms $</td>
-<td style="text-align:left">$ 12.5\% $</td>
+<td style="text-align:left">$12.5\%$</td>
 <td style="text-align:left">$ -90^{\circ} $</td>
 </tr>
 </tbody>
 </table>
 <h3 id="%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6" tabindex="-1" id="使用-Python-实现-PWM-控制"><a class="header-anchor" href="#使用-Python-实现-PWM-控制"># </a>使用 Python 实现 PWM 控制</h3>
-<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s><br />
-可以通过 Python 来对这些 GPIO 接口进行控制</p>
+<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>，
+可以通过 Python 来对这些 GPIO 接口进行控制。</p>
 <h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" tabindex="-1" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库"># </a>使用 RPi.GPIO 库</h4>
-<p>参考 <a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a></p>
+<p>参考<a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
 <h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" tabindex="-1" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口"># </a>导入 GPIO 包并初始化 GPIO 接口</h5>
 <pre><code class="lang-python">import RPi.GPIO as GPIO
 
@@ -2818,39 +2805,39 @@ GPIO.cleanup()
 <h5 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="会产生的问题"><a class="header-anchor" href="#会产生的问题"># </a>会产生的问题</h5>
 <p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
 因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
-在使用 <code>p.ChangeDutyCycle(dc)</code> 函数时也可能发生抖动，导致舵机不能转到指定角度<br />
-在 <code>p.start(dc)</code> 后，即使没有任何操作，也仍可能发生抖动<br />
-同时控制多个舵机时，不同接口还会产生干扰</p>
+在使用<code>p.ChangeDutyCycle(dc)</code>函数时也可能发生抖动，导致舵机不能转到指定角度。
+在<code>p.start(dc)</code>后，即使没有任何操作，也仍可能发生抖动，
+同时控制多个舵机时，不同接口还会产生干扰。</p>
 <h5 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h5>
-<p>一种解决的方法是使用 <code>time</code> 模块中的 <code>sleep()</code> 函数进行延时</p>
+<p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
 <pre><code class="lang-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
-    dc = i * hz * 0.1
-    p.ChangeDutyCycle(dc)
-    sleep(0.5)
+  dc = i * hz * 0.1
+  p.ChangeDutyCycle(dc)
+  sleep(0.5)
 p.stop()
 </code></pre>
-<p>但这种方法并不能解决在空闲时出现的抖动<br />
-也不能去除其他端口的干扰</p>
-<p>另一种方法则是在启动 PWM 后，进过延时就将其关闭</p>
+<p>但这种方法并不能解决在空闲时出现的抖动，
+也不能去除其他端口的干扰。</p>
+<p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
 <pre><code class="lang-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
-    dc = i * hz * 0.1
-    p.start(dc)
-    sleep(0.5)
-    p.stop()
+  dc = i * hz * 0.1
+  p.start(dc)
+  sleep(0.5)
+  p.stop()
 p.stop()
 </code></pre>
-<p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动</p>
-<p>还有一种方法：使用 pigpio 库</p>
+<p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动。</p>
+<p>还有一种方法：使用 pigpio 库。</p>
 <h4 id="%E4%BD%BF%E7%94%A8-pigpio" tabindex="-1" id="使用-pigpio"><a class="header-anchor" href="#使用-pigpio"># </a>使用 pigpio</h4>
 <p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
-能显著地提高 PWM 的抗干扰性</p>
+能显著地提高 PWM 的抗干扰性。</p>
 <p>参考 <a href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
 <h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启动服务"><a class="header-anchor" href="#启动服务"># </a>启动服务</h5>
-<p>使用 pigpio 库需要启动 pigpiod 服务</p>
+<p>使用 pigpio 库需要启动 pigpiod 服务。</p>
 <pre><code class="lang-shell">sudo systemctl start pigpiod.service
 </code></pre>
 <h5 id="%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1" id="导入包并初始化"><a class="header-anchor" href="#导入包并初始化"># </a>导入包并初始化</h5>
@@ -2882,7 +2869,7 @@ pi.set_PWM_dutycycle(0)
 </code></pre>
 <h5 id="%E4%BC%98%E7%BC%BA%E7%82%B9" tabindex="-1" id="优缺点"><a class="header-anchor" href="#优缺点"># </a>优缺点</h5>
 <p>使用 pigpio 时必须启动 pigpiod 服务，
-但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰</p>
+但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰。</p>
 ]]></content>
       <categories>
         <category>树莓派</category>
@@ -3731,13 +3718,12 @@ String 为 java.lang 包中的一个对象</p>
 <p>假设预测结果与实际结果存在误差，即
 $$
 \begin{equation}
-\label{eq1}
 y^{(i)} = \theta^{T} x^{(i)} + \varepsilon^{(i)}
 \end{equation}
 $$
-其中 $ \varepsilon^{(i)} $ 就称为误差</p>
-<p>如果 $ \varepsilon^{(i)} $ 存在某种分布，
-于是我们可以假设这个分布为 <strong>高斯分布</strong> ，或者说是 <strong>正态分布</strong> <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
+其中$ \varepsilon^{(i)} $就称为误差</p>
+<p>如果$ \varepsilon^{(i)} $存在某种分布，
+于是我们可以假设这个分布为<strong>高斯分布</strong>，或者说是<strong>正态分布</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
 即：
 $$
 \varepsilon^{(i)} \sim N(0, \sigma^{2})
@@ -3745,16 +3731,14 @@ $$</p>
 <p>于是有：
 $$
 \begin{equation}
-\label{eq2}
 P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{equation}
 $$</p>
 <h2 id="%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE" tabindex="-1" id="最大化预测期望等价于最小化误差"><a class="header-anchor" href="#最大化预测期望等价于最小化误差"># </a>最大化预测期望等价于最小化误差</h2>
-<p>由 $\eqref{eq1}$ 和 $\eqref{eq2}$ 得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
+<p>由$ (1) $和$ (2) $得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
 $$
 \begin{equation}
-\label{eq3}
 P(y^{i} \mid x^{i} ; \theta)
 = \frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
@@ -3764,8 +3748,8 @@ $$</p>
 $
 (y^{i} \mid x^{i} ; \theta) \sim N(\theta^{T} x^{(i)}, \sigma^{2})
 $</p>
-<p>我们又假设， $\varepsilon^{i}$ 之间相互独立，且具有相同的分布，
-然后我们使用 <strong>极大似然估计</strong> 将 $\eqref{eq3}$ 最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>我们又假设，$ \varepsilon^{i} $之间相互独立，且具有相同的分布，
+然后我们使用<strong>极大似然估计</strong>将$ (3) $最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
 <p>设
 $$
 \begin{equation}
@@ -3791,18 +3775,18 @@ l(\theta)
 \end{split}
 \end{equation}
 $$</p>
-<p>由于 $\sigma^{2} &gt; 0$ 恒成立，
-故最大化 $l(\theta)$ 等价于最小化 $\sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2}$</p>
-<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的 <strong>cost function</strong></p>
+<p>由于$ \sigma^{2} &gt; 0 $恒成立，
+故最大化$ l(\theta) $等价于最小化$ \sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2} $</p>
+<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的<strong>cost function</strong></p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>根据 <strong>中心极限定理</strong> 可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>根据<strong>中心极限定理</strong>可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>这是 <strong>极大似然估计</strong> 里的表示方式， $\theta$ 表示一个参数，
-随后求得 $\theta$ 使 $P(y^{i} \mid x^{i})$ 最大 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>这是<strong>极大似然估计</strong>里的表示方式，$ \theta $表示一个参数，
+随后求得$ \theta $使$ P(y^{i} \mid x^{i}) $最大 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>应当注意： $\eqref{eq3}$ 中自然常数的指数为负数 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p>应当注意：$ (3) $中自然常数的指数为负数 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>

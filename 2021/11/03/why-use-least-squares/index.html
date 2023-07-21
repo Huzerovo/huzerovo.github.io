@@ -195,13 +195,12 @@
 <p>假设预测结果与实际结果存在误差，即
 $$
 \begin{equation}
-\label{eq1}
 y^{(i)} = \theta^{T} x^{(i)} + \varepsilon^{(i)}
 \end{equation}
 $$
-其中 $ \varepsilon^{(i)} $ 就称为误差</p>
-<p>如果 $ \varepsilon^{(i)} $ 存在某种分布，
-于是我们可以假设这个分布为 <strong>高斯分布</strong> ，或者说是 <strong>正态分布</strong> <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
+其中$ \varepsilon^{(i)} $就称为误差</p>
+<p>如果$ \varepsilon^{(i)} $存在某种分布，
+于是我们可以假设这个分布为<strong>高斯分布</strong>，或者说是<strong>正态分布</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
 即：
 $$
 \varepsilon^{(i)} \sim N(0, \sigma^{2})
@@ -209,16 +208,14 @@ $$</p>
 <p>于是有：
 $$
 \begin{equation}
-\label{eq2}
 P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{equation}
 $$</p>
 <h2 id="%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE" tabindex="-1" id="最大化预测期望等价于最小化误差"><a class="header-anchor" href="#最大化预测期望等价于最小化误差"># </a>最大化预测期望等价于最小化误差</h2>
-<p>由 $\eqref{eq1}$ 和 $\eqref{eq2}$ 得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
+<p>由$ (1) $和$ (2) $得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
 $$
 \begin{equation}
-\label{eq3}
 P(y^{i} \mid x^{i} ; \theta)
 = \frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(- \frac{ ( y^{(i)} - \theta^{T} x^{(i)} )^{2} }{2 \sigma^{2} })}
@@ -228,8 +225,8 @@ $$</p>
 $
 (y^{i} \mid x^{i} ; \theta) \sim N(\theta^{T} x^{(i)}, \sigma^{2})
 $</p>
-<p>我们又假设， $\varepsilon^{i}$ 之间相互独立，且具有相同的分布，
-然后我们使用 <strong>极大似然估计</strong> 将 $\eqref{eq3}$ 最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>我们又假设，$ \varepsilon^{i} $之间相互独立，且具有相同的分布，
+然后我们使用<strong>极大似然估计</strong>将$ (3) $最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
 <p>设
 $$
 \begin{equation}
@@ -255,18 +252,18 @@ l(\theta)
 \end{split}
 \end{equation}
 $$</p>
-<p>由于 $\sigma^{2} &gt; 0$ 恒成立，
-故最大化 $l(\theta)$ 等价于最小化 $\sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2}$</p>
-<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的 <strong>cost function</strong></p>
+<p>由于$ \sigma^{2} &gt; 0 $恒成立，
+故最大化$ l(\theta) $等价于最小化$ \sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2} $</p>
+<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的<strong>cost function</strong></p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>根据 <strong>中心极限定理</strong> 可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>根据<strong>中心极限定理</strong>可知，误差的分布在大多数情况下都成正态分布，这是一个合理的假设 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>这是 <strong>极大似然估计</strong> 里的表示方式， $\theta$ 表示一个参数，
-随后求得 $\theta$ 使 $P(y^{i} \mid x^{i})$ 最大 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>这是<strong>极大似然估计</strong>里的表示方式，$ \theta $表示一个参数，
+随后求得$ \theta $使$ P(y^{i} \mid x^{i}) $最大 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>应当注意： $\eqref{eq3}$ 中自然常数的指数为负数 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p>应当注意：$ (3) $中自然常数的指数为负数 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
