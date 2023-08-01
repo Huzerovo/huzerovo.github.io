@@ -470,6 +470,15 @@ sudo losetup -d /dev/loop0
    - pic3.jpg
 </code></pre>
 <p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
+<p>如果此时还希望能够使用一个绝对路径上的文件作为封面，
+那么可以这样子：</p>
+<pre><code class="lang-yml">photos:
+   - pic1.jpg
+   - pic2.jpg
+   - pic3.jpg
+   - /img/pic4.jpg
+</code></pre>
+<p>使用<code>/</code>开始的文件路径会被视作相对与跟目录的绝对路径。</p>
 </li>
 <li>
 <p>如果不希望启用<code>post_asset_folder</code>，那就可以选择固定文件夹作为存放封面的地方。
@@ -487,6 +496,13 @@ photos:
 <p>这将会选择网站根目录下的文件夹<code>/gallery</code>或者<code>/gallery/sub</code>内的文件作为封面。
 如果希望直接使用根目录存储封面，请指定<code>gallery: '/'</code>，置空会被忽略。
 同样的，指定多个文件将会随机选取。这个方式与上一个方式是互斥的，不可混用。</p>
+<p>如果在指定了文件夹后，希望使用一个绝对路径上的文件作为封面，
+那么可以和上一个方法一样，使用<code>/</code>表明绝对路径。</p>
+<pre><code class="lang-yml">gallery: 'gallery/sub'
+photos:
+   - pic1.jpg
+   - /img/pic2.jpg
+</code></pre>
 </li>
 <li>
 <p>如果不希望在博客上存储封面，还可以从网络上获取。在Front matter区域添加：</p>
