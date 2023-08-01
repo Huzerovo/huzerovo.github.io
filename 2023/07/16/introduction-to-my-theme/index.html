@@ -6,11 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
-    <meta name="generator" content="记录一段回忆" />
+    <meta name="generator" content="Hexo" />
     <meta name="keywords" content="blog,code" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    
+        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
+    
 
     
     
@@ -25,6 +29,11 @@
     
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
 
     
@@ -92,6 +101,9 @@
 
 
 
+
+
+
 <header class="topbar">
     <div class="topbar-container">
         
@@ -138,9 +150,22 @@
 
         
         <div class="topbar-icon-buttons">
-            <button id="btn-switch-theme" class="icon-button" title="切换主题">
+            
+                
+                
+                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
+                    <i class="bi bi-github"></i>
+                </a>
+                
+            
+            
+            <a class="icon-button" title="订阅" href="/atom.xml" download="">
+                <i class="bi bi-rss-fill"></i>
+            </a>
+            
+            <a id="btn-switch-theme" class="icon-button" title="切换主题">
                 <i class="bi bi-sun"></i>
-            </button>
+            </a>
             
             <a id="btn-search" class="icon-button" title="搜索" href="/search">
                 <i class="bi bi-search"></i>
@@ -155,7 +180,7 @@
     <div id="article-toc">
     
         <p class="sidebar-list-title">目录</p>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%BD%9C"><span class="toc-text">写作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">文章列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%96%87%E7%AB%A0"><span class="toc-text">一般文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%A0%87%E9%A2%98%E6%96%87%E7%AB%A0"><span class="toc-text">无标题文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0"><span class="toc-text">带封面文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0"><span class="toc-text">外部文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0"><span class="toc-text">置顶文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E5%9C%A8%E5%AE%8C%E5%96%84%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">还在完善的文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD"><span class="toc-text">一些功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-text">搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E6%90%9C%E7%B4%A2"><span class="toc-text">关键字搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%90%9C%E7%B4%A2"><span class="toc-text">正则搜索</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E8%AE%BA"><span class="toc-text">评论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-text">参考手册</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%BD%9C"><span class="toc-text">写作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">文章列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%96%87%E7%AB%A0"><span class="toc-text">一般文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%A0%87%E9%A2%98%E6%96%87%E7%AB%A0"><span class="toc-text">无标题文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0"><span class="toc-text">带封面文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0"><span class="toc-text">外部文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0"><span class="toc-text">置顶文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E5%9C%A8%E5%AE%8C%E5%96%84%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">还在完善的文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD"><span class="toc-text">一些功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-text">搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E6%90%9C%E7%B4%A2"><span class="toc-text">关键字搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%90%9C%E7%B4%A2"><span class="toc-text">正则搜索</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E8%AE%BA"><span class="toc-text">评论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%93%BE"><span class="toc-text">外链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5"><span class="toc-text">订阅链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="toc-text">电子邮件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#front-matter%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-text">Front matter参考手册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-text">配置文件参考手册</span></a></li></ol>
     
     </div>
     
@@ -165,9 +190,6 @@
 <p>关于主题的介绍</p>
 </blockquote>
 <span id="more"></span>
-<blockquote>
-<p>主题仍在持续开发中 =v=</p>
-</blockquote>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
 <p>这篇文章算是我在开发过程中的一些总结与吐槽。</p>
 <p>其实一开始我认为对于博客来说，应当注重于文章本身，而不是花哨的样式，
@@ -332,7 +354,37 @@ todo_msg: &quot;&quot;
 <pre><code class="lang-yml">gitalk: true
 </code></pre>
 <p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
-<h2 id="%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="参考手册"><a class="header-anchor" href="#参考手册"># </a>参考手册</h2>
+<h3 id="%E5%A4%96%E9%93%BE" tabindex="-1" id="外链"><a class="header-anchor" href="#外链"># </a>外链</h3>
+<p>你可以在顶栏添加一些社交网页链接。就像这样子：</p>
+<pre><code class="lang-yaml">links:
+   github:
+      title: 'Github'
+      class: 'bi bi-github'
+      url: 'https://github.com/HuzerOVO'
+</code></pre>
+<p>主题主要使用<strong>Bootstrap Icons</strong>，但主题也使用<strong>Font Awesome</strong>作为图标的补充。</p>
+<p>比如在Bootstrap icons中，没有BiliBili的图标，但在Font awesome中有，于是就可以这样子：</p>
+<pre><code class="lang-yml">links:
+   bilibili:
+      title: '哔哩哔哩'
+      class: 'fa-brands fa-bilibili'
+      url: 'https://www.bilibili.com'
+</code></pre>
+<p>需要说明的是，<code>class</code>字段根据Bootstrap Icons或者Font Awesome介绍的使用方式填写。</p>
+<h3 id="%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5" tabindex="-1" id="订阅链接"><a class="header-anchor" href="#订阅链接"># </a>订阅链接</h3>
+<p>订阅链接可以使用<code>hexo-generator-feed</code>自动生成，也可以使用自定义的RSS文件。
+如果需要自定义订阅，在主题的配置文件中配置如下选项：</p>
+<pre><code class="lang-yml">rss:
+   enable: true
+   path: atom.xml
+</code></pre>
+<p>主题配置的订阅的优先级高于网站的配置。
+如果你同时使用了hexo-generator-feed和自定义的RSS，
+有hexo-generator-feed生成的订阅将会被忽略。</p>
+<h3 id="%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" tabindex="-1" id="电子邮件"><a class="header-anchor" href="#电子邮件"># </a>电子邮件</h3>
+<p>字段<code>email</code>可以设置你的电子邮件，如果设置了电子邮件地址，
+那么在网页的footer区域会显示一个链接用于向你发送邮件。</p>
+<h2 id="front-matter%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="Front-matter参考手册"><a class="header-anchor" href="#Front-matter参考手册"># </a>Front matter参考手册</h2>
 <p>这里列出主题使用到的文章变量作为参考：</p>
 <pre><code class="lang-yml">title: 我的主题介绍
 date: 2023-07-17
@@ -355,6 +407,8 @@ tags:
 # 这个作为外部文章引用
 #link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/
 </code></pre>
+<h2 id="%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="配置文件参考手册"><a class="header-anchor" href="#配置文件参考手册"># </a>配置文件参考手册</h2>
+<p>见<a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">主题项目的README.md</a></p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -386,6 +440,12 @@ tags:
             <span>发布日期: 2023-07-17</span>
             <span>更新日期: 2023-07-19</span>
         </div>
+        <div class="article-share-link">
+            <span>
+            分享文章
+            <a href="https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/">https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/</a>
+            </span>
+        </div>
         <div class="article-comment">
             
 
@@ -406,7 +466,7 @@ tags:
 <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
     <script>
-        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"6d9f1ff1d6db0df95fd537a3f3b2c686d35d641a","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
         c.title = "Article: " + "我的主题介绍";
         c.id = md5(c.title);
         c.number = -1;
@@ -424,7 +484,11 @@ tags:
         回到顶部
     </button>
     <footer>
-        <p> Copyright 2023 @狐zerOAO</p>
+        <p> Copyright 2023 
+        
+        @狐zerOAO
+        
+        </p>
         <p>
             Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
             Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.

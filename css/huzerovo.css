@@ -5,21 +5,20 @@ html {
   font-family: sans;
   scroll-behavior: smooth;
   scroll-padding-top: 50px;
-  scrollbar-width: none;
 }
 html::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+  height: 8px;
+}
+html::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+html::-webkit-scrollbar-thumb {
+  border-radius: 8px;
 }
 body {
   margin: 0;
   transition: 300ms;
-  /* 顶部菜单栏 */
-  /* 20 * 16 px */
-  /* 主体区域 */
-  /* 60 * 16 px */
-  /* 40 * 16 px */
-  /* 网站页尾 */
-  /* 分页器 */
 }
 body .topbar {
   width: 100%;
@@ -101,25 +100,12 @@ body .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
 body main.container {
   width: 60%;
   margin: 0 auto;
-  /* 页面标题 */
   transition: 300ms;
-  /* 默认使用的文章列表 */
-  /* 文章列表 */
-  /* 归档页的样式 */
-  /* 归档页面的样式 */
-  /* 分类页面的样式 */
-  /* 分类页面 */
-  /* 标签云页面的样式 */
-  /* 标签云 */
-  /* 文章样式 */
-  /* 文章页面样式 */
   /* 目录设置 */
   /* 文章内容 */
   /* 文章标签 */
   /* 日期信息 */
   /* 评论 */
-  /* 搜索页面 */
-  /* 搜索页样式 */
 }
 body main.container .page-title {
   text-align: center;
@@ -161,6 +147,7 @@ body main.container .articles-list .articles-list-item .item-footer {
   display: flex;
   justify-content: space-between;
   margin: 32px;
+  position: relative;
 }
 body main.container .articles-list .articles-list-item .item-footer .item-footer-todo {
   margin: 0px;
@@ -169,6 +156,11 @@ body main.container .articles-list .articles-list-item .item-footer .item-footer
 body main.container .articles-list .articles-list-item .item-footer .item-footer-todo .item-footer-todo-msg {
   display: inline;
   margin-right: 8px;
+}
+body main.container .articles-list .articles-list-item .item-footer .item-footer-pin {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
 }
 @media (max-width: 480px) {
   body main.container .articles-list .articles-list-item {

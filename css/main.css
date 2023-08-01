@@ -1,26 +1,12 @@
-/* 主体区域 */
 main.container {
   width: 60%;
   margin: 0 auto;
-  /* 页面标题 */
   transition: 300ms;
-  /* 默认使用的文章列表 */
-  /* 文章列表 */
-  /* 归档页的样式 */
-  /* 归档页面的样式 */
-  /* 分类页面的样式 */
-  /* 分类页面 */
-  /* 标签云页面的样式 */
-  /* 标签云 */
-  /* 文章样式 */
-  /* 文章页面样式 */
   /* 目录设置 */
   /* 文章内容 */
   /* 文章标签 */
   /* 日期信息 */
   /* 评论 */
-  /* 搜索页面 */
-  /* 搜索页样式 */
 }
 main.container .page-title {
   text-align: center;
@@ -62,6 +48,7 @@ main.container .articles-list .articles-list-item .item-footer {
   display: flex;
   justify-content: space-between;
   margin: 32px;
+  position: relative;
 }
 main.container .articles-list .articles-list-item .item-footer .item-footer-todo {
   margin: 0px;
@@ -70,6 +57,11 @@ main.container .articles-list .articles-list-item .item-footer .item-footer-todo
 main.container .articles-list .articles-list-item .item-footer .item-footer-todo .item-footer-todo-msg {
   display: inline;
   margin-right: 8px;
+}
+main.container .articles-list .articles-list-item .item-footer .item-footer-pin {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
 }
 @media (max-width: 480px) {
   main.container .articles-list .articles-list-item {
@@ -391,13 +383,11 @@ main.container .search-input input {
   border-radius: 16px;
   padding: 0px 16px;
 }
-/* 60 * 16 px */
 @media screen and (max-width: 960px) {
   main.container {
     width: 80%;
   }
 }
-/* 40 * 16 px */
 @media screen and (max-width: 640px) {
   main.container {
     width: 100%;

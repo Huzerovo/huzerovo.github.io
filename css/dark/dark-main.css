@@ -1,15 +1,8 @@
-/* 主体 */
 main {
-  /* 归档页 */
-  /* 文章列表 */
-  /* 分类页 */
-  /* 文章 */
   /* 目录 */
   /* 文章标签 */
   /* 日期信息 */
   /* 评论 */
-  /* 搜索页 */
-  /* 标签云 */
 }
 main .page-archive-item .page-archive-item-date {
   color: gray;

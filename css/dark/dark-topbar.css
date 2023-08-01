@@ -1,4 +1,3 @@
-/* 顶部导航栏 */
 .topbar {
   background-color: rgba(30, 30, 30, 0.9);
 }
@@ -13,7 +12,6 @@
   background-color: lightgray;
   color: black;
 }
-.topbar #btn-switch-theme,
-.topbar #btn-search {
+.topbar .topbar-icon-buttons .icon-button {
   color: lightgray;
 }

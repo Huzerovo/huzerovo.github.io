@@ -1,15 +1,18 @@
-/*
- * 暗色主题
- */
+html.dark::-webkit-scrollbar-track {
+  background: black;
+}
+html.dark::-webkit-scrollbar-thumb {
+  background: #646464;
+}
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+html.dark::-webkit-scrollbar-corner {
+  background: #1e1e1e;
+}
 .dark body {
   background-color: black;
   color: #c8c8c8;
-  /* 顶部栏 */
-  /* 顶部导航栏 */
-  /* 基本样式 */
-  /* 主体 */
-  /* 分页器 */
-  /* 分页 */
 }
 .dark body #goto-top {
   background-color: #505050;
@@ -30,21 +33,14 @@
   background-color: lightgray;
   color: black;
 }
-.dark body .topbar #btn-switch-theme,
-.dark body .topbar #btn-search {
+.dark body .topbar .topbar-icon-buttons .icon-button {
   color: lightgray;
 }
 .dark body main {
-  /* 归档页 */
-  /* 文章列表 */
-  /* 分类页 */
-  /* 文章 */
   /* 目录 */
   /* 文章标签 */
   /* 日期信息 */
   /* 评论 */
-  /* 搜索页 */
-  /* 标签云 */
 }
 .dark body main .page-archive-item .page-archive-item-date {
   color: gray;
