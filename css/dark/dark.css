@@ -108,10 +108,10 @@ html.dark::-webkit-scrollbar-corner {
   background: #e6e6e6;
 }
 .dark body main .article-container a {
-  color: orchid;
+  color: #9999ff;
 }
 .dark body main .article-container a:visited {
-  color: #9999ff;
+  color: orchid;
 }
 .dark body main .article-container a:hover {
   color: orange;
@@ -129,6 +129,14 @@ html.dark::-webkit-scrollbar-corner {
 }
 .dark body main .article-container table tbody {
   background-color: #232323;
+}
+.dark body main .article-container .gist table thead {
+  background-color: lightgray;
+  color: black;
+}
+.dark body main .article-container .gist table tbody {
+  background-color: white;
+  color: black;
 }
 .dark body main .article-container img {
   filter: brightness(0.8);

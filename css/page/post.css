@@ -122,6 +122,134 @@
 .article-container pre code::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
+.article-container figure.highlight {
+  overflow-x: auto;
+  border-radius: 6px;
+}
+.article-container figure.highlight table {
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  margin: unset;
+  border: unset;
+}
+.article-container figure.highlight table tbody {
+  background: #0d1117;
+}
+.article-container figure.highlight table td {
+  border: none;
+  padding: unset;
+}
+.article-container figure.highlight table th {
+  border: none;
+  padding: unset;
+}
+.article-container figure.highlight table .gutter {
+  text-align: right;
+  border-right: gray solid 1px;
+}
+.article-container figure.highlight table .gutter pre {
+  padding: 0 8px;
+  color: green;
+}
+.article-container figure.highlight table .code pre {
+  padding-left: 8px;
+  margin: 0;
+  /*!
+                 * Theme: GitHub Dark
+                 * Description: Dark theme as seen on github.com
+                 * Author: github.com
+                 * Maintainer: @Hirse
+                 * Updated: 2021-05-15
+                 *
+                 * Outdated base version: https://github.com/primer/github-syntax-dark
+                 * Current colors taken from GitHub's CSS
+                 */
+}
+.article-container figure.highlight table .code pre code {
+  margin: 0;
+  padding: 0;
+}
+.article-container figure.highlight table .code pre code mark {
+  background-color: #505050;
+}
+.article-container figure.highlight table .code pre .hljs {
+  color: #c9d1d9;
+  background: #0d1117;
+}
+.article-container figure.highlight table .code pre .hljs-doctag,
+.article-container figure.highlight table .code pre .hljs-keyword,
+.article-container figure.highlight table .code pre .hljs-meta .hljs-keyword,
+.article-container figure.highlight table .code pre .hljs-template-tag,
+.article-container figure.highlight table .code pre .hljs-template-variable,
+.article-container figure.highlight table .code pre .hljs-type,
+.article-container figure.highlight table .code pre .hljs-variable.language_ {
+  color: #ff7b72;
+}
+.article-container figure.highlight table .code pre .hljs-title,
+.article-container figure.highlight table .code pre .hljs-title.class_,
+.article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
+.article-container figure.highlight table .code pre .hljs-title.function_ {
+  color: #d2a8ff;
+}
+.article-container figure.highlight table .code pre .hljs-attr,
+.article-container figure.highlight table .code pre .hljs-attribute,
+.article-container figure.highlight table .code pre .hljs-literal,
+.article-container figure.highlight table .code pre .hljs-meta,
+.article-container figure.highlight table .code pre .hljs-number,
+.article-container figure.highlight table .code pre .hljs-operator,
+.article-container figure.highlight table .code pre .hljs-selector-attr,
+.article-container figure.highlight table .code pre .hljs-selector-class,
+.article-container figure.highlight table .code pre .hljs-selector-id,
+.article-container figure.highlight table .code pre .hljs-variable {
+  color: #79c0ff;
+}
+.article-container figure.highlight table .code pre .hljs-meta .hljs-string,
+.article-container figure.highlight table .code pre .hljs-regexp,
+.article-container figure.highlight table .code pre .hljs-string {
+  color: #a5d6ff;
+}
+.article-container figure.highlight table .code pre .hljs-built_in,
+.article-container figure.highlight table .code pre .hljs-symbol {
+  color: #ffa657;
+}
+.article-container figure.highlight table .code pre .hljs-code,
+.article-container figure.highlight table .code pre .hljs-comment,
+.article-container figure.highlight table .code pre .hljs-formula {
+  color: #8b949e;
+}
+.article-container figure.highlight table .code pre .hljs-name,
+.article-container figure.highlight table .code pre .hljs-quote,
+.article-container figure.highlight table .code pre .hljs-selector-pseudo,
+.article-container figure.highlight table .code pre .hljs-selector-tag {
+  color: #7ee787;
+}
+.article-container figure.highlight table .code pre .hljs-subst {
+  color: #c9d1d9;
+}
+.article-container figure.highlight table .code pre .hljs-section {
+  color: #1f6feb;
+  font-weight: 700;
+}
+.article-container figure.highlight table .code pre .hljs-bullet {
+  color: #f2cc60;
+}
+.article-container figure.highlight table .code pre .hljs-emphasis {
+  color: #c9d1d9;
+  font-style: italic;
+}
+.article-container figure.highlight table .code pre .hljs-strong {
+  color: #c9d1d9;
+  font-weight: 700;
+}
+.article-container figure.highlight table .code pre .hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+.article-container figure.highlight table .code pre .hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
 .article-container .katex-display {
   width: 100%;
   padding: 8px 0;

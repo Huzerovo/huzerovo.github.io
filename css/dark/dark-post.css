@@ -24,10 +24,10 @@
   background: #e6e6e6;
 }
 .article-container a {
-  color: orchid;
+  color: #9999ff;
 }
 .article-container a:visited {
-  color: #9999ff;
+  color: orchid;
 }
 .article-container a:hover {
   color: orange;
@@ -45,6 +45,14 @@
 }
 .article-container table tbody {
   background-color: #232323;
+}
+.article-container .gist table thead {
+  background-color: lightgray;
+  color: black;
+}
+.article-container .gist table tbody {
+  background-color: white;
+  color: black;
 }
 .article-container img {
   filter: brightness(0.8);

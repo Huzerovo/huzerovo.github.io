@@ -70,10 +70,10 @@ main #article-toc::-webkit-scrollbar-corner {
   background: #e6e6e6;
 }
 main .article-container a {
-  color: orchid;
+  color: #9999ff;
 }
 main .article-container a:visited {
-  color: #9999ff;
+  color: orchid;
 }
 main .article-container a:hover {
   color: orange;
@@ -91,6 +91,14 @@ main .article-container table thead {
 }
 main .article-container table tbody {
   background-color: #232323;
+}
+main .article-container .gist table thead {
+  background-color: lightgray;
+  color: black;
+}
+main .article-container .gist table tbody {
+  background-color: white;
+  color: black;
 }
 main .article-container img {
   filter: brightness(0.8);
