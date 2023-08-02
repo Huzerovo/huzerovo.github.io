@@ -138,9 +138,6 @@ html.dark::-webkit-scrollbar-corner {
   background-color: white;
   color: black;
 }
-.dark body main .article-container img {
-  filter: brightness(0.8);
-}
 .dark body main .article-container code:not([class*="language"]) {
   background-color: #323232;
   color: sandybrown;
@@ -262,4 +259,7 @@ html.dark::-webkit-scrollbar-corner {
 }
 .dark body .pager .page-list .current {
   color: white;
+}
+.dark img {
+  filter: brightness(0.8);
 }

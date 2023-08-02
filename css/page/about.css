@@ -1,9 +1,28 @@
-.page-about {
-  width: 80%;
+.page-about-me {
+  width: 60%;
   margin: 16px auto;
+  text-align: center;
+  border-radius: 16px;
+}
+.page-about-me .page-about-avatar {
+  border-radius: 100%;
+}
+.page-about-me .page-about-description {
+  margin-top: 16px;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+.page-about-me .page-about-description > p {
+  text-align: center;
+  margin: 0;
+  text-indent: 0;
+}
+.page-about-me .page-about-description a {
+  text-decoration: none;
+  color: #9999ff;
 }
 @media (max-width: 480px) {
-  .page-about {
+  .page-about-me {
     width: 90%;
   }
 }

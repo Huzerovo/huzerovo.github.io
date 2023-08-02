@@ -100,9 +100,6 @@ main .article-container .gist table tbody {
   background-color: white;
   color: black;
 }
-main .article-container img {
-  filter: brightness(0.8);
-}
 main .article-container code:not([class*="language"]) {
   background-color: #323232;
   color: sandybrown;

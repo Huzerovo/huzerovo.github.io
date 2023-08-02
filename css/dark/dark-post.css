@@ -54,9 +54,6 @@
   background-color: white;
   color: black;
 }
-.article-container img {
-  filter: brightness(0.8);
-}
 .article-container code:not([class*="language"]) {
   background-color: #323232;
   color: sandybrown;
