@@ -221,6 +221,12 @@
 
 
 
+
+    <script>
+        let default_covers = "/covers/id=95612209_p0.jpg,/covers/id=95612209_p1.jpg,/covers/id=90724581_p0.jpg,/covers/id=90779367_p0.png".split(',');
+    </script>
+
+
 <article class="articles-list">
 
     
@@ -230,7 +236,7 @@
         <div class="item-gallery">
             <script>
             document.write("<img loading='lazy' src='" + 
-                    "/gallery/id=89645004_p0.jpg".split(',').at(Math.floor(Math.random() * 1))
+                    "/2023/07/16/introduction-to-my-theme/id=89645004_p0.jpg".split(',').at(Math.floor(Math.random() * 1))
                     +"'>");
             </script>
         </div>
@@ -271,7 +277,7 @@
         <div class="item-gallery">
             <script>
             document.write("<img loading='lazy' src='" + 
-                    "/2023/07/16/post-for-gallery-layout-test/id=90724581_p0.jpg,/2023/07/16/post-for-gallery-layout-test/id=90779367_p0.png,https://via.placeholder.com/350x150.jpg".split(',').at(Math.floor(Math.random() * 3))
+                    "/covers/id=90724581_p0.jpg,/covers/id=90779367_p0.png,https://via.placeholder.com/350x150.jpg".split(',').at(Math.floor(Math.random() * 3))
                     +"'>");
             </script>
         </div>
@@ -306,6 +312,14 @@
     
     <article class="articles-list-item">
         
+        
+        <div class="item-gallery">
+            <script>
+            document.write("<img loading='lazy' src='" + 
+                    default_covers.at(Math.floor(Math.random() * default_covers.length))
+                    +"'>");
+            </script>
+        </div>
         
 
         <a href="/2022/12/31/time-test/">

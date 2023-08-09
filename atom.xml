@@ -32,6 +32,27 @@
   </entry>
   
   <entry>
+    <title>图册展示页</title>
+    <link href="https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/"/>
+    <id>https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/</id>
+    <published>2023-07-16T16:00:00.000Z</published>
+    <updated>2023-07-16T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;用于展示一些图片，在Front matter区域中使用&lt;code&gt;photos&lt;/code&gt;添加图片。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发记录" scheme="https://huzerovo.github.io/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="相册" scheme="https://huzerovo.github.io/tags/%E7%9B%B8%E5%86%8C/"/>
+    
+    <category term="展示" scheme="https://huzerovo.github.io/tags/%E5%B1%95%E7%A4%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的主题介绍</title>
     <link href="https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/"/>
     <id>https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/</id>
@@ -51,27 +72,6 @@
     <category term="Hexo" scheme="https://huzerovo.github.io/tags/hexo/"/>
     
     <category term="主题" scheme="https://huzerovo.github.io/tags/%E4%B8%BB%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图册展示页</title>
-    <link href="https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/"/>
-    <id>https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/</id>
-    <published>2023-07-16T16:00:00.000Z</published>
-    <updated>2023-07-16T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;用于展示一些图片，在Front matter区域中使用&lt;code&gt;photos&lt;/code&gt;添加图片。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="开发记录" scheme="https://huzerovo.github.io/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="相册" scheme="https://huzerovo.github.io/tags/%E7%9B%B8%E5%86%8C/"/>
-    
-    <category term="展示" scheme="https://huzerovo.github.io/tags/%E5%B1%95%E7%A4%BA/"/>
     
   </entry>
   
