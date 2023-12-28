@@ -201,66 +201,22 @@
 </ul>
 <h3 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" tabindex="-1" id="安装软件"><a class="header-anchor" href="#安装软件"># </a>安装软件</h3>
 <p>运行命令</p>
-<pre><code class="lang-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent</span></span><br></pre></td></tr></table></figure>
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" tabindex="-1" id="配置hostapd"><a class="header-anchor" href="#配置hostapd"># </a>配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code class="lang-conf"># 使用的网卡
-interface=wlan0
-# WiFi 名字
-ssid=YOUR_WIFI_NAME
-# 驱动
-driver=nl80211
-# WiFi 频率模式
-hw_mode=g
-# 信道
-channel=7
-# 是否 mac 过滤
-macaddr_acl=0
-# 认证算法
-auth_algs=1
-# 是否广播 SSID
-ignore_broadcast_ssid=0
-# 加密相关
-wpa=2
-wpa_passphrase=YOUR_WIFI_PASSWORD
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP
-rsn_pairwise=CCMP
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 使用的网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># WiFi 名字</span><br><span class="line">ssid=YOUR_WIFI_NAME</span><br><span class="line"># 驱动</span><br><span class="line">driver=nl80211</span><br><span class="line"># WiFi 频率模式</span><br><span class="line">hw_mode=g</span><br><span class="line"># 信道</span><br><span class="line">channel=7</span><br><span class="line"># 是否 mac 过滤</span><br><span class="line">macaddr_acl=0</span><br><span class="line"># 认证算法</span><br><span class="line">auth_algs=1</span><br><span class="line"># 是否广播 SSID</span><br><span class="line">ignore_broadcast_ssid=0</span><br><span class="line"># 加密相关</span><br><span class="line">wpa=2</span><br><span class="line">wpa_passphrase=YOUR_WIFI_PASSWORD</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=TKIP</span><br><span class="line">rsn_pairwise=CCMP</span><br></pre></td></tr></table></figure>
 <p><strong>警告</strong>:
 channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
 <p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code class="lang-conf">#hw_mode=g
-hw_mode=a
-#channel=7
-# 在内核启 CONFIG_ACS 编译选项后
-# 该选项设置为 0 时会自动选择信道
-# 树莓派似乎不支持......
-channel=149
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#hw_mode=g</span><br><span class="line">hw_mode=a</span><br><span class="line">#channel=7</span><br><span class="line"># 在内核启 CONFIG_ACS 编译选项后</span><br><span class="line"># 该选项设置为 0 时会自动选择信道</span><br><span class="line"># 树莓派似乎不支持......</span><br><span class="line">channel=149</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" tabindex="-1" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd"># </a>配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code class="lang-conf"># 网卡
-interface=wlan0
-# 网卡地址
-static ip_address=192.168.10.1/24
-# 不要执行这个脚本 
-nohook wpa_supplicant
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 网卡</span><br><span class="line">interface=wlan0</span><br><span class="line"># 网卡地址</span><br><span class="line">static ip_address=192.168.10.1/24</span><br><span class="line"># 不要执行这个脚本 </span><br><span class="line">nohook wpa_supplicant</span><br></pre></td></tr></table></figure>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" tabindex="-1" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq"># </a>配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code class="lang-conf"># 为这个网卡开启服务
-interface=wlan0
-# 不要在这个网卡开启服务
-no-dhcp-interface=eth0
-# 本机域
-domain=wlan
-# IP 地址分配范围
-dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 为这个网卡开启服务</span><br><span class="line">interface=wlan0</span><br><span class="line"># 不要在这个网卡开启服务</span><br><span class="line">no-dhcp-interface=eth0</span><br><span class="line"># 本机域</span><br><span class="line">domain=wlan</span><br><span class="line"># IP 地址分配范围</span><br><span class="line">dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h</span><br></pre></td></tr></table></figure>
 <h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" tabindex="-1" id="设置数据包转发"><a class="header-anchor" href="#设置数据包转发"># </a>设置数据包转发</h3>
 <ol>
 <li>
@@ -271,27 +227,21 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <li>
 <p>设置转发规则
 运行命令</p>
-<pre><code class="lang-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span> </span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>保存规则
 运行命令</p>
-<pre><code class="lang-shell"># netfilter-persistent save
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">netfilter-persistent save</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="设置systemd启动服务"><a class="header-anchor" href="#设置systemd启动服务"># </a>设置systemd启动服务</h3>
 <p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
 禁用 <code>wpa_supplicant.service</code></p>
-<pre><code class="lang-shell"># systemctl unmask hostapd.service
-# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
-# systemctl disable wpa_supplicant
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">systemctl unmask hostapd.service</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">systemctl <span class="built_in">enable</span> hostapd.service dnsmasq.service netfilter-persistent.service</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">systemctl <span class="built_in">disable</span> wpa_supplicant</span></span><br></pre></td></tr></table></figure>
 <h3 id="%E9%87%8D%E5%90%AF" tabindex="-1" id="重启"><a class="header-anchor" href="#重启"># </a>重启</h3>
 <p>设置完成后重启</p>
-<pre><code class="lang-shell"># reboot
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">reboot</span></span><br></pre></td></tr></table></figure>
 <p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 <h2 id="%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5" tabindex="-1" id="参考链接"><a class="header-anchor" href="#参考链接"># </a>参考链接</h2>
 <p><a target="_blank" rel="noopener" href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf 设置说明</a><br />

@@ -26,10 +26,7 @@ body .topbar {
   position: sticky;
   top: 0;
   z-index: 9;
-  transition: 300ms;
-}
-body .topbar * {
-  transition: 300ms;
+  transition: background-color 0.3s;
 }
 body .topbar .topbar-container {
   width: 80%;
@@ -40,7 +37,7 @@ body .topbar .topbar-container {
   flex-wrap: wrap;
 }
 body .topbar .topbar-container .topbar-menu {
-  max-width: 80%;
+  max-width: 70%;
   overflow-x: scroll;
   scrollbar-width: none;
 }
@@ -63,11 +60,12 @@ body .topbar .topbar-container .topbar-menu::-webkit-scrollbar {
   display: none;
 }
 body .topbar .topbar-container .topbar-icon-buttons {
-  max-width: 20%;
+  max-width: 30%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
   scrollbar-width: none;
+  transition: color 0.3s;
 }
 body .topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
@@ -78,6 +76,11 @@ body .topbar .topbar-container .topbar-icon-buttons .icon-button {
 }
 body .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
   display: none;
+}
+@media screen and (max-width: 960px) {
+  body .topbar .topbar-container {
+    width: 95%;
+  }
 }
 @media screen and (max-width: 640px) {
   body .topbar .topbar-container {
@@ -100,7 +103,6 @@ body .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
 body main.container {
   width: 60%;
   margin: 0 auto;
-  transition: 300ms;
   /* 目录设置 */
   /* 文章内容 */
   /* 文章标签 */
@@ -109,9 +111,6 @@ body main.container {
 }
 body main.container .page-title {
   text-align: center;
-}
-body main.container * {
-  transition: 300ms;
 }
 body main.container .page-about-me {
   width: 60%;
@@ -173,13 +172,13 @@ body main.container .articles-list .articles-list-item {
   margin: 16px auto;
   border-radius: 16px;
   overflow: hidden;
+  transition: background-color 0.3s;
 }
 body main.container .articles-list .articles-list-item a {
   margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
-  transition: 0ms;
 }
 body main.container .articles-list .articles-list-item .item-gallery {
   margin: 0px;
@@ -191,11 +190,9 @@ body main.container .articles-list .articles-list-item .item-gallery img {
 body main.container .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
-  transition: 0ms;
 }
 body main.container .articles-list .articles-list-item .item-content {
   margin: 0;
-  transition: 0ms;
 }
 body main.container .articles-list .articles-list-item .item-footer {
   display: flex;
@@ -279,11 +276,16 @@ body main.container #article-toc .toc-child {
   list-style: none;
 }
 body main.container #article-toc .toc-link {
+  transition: color 0.3s;
   display: block;
   margin: 6px 0;
   text-decoration: none;
 }
 body main.container #article-toc::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+body main.container #article-toc:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -335,6 +337,7 @@ body main.container .article-container blockquote {
   padding: 8px 32px;
   width: calc(100% - 64px - 3px);
   display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
 }
 body main.container .article-container blockquote p {
   text-indent: 0px;
@@ -348,11 +351,17 @@ body main.container .article-container table {
   border: 1px solid;
   border-collapse: collapse;
 }
-body main.container .article-container table td {
+body main.container .article-container table thead {
+  transition: background-color 0.3s;
+}
+body main.container .article-container table tbody {
+  transition: background-color 0.3s;
+}
+body main.container .article-container table tbody td {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main.container .article-container table th {
+body main.container .article-container table tbody th {
   border: 1px solid;
   padding: 3px 6px;
 }
@@ -367,6 +376,7 @@ body main.container .article-container code {
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
+  transition: color 0.3s, background-color 0.3s;
 }
 body main.container .article-container pre code {
   display: block;
@@ -374,6 +384,10 @@ body main.container .article-container pre code {
   padding: 16px 32px;
 }
 body main.container .article-container pre code::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+body main.container .article-container pre code:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -530,6 +544,10 @@ body main.container .article-container .katex-display > .katex .katex-html .tag 
   width: fit-content;
 }
 body main.container .article-container .katex-display .katex::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+body main.container .article-container .katex-display .katex:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -592,6 +610,7 @@ body main.container .article-comment {
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0px;
+  transition: background-color 0.3s;
 }
 body main.container .article-comment #gitalk-container {
   text-align: left;
@@ -660,13 +679,6 @@ body #goto-top {
 }
 body footer {
   text-align: center;
-  transition: 300ms;
-}
-body footer * {
-  transition: 300ms;
-}
-body footer a {
-  transition: 0ms;
 }
 body .pager {
   display: flex;

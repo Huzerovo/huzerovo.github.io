@@ -4,13 +4,13 @@
   margin: 16px auto;
   border-radius: 16px;
   overflow: hidden;
+  transition: background-color 0.3s;
 }
 .articles-list .articles-list-item a {
   margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
-  transition: 0ms;
 }
 .articles-list .articles-list-item .item-gallery {
   margin: 0px;
@@ -22,11 +22,9 @@
 .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
-  transition: 0ms;
 }
 .articles-list .articles-list-item .item-content {
   margin: 0;
-  transition: 0ms;
 }
 .articles-list .articles-list-item .item-footer {
   display: flex;

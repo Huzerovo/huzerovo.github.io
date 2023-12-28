@@ -1,7 +1,6 @@
 main.container {
   width: 60%;
   margin: 0 auto;
-  transition: 300ms;
   /* 目录设置 */
   /* 文章内容 */
   /* 文章标签 */
@@ -10,9 +9,6 @@ main.container {
 }
 main.container .page-title {
   text-align: center;
-}
-main.container * {
-  transition: 300ms;
 }
 main.container .page-about-me {
   width: 60%;
@@ -74,13 +70,13 @@ main.container .articles-list .articles-list-item {
   margin: 16px auto;
   border-radius: 16px;
   overflow: hidden;
+  transition: background-color 0.3s;
 }
 main.container .articles-list .articles-list-item a {
   margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
-  transition: 0ms;
 }
 main.container .articles-list .articles-list-item .item-gallery {
   margin: 0px;
@@ -92,11 +88,9 @@ main.container .articles-list .articles-list-item .item-gallery img {
 main.container .articles-list .articles-list-item .item-title {
   font-size: 24px;
   margin-top: 0;
-  transition: 0ms;
 }
 main.container .articles-list .articles-list-item .item-content {
   margin: 0;
-  transition: 0ms;
 }
 main.container .articles-list .articles-list-item .item-footer {
   display: flex;
@@ -180,11 +174,16 @@ main.container #article-toc .toc-child {
   list-style: none;
 }
 main.container #article-toc .toc-link {
+  transition: color 0.3s;
   display: block;
   margin: 6px 0;
   text-decoration: none;
 }
 main.container #article-toc::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+main.container #article-toc:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -236,6 +235,7 @@ main.container .article-container blockquote {
   padding: 8px 32px;
   width: calc(100% - 64px - 3px);
   display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
 }
 main.container .article-container blockquote p {
   text-indent: 0px;
@@ -249,11 +249,17 @@ main.container .article-container table {
   border: 1px solid;
   border-collapse: collapse;
 }
-main.container .article-container table td {
+main.container .article-container table thead {
+  transition: background-color 0.3s;
+}
+main.container .article-container table tbody {
+  transition: background-color 0.3s;
+}
+main.container .article-container table tbody td {
   border: 1px solid;
   padding: 3px 6px;
 }
-main.container .article-container table th {
+main.container .article-container table tbody th {
   border: 1px solid;
   padding: 3px 6px;
 }
@@ -268,6 +274,7 @@ main.container .article-container code {
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
+  transition: color 0.3s, background-color 0.3s;
 }
 main.container .article-container pre code {
   display: block;
@@ -275,6 +282,10 @@ main.container .article-container pre code {
   padding: 16px 32px;
 }
 main.container .article-container pre code::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+main.container .article-container pre code:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -431,6 +442,10 @@ main.container .article-container .katex-display > .katex .katex-html .tag {
   width: fit-content;
 }
 main.container .article-container .katex-display .katex::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+main.container .article-container .katex-display .katex:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -493,6 +508,7 @@ main.container .article-comment {
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0px;
+  transition: background-color 0.3s;
 }
 main.container .article-comment #gitalk-container {
   text-align: left;

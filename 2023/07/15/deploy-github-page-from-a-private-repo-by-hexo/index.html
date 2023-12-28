@@ -219,8 +219,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <li>
 <p>在配置中的<code>deploy_key</code>其实就是ssh的私匙，
 通过<code>ssh-keygen</code>生成一个就行：</p>
-<pre><code class="lang-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -b 4096 -f <span class="string">&quot;hexo-deploy-action-key&quot;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>在私有仓库的<code>Settings =&gt; Secrets and variables =&gt; Actions</code>把私匙添加进去，
@@ -231,16 +230,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 </li>
 <li>
 <p>配置<code>actions-gh-pages</code>，参考如下：</p>
-<pre><code class="lang-yaml"># 前面的省略，与Hexo教程中的一样
-- name: Deploy
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-     deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤2中设置的名字
-     external_repository: UserName/username.github.io # 你的Github Page仓库
-     publish_branch: master # 在Settings =&gt; Page中设置的构建源分支
-     publish_dir: ./public # Hexo _config.yml 中配置的public_dir
-     commit_message: &quot;Deploy by Github Actions&quot; # 随意
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前面的省略，与Hexo教程中的一样</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">     <span class="attr">deploy_key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span> <span class="comment"># 这里的名字填你在步骤2中设置的名字</span></span><br><span class="line">     <span class="attr">external_repository:</span> <span class="string">UserName/username.github.io</span> <span class="comment"># 你的Github Page仓库</span></span><br><span class="line">     <span class="attr">publish_branch:</span> <span class="string">master</span> <span class="comment"># 在Settings =&gt; Page中设置的构建源分支</span></span><br><span class="line">     <span class="attr">publish_dir:</span> <span class="string">./public</span> <span class="comment"># Hexo _config.yml 中配置的public_dir</span></span><br><span class="line">     <span class="attr">commit_message:</span> <span class="string">&quot;Deploy by Github Actions&quot;</span> <span class="comment"># 随意</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="%E5%AE%8C%E4%BA%8B" tabindex="-1" id="完事"><a class="header-anchor" href="#完事"># </a>完事</h2>

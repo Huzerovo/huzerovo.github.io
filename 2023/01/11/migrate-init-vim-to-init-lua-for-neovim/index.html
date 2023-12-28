@@ -226,25 +226,9 @@
 有个<code>coc#pum#visable()</code>函数，新的调用方式是<code>pumvisable()</code>这样子的。
 而在lua中则应该这样子调用：<code>vim.fn.pumvisable()</code>，
 并且这个函数的返回值似乎返回的是数字，因此在vim中的配置</p>
-<pre><code class="lang-vim">inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
-    \ pumvisable() ? &quot;\&lt;C-n&gt;&quot; :
-    \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
-    \ coc#refresh()
-</code></pre>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inoremap</span> <span class="symbol">&lt;silent&gt;</span><span class="symbol">&lt;expr&gt;</span> <span class="symbol">&lt;TAB&gt;</span></span><br><span class="line">    \ pumvisable() ? <span class="string">&quot;\&lt;C-n&gt;&quot;</span> :</span><br><span class="line">    \ <span class="symbol">&lt;SID&gt;</span>check_back_space() ? <span class="string">&quot;\&lt;TAB&gt;&quot;</span> :</span><br><span class="line">    \ coc#refresh()</span><br></pre></td></tr></table></figure>
 <p>在lua中则可以这样子配置</p>
-<pre><code class="lang-lua">local opts = &#123;silent = true, noremap = true, expr = true&#125;
-vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, &quot;pumvisable() ? '\&lt;C-n&gt;' : &lt;SID&gt;check_back_space() ? '\&lt;TAB&gt;' : coc#refresh()&quot;, opts)
--- 这个实际上是直接使用了vim的配置，大部分的配置都可以像这样子进行迁移
-
--- 但我喜欢直接使用lua函数，就像下面这样
-vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, function()
-    if vim.fn.pumvisable() == 1 then
-        return &quot;&lt;C-n&gt;&quot;
-    elseif check_back_space() then
-        return &quot;&lt;TAB&gt;&quot;
-    end
-end, opts)
-</code></pre>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> opts = &#123;silent = <span class="literal">true</span>, noremap = <span class="literal">true</span>, expr = <span class="literal">true</span>&#125;</span><br><span class="line">vim.keymap.set(<span class="string">&quot;i&quot;</span>, <span class="string">&quot;&lt;TAB&gt;&quot;</span>, <span class="string">&quot;pumvisable() ? &#x27;\&lt;C-n&gt;&#x27; : &lt;SID&gt;check_back_space() ? &#x27;\&lt;TAB&gt;&#x27; : coc#refresh()&quot;</span>, opts)</span><br><span class="line"><span class="comment">-- 这个实际上是直接使用了vim的配置，大部分的配置都可以像这样子进行迁移</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 但我喜欢直接使用lua函数，就像下面这样</span></span><br><span class="line">vim.keymap.set(<span class="string">&quot;i&quot;</span>, <span class="string">&quot;&lt;TAB&gt;&quot;</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">    <span class="keyword">if</span> vim.fn.pumvisable() == <span class="number">1</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;C-n&gt;&quot;</span></span><br><span class="line">    <span class="keyword">elseif</span> check_back_space() <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;TAB&gt;&quot;</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>, opts)</span><br></pre></td></tr></table></figure>
 <p>这个例子可以在<code>:help coc-completion</code>中找到，用到的快捷键，如<code>&lt;C-n&gt;</code>，
 可以在<code>:help coc-list-mappings</code>中找到</p>
 <p>其实大部分的映射可以直接使用，剩下的需要修改的也基本与上述例子相同。</p>
@@ -266,11 +250,7 @@ end, opts)
 <h2 id="%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6" tabindex="-1" id="迁移插件"><a class="header-anchor" href="#迁移插件"># </a>迁移插件</h2>
 <p>这里只记录如何在lua中使用<code>vim-plug</code>作为插件管理器。<br />
 我使用的方法如下：</p>
-<pre><code class="lang-lua">vim.fn['plug#begin']()
-vim.cmd(&quot;Plug 'example/plug'&quot;)  -- 注意Plug方法后面跟的插件需要带单引号`'`，
-                                -- 因此外围函数使用双引号`&quot;`。
-vim.fn['plug#end']()
-</code></pre>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim.fn[<span class="string">&#x27;plug#begin&#x27;</span>]()</span><br><span class="line">vim.cmd(<span class="string">&quot;Plug &#x27;example/plug&#x27;&quot;</span>)  <span class="comment">-- 注意Plug方法后面跟的插件需要带单引号`&#x27;`，</span></span><br><span class="line">                                <span class="comment">-- 因此外围函数使用双引号`&quot;`。</span></span><br><span class="line">vim.fn[<span class="string">&#x27;plug#end&#x27;</span>]()</span><br></pre></td></tr></table></figure>
 <p>实际上可以封装成一个函数，如<code>Plug('example/plug')</code>，
 这样子看起来挺像原生的vim-plug的方法。owo</p>
 <h2 id="%E5%85%B6%E4%BB%96" tabindex="-1" id="其他"><a class="header-anchor" href="#其他"># </a>其他</h2>

@@ -6,7 +6,7 @@
   <link href="https://huzerovo.github.io/atom.xml" rel="self"/>
   
   <link href="https://huzerovo.github.io/"/>
-  <updated>2023-07-18T16:00:00.000Z</updated>
+  <updated>2023-11-02T09:33:50.000Z</updated>
   <id>https://huzerovo.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git提交规范</title>
+    <link href="https://huzerovo.github.io/2023/11/02/git-commit-style/"/>
+    <id>https://huzerovo.github.io/2023/11/02/git-commit-style/</id>
+    <published>2023-11-02T09:33:50.000Z</published>
+    <updated>2023-11-02T09:33:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;p&gt;记录一下我自己的commit注释规范&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&quot;%E5%89%8D%E8%A8%80&quot; tabindex=&quot;-1&quot; id=&quot;前言&quot;&gt;&lt;a cla</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>提问的智慧</title>
@@ -445,32 +469,6 @@
     <category term="Servo" scheme="https://huzerovo.github.io/tags/servo/"/>
     
     <category term="PWM" scheme="https://huzerovo.github.io/tags/pwm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派热点</title>
-    <link href="https://huzerovo.github.io/2021/03/10/raspberrypi-access-point/"/>
-    <id>https://huzerovo.github.io/2021/03/10/raspberrypi-access-point/</id>
-    <published>2021-03-10T16:00:00.000Z</published>
-    <updated>2021-10-28T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;简单介绍如何在树莓派开启热点&lt;br /&gt;
-&lt;em&gt;参考自&lt;a href=&quot;https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point&quot;&gt;Setting up a routed wireless access point&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="树莓派" scheme="https://huzerovo.github.io/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-    
-    <category term="hostapd" scheme="https://huzerovo.github.io/tags/hostapd/"/>
-    
-    <category term="dnsmasq" scheme="https://huzerovo.github.io/tags/dnsmasq/"/>
-    
-    <category term="Access Point" scheme="https://huzerovo.github.io/tags/access-point/"/>
     
   </entry>
   

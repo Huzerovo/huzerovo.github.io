@@ -4,10 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 9;
-  transition: 300ms;
-}
-.topbar * {
-  transition: 300ms;
+  transition: background-color 0.3s;
 }
 .topbar .topbar-container {
   width: 80%;
@@ -18,7 +15,7 @@
   flex-wrap: wrap;
 }
 .topbar .topbar-container .topbar-menu {
-  max-width: 80%;
+  max-width: 70%;
   overflow-x: scroll;
   scrollbar-width: none;
 }
@@ -41,11 +38,12 @@
   display: none;
 }
 .topbar .topbar-container .topbar-icon-buttons {
-  max-width: 20%;
+  max-width: 30%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
   scrollbar-width: none;
+  transition: color 0.3s;
 }
 .topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
@@ -56,6 +54,11 @@
 }
 .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
   display: none;
+}
+@media screen and (max-width: 960px) {
+  .topbar .topbar-container {
+    width: 95%;
+  }
 }
 @media screen and (max-width: 640px) {
   .topbar .topbar-container {

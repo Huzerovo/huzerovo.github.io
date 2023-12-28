@@ -280,43 +280,9 @@ $$</p>
 <h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" tabindex="-1" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库"># </a>使用 RPi.GPIO 库</h4>
 <p>参考<a target="_blank" rel="noopener" href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
 <h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" tabindex="-1" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口"># </a>导入 GPIO 包并初始化 GPIO 接口</h5>
-<pre><code class="lang-python">import RPi.GPIO as GPIO
-
-# 使用编号 18 的 GPIO 接口
-pin = 18
-
-# 设置 GPIO 的编号模式，详情参考树莓派官网
-GPIO.setmode(GPIO.BCM)
-
-# 关闭奇奇怪怪的警告
-GPIO.setwarnings(False)
-
-# 初始化接口
-GPIO.setup(pin, GPIO.OUT, initial=False)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用编号 18 的 GPIO 接口</span></span><br><span class="line">pin = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 GPIO 的编号模式，详情参考树莓派官网</span></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭奇奇怪怪的警告</span></span><br><span class="line">GPIO.setwarnings(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化接口</span></span><br><span class="line">GPIO.setup(pin, GPIO.OUT, initial=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 <h5 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" tabindex="-1" id="创建-PWM-实例"><a class="header-anchor" href="#创建-PWM-实例"># </a>创建 PWM 实例</h5>
-<pre><code class="lang-python"># 创建实例
-hz = 50
-p = GPIO.PWM(pin, hz)
-
-# 设置占空比
-# 单位 ms
-t = 1.5
-# 乘以0.1,单位修正为 s，与 Hz 单位匹配
-dc = t * hz * 0.1
-
-# 启动 PWM
-p.start(dc)
-
-# 更改占空比
-p.ChangeDutyCycle(dc)
-
-# 停止 PWM
-p.stop()
-
-# 在程序结束时要释放对 GPIO 接口的控制
-GPIO.cleanup()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建实例</span></span><br><span class="line">hz = <span class="number">50</span></span><br><span class="line">p = GPIO.PWM(pin, hz)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置占空比</span></span><br><span class="line"><span class="comment"># 单位 ms</span></span><br><span class="line">t = <span class="number">1.5</span></span><br><span class="line"><span class="comment"># 乘以0.1,单位修正为 s，与 Hz 单位匹配</span></span><br><span class="line">dc = t * hz * <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 PWM</span></span><br><span class="line">p.start(dc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改占空比</span></span><br><span class="line">p.ChangeDutyCycle(dc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止 PWM</span></span><br><span class="line">p.stop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在程序结束时要释放对 GPIO 接口的控制</span></span><br><span class="line">GPIO.cleanup()</span><br></pre></td></tr></table></figure>
 <h5 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="会产生的问题"><a class="header-anchor" href="#会产生的问题"># </a>会产生的问题</h5>
 <p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
 因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
@@ -325,26 +291,11 @@ GPIO.cleanup()
 同时控制多个舵机时，不同接口还会产生干扰。</p>
 <h5 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h5>
 <p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
-<pre><code class="lang-python">p.start(dc)
-sleep(0.5)
-for i in range(0.5, 2.5 + 0.1, 0.1):
-  dc = i * hz * 0.1
-  p.ChangeDutyCycle(dc)
-  sleep(0.5)
-p.stop()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p.start(dc)</span><br><span class="line">sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0.5</span>, <span class="number">2.5</span> + <span class="number">0.1</span>, <span class="number">0.1</span>):</span><br><span class="line">  dc = i * hz * <span class="number">0.1</span></span><br><span class="line">  p.ChangeDutyCycle(dc)</span><br><span class="line">  sleep(<span class="number">0.5</span>)</span><br><span class="line">p.stop()</span><br></pre></td></tr></table></figure>
 <p>但这种方法并不能解决在空闲时出现的抖动，
 也不能去除其他端口的干扰。</p>
 <p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
-<pre><code class="lang-python">p.start(dc)
-sleep(0.5)
-for i in range(0.5, 2.5 + 0.1, 0.1):
-  dc = i * hz * 0.1
-  p.start(dc)
-  sleep(0.5)
-  p.stop()
-p.stop()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">p.start(dc)</span><br><span class="line">sleep(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0.5</span>, <span class="number">2.5</span> + <span class="number">0.1</span>, <span class="number">0.1</span>):</span><br><span class="line">  dc = i * hz * <span class="number">0.1</span></span><br><span class="line">  p.start(dc)</span><br><span class="line">  sleep(<span class="number">0.5</span>)</span><br><span class="line">  p.stop()</span><br><span class="line">p.stop()</span><br></pre></td></tr></table></figure>
 <p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动。</p>
 <p>还有一种方法：使用 pigpio 库。</p>
 <h4 id="%E4%BD%BF%E7%94%A8-pigpio" tabindex="-1" id="使用-pigpio"><a class="header-anchor" href="#使用-pigpio"># </a>使用 pigpio</h4>
@@ -353,35 +304,11 @@ p.stop()
 <p>参考 <a target="_blank" rel="noopener" href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
 <h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启动服务"><a class="header-anchor" href="#启动服务"># </a>启动服务</h5>
 <p>使用 pigpio 库需要启动 pigpiod 服务。</p>
-<pre><code class="lang-shell">sudo systemctl start pigpiod.service
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start pigpiod.service</span><br></pre></td></tr></table></figure>
 <h5 id="%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1" id="导入包并初始化"><a class="header-anchor" href="#导入包并初始化"># </a>导入包并初始化</h5>
-<pre><code class="lang-python">import pigpio
-
-# 使用编号 18 的接口
-# 注意：使用接口的 BCM 编号
-pin = 18
-
-# 创建连接 pigpio 连接
-pi = pigpio.pi()
-
-# 设置 GPIO 接口输出模式
-pi.set_mode(pin, pigpio.OUTPUT)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pigpio</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用编号 18 的接口</span></span><br><span class="line"><span class="comment"># 注意：使用接口的 BCM 编号</span></span><br><span class="line">pin = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建连接 pigpio 连接</span></span><br><span class="line">pi = pigpio.pi()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 GPIO 接口输出模式</span></span><br><span class="line">pi.set_mode(pin, pigpio.OUTPUT)</span><br></pre></td></tr></table></figure>
 <h5 id="pwm-%E8%AE%BE%E7%BD%AE" tabindex="-1" id="PWM-设置"><a class="header-anchor" href="#PWM-设置"># </a>PWM 设置</h5>
-<pre><code class="lang-python"># 设置 PWM 频率为 50 Hz
-pi.set_PWM_frequency(pin, 50)
-
-# 设置 PWM 范围 0~100
-# 与占空比相结合，范围 0~100
-pi.set_PWM_range(pin, 100)
-
-# 设置占空比设置为 25 即 25/100 = 1/4
-pi.set_PWM_dutycycle(25)
-
-# 关闭 PWM
-pi.set_PWM_dutycycle(0)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 PWM 频率为 50 Hz</span></span><br><span class="line">pi.set_PWM_frequency(pin, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 PWM 范围 0~100</span></span><br><span class="line"><span class="comment"># 与占空比相结合，范围 0~100</span></span><br><span class="line">pi.set_PWM_range(pin, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置占空比设置为 25 即 25/100 = 1/4</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">25</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭 PWM</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <h5 id="%E4%BC%98%E7%BC%BA%E7%82%B9" tabindex="-1" id="优缺点"><a class="header-anchor" href="#优缺点"># </a>优缺点</h5>
 <p>使用 pigpio 时必须启动 pigpiod 服务，
 但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰。</p>
