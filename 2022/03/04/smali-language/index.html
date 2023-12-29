@@ -23,26 +23,26 @@
 
     
     
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
 
     
     
         
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
 
         
-<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.umd.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
 
     
 
@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
         <script>hljs.highlightAll();</script>
     
@@ -265,9 +265,89 @@ String 为 java.lang 包中的一个对象</p>
 <code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
 <h3 id="%E5%BE%AA%E7%8E%AF" tabindex="-1" id="循环"><a class="header-anchor" href="#循环"># </a>循环</h3>
 <p>直接代码解释比较方便，例子来源参见文末链接1</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">smaliWhile</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(a &lt;= <span class="number">3</span>) &#123;</span><br><span class="line">        a++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        c++;</span><br><span class="line">    &#125;<span class="keyword">while</span> (c &lt;= <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public void smaliWhile() &#123;
+    int a = 0;
+    while(a &lt;= 3) &#123;
+        a++;
+    &#125;
+
+    int b = 0;
+    for(int i = 0;i&lt;3;i++)&#123;
+        b++;
+    &#125;
+
+    int c = 0;
+    do&#123;
+        c++;
+    &#125;while (c &lt;= 3);
+&#125;
+</code></pre>
 <p>对应的 smali 语法</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">.method</span><span class="keyword"> public</span> smaliWhile()V</span><br><span class="line"><span class="keyword">    .locals</span> 5</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 62</span><br><span class="line">    // 4 字节常量，值为 0</span><br><span class="line">   <span class="built_in"> const/4 </span>v0, 0x0</span><br><span class="line"></span><br><span class="line">    // 赋值给 a</span><br><span class="line">   <span class="built_in"> move </span>v1, v0</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 63</span><br><span class="line"><span class="keyword">    .local</span> v1, <span class="string">&quot;a&quot;</span>:I</span><br><span class="line">    //<span class="built_in"> goto </span>标签</span><br><span class="line">   <span class="keyword"> :goto_0</span></span><br><span class="line">   <span class="built_in"> const/4 </span>v2, 0x3</span><br><span class="line"></span><br><span class="line">    //<span class="built_in"> if </span>(a &gt; 3),<span class="built_in"> goto </span>cond_0</span><br><span class="line">   <span class="built_in"> if-gt </span>v1, v2,<span class="keyword"> :cond_0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 64</span><br><span class="line">    // else v1 = v1 + 1</span><br><span class="line">   <span class="built_in"> add-int/lit8 </span>v1, v1, 0x1</span><br><span class="line"></span><br><span class="line">   <span class="built_in"> goto </span>:goto_0</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 68</span><br><span class="line">   <span class="keyword"> :cond_0</span></span><br><span class="line">   <span class="built_in"> const/4 </span>v3, 0x0</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 69</span><br><span class="line"><span class="keyword">    .local</span> v3, <span class="string">&quot;b&quot;</span>:I</span><br><span class="line">   <span class="built_in"> move </span>v4, v3</span><br><span class="line"></span><br><span class="line">   <span class="built_in"> move </span>v3, v0</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .local</span> v3, <span class="string">&quot;i&quot;</span>:I</span><br><span class="line"><span class="keyword">    .local</span> v4, <span class="string">&quot;b&quot;</span>:I</span><br><span class="line">   <span class="keyword"> :goto_1</span></span><br><span class="line">   <span class="built_in"> if-ge </span>v3, v2,<span class="keyword"> :cond_1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 70</span><br><span class="line">   <span class="built_in"> add-int/lit8 </span>v4, v4, 0x1</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 69</span><br><span class="line">   <span class="built_in"> add-int/lit8 </span>v3, v3, 0x1</span><br><span class="line"></span><br><span class="line">   <span class="built_in"> goto </span>:goto_1</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 74<span class="keyword"></span></span><br><span class="line"><span class="keyword">    .end local</span> v3</span><br><span class="line">   <span class="keyword"> :cond_1</span></span><br><span class="line">   <span class="built_in"> nop</span></span><br><span class="line"><span class="built_in"></span></span><br><span class="line"><span class="keyword">    .line</span> 76</span><br><span class="line"><span class="keyword">    .local</span> v0, <span class="string">&quot;c&quot;</span>:I</span><br><span class="line">   <span class="keyword"> :cond_2</span></span><br><span class="line">   <span class="built_in"> add-int/lit8 </span>v0, v0, 0x1</span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 77</span><br><span class="line">   <span class="built_in"> if-le </span>v0, v2,<span class="keyword"> :cond_2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">    .line</span> 78</span><br><span class="line">   <span class="built_in"> return-void</span></span><br><span class="line"><span class="built_in"></span><span class="keyword">.end method</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-smali">.method public smaliWhile()V
+    .locals 5
+
+    .line 62
+    // 4 字节常量，值为 0
+    const/4 v0, 0x0
+
+    // 赋值给 a
+    move v1, v0
+
+    .line 63
+    .local v1, &quot;a&quot;:I
+    // goto 标签
+    :goto_0
+    const/4 v2, 0x3
+
+    // if (a &gt; 3), goto cond_0
+    if-gt v1, v2, :cond_0
+
+    .line 64
+    // else v1 = v1 + 1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 68
+    :cond_0
+    const/4 v3, 0x0
+
+    .line 69
+    .local v3, &quot;b&quot;:I
+    move v4, v3
+
+    move v3, v0
+
+    .local v3, &quot;i&quot;:I
+    .local v4, &quot;b&quot;:I
+    :goto_1
+    if-ge v3, v2, :cond_1
+
+    .line 70
+    add-int/lit8 v4, v4, 0x1
+
+    .line 69
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_1
+
+    .line 74
+    .end local v3
+    :cond_1
+    nop
+
+    .line 76
+    .local v0, &quot;c&quot;:I
+    :cond_2
+    add-int/lit8 v0, v0, 0x1
+
+    .line 77
+    if-le v0, v2, :cond_2
+
+    .line 78
+    return-void
+.end method
+</code></pre>
 <p>与汇编语法挺相似的，不多解释<br />
 <s>其实是懒得写笔记</s></p>
 <h2 id="%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89" tabindex="-1" id="函数定义"><a class="header-anchor" href="#函数定义"># </a>函数定义</h2>

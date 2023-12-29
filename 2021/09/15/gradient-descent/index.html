@@ -23,26 +23,26 @@
 
     
     
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
 
     
     
         
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
 
         
-<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.umd.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
 
     
 
@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
         <script>hljs.highlightAll();</script>
     
@@ -80,11 +80,11 @@
     
         
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -266,7 +266,40 @@ $ \alpha $的值越小，需要进行递减的次数越多，这才能保证得�
 <p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
 则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
 最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">c = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># f(x) = ax^2 + bx + c</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> a*(x**<span class="number">2</span>) + b*x + c</span><br><span class="line"></span><br><span class="line"><span class="comment"># df(x) = 2ax + b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">df</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*a*x + b</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># 最低点</span></span><br><span class="line">    xmin = - b/(<span class="number">2</span>*a)</span><br><span class="line">    <span class="comment"># 步长</span></span><br><span class="line">    alpha = <span class="number">0.1</span></span><br><span class="line">    <span class="comment"># 随机初始值</span></span><br><span class="line">    x = np.random.randint(<span class="number">5</span>)</span><br><span class="line">    <span class="comment"># 递减 100 次</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        x = x - alpha * df(x)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 输出结果</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_n is:&quot;</span> , x)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x_min is:&quot;</span>, xmin)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">#!/usr/bin/env python3
+
+import numpy as np
+
+a = 3
+b = 4
+c = 5
+
+# f(x) = ax^2 + bx + c
+def f(x):
+    return a*(x**2) + b*x + c
+
+# df(x) = 2ax + b
+def df(x):
+    return 2*a*x + b
+
+def main():
+    # 最低点
+    xmin = - b/(2*a)
+    # 步长
+    alpha = 0.1
+    # 随机初始值
+    x = np.random.randint(5)
+    # 递减 100 次
+    for i in range(100):
+        x = x - alpha * df(x)
+
+    # 输出结果
+    print(&quot;x_n is:&quot; , x)
+    print(&quot;x_min is:&quot;, xmin)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
 
         
         <div class="article-meta-info">

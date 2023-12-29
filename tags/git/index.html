@@ -18,7 +18,7 @@
 
     
     
-    <title> 图册展示页 - 狐言狐语 | 记录一段回忆 </title>
+    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
     
 
     
@@ -78,6 +78,32 @@
 
     
     
+        
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+    
     <script>
         let codeStyle = {};
         codeStyle.light = "/css/github.min.css";
@@ -89,7 +115,6 @@
 
 <body>
     
-
 
 
 
@@ -176,74 +201,71 @@
 </header>
 
 <main class="container">
+    <h1 class="page-title">
+        标签: git
+    </h1>
     
-    <div id="article-toc">
-    
+<div class="pager">
+    <div class="page-list">
+        <span class="extend prev" rel="prev"><i class="bi bi-arrow-left-short"></i></span><span class="page-number current">1</span><span class="extend next" rel="next"><i class="bi bi-arrow-right-short"></i></span>
     </div>
-    
-    <article class="article-container">
-        <h1>图册展示页</h1>
-        <p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
-<span id="more"></span>
-<p>然而并不能在文章里面看到，可以用作封面用途。</p>
-<p>可以添加多张，随机挑选。</p>
-<p>这张图片
-<img src="https://placehold.co/600x400" alt="" loading="lazy" />
-是从这里来的：<a target="_blank" rel="noopener" href="https://placehold.co/600x400">https://placehold.co/600x400</a></p>
-
-        
-        <div class="article-meta-info">
-            
-                <span>分类</span>
-                <a class="article-categories-link" href="/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a>
-                
-            
-                <span>标签</span>
-                <a class="article-tags-none-link" href="/tags/%E5%B1%95%E7%A4%BA/" rel="tag">展示</a><a class="article-tags-none-link" href="/tags/%E7%9B%B8%E5%86%8C/" rel="tag">相册</a>
-            
-        </div>
-        
-        <div class="article-date-info">
-            <span>发布日期: 2023-07-17</span>
-            <span>更新日期: 2023-07-17</span>
-        </div>
-        <div class="article-share-link">
-            <span>
-            分享文章
-            <a href="https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/">https://huzerovo.github.io/2023/07/16/post-for-gallery-layout-test/</a>
-            </span>
-        </div>
-        <div class="article-comment">
-            
+</div>
 
     
-    
-    
-    
-    
-    
-    <div id="gitalk-container"></div>
-    
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
 
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.js"></script>
 
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+
+
+
+
 
     <script>
-        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "图册展示页";
-        c.id = md5(c.title);
-        c.number = -1;
-        let gitalk = new Gitalk(c);
-        gitalk.render("gitalk-container");
+        let default_covers = "/covers/id=95612209_p0.jpg,/covers/id=95612209_p1.jpg,/covers/id=90724581_p0.jpg,/covers/id=90779367_p0.png,/covers/id=85209905_p0.jpg".split(',');
     </script>
 
 
-        </div>
+<article class="articles-list">
+
+    
+    <article class="articles-list-item">
+        
+        
+
+        <a href="/2023/11/02/git-commit-style/">
+        
+        
+            <p class="item-title">
+                Git提交规范
+            </p>
+        
+        
+            <p class="item-content">
+                记录一下我自己的commit注释规范
+            </p>
+        </a>
+        
+        <footer class="item-footer">
+        
+            <div class="item-footer-finished">
+                <i class="bi bi-calendar-check"></i>
+                发布日期: 2023-11-02
+            </div>
+        
+        
+        </footer>
     </article>
+
+</article>
+
+
+    
+<div class="pager">
+    <div class="page-list">
+        <span class="extend prev" rel="prev"><i class="bi bi-arrow-left-short"></i></span><span class="page-number current">1</span><span class="extend next" rel="next"><i class="bi bi-arrow-right-short"></i></span>
+    </div>
+</div>
+
 </main>
 
     

@@ -23,26 +23,26 @@
 
     
     
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
 
     
     
         
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
 
         
-<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.umd.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
 
     
 
@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
         <script>hljs.highlightAll();</script>
     
@@ -231,7 +231,9 @@
 </table>
 <p>我们可以发现，对于2个比特位而言，其汉明权重可以由它2个比特位的高位和低位相加，
 结果就是其对应的汉明权重。我们可以这样实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设n表示汉明权重，x为2比特位的数据</span></span><br><span class="line">n = x + (x &gt;&gt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// 假设n表示汉明权重，x为2比特位的数据
+n = x + (x &gt;&gt; 1);
+</code></pre>
 <h3 id="%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B" tabindex="-1" id="逐步前进"><a class="header-anchor" href="#逐步前进"># </a>逐步前进</h3>
 <p>现在，我们将其拓展至4个比特位。
 <strong>但让我们先约定好</strong>：</p>
@@ -247,14 +249,32 @@
 <p>我们知道移位运算符会使用<code>0</code>填充空缺位，因此我们可以使<code>b2</code>恒为<code>0</code>，
 这样即使它被移入了下个数据中，也不会对问题造成影响，
 我们可以使用<code>&amp;</code>运算符轻松地解决这个问题：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们将4位数据x视为2个2位数据x1与x2，并将每个2位数据的最低位置0</span></span><br><span class="line">y = (x &amp; <span class="number">0b1010</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 此时z还并不是x的汉明权重</span></span><br><span class="line">z = x + y;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// 我们将4位数据x视为2个2位数据x1与x2，并将每个2位数据的最低位置0
+y = (x &amp; 0b1010) &gt;&gt; 1;
+// 此时z还并不是x的汉明权重
+z = x + y;
+</code></pre>
 <p>在经过上面的计算后，z在高位和低位分别保存了对应2比特位数据的汉明权重。
 现在我们将它们相加：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们将z视为4位数据，并获取低2位</span></span><br><span class="line">tmp = z &amp; <span class="number">0b0011</span>;</span><br><span class="line"><span class="comment">// 低2位与高2位相加，由于右移会将低2位数据丢弃，我们现在可以忽略它</span></span><br><span class="line">n = tmp + (z &gt;&gt; <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// 我们将z视为4位数据，并获取低2位
+tmp = z &amp; 0b0011;
+// 低2位与高2位相加，由于右移会将低2位数据丢弃，我们现在可以忽略它
+n = tmp + (z &gt;&gt; 2);
+</code></pre>
 <p>写成一行则是：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = (z &amp; <span class="number">0b0011</span>) + (z &gt;&gt; <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">n = (z &amp; 0b0011) + (z &gt;&gt; 2);
+</code></pre>
 <p>似乎很熟悉？让我们将其整理一下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设x为2比特位的数据</span></span><br><span class="line">nx = x + (x &gt;&gt; <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 或者我们写复杂一点</span></span><br><span class="line">nx = (x &amp; <span class="number">0b01</span>) + ((x &amp; <span class="number">0b10</span>) &gt;&gt; <span class="number">1</span>); <span class="comment">// 注意两次与的掩码不同</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设y为4比特位的数据，同样地我们稍微写得复杂一些</span></span><br><span class="line"><span class="comment">// 此时我们不再忽略低位数据，因为它可能会被移入下一个数据</span></span><br><span class="line">z = (y &amp; <span class="number">0b0101</span>) + ((y &amp; <span class="number">0b1010</span>) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">nz = (z &amp; <span class="number">0b0011</span>) + ((z &amp; <span class="number">0b1100</span>) &gt;&gt; <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// 假设x为2比特位的数据
+nx = x + (x &gt;&gt; 1);
+// 或者我们写复杂一点
+nx = (x &amp; 0b01) + ((x &amp; 0b10) &gt;&gt; 1); // 注意两次与的掩码不同
+
+// 假设y为4比特位的数据，同样地我们稍微写得复杂一些
+// 此时我们不再忽略低位数据，因为它可能会被移入下一个数据
+z = (y &amp; 0b0101) + ((y &amp; 0b1010) &gt;&gt; 1);
+nz = (z &amp; 0b0011) + ((z &amp; 0b1100) &gt;&gt; 2);
+</code></pre>
 <p>在计算<code>x</code>的汉明权重时，我们使用<code>&amp;</code>运算符与掩码<code>0b10</code>提取出高位，并将其与低位相加。</p>
 <p>我们再看看生成<code>z</code>的过程，我们先是使用<code>&amp;</code>运算符与掩码<code>0b1010</code>提取出两个低位数据的高位，
 并将其与各自的低位相加。这实际上与计算<code>x</code>的汉明权重的过程是等价的，
@@ -266,7 +286,11 @@
 <p>我们正在向更高位前进，于是我们的约定也会相应地改变。</p>
 <p>经过前两步的分析，我们可以做出这样的推断：对于一个8比特位，也就是一个字节的数据，
 我们能够通过这样子得到它的汉明权重：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x为一字节的数据</span></span><br><span class="line">y = (x &amp; <span class="number">0b01010101</span>) + ((x &amp; <span class="number">0b10101010</span>) &gt;&gt; <span class="number">1</span>); <span class="comment">// x对应的4个数据的汉明权重：y3 y2 y1 y0</span></span><br><span class="line">z = (y &amp; <span class="number">0b00110011</span>) + ((y &amp; <span class="number">0b11001100</span>) &gt;&gt; <span class="number">2</span>); <span class="comment">// z1 = y3 + y2, z0 = y1 + y0</span></span><br><span class="line">n = (z &amp; <span class="number">0x00001111</span>) + ((z &amp; <span class="number">0b11110000</span>) &gt;&gt; <span class="number">4</span>); <span class="comment">// n = z1 + z0</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// x为一字节的数据
+y = (x &amp; 0b01010101) + ((x &amp; 0b10101010) &gt;&gt; 1); // x对应的4个数据的汉明权重：y3 y2 y1 y0
+z = (y &amp; 0b00110011) + ((y &amp; 0b11001100) &gt;&gt; 2); // z1 = y3 + y2, z0 = y1 + y0
+n = (z &amp; 0x00001111) + ((z &amp; 0b11110000) &gt;&gt; 4); // n = z1 + z0
+</code></pre>
 <p>在上述例子中，<code>x</code>为一字节的数据，将其视为4个2比特位的数据，
 并进行我们的计算：<strong>提取高位，与低位相加，并将结果存储在低位</strong>。
 得到的<code>y</code>则存储了<code>x</code>中4个数据对应的汉明权重，此时再将<code>y</code>视为2个4比特位的数据，
@@ -274,7 +298,18 @@
 随后得到<code>z</code>，在<code>z</code>中存储了<code>y</code>中的2个数据对应的汉明权重，我们再一次地进行计算。
 最后我们得到了原始数据<code>x</code>的汉明权重。
 将上述的代码写成十六进制后：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此处x为一字节的任意数据</span></span><br><span class="line"><span class="type">char</span> x = <span class="number">0xAB</span>;</span><br><span class="line"><span class="type">char</span> y = (x &amp; <span class="number">0x55</span>) + ((x &amp; (<span class="number">0xAA</span>)) &gt;&gt; <span class="number">1</span>);</span><br><span class="line"><span class="type">char</span> z = (y &amp; <span class="number">0x33</span>) + ((y &amp; (<span class="number">0xCC</span>)) &gt;&gt; <span class="number">2</span>);</span><br><span class="line"><span class="type">char</span> n = (z &amp; <span class="number">0x0F</span>) + ((z &amp; (<span class="number">0xF0</span>)) &gt;&gt; <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="type">char</span> x = <span class="number">0xAB</span>;</span><br><span class="line"><span class="type">char</span> y = (x &amp; <span class="number">0x55</span>) + ((x &amp; (~<span class="number">0x55</span>)) &gt;&gt; <span class="number">1</span>);</span><br><span class="line"><span class="type">char</span> z = (y &amp; <span class="number">0x33</span>) + ((y &amp; (~<span class="number">0x33</span>)) &gt;&gt; <span class="number">2</span>);</span><br><span class="line"><span class="type">char</span> n = (z &amp; <span class="number">0x0F</span>) + ((z &amp; (~<span class="number">0x0F</span>)) &gt;&gt; <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">// 此处x为一字节的任意数据
+char x = 0xAB;
+char y = (x &amp; 0x55) + ((x &amp; (0xAA)) &gt;&gt; 1);
+char z = (y &amp; 0x33) + ((y &amp; (0xCC)) &gt;&gt; 2);
+char n = (z &amp; 0x0F) + ((z &amp; (0xF0)) &gt;&gt; 4);
+
+// 或者
+char x = 0xAB;
+char y = (x &amp; 0x55) + ((x &amp; (~0x55)) &gt;&gt; 1);
+char z = (y &amp; 0x33) + ((y &amp; (~0x33)) &gt;&gt; 2);
+char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
+</code></pre>
 <p>这样子我们就得到了计算一字节数据的汉明权重的方法。</p>
 <h3 id="%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B" tabindex="-1" id="总结规律"><a class="header-anchor" href="#总结规律"># </a>总结规律</h3>
 <p>在之前我们逐步分析的向高位拓展的过程，
@@ -282,21 +317,50 @@
 得出的汉明权重实际上保存在新的数据上了。
 我们之后所做，其实只是将这些结果相加。
 于是我们能得出这样子的规律：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x7  x6  x5  x4  x3  x2  x1  x0  x</span><br><span class="line">|   |   |   |   |   |   |   |</span><br><span class="line">+---+   +---+   +---+   +---+</span><br><span class="line">  |       |       |       |</span><br><span class="line">  y3      y2      y1      y0    y</span><br><span class="line">  |       |       |       |</span><br><span class="line">  +-------+       +-------+</span><br><span class="line">      |               |</span><br><span class="line">      z1              z0        z</span><br><span class="line">      |               |</span><br><span class="line">      +---------------+</span><br><span class="line">              |</span><br><span class="line">              n</span><br></pre></td></tr></table></figure>
+<pre><code>x7  x6  x5  x4  x3  x2  x1  x0  x
+|   |   |   |   |   |   |   |
++---+   +---+   +---+   +---+
+  |       |       |       |
+  y3      y2      y1      y0    y
+  |       |       |       |
+  +-------+       +-------+
+      |               |
+      z1              z0        z
+      |               |
+      +---------------+
+              |
+              n
+</code></pre>
 <p>这是一个8比特位数据的汉明权重计算过程。
 对于<code>x</code>来说，它可以看作4个2比特位的数据，
 这4个数据的汉明权重存储在了<code>y</code>中，<code>y</code>又被视作2个4比特位的数据。
 之后我们将其逐渐相加，最终得出原始数据的汉明权重。
 对于更高位来说，只不过是将这颗树向上拓展而已，
 于是我们可以直接得出32位数据的汉明权重计算函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MASK_1  0x55555555</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MASK_2  0x33333333</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MASK_4  0x0F0F0F0F</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MASK_8  0x00FF00FF</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MASK_16 0x0000FFFF</span></span><br><span class="line"></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">ones</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x)</span> &#123;</span><br><span class="line">    x = (x &amp; MASK_1) + ((x &amp; (~MASK_1)) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    x = (x &amp; MASK_2) + ((x &amp; (~MASK_2)) &gt;&gt; <span class="number">2</span>);</span><br><span class="line">    x = (x &amp; MASK_4) + ((x &amp; (~MASK_4)) &gt;&gt; <span class="number">4</span>);</span><br><span class="line">    x = (x &amp; MASK_8) + ((x &amp; (~MASK_8)) &gt;&gt; <span class="number">8</span>);</span><br><span class="line">    x = (x &amp; MASK_16) + ((x &amp; (~MASK_16)) &gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">unsigned</span> <span class="type">int</span>)x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">#define MASK_1  0x55555555
+#define MASK_2  0x33333333
+#define MASK_4  0x0F0F0F0F
+#define MASK_8  0x00FF00FF
+#define MASK_16 0x0000FFFF
+
+unsigned int ones(unsigned int x) &#123;
+    x = (x &amp; MASK_1) + ((x &amp; (~MASK_1)) &gt;&gt; 1);
+    x = (x &amp; MASK_2) + ((x &amp; (~MASK_2)) &gt;&gt; 2);
+    x = (x &amp; MASK_4) + ((x &amp; (~MASK_4)) &gt;&gt; 4);
+    x = (x &amp; MASK_8) + ((x &amp; (~MASK_8)) &gt;&gt; 8);
+    x = (x &amp; MASK_16) + ((x &amp; (~MASK_16)) &gt;&gt; 16);
+    return (unsigned int)x;
+&#125;
+</code></pre>
 <p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
 <h3 id="%E4%BC%98%E5%8C%96" tabindex="-1" id="优化"><a class="header-anchor" href="#优化"># </a>优化</h3>
 <h4 id="%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C" tabindex="-1" id="优化取反操作"><a class="header-anchor" href="#优化取反操作"># </a>优化取反操作</h4>
 <p>在之前我们提到，处于高位的比特位可能会被移入低位，因此需要将其置为<code>0</code>。
 但实际上，我们还可以换一种思维方式：等到它被移入下一位数据后，我们再忽略它。
 于是我们能够得出这样子的方法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MASK 0x55555555</span></span><br><span class="line">x = (x &amp; MASK) + ((x &gt;&gt; <span class="number">1</span>) &amp; MASK);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">#define MASK 0x55555555
+x = (x &amp; MASK) + ((x &gt;&gt; 1) &amp; MASK);
+</code></pre>
 <p>代码似乎没有太大变化，但实际上，这使得我们无需使用<code>~</code>运算符对掩码进行取反，
 节省了一点宝贵的时间。</p>
 <h4 id="%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96" tabindex="-1" id="特殊优化"><a class="header-anchor" href="#特殊优化"># </a>特殊优化</h4>
@@ -364,7 +428,9 @@
 <p>我们发现什么？倘若我们将<code>a</code>视为数据<code>x</code>，而<code>b</code>视为右移一位之后的数据，
 那么<code>a - b</code>的结果将直接是数据<code>x</code>的汉明权重！
 于是就有一个针对2比特位数据的特殊优化：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MASK 0x55555555</span></span><br><span class="line">x = x - ((x &gt;&gt; <span class="number">1</span>) &amp; MASK);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">#define MASK 0x55555555
+x = x - ((x &gt;&gt; 1) &amp; MASK);
+</code></pre>
 <p>这使得我们直接省掉了一次<code>&amp;</code>操作，再一次节省了一点宝贵的时间。
 不同于第一个优化，这个优化无法拓展到更高位。
 举个简单的例子：对于4比特位的数据<code>a = 0b0100</code>，它的汉明权重是<code>1</code>。
@@ -378,17 +444,32 @@
 <p>那我们能够在那些情况下忽略掉<code>&amp;</code>操作呢？
 答案是：进行加法后，产生的进位不会越过高位和低位“分界线”。</p>
 <p>让我们慢慢进行分析：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">0xFFFFFFFF</span>;</span><br><span class="line"><span class="comment">// 此时x视为16个2比特位</span></span><br><span class="line">x -= (x &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x55555555</span>;</span><br><span class="line"><span class="comment">// 此时x视为8个4比特位</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0xAAAAAAAA</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">int x = 0xFFFFFFFF;
+// 此时x视为16个2比特位
+x -= (x &gt;&gt; 1) &amp; 0x55555555;
+// 此时x视为8个4比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
+</code></pre>
 <p>此时x的二进制格式：<code>10'10 ...</code>（<code>'</code>只是用作分隔，便于观察），
 显然，此时x的高位与低位相加会越界：<code>10b + 10b = 01'00b</code>
 因此我们不对它进行优化：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0xAAAAAAAA</span></span><br><span class="line"><span class="comment">// 此时x视为8个4比特位</span></span><br><span class="line">x = (x &amp; <span class="number">0x33333333</span>) + ((x &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</span><br><span class="line"><span class="comment">// 此时x视为4个8比特位</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x44444444</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
+// 此时x视为8个4比特位
+x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
+// 此时x视为4个8比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
+</code></pre>
 <p>经过上面的计算后，此时x的二进制格式：<code>0100'0100 ...</code>，高位与低位相加，不会产生越界。</p>
 <p>那存在产生越界可能性吗？让我们看看当<code>x</code>视为4个8比特位数据时怎样才会越界：
 <code>1000b + 1000b = 10000b</code>，也就是说当汉明权重满足<code>max(高位，低位) &gt;= 8</code>时才可能发生越界。
 而此时，我们拥有的比特位也才只有8个，不可能从更低比特位的数据中获得大于或等于8的汉明权重。
 因此我们可以将<code>&amp;</code>操作推迟：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x44444444</span></span><br><span class="line"><span class="comment">// 此时x视为4个8比特位</span></span><br><span class="line">x = (x + (x &gt;&gt; <span class="number">4</span>)) &amp; <span class="number">0x0F0F0F0F</span>;</span><br><span class="line"><span class="comment">// 此时x视为2个16比特位</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08080808</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
+// 此时x视为4个8比特位
+x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
+// 此时x视为2个16比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
+</code></pre>
 <p>我们再一次节省了一个<code>&amp;</code>操作。</p>
 <h4 id="%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96" tabindex="-1" id="更高位的优化"><a class="header-anchor" href="#更高位的优化"># </a>更高位的优化</h4>
 <p>现在到更高的位数看看，我们现在将<code>x</code>视为2个16比特位的数据，
@@ -398,11 +479,21 @@
 能够存储的最大数字远远超过了32位数据所能拥有的最大的汉明权重。
 也就是说，我们或许可以忽略<strong>可能因为进位导致数据独立性被破坏</strong>这个问题。</p>
 <p>那我们就分析一下，是否可以忽略加法后的<code>&amp;</code>操作：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08080808</span></span><br><span class="line"><span class="comment">// 此时x视为2个16比特位</span></span><br><span class="line">x += x &gt;&gt; <span class="number">8</span>;</span><br><span class="line"><span class="comment">// 此时x视为1个32为比特位</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08100810</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
+// 此时x视为2个16比特位
+x += x &gt;&gt; 8;
+// 此时x视为1个32为比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
+</code></pre>
 <p>我们发现，结果虽然发生了进位，但进位仍处于低位，而没有发生越界。
 并且，此时我们存储汉明权重的比特位是16个比特位数据的低8位，
 显然足够我们容纳所有求和的结果。那我们继续：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08100810</span></span><br><span class="line"><span class="comment">// 此时x视为1个32为比特位</span></span><br><span class="line">x += x &gt;&gt; <span class="number">16</span>;</span><br><span class="line"><span class="comment">// 此时x的最低8位存储的就是汉明权重</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08101020</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
+// 此时x视为1个32为比特位
+x += x &gt;&gt; 16;
+// 此时x的最低8位存储的就是汉明权重
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
+</code></pre>
 <p>现在，我们能够发现：实际上存储汉明权重的只有低8位（实际上只有6比特位，但这样子看着比较方便），
 其余位的均可忽略。那我们可以得知，当我们在将低8位作为存储结果的位置，
 也就是我们将32位数据视为2个16位数据时，我们就可以不进行<code>&amp;</code>操作了。</p>
@@ -411,14 +502,27 @@
 即使是更高位数据，我们求和的结果也不会超过这8个比特位。</p>
 <blockquote>
 <p>题外话，实际上这还能够拓展到64位数据，我们只需要加多一行：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x += x &gt;&gt; <span class="number">32</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">x += x &gt;&gt; 32;
+</code></pre>
 <p>即可。当然，前面出现的掩码也需要相应地拓展到64位。</p>
 </blockquote>
 <p>最后我们可以这样子得到结果：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;x = 0x%08X\n&quot;</span>, x);  <span class="comment">// x = 0x08101020</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> n = x &amp; <span class="number">0xFF</span>;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> n = x &amp; <span class="number">0x3f</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
+unsigned int n = x &amp; 0xFF;
+// 或者
+unsigned int n = x &amp; 0x3f;
+</code></pre>
 <h3 id="%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C" tabindex="-1" id="最终结果"><a class="header-anchor" href="#最终结果"># </a>最终结果</h3>
 <p>我们现在将上述的优化都写下来：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">ones</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x)</span> &#123;</span><br><span class="line">    x -= (x &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x55555555</span>;</span><br><span class="line">    x = (x &amp; <span class="number">0x33333333</span>) + ((x &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</span><br><span class="line">    x = (x + (x &gt;&gt; <span class="number">4</span>)) &amp; <span class="number">0x0F0F0F0F</span>;</span><br><span class="line">    x += x &gt;&gt; <span class="number">8</span>;</span><br><span class="line">    x += x &gt;&gt; <span class="number">16</span>;</span><br><span class="line">    rerurn x &amp; <span class="number">0xFF</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">unsigned int ones(unsigned int x) &#123;
+    x -= (x &gt;&gt; 1) &amp; 0x55555555;
+    x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
+    x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
+    x += x &gt;&gt; 8;
+    x += x &gt;&gt; 16;
+    rerurn x &amp; 0xFF;
+&#125;
+</code></pre>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">

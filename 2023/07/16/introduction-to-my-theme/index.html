@@ -23,26 +23,26 @@
 
     
     
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
     
     
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
 
     
     
         
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
 
         
-<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.16/fancybox/fancybox.umd.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
 
     
 
@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
         <script>hljs.highlightAll();</script>
     
@@ -223,7 +223,12 @@
 更难受的是一些数学公式会因为被截断导致不能渲染出来。
 而我又不想自己写函数处理这些文字，于是我决定采用摘要作为显示方式。</p>
 <p>想要使用摘要，只需在文章内这样写：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这一段文字是摘要。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">这里开始是正文</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-markdown">这一段文字是摘要。
+
+&lt;!-- more --&gt;
+
+这里开始是正文
+</code></pre>
 <p>在标签<code>&lt;!-- more --&gt;</code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。
 需要注意的是，文章Front matter区域里边可以设置变量<code>excerpt</code>，
 这将文章列表中代替文章内的摘要进行显示，而文章内的摘要不变。</p>
@@ -244,7 +249,11 @@
 <p>要为文章添加封面，可以有以下几种方式</p>
 <h4 id="%E5%85%A8%E5%B1%80%E5%B0%81%E9%9D%A2" tabindex="-1" id="全局封面"><a class="header-anchor" href="#全局封面"># </a>全局封面</h4>
 <p>如果需要使用全局封面，需要在主题的配置文件中有如下配置：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">covers:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&#x27;/covers/cover_1.jpg&#x27;</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&#x27;/covers/cover_2.jpg&#x27;</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">&#x27;/covers/cover_3.jpg&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">covers:
+   - '/covers/cover_1.jpg'
+   - '/covers/cover_2.jpg'
+   - '/covers/cover_3.jpg'
+</code></pre>
 <p>使用绝对路径<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>填写需要作为封面的图片文件路径。
 并需要在文章内启用：使用<code>cover: true</code>表示此文章使用默认封面。
 如果文章还使用了其他方法指定封面，
@@ -254,43 +263,71 @@
 <p>这个方法需要在Hexo配置文件中启用<code>post_asset_folder</code>，
 这会在创建文章时同时生成一个同名的文件夹，
 把封面图片放入这个文件夹后，在Front matter区域添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic1.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic2.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic3.jpg</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">photos:
+   - pic1.jpg
+   - pic2.jpg
+   - pic3.jpg
+</code></pre>
 <p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
 <p>这个方法还能使用绝对路径指定不在文章资源文件夹下的文件作为封面：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic1.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic2.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic3.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">/img/pic4.jpg</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">photos:
+   - pic1.jpg
+   - pic2.jpg
+   - pic3.jpg
+   - /img/pic4.jpg
+</code></pre>
 <p>使用<code>/</code>开始的文件路径会被视作相对与跟目录的绝对路径。</p>
 <h4 id="%E7%9B%B8%E5%86%8C%E9%9B%86%E5%B0%81%E9%9D%A2" tabindex="-1" id="相册集封面"><a class="header-anchor" href="#相册集封面"># </a>相册集封面</h4>
 <p>如果不希望启用<code>post_asset_folder</code>，那就可以选择某个文件夹作为“相册”用于存放封面。
 并指明需要作为封面的文件。
 在Front matter中添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gallery:</span> <span class="string">gallery</span></span><br><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic1.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic2.png</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gallery: gallery
+photos:
+   - pic1.jpg
+   - pic2.png
+</code></pre>
 <p>其中<code>gallery</code>可以是多级的路径，如：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gallery:</span> <span class="string">&#x27;gallery/sub&#x27;</span></span><br><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic1.jpg</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gallery: 'gallery/sub'
+photos:
+   - pic1.jpg
+</code></pre>
 <p>这将会选择博客根目录下的文件夹<code>gallery</code>或者<code>gallery/sub</code>内的文件作为封面。
 如果希望直接使用根目录存储封面，请指定<code>gallery: '/'</code>，空字符串会被忽略。
 同样的，指定多个文件将会随机选取。这个方式与上一个方式是互斥的，不可混用。</p>
 <p>和上一个方法一样，可以使用绝对路径指定不在相册集中的图片作为封面。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gallery:</span> <span class="string">&#x27;gallery/sub&#x27;</span></span><br><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pic1.jpg</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">/img/pic2.jpg</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gallery: 'gallery/sub'
+photos:
+   - pic1.jpg
+   - /img/pic2.jpg
+</code></pre>
 <h4 id="%E5%A4%96%E9%83%A8%E5%9B%BE%E7%89%87" tabindex="-1" id="外部图片"><a class="header-anchor" href="#外部图片"># </a>外部图片</h4>
 <p>如果不希望在博客上存储封面，还可以从网络上获取。在Front matter区域添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">photos:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">https://via.placeholder.com/350x150.jpg</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">photos:
+   - https://via.placeholder.com/350x150.jpg
+</code></pre>
 <p>这样子就会从网络中获取封面。这个方式可以和之前的两种方式中的任意一个混合使用。</p>
 <h3 id="%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0" tabindex="-1" id="外部文章"><a class="header-anchor" href="#外部文章"># </a>外部文章</h3>
 <p>外部文章指的是不在自己博客网站上的文章，也可以是一般的其他网页。
 外部文章有两种：一种是带标题的，另一种是不带标题的。</p>
 <p>带标题的在显示时会显示标题，而不带标题的则直接显示链接。
 使用方式如下：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标题指定了就是带标题的，置空就是无标题的</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">link:</span> <span class="string">https://www.google.com</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml"># 标题指定了就是带标题的，置空就是无标题的
+title: ''
+link: https://www.google.com
+</code></pre>
 <p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
 <h3 id="%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0" tabindex="-1" id="置顶文章"><a class="header-anchor" href="#置顶文章"># </a>置顶文章</h3>
 <p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，再加个文章置顶也无所谓，
 于是就写了。</p>
 <p>在文章Front matter区域添加如下字段即可：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pin:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">pin: true
+</code></pre>
 <p>如果有多个置顶的文章，文章将会按照更新日期排序。</p>
 <h3 id="%E8%BF%98%E5%9C%A8%E5%AE%8C%E5%96%84%E7%9A%84%E6%96%87%E7%AB%A0" tabindex="-1" id="还在完善的文章"><a class="header-anchor" href="#还在完善的文章"># </a>还在完善的文章</h3>
 <p>先说怎么用吧，在文章Front matter区域添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">todo:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">todo_msg:</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">todo: true
+todo_msg: &quot;&quot;
+</code></pre>
 <p>这样就行了，在文章列表中就能看到效果了。顺便解释一下：
 <code>todo</code>设置为<code>true</code>表示文章还未完善，<code>todo_msg</code>可以写一些原因，留空表示使用默认消息。</p>
 <blockquote>
@@ -311,7 +348,10 @@
 <p>由于Hexo内置的代码高亮为了支持行号，使用<code>table</code>以某种奇奇怪怪的方式实现了行号的显示。
 这导致代码会被文章原本的<code>table</code>样式影响到，因此只能强制使用暗色模式避免CSS样式的覆盖。</p>
 <p>如果需要使用Hexo内置的代码高亮，需要启用Hexo配置中的这两个选项：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">   <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">   <span class="attr">hljs:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">highlight:
+   enable: true
+   hljs: true
+</code></pre>
 <p>还需要注意的一点是，如果同时启用了主题的高亮与Hexo内置的高亮，
 那么将会优先使用Hexo内置的代码高亮样式。</p>
 <h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1" id="搜索"><a class="header-anchor" href="#搜索"># </a>搜索</h3>
@@ -340,21 +380,37 @@
 <p>评论系统使用<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">Gitalk</a>，可以在主题的配置文件中选择开启，
 在启用评论系统的情况下，还应该<strong>在文章中配置开启</strong>。</p>
 <p>在配置文件中：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span></span><br><span class="line">   <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gitalk:
+   enable: true
+</code></pre>
 <p>在文章中：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gitalk: true
+</code></pre>
 <p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
 <h3 id="%E5%A4%96%E9%93%BE" tabindex="-1" id="外链"><a class="header-anchor" href="#外链"># </a>外链</h3>
 <p>你可以在顶栏添加一些社交网页链接。就像这样子：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">links:</span></span><br><span class="line">   <span class="attr">github:</span></span><br><span class="line">      <span class="attr">title:</span> <span class="string">&#x27;Github&#x27;</span></span><br><span class="line">      <span class="attr">class:</span> <span class="string">&#x27;bi bi-github&#x27;</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">&#x27;https://github.com/HuzerOVO&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yaml">links:
+   github:
+      title: 'Github'
+      class: 'bi bi-github'
+      url: 'https://github.com/HuzerOVO'
+</code></pre>
 <p>主题主要使用<strong>Bootstrap Icons</strong>，但主题也使用<strong>Font Awesome</strong>作为图标的补充。</p>
 <p>比如在Bootstrap icons中，没有BiliBili的图标，但在Font awesome中有，于是就可以这样子：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">links:</span></span><br><span class="line">   <span class="attr">bilibili:</span></span><br><span class="line">      <span class="attr">title:</span> <span class="string">&#x27;哔哩哔哩&#x27;</span></span><br><span class="line">      <span class="attr">class:</span> <span class="string">&#x27;fa-brands fa-bilibili&#x27;</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">&#x27;https://www.bilibili.com&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">links:
+   bilibili:
+      title: '哔哩哔哩'
+      class: 'fa-brands fa-bilibili'
+      url: 'https://www.bilibili.com'
+</code></pre>
 <p>需要说明的是，<code>class</code>字段根据Bootstrap Icons或者Font Awesome介绍的使用方式填写。</p>
 <h3 id="%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5" tabindex="-1" id="订阅链接"><a class="header-anchor" href="#订阅链接"># </a>订阅链接</h3>
 <p>订阅链接可以使用<code>hexo-generator-feed</code>自动生成，也可以使用自定义的RSS文件。
 如果需要自定义订阅，在主题的配置文件中配置如下选项：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rss:</span></span><br><span class="line">   <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">   <span class="attr">path:</span> <span class="string">atom.xml</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">rss:
+   enable: true
+   path: atom.xml
+</code></pre>
 <p>主题配置的订阅的优先级高于博客的配置。
 如果你同时使用了hexo-generator-feed和自定义的RSS，
 有hexo-generator-feed生成的订阅将会被忽略。</p>
@@ -373,22 +429,64 @@
 <p>此外，不同与普通文章的是，你可以指定“关于”页面中的头像，
 并在Front matter区域使用<code>avatar</code>指定头像文件名。</p>
 <p>假设你此时文件夹结构如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">your-blog-root-dir</span><br><span class="line">+--scaffolds</span><br><span class="line">...</span><br><span class="line">+--source</span><br><span class="line">   +--about</span><br><span class="line">      +--index.md</span><br><span class="line">      +--avatar.jpg</span><br></pre></td></tr></table></figure>
+<pre><code>your-blog-root-dir
++--scaffolds
+...
++--source
+   +--about
+      +--index.md
+      +--avatar.jpg
+</code></pre>
 <p>此时index.md文件的Front matter区域可以这样设置：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在关于页面，你可以使用一些文章布局的Front matter变量</span></span><br><span class="line"><span class="comment"># 比如gitalk、katex</span></span><br><span class="line"><span class="attr">gitalk:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">katex:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这些是专有的</span></span><br><span class="line"><span class="attr">avatar:</span> <span class="string">avatar.jpg</span></span><br><span class="line"><span class="attr">avatar_size:</span> <span class="string">normal</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml"># 在关于页面，你可以使用一些文章布局的Front matter变量
+# 比如gitalk、katex
+gitalk: false
+katex: false
+
+# 这些是专有的
+avatar: avatar.jpg
+avatar_size: normal
+</code></pre>
 <p>对于变量<code>avatar_size</code>，主题内置了3个预设值：<code>small</code>、<code>normal</code>（这是默认值）以及<code>large</code>。
 对应头像大小：64px，125px和256px。
 此外你还可以设定一个数字指定头像大小，单位为<code>px</code>，如：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">avatar_size:</span> <span class="number">120</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">avatar_size: 120
+</code></pre>
 <blockquote>
 <p>需要注意的是，头像文件<strong>只能</strong>放在about文件夹里，并且不能指定多个头像。</p>
 <p>此外，头像的长宽比应当是1:1的，否则显示会很怪。</p>
 </blockquote>
 <h2 id="front-matter%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="Front-matter参考手册"><a class="header-anchor" href="#Front-matter参考手册"># </a>Front matter参考手册</h2>
 <p>这里列出主题使用到的，可能会影响文章布局的变量作为参考：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">我的主题介绍</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-07-17</span></span><br><span class="line"><span class="attr">updated:</span> <span class="number">2023-07-19</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">katex:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">gitalk:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment">#issue_id: 46 # 指定issue用作评论区</span></span><br><span class="line"><span class="attr">todo:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">todo_msg:</span> <span class="string">主题仍在开发中</span></span><br><span class="line"><span class="comment">#excerpt: 主题仍在持续开发中 =v= # 这个会覆盖文章内摘要</span></span><br><span class="line"><span class="attr">pin:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">gallery:</span> <span class="string">gallery</span></span><br><span class="line"><span class="attr">photos:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">id=89645004_p0.png</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> [<span class="string">开发记录</span>]</span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">主题</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="comment"># 这个作为外部文章引用</span></span><br><span class="line"><span class="comment">#link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">title: 我的主题介绍
+date: 2023-07-17
+updated: 2023-07-19
+toc: true
+katex: false
+gitalk: true
+#issue_id: 46 # 指定issue用作评论区
+todo: true
+todo_msg: 主题仍在开发中
+#excerpt: 主题仍在持续开发中 =v= # 这个会覆盖文章内摘要
+pin: true
+gallery: gallery
+photos:
+- id=89645004_p0.png
+categories:
+  - [开发记录]
+tags:
+  - 主题
+  - Hexo
+# 这个作为外部文章引用
+#link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/
+</code></pre>
 <p>对于“关于”页面则有：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment">#issue_id: 45</span></span><br><span class="line"><span class="attr">katex:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">avatar:</span> <span class="string">avatar.jpg</span></span><br><span class="line"><span class="attr">avatar_size:</span> <span class="string">normal</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yml">gitalk: false
+#issue_id: 45
+katex: false
+avatar: avatar.jpg
+avatar_size: normal
+</code></pre>
 <p>除了以上的变量，主题还用到了Hexo提供的一些内置变量，
 比如<code>path</code>表示页面路径，<code>content</code>表示文章内容等。
 不过这些变量并不影响文章布局，因此不一一列出了。</p>
