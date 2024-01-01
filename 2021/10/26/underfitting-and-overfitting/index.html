@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="Hexo" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    
+        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
+    
+
+    
+    
+    <title> 欠拟合与过拟合 - 狐言狐语 | 记录一段回忆 </title>
+    
+
+    
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
+
+        
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
+
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+
+    
+    
+    <script>
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            
+                
+                
+                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
+                    <i class="bi bi-github"></i>
+                </a>
+                
+            
+            
+            <a class="icon-button" title="订阅" href="/atom.xml" download="">
+                <i class="bi bi-rss-fill"></i>
+            </a>
+            
+            <a id="btn-switch-theme" class="icon-button" title="切换主题">
+                <i class="bi bi-sun"></i>
+            </a>
+            
+            <a id="btn-search" class="icon-button" title="搜索" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合与过拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">过拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>欠拟合与过拟合</h1>
+        <p>机器学习中遭遇的问题</p>
+<span id="more"></span>
+<h2 id="%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88" tabindex="-1" id="欠拟合与过拟合"><a class="header-anchor" href="#欠拟合与过拟合"># </a>欠拟合与过拟合</h2>
+<h3 id="%E6%AC%A0%E6%8B%9F%E5%90%88" tabindex="-1" id="欠拟合"><a class="header-anchor" href="#欠拟合"># </a>欠拟合</h3>
+<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
+<p>问题的原因在于训练时，用于训练的模型不是很好，
+当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
+比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p><img src="Figure_1.svg" alt="" title="Figure 1" loading="lazy" /></p>
+<h3 id="%E8%BF%87%E6%8B%9F%E5%90%88" tabindex="-1" id="过拟合"><a class="header-anchor" href="#过拟合"># </a>过拟合</h3>
+<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
+但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
+<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
+下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p><img src="Figure_2.svg" alt="" title="Figure 2" loading="lazy" /></p>
+<p>或许加上原数据之间的连线更能体现：</p>
+<p><img src="Figure_3.svg" alt="" title="Figure 3" loading="lazy" /></p>
+<h2 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h2>
+<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
+<strong>局部加权回归算法</strong> 则属于这一类算法<br />
+详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+        
+        <div class="article-meta-info">
+            
+                <span>分类</span>
+                <a class="article-categories-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                
+            
+                <span>标签</span>
+                <a class="article-tags-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><a class="article-tags-none-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a>
+            
+        </div>
+        
+        <div class="article-date-info">
+            <span>发布日期: 2021-10-26</span>
+            <span>更新日期: 2021-10-30</span>
+        </div>
+        <div class="article-share-link">
+            <span>
+            分享文章
+            <a href="https://huzerovo.github.io/2021/10/26/underfitting-and-overfitting/">https://huzerovo.github.io/2021/10/26/underfitting-and-overfitting/</a>
+            </span>
+        </div>
+        <div class="article-comment">
+            
+
+    
+    
+    
+    
+    
+    
+    <div id="gitalk-container"></div>
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.js"></script>
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+    <script>
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "欠拟合与过拟合";
+        c.id = md5(c.title);
+        c.number = -1;
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
+
+
+        </div>
+    </article>
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2024 
+        
+        @狐zerOAO
+        
+        </p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+
+    Fancybox.bind(".container img");
+});
+</script>
+</html>

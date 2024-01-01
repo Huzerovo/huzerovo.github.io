@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>开启评论</title>
-    <url>/2023/01/14/comments-are-enabled/</url>
+    <url>/2023/01/15/comments-are-enabled/</url>
     <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
 <p>嘻嘻</p>
 ]]></content>
@@ -13,7 +13,7 @@
   </entry>
   <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
-    <url>/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/</url>
+    <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
 <span id="more"></span>
 <h2 id="%E8%B5%B7%E5%9B%A0" tabindex="-1" id="起因"><a class="header-anchor" href="#起因"># </a>起因</h2>
@@ -191,7 +191,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
   </entry>
   <entry>
     <title>梯度下降算法</title>
-    <url>/2021/09/15/gradient-descent/</url>
+    <url>/2021/09/16/gradient-descent/</url>
     <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
 <span id="more"></span>
 <h2 id="%E6%AD%A5%E9%AA%A4" tabindex="-1" id="步骤"><a class="header-anchor" href="#步骤"># </a>步骤</h2>
@@ -288,7 +288,7 @@ if __name__ == &quot;__main__&quot;:
   </entry>
   <entry>
     <title>在磁盘映像文件上安装 Grub 2</title>
-    <url>/2021/08/14/install-grub-at-a-img-file/</url>
+    <url>/2021/08/15/install-grub-at-a-img-file/</url>
     <content><![CDATA[<p>记录一下我在一个磁盘文件上安装Grub作为启动引导的过程</p>
 <span id="more"></span>
 <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h3>
@@ -498,7 +498,7 @@ sudo losetup -d /dev/loop0
   </entry>
   <entry>
     <title>Intel x86 汇编语言</title>
-    <url>/2021/03/25/intel-asm/</url>
+    <url>/2021/03/26/intel-asm/</url>
     <content><![CDATA[<p>文章参考自<a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a>
 这篇文章只是个人的理解翻译，方便日后参考使用<br />
 详情请参见原文</p>
@@ -1119,7 +1119,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
   </entry>
   <entry>
     <title>我的主题介绍</title>
-    <url>/2023/07/16/introduction-to-my-theme/</url>
+    <url>/2023/07/17/introduction-to-my-theme/</url>
     <content><![CDATA[<p>关于主题的介绍</p>
 <span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
@@ -1453,7 +1453,7 @@ avatar_size: normal
   </entry>
   <entry>
     <title>Learn Markdown</title>
-    <url>/2020/11/07/learn-markdown/</url>
+    <url>/2020/11/08/learn-markdown/</url>
     <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
 <span id="more"></span>
 <h2 id="%E6%A0%87%E9%A2%98" tabindex="-1" id="标题"><a class="header-anchor" href="#标题"># </a>标题</h2>
@@ -1909,7 +1909,7 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
   </entry>
   <entry>
     <title>线性回归</title>
-    <url>/2021/09/10/linear-regression/</url>
+    <url>/2021/09/11/linear-regression/</url>
     <content><![CDATA[<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
 线性回归是一种<strong>监督学习</strong>的模型。</p>
 <span id="more"></span>
@@ -2025,12 +2025,12 @@ $$</p>
 <p>于是问题转化为：
 需要得到一个$ \theta $，使得$ J(\theta) $的值最小</p>
 <h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95" tabindex="-1" id="为什么使用最小二乘法"><a class="header-anchor" href="#为什么使用最小二乘法"># </a>为什么使用最小二乘法</h3>
-<p>参考文章 <a href="/2021/11/03/why-use-least-squares/" title="为什么使用最小二乘法">为什么使用最小二乘法</a></p>
+<p>参考文章 <a href="/2021/11/04/why-use-least-squares/" title="为什么使用最小二乘法">为什么使用最小二乘法</a></p>
 <h2 id="%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98" tabindex="-1" id="解决问题"><a class="header-anchor" href="#解决问题"># </a>解决问题</h2>
 <p>接下来介绍解决这个问题的可行方法</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D" tabindex="-1" id="梯度下降"><a class="header-anchor" href="#梯度下降"># </a>梯度下降</h3>
 <blockquote>
-<p>注：梯度下降算法在 <a href="/2021/09/15/gradient-descent/" title="梯度下降算法">另一篇文章</a> 中有介绍</p>
+<p>注：梯度下降算法在 <a href="/2021/09/16/gradient-descent/" title="梯度下降算法">另一篇文章</a> 中有介绍</p>
 </blockquote>
 <p>为了得到$ \theta $使函数值$ J(\theta) $最小，可以采取**梯度下降 (gradient descent)**的方法：
 随机选取一个$ \theta $值，随后不断地更新$ \theta $，使$ J(\theta) $不断减小，
@@ -2319,7 +2319,7 @@ $ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
   </entry>
   <entry>
     <title>Linux 防火墙</title>
-    <url>/2021/02/17/linux-firewall/</url>
+    <url>/2021/02/18/linux-firewall/</url>
     <content><![CDATA[<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
 <span id="more"></span>
 <h2 id="netfilter-porject" tabindex="-1" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject"># </a>Netfilter Porject</h2>
@@ -2485,11 +2485,11 @@ The netfilter project is commonly associated with iptables.</em>”</p>
   </entry>
   <entry>
     <title>局部加权回归</title>
-    <url>/2021/10/29/locally-weighted-regression/</url>
+    <url>/2021/10/30/locally-weighted-regression/</url>
     <content><![CDATA[<p>简单介绍局部加权回归算法的思想</p>
 <span id="more"></span>
 <h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" tabindex="-1" id="基本思想"><a class="header-anchor" href="#基本思想"># </a>基本思想</h2>
-<p>文章<a href="/2021/10/25/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>简单介绍了欠拟合与过拟合的相关概念，
+<p>文章<a href="/2021/10/26/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>简单介绍了欠拟合与过拟合的相关概念，
 其中我们可以发现，如果选择的模型的阶比较低，就可能出现欠拟合的情况，
 但如果过高，则又会出现过拟合的情况。</p>
 <p>因此，局部加权回归的思想就是，只关注<strong>在预测点附近</strong>的样本点，
@@ -2539,7 +2539,7 @@ $$
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>在<a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a>一文中提到，
+<li id="fn1" class="footnote-item"><p>在<a href="/2021/09/11/linear-regression/" title="线性回归">线性回归</a>一文中提到，
 $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指的是输入特征的权值，
 而$ w^{i} $指的是训练集中不同样本的权值，
 而选择这个函数的理由是：根据经验，它具有普遍性（<s>概率论的奇妙之处</s>）。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
@@ -2558,7 +2558,7 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
   </entry>
   <entry>
     <title>逻辑回归</title>
-    <url>/2021/11/24/logistic-regression/</url>
+    <url>/2021/11/25/logistic-regression/</url>
     <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
 <span id="more"></span>
 <h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" tabindex="-1" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足"># </a>线性回归的不足</h2>
@@ -2612,7 +2612,7 @@ $$</p>
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/15/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -2626,7 +2626,7 @@ $$</p>
   </entry>
   <entry>
     <title>编程魔法学</title>
-    <url>/2023/07/04/magic-algorithms/</url>
+    <url>/2023/07/05/magic-algorithms/</url>
     <content><![CDATA[<p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
 <span id="more"></span>
 <h2 id="%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F" tabindex="-1" id="计算数据中比特1的数量"><a class="header-anchor" href="#计算数据中比特1的数量"># </a>计算数据中比特1的数量</h2>
@@ -2979,7 +2979,7 @@ unsigned int n = x &amp; 0x3f;
   </entry>
   <entry>
     <title>将init.vim迁移至init.lua</title>
-    <url>/2023/01/11/migrate-init-vim-to-init-lua-for-neovim/</url>
+    <url>/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/</url>
     <content><![CDATA[<p>本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
 详细的内容可在nvim中使用命令<code>:help lua-guide</code>进行查看。</p>
 <span id="more"></span>
@@ -3100,7 +3100,7 @@ vim.fn['plug#end']()
   </entry>
   <entry>
     <title>我的Neovim配置</title>
-    <url>/2023/07/02/my-neovim-conf/</url>
+    <url>/2023/07/03/my-neovim-conf/</url>
     <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
 <p>持续更新中…</p>
 <span id="more"></span>
@@ -3497,7 +3497,7 @@ vim.fn['plug#end']()
   </entry>
   <entry>
     <title>图册展示页</title>
-    <url>/2023/07/16/post-for-gallery-layout-test/</url>
+    <url>/2023/07/17/post-for-gallery-layout-test/</url>
     <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
 <span id="more"></span>
 <p>然而并不能在文章里面看到，可以用作封面用途。</p>
@@ -3516,7 +3516,7 @@ vim.fn['plug#end']()
   </entry>
   <entry>
     <title>PWM 舵机控制</title>
-    <url>/2021/03/17/pwm-servo/</url>
+    <url>/2021/03/18/pwm-servo/</url>
     <content><![CDATA[<p>介绍如何在树莓派上控制舵机（servo）</p>
 <span id="more"></span>
 <h3 id="pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" tabindex="-1" id="PWM-基础知识"><a class="header-anchor" href="#PWM-基础知识"># </a>PWM 基础知识</h3>
@@ -3700,7 +3700,7 @@ pi.set_PWM_dutycycle(0)
   </entry>
   <entry>
     <title>树莓派热点</title>
-    <url>/2021/03/10/raspberrypi-access-point/</url>
+    <url>/2021/03/11/raspberrypi-access-point/</url>
     <content><![CDATA[<p>简单介绍如何在树莓派开启热点<br />
 <em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
 <span id="more"></span>
@@ -3821,7 +3821,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
   </entry>
   <entry>
     <title>smali 语法</title>
-    <url>/2022/03/04/smali-language/</url>
+    <url>/2022/03/05/smali-language/</url>
     <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
 <span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
@@ -4014,13 +4014,13 @@ String 为 java.lang 包中的一个对象</p>
   </entry>
   <entry>
     <title>提问的智慧</title>
-    <url>/2023/07/18/smart-questions/</url>
+    <url>/2023/07/19/smart-questions/</url>
     <content><![CDATA[<!-- more -->
 ]]></content>
   </entry>
   <entry>
     <title>Github Page时间测试</title>
-    <url>/2022/12/31/time-test/</url>
+    <url>/2023/01/01/time-test/</url>
     <content><![CDATA[<p>时间格式测试</p>
 <span id="more"></span>
 <p>发现Github Page上的日期比实际的日期少一天。</p>
@@ -4029,7 +4029,7 @@ String 为 java.lang 包中的一个对象</p>
   </entry>
   <entry>
     <title>欠拟合与过拟合</title>
-    <url>/2021/10/25/underfitting-and-overfitting/</url>
+    <url>/2021/10/26/underfitting-and-overfitting/</url>
     <content><![CDATA[<p>机器学习中遭遇的问题</p>
 <span id="more"></span>
 <h2 id="%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88" tabindex="-1" id="欠拟合与过拟合"><a class="header-anchor" href="#欠拟合与过拟合"># </a>欠拟合与过拟合</h2>
@@ -4050,7 +4050,7 @@ String 为 java.lang 包中的一个对象</p>
 <h2 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h2>
 <p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
 <strong>局部加权回归算法</strong> 则属于这一类算法<br />
-详情参考 <a href="/2021/10/29/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
+详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -4071,7 +4071,7 @@ String 为 java.lang 包中的一个对象</p>
   </entry>
   <entry>
     <title>Vim 简单笔记</title>
-    <url>/2021/02/18/vim-simple-note/</url>
+    <url>/2021/02/19/vim-simple-note/</url>
     <content><![CDATA[<p>总结自 vim 使用向导程序 <code>vimtutor</code></p>
 <span id="more"></span>
 <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h3>
@@ -4520,7 +4520,7 @@ String 为 java.lang 包中的一个对象</p>
   </entry>
   <entry>
     <title>为什么使用最小二乘法</title>
-    <url>/2021/11/03/why-use-least-squares/</url>
+    <url>/2021/11/04/why-use-least-squares/</url>
     <content><![CDATA[<p>解释为什么最小二乘法能减小误差</p>
 <span id="more"></span>
 <h2 id="%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE" tabindex="-1" id="了解一下误差"><a class="header-anchor" href="#了解一下误差"># </a>了解一下误差</h2>
@@ -4586,7 +4586,7 @@ l(\theta)
 $$</p>
 <p>由于$ \sigma^{2} &gt; 0 $恒成立，
 故最大化$ l(\theta) $等价于最小化$ \sum_{i=1}^{m} \frac{y^{(i)} - \theta^{T} x^{(i)}}{2} $</p>
-<p>这也就是 <a href="/2021/09/10/linear-regression/" title="线性回归">线性回归</a> 一文中提到的<strong>cost function</strong></p>
+<p>这也就是 <a href="/2021/09/11/linear-regression/" title="线性回归">线性回归</a> 一文中提到的<strong>cost function</strong></p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
 <ol class="footnotes-list">

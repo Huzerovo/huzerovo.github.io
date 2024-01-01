@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="Hexo" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    
+        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
+    
+
+    
+    
+    <title> 编程魔法学 - 狐言狐语 | 记录一段回忆 </title>
+    
+
+    
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
+
+        
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
+
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+
+    
+    
+    <script>
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            
+                
+                
+                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
+                    <i class="bi bi-github"></i>
+                </a>
+                
+            
+            
+            <a class="icon-button" title="订阅" href="/atom.xml" download="">
+                <i class="bi bi-rss-fill"></i>
+            </a>
+            
+            <a id="btn-switch-theme" class="icon-button" title="切换主题">
+                <i class="bi bi-sun"></i>
+            </a>
+            
+            <a id="btn-search" class="icon-button" title="搜索" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">计算数据中比特1的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="toc-text">从零开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B"><span class="toc-text">逐步前进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E6%9B%B4%E9%AB%98%E4%BD%8D%E6%8B%93%E5%B1%95"><span class="toc-text">向更高位拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B"><span class="toc-text">总结规律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C"><span class="toc-text">优化取反操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"><span class="toc-text">特殊优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8A%A0%E6%B3%95"><span class="toc-text">优化加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">更高位的优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C"><span class="toc-text">最终结果</span></a></li></ol></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>编程魔法学</h1>
+        <p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
+<span id="more"></span>
+<h2 id="%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F" tabindex="-1" id="计算数据中比特1的数量"><a class="header-anchor" href="#计算数据中比特1的数量"># </a>计算数据中比特1的数量</h2>
+<p>在数据中比特<code>1</code>的数量也称为数据的汉明权重<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>在这里我们探讨一下<strong>计算32位数据的汉明权重</strong>。</p>
+<h3 id="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B" tabindex="-1" id="从零开始"><a class="header-anchor" href="#从零开始"># </a>从零开始</h3>
+<p>虽然叫从零开始，但如果数据为“0”，那我们也没有问题可以解决。
+从“1”开始呢？假设数据只有1比特位，那我们直接使用“瞪眼法”，
+根据“显然理论”，能够直接得出答案，也没有问题需要解决了。</p>
+<p>于是我们从2个比特位的数据出发。由于只有两位，我们可以轻松地列出所有可能。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x</th>
+<th style="text-align:left">汉明权重</th>
+<th style="text-align:left">汉明权重二进制表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">00B</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">00B</td>
+</tr>
+<tr>
+<td style="text-align:left">01B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">01B</td>
+</tr>
+<tr>
+<td style="text-align:left">10B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">01B</td>
+</tr>
+<tr>
+<td style="text-align:left">11B</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">10B</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以发现，对于2个比特位而言，其汉明权重可以由它2个比特位的高位和低位相加，
+结果就是其对应的汉明权重。我们可以这样实现：</p>
+<pre><code class="lang-c">// 假设n表示汉明权重，x为2比特位的数据
+n = x + (x &gt;&gt; 1);
+</code></pre>
+<h3 id="%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B" tabindex="-1" id="逐步前进"><a class="header-anchor" href="#逐步前进"># </a>逐步前进</h3>
+<p>现在，我们将其拓展至4个比特位。
+<strong>但让我们先约定好</strong>：</p>
+<ul>
+<li>对于处于高位的两个比特位，在此后我们简称为“<strong>高位</strong>”。</li>
+<li>与之对应的，处于低2位的两个比特位，我们称为“<strong>低位</strong>”。</li>
+<li>4比特位的数据，相对与2比特位数据来说，是“<strong>高位数据</strong>”，因为它具有更多的比特位。</li>
+<li>自然而然地，2比特位数据相对于4比特位数据来说，就是“<strong>低位数据</strong>”。</li>
+</ul>
+<p>有一个问题，当我们将其扩展时，如扩展到4位<code>b3 b2 b1 b0</code>，
+我们进行移位时，<code>b2</code>会被移入原先的<code>b1 b0</code>所在的两位数据中，
+这破坏了两个数据的独立性，我们应当避免。</p>
+<p>我们知道移位运算符会使用<code>0</code>填充空缺位，因此我们可以使<code>b2</code>恒为<code>0</code>，
+这样即使它被移入了下个数据中，也不会对问题造成影响，
+我们可以使用<code>&amp;</code>运算符轻松地解决这个问题：</p>
+<pre><code class="lang-c">// 我们将4位数据x视为2个2位数据x1与x2，并将每个2位数据的最低位置0
+y = (x &amp; 0b1010) &gt;&gt; 1;
+// 此时z还并不是x的汉明权重
+z = x + y;
+</code></pre>
+<p>在经过上面的计算后，z在高位和低位分别保存了对应2比特位数据的汉明权重。
+现在我们将它们相加：</p>
+<pre><code class="lang-c">// 我们将z视为4位数据，并获取低2位
+tmp = z &amp; 0b0011;
+// 低2位与高2位相加，由于右移会将低2位数据丢弃，我们现在可以忽略它
+n = tmp + (z &gt;&gt; 2);
+</code></pre>
+<p>写成一行则是：</p>
+<pre><code class="lang-c">n = (z &amp; 0b0011) + (z &gt;&gt; 2);
+</code></pre>
+<p>似乎很熟悉？让我们将其整理一下：</p>
+<pre><code class="lang-c">// 假设x为2比特位的数据
+nx = x + (x &gt;&gt; 1);
+// 或者我们写复杂一点
+nx = (x &amp; 0b01) + ((x &amp; 0b10) &gt;&gt; 1); // 注意两次与的掩码不同
+
+// 假设y为4比特位的数据，同样地我们稍微写得复杂一些
+// 此时我们不再忽略低位数据，因为它可能会被移入下一个数据
+z = (y &amp; 0b0101) + ((y &amp; 0b1010) &gt;&gt; 1);
+nz = (z &amp; 0b0011) + ((z &amp; 0b1100) &gt;&gt; 2);
+</code></pre>
+<p>在计算<code>x</code>的汉明权重时，我们使用<code>&amp;</code>运算符与掩码<code>0b10</code>提取出高位，并将其与低位相加。</p>
+<p>我们再看看生成<code>z</code>的过程，我们先是使用<code>&amp;</code>运算符与掩码<code>0b1010</code>提取出两个低位数据的高位，
+并将其与各自的低位相加。这实际上与计算<code>x</code>的汉明权重的过程是等价的，
+只不过在这里同时进行了两次计算。</p>
+<p>我们在看看计算<code>z</code>的汉明权重：用<code>&amp;</code>运算符与掩码<code>0b1100</code>提取出高位，并与低位相加。</p>
+<p>这与计算<code>x</code>的汉明权重几乎是一模一样：<strong>提取高位，并与低位相加，结果存储在低位</strong>，
+唯一的区别就是我们从2比特位提升到了4比特位！</p>
+<h3 id="%E5%90%91%E6%9B%B4%E9%AB%98%E4%BD%8D%E6%8B%93%E5%B1%95" tabindex="-1" id="向更高位拓展"><a class="header-anchor" href="#向更高位拓展"># </a>向更高位拓展</h3>
+<p>我们正在向更高位前进，于是我们的约定也会相应地改变。</p>
+<p>经过前两步的分析，我们可以做出这样的推断：对于一个8比特位，也就是一个字节的数据，
+我们能够通过这样子得到它的汉明权重：</p>
+<pre><code class="lang-c">// x为一字节的数据
+y = (x &amp; 0b01010101) + ((x &amp; 0b10101010) &gt;&gt; 1); // x对应的4个数据的汉明权重：y3 y2 y1 y0
+z = (y &amp; 0b00110011) + ((y &amp; 0b11001100) &gt;&gt; 2); // z1 = y3 + y2, z0 = y1 + y0
+n = (z &amp; 0x00001111) + ((z &amp; 0b11110000) &gt;&gt; 4); // n = z1 + z0
+</code></pre>
+<p>在上述例子中，<code>x</code>为一字节的数据，将其视为4个2比特位的数据，
+并进行我们的计算：<strong>提取高位，与低位相加，并将结果存储在低位</strong>。
+得到的<code>y</code>则存储了<code>x</code>中4个数据对应的汉明权重，此时再将<code>y</code>视为2个4比特位的数据，
+重复我们的计算。
+随后得到<code>z</code>，在<code>z</code>中存储了<code>y</code>中的2个数据对应的汉明权重，我们再一次地进行计算。
+最后我们得到了原始数据<code>x</code>的汉明权重。
+将上述的代码写成十六进制后：</p>
+<pre><code class="lang-c">// 此处x为一字节的任意数据
+char x = 0xAB;
+char y = (x &amp; 0x55) + ((x &amp; (0xAA)) &gt;&gt; 1);
+char z = (y &amp; 0x33) + ((y &amp; (0xCC)) &gt;&gt; 2);
+char n = (z &amp; 0x0F) + ((z &amp; (0xF0)) &gt;&gt; 4);
+
+// 或者
+char x = 0xAB;
+char y = (x &amp; 0x55) + ((x &amp; (~0x55)) &gt;&gt; 1);
+char z = (y &amp; 0x33) + ((y &amp; (~0x33)) &gt;&gt; 2);
+char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
+</code></pre>
+<p>这样子我们就得到了计算一字节数据的汉明权重的方法。</p>
+<h3 id="%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B" tabindex="-1" id="总结规律"><a class="header-anchor" href="#总结规律"># </a>总结规律</h3>
+<p>在之前我们逐步分析的向高位拓展的过程，
+实际上是逐渐从低到高的方向，计算汉明权重。
+得出的汉明权重实际上保存在新的数据上了。
+我们之后所做，其实只是将这些结果相加。
+于是我们能得出这样子的规律：</p>
+<pre><code>x7  x6  x5  x4  x3  x2  x1  x0  x
+|   |   |   |   |   |   |   |
++---+   +---+   +---+   +---+
+  |       |       |       |
+  y3      y2      y1      y0    y
+  |       |       |       |
+  +-------+       +-------+
+      |               |
+      z1              z0        z
+      |               |
+      +---------------+
+              |
+              n
+</code></pre>
+<p>这是一个8比特位数据的汉明权重计算过程。
+对于<code>x</code>来说，它可以看作4个2比特位的数据，
+这4个数据的汉明权重存储在了<code>y</code>中，<code>y</code>又被视作2个4比特位的数据。
+之后我们将其逐渐相加，最终得出原始数据的汉明权重。
+对于更高位来说，只不过是将这颗树向上拓展而已，
+于是我们可以直接得出32位数据的汉明权重计算函数：</p>
+<pre><code class="lang-c">#define MASK_1  0x55555555
+#define MASK_2  0x33333333
+#define MASK_4  0x0F0F0F0F
+#define MASK_8  0x00FF00FF
+#define MASK_16 0x0000FFFF
+
+unsigned int ones(unsigned int x) &#123;
+    x = (x &amp; MASK_1) + ((x &amp; (~MASK_1)) &gt;&gt; 1);
+    x = (x &amp; MASK_2) + ((x &amp; (~MASK_2)) &gt;&gt; 2);
+    x = (x &amp; MASK_4) + ((x &amp; (~MASK_4)) &gt;&gt; 4);
+    x = (x &amp; MASK_8) + ((x &amp; (~MASK_8)) &gt;&gt; 8);
+    x = (x &amp; MASK_16) + ((x &amp; (~MASK_16)) &gt;&gt; 16);
+    return (unsigned int)x;
+&#125;
+</code></pre>
+<p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
+<h3 id="%E4%BC%98%E5%8C%96" tabindex="-1" id="优化"><a class="header-anchor" href="#优化"># </a>优化</h3>
+<h4 id="%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C" tabindex="-1" id="优化取反操作"><a class="header-anchor" href="#优化取反操作"># </a>优化取反操作</h4>
+<p>在之前我们提到，处于高位的比特位可能会被移入低位，因此需要将其置为<code>0</code>。
+但实际上，我们还可以换一种思维方式：等到它被移入下一位数据后，我们再忽略它。
+于是我们能够得出这样子的方法：</p>
+<pre><code class="lang-c">#define MASK 0x55555555
+x = (x &amp; MASK) + ((x &gt;&gt; 1) &amp; MASK);
+</code></pre>
+<p>代码似乎没有太大变化，但实际上，这使得我们无需使用<code>~</code>运算符对掩码进行取反，
+节省了一点宝贵的时间。</p>
+<h4 id="%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96" tabindex="-1" id="特殊优化"><a class="header-anchor" href="#特殊优化"># </a>特殊优化</h4>
+<p>我们接着进行优化。</p>
+<p>现在让我们回到最初对于2比特位数据的探讨中，现在我们再将穷举的表格列出来。
+不过这次我们只列出二进制格式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x</th>
+<th style="text-align:left">汉明权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">00</td>
+<td style="text-align:left">00</td>
+</tr>
+<tr>
+<td style="text-align:left">01</td>
+<td style="text-align:left">01</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">01</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">10</td>
+</tr>
+</tbody>
+</table>
+<p>我们再看看2比特位的二进制减法的表格，这里我们只列出需要用到的：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">a</th>
+<th style="text-align:left">b</th>
+<th style="text-align:left">a - b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">00</td>
+<td style="text-align:left">00</td>
+<td style="text-align:left">00</td>
+</tr>
+<tr>
+<td style="text-align:left">01</td>
+<td style="text-align:left">00</td>
+<td style="text-align:left">01</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">01</td>
+<td style="text-align:left">01</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">01</td>
+<td style="text-align:left">10</td>
+</tr>
+</tbody>
+</table>
+<p>我们发现什么？倘若我们将<code>a</code>视为数据<code>x</code>，而<code>b</code>视为右移一位之后的数据，
+那么<code>a - b</code>的结果将直接是数据<code>x</code>的汉明权重！
+于是就有一个针对2比特位数据的特殊优化：</p>
+<pre><code class="lang-c">#define MASK 0x55555555
+x = x - ((x &gt;&gt; 1) &amp; MASK);
+</code></pre>
+<p>这使得我们直接省掉了一次<code>&amp;</code>操作，再一次节省了一点宝贵的时间。
+不同于第一个优化，这个优化无法拓展到更高位。
+举个简单的例子：对于4比特位的数据<code>a = 0b0100</code>，它的汉明权重是<code>1</code>。
+接下来它会进行右移两位的操作，于是有<code>b = 0b0001</code>，
+那么<code>a - b = 0b0011</code>，对应十进制数<code>3</code>，显然不正确。</p>
+<h4 id="%E4%BC%98%E5%8C%96%E5%8A%A0%E6%B3%95" tabindex="-1" id="优化加法"><a class="header-anchor" href="#优化加法"># </a>优化加法</h4>
+<p>接下来我们思考一个问题：
+我们现在是用<code>&amp;</code>操作，忽略掉我们不需要的比特位，借此来保证后续的加法能够得出正确的结果。
+但当高位或者低位全是0时，在我们进行加法操作后，这些比特位会保持不变。
+换句话说，它不产生进位，于是我们可以把忽略它的时机推迟到加法之后。</p>
+<p>那我们能够在那些情况下忽略掉<code>&amp;</code>操作呢？
+答案是：进行加法后，产生的进位不会越过高位和低位“分界线”。</p>
+<p>让我们慢慢进行分析：</p>
+<pre><code class="lang-c">int x = 0xFFFFFFFF;
+// 此时x视为16个2比特位
+x -= (x &gt;&gt; 1) &amp; 0x55555555;
+// 此时x视为8个4比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
+</code></pre>
+<p>此时x的二进制格式：<code>10'10 ...</code>（<code>'</code>只是用作分隔，便于观察），
+显然，此时x的高位与低位相加会越界：<code>10b + 10b = 01'00b</code>
+因此我们不对它进行优化：</p>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
+// 此时x视为8个4比特位
+x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
+// 此时x视为4个8比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
+</code></pre>
+<p>经过上面的计算后，此时x的二进制格式：<code>0100'0100 ...</code>，高位与低位相加，不会产生越界。</p>
+<p>那存在产生越界可能性吗？让我们看看当<code>x</code>视为4个8比特位数据时怎样才会越界：
+<code>1000b + 1000b = 10000b</code>，也就是说当汉明权重满足<code>max(高位，低位) &gt;= 8</code>时才可能发生越界。
+而此时，我们拥有的比特位也才只有8个，不可能从更低比特位的数据中获得大于或等于8的汉明权重。
+因此我们可以将<code>&amp;</code>操作推迟：</p>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
+// 此时x视为4个8比特位
+x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
+// 此时x视为2个16比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
+</code></pre>
+<p>我们再一次节省了一个<code>&amp;</code>操作。</p>
+<h4 id="%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96" tabindex="-1" id="更高位的优化"><a class="header-anchor" href="#更高位的优化"># </a>更高位的优化</h4>
+<p>现在到更高的位数看看，我们现在将<code>x</code>视为2个16比特位的数据，
+每个数据的高位和低位是更低位数据的汉明权重。</p>
+<p>在上一步优化中，我们注意到，<s>加法的力量，是有极限的</s>，我们在进行加法前进行<code>&amp;</code>操作，
+实际上是避免存在因为进位而破坏数据的独立性，而我们现在以及拥有了16比特位的数据，
+能够存储的最大数字远远超过了32位数据所能拥有的最大的汉明权重。
+也就是说，我们或许可以忽略<strong>可能因为进位导致数据独立性被破坏</strong>这个问题。</p>
+<p>那我们就分析一下，是否可以忽略加法后的<code>&amp;</code>操作：</p>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
+// 此时x视为2个16比特位
+x += x &gt;&gt; 8;
+// 此时x视为1个32为比特位
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
+</code></pre>
+<p>我们发现，结果虽然发生了进位，但进位仍处于低位，而没有发生越界。
+并且，此时我们存储汉明权重的比特位是16个比特位数据的低8位，
+显然足够我们容纳所有求和的结果。那我们继续：</p>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
+// 此时x视为1个32为比特位
+x += x &gt;&gt; 16;
+// 此时x的最低8位存储的就是汉明权重
+printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
+</code></pre>
+<p>现在，我们能够发现：实际上存储汉明权重的只有低8位（实际上只有6比特位，但这样子看着比较方便），
+其余位的均可忽略。那我们可以得知，当我们在将低8位作为存储结果的位置，
+也就是我们将32位数据视为2个16位数据时，我们就可以不进行<code>&amp;</code>操作了。</p>
+<p>为什么是16位数据呢？因为在我们将其视作16位数据时，会进行这样的操作：
+<code>x &gt;&gt; 8</code>，这实际上就是把结果存入低8位，并将整个16位数据视为了一个整体。
+即使是更高位数据，我们求和的结果也不会超过这8个比特位。</p>
+<blockquote>
+<p>题外话，实际上这还能够拓展到64位数据，我们只需要加多一行：</p>
+<pre><code class="lang-c">x += x &gt;&gt; 32;
+</code></pre>
+<p>即可。当然，前面出现的掩码也需要相应地拓展到64位。</p>
+</blockquote>
+<p>最后我们可以这样子得到结果：</p>
+<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
+unsigned int n = x &amp; 0xFF;
+// 或者
+unsigned int n = x &amp; 0x3f;
+</code></pre>
+<h3 id="%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C" tabindex="-1" id="最终结果"><a class="header-anchor" href="#最终结果"># </a>最终结果</h3>
+<p>我们现在将上述的优化都写下来：</p>
+<pre><code class="lang-c">unsigned int ones(unsigned int x) &#123;
+    x -= (x &gt;&gt; 1) &amp; 0x55555555;
+    x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
+    x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
+    x += x &gt;&gt; 8;
+    x += x &gt;&gt; 16;
+    rerurn x &amp; 0xFF;
+&#125;
+</code></pre>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D">Wikipedia</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+        
+        <div class="article-meta-info">
+            
+                <span>分类</span>
+                <a class="article-categories-link" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a>
+                
+            
+                <span>标签</span>
+                <a class="article-tags-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+            
+        </div>
+        
+        <div class="article-date-info">
+            <span>发布日期: 2023-07-05</span>
+            <span>更新日期: 2023-07-05</span>
+        </div>
+        <div class="article-share-link">
+            <span>
+            分享文章
+            <a href="https://huzerovo.github.io/2023/07/05/magic-algorithms/">https://huzerovo.github.io/2023/07/05/magic-algorithms/</a>
+            </span>
+        </div>
+        <div class="article-comment">
+            
+
+    
+    
+    
+    
+    
+    
+    <div id="gitalk-container"></div>
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.js"></script>
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+    <script>
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "编程魔法学";
+        c.id = md5(c.title);
+        c.number = -1;
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
+
+
+        </div>
+    </article>
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2024 
+        
+        @狐zerOAO
+        
+        </p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+
+    Fancybox.bind(".container img");
+});
+</script>
+</html>

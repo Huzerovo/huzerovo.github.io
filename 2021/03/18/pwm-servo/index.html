@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html  id="root" lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="狐zerOAO" />
+    <meta name="description" content="记录一段回忆" />
+    <meta name="generator" content="Hexo" />
+    <meta name="keywords" content="blog,code" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    
+        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
+    
+
+    
+    
+    <title> PWM 舵机控制 - 狐言狐语 | 记录一段回忆 </title>
+    
+
+    
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
+
+        
+<script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js"></script>
+
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+
+        
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+        <script>hljs.highlightAll();</script>
+    
+
+    
+    
+<link rel="stylesheet" href="/css/huzerovo.css">
+
+
+    
+    
+<link rel="stylesheet" href="/css/light/light.css">
+
+    
+<link rel="stylesheet" href="/css/dark/dark.css">
+
+
+    
+    
+<script src="/js/huzerovo.js"></script>
+<script src="/js/search.js"></script>
+
+
+    
+    
+        
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+    
+    <script>
+        let codeStyle = {};
+        codeStyle.light = "/css/github.min.css";
+        codeStyle.dark = "/css/github-dark.min.css";
+        window.load = myLoading();
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="topbar">
+    <div class="topbar-container">
+        
+        <nav class="topbar-menu">
+            <ul>
+            
+                <li>
+                
+                
+                    <a href="/" title="首页">首页</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/archive" title="归档">归档</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/categories" title="分类">分类</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/tagcloud" title="标签云">标签云</a>
+                
+                </li>
+            
+                <li>
+                
+                
+                    <a href="/about" title="关于我">关于我</a>
+                
+                </li>
+            
+            </ul>
+        </nav>
+
+        
+        <div class="topbar-icon-buttons">
+            
+                
+                
+                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
+                    <i class="bi bi-github"></i>
+                </a>
+                
+            
+            
+            <a class="icon-button" title="订阅" href="/atom.xml" download="">
+                <i class="bi bi-rss-fill"></i>
+            </a>
+            
+            <a id="btn-switch-theme" class="icon-button" title="切换主题">
+                <i class="bi bi-sun"></i>
+            </a>
+            
+            <a id="btn-search" class="icon-button" title="搜索" href="/search">
+                <i class="bi bi-search"></i>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    
+    <div id="article-toc">
+    
+        <p class="sidebar-list-title">目录</p>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">PWM 基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87"><span class="toc-text">频率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%A8%E6%9C%9F"><span class="toc-text">周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">频率与周期的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%A0%E7%A9%BA%E6%AF%94"><span class="toc-text">占空比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA"><span class="toc-text">PWM 控制舵机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6"><span class="toc-text">使用 Python 实现 PWM 控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93"><span class="toc-text">使用 RPi.GPIO 库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3"><span class="toc-text">导入 GPIO 包并初始化 GPIO 接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B"><span class="toc-text">创建 PWM 实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">会产生的问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-pigpio"><span class="toc-text">使用 pigpio</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">导入包并初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pwm-%E8%AE%BE%E7%BD%AE"><span class="toc-text">PWM 设置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">优缺点</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+    
+    <article class="article-container">
+        <h1>PWM 舵机控制</h1>
+        <p>介绍如何在树莓派上控制舵机（servo）</p>
+<span id="more"></span>
+<h3 id="pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" tabindex="-1" id="PWM-基础知识"><a class="header-anchor" href="#PWM-基础知识"># </a>PWM 基础知识</h3>
+<blockquote>
+<p>PWM（Pulse Width Modulation）即脉宽调制，
+是一种利用数字信号对模拟电路进行控制的一种方法。
+详情自行搜索，<s>主要是我也不会</s>。</p>
+</blockquote>
+<h4 id="%E9%A2%91%E7%8E%87" tabindex="-1" id="频率"><a class="header-anchor" href="#频率"># </a>频率</h4>
+<p>指$ 1s $内，脉冲信号变化（高电平$ \to $低电平$ \to $高电平）的次数。</p>
+<h4 id="%E5%91%A8%E6%9C%9F" tabindex="-1" id="周期"><a class="header-anchor" href="#周期"># </a>周期</h4>
+<p>脉冲信号完成一次变化的时间称作一个周期。</p>
+<h4 id="%E9%A2%91%E7%8E%87%E4%B8%8E%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%B3%E7%B3%BB" tabindex="-1" id="频率与周期的关系"><a class="header-anchor" href="#频率与周期的关系"># </a>频率与周期的关系</h4>
+<p>$$
+f = \frac{1}{T}
+$$</p>
+<p>一个周期为$ 20ms $脉冲信号，其频率为$ \frac{1}{20 \times 10^{-3}s} $，即$ 50Hz $。</p>
+<h4 id="%E5%8D%A0%E7%A9%BA%E6%AF%94" tabindex="-1" id="占空比"><a class="header-anchor" href="#占空比"># </a>占空比</h4>
+<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比。
+设整个周期的时间为$ T $，高电平持续的时间为$ t $，则占空比$ D $为：</p>
+<p>$$
+D = \frac{t}{T} \times 100\%
+$$</p>
+<p>或</p>
+<p>$$
+D = t \cdot f \times 100\%
+$$</p>
+<p>一个周期为$ 20ms $的脉冲信号，其中高电平持续时间为$ 1.5ms $，
+则占空比为$ \frac{1.5ms}{20ms} \times 100\% = 7.5\% $。</p>
+<h3 id="pwm-%E6%8E%A7%E5%88%B6%E8%88%B5%E6%9C%BA" tabindex="-1" id="PWM-控制舵机"><a class="header-anchor" href="#PWM-控制舵机"># </a>PWM 控制舵机</h3>
+<p>使用 PWM 控制舵机时，一般使用频率为$ 50Hz $的 PWM 信号，
+在$ 180^{\circ} $的舵机中，一般以$ 1.5ms $的高电平持续时间作为基准，
+高电平持续时间$ 1.5ms\pm1ms $作分别为舵机旋转$ \mp90^{\circ} $的控制信号。</p>
+<p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">高电平持续时间</th>
+<th style="text-align:left">占空比</th>
+<th style="text-align:left">角度（顺时针为正）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$ 0.5ms $</td>
+<td style="text-align:left">$2.5\%$</td>
+<td style="text-align:left">$ +90^{\circ} $</td>
+</tr>
+<tr>
+<td style="text-align:left">$ 1.5ms $</td>
+<td style="text-align:left">$7.5\%$</td>
+<td style="text-align:left">$ 0^{\circ} $</td>
+</tr>
+<tr>
+<td style="text-align:left">$ 2.5ms $</td>
+<td style="text-align:left">$12.5\%$</td>
+<td style="text-align:left">$ -90^{\circ} $</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E4%BD%BF%E7%94%A8-python-%E5%AE%9E%E7%8E%B0-pwm-%E6%8E%A7%E5%88%B6" tabindex="-1" id="使用-Python-实现-PWM-控制"><a class="header-anchor" href="#使用-Python-实现-PWM-控制"># </a>使用 Python 实现 PWM 控制</h3>
+<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>，
+可以通过 Python 来对这些 GPIO 接口进行控制。</p>
+<h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" tabindex="-1" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库"># </a>使用 RPi.GPIO 库</h4>
+<p>参考<a target="_blank" rel="noopener" href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
+<h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" tabindex="-1" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口"># </a>导入 GPIO 包并初始化 GPIO 接口</h5>
+<pre><code class="lang-python">import RPi.GPIO as GPIO
+
+# 使用编号 18 的 GPIO 接口
+pin = 18
+
+# 设置 GPIO 的编号模式，详情参考树莓派官网
+GPIO.setmode(GPIO.BCM)
+
+# 关闭奇奇怪怪的警告
+GPIO.setwarnings(False)
+
+# 初始化接口
+GPIO.setup(pin, GPIO.OUT, initial=False)
+</code></pre>
+<h5 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" tabindex="-1" id="创建-PWM-实例"><a class="header-anchor" href="#创建-PWM-实例"># </a>创建 PWM 实例</h5>
+<pre><code class="lang-python"># 创建实例
+hz = 50
+p = GPIO.PWM(pin, hz)
+
+# 设置占空比
+# 单位 ms
+t = 1.5
+# 乘以0.1,单位修正为 s，与 Hz 单位匹配
+dc = t * hz * 0.1
+
+# 启动 PWM
+p.start(dc)
+
+# 更改占空比
+p.ChangeDutyCycle(dc)
+
+# 停止 PWM
+p.stop()
+
+# 在程序结束时要释放对 GPIO 接口的控制
+GPIO.cleanup()
+</code></pre>
+<h5 id="%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="会产生的问题"><a class="header-anchor" href="#会产生的问题"># </a>会产生的问题</h5>
+<p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
+因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
+在使用<code>p.ChangeDutyCycle(dc)</code>函数时也可能发生抖动，导致舵机不能转到指定角度。
+在<code>p.start(dc)</code>后，即使没有任何操作，也仍可能发生抖动，
+同时控制多个舵机时，不同接口还会产生干扰。</p>
+<h5 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h5>
+<p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
+<pre><code class="lang-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+  dc = i * hz * 0.1
+  p.ChangeDutyCycle(dc)
+  sleep(0.5)
+p.stop()
+</code></pre>
+<p>但这种方法并不能解决在空闲时出现的抖动，
+也不能去除其他端口的干扰。</p>
+<p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
+<pre><code class="lang-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+  dc = i * hz * 0.1
+  p.start(dc)
+  sleep(0.5)
+  p.stop()
+p.stop()
+</code></pre>
+<p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动。</p>
+<p>还有一种方法：使用 pigpio 库。</p>
+<h4 id="%E4%BD%BF%E7%94%A8-pigpio" tabindex="-1" id="使用-pigpio"><a class="header-anchor" href="#使用-pigpio"># </a>使用 pigpio</h4>
+<p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
+能显著地提高 PWM 的抗干扰性。</p>
+<p>参考 <a target="_blank" rel="noopener" href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
+<h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启动服务"><a class="header-anchor" href="#启动服务"># </a>启动服务</h5>
+<p>使用 pigpio 库需要启动 pigpiod 服务。</p>
+<pre><code class="lang-shell">sudo systemctl start pigpiod.service
+</code></pre>
+<h5 id="%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1" id="导入包并初始化"><a class="header-anchor" href="#导入包并初始化"># </a>导入包并初始化</h5>
+<pre><code class="lang-python">import pigpio
+
+# 使用编号 18 的接口
+# 注意：使用接口的 BCM 编号
+pin = 18
+
+# 创建连接 pigpio 连接
+pi = pigpio.pi()
+
+# 设置 GPIO 接口输出模式
+pi.set_mode(pin, pigpio.OUTPUT)
+</code></pre>
+<h5 id="pwm-%E8%AE%BE%E7%BD%AE" tabindex="-1" id="PWM-设置"><a class="header-anchor" href="#PWM-设置"># </a>PWM 设置</h5>
+<pre><code class="lang-python"># 设置 PWM 频率为 50 Hz
+pi.set_PWM_frequency(pin, 50)
+
+# 设置 PWM 范围 0~100
+# 与占空比相结合，范围 0~100
+pi.set_PWM_range(pin, 100)
+
+# 设置占空比设置为 25 即 25/100 = 1/4
+pi.set_PWM_dutycycle(25)
+
+# 关闭 PWM
+pi.set_PWM_dutycycle(0)
+</code></pre>
+<h5 id="%E4%BC%98%E7%BC%BA%E7%82%B9" tabindex="-1" id="优缺点"><a class="header-anchor" href="#优缺点"># </a>优缺点</h5>
+<p>使用 pigpio 时必须启动 pigpiod 服务，
+但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰。</p>
+
+        
+        <div class="article-meta-info">
+            
+                <span>分类</span>
+                <a class="article-categories-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+                
+            
+                <span>标签</span>
+                <a class="article-tags-none-link" href="/tags/pwm/" rel="tag">PWM</a><a class="article-tags-none-link" href="/tags/python/" rel="tag">Python</a><a class="article-tags-none-link" href="/tags/servo/" rel="tag">Servo</a>
+            
+        </div>
+        
+        <div class="article-date-info">
+            <span>发布日期: 2021-03-18</span>
+            <span>更新日期: 2021-10-29</span>
+        </div>
+        <div class="article-share-link">
+            <span>
+            分享文章
+            <a href="https://huzerovo.github.io/2021/03/18/pwm-servo/">https://huzerovo.github.io/2021/03/18/pwm-servo/</a>
+            </span>
+        </div>
+        <div class="article-comment">
+            
+
+    
+    
+    
+    
+    
+    
+    <div id="gitalk-container"></div>
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.js"></script>
+
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+    <script>
+        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
+        c.title = "Article: " + "PWM 舵机控制";
+        c.id = md5(c.title);
+        c.number = -1;
+        let gitalk = new Gitalk(c);
+        gitalk.render("gitalk-container");
+    </script>
+
+
+        </div>
+    </article>
+</main>
+
+    
+    <button id="goto-top" type="button" title="回到顶部">
+        回到顶部
+    </button>
+    <footer>
+        <p> Copyright 2024 
+        
+        @狐zerOAO
+        
+        </p>
+        <p>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+        </p>
+        <br>
+    </footer>
+</body>
+
+<script>
+$('#goto-top').hide();
+// 页面载入后设置icon
+setTheme(getStorage('currentTheme'));
+$(document).ready(function() {
+    // 监听事件
+    $('#btn-switch-theme').click(switchTheme);
+    $('#btn-side-menu').click(function() {
+        let e = $('#side-nav');
+        let hide = 'side-menu-hidden'
+        let show = 'side-menu-show'
+        if (e.hasClass(hide)) {
+            e.removeClass(hide);
+            e.addClass(show);
+        } else {
+            e.removeClass(show);
+            e.addClass(hide);
+        }
+    });
+    $('#search').on('input', function() {
+        searchArticle("/search.xml");
+    });
+    $('#goto-top').click(function() {
+        $('#root').scrollTop(0);
+    });
+
+    $(window).scroll(function() {
+        if ($('#root').scrollTop() > 300) {
+            $('#goto-top').show();
+        } else {
+            $('#goto-top').hide();
+        }
+    });
+
+    Fancybox.bind(".container img");
+});
+</script>
+</html>
