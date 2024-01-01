@@ -6,9 +6,6 @@
     <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
 <p>嘻嘻</p>
 ]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
       <tags>
         <tag>Gitalk</tag>
         <tag>开发</tag>
@@ -17,9 +14,7 @@
   <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/</url>
-    <content><![CDATA[<blockquote>
-<p>将博客源文件迁移至私有仓库</p>
-</blockquote>
+    <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
 <span id="more"></span>
 <h2 id="%E8%B5%B7%E5%9B%A0" tabindex="-1" id="起因"><a class="header-anchor" href="#起因"># </a>起因</h2>
 <p>在开始搭建博客时，为了能够自动部署Github Page，
@@ -78,7 +73,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>事记</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
@@ -168,6 +163,10 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <td style="text-align:left">代码风格变更</td>
 </tr>
 <tr>
+<td style="text-align:left">refact</td>
+<td style="text-align:left">代码重构</td>
+</tr>
+<tr>
 <td style="text-align:left">docs</td>
 <td style="text-align:left">修改注释</td>
 </tr>
@@ -183,7 +182,8 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 </table>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>笔记</category>
+        <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -192,9 +192,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
   <entry>
     <title>梯度下降算法</title>
     <url>/2021/09/15/gradient-descent/</url>
-    <content><![CDATA[<blockquote>
-<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
-</blockquote>
+    <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
 <span id="more"></span>
 <h2 id="%E6%AD%A5%E9%AA%A4" tabindex="-1" id="步骤"><a class="header-anchor" href="#步骤"># </a>步骤</h2>
 <ol>
@@ -291,9 +289,7 @@ if __name__ == &quot;__main__&quot;:
   <entry>
     <title>在磁盘映像文件上安装 Grub 2</title>
     <url>/2021/08/14/install-grub-at-a-img-file/</url>
-    <content><![CDATA[<blockquote>
-<p>记录一下我在一个磁盘文件上安装Grub作为启动引导的过程</p>
-</blockquote>
+    <content><![CDATA[<p>记录一下我在一个磁盘文件上安装Grub作为启动引导的过程</p>
 <span id="more"></span>
 <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h3>
 <ol>
@@ -503,11 +499,9 @@ sudo losetup -d /dev/loop0
   <entry>
     <title>Intel x86 汇编语言</title>
     <url>/2021/03/25/intel-asm/</url>
-    <content><![CDATA[<blockquote>
-<p>文章参考自<a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a>
+    <content><![CDATA[<p>文章参考自<a href="http://www.cs.virginia.edu/~evans/cs216/guides/x86.html">x86 Assembly Guide</a>
 这篇文章只是个人的理解翻译，方便日后参考使用<br />
 详情请参见原文</p>
-</blockquote>
 <span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
 <p>学习计算机组成原理有助于理解本文：</p>
@@ -1116,7 +1110,8 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 </section>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>笔记</category>
+        <category>汇编</category>
       </categories>
       <tags>
         <tag>汇编</tag>
@@ -1125,9 +1120,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
   <entry>
     <title>我的主题介绍</title>
     <url>/2023/07/16/introduction-to-my-theme/</url>
-    <content><![CDATA[<blockquote>
-<p>关于主题的介绍</p>
-</blockquote>
+    <content><![CDATA[<p>关于主题的介绍</p>
 <span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
 <p>这篇文章算是我在开发过程中的一些总结与吐槽。</p>
@@ -1399,7 +1392,7 @@ avatar_size: normal
 <p>这里列出主题使用到的，可能会影响文章布局的变量作为参考：</p>
 <pre><code class="lang-yml">title: 我的主题介绍
 date: 2023-07-17
-updated: 2023-07-19
+updated: 2023-12-31 09:17:43
 toc: true
 katex: false
 gitalk: true
@@ -1461,9 +1454,7 @@ avatar_size: normal
   <entry>
     <title>Learn Markdown</title>
     <url>/2020/11/07/learn-markdown/</url>
-    <content><![CDATA[<blockquote>
-<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
-</blockquote>
+    <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
 <span id="more"></span>
 <h2 id="%E6%A0%87%E9%A2%98" tabindex="-1" id="标题"><a class="header-anchor" href="#标题"># </a>标题</h2>
 <ol>
@@ -1909,7 +1900,8 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 </section>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>笔记</category>
+        <category>markdown</category>
       </categories>
       <tags>
         <tag>Markdown</tag>
@@ -1918,10 +1910,8 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
   <entry>
     <title>线性回归</title>
     <url>/2021/09/10/linear-regression/</url>
-    <content><![CDATA[<blockquote>
-<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
+    <content><![CDATA[<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
 线性回归是一种<strong>监督学习</strong>的模型。</p>
-</blockquote>
 <span id="more"></span>
 <h2 id="%E5%9F%BA%E7%A1%80" tabindex="-1" id="基础"><a class="header-anchor" href="#基础"># </a>基础</h2>
 <h3 id="%E5%AE%9A%E4%B9%89%E2%80%9C%E7%89%B9%E5%BE%81%E2%80%9D%E4%B8%8E%E2%80%9C%E6%A0%87%E7%AD%BE%E2%80%9D" tabindex="-1" id="定义“特征”与“标签”"><a class="header-anchor" href="#定义“特征”与“标签”"># </a>定义“特征”与“标签”</h3>
@@ -2330,9 +2320,7 @@ $ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
   <entry>
     <title>Linux 防火墙</title>
     <url>/2021/02/17/linux-firewall/</url>
-    <content><![CDATA[<blockquote>
-<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
-</blockquote>
+    <content><![CDATA[<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
 <span id="more"></span>
 <h2 id="netfilter-porject" tabindex="-1" id="Netfilter-Porject"><a class="header-anchor" href="#Netfilter-Porject"># </a>Netfilter Porject</h2>
 <p>Netfilter 项目是一个开源项目，目的是为 Linux 内核提供进行包过滤的功能</p>
@@ -2498,9 +2486,7 @@ The netfilter project is commonly associated with iptables.</em>”</p>
   <entry>
     <title>局部加权回归</title>
     <url>/2021/10/29/locally-weighted-regression/</url>
-    <content><![CDATA[<blockquote>
-<p>简单介绍局部加权回归算法的思想</p>
-</blockquote>
+    <content><![CDATA[<p>简单介绍局部加权回归算法的思想</p>
 <span id="more"></span>
 <h2 id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3" tabindex="-1" id="基本思想"><a class="header-anchor" href="#基本思想"># </a>基本思想</h2>
 <p>文章<a href="/2021/10/25/underfitting-and-overfitting/" title="欠拟合与过拟合">欠拟合与过拟合</a>简单介绍了欠拟合与过拟合的相关概念，
@@ -2573,9 +2559,7 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
   <entry>
     <title>逻辑回归</title>
     <url>/2021/11/24/logistic-regression/</url>
-    <content><![CDATA[<blockquote>
-<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
-</blockquote>
+    <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
 <span id="more"></span>
 <h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" tabindex="-1" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足"># </a>线性回归的不足</h2>
 <p>当数据的分布情况是这样子的时候，
@@ -2643,9 +2627,7 @@ $$</p>
   <entry>
     <title>编程魔法学</title>
     <url>/2023/07/04/magic-algorithms/</url>
-    <content><![CDATA[<blockquote>
-<p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
-</blockquote>
+    <content><![CDATA[<p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
 <span id="more"></span>
 <h2 id="%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F" tabindex="-1" id="计算数据中比特1的数量"><a class="header-anchor" href="#计算数据中比特1的数量"># </a>计算数据中比特1的数量</h2>
 <p>在数据中比特<code>1</code>的数量也称为数据的汉明权重<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
@@ -2998,10 +2980,8 @@ unsigned int n = x &amp; 0x3f;
   <entry>
     <title>将init.vim迁移至init.lua</title>
     <url>/2023/01/11/migrate-init-vim-to-init-lua-for-neovim/</url>
-    <content><![CDATA[<blockquote>
-<p>本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
+    <content><![CDATA[<p>本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
 详细的内容可在nvim中使用命令<code>:help lua-guide</code>进行查看。</p>
-</blockquote>
 <span id="more"></span>
 <h2 id="%E8%BF%81%E7%A7%BB%E5%8F%98%E9%87%8F" tabindex="-1" id="迁移变量"><a class="header-anchor" href="#迁移变量"># </a>迁移变量</h2>
 <blockquote>
@@ -3109,7 +3089,7 @@ vim.fn['plug#end']()
 </section>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>事记</category>
       </categories>
       <tags>
         <tag>vim</tag>
@@ -3122,9 +3102,7 @@ vim.fn['plug#end']()
     <title>我的Neovim配置</title>
     <url>/2023/07/02/my-neovim-conf/</url>
     <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
-<blockquote>
 <p>持续更新中…</p>
-</blockquote>
 <span id="more"></span>
 <h2 id="%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE" tabindex="-1" id="快捷键配置"><a class="header-anchor" href="#快捷键配置"># </a>快捷键配置</h2>
 <p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
@@ -3280,6 +3258,26 @@ vim.fn['plug#end']()
 <td style="text-align:left">显示缓冲区诊断</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
+<td style="text-align:left">格式化代码</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
+<td style="text-align:left">符号重命名，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
+<td style="text-align:left">查看符号引用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
+<td style="text-align:left">查看实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
+<td style="text-align:left">大纲</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>]e</code></td>
 <td style="text-align:left">下一个问题诊断</td>
 </tr>
@@ -3292,40 +3290,20 @@ vim.fn['plug#end']()
 <td style="text-align:left">显示代码建议，可在visual模式使用</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
-<td style="text-align:left">符号重命名，可在visual模式使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
-<td style="text-align:left">查看符号引用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;gc</code></td>
+<td style="text-align:left"><code>gc</code></td>
 <td style="text-align:left">跳转到声明</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>&lt;leader&gt;gd</code></td>
+<td style="text-align:left"><code>gd</code></td>
 <td style="text-align:left">跳转到定义</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
-<td style="text-align:left">查看实现</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;gt</code></td>
+<td style="text-align:left"><code>gt</code></td>
 <td style="text-align:left">跳转到类型定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
-<td style="text-align:left">大纲</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>K</code></td>
 <td style="text-align:left">查看文档</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
-<td style="text-align:left">格式化代码</td>
 </tr>
 </tbody>
 </table>
@@ -3539,9 +3517,7 @@ vim.fn['plug#end']()
   <entry>
     <title>PWM 舵机控制</title>
     <url>/2021/03/17/pwm-servo/</url>
-    <content><![CDATA[<blockquote>
-<p>介绍如何在树莓派上控制舵机（servo）</p>
-</blockquote>
+    <content><![CDATA[<p>介绍如何在树莓派上控制舵机（servo）</p>
 <span id="more"></span>
 <h3 id="pwm-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" tabindex="-1" id="PWM-基础知识"><a class="header-anchor" href="#PWM-基础知识"># </a>PWM 基础知识</h3>
 <blockquote>
@@ -3725,10 +3701,8 @@ pi.set_PWM_dutycycle(0)
   <entry>
     <title>树莓派热点</title>
     <url>/2021/03/10/raspberrypi-access-point/</url>
-    <content><![CDATA[<blockquote>
-<p>简单介绍如何在树莓派开启热点<br />
+    <content><![CDATA[<p>简单介绍如何在树莓派开启热点<br />
 <em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
-</blockquote>
 <span id="more"></span>
 <p>需要的软件列表：</p>
 <ul>
@@ -3848,9 +3822,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
   <entry>
     <title>smali 语法</title>
     <url>/2022/03/04/smali-language/</url>
-    <content><![CDATA[<blockquote>
-<p>记录一下 smali 的基本语法，方便回顾</p>
-</blockquote>
+    <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
 <span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
 <p>smali 语法与汇编语法挺相似的，
@@ -4058,9 +4030,7 @@ String 为 java.lang 包中的一个对象</p>
   <entry>
     <title>欠拟合与过拟合</title>
     <url>/2021/10/25/underfitting-and-overfitting/</url>
-    <content><![CDATA[<blockquote>
-<p>机器学习中遭遇的问题</p>
-</blockquote>
+    <content><![CDATA[<p>机器学习中遭遇的问题</p>
 <span id="more"></span>
 <h2 id="%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88" tabindex="-1" id="欠拟合与过拟合"><a class="header-anchor" href="#欠拟合与过拟合"># </a>欠拟合与过拟合</h2>
 <h3 id="%E6%AC%A0%E6%8B%9F%E5%90%88" tabindex="-1" id="欠拟合"><a class="header-anchor" href="#欠拟合"># </a>欠拟合</h3>
@@ -4102,9 +4072,7 @@ String 为 java.lang 包中的一个对象</p>
   <entry>
     <title>Vim 简单笔记</title>
     <url>/2021/02/18/vim-simple-note/</url>
-    <content><![CDATA[<blockquote>
-<p>总结自 vim 使用向导程序 <code>vimtutor</code></p>
-</blockquote>
+    <content><![CDATA[<p>总结自 vim 使用向导程序 <code>vimtutor</code></p>
 <span id="more"></span>
 <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h3>
 <ol>
@@ -4543,7 +4511,8 @@ String 为 java.lang 包中的一个对象</p>
 </ol>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>笔记</category>
+        <category>vim</category>
       </categories>
       <tags>
         <tag>Vim</tag>
@@ -4552,9 +4521,7 @@ String 为 java.lang 包中的一个对象</p>
   <entry>
     <title>为什么使用最小二乘法</title>
     <url>/2021/11/03/why-use-least-squares/</url>
-    <content><![CDATA[<blockquote>
-<p>解释为什么最小二乘法能减小误差</p>
-</blockquote>
+    <content><![CDATA[<p>解释为什么最小二乘法能减小误差</p>
 <span id="more"></span>
 <h2 id="%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE" tabindex="-1" id="了解一下误差"><a class="header-anchor" href="#了解一下误差"># </a>了解一下误差</h2>
 <p>假设预测结果与实际结果存在误差，即

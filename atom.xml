@@ -6,7 +6,7 @@
   <link href="https://huzerovo.github.io/atom.xml" rel="self"/>
   
   <link href="https://huzerovo.github.io/"/>
-  <updated>2023-11-02T09:33:50.000Z</updated>
+  <updated>2023-12-30T18:08:56.000Z</updated>
   <id>https://huzerovo.github.io/</id>
   
   <author>
@@ -21,14 +21,16 @@
     <link href="https://huzerovo.github.io/2023/11/02/git-commit-style/"/>
     <id>https://huzerovo.github.io/2023/11/02/git-commit-style/</id>
     <published>2023-11-02T09:33:50.000Z</published>
-    <updated>2023-11-02T09:33:50.000Z</updated>
+    <updated>2023-12-30T18:08:56.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录一下我自己的commit注释规范&lt;/p&gt;</summary>
     
     
     
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
+    <category term="笔记" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="git" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/git/"/>
     
     
     <category term="git" scheme="https://huzerovo.github.io/tags/git/"/>
@@ -55,12 +57,10 @@
     <link href="https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/"/>
     <id>https://huzerovo.github.io/2023/07/16/introduction-to-my-theme/</id>
     <published>2023-07-16T16:00:00.000Z</published>
-    <updated>2023-08-01T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:43.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;关于主题的介绍&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;关于主题的介绍&lt;/p&gt;</summary>
     
     
     
@@ -99,16 +99,14 @@
     <link href="https://huzerovo.github.io/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/"/>
     <id>https://huzerovo.github.io/2023/07/15/deploy-github-page-from-a-private-repo-by-hexo/</id>
     <published>2023-07-15T16:00:00.000Z</published>
-    <updated>2023-07-15T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:04.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;将博客源文件迁移至私有仓库&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;将博客源文件迁移至私有仓库&lt;/p&gt;</summary>
     
     
     
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
+    <category term="事记" scheme="https://huzerovo.github.io/categories/%E4%BA%8B%E8%AE%B0/"/>
     
     
     <category term="Hexo" scheme="https://huzerovo.github.io/tags/hexo/"/>
@@ -122,12 +120,10 @@
     <link href="https://huzerovo.github.io/2023/07/04/magic-algorithms/"/>
     <id>https://huzerovo.github.io/2023/07/04/magic-algorithms/</id>
     <published>2023-07-04T16:00:00.000Z</published>
-    <updated>2023-07-04T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:18:29.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。&lt;/p&gt;</summary>
     
     
     
@@ -143,13 +139,11 @@
     <link href="https://huzerovo.github.io/2023/07/02/my-neovim-conf/"/>
     <id>https://huzerovo.github.io/2023/07/02/my-neovim-conf/</id>
     <published>2023-07-02T16:00:00.000Z</published>
-    <updated>2023-07-18T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:29:36.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;在这里记录一下我的nvim配置。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;持续更新中…&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+&lt;p&gt;持续更新中…&lt;/p&gt;</summary>
     
     
     
@@ -182,8 +176,6 @@
     
     
     
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
-    
     
     <category term="Gitalk" scheme="https://huzerovo.github.io/tags/gitalk/"/>
     
@@ -196,17 +188,15 @@
     <link href="https://huzerovo.github.io/2023/01/11/migrate-init-vim-to-init-lua-for-neovim/"/>
     <id>https://huzerovo.github.io/2023/01/11/migrate-init-vim-to-init-lua-for-neovim/</id>
     <published>2023-01-11T16:00:00.000Z</published>
-    <updated>2023-01-13T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:19:01.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
-详细的内容可在nvim中使用命令&lt;code&gt;:help lua-guide&lt;/code&gt;进行查看。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
+详细的内容可在nvim中使用命令&lt;code&gt;:help lua-guide&lt;/code&gt;进行查看。&lt;/p&gt;</summary>
     
     
     
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
+    <category term="事记" scheme="https://huzerovo.github.io/categories/%E4%BA%8B%E8%AE%B0/"/>
     
     
     <category term="vim" scheme="https://huzerovo.github.io/tags/vim/"/>
@@ -239,12 +229,10 @@
     <link href="https://huzerovo.github.io/2022/03/04/smali-language/"/>
     <id>https://huzerovo.github.io/2022/03/04/smali-language/</id>
     <published>2022-03-04T16:00:00.000Z</published>
-    <updated>2022-03-04T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:19:24.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;记录一下 smali 的基本语法，方便回顾&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;记录一下 smali 的基本语法，方便回顾&lt;/p&gt;</summary>
     
     
     
@@ -262,12 +250,10 @@
     <link href="https://huzerovo.github.io/2021/11/24/logistic-regression/"/>
     <id>https://huzerovo.github.io/2021/11/24/logistic-regression/</id>
     <published>2021-11-24T16:00:00.000Z</published>
-    <updated>2023-07-20T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:18:20.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;逻辑回归是不同于线性回归的另一种机器学习的算法&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;逻辑回归是不同于线性回归的另一种机器学习的算法&lt;/p&gt;</summary>
     
     
     
@@ -283,12 +269,10 @@
     <link href="https://huzerovo.github.io/2021/11/03/why-use-least-squares/"/>
     <id>https://huzerovo.github.io/2021/11/03/why-use-least-squares/</id>
     <published>2021-11-03T16:00:00.000Z</published>
-    <updated>2021-11-03T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:19:46.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;解释为什么最小二乘法能减小误差&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;解释为什么最小二乘法能减小误差&lt;/p&gt;</summary>
     
     
     
@@ -308,12 +292,10 @@
     <link href="https://huzerovo.github.io/2021/10/29/locally-weighted-regression/"/>
     <id>https://huzerovo.github.io/2021/10/29/locally-weighted-regression/</id>
     <published>2021-10-29T16:00:00.000Z</published>
-    <updated>2023-07-20T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:18:12.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;简单介绍局部加权回归算法的思想&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;简单介绍局部加权回归算法的思想&lt;/p&gt;</summary>
     
     
     
@@ -333,12 +315,10 @@
     <link href="https://huzerovo.github.io/2021/10/25/underfitting-and-overfitting/"/>
     <id>https://huzerovo.github.io/2021/10/25/underfitting-and-overfitting/</id>
     <published>2021-10-25T16:00:00.000Z</published>
-    <updated>2021-10-29T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:19:35.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;机器学习中遭遇的问题&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;机器学习中遭遇的问题&lt;/p&gt;</summary>
     
     
     
@@ -356,12 +336,10 @@
     <link href="https://huzerovo.github.io/2021/09/15/gradient-descent/"/>
     <id>https://huzerovo.github.io/2021/09/15/gradient-descent/</id>
     <published>2021-09-15T16:00:00.000Z</published>
-    <updated>2023-07-20T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:24.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;介绍 &lt;strong&gt;梯度下降算法 (gradient descent algorithm)&lt;/strong&gt; 并简单解释其原理&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;介绍 &lt;strong&gt;梯度下降算法 (gradient descent algorithm)&lt;/strong&gt; 并简单解释其原理&lt;/p&gt;</summary>
     
     
     
@@ -377,13 +355,11 @@
     <link href="https://huzerovo.github.io/2021/09/10/linear-regression/"/>
     <id>https://huzerovo.github.io/2021/09/10/linear-regression/</id>
     <published>2021-09-10T16:00:00.000Z</published>
-    <updated>2023-07-20T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:57.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;基于Andrew NG机器学习公开课程&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;。
-线性回归是一种&lt;strong&gt;监督学习&lt;/strong&gt;的模型。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;基于Andrew NG机器学习公开课程&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;。
+线性回归是一种&lt;strong&gt;监督学习&lt;/strong&gt;的模型。&lt;/p&gt;</summary>
     
     
     
@@ -401,12 +377,10 @@
     <link href="https://huzerovo.github.io/2021/08/14/install-grub-at-a-img-file/"/>
     <id>https://huzerovo.github.io/2021/08/14/install-grub-at-a-img-file/</id>
     <published>2021-08-14T16:00:00.000Z</published>
-    <updated>2021-10-28T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:30.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;记录一下我在一个磁盘文件上安装Grub作为启动引导的过程&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;记录一下我在一个磁盘文件上安装Grub作为启动引导的过程&lt;/p&gt;</summary>
     
     
     
@@ -424,18 +398,18 @@
     <link href="https://huzerovo.github.io/2021/03/25/intel-asm/"/>
     <id>https://huzerovo.github.io/2021/03/25/intel-asm/</id>
     <published>2021-03-25T16:00:00.000Z</published>
-    <updated>2022-04-04T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:17:37.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;文章参考自&lt;a href=&quot;http://www.cs.virginia.edu/~evans/cs216/guides/x86.html&quot;&gt;x86 Assembly Guide&lt;/a&gt;
+    <summary type="html">&lt;p&gt;文章参考自&lt;a href=&quot;http://www.cs.virginia.edu/~evans/cs216/guides/x86.html&quot;&gt;x86 Assembly Guide&lt;/a&gt;
 这篇文章只是个人的理解翻译，方便日后参考使用&lt;br /&gt;
-详情请参见原文&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+详情请参见原文&lt;/p&gt;</summary>
     
     
     
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
+    <category term="笔记" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="汇编" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96/"/>
     
     
     <category term="汇编" scheme="https://huzerovo.github.io/tags/%E6%B1%87%E7%BC%96/"/>
@@ -447,12 +421,10 @@
     <link href="https://huzerovo.github.io/2021/03/17/pwm-servo/"/>
     <id>https://huzerovo.github.io/2021/03/17/pwm-servo/</id>
     <published>2021-03-17T16:00:00.000Z</published>
-    <updated>2021-10-28T16:00:00.000Z</updated>
+    <updated>2023-12-31T01:19:12.000Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;介绍如何在树莓派上控制舵机（servo）&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;介绍如何在树莓派上控制舵机（servo）&lt;/p&gt;</summary>
     
     
     
