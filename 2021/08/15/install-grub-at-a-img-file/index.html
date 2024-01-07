@@ -1,42 +1,42 @@
 
 <!DOCTYPE html>
-<html  id="root" lang="zh-CN ">
+<html id="root" lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
-    <meta name="generator" content="Hexo" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>在磁盘映像文件上安装 Grub 2 - 狐言狐语 | 记录一段回忆</title>
+
+    <meta name="generator" content="Hexo 7.0.0">
+    <meta name="description" content="记录一下我在一个磁盘文件上安装Grub作为启动引导的过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在磁盘映像文件上安装 Grub 2">
+<meta property="og:url" content="https://huzerovo.github.io/2021/08/15/install-grub-at-a-img-file/">
+<meta property="og:site_name" content="狐灵">
+<meta property="og:description" content="记录一下我在一个磁盘文件上安装Grub作为启动引导的过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-15T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-29T04:00:00.000Z">
+<meta property="article:author" content="狐zerOAO">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Grub">
+<meta name="twitter:card" content="summary">
 
     
         <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
     
 
-    
-    
-    <title> 在磁盘映像文件上安装 Grub 2 - 狐言狐语 | 记录一段回忆 </title>
-    
-
-    
-    
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
-
-
-    
+    <!-- jQuery -->
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
-    
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-
-
-    
+    <!-- fancybox -->
     
         
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
@@ -46,15 +46,25 @@
 
     
 
+    <!-- Bootstrap icons -->
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    <!-- Font awesome -->
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
     
     
+        <!-- highlight.js -->
         
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-        <script>hljs.highlightAll();</script>
     
 
     
@@ -89,9 +99,6 @@
 
 <body>
     
-
-
-
 
 
 
@@ -150,27 +157,27 @@
 
         
         <div class="topbar-icon-buttons">
+            <!-- social link -->
             
                 
                 
-                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
-                    <i class="bi bi-github"></i>
-                </a>
+                <a class="icon-button"  title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO"><i class="bi bi-github"></i></a>
                 
             
+
             
-            <a class="icon-button" title="订阅" href="/atom.xml" download="">
-                <i class="bi bi-rss-fill"></i>
-            </a>
+                <!-- search link -->
+                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
             
-            <a id="btn-switch-theme" class="icon-button" title="切换主题">
-                <i class="bi bi-sun"></i>
-            </a>
+
+            <!-- change theme btn -->
+            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+
             
-            <a id="btn-search" class="icon-button" title="搜索" href="/search">
-                <i class="bi bi-search"></i>
-            </a>
+                <!-- feed link -->
+                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
             
+
         </div>
     </div>
 </header>
@@ -196,17 +203,17 @@
 <li>请在了解执行的命令的作用之后再执行操作</li>
 </ol>
 <h3 id="%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6" tabindex="-1" id="使用-dd-创建一个映像文件"><a class="header-anchor" href="#使用-dd-创建一个映像文件"># </a>使用 dd 创建一个映像文件</h3>
-<pre><code class="lang-shell">dd if=/dev/zero of=os.img bs=1M count=20
+<pre><code class="language-shell">dd if=/dev/zero of=os.img bs=1M count=20
 </code></pre>
 <p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
 <h3 id="%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA" tabindex="-1" id="在-os-img-上创建分区"><a class="header-anchor" href="#在-os-img-上创建分区"># </a>在 os.img 上创建分区</h3>
 <p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
 <h4 id="%E4%BD%BF%E7%94%A8-gdisk" tabindex="-1" id="使用-gdisk"><a class="header-anchor" href="#使用-gdisk"># </a>使用 gdisk</h4>
-<pre><code class="lang-shell">gdisk os.img
+<pre><code class="language-shell">gdisk os.img
 </code></pre>
 <p>进入 gdisk 交互界面<br />
 如下所示</p>
-<pre><code class="lang-shell">GPT fdisk (gdisk) version 1.0.8
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
   MBR: not present
@@ -235,7 +242,7 @@ Command (? for help):
 </ul>
 <p>可能会出现一个警告，确认即可</p>
 <p><strong>以下为参考：</strong></p>
-<pre><code class="lang-shell">GPT fdisk (gdisk) version 1.0.8
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
   MBR: protective
@@ -291,7 +298,7 @@ run partprobe(8) or kpartx(8)
 The operation has completed successfully.
 </code></pre>
 <h4 id="%E4%BD%BF%E7%94%A8-fdisk" tabindex="-1" id="使用-fdisk"><a class="header-anchor" href="#使用-fdisk"># </a>使用 fdisk</h4>
-<pre><code class="lang-shell">fdisk ./os.img
+<pre><code class="language-shell">fdisk ./os.img
 </code></pre>
 <p>进入 fdisk 交互界面</p>
 <p>输入 <code>g</code> 新建一个 GPT 分区表</p>
@@ -304,7 +311,7 @@ The operation has completed successfully.
 <li>然后输入 <code>4</code> 将分区类型更改为 BIOS Boot</li>
 </ul>
 <p><strong>参考：</strong></p>
-<pre><code class="lang-shell">命令(输入 m 获取帮助)：t
+<pre><code class="language-shell">命令(输入 m 获取帮助)：t
 分区号 (1,2, 默认  2): 1
 分区类型或别名（输入 L 列出所有类型）：4
 
@@ -314,7 +321,7 @@ The operation has completed successfully.
 </code></pre>
 <p>最后输入 <code>w</code> 确认写入文件</p>
 <h3 id="%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87" tabindex="-1" id="将-os-img-挂载为-loop-设备"><a class="header-anchor" href="#将-os-img-挂载为-loop-设备"># </a>将 os.img 挂载为 loop 设备</h3>
-<pre><code class="lang-shell">$ sudo losetup --show -P -f ./os.img
+<pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
 /dev/loop0
 </code></pre>
 <p>命令解释：</p>
@@ -331,14 +338,14 @@ The operation has completed successfully.
 对应的 loop 设备为 <code>/dev/loop0p2</code><br />
 如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
 </blockquote>
-<pre><code class="lang-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
+<pre><code class="language-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
 </code></pre>
 <p>不出意外的话，格式化很快就能完成<br />
 随后挂载分区</p>
 <p>请选择一个没有正在使用的文件夹<br />
 在本文中选择 <code>/mnt</code> 作为挂载点<br />
 这个文件夹在之后会使用到</p>
-<pre><code class="lang-shell">sudo mount /dev/loop0p2 /mnt
+<pre><code class="language-shell">sudo mount /dev/loop0p2 /mnt
 </code></pre>
 <p>没有消息就是最好的消息</p>
 <h3 id="%E5%AE%89%E8%A3%85-grub" tabindex="-1" id="安装-Grub"><a class="header-anchor" href="#安装-Grub"># </a>安装 Grub</h3>
@@ -348,7 +355,7 @@ The operation has completed successfully.
 </blockquote>
 <p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br />
 使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
-<pre><code class="lang-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
+<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
 </code></pre>
 <p>命令解释：</p>
 <ul>
@@ -359,7 +366,7 @@ The operation has completed successfully.
 完成后会提示成功</p>
 <h3 id="%E9%85%8D%E7%BD%AE" tabindex="-1" id="配置"><a class="header-anchor" href="#配置"># </a>配置</h3>
 <p>照着手册随便糊的一个，<s>能用就行</s></p>
-<pre><code class="lang-shell"># Grub 的配置文件
+<pre><code class="language-shell"># Grub 的配置文件
 
 # 设置根分区
 set root='(hd0,gpt2)'
@@ -375,7 +382,7 @@ menuentry EntryName &#123;
 &#125;
 </code></pre>
 <h3 id="%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87" tabindex="-1" id="卸载设备"><a class="header-anchor" href="#卸载设备"># </a>卸载设备</h3>
-<pre><code class="lang-shell">sudo umount /mnt
+<pre><code class="language-shell">sudo umount /mnt
 sudo losetup -d /dev/loop0
 </code></pre>
 <p>上面的命令将从挂载点卸载 loop 设备<br />
@@ -410,12 +417,6 @@ sudo losetup -d /dev/loop0
         <div class="article-comment">
             
 
-    
-    
-    
-    
-    
-    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
@@ -427,10 +428,8 @@ sudo losetup -d /dev/loop0
 <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
     <script>
-        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "在磁盘映像文件上安装 Grub 2";
+        let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false,"number":-1,"title":"Article: 在磁盘映像文件上安装 Grub 2"};
         c.id = md5(c.title);
-        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>
@@ -459,6 +458,7 @@ sudo losetup -d /dev/loop0
 </body>
 
 <script>
+hljs.highlightAll();
 $('#goto-top').hide();
 // 页面载入后设置icon
 setTheme(getStorage('currentTheme'));
@@ -493,6 +493,7 @@ $(document).ready(function() {
     });
 
     Fancybox.bind(".container img");
+    Fancybox.bind('[data-fancybox]');
 });
 </script>
 </html>

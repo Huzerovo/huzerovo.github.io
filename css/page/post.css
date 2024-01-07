@@ -1,11 +1,11 @@
 /* 目录设置 */
 #article-toc {
   position: fixed;
-  top: 40px;
   left: 5%;
   max-width: 15%;
   height: 80vh;
   overflow: auto;
+  padding-right: 8px;
 }
 #article-toc .toc {
   padding: 0;
@@ -21,6 +21,9 @@
   display: block;
   margin: 6px 0;
   text-decoration: none;
+}
+#article-toc .toc-level-2 > a.toc-link ::before {
+  content: "# ";
 }
 #article-toc::-webkit-scrollbar {
   width: 1px;

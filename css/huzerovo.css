@@ -261,11 +261,11 @@ body main.container .category-list-item .category-list-child {
 }
 body main.container #article-toc {
   position: fixed;
-  top: 40px;
   left: 5%;
   max-width: 15%;
   height: 80vh;
   overflow: auto;
+  padding-right: 8px;
 }
 body main.container #article-toc .toc {
   padding: 0;
@@ -281,6 +281,9 @@ body main.container #article-toc .toc-link {
   display: block;
   margin: 6px 0;
   text-decoration: none;
+}
+body main.container #article-toc .toc-level-2 > a.toc-link ::before {
+  content: "# ";
 }
 body main.container #article-toc::-webkit-scrollbar {
   width: 1px;

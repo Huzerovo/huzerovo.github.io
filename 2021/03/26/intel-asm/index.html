@@ -1,42 +1,41 @@
 
 <!DOCTYPE html>
-<html  id="root" lang="zh-CN ">
+<html id="root" lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
-    <meta name="generator" content="Hexo" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Intel x86 汇编语言 - 狐言狐语 | 记录一段回忆</title>
+
+    <meta name="generator" content="Hexo 7.0.0">
+    <meta name="description" content="文章参考自x86 Assembly Guide 这篇文章只是个人的理解翻译，方便日后参考使用 详情请参见原文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intel x86 汇编语言">
+<meta property="og:url" content="https://huzerovo.github.io/2021/03/26/intel-asm/">
+<meta property="og:site_name" content="狐灵">
+<meta property="og:description" content="文章参考自x86 Assembly Guide 这篇文章只是个人的理解翻译，方便日后参考使用 详情请参见原文">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-26T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-05T04:00:00.000Z">
+<meta property="article:author" content="狐zerOAO">
+<meta property="article:tag" content="汇编">
+<meta name="twitter:card" content="summary">
 
     
         <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
     
 
-    
-    
-    <title> Intel x86 汇编语言 - 狐言狐语 | 记录一段回忆 </title>
-    
-
-    
-    
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
-
-
-    
+    <!-- jQuery -->
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
-    
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-
-
-    
+    <!-- fancybox -->
     
         
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
@@ -46,15 +45,25 @@
 
     
 
+    <!-- Bootstrap icons -->
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    <!-- Font awesome -->
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
     
     
+        <!-- highlight.js -->
         
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-        <script>hljs.highlightAll();</script>
     
 
     
@@ -89,9 +98,6 @@
 
 <body>
     
-
-
-
 
 
 
@@ -150,27 +156,27 @@
 
         
         <div class="topbar-icon-buttons">
+            <!-- social link -->
             
                 
                 
-                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
-                    <i class="bi bi-github"></i>
-                </a>
+                <a class="icon-button"  title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO"><i class="bi bi-github"></i></a>
                 
             
+
             
-            <a class="icon-button" title="订阅" href="/atom.xml" download="">
-                <i class="bi bi-rss-fill"></i>
-            </a>
+                <!-- search link -->
+                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
             
-            <a id="btn-switch-theme" class="icon-button" title="切换主题">
-                <i class="bi bi-sun"></i>
-            </a>
+
+            <!-- change theme btn -->
+            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+
             
-            <a id="btn-search" class="icon-button" title="搜索" href="/search">
-                <i class="bi bi-search"></i>
-            </a>
+                <!-- feed link -->
+                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
             
+
         </div>
     </div>
 </header>
@@ -250,7 +256,7 @@
 <p>现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据<br />
 <code>mov</code> 指令有两个参数，第一个参数为目的地，第二个是数据源</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址
                                 ; 将内存地址中的数据存入EAX
 
@@ -267,7 +273,7 @@ mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 EBX 中的数
                                 ; 将内存地址中的数据存入EDX
 </code></pre>
 <p>注意，以下语法是 <em><strong>错误的</strong></em></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, [ebx - ecx]            ; 寄存器间只能相加
 mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 </code></pre>
@@ -279,7 +285,7 @@ mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 <code>DW</code>(declare word)可以声明 2 字节的数据
 <code>DD</code>(declare dobute word)可以声明 4 字节的数据</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 .DATA
     var     DB  64      ; 声明一个 1 字节，名为 var，值为 64 的数据
     var2    DB  ?       ; 声明一个 1 字节，名为 var2，值未初始化的数据
@@ -295,7 +301,7 @@ mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 <code>WORD PTR</code> 指定 2 字节大小<br />
 <code>DWORD PTR</code> 指定 4 字节大小</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     BYTE PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 1 字节
 mov     WORD PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 2 字节
 mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 4 字节
@@ -306,7 +312,7 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 数组可以通过 <em>列出连续的数据</em> 来声明，或者通过 <code>DUP</code> 指令 <em>创建连续的数据</em> 进行声明<br />
 <code>DUP</code> 指令告诉汇编器以指定的次数重复地列出一个数据，例如 <code>3 DUP(2)</code> 意味着 <code>2, 2, 2</code></p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 .DATA
     Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组
                             ; 值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3
@@ -337,7 +343,7 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 <code>mov</code> 指令将它第二个操作数声明的数据复制到第一个操作数指定的位置<br />
 这个位置可以是内存或者寄存器</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     &lt;reg&gt;, &lt;reg&gt;
 mov     &lt;reg&gt;, &lt;mem&gt;
 mov     &lt;mem&gt;, &lt;reg&gt;
@@ -345,7 +351,7 @@ mov     &lt;reg&gt;, &lt;con&gt;
 mov     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, ebx                ; 将 ebx 中的数据复制到 eax
 mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量
 </code></pre>
@@ -355,13 +361,13 @@ mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量
 <code>push</code> 首先将 <code>ESP</code> 中的数据减去 4，随后将操作数存储到 <code>ESP</code> 指向的内存地址中<br />
 注：栈里的数据存储在内存中，寄存器 <code>ESP</code> 存储的是内存地址，栈在内存中从高地址向低地址增长</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    &lt;reg32&gt;
 push    &lt;mem&gt;
 push    &lt;con32&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    eax     ; 将 EAX 中的数据压入栈
 push    [var]   ; 将名为 var 的变量的值压入栈
 </code></pre>
@@ -371,12 +377,12 @@ push    [var]   ; 将名为 var 的变量的值压入栈
 <code>pop</code> 首先读取位于由 <code>ESP</code> 给出的内存地址中的值，将其存入到操作数指定的位置<br />
 随后将 <code>ESP</code> 的值加 4</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 pop     &lt;reg32&gt;
 pop     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 pop     edi     ; 将栈顶数据弹出，存储到 EDI
 pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址中
 </code></pre>
@@ -386,11 +392,11 @@ pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址
 <code>lea</code> 与 <code>mov</code> 并不同，<code>mov</code> 是将第二操作数给定的数据存入第一操作数给定的位置<br />
 而 <code>lea</code> 是将数据的地址存入第一操作数给定的寄存器</p>
 <p><strong>语法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 lea     &lt;reg32&gt;, &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 lea     edi, [ebx + 4*esi]      ; EBX + 4*ESI 的值作为地址存入 EDI
 lea     eax, [var]              ; var 代表的地址存入 EAX
 </code></pre>
@@ -399,7 +405,7 @@ lea     eax, [var]              ; var 代表的地址存入 EAX
 <p><code>add</code> 指令将它的两个操作数的值相加，并将结果存储到第一个操作数指定的位置中<br />
 注意，操作数可以是两个寄存器，但最多只能有一个是内存地址</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 add     &lt;reg&gt;, &lt;reg&gt;
 add     &lt;reg&gt;, &lt;mem&gt;
 add     &lt;mem&gt;, &lt;reg&gt;
@@ -407,14 +413,14 @@ add     &lt;reg&gt;, &lt;con&gt;
 add     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 add     eax, 10                     ; eax = eax + 10
 add     byte ptr [var], 10          ; var = var + 10
 </code></pre>
 <h4 id="sub-%E6%8C%87%E4%BB%A4" tabindex="-1" id="sub-指令"><a class="header-anchor" href="#sub-指令"># </a><code>sub</code> 指令</h4>
 <p>与 <code>add</code> 指令相似，<code>sub</code> 指令将第一个操作数的值减去第二个操作数，结果保存在第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 sub     &lt;reg&gt;, &lt;reg&gt;
 sub     &lt;reg&gt;, &lt;mem&gt;
 sub     &lt;mem&gt;, &lt;reg&gt;
@@ -422,7 +428,7 @@ sub     &lt;reg&gt;, &lt;con&gt;
 sub     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 sub     al, ah      ; AL = AL - AH
 sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX
 </code></pre>
@@ -430,14 +436,14 @@ sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX
 <p><code>inc</code> 指令将操作数的值增加 1 （自增）
 <code>dec</code> 指令将操作数的值减少 1 （自减）</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 inc     &lt;reg&gt;
 inc     &lt;mem&gt;
 dec     &lt;reg&gt;
 dec     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 inc     eax                 ; 将 EAX 中的值自增 1，结果存入 EAX
 dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入 var （代表的地址）
 </code></pre>
@@ -449,14 +455,14 @@ dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入
 <li>带 3 个操作数时，将第 3 个和第 2 个操作数相乘，结果存入第一个操作数处</li>
 </ul>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 imul    &lt;reg32&gt;, &lt;reg32&gt;
 imul    &lt;reg32&gt;, &lt;mem&gt;
 imul    &lt;reg32&gt;, &lt;reg32&gt;, &lt;con&gt;
 imul    &lt;reg32&gt;, &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 imul    eax, [var]      ; 将 var 的值与 EAX 的值相乘，结果存入 EAX
 imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI
 </code></pre>
@@ -465,12 +471,12 @@ imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI
 EDX 中的值作为高四位，EAX 中的值作为低四位<br />
 得到的商存储在 EAX 中，余数存储在 EDX 中</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 idiv    &lt;reg32&gt;
 idiv    &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 idiv    ebx                 ; 将 EBX 中的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
 idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
 </code></pre>
@@ -478,7 +484,7 @@ idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的�
 <p>这些指令分别是将两个操作数进行<em>按位与</em>，<em>按位或</em>，<em>按位异或</em>操作<br />
 得到的结果存在第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 and     &lt;reg&gt;, &lt;reg&gt;
 and     &lt;reg&gt;, &lt;mem&gt;
 and     &lt;mem&gt;, &lt;reg&gt;
@@ -498,30 +504,30 @@ xor     &lt;reg&gt;, &lt;con&gt;
 xor     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 and     EAX, 0fH    ; 只保留 EAX 的低 4 位
 xor     EDX, EDX    ; 将 EDX 所有位置 0
 </code></pre>
 <h4 id="not-%E6%8C%87%E4%BB%A4" tabindex="-1" id="not-指令"><a class="header-anchor" href="#not-指令"># </a><code>not</code> 指令</h4>
 <p>进行按位取反操作</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 not     &lt;reg&gt;
 not     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 not     BYTE PTR [var]      ; 将 var 地址处的值按位取反
 </code></pre>
 <h4 id="neg-%E6%8C%87%E4%BB%A4" tabindex="-1" id="neg-指令"><a class="header-anchor" href="#neg-指令"># </a><code>neg</code> 指令</h4>
 <p>对操作数内容的二进制补码进行按位取反操作</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 neg     &lt;reg&gt;
 neg     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 neg     EAX         ; 将得到 -EAX
 </code></pre>
 <h4 id="shl-shr-%E6%8C%87%E4%BB%A4" tabindex="-1" id="shl-shr-指令"><a class="header-anchor" href="#shl-shr-指令"># </a><code>shl</code> <code>shr</code> 指令</h4>
@@ -530,7 +536,7 @@ neg     EAX         ; 将得到 -EAX
 移动的位数由第二个操作数决定，第二个操作数可以是 8 位常量或者是 CL 寄存器<br />
 若移动位数大于 31，则按照以 32 为模得出的值进行移位</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 shl     &lt;reg&gt;,&lt;con8&gt;
 shl     &lt;mem&gt;,&lt;con8&gt;
 shl     &lt;reg&gt;, CL
@@ -542,7 +548,7 @@ shr     &lt;reg&gt;, CL
 shr     &lt;mem&gt;, CL
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 shl     EAX, 1          ; 将 EAX 乘以 2
 shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值
 </code></pre>
@@ -553,7 +559,7 @@ shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值
 指令寄存器不能被直接更改 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，但可以通过流程控制指令进行更新</p>
 <p>在这里约定一个新的符号 <code>&lt;lable&gt;</code>，它用来表示汇编代码中的一个标签<br />
 如，在下面的代码中：</p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
         mov     ESI, [EBP + 8]
 begin:  xor     ECX, ECX
         mov     EAX, [ESI]
@@ -568,11 +574,11 @@ begin:  xor     ECX, ECX
 <p>无条件跳转指令<br />
 无条件地将程序控制流跳转到操作数指示的位置处</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 jmp     &lt;lable&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 jmp     begin       ; 跳转到 begin 处
 </code></pre>
 <h4 id="%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4" tabindex="-1" id="条件跳转指令"><a class="header-anchor" href="#条件跳转指令"># </a>条件跳转指令</h4>
@@ -585,7 +591,7 @@ jmp     begin       ; 跳转到 begin 处
 例如：<code>jle</code> 和 <code>jne</code> 依赖于 <code>cmp</code> 指令对操作数的执行结果<br />
 因此，条件转移指令通常会和 <code>cmp</code> 指令一起使用</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 je      &lt;lable&gt;     ; 相等时跳转
 jne     &lt;lable&gt;     ; 不相等时跳转
 jz      &lt;lable&gt;     ; 结果为 0 时跳转
@@ -595,7 +601,7 @@ jl      &lt;lable&gt;     ; 小于是跳转
 jle     &lt;lable&gt;     ; 小于或等于时跳转
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     EAX, EBX
 jle     done        ; 如果 EAX 小于或者等于 EBX，则跳转至 done 处
 mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的指令
@@ -605,14 +611,14 @@ mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的�
 <code>cmp</code> 指令等效于 <code>sub</code> 指令，唯一区别则在于<br />
 <code>cmp</code> 指令会将结果丢弃而不是存入第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     &lt;reg&gt;, &lt;reg&gt;
 cmp     &lt;reg&gt;, &lt;mem&gt;
 cmp     &lt;mem&gt;, &lt;reg&gt;
 cmp     &lt;reg&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     DWORD PTR [var], 10
 jeq     loop
 ; 如果 var 的值等于 10，则会跳转到 loop
@@ -626,7 +632,7 @@ jeq     loop
 它首先将在堆栈中的地址弹出，然后无条件跳转到此地址<br />
 子程序返回后则继续执行下一条指令</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 ; call 用法
 call    &lt;lable&gt;
 
@@ -634,7 +640,7 @@ call    &lt;lable&gt;
 ret
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 callme: xor     EAX, EAX
         ret                 ; 返回到调用处
 call    callme              ; 调用 callme
@@ -656,7 +662,7 @@ call    callme              ; 调用 callme
 注意：<br />
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
-<pre><code class="lang-shell">      栈增长方向
+<pre><code class="language-shell">      栈增长方向
 +------------------+
 | saved ESI        | &lt;--- ESP
 +------------------+
@@ -715,7 +721,7 @@ call    callme              ; 调用 callme
 <li>第二个参数是常量 216</li>
 <li>第三个参数是存储在内存地址 <em>var</em> 中的值</li>
 </ul>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    [var]           ; 传递第三个参数
 push    216             ; 传递第二个参数
 push    EAX             ; 传递第一个参数
@@ -741,7 +747,7 @@ ESP 则指向 <em>return address</em> 处</p>
 <ol>
 <li>
 <p>使用下列的指令将 EBP 压入栈，并且将 ESP 的值复制到 EBP</p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push     EBP
 mov      EBP, ESP
 </code></pre>
@@ -821,12 +827,6 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
         <div class="article-comment">
             
 
-    
-    
-    
-    
-    
-    
     <div id="gitalk-container"></div>
     
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.css">
@@ -838,10 +838,8 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
     <script>
-        let c = {"enable":true,"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false};
-        c.title = "Article: " + "Intel x86 汇编语言";
+        let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"HuzerOVO","admin":["HuzerOVO"],"distractionFreeMode":false,"number":-1,"title":"Article: Intel x86 汇编语言"};
         c.id = md5(c.title);
-        c.number = -1;
         let gitalk = new Gitalk(c);
         gitalk.render("gitalk-container");
     </script>
@@ -870,6 +868,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 </body>
 
 <script>
+hljs.highlightAll();
 $('#goto-top').hide();
 // 页面载入后设置icon
 setTheme(getStorage('currentTheme'));
@@ -904,6 +903,7 @@ $(document).ready(function() {
     });
 
     Fancybox.bind(".container img");
+    Fancybox.bind('[data-fancybox]');
 });
 </script>
 </html>

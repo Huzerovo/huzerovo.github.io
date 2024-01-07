@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>开启评论</title>
-    <url>/2023/01/15/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
@@ -45,7 +34,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 <li>
 <p>在配置中的<code>deploy_key</code>其实就是ssh的私匙，
 通过<code>ssh-keygen</code>生成一个就行：</p>
-<pre><code class="lang-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
+<pre><code class="language-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
 </code></pre>
 </li>
 <li>
@@ -57,7 +46,7 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 </li>
 <li>
 <p>配置<code>actions-gh-pages</code>，参考如下：</p>
-<pre><code class="lang-yaml"># 前面的省略，与Hexo教程中的一样
+<pre><code class="language-yaml"># 前面的省略，与Hexo教程中的一样
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
@@ -190,6 +179,17 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       </tags>
   </entry>
   <entry>
+    <title>开启评论</title>
+    <url>/2023/01/15/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>梯度下降算法</title>
     <url>/2021/09/16/gradient-descent/</url>
     <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
@@ -244,7 +244,7 @@ $ \alpha $的值越小，需要进行递减的次数越多，这才能保证得�
 <p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
 则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
 最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
-<pre><code class="lang-python">#!/usr/bin/env python3
+<pre><code class="language-python">#!/usr/bin/env python3
 
 import numpy as np
 
@@ -299,17 +299,17 @@ if __name__ == &quot;__main__&quot;:
 <li>请在了解执行的命令的作用之后再执行操作</li>
 </ol>
 <h3 id="%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6" tabindex="-1" id="使用-dd-创建一个映像文件"><a class="header-anchor" href="#使用-dd-创建一个映像文件"># </a>使用 dd 创建一个映像文件</h3>
-<pre><code class="lang-shell">dd if=/dev/zero of=os.img bs=1M count=20
+<pre><code class="language-shell">dd if=/dev/zero of=os.img bs=1M count=20
 </code></pre>
 <p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
 <h3 id="%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA" tabindex="-1" id="在-os-img-上创建分区"><a class="header-anchor" href="#在-os-img-上创建分区"># </a>在 os.img 上创建分区</h3>
 <p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
 <h4 id="%E4%BD%BF%E7%94%A8-gdisk" tabindex="-1" id="使用-gdisk"><a class="header-anchor" href="#使用-gdisk"># </a>使用 gdisk</h4>
-<pre><code class="lang-shell">gdisk os.img
+<pre><code class="language-shell">gdisk os.img
 </code></pre>
 <p>进入 gdisk 交互界面<br />
 如下所示</p>
-<pre><code class="lang-shell">GPT fdisk (gdisk) version 1.0.8
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
   MBR: not present
@@ -338,7 +338,7 @@ Command (? for help):
 </ul>
 <p>可能会出现一个警告，确认即可</p>
 <p><strong>以下为参考：</strong></p>
-<pre><code class="lang-shell">GPT fdisk (gdisk) version 1.0.8
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
 
 Partition table scan:
   MBR: protective
@@ -394,7 +394,7 @@ run partprobe(8) or kpartx(8)
 The operation has completed successfully.
 </code></pre>
 <h4 id="%E4%BD%BF%E7%94%A8-fdisk" tabindex="-1" id="使用-fdisk"><a class="header-anchor" href="#使用-fdisk"># </a>使用 fdisk</h4>
-<pre><code class="lang-shell">fdisk ./os.img
+<pre><code class="language-shell">fdisk ./os.img
 </code></pre>
 <p>进入 fdisk 交互界面</p>
 <p>输入 <code>g</code> 新建一个 GPT 分区表</p>
@@ -407,7 +407,7 @@ The operation has completed successfully.
 <li>然后输入 <code>4</code> 将分区类型更改为 BIOS Boot</li>
 </ul>
 <p><strong>参考：</strong></p>
-<pre><code class="lang-shell">命令(输入 m 获取帮助)：t
+<pre><code class="language-shell">命令(输入 m 获取帮助)：t
 分区号 (1,2, 默认  2): 1
 分区类型或别名（输入 L 列出所有类型）：4
 
@@ -417,7 +417,7 @@ The operation has completed successfully.
 </code></pre>
 <p>最后输入 <code>w</code> 确认写入文件</p>
 <h3 id="%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87" tabindex="-1" id="将-os-img-挂载为-loop-设备"><a class="header-anchor" href="#将-os-img-挂载为-loop-设备"># </a>将 os.img 挂载为 loop 设备</h3>
-<pre><code class="lang-shell">$ sudo losetup --show -P -f ./os.img
+<pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
 /dev/loop0
 </code></pre>
 <p>命令解释：</p>
@@ -434,14 +434,14 @@ The operation has completed successfully.
 对应的 loop 设备为 <code>/dev/loop0p2</code><br />
 如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
 </blockquote>
-<pre><code class="lang-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
+<pre><code class="language-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
 </code></pre>
 <p>不出意外的话，格式化很快就能完成<br />
 随后挂载分区</p>
 <p>请选择一个没有正在使用的文件夹<br />
 在本文中选择 <code>/mnt</code> 作为挂载点<br />
 这个文件夹在之后会使用到</p>
-<pre><code class="lang-shell">sudo mount /dev/loop0p2 /mnt
+<pre><code class="language-shell">sudo mount /dev/loop0p2 /mnt
 </code></pre>
 <p>没有消息就是最好的消息</p>
 <h3 id="%E5%AE%89%E8%A3%85-grub" tabindex="-1" id="安装-Grub"><a class="header-anchor" href="#安装-Grub"># </a>安装 Grub</h3>
@@ -451,7 +451,7 @@ The operation has completed successfully.
 </blockquote>
 <p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br />
 使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
-<pre><code class="lang-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
+<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
 </code></pre>
 <p>命令解释：</p>
 <ul>
@@ -462,7 +462,7 @@ The operation has completed successfully.
 完成后会提示成功</p>
 <h3 id="%E9%85%8D%E7%BD%AE" tabindex="-1" id="配置"><a class="header-anchor" href="#配置"># </a>配置</h3>
 <p>照着手册随便糊的一个，<s>能用就行</s></p>
-<pre><code class="lang-shell"># Grub 的配置文件
+<pre><code class="language-shell"># Grub 的配置文件
 
 # 设置根分区
 set root='(hd0,gpt2)'
@@ -478,7 +478,7 @@ menuentry EntryName &#123;
 &#125;
 </code></pre>
 <h3 id="%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87" tabindex="-1" id="卸载设备"><a class="header-anchor" href="#卸载设备"># </a>卸载设备</h3>
-<pre><code class="lang-shell">sudo umount /mnt
+<pre><code class="language-shell">sudo umount /mnt
 sudo losetup -d /dev/loop0
 </code></pre>
 <p>上面的命令将从挂载点卸载 loop 设备<br />
@@ -563,7 +563,7 @@ sudo losetup -d /dev/loop0
 <p>现在简单介绍 <code>mov</code> 指令，并使用它在寄存器与内存间传递数据<br />
 <code>mov</code> 指令有两个参数，第一个参数为目的地，第二个是数据源</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址
                                 ; 将内存地址中的数据存入EAX
 
@@ -580,7 +580,7 @@ mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 EBX 中的数
                                 ; 将内存地址中的数据存入EDX
 </code></pre>
 <p>注意，以下语法是 <em><strong>错误的</strong></em></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, [ebx - ecx]            ; 寄存器间只能相加
 mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 </code></pre>
@@ -592,7 +592,7 @@ mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 <code>DW</code>(declare word)可以声明 2 字节的数据
 <code>DD</code>(declare dobute word)可以声明 4 字节的数据</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 .DATA
     var     DB  64      ; 声明一个 1 字节，名为 var，值为 64 的数据
     var2    DB  ?       ; 声明一个 1 字节，名为 var2，值未初始化的数据
@@ -608,7 +608,7 @@ mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
 <code>WORD PTR</code> 指定 2 字节大小<br />
 <code>DWORD PTR</code> 指定 4 字节大小</p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     BYTE PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 1 字节
 mov     WORD PTR    [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 2 字节
 mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存地址中。大小为 4 字节
@@ -619,7 +619,7 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 数组可以通过 <em>列出连续的数据</em> 来声明，或者通过 <code>DUP</code> 指令 <em>创建连续的数据</em> 进行声明<br />
 <code>DUP</code> 指令告诉汇编器以指定的次数重复地列出一个数据，例如 <code>3 DUP(2)</code> 意味着 <code>2, 2, 2</code></p>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 .DATA
     Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组
                             ; 值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3
@@ -650,7 +650,7 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 <code>mov</code> 指令将它第二个操作数声明的数据复制到第一个操作数指定的位置<br />
 这个位置可以是内存或者寄存器</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     &lt;reg&gt;, &lt;reg&gt;
 mov     &lt;reg&gt;, &lt;mem&gt;
 mov     &lt;mem&gt;, &lt;reg&gt;
@@ -658,7 +658,7 @@ mov     &lt;reg&gt;, &lt;con&gt;
 mov     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 mov     eax, ebx                ; 将 ebx 中的数据复制到 eax
 mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量
 </code></pre>
@@ -668,13 +668,13 @@ mov     byte ptr    [var], 5    ; 将 5 赋值给名为 var 的变量
 <code>push</code> 首先将 <code>ESP</code> 中的数据减去 4，随后将操作数存储到 <code>ESP</code> 指向的内存地址中<br />
 注：栈里的数据存储在内存中，寄存器 <code>ESP</code> 存储的是内存地址，栈在内存中从高地址向低地址增长</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    &lt;reg32&gt;
 push    &lt;mem&gt;
 push    &lt;con32&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    eax     ; 将 EAX 中的数据压入栈
 push    [var]   ; 将名为 var 的变量的值压入栈
 </code></pre>
@@ -684,12 +684,12 @@ push    [var]   ; 将名为 var 的变量的值压入栈
 <code>pop</code> 首先读取位于由 <code>ESP</code> 给出的内存地址中的值，将其存入到操作数指定的位置<br />
 随后将 <code>ESP</code> 的值加 4</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 pop     &lt;reg32&gt;
 pop     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 pop     edi     ; 将栈顶数据弹出，存储到 EDI
 pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址中
 </code></pre>
@@ -699,11 +699,11 @@ pop     [ebx]   ; 将栈顶数据弹出，存储到由 EBX 给出的内存地址
 <code>lea</code> 与 <code>mov</code> 并不同，<code>mov</code> 是将第二操作数给定的数据存入第一操作数给定的位置<br />
 而 <code>lea</code> 是将数据的地址存入第一操作数给定的寄存器</p>
 <p><strong>语法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 lea     &lt;reg32&gt;, &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 lea     edi, [ebx + 4*esi]      ; EBX + 4*ESI 的值作为地址存入 EDI
 lea     eax, [var]              ; var 代表的地址存入 EAX
 </code></pre>
@@ -712,7 +712,7 @@ lea     eax, [var]              ; var 代表的地址存入 EAX
 <p><code>add</code> 指令将它的两个操作数的值相加，并将结果存储到第一个操作数指定的位置中<br />
 注意，操作数可以是两个寄存器，但最多只能有一个是内存地址</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 add     &lt;reg&gt;, &lt;reg&gt;
 add     &lt;reg&gt;, &lt;mem&gt;
 add     &lt;mem&gt;, &lt;reg&gt;
@@ -720,14 +720,14 @@ add     &lt;reg&gt;, &lt;con&gt;
 add     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 add     eax, 10                     ; eax = eax + 10
 add     byte ptr [var], 10          ; var = var + 10
 </code></pre>
 <h4 id="sub-%E6%8C%87%E4%BB%A4" tabindex="-1" id="sub-指令"><a class="header-anchor" href="#sub-指令"># </a><code>sub</code> 指令</h4>
 <p>与 <code>add</code> 指令相似，<code>sub</code> 指令将第一个操作数的值减去第二个操作数，结果保存在第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 sub     &lt;reg&gt;, &lt;reg&gt;
 sub     &lt;reg&gt;, &lt;mem&gt;
 sub     &lt;mem&gt;, &lt;reg&gt;
@@ -735,7 +735,7 @@ sub     &lt;reg&gt;, &lt;con&gt;
 sub     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 sub     al, ah      ; AL = AL - AH
 sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX
 </code></pre>
@@ -743,14 +743,14 @@ sub     eax, 216    ; 将 EAX 中的值减去 216，结果保存在 EAX
 <p><code>inc</code> 指令将操作数的值增加 1 （自增）
 <code>dec</code> 指令将操作数的值减少 1 （自减）</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 inc     &lt;reg&gt;
 inc     &lt;mem&gt;
 dec     &lt;reg&gt;
 dec     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 inc     eax                 ; 将 EAX 中的值自增 1，结果存入 EAX
 dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入 var （代表的地址）
 </code></pre>
@@ -762,14 +762,14 @@ dec     DWORD PTR   [var]   ; 将 var 中的 32 位的值自减 1，结果存入
 <li>带 3 个操作数时，将第 3 个和第 2 个操作数相乘，结果存入第一个操作数处</li>
 </ul>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 imul    &lt;reg32&gt;, &lt;reg32&gt;
 imul    &lt;reg32&gt;, &lt;mem&gt;
 imul    &lt;reg32&gt;, &lt;reg32&gt;, &lt;con&gt;
 imul    &lt;reg32&gt;, &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 imul    eax, [var]      ; 将 var 的值与 EAX 的值相乘，结果存入 EAX
 imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI
 </code></pre>
@@ -778,12 +778,12 @@ imul    esi, edi, 25    ; 将 EDI 的值与 25 相乘，结果存入 ESI
 EDX 中的值作为高四位，EAX 中的值作为低四位<br />
 得到的商存储在 EAX 中，余数存储在 EDX 中</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 idiv    &lt;reg32&gt;
 idiv    &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 idiv    ebx                 ; 将 EBX 中的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
 idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的值除以 EDX:EAX，商存在 EAX，余数存在 EDX
 </code></pre>
@@ -791,7 +791,7 @@ idiv    DWORD PTR [var]     ; 将存在 var 表示内存地址中的 32 位的�
 <p>这些指令分别是将两个操作数进行<em>按位与</em>，<em>按位或</em>，<em>按位异或</em>操作<br />
 得到的结果存在第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 and     &lt;reg&gt;, &lt;reg&gt;
 and     &lt;reg&gt;, &lt;mem&gt;
 and     &lt;mem&gt;, &lt;reg&gt;
@@ -811,30 +811,30 @@ xor     &lt;reg&gt;, &lt;con&gt;
 xor     &lt;mem&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 and     EAX, 0fH    ; 只保留 EAX 的低 4 位
 xor     EDX, EDX    ; 将 EDX 所有位置 0
 </code></pre>
 <h4 id="not-%E6%8C%87%E4%BB%A4" tabindex="-1" id="not-指令"><a class="header-anchor" href="#not-指令"># </a><code>not</code> 指令</h4>
 <p>进行按位取反操作</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 not     &lt;reg&gt;
 not     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 not     BYTE PTR [var]      ; 将 var 地址处的值按位取反
 </code></pre>
 <h4 id="neg-%E6%8C%87%E4%BB%A4" tabindex="-1" id="neg-指令"><a class="header-anchor" href="#neg-指令"># </a><code>neg</code> 指令</h4>
 <p>对操作数内容的二进制补码进行按位取反操作</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 neg     &lt;reg&gt;
 neg     &lt;mem&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 neg     EAX         ; 将得到 -EAX
 </code></pre>
 <h4 id="shl-shr-%E6%8C%87%E4%BB%A4" tabindex="-1" id="shl-shr-指令"><a class="header-anchor" href="#shl-shr-指令"># </a><code>shl</code> <code>shr</code> 指令</h4>
@@ -843,7 +843,7 @@ neg     EAX         ; 将得到 -EAX
 移动的位数由第二个操作数决定，第二个操作数可以是 8 位常量或者是 CL 寄存器<br />
 若移动位数大于 31，则按照以 32 为模得出的值进行移位</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 shl     &lt;reg&gt;,&lt;con8&gt;
 shl     &lt;mem&gt;,&lt;con8&gt;
 shl     &lt;reg&gt;, CL
@@ -855,7 +855,7 @@ shr     &lt;reg&gt;, CL
 shr     &lt;mem&gt;, CL
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 shl     EAX, 1          ; 将 EAX 乘以 2
 shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值
 </code></pre>
@@ -866,7 +866,7 @@ shr     EBX, CL         ; 将 EBX 除以 2n, 其中 n 是 CL 的值
 指令寄存器不能被直接更改 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，但可以通过流程控制指令进行更新</p>
 <p>在这里约定一个新的符号 <code>&lt;lable&gt;</code>，它用来表示汇编代码中的一个标签<br />
 如，在下面的代码中：</p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
         mov     ESI, [EBP + 8]
 begin:  xor     ECX, ECX
         mov     EAX, [ESI]
@@ -881,11 +881,11 @@ begin:  xor     ECX, ECX
 <p>无条件跳转指令<br />
 无条件地将程序控制流跳转到操作数指示的位置处</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 jmp     &lt;lable&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 jmp     begin       ; 跳转到 begin 处
 </code></pre>
 <h4 id="%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4" tabindex="-1" id="条件跳转指令"><a class="header-anchor" href="#条件跳转指令"># </a>条件跳转指令</h4>
@@ -898,7 +898,7 @@ jmp     begin       ; 跳转到 begin 处
 例如：<code>jle</code> 和 <code>jne</code> 依赖于 <code>cmp</code> 指令对操作数的执行结果<br />
 因此，条件转移指令通常会和 <code>cmp</code> 指令一起使用</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 je      &lt;lable&gt;     ; 相等时跳转
 jne     &lt;lable&gt;     ; 不相等时跳转
 jz      &lt;lable&gt;     ; 结果为 0 时跳转
@@ -908,7 +908,7 @@ jl      &lt;lable&gt;     ; 小于是跳转
 jle     &lt;lable&gt;     ; 小于或等于时跳转
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     EAX, EBX
 jle     done        ; 如果 EAX 小于或者等于 EBX，则跳转至 done 处
 mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的指令
@@ -918,14 +918,14 @@ mov     EAX, EBX    ; 否则继续执行下一条指令，也就是这一行的�
 <code>cmp</code> 指令等效于 <code>sub</code> 指令，唯一区别则在于<br />
 <code>cmp</code> 指令会将结果丢弃而不是存入第一个操作数</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     &lt;reg&gt;, &lt;reg&gt;
 cmp     &lt;reg&gt;, &lt;mem&gt;
 cmp     &lt;mem&gt;, &lt;reg&gt;
 cmp     &lt;reg&gt;, &lt;con&gt;
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 cmp     DWORD PTR [var], 10
 jeq     loop
 ; 如果 var 的值等于 10，则会跳转到 loop
@@ -939,7 +939,7 @@ jeq     loop
 它首先将在堆栈中的地址弹出，然后无条件跳转到此地址<br />
 子程序返回后则继续执行下一条指令</p>
 <p><strong>用法：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 ; call 用法
 call    &lt;lable&gt;
 
@@ -947,7 +947,7 @@ call    &lt;lable&gt;
 ret
 </code></pre>
 <p><strong>例子：</strong></p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 callme: xor     EAX, EAX
         ret                 ; 返回到调用处
 call    callme              ; 调用 callme
@@ -969,7 +969,7 @@ call    callme              ; 调用 callme
 注意：<br />
 在调用期间发生的错误会导致严重的程序错误，因为这会使堆栈处于不确定的状态</p>
 <p>示意图：</p>
-<pre><code class="lang-shell">      栈增长方向
+<pre><code class="language-shell">      栈增长方向
 +------------------+
 | saved ESI        | &lt;--- ESP
 +------------------+
@@ -1028,7 +1028,7 @@ call    callme              ; 调用 callme
 <li>第二个参数是常量 216</li>
 <li>第三个参数是存储在内存地址 <em>var</em> 中的值</li>
 </ul>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push    [var]           ; 传递第三个参数
 push    216             ; 传递第二个参数
 push    EAX             ; 传递第一个参数
@@ -1054,7 +1054,7 @@ ESP 则指向 <em>return address</em> 处</p>
 <ol>
 <li>
 <p>使用下列的指令将 EBP 压入栈，并且将 ESP 的值复制到 EBP</p>
-<pre><code class="lang-asm">
+<pre><code class="language-asm">
 push     EBP
 mov      EBP, ESP
 </code></pre>
@@ -1155,7 +1155,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 更难受的是一些数学公式会因为被截断导致不能渲染出来。
 而我又不想自己写函数处理这些文字，于是我决定采用摘要作为显示方式。</p>
 <p>想要使用摘要，只需在文章内这样写：</p>
-<pre><code class="lang-markdown">这一段文字是摘要。
+<pre><code class="language-markdown">这一段文字是摘要。
 
 &lt;!-- more --&gt;
 
@@ -1173,7 +1173,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <p>只需要把文章标题，也就是<code>title</code>设为空字符串就能使用这种样式。</p>
 <h3 id="%E6%97%A0%E5%88%86%E7%B1%BB%E6%96%87%E7%AB%A0" tabindex="-1" id="无分类文章"><a class="header-anchor" href="#无分类文章"># </a>无分类文章</h3>
 <p>在Hexo的配置文件中，设置<code>default_category: uncategorized</code>，
-并<code>hexo new page uncategorized</code>创建页面。</p>
+并使用<code>hexo new page uncategorized</code>创建页面。</p>
 <p>在“分类”页面即可看到“未分类”选项，即可查看所有无分类的文章。</p>
 <h3 id="%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" tabindex="-1" id="带封面文章"><a class="header-anchor" href="#带封面文章"># </a>带封面文章</h3>
 <p>一开始其实是想写个像幻灯片一样布局来着的，
@@ -1185,69 +1185,62 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <p>要为文章添加封面，可以有以下几种方式</p>
 <h4 id="%E5%85%A8%E5%B1%80%E5%B0%81%E9%9D%A2" tabindex="-1" id="全局封面"><a class="header-anchor" href="#全局封面"># </a>全局封面</h4>
 <p>如果需要使用全局封面，需要在主题的配置文件中有如下配置：</p>
-<pre><code class="lang-yml">covers:
+<pre><code class="language-yml">covers:
    - '/covers/cover_1.jpg'
    - '/covers/cover_2.jpg'
    - '/covers/cover_3.jpg'
 </code></pre>
 <p>使用绝对路径<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>填写需要作为封面的图片文件路径。
 并需要在文章内启用：使用<code>cover: true</code>表示此文章使用默认封面。
-如果文章还使用了其他方法指定封面，
+如果文章还使用了<code>photos</code>指定封面，
 那么设置<code>cover: true</code>会将全局封面添加进文章的封面列表。</p>
 <h4 id="%E6%96%87%E7%AB%A0%E4%B8%93%E6%9C%89%E5%B0%81%E9%9D%A2" tabindex="-1" id="文章专有封面"><a class="header-anchor" href="#文章专有封面"># </a>文章专有封面</h4>
 <p>所谓文章专有封面，其实就是使用<strong>文章资源文件夹</strong>下的图片作为封面。</p>
 <p>这个方法需要在Hexo配置文件中启用<code>post_asset_folder</code>，
 这会在创建文章时同时生成一个同名的文件夹，
 把封面图片放入这个文件夹后，在Front matter区域添加：</p>
-<pre><code class="lang-yml">photos:
+<pre><code class="language-yml">photos:
    - pic1.jpg
    - pic2.jpg
    - pic3.jpg
 </code></pre>
 <p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
 <p>这个方法还能使用绝对路径指定不在文章资源文件夹下的文件作为封面：</p>
-<pre><code class="lang-yml">photos:
+<pre><code class="language-yml">photos:
    - pic1.jpg
    - pic2.jpg
    - pic3.jpg
    - /img/pic4.jpg
 </code></pre>
-<p>使用<code>/</code>开始的文件路径会被视作相对与跟目录的绝对路径。</p>
-<h4 id="%E7%9B%B8%E5%86%8C%E9%9B%86%E5%B0%81%E9%9D%A2" tabindex="-1" id="相册集封面"><a class="header-anchor" href="#相册集封面"># </a>相册集封面</h4>
-<p>如果不希望启用<code>post_asset_folder</code>，那就可以选择某个文件夹作为“相册”用于存放封面。
-并指明需要作为封面的文件。
-在Front matter中添加：</p>
-<pre><code class="lang-yml">gallery: gallery
-photos:
-   - pic1.jpg
-   - pic2.png
-</code></pre>
-<p>其中<code>gallery</code>可以是多级的路径，如：</p>
-<pre><code class="lang-yml">gallery: 'gallery/sub'
-photos:
-   - pic1.jpg
-</code></pre>
-<p>这将会选择博客根目录下的文件夹<code>gallery</code>或者<code>gallery/sub</code>内的文件作为封面。
-如果希望直接使用根目录存储封面，请指定<code>gallery: '/'</code>，空字符串会被忽略。
-同样的，指定多个文件将会随机选取。这个方式与上一个方式是互斥的，不可混用。</p>
-<p>和上一个方法一样，可以使用绝对路径指定不在相册集中的图片作为封面。</p>
-<pre><code class="lang-yml">gallery: 'gallery/sub'
-photos:
-   - pic1.jpg
-   - /img/pic2.jpg
-</code></pre>
+<p>使用<code>/</code>开始的文件路径，表示从网站根目录开始的绝对路径。</p>
+<blockquote>
+<p>比如：网站地址为<code>https://blog.example.com/</code>，
+则表示<code>https://blog.example.com/img/pic4.jpg</code>。
+网站地址为<code>https://example.com/blog/</code>，
+则表示<code>https://example.com/blog/img/pic4.jpg</code>。</p>
+</blockquote>
 <h4 id="%E5%A4%96%E9%83%A8%E5%9B%BE%E7%89%87" tabindex="-1" id="外部图片"><a class="header-anchor" href="#外部图片"># </a>外部图片</h4>
 <p>如果不希望在博客上存储封面，还可以从网络上获取。在Front matter区域添加：</p>
-<pre><code class="lang-yml">photos:
+<pre><code class="language-yml">photos:
    - https://via.placeholder.com/350x150.jpg
 </code></pre>
 <p>这样子就会从网络中获取封面。这个方式可以和之前的两种方式中的任意一个混合使用。</p>
+<h4 id="%E7%9B%B8%E5%86%8C%E9%9B%86" tabindex="-1" id="相册集"><a class="header-anchor" href="#相册集"># </a>相册集</h4>
+<p>相册集可以看作是一种特殊的文章，它主要用于展示一些照片。
+与普通的带封面的文章不同，相册集能够展示所有配置的照片，
+而不是使用随机一张作为封面。
+在使用<code>photos</code>配置好希望展示的图片后，
+使用<code>gallery: true</code>启用相册集。</p>
+<blockquote>
+<p>你也可以同时启用<code>cover: true</code>，这将会展示网站配置的所有默认封面。
+同样，也能够使用网络图片。</p>
+</blockquote>
 <h3 id="%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0" tabindex="-1" id="外部文章"><a class="header-anchor" href="#外部文章"># </a>外部文章</h3>
 <p>外部文章指的是不在自己博客网站上的文章，也可以是一般的其他网页。
 外部文章有两种：一种是带标题的，另一种是不带标题的。</p>
 <p>带标题的在显示时会显示标题，而不带标题的则直接显示链接。
 使用方式如下：</p>
-<pre><code class="lang-yml"># 标题指定了就是带标题的，置空就是无标题的
+<pre><code class="language-yml"># 标题指定了就是带标题的，置空就是无标题的
 title: ''
 link: https://www.google.com
 </code></pre>
@@ -1256,12 +1249,12 @@ link: https://www.google.com
 <p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，再加个文章置顶也无所谓，
 于是就写了。</p>
 <p>在文章Front matter区域添加如下字段即可：</p>
-<pre><code class="lang-yml">pin: true
+<pre><code class="language-yml">pin: true
 </code></pre>
 <p>如果有多个置顶的文章，文章将会按照更新日期排序。</p>
 <h3 id="%E8%BF%98%E5%9C%A8%E5%AE%8C%E5%96%84%E7%9A%84%E6%96%87%E7%AB%A0" tabindex="-1" id="还在完善的文章"><a class="header-anchor" href="#还在完善的文章"># </a>还在完善的文章</h3>
 <p>先说怎么用吧，在文章Front matter区域添加：</p>
-<pre><code class="lang-yml">todo: true
+<pre><code class="language-yml">todo: true
 todo_msg: &quot;&quot;
 </code></pre>
 <p>这样就行了，在文章列表中就能看到效果了。顺便解释一下：
@@ -1281,15 +1274,46 @@ todo_msg: &quot;&quot;
 这就是这个功能实现的由来了。<s>实际上<code>todo_msg</code>还是在写这一小节时想出来的。</s></p>
 <h2 id="%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD" tabindex="-1" id="一些功能"><a class="header-anchor" href="#一些功能"># </a>一些功能</h2>
 <h3 id="%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="代码高亮"><a class="header-anchor" href="#代码高亮"># </a>代码高亮</h3>
-<p>由于Hexo内置的代码高亮为了支持行号，使用<code>table</code>以某种奇奇怪怪的方式实现了行号的显示。
-这导致代码会被文章原本的<code>table</code>样式影响到，因此只能强制使用暗色模式避免CSS样式的覆盖。</p>
-<p>如果需要使用Hexo内置的代码高亮，需要启用Hexo配置中的这两个选项：</p>
-<pre><code class="lang-yml">highlight:
+<h4 id="%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E6%8F%90%E4%BE%9B%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="使用主题提供的代码高亮"><a class="header-anchor" href="#使用主题提供的代码高亮"># </a>使用主题提供的代码高亮</h4>
+<ol>
+<li>
+<p>使用<a href="https://github.com/hexojs/hexo-renderer-markdown-it">hexo-renderer-markdown-it</a>
+进行markdown文件渲染。</p>
+</li>
+<li>
+<p>在<code>_config.yaml</code>中配置<a href="https://github.com/hexojs/hexo-renderer-markdown-it#options">hexo-renderer-markdown-it 选项</a></p>
+</li>
+<li>
+<p>在主题的配置文件中启用代码高亮</p>
+<pre><code class="language-yaml">hljs:
+  enable: true
+  # highlight.js CDN
+  js: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js'
+  # choose from https://github.com/highlightjs/highlight.js/tree/main/src/styles
+  css:
+    light: 'css/github.min.css'
+    dark: 'css/github-dark.min.css'
+</code></pre>
+</li>
+</ol>
+<p>主题配置中，js和CSS资源可使用CDN或者本地资源
+（上面的参考配置中，CSS使用的即本地资源）。</p>
+<h4 id="%E4%BD%BF%E7%94%A8hexo%E5%86%85%E7%BD%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="使用Hexo内置的代码高亮"><a class="header-anchor" href="#使用Hexo内置的代码高亮"># </a>使用Hexo内置的代码高亮</h4>
+<blockquote>
+<p>目前主题对Hexo内置代码高亮的样式尚未实现，
+仅支持使用highlght.js在浏览器进行渲染。
+禁用Hexo内置高亮请参考：<a href="https://hexo.io/docs/syntax-highlight.html#Disabled">https://hexo.io/docs/syntax-highlight.html#Disabled</a>。</p>
+</blockquote>
+<p><s>如果需要使用Hexo内置的代码高亮，需要启用Hexo配置中的这两个选项：</s></p>
+<blockquote>
+<p>注：这是旧版本的Hexo开启内置高亮的方式。</p>
+<pre><code class="language-yaml">highlight:
    enable: true
    hljs: true
 </code></pre>
-<p>还需要注意的一点是，如果同时启用了主题的高亮与Hexo内置的高亮，
-那么将会优先使用Hexo内置的代码高亮样式。</p>
+</blockquote>
+<p><s>还需要注意的一点是，如果同时启用了主题的高亮与Hexo内置的高亮，
+那么将会优先使用Hexo内置的代码高亮样式。</s></p>
 <h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1" id="搜索"><a class="header-anchor" href="#搜索"># </a>搜索</h3>
 <blockquote>
 <p>搜索功能可能还会继续完善。</p>
@@ -1301,11 +1325,11 @@ todo_msg: &quot;&quot;
 <h5 id="%E8%AF%AD%E6%B3%95" tabindex="-1" id="语法"><a class="header-anchor" href="#语法"># </a>语法</h5>
 <ul>
 <li><code>key1 + key2</code>将会搜索包含<code>key1</code>或者<code>key2</code>的文章，它们的并集作为搜索结果。</li>
-<li><code>key1 &amp; key2</code>将会搜索同时包含这两个关键字的文章。</li>
+<li><code>key1 &amp; key2</code>将会搜索同时包含<code>key1</code>和<code>key2</code>的文章。</li>
 </ul>
 <h5 id="%E4%BC%98%E5%85%88%E7%BA%A7" tabindex="-1" id="优先级"><a class="header-anchor" href="#优先级"># </a>优先级</h5>
-<p><code>+</code>符号优先级最高，其次是<code>&amp;</code>，这意味着<code>key1 &amp; key2 + key3</code>将会搜索<strong>同时包含key1和key2的文章</strong>以及<strong>包含key3的文章</strong>，
-搜索结果为它们的并集。</p>
+<p><code>&amp;</code>符号优先级最高，其次是<code>+</code>，这意味着<code>key1 + key2 &amp; key3</code>的结果为：
+<strong>包含key1的文章</strong>，以及<strong>同时包含key2和key3的文章</strong>。</p>
 <blockquote>
 <p>注：这个优先级规则可能会考虑更改，比如添加<code>()</code>来改变优先级。</p>
 </blockquote>
@@ -1316,16 +1340,16 @@ todo_msg: &quot;&quot;
 <p>评论系统使用<a href="https://github.com/gitalk/gitalk">Gitalk</a>，可以在主题的配置文件中选择开启，
 在启用评论系统的情况下，还应该<strong>在文章中配置开启</strong>。</p>
 <p>在配置文件中：</p>
-<pre><code class="lang-yml">gitalk:
+<pre><code class="language-yml">gitalk:
    enable: true
 </code></pre>
 <p>在文章中：</p>
-<pre><code class="lang-yml">gitalk: true
+<pre><code class="language-yml">gitalk: true
 </code></pre>
 <p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
 <h3 id="%E5%A4%96%E9%93%BE" tabindex="-1" id="外链"><a class="header-anchor" href="#外链"># </a>外链</h3>
 <p>你可以在顶栏添加一些社交网页链接。就像这样子：</p>
-<pre><code class="lang-yaml">links:
+<pre><code class="language-yaml">links:
    github:
       title: 'Github'
       class: 'bi bi-github'
@@ -1333,7 +1357,7 @@ todo_msg: &quot;&quot;
 </code></pre>
 <p>主题主要使用<strong>Bootstrap Icons</strong>，但主题也使用<strong>Font Awesome</strong>作为图标的补充。</p>
 <p>比如在Bootstrap icons中，没有BiliBili的图标，但在Font awesome中有，于是就可以这样子：</p>
-<pre><code class="lang-yml">links:
+<pre><code class="language-yml">links:
    bilibili:
       title: '哔哩哔哩'
       class: 'fa-brands fa-bilibili'
@@ -1341,15 +1365,8 @@ todo_msg: &quot;&quot;
 </code></pre>
 <p>需要说明的是，<code>class</code>字段根据Bootstrap Icons或者Font Awesome介绍的使用方式填写。</p>
 <h3 id="%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5" tabindex="-1" id="订阅链接"><a class="header-anchor" href="#订阅链接"># </a>订阅链接</h3>
-<p>订阅链接可以使用<code>hexo-generator-feed</code>自动生成，也可以使用自定义的RSS文件。
-如果需要自定义订阅，在主题的配置文件中配置如下选项：</p>
-<pre><code class="lang-yml">rss:
-   enable: true
-   path: atom.xml
-</code></pre>
-<p>主题配置的订阅的优先级高于博客的配置。
-如果你同时使用了hexo-generator-feed和自定义的RSS，
-有hexo-generator-feed生成的订阅将会被忽略。</p>
+<p>订阅链接可以使用<code>hexo-generator-feed</code>自动生成。</p>
+<p>配置请参考：<a href="https://github.com/hexojs/hexo-generator-feed#options">hexo-generator-feed</a></p>
 <h3 id="%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" tabindex="-1" id="电子邮件"><a class="header-anchor" href="#电子邮件"># </a>电子邮件</h3>
 <p>字段<code>email</code>可以设置你的电子邮件，如果设置了电子邮件地址，
 那么在网页的footer区域会显示一个链接用于向你发送邮件。</p>
@@ -1374,7 +1391,7 @@ todo_msg: &quot;&quot;
       +--avatar.jpg
 </code></pre>
 <p>此时index.md文件的Front matter区域可以这样设置：</p>
-<pre><code class="lang-yml"># 在关于页面，你可以使用一些文章布局的Front matter变量
+<pre><code class="language-yml"># 在关于页面，你可以使用一些文章布局的Front matter变量
 # 比如gitalk、katex
 gitalk: false
 katex: false
@@ -1386,7 +1403,7 @@ avatar_size: normal
 <p>对于变量<code>avatar_size</code>，主题内置了3个预设值：<code>small</code>、<code>normal</code>（这是默认值）以及<code>large</code>。
 对应头像大小：64px，125px和256px。
 此外你还可以设定一个数字指定头像大小，单位为<code>px</code>，如：</p>
-<pre><code class="lang-yml">avatar_size: 120
+<pre><code class="language-yml">avatar_size: 120
 </code></pre>
 <blockquote>
 <p>需要注意的是，头像文件<strong>只能</strong>放在about文件夹里，并且不能指定多个头像。</p>
@@ -1394,8 +1411,8 @@ avatar_size: normal
 </blockquote>
 <h2 id="front-matter%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C" tabindex="-1" id="Front-matter参考手册"><a class="header-anchor" href="#Front-matter参考手册"># </a>Front matter参考手册</h2>
 <p>这里列出主题使用到的，可能会影响文章布局的变量作为参考：</p>
-<pre><code class="lang-yml">title: 我的主题介绍
-date: 2023-07-17
+<pre><code class="language-yml">title: 我的主题介绍
+date: 2023-07-17 12:00:00
 updated: 2023-12-31 09:17:43
 toc: true
 katex: false
@@ -1405,7 +1422,8 @@ todo: true
 todo_msg: 主题仍在开发中
 #excerpt: 主题仍在持续开发中 =v= # 这个会覆盖文章内摘要
 pin: true
-gallery: gallery
+cover: false
+gallery: false
 photos:
 - id=89645004_p0.png
 categories:
@@ -1417,7 +1435,7 @@ tags:
 #link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/
 </code></pre>
 <p>对于“关于”页面则有：</p>
-<pre><code class="lang-yml">gitalk: false
+<pre><code class="language-yml">gitalk: false
 #issue_id: 45
 katex: false
 avatar: avatar.jpg
@@ -1464,7 +1482,7 @@ avatar_size: normal
 <ol>
 <li>
 <p>用<code>=</code>表示一级标题，或<code>-</code>表示二级标题。这个方式不常见，因为这些符号还有其他用法。</p>
-<pre><code class="lang-markdown">一级标题
+<pre><code class="language-markdown">一级标题
 ===
 
 二级标题
@@ -1480,7 +1498,7 @@ avatar_size: normal
 <li>
 <p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
 一般使用这个方法。</p>
-<pre><code class="lang-markdown"># 一级标题
+<pre><code class="language-markdown"># 一级标题
 ## 二级标题
 ### 三级标题
 #### 四级标题
@@ -1503,7 +1521,7 @@ avatar_size: normal
 <p>用 <code>_</code> 或 <code>*</code> 包裹要标注的一段文字，一个 <code>_</code> 或 <code>*</code> 表示斜体，
 两个表示粗体，三个表示斜粗体。</p>
 <p>我一般使用<code>*</code>。</p>
-<pre><code class="lang-markdown">*斜体*
+<pre><code class="language-markdown">*斜体*
 _斜体_
 
 **粗体**
@@ -1523,7 +1541,7 @@ ___斜粗体___
 中间可以有空格，<s>但加空格干什么呢？</s>。</p>
 <p><strong>注: <code>-</code> 用作分割线时，上一行最好为空行，有文字的话会识别为二级标题。</strong></p>
 <p>我一般使用<code>-</code>作为分割线。</p>
-<pre><code class="lang-markdown">* * *
+<pre><code class="language-markdown">* * *
 - - -
 _ _ _
 
@@ -1543,12 +1561,12 @@ ___
 <h2 id="%E8%BF%99%E4%B8%AA%E4%BC%9A%E8%A2%AB%E5%BD%93%E4%BD%9C%E6%A0%87%E9%A2%98" tabindex="-1" id="这个会被当作标题"><a class="header-anchor" href="#这个会被当作标题"># </a>这个会被当作标题</h2>
 <h2 id="%E5%88%A0%E9%99%A4%E7%BA%BF" tabindex="-1" id="删除线"><a class="header-anchor" href="#删除线"># </a>删除线</h2>
 <p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
-<pre><code class="lang-markdown">~~错误的话~~
+<pre><code class="language-markdown">~~错误的话~~
 </code></pre>
 <p><s>错误的话</s></p>
 <h2 id="%E8%84%9A%E6%B3%A8" tabindex="-1" id="脚注"><a class="header-anchor" href="#脚注"># </a>脚注</h2>
 <p>可以对文本进行补充说明，也可以说是注释。</p>
-<pre><code class="lang-markdown">后面的是脚注[^who]
+<pre><code class="language-markdown">后面的是脚注[^who]
 [^who]: Me!
 </code></pre>
 <p>后面的是脚注 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
@@ -1558,7 +1576,7 @@ ___
 <h3 id="%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8" tabindex="-1" id="有序列表"><a class="header-anchor" href="#有序列表"># </a>有序列表</h3>
 <p>在一行的首位，数字加<code>.</code>标记，如<code>1.</code>，后接空格，再接列表项即可。</p>
 <p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。<s>谁会用乱序数字当有序列表啊。</s></p>
-<pre><code class="lang-markdown">1. 第一项
+<pre><code class="language-markdown">1. 第一项
 
 2. 第二项，
    接在后面的文本。
@@ -1591,7 +1609,7 @@ ___
 <p>与有序列表类似，改用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记，可以混用。
 注: 实际显示效果可能因主题渲染不同而产生差异</p>
 <p>我一般使用<code>-</code>。</p>
-<pre><code class="lang-markdown">* 第一项
+<pre><code class="language-markdown">* 第一项
 * 第二项
 
 + 第一项
@@ -1614,7 +1632,7 @@ ___
 </ul>
 <h2 id="%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97" tabindex="-1" id="列表嵌套"><a class="header-anchor" href="#列表嵌套"># </a>列表嵌套</h2>
 <p>有序列表与无序列表可以相互嵌套。</p>
-<pre><code class="lang-markdown">1. aaa
+<pre><code class="language-markdown">1. aaa
    - 第一个子项
       1. aaa
       2. bbb
@@ -1644,14 +1662,14 @@ ___
 <p>用 <code>&gt;</code> 标记，并在后面紧接一个空格
 区块里可以嵌套区块(见“区块嵌套”)，列表(“见区块与列表相互嵌套”)等
 注意都要接空格</p>
-<pre><code class="lang-markdown">&gt; 区块
+<pre><code class="language-markdown">&gt; 区块
 </code></pre>
 <blockquote>
 <p>区块</p>
 </blockquote>
 <h2 id="%E5%8C%BA%E5%9D%97%E5%B5%8C%E5%A5%97" tabindex="-1" id="区块嵌套"><a class="header-anchor" href="#区块嵌套"># </a>区块嵌套</h2>
 <p>区块可以嵌套区块</p>
-<pre><code class="lang-markdown">&gt; 第一层
+<pre><code class="language-markdown">&gt; 第一层
 &gt; &gt; 第二层
 &gt; &gt; &gt; 第三层
 </code></pre>
@@ -1667,7 +1685,7 @@ ___
 <h2 id="%E5%8C%BA%E5%9D%97%E4%B8%8E%E5%88%97%E8%A1%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E5%B5%8C%E5%A5%97" tabindex="-1" id="区块与列表的相互嵌套"><a class="header-anchor" href="#区块与列表的相互嵌套"># </a>区块与列表的相互嵌套</h2>
 <p>区块可以与列表相互嵌套</p>
 <p>区块里带列表：</p>
-<pre><code class="lang-markdown">&gt; 1. 父级
+<pre><code class="language-markdown">&gt; 1. 父级
 &gt;    - 子级1
 &gt;    - 子集2
 </code></pre>
@@ -1682,7 +1700,7 @@ ___
 </ol>
 </blockquote>
 <p>列表里带区块：</p>
-<pre><code class="lang-markdown">- 第一项
+<pre><code class="language-markdown">- 第一项
    &gt; 区块
 </code></pre>
 <ul>
@@ -1695,13 +1713,13 @@ ___
 <h2 id="%E4%BB%A3%E7%A0%81" tabindex="-1" id="代码"><a class="header-anchor" href="#代码"># </a>代码</h2>
 <h3 id="%E5%9C%A8%E6%AE%B5%E8%90%BD%E4%B8%8A" tabindex="-1" id="在段落上"><a class="header-anchor" href="#在段落上"># </a>在段落上</h3>
 <p>在段落上嵌入的代码，用反引号包裹代码。</p>
-<pre><code class="lang-markdown">C语言入口函数:`main()`
+<pre><code class="language-markdown">C语言入口函数:`main()`
 </code></pre>
 <p>C语言入口函数:<code>main()</code></p>
 <h3 id="%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97" tabindex="-1" id="代码区块"><a class="header-anchor" href="#代码区块"># </a>代码区块</h3>
 <p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
 这里由于渲染原因，在反引号前加了<code>\</code>避免样例被渲染。</p>
-<pre><code class="lang-markdown">\```c
+<pre><code class="language-markdown">\```c
 #include &lt;stdio.h&gt;
 int main()
 &#123;
@@ -1710,7 +1728,7 @@ int main()
 &#125;
 \```
 </code></pre>
-<pre><code class="lang-c">#include &lt;stdio.h&gt;
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 int main()
 &#123;
     printf(&quot;Hello world&quot;);
@@ -1719,7 +1737,7 @@ int main()
 </code></pre>
 <p>还有一个不推荐的方法：
 或者用四个空格或者制表符（TAB键）</p>
-<pre><code class="lang-markdown">    #include &lt;stdio.h&gt;
+<pre><code class="language-markdown">    #include &lt;stdio.h&gt;
     int main()
     &#123;
         printf(&quot;Hello world&quot;);
@@ -1734,7 +1752,7 @@ int main()
 &#125;
 </code></pre>
 <h2 id="%E9%93%BE%E6%8E%A5" tabindex="-1" id="链接"><a class="header-anchor" href="#链接"># </a>链接</h2>
-<pre><code class="lang-markdown">[链接名字](链接地址)
+<pre><code class="language-markdown">[链接名字](链接地址)
 或者
 &lt;链接地址&gt;
 
@@ -1746,7 +1764,7 @@ int main()
 <p><a href="https://huzerovo.github.io">ME</a></p>
 <p><a href="https://huzerovo.github.io">https://huzerovo.github.io</a></p>
 <h2 id="%E5%9B%BE%E7%89%87" tabindex="-1" id="图片"><a class="header-anchor" href="#图片"># </a>图片</h2>
-<pre><code class="lang-markdown">![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)
+<pre><code class="language-markdown">![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)
 标题可写可不写
 
 就像这样：
@@ -1760,7 +1778,7 @@ int main()
 <code>-:</code> 整列右对齐
 <code>:-</code> 整列左对齐
 <code>:-:</code> 整列居中对齐</p>
-<pre><code class="lang-markdown">|表头1|表头2|表头3|
+<pre><code class="language-markdown">|表头1|表头2|表头3|
 |:----|----:|:---:|
 | 靠左| 靠右| 居中|
 | 列1 | 列2 | 列3 |
@@ -1852,7 +1870,7 @@ int main()
 <p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持。</p>
 <h3 id="%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8" tabindex="-1" id="任务列表"><a class="header-anchor" href="#任务列表"># </a>任务列表</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p>
-<pre><code class="lang-markdown">- [x] First
+<pre><code class="language-markdown">- [x] First
 - [ ] Seconde
 - [ ] Next
 </code></pre>
@@ -1863,17 +1881,17 @@ int main()
 </ul>
 <h3 id="%E4%B8%8B%E5%88%92%E7%BA%BF" tabindex="-1" id="下划线"><a class="header-anchor" href="#下划线"># </a>下划线</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p>
-<pre><code class="lang-markdown">++下划线在这里++
+<pre><code class="language-markdown">++下划线在这里++
 </code></pre>
 <p><ins>下划线在这里</ins></p>
 <h3 id="%E8%A1%8C%E5%86%85%E8%84%9A%E6%B3%A8" tabindex="-1" id="行内脚注"><a class="header-anchor" href="#行内脚注"># </a>行内脚注</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p>
-<pre><code class="lang-markdown">这是一个行内脚注^[不需要为脚注命名了]。
+<pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
 </code></pre>
 <p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
 <h3 id="%E7%BC%A9%E5%86%99" tabindex="-1" id="缩写"><a class="header-anchor" href="#缩写"># </a>缩写</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
-<pre><code class="lang-markdown">*[HTML]: Hyper Text Markup Language
+<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
 *[W3C]:  World Wide Web Consortium
 The HTML specification
 is maintained by the W3C.
@@ -1882,12 +1900,12 @@ is maintained by the W3C.
 is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 <h3 id="%E9%AB%98%E4%BA%AE" tabindex="-1" id="高亮"><a class="header-anchor" href="#高亮"># </a>高亮</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
-<pre><code class="lang-markdown">在这一行文字中，==这里==会被高亮。
+<pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
 </code></pre>
 <p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
 <h3 id="%E4%B8%8A%2F%E4%B8%8B%E6%A0%87" tabindex="-1" id="上-下标"><a class="header-anchor" href="#上-下标"># </a>上/下标</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p>
-<pre><code class="lang-markdown">这里有个^上标^
+<pre><code class="language-markdown">这里有个^上标^
 
 而这里有个~下标~
 </code></pre>
@@ -2674,7 +2692,7 @@ $$</p>
 </table>
 <p>我们可以发现，对于2个比特位而言，其汉明权重可以由它2个比特位的高位和低位相加，
 结果就是其对应的汉明权重。我们可以这样实现：</p>
-<pre><code class="lang-c">// 假设n表示汉明权重，x为2比特位的数据
+<pre><code class="language-c">// 假设n表示汉明权重，x为2比特位的数据
 n = x + (x &gt;&gt; 1);
 </code></pre>
 <h3 id="%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B" tabindex="-1" id="逐步前进"><a class="header-anchor" href="#逐步前进"># </a>逐步前进</h3>
@@ -2692,23 +2710,23 @@ n = x + (x &gt;&gt; 1);
 <p>我们知道移位运算符会使用<code>0</code>填充空缺位，因此我们可以使<code>b2</code>恒为<code>0</code>，
 这样即使它被移入了下个数据中，也不会对问题造成影响，
 我们可以使用<code>&amp;</code>运算符轻松地解决这个问题：</p>
-<pre><code class="lang-c">// 我们将4位数据x视为2个2位数据x1与x2，并将每个2位数据的最低位置0
+<pre><code class="language-c">// 我们将4位数据x视为2个2位数据x1与x2，并将每个2位数据的最低位置0
 y = (x &amp; 0b1010) &gt;&gt; 1;
 // 此时z还并不是x的汉明权重
 z = x + y;
 </code></pre>
 <p>在经过上面的计算后，z在高位和低位分别保存了对应2比特位数据的汉明权重。
 现在我们将它们相加：</p>
-<pre><code class="lang-c">// 我们将z视为4位数据，并获取低2位
+<pre><code class="language-c">// 我们将z视为4位数据，并获取低2位
 tmp = z &amp; 0b0011;
 // 低2位与高2位相加，由于右移会将低2位数据丢弃，我们现在可以忽略它
 n = tmp + (z &gt;&gt; 2);
 </code></pre>
 <p>写成一行则是：</p>
-<pre><code class="lang-c">n = (z &amp; 0b0011) + (z &gt;&gt; 2);
+<pre><code class="language-c">n = (z &amp; 0b0011) + (z &gt;&gt; 2);
 </code></pre>
 <p>似乎很熟悉？让我们将其整理一下：</p>
-<pre><code class="lang-c">// 假设x为2比特位的数据
+<pre><code class="language-c">// 假设x为2比特位的数据
 nx = x + (x &gt;&gt; 1);
 // 或者我们写复杂一点
 nx = (x &amp; 0b01) + ((x &amp; 0b10) &gt;&gt; 1); // 注意两次与的掩码不同
@@ -2729,7 +2747,7 @@ nz = (z &amp; 0b0011) + ((z &amp; 0b1100) &gt;&gt; 2);
 <p>我们正在向更高位前进，于是我们的约定也会相应地改变。</p>
 <p>经过前两步的分析，我们可以做出这样的推断：对于一个8比特位，也就是一个字节的数据，
 我们能够通过这样子得到它的汉明权重：</p>
-<pre><code class="lang-c">// x为一字节的数据
+<pre><code class="language-c">// x为一字节的数据
 y = (x &amp; 0b01010101) + ((x &amp; 0b10101010) &gt;&gt; 1); // x对应的4个数据的汉明权重：y3 y2 y1 y0
 z = (y &amp; 0b00110011) + ((y &amp; 0b11001100) &gt;&gt; 2); // z1 = y3 + y2, z0 = y1 + y0
 n = (z &amp; 0x00001111) + ((z &amp; 0b11110000) &gt;&gt; 4); // n = z1 + z0
@@ -2741,7 +2759,7 @@ n = (z &amp; 0x00001111) + ((z &amp; 0b11110000) &gt;&gt; 4); // n = z1 + z0
 随后得到<code>z</code>，在<code>z</code>中存储了<code>y</code>中的2个数据对应的汉明权重，我们再一次地进行计算。
 最后我们得到了原始数据<code>x</code>的汉明权重。
 将上述的代码写成十六进制后：</p>
-<pre><code class="lang-c">// 此处x为一字节的任意数据
+<pre><code class="language-c">// 此处x为一字节的任意数据
 char x = 0xAB;
 char y = (x &amp; 0x55) + ((x &amp; (0xAA)) &gt;&gt; 1);
 char z = (y &amp; 0x33) + ((y &amp; (0xCC)) &gt;&gt; 2);
@@ -2780,7 +2798,7 @@ char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
 之后我们将其逐渐相加，最终得出原始数据的汉明权重。
 对于更高位来说，只不过是将这颗树向上拓展而已，
 于是我们可以直接得出32位数据的汉明权重计算函数：</p>
-<pre><code class="lang-c">#define MASK_1  0x55555555
+<pre><code class="language-c">#define MASK_1  0x55555555
 #define MASK_2  0x33333333
 #define MASK_4  0x0F0F0F0F
 #define MASK_8  0x00FF00FF
@@ -2801,7 +2819,7 @@ unsigned int ones(unsigned int x) &#123;
 <p>在之前我们提到，处于高位的比特位可能会被移入低位，因此需要将其置为<code>0</code>。
 但实际上，我们还可以换一种思维方式：等到它被移入下一位数据后，我们再忽略它。
 于是我们能够得出这样子的方法：</p>
-<pre><code class="lang-c">#define MASK 0x55555555
+<pre><code class="language-c">#define MASK 0x55555555
 x = (x &amp; MASK) + ((x &gt;&gt; 1) &amp; MASK);
 </code></pre>
 <p>代码似乎没有太大变化，但实际上，这使得我们无需使用<code>~</code>运算符对掩码进行取反，
@@ -2871,7 +2889,7 @@ x = (x &amp; MASK) + ((x &gt;&gt; 1) &amp; MASK);
 <p>我们发现什么？倘若我们将<code>a</code>视为数据<code>x</code>，而<code>b</code>视为右移一位之后的数据，
 那么<code>a - b</code>的结果将直接是数据<code>x</code>的汉明权重！
 于是就有一个针对2比特位数据的特殊优化：</p>
-<pre><code class="lang-c">#define MASK 0x55555555
+<pre><code class="language-c">#define MASK 0x55555555
 x = x - ((x &gt;&gt; 1) &amp; MASK);
 </code></pre>
 <p>这使得我们直接省掉了一次<code>&amp;</code>操作，再一次节省了一点宝贵的时间。
@@ -2887,7 +2905,7 @@ x = x - ((x &gt;&gt; 1) &amp; MASK);
 <p>那我们能够在那些情况下忽略掉<code>&amp;</code>操作呢？
 答案是：进行加法后，产生的进位不会越过高位和低位“分界线”。</p>
 <p>让我们慢慢进行分析：</p>
-<pre><code class="lang-c">int x = 0xFFFFFFFF;
+<pre><code class="language-c">int x = 0xFFFFFFFF;
 // 此时x视为16个2比特位
 x -= (x &gt;&gt; 1) &amp; 0x55555555;
 // 此时x视为8个4比特位
@@ -2896,7 +2914,7 @@ printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
 <p>此时x的二进制格式：<code>10'10 ...</code>（<code>'</code>只是用作分隔，便于观察），
 显然，此时x的高位与低位相加会越界：<code>10b + 10b = 01'00b</code>
 因此我们不对它进行优化：</p>
-<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
+<pre><code class="language-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0xAAAAAAAA
 // 此时x视为8个4比特位
 x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
 // 此时x视为4个8比特位
@@ -2907,7 +2925,7 @@ printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
 <code>1000b + 1000b = 10000b</code>，也就是说当汉明权重满足<code>max(高位，低位) &gt;= 8</code>时才可能发生越界。
 而此时，我们拥有的比特位也才只有8个，不可能从更低比特位的数据中获得大于或等于8的汉明权重。
 因此我们可以将<code>&amp;</code>操作推迟：</p>
-<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
+<pre><code class="language-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x44444444
 // 此时x视为4个8比特位
 x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
 // 此时x视为2个16比特位
@@ -2922,7 +2940,7 @@ printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
 能够存储的最大数字远远超过了32位数据所能拥有的最大的汉明权重。
 也就是说，我们或许可以忽略<strong>可能因为进位导致数据独立性被破坏</strong>这个问题。</p>
 <p>那我们就分析一下，是否可以忽略加法后的<code>&amp;</code>操作：</p>
-<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
+<pre><code class="language-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
 // 此时x视为2个16比特位
 x += x &gt;&gt; 8;
 // 此时x视为1个32为比特位
@@ -2931,7 +2949,7 @@ printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
 <p>我们发现，结果虽然发生了进位，但进位仍处于低位，而没有发生越界。
 并且，此时我们存储汉明权重的比特位是16个比特位数据的低8位，
 显然足够我们容纳所有求和的结果。那我们继续：</p>
-<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
+<pre><code class="language-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08100810
 // 此时x视为1个32为比特位
 x += x &gt;&gt; 16;
 // 此时x的最低8位存储的就是汉明权重
@@ -2945,19 +2963,19 @@ printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
 即使是更高位数据，我们求和的结果也不会超过这8个比特位。</p>
 <blockquote>
 <p>题外话，实际上这还能够拓展到64位数据，我们只需要加多一行：</p>
-<pre><code class="lang-c">x += x &gt;&gt; 32;
+<pre><code class="language-c">x += x &gt;&gt; 32;
 </code></pre>
 <p>即可。当然，前面出现的掩码也需要相应地拓展到64位。</p>
 </blockquote>
 <p>最后我们可以这样子得到结果：</p>
-<pre><code class="lang-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
+<pre><code class="language-c">printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08101020
 unsigned int n = x &amp; 0xFF;
 // 或者
 unsigned int n = x &amp; 0x3f;
 </code></pre>
 <h3 id="%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C" tabindex="-1" id="最终结果"><a class="header-anchor" href="#最终结果"># </a>最终结果</h3>
 <p>我们现在将上述的优化都写下来：</p>
-<pre><code class="lang-c">unsigned int ones(unsigned int x) &#123;
+<pre><code class="language-c">unsigned int ones(unsigned int x) &#123;
     x -= (x &gt;&gt; 1) &amp; 0x55555555;
     x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
     x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
@@ -3022,13 +3040,13 @@ unsigned int n = x &amp; 0x3f;
 有个<code>coc#pum#visable()</code>函数，新的调用方式是<code>pumvisable()</code>这样子的。
 而在lua中则应该这样子调用：<code>vim.fn.pumvisable()</code>，
 并且这个函数的返回值似乎返回的是数字，因此在vim中的配置</p>
-<pre><code class="lang-vim">inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
+<pre><code class="language-vim">inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;
     \ pumvisable() ? &quot;\&lt;C-n&gt;&quot; :
     \ &lt;SID&gt;check_back_space() ? &quot;\&lt;TAB&gt;&quot; :
     \ coc#refresh()
 </code></pre>
 <p>在lua中则可以这样子配置</p>
-<pre><code class="lang-lua">local opts = &#123;silent = true, noremap = true, expr = true&#125;
+<pre><code class="language-lua">local opts = &#123;silent = true, noremap = true, expr = true&#125;
 vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, &quot;pumvisable() ? '\&lt;C-n&gt;' : &lt;SID&gt;check_back_space() ? '\&lt;TAB&gt;' : coc#refresh()&quot;, opts)
 -- 这个实际上是直接使用了vim的配置，大部分的配置都可以像这样子进行迁移
 
@@ -3062,7 +3080,7 @@ end, opts)
 <h2 id="%E8%BF%81%E7%A7%BB%E6%8F%92%E4%BB%B6" tabindex="-1" id="迁移插件"><a class="header-anchor" href="#迁移插件"># </a>迁移插件</h2>
 <p>这里只记录如何在lua中使用<code>vim-plug</code>作为插件管理器。<br />
 我使用的方法如下：</p>
-<pre><code class="lang-lua">vim.fn['plug#begin']()
+<pre><code class="language-lua">vim.fn['plug#begin']()
 vim.cmd(&quot;Plug 'example/plug'&quot;)  -- 注意Plug方法后面跟的插件需要带单引号`'`，
                                 -- 因此外围函数使用双引号`&quot;`。
 vim.fn['plug#end']()
@@ -3073,7 +3091,7 @@ vim.fn['plug#end']()
 <p>最后为了能格式化lua的配置文件，使用<a href="https://github.com/sumneko/lua-language-server">sumneko/lua-language-server</a>
 作为LSP服务器，在参考了<a href="https://github.com/neoclide/coc.nvim/wiki/Language-servers#lua">coc的配置例子</a>后，
 使用的配置如下：</p>
-<pre><code class="lang-json">&#123;
+<pre><code class="language-json">&#123;
   &quot;languageserver&quot;: &#123;
     &quot;lua&quot;: &#123;
       &quot;command&quot;: &quot;lua-language-server&quot;,
@@ -3587,7 +3605,7 @@ $$</p>
 <h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" tabindex="-1" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库"># </a>使用 RPi.GPIO 库</h4>
 <p>参考<a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
 <h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" tabindex="-1" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口"># </a>导入 GPIO 包并初始化 GPIO 接口</h5>
-<pre><code class="lang-python">import RPi.GPIO as GPIO
+<pre><code class="language-python">import RPi.GPIO as GPIO
 
 # 使用编号 18 的 GPIO 接口
 pin = 18
@@ -3602,7 +3620,7 @@ GPIO.setwarnings(False)
 GPIO.setup(pin, GPIO.OUT, initial=False)
 </code></pre>
 <h5 id="%E5%88%9B%E5%BB%BA-pwm-%E5%AE%9E%E4%BE%8B" tabindex="-1" id="创建-PWM-实例"><a class="header-anchor" href="#创建-PWM-实例"># </a>创建 PWM 实例</h5>
-<pre><code class="lang-python"># 创建实例
+<pre><code class="language-python"># 创建实例
 hz = 50
 p = GPIO.PWM(pin, hz)
 
@@ -3632,7 +3650,7 @@ GPIO.cleanup()
 同时控制多个舵机时，不同接口还会产生干扰。</p>
 <h5 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h5>
 <p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
-<pre><code class="lang-python">p.start(dc)
+<pre><code class="language-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
   dc = i * hz * 0.1
@@ -3643,7 +3661,7 @@ p.stop()
 <p>但这种方法并不能解决在空闲时出现的抖动，
 也不能去除其他端口的干扰。</p>
 <p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
-<pre><code class="lang-python">p.start(dc)
+<pre><code class="language-python">p.start(dc)
 sleep(0.5)
 for i in range(0.5, 2.5 + 0.1, 0.1):
   dc = i * hz * 0.1
@@ -3660,10 +3678,10 @@ p.stop()
 <p>参考 <a href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
 <h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启动服务"><a class="header-anchor" href="#启动服务"># </a>启动服务</h5>
 <p>使用 pigpio 库需要启动 pigpiod 服务。</p>
-<pre><code class="lang-shell">sudo systemctl start pigpiod.service
+<pre><code class="language-shell">sudo systemctl start pigpiod.service
 </code></pre>
 <h5 id="%E5%AF%BC%E5%85%A5%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96" tabindex="-1" id="导入包并初始化"><a class="header-anchor" href="#导入包并初始化"># </a>导入包并初始化</h5>
-<pre><code class="lang-python">import pigpio
+<pre><code class="language-python">import pigpio
 
 # 使用编号 18 的接口
 # 注意：使用接口的 BCM 编号
@@ -3676,7 +3694,7 @@ pi = pigpio.pi()
 pi.set_mode(pin, pigpio.OUTPUT)
 </code></pre>
 <h5 id="pwm-%E8%AE%BE%E7%BD%AE" tabindex="-1" id="PWM-设置"><a class="header-anchor" href="#PWM-设置"># </a>PWM 设置</h5>
-<pre><code class="lang-python"># 设置 PWM 频率为 50 Hz
+<pre><code class="language-python"># 设置 PWM 频率为 50 Hz
 pi.set_PWM_frequency(pin, 50)
 
 # 设置 PWM 范围 0~100
@@ -3718,12 +3736,12 @@ pi.set_PWM_dutycycle(0)
 </ul>
 <h3 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" tabindex="-1" id="安装软件"><a class="header-anchor" href="#安装软件"># </a>安装软件</h3>
 <p>运行命令</p>
-<pre><code class="lang-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
+<pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
 </code></pre>
 <p>等待安装完成</p>
 <h3 id="%E9%85%8D%E7%BD%AEhostapd" tabindex="-1" id="配置hostapd"><a class="header-anchor" href="#配置hostapd"># </a>配置hostapd</h3>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code class="lang-conf"># 使用的网卡
+<pre><code class="language-conf"># 使用的网卡
 interface=wlan0
 # WiFi 名字
 ssid=YOUR_WIFI_NAME
@@ -3750,7 +3768,7 @@ rsn_pairwise=CCMP
 channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
 <p>注：上面的配置启用的为 2.4GHz 的WiFi
 如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code class="lang-conf">#hw_mode=g
+<pre><code class="language-conf">#hw_mode=g
 hw_mode=a
 #channel=7
 # 在内核启 CONFIG_ACS 编译选项后
@@ -3760,7 +3778,7 @@ channel=149
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdhcpcd" tabindex="-1" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd"># </a>配置dhcpcd</h3>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code class="lang-conf"># 网卡
+<pre><code class="language-conf"># 网卡
 interface=wlan0
 # 网卡地址
 static ip_address=192.168.10.1/24
@@ -3769,7 +3787,7 @@ nohook wpa_supplicant
 </code></pre>
 <h3 id="%E9%85%8D%E7%BD%AEdnsmasq" tabindex="-1" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq"># </a>配置dnsmasq</h3>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code class="lang-conf"># 为这个网卡开启服务
+<pre><code class="language-conf"># 为这个网卡开启服务
 interface=wlan0
 # 不要在这个网卡开启服务
 no-dhcp-interface=eth0
@@ -3788,26 +3806,26 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <li>
 <p>设置转发规则
 运行命令</p>
-<pre><code class="lang-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
 </code></pre>
 </li>
 <li>
 <p>保存规则
 运行命令</p>
-<pre><code class="lang-shell"># netfilter-persistent save
+<pre><code class="language-shell"># netfilter-persistent save
 </code></pre>
 </li>
 </ol>
 <h3 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="设置systemd启动服务"><a class="header-anchor" href="#设置systemd启动服务"># </a>设置systemd启动服务</h3>
 <p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
 禁用 <code>wpa_supplicant.service</code></p>
-<pre><code class="lang-shell"># systemctl unmask hostapd.service
+<pre><code class="language-shell"># systemctl unmask hostapd.service
 # systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
 # systemctl disable wpa_supplicant
 </code></pre>
 <h3 id="%E9%87%8D%E5%90%AF" tabindex="-1" id="重启"><a class="header-anchor" href="#重启"># </a>重启</h3>
 <p>设置完成后重启</p>
-<pre><code class="lang-shell"># reboot
+<pre><code class="language-shell"># reboot
 </code></pre>
 <p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
 <h2 id="%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5" tabindex="-1" id="参考链接"><a class="header-anchor" href="#参考链接"># </a>参考链接</h2>
@@ -3903,7 +3921,7 @@ String 为 java.lang 包中的一个对象</p>
 <code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
 <h3 id="%E5%BE%AA%E7%8E%AF" tabindex="-1" id="循环"><a class="header-anchor" href="#循环"># </a>循环</h3>
 <p>直接代码解释比较方便，例子来源参见文末链接1</p>
-<pre><code class="lang-java">public void smaliWhile() &#123;
+<pre><code class="language-java">public void smaliWhile() &#123;
     int a = 0;
     while(a &lt;= 3) &#123;
         a++;
@@ -3921,7 +3939,7 @@ String 为 java.lang 包中的一个对象</p>
 &#125;
 </code></pre>
 <p>对应的 smali 语法</p>
-<pre><code class="lang-smali">.method public smaliWhile()V
+<pre><code class="language-smali">.method public smaliWhile()V
     .locals 5
 
     .line 62

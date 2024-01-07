@@ -1,42 +1,40 @@
 
 <!DOCTYPE html>
-<html  id="root" lang="zh-CN ">
+<html id="root" lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
-    <meta name="generator" content="Hexo" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>狐灵 - 狐言狐语 | 记录一段回忆</title>
+
+    <meta name="generator" content="Hexo 7.0.0">
+    <meta name="description" content="记录一段回忆">
+<meta property="og:type" content="website">
+<meta property="og:title" content="狐灵">
+<meta property="og:url" content="https://huzerovo.github.io/tags/hexo/">
+<meta property="og:site_name" content="狐灵">
+<meta property="og:description" content="记录一段回忆">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="狐zerOAO">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="code">
+<meta name="twitter:card" content="summary">
 
     
         <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
     
 
-    
-    
-    <title> 狐灵 - 狐言狐语 | 记录一段回忆 </title>
-    
-
-    
-    
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
-
-
-    
+    <!-- jQuery -->
     
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
-    
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-
-
-    
+    <!-- fancybox -->
     
         
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css">
@@ -46,15 +44,25 @@
 
     
 
+    <!-- Bootstrap icons -->
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css">
+
+
+    <!-- Font awesome -->
+    
+<script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+
     
     
+        <!-- highlight.js -->
         
 <link rel="stylesheet" href="/css/github.min.css" id="code-style">
 
         
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-        <script>hljs.highlightAll();</script>
     
 
     
@@ -126,9 +134,6 @@
 
 
 
-
-
-
 <header class="topbar">
     <div class="topbar-container">
         
@@ -175,27 +180,27 @@
 
         
         <div class="topbar-icon-buttons">
+            <!-- social link -->
             
                 
                 
-                <a class="icon-button" title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO">
-                    <i class="bi bi-github"></i>
-                </a>
+                <a class="icon-button"  title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO"><i class="bi bi-github"></i></a>
                 
             
+
             
-            <a class="icon-button" title="订阅" href="/atom.xml" download="">
-                <i class="bi bi-rss-fill"></i>
-            </a>
+                <!-- search link -->
+                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
             
-            <a id="btn-switch-theme" class="icon-button" title="切换主题">
-                <i class="bi bi-sun"></i>
-            </a>
+
+            <!-- change theme btn -->
+            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+
             
-            <a id="btn-search" class="icon-button" title="搜索" href="/search">
-                <i class="bi bi-search"></i>
-            </a>
+                <!-- feed link -->
+                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
             
+
         </div>
     </div>
 </header>
@@ -219,78 +224,86 @@
 
 
 
-
-    <script>
-        let default_covers = "/covers/id=95612209_p0.jpg,/covers/id=95612209_p1.jpg,/covers/id=90724581_p0.jpg,/covers/id=90779367_p0.png,/covers/id=85209905_p0.jpg".split(',');
-    </script>
-
-
 <article class="articles-list">
 
-    
     <article class="articles-list-item">
+    
+            <div class="item-gallery">
+    <script>
+        document.write("<img data-fancybox loading='lazy' src='"
+            + "/2023/07/17/introduction-to-my-theme/id=89645004_p0.jpg".split(',').at(Math.floor(Math.random() * 1))
+            + "'/>");
+    </script>
+</div>
+
         
-        
-        <div class="item-gallery">
-            <script>
-            document.write("<img loading='lazy' src='" + 
-                    "/2023/07/17/introduction-to-my-theme/id=89645004_p0.jpg".split(',').at(Math.floor(Math.random() * 1))
-                    +"'>");
-            </script>
-        </div>
-        
+    
 
         <a href="/2023/07/17/introduction-to-my-theme/">
+            
         
         
             <p class="item-title">
                 我的主题介绍
             </p>
         
-        
-            <p class="item-content">
-                关于主题的介绍
-            </p>
+
+
+            
+
+<p class="item-content">
+    关于主题的介绍
+</p>
+
         </a>
         
-        <footer class="item-footer">
-        
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
-                发布日期: 2023-07-17
-            </div>
-        
-        
-        </footer>
+
+<footer class="item-footer">
+
+    <div class="item-footer-finished">
+        <i class="bi bi-calendar-check"></i>
+        发布日期: 2023-07-17
+    </div>
+
+
+    <i class="item-footer-pin bi bi-pin-angle-fill"></i>
+
+</footer>
+
     </article>
 
-    
     <article class="articles-list-item">
-        
-        
+    
 
         <a href="/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/">
+            
         
         
             <p class="item-title">
                 使用Hexo从私有仓库部署Github Page
             </p>
         
-        
-            <p class="item-content">
-                将博客源文件迁移至私有仓库
-            </p>
+
+
+            
+
+<p class="item-content">
+    将博客源文件迁移至私有仓库
+</p>
+
         </a>
         
-        <footer class="item-footer">
-        
-            <div class="item-footer-finished">
-                <i class="bi bi-calendar-check"></i>
-                发布日期: 2023-07-16
-            </div>
-        
-        
-        </footer>
+
+<footer class="item-footer">
+
+    <div class="item-footer-finished">
+        <i class="bi bi-calendar-check"></i>
+        发布日期: 2023-07-16
+    </div>
+
+
+</footer>
+
     </article>
 
 </article>
@@ -324,6 +337,7 @@
 </body>
 
 <script>
+hljs.highlightAll();
 $('#goto-top').hide();
 // 页面载入后设置icon
 setTheme(getStorage('currentTheme'));
@@ -358,6 +372,7 @@ $(document).ready(function() {
     });
 
     Fancybox.bind(".container img");
+    Fancybox.bind('[data-fancybox]');
 });
 </script>
 </html>
