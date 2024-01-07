@@ -225,6 +225,9 @@ html.light::-webkit-scrollbar-corner {
 .light body main .tagcloud-9:hover {
   color: black;
 }
+.light body mark {
+  background-color: wheat;
+}
 .light body footer a {
   color: #9999ff;
 }

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>开启评论</title>
+    <url>/2023/01/15/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
@@ -176,17 +187,6 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启评论</title>
-    <url>/2023/01/15/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD" tabindex="-1" id="正式完成主题的评论功能"><a class="header-anchor" href="#正式完成主题的评论功能"># </a>正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
       </tags>
   </entry>
   <entry>
@@ -1233,7 +1233,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 使用<code>gallery: true</code>启用相册集。</p>
 <blockquote>
 <p>你也可以同时启用<code>cover: true</code>，这将会展示网站配置的所有默认封面。
-同样，也能够使用网络图片。</p>
+此外，也能够在<code>photo</code>使用网络图片。</p>
 </blockquote>
 <h3 id="%E5%A4%96%E9%83%A8%E6%96%87%E7%AB%A0" tabindex="-1" id="外部文章"><a class="header-anchor" href="#外部文章"># </a>外部文章</h3>
 <p>外部文章指的是不在自己博客网站上的文章，也可以是一般的其他网页。
@@ -1273,6 +1273,25 @@ todo_msg: &quot;&quot;
 于是就想到了这样的情况：文章没有写完，但已经能够发布了，后面只需要慢慢更新就行。
 这就是这个功能实现的由来了。<s>实际上<code>todo_msg</code>还是在写这一小节时想出来的。</s></p>
 <h2 id="%E4%B8%80%E4%BA%9B%E5%8A%9F%E8%83%BD" tabindex="-1" id="一些功能"><a class="header-anchor" href="#一些功能"># </a>一些功能</h2>
+<h3 id="%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E6%8E%88%E6%9D%83" tabindex="-1" id="知识共享授权"><a class="header-anchor" href="#知识共享授权"># </a>知识共享授权</h3>
+<p>使用<code>creativecommons</code>字段配置授权。</p>
+<pre><code class="language-yaml">creativecommons:
+  listen: 'CC BY-NC-ND 4.0'
+  link: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+  description: '如无特殊说明，网站所有原创内容均采用#授权。'
+</code></pre>
+<p><code>description</code>选项用于配置版权说明，
+占位符<code>#</code>会被替换为<code>listen</code>指定的授权协议名称，
+并生成指向<code>link</code>配置的链接，</p>
+<p>上述例子最终渲染的结果为：</p>
+<pre><code class="language-html">&lt;p&gt;
+如无特殊说明，网站所有原创内容均采用
+&lt;a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'&gt;
+CC BY-NC-ND 4.0
+&lt;/a&gt;
+授权。
+&lt;/p&gt;
+</code></pre>
 <h3 id="%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="代码高亮"><a class="header-anchor" href="#代码高亮"># </a>代码高亮</h3>
 <h4 id="%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E6%8F%90%E4%BE%9B%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="使用主题提供的代码高亮"><a class="header-anchor" href="#使用主题提供的代码高亮"># </a>使用主题提供的代码高亮</h4>
 <ol>
@@ -3529,7 +3548,7 @@ vim.fn['plug#end']()
 是从这里来的：<a href="https://placehold.co/600x400">https://placehold.co/600x400</a></p>
 ]]></content>
       <categories>
-        <category>开发记录</category>
+        <category>相册</category>
       </categories>
       <tags>
         <tag>相册</tag>

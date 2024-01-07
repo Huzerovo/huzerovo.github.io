@@ -187,3 +187,6 @@ main .tagcloud-8:hover,
 main .tagcloud-9:hover {
   color: black;
 }
+mark {
+  background-color: wheat;
+}

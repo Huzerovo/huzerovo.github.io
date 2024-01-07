@@ -188,7 +188,7 @@
             
                 
                 
-                <a class="icon-button"  title="Github" target="_blank" rel="noopener" href="https://github.com/HuzerOVO"><i class="bi bi-github"></i></a>
+                <a class="icon-button"  title="Github" href="https://github.com/HuzerOVO"><i class="bi bi-github"></i></a>
                 
             
 
@@ -284,7 +284,7 @@ $$</p>
 <p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>，
 可以通过 Python 来对这些 GPIO 接口进行控制。</p>
 <h4 id="%E4%BD%BF%E7%94%A8-rpi.gpio-%E5%BA%93" tabindex="-1" id="使用-RPi-GPIO-库"><a class="header-anchor" href="#使用-RPi-GPIO-库"># </a>使用 RPi.GPIO 库</h4>
-<p>参考<a target="_blank" rel="noopener" href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
+<p>参考<a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
 <h5 id="%E5%AF%BC%E5%85%A5-gpio-%E5%8C%85%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96-gpio-%E6%8E%A5%E5%8F%A3" tabindex="-1" id="导入-GPIO-包并初始化-GPIO-接口"><a class="header-anchor" href="#导入-GPIO-包并初始化-GPIO-接口"># </a>导入 GPIO 包并初始化 GPIO 接口</h5>
 <pre><code class="language-python">import RPi.GPIO as GPIO
 
@@ -356,7 +356,7 @@ p.stop()
 <h4 id="%E4%BD%BF%E7%94%A8-pigpio" tabindex="-1" id="使用-pigpio"><a class="header-anchor" href="#使用-pigpio"># </a>使用 pigpio</h4>
 <p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
 能显著地提高 PWM 的抗干扰性。</p>
-<p>参考 <a target="_blank" rel="noopener" href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
+<p>参考 <a href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
 <h5 id="%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="启动服务"><a class="header-anchor" href="#启动服务"># </a>启动服务</h5>
 <p>使用 pigpio 库需要启动 pigpiod 服务。</p>
 <pre><code class="language-shell">sudo systemctl start pigpiod.service
@@ -444,14 +444,17 @@ pi.set_PWM_dutycycle(0)
         回到顶部
     </button>
     <footer>
-        <p> Copyright 2024 
+        <p> © 2024 
         
-        @狐zerOAO
+            @狐zerOAO
         
         </p>
         <p>
-            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>. 
-            Theme by <a target="_blank" rel="noopener" href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
+            如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权。
+        </p>
+        <p>
+            Powered by <a href="https://hexo.io">Hexo</a>. 
+            Theme by <a href="https://github.com/HuzerOVO/hexo-theme-huzerovo">狐zerOAO</a>.
         </p>
         <br>
     </footer>
