@@ -1789,7 +1789,7 @@ int main()
 就像这样：
 ![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
 </code></pre>
-<p><img src="id=89004882_p3.jpg" alt="" loading="lazy" /></p>
+<p><img src="id=89004882_p3.jpg" alt="不愧是我.jpg" loading="lazy" /></p>
 <h2 id="%E8%A1%A8%E6%A0%BC" tabindex="-1" id="表格"><a class="header-anchor" href="#表格"># </a>表格</h2>
 <p>用 <code>|</code> 划分列
 用 <code>-</code> 划分表头和其他行</p>
@@ -2553,7 +2553,7 @@ $$</p>
 $
 e^{- \frac{1}{2} (x - 1)^{2}}
 $
-的函数图像为：<img src="Figure_1.svg" alt="" title="Figure 1" loading="lazy" /></p>
+的函数图像为：<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
 <p>容易看出来：
 若$ \mid x^{(i)} - x \mid $越小，则有$ w^{i} \approx 1 $，
 若$ \mid x^{(i)} - x \mid $越大，则有$ w^{i} \approx 0 $。</p>
@@ -2565,7 +2565,7 @@ $$
 w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
 $$
 其中$ \tau $被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度。
-下图是一个例子：<img src="Figure_2.svg" alt="" title="Figure 2" loading="lazy" /></p>
+下图是一个例子：<img src="Figure_2.svg" alt="Figure 2" title="Figure 2" loading="lazy" /></p>
 <p><em>上图中的$ t $代表$ \tau $</em></p>
 <h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题"># </a>需要注意的问题</h2>
 <p>首先，需要明确指出，局部加权回归<strong>不能完全避免</strong>欠拟合与过拟合的问题，
@@ -2605,7 +2605,7 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
 <h2 id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3" tabindex="-1" id="线性回归的不足"><a class="header-anchor" href="#线性回归的不足"># </a>线性回归的不足</h2>
 <p>当数据的分布情况是这样子的时候，
 线性回归得出的模型效果不好：
-<img src="Figure_1.svg" alt="" title="Figure 1" loading="lazy" /></p>
+<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
 <p>于是我们希望有数学模型能够描述这种关系，
 这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
@@ -3544,7 +3544,7 @@ vim.fn['plug#end']()
 <p>然而并不能在文章里面看到，可以用作封面用途。</p>
 <p>可以添加多张，随机挑选。</p>
 <p>这张图片
-<img src="https://placehold.co/600x400" alt="" loading="lazy" />
+<img src="https://placehold.co/600x400" alt="600x400.jpg" loading="lazy" />
 是从这里来的：<a href="https://placehold.co/600x400">https://placehold.co/600x400</a></p>
 ]]></content>
       <categories>
@@ -4079,15 +4079,15 @@ String 为 java.lang 包中的一个对象</p>
 <p>问题的原因在于训练时，用于训练的模型不是很好，
 当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
 比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<p><img src="Figure_1.svg" alt="" title="Figure 1" loading="lazy" /></p>
+<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" loading="lazy" /></p>
 <h3 id="%E8%BF%87%E6%8B%9F%E5%90%88" tabindex="-1" id="过拟合"><a class="header-anchor" href="#过拟合"># </a>过拟合</h3>
 <p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
 但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
 <p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
 下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p><img src="Figure_2.svg" alt="" title="Figure 2" loading="lazy" /></p>
+<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" loading="lazy" /></p>
 <p>或许加上原数据之间的连线更能体现：</p>
-<p><img src="Figure_3.svg" alt="" title="Figure 3" loading="lazy" /></p>
+<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" loading="lazy" /></p>
 <h2 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95" tabindex="-1" id="解决方法"><a class="header-anchor" href="#解决方法"># </a>解决方法</h2>
 <p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
 <strong>局部加权回归算法</strong> 则属于这一类算法<br />
