@@ -1276,12 +1276,12 @@ todo_msg: &quot;&quot;
 <h3 id="%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E6%8E%88%E6%9D%83" tabindex="-1" id="知识共享授权"><a class="header-anchor" href="#知识共享授权"># </a>知识共享授权</h3>
 <p>使用<code>creativecommons</code>字段配置授权。</p>
 <pre><code class="language-yaml">creativecommons:
-  listen: 'CC BY-NC-ND 4.0'
+  license: 'CC BY-NC-ND 4.0'
   link: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
   description: '如无特殊说明，网站所有原创内容均采用#授权。'
 </code></pre>
 <p><code>description</code>选项用于配置版权说明，
-占位符<code>#</code>会被替换为<code>listen</code>指定的授权协议名称，
+占位符<code>#</code>会被替换为<code>license</code>指定的授权协议名称，
 并生成指向<code>link</code>配置的链接，</p>
 <p>上述例子最终渲染的结果为：</p>
 <pre><code class="language-html">&lt;p&gt;
