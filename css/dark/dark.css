@@ -248,7 +248,6 @@ html.dark::-webkit-scrollbar-corner {
 }
 .dark body footer.site-footer {
   color: gray;
-  font-size: small;
 }
 .dark body footer.site-footer a {
   color: #9999ff;

@@ -681,8 +681,9 @@ body #goto-top {
   border: none;
   cursor: pointer;
 }
-body footer {
+body footer.site-footer {
   text-align: center;
+  font-size: smaller;
 }
 body .pager {
   display: flex;
