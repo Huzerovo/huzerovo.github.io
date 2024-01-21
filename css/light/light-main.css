@@ -187,6 +187,9 @@ main .tagcloud-8:hover,
 main .tagcloud-9:hover {
   color: black;
 }
+main .page-about-me .page-about-description {
+  color: gray;
+}
 mark {
   background-color: wheat;
 }

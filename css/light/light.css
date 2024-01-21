@@ -225,16 +225,23 @@ html.light::-webkit-scrollbar-corner {
 .light body main .tagcloud-9:hover {
   color: black;
 }
+.light body main .page-about-me .page-about-description {
+  color: gray;
+}
 .light body mark {
   background-color: wheat;
 }
-.light body footer a {
+.light body footer.site-footer {
+  color: gray;
+  font-size: small;
+}
+.light body footer.site-footer a {
   color: #9999ff;
 }
-.light body footer a:visited {
+.light body footer.site-footer a:visited {
   color: tomato;
 }
-.light body footer a:hover {
+.light body footer.site-footer a:hover {
   color: #66ccff;
 }
 .light body .pager .page-list span,

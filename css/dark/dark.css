@@ -240,16 +240,23 @@ html.dark::-webkit-scrollbar-corner {
 .dark body main .tagcloud-9:hover {
   color: white;
 }
+.dark body main .page-about-me .page-about-description {
+  color: gray;
+}
 .dark body mark {
   background-color: tan;
 }
-.dark body footer a {
+.dark body footer.site-footer {
+  color: gray;
+  font-size: small;
+}
+.dark body footer.site-footer a {
   color: #9999ff;
 }
-.dark body footer a:visited {
+.dark body footer.site-footer a:visited {
   color: gold;
 }
-.dark body footer a:hover {
+.dark body footer.site-footer a:hover {
   color: #66ccff;
 }
 .dark body .pager .page-list span,
