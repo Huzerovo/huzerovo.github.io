@@ -82,6 +82,9 @@ main .article-container blockquote {
 main .article-container hr {
   color: lightgray;
 }
+main .article-container strong {
+  color: black;
+}
 main .article-container table thead {
   background-color: lightgray;
   color: black;

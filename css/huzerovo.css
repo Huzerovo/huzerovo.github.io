@@ -334,6 +334,9 @@ body main.container .article-container a {
   transition: 0ms;
   text-decoration: none;
 }
+body main.container .article-container em {
+  padding-right: 3px;
+}
 body main.container .article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
@@ -528,6 +531,10 @@ body main.container .article-container figure.highlight table .code pre .hljs-ad
 body main.container .article-container figure.highlight table .code pre .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
+}
+body main.container .article-container span.katex {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 body main.container .article-container .katex-display {
   width: 100%;

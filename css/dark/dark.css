@@ -124,6 +124,9 @@ html.dark::-webkit-scrollbar-corner {
 .dark body main .article-container hr {
   color: gray;
 }
+.dark body main .article-container strong {
+  color: whitesmoke;
+}
 .dark body main .article-container table thead {
   background-color: #141414;
 }

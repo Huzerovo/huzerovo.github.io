@@ -120,6 +120,9 @@ html.light::-webkit-scrollbar-corner {
 .light body main .article-container hr {
   color: lightgray;
 }
+.light body main .article-container strong {
+  color: black;
+}
 .light body main .article-container table thead {
   background-color: lightgray;
   color: black;

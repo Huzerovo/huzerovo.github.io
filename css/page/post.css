@@ -75,6 +75,9 @@
   transition: 0ms;
   text-decoration: none;
 }
+.article-container em {
+  padding-right: 3px;
+}
 .article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
@@ -269,6 +272,10 @@
 .article-container figure.highlight table .code pre .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
+}
+.article-container span.katex {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .article-container .katex-display {
   width: 100%;

@@ -40,6 +40,9 @@
 .article-container hr {
   color: gray;
 }
+.article-container strong {
+  color: whitesmoke;
+}
 .article-container table thead {
   background-color: #141414;
 }

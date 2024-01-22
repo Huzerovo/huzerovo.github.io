@@ -232,6 +232,9 @@ main.container .article-container a {
   transition: 0ms;
   text-decoration: none;
 }
+main.container .article-container em {
+  padding-right: 3px;
+}
 main.container .article-container blockquote {
   border-left-width: 3px;
   border-left-style: solid;
@@ -426,6 +429,10 @@ main.container .article-container figure.highlight table .code pre .hljs-additio
 main.container .article-container figure.highlight table .code pre .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
+}
+main.container .article-container span.katex {
+  padding-left: 3px;
+  padding-right: 3px;
 }
 main.container .article-container .katex-display {
   width: 100%;

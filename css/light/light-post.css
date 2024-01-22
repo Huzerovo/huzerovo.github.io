@@ -39,6 +39,9 @@
 .article-container hr {
   color: lightgray;
 }
+.article-container strong {
+  color: black;
+}
 .article-container table thead {
   background-color: lightgray;
   color: black;
