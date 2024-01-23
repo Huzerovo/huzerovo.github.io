@@ -3861,6 +3861,375 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
       </tags>
   </entry>
   <entry>
+    <title>替罪羊树</title>
+    <url>/2024/01/21/scapegoat-tree/</url>
+    <content><![CDATA[<span id="more"></span>
+<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
+<!-- more -->
+<h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
+<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
+写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
+也不能保证代码是对的，有错再更新。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
+<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
+</ul>
+<h2 id="%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91" tabindex="-1" id="什么是替罪羊树"><a class="header-anchor" href="#什么是替罪羊树"># </a>什么是替罪羊树</h2>
+<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
+因为它允许不平衡的结点存在，
+只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
+它处理不平衡的方式很简单：
+将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
+这个过程称为<strong>重构</strong>。
+此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
+只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
+<blockquote>
+<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
+</blockquote>
+<h2 id="%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9A%E4%B9%89" tabindex="-1" id="替罪羊树的代码定义"><a class="header-anchor" href="#替罪羊树的代码定义"># </a>替罪羊树的代码定义</h2>
+<h3 id="%E4%B8%80%E4%BA%9B%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89" tabindex="-1" id="一些变量定义"><a class="header-anchor" href="#一些变量定义"># </a>一些变量定义</h3>
+<p>在我的代码实现里，我使用数组形式构造替罪羊树，
+并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
+<p>首先是一些辅助用的定义：</p>
+<pre><code class="language-c">// 最大结点数
+#define MAXN 1024
+// 记录插入的结点数量
+int count = 0;
+// alpha
+double alpha = 0.75;
+</code></pre>
+<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
+<p>接下来是树结构定义：</p>
+<pre><code class="language-c">// 结点值
+int v[MAXN] = &#123;0&#125;;
+// 结点权值，定义为结点的重复次数。
+int w[MAXN] = &#123;0&#125;;
+// 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
+int lt[MAXN] = &#123;0&#125;;
+int rt[MAXN] = &#123;0&#125;;
+</code></pre>
+<p>树以数组的形式表达，
+<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
+结点并不真实存在，能用于表示结点的只有它的编号，
+我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
+<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
+若<code>lt[k]==i</code>，这表明<strong>索引为k</strong>的结点，其左子树的<strong>索引为i</strong>。
+根结点的索引则由调用方负责保存。</p>
+<p>数组<code>v</code>负责保存结点值（value）。</p>
+<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
+在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
+若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
+这个结点只出现了一次。
+若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
+根本<strong>不存在</strong>。
+没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
+<p>下面这些数组有助于我们更方便地对树进行操作：</p>
+<pre><code class="language-c">// 树的存储大小
+int s[MAXN] = &#123;0&#125;;
+// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
+int rs[MAXN] = &#123;0&#125;;
+// 树的带权大小，与`w`数组密切相关
+int ws[MAXN] = &#123;0&#125;;
+</code></pre>
+<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
+所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
+<ul>
+<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
+只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
+那么在存储结构上自然也只记录一次。</li>
+<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
+也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
+<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
+也就是<code>w</code>数组中对应索引的值。</li>
+</ul>
+<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
+一般来说都指的是<code>s</code>数组表示的大小。</p>
+<h3 id="%E6%8F%90%E4%BE%9B%E7%9A%84%E6%A0%91%E6%93%8D%E4%BD%9C" tabindex="-1" id="提供的树操作"><a class="header-anchor" href="#提供的树操作"># </a>提供的树操作</h3>
+<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
+<p>首先让我们简单地梳理一下：</p>
+<ol>
+<li>替罪羊树处理不平衡结点的方式是重构。</li>
+<li>不平衡结点的产生会在什么时候？
+显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
+<li>发生重构后，树的根可能会发生改变，如何更新这个根？
+答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
+</ol>
+<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
+重构在插入或删除时进行。</p>
+<p>至于重构的条件，我们很快就会知道。</p>
+<p>函数定义如下：</p>
+<pre><code class="language-c">// 在树中查找值
+// @param r 结点索引，表示在以此结点为根的树中找
+// @param val 找的是这个值
+// @return 这个值对应的结点索引是啥，如果为0表示不存在
+int search_node(int r, int val);
+
+// 将一个值插入树中
+// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
+// @param val 插入的值
+void insert_node(int *r, int val);
+
+// 将一个值从树中删除
+// @note 如果值不存在，则不会发生任何事情
+// @param *r 指针，内容同样是根的值，重构会更新这个值
+// @param val 删除的值
+void delete_node(int *r, int val);
+</code></pre>
+<h3 id="%E9%87%8D%E6%9E%84%E7%9B%B8%E5%85%B3%E7%9A%84%E5%87%BD%E6%95%B0" tabindex="-1" id="重构相关的函数"><a class="header-anchor" href="#重构相关的函数"># </a>重构相关的函数</h3>
+<p>我们首先定义重构的入口函数：</p>
+<pre><code class="language-c">// 重构树
+// @param *r 指针，重构的树以此为根
+static void rebuild(int *r);
+</code></pre>
+<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
+<pre><code class="language-c">// 序列化树
+// @param r 以此为根的树
+// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里
+// @param *tree_size 中序序列的长度
+static void flat(int r, int *flat_tree, int *tree_size);
+</code></pre>
+<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<pre><code class="language-c">// 生成树
+// @param *flat_tree 树的中序序列
+// @param l 反序列化起点，即左边界（left）
+// @param r 反序列化终点，即右边界（right）
+static int generate_tree(int *flat_tree, int l, int r);
+</code></pre>
+<p>最后，我们使用一个函数来判断是否进行重构：</p>
+<pre><code class="language-c">// 是否应该重构
+// @param r 以该结点为根
+// @return ture表示需要重构，false表示不需要重构
+static bool should_rebuild(int r);
+</code></pre>
+<h2 id="%E7%9D%80%E6%89%8B%E5%AE%9E%E7%8E%B0" tabindex="-1" id="着手实现"><a class="header-anchor" href="#着手实现"># </a>着手实现</h2>
+<h3 id="%E9%87%8D%E6%9E%84" tabindex="-1" id="重构"><a class="header-anchor" href="#重构"># </a>重构</h3>
+<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
+<strong>重构的条件是什么？</strong></p>
+<h4 id="%E9%87%8D%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6" tabindex="-1" id="重构的条件"><a class="header-anchor" href="#重构的条件"># </a>重构的条件</h4>
+<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
+在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
+我们记较大的那个为$n$，此时，父结点的大小可以粗略认为是$m \coloneqq 2n + 1$。
+显然有$0.5 \cdot m &gt; n$，我们将这个$0.5$记作$\alpha$，也就是之前定义的变量<code>alpha</code>。</p>
+<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
+在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
+但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
+而这个阈值与<code>alpha</code>相关。</p>
+<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
+当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为$50\%$。
+此时<code>alpha</code>取值<code>0.5</code>。
+然而经验表明<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，在平衡二叉树中，这个比例在$70\% \sim 80\%$间，
+平衡二叉树仍能保持其时间复杂度不变。</p>
+<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
+而重构的条件则是<code>alpha * s[k] &lt; max(s[rt[k]], s[lt[k]])</code>。
+在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki的这篇文章中</a>，
+还提到已删除结点过多也可能影响树的查找效率，
+因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。</p>
+<h4 id="%E8%AE%A1%E7%AE%97%E6%A0%91%E7%9A%84%E5%A4%A7%E5%B0%8F" tabindex="-1" id="计算树的大小"><a class="header-anchor" href="#计算树的大小"># </a>计算树的大小</h4>
+<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
+<pre><code class="language-c">// 计算树的大小
+// @param r 树的根结点索引
+void gen_size(int r) &#123;
+    if (!r)
+        return;
+    // 直接递归把子树大小计算出来
+    gen_size(lt[r]);
+    gen_size(rt[r]);
+    // 现在子树的大小已经计算好了
+    s[r] = s[lt[r]] + s[rt[r]] + 1;
+    rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
+    ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
+&#125;
+</code></pre>
+<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
+<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
+<h4 id="%E7%94%9F%E6%88%90%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97" tabindex="-1" id="生成中序序列"><a class="header-anchor" href="#生成中序序列"># </a>生成中序序列</h4>
+<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
+就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
+不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
+<pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) &#123;
+    if (!r)
+        return;
+    // 遍历左子树
+    flat(lt[r], flat_tree, tree_size);
+    // 访问根
+    if (w[r] &gt; 0) &#123;
+        // 进入中序序列
+        flat_tree[*tree_size] = r;
+        // 序列长度加一
+        *tree_size += 1;
+    &#125;
+    // 遍历右子树
+    flat(rt[r], flat_tree, tree_size);
+&#125;
+</code></pre>
+<h4 id="%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" tabindex="-1" id="反序列化"><a class="header-anchor" href="#反序列化"># </a>反序列化</h4>
+<p>从中序序列反序列化出一棵树也比较简单：</p>
+<pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) &#123;
+    if (l &gt;= r || !flat_tree)
+        return 0;
+    // 中间的为根，需要注意，flat_tree中保存的才是结点索引
+    int mid = (l + r) / 2;
+    int k = flat_tree[mid];
+    // 左子树
+    lt[k] = generate_tree(flat_tree, l, mid);
+    // 右子树
+    rt[k] = generate_tree(flat_tree, mid + 1, r);
+    // 返回根
+    return k;
+&#125;
+</code></pre>
+<h4 id="%E9%87%8D%E6%9E%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0" tabindex="-1" id="重构入口函数"><a class="header-anchor" href="#重构入口函数"># </a>重构入口函数</h4>
+<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
+<pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
+void rebuild(int *r) &#123;
+    // flat tree
+    int ft[MAXN] = &#123;0&#125;;
+    // tree size
+    int ts = 0;
+    // 序列化
+    flat(*r, ft, &amp;ts);
+    // 反序列化
+    *r = generate_tree(ft, 0, ts);
+    // 重新计算结点大小
+    gen_size(*r);
+&#125;
+</code></pre>
+<h4 id="%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E9%87%8D%E6%9E%84" tabindex="-1" id="判断是否需要重构"><a class="header-anchor" href="#判断是否需要重构"># </a>判断是否需要重构</h4>
+<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
+<pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
+static max(a, b) &#123;
+    return a &gt; b ? a : b;
+&#125;
+
+bool should_rebuild(int r) &#123;
+    return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
+        || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
+&#125;
+</code></pre>
+<h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1" id="搜索"><a class="header-anchor" href="#搜索"># </a>搜索</h3>
+<p>和一般二叉树的搜索无异：</p>
+<pre><code class="language-c">int search_node(int r, int val) &#123;
+    if (!r)
+        return 0;
+    int child = 0;
+    if (val &lt; v[r])
+        // 小于结点值，在左子树搜
+        child = lt[r];
+    else if (val &gt; v[r])
+        // 大于结点值，在右子树搜
+        child = rt[t];
+    else
+        // 找到了值，但需要判断结点是否已经删除
+        return w[r] ? r : 0;
+    // 与当前结点值不同，则向子树递归搜索
+    retrurn search_node(child, val);
+&#125;
+</code></pre>
+<h3 id="%E6%8F%92%E5%85%A5" tabindex="-1" id="插入"><a class="header-anchor" href="#插入"># </a>插入</h3>
+<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
+如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
+那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
+<ul>
+<li>值在树中，更新<code>w</code>数组</li>
+<li>值不再树中，新建结点：更新所有<strong>size数组</strong><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，
+更新<code>v</code>和<code>w</code>数组，结点计数<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>加一。</li>
+</ul>
+<pre><code class="language-c">void insert_node(int *r, int val) &#123;
+    if (!r)
+        return;
+    if (!*r) &#123;
+        // 到达叶子结点
+        // 结点计数加一
+        int k = ++count;
+        // 这是我的实现存在的一个问题，需要判断一下
+        if (k &gt; MAXN)
+            return;
+        w[k] = s[k] = rs[k] = ws[k] = 1;
+        v[k] = val;
+        // 更新结点
+        *r = k;
+    &#125; else &#123;
+        // 现在还在树中
+        if (val == v[*r]) 
+            // 重复值
+            w[*r]++;
+        else if (val &lt; v[*r])
+            insert_node(&amp;lt[*r], val);
+        else
+            insert_node(&amp;lt[*r], val);
+    &#125;
+    // 重新计算结点大小
+    gen_size(*r);
+    // 判断是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+&#125;
+</code></pre>
+<h3 id="%E5%88%A0%E9%99%A4" tabindex="-1" id="删除"><a class="header-anchor" href="#删除"># </a>删除</h3>
+<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
+需要注意的是不能直接将其赋值为0，因为可能有重复值。</p>
+<pre><code class="language-c">void delete_node(int *r, int val) &#123;
+    if (!r || !*r) 
+        return;
+    if (val == v[*r]) &#123;
+        // 存在，删除一个
+        if (w[*r] &gt; 0) w[*r]--;
+    &#125; else &#123;
+        // 与结点值不同，在子树递归删除
+        if (val &lt; v[*r])
+            delete_node(&amp;lt[*r], val);
+        else
+            delete_node(&amp;rt[*r], val);
+    &#125;
+    // 更新结点大小
+    gen_size(*r);
+    // 检查是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+&#125;
+</code></pre>
+<h2 id="%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98" tabindex="-1" id="一些问题"><a class="header-anchor" href="#一些问题"># </a>一些问题</h2>
+<blockquote>
+<p>这里的内容尚未完善…</p>
+</blockquote>
+<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
+新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
+我想到的一个处理方式就是：在删除结点时，
+将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
+<blockquote>
+<p>不过还没实现这个想法…</p>
+</blockquote>
+<blockquote>
+<p>alpha取值的由来还没去了解…</p>
+</blockquote>
+<blockquote>
+<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
+</blockquote>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这个过程将使用递归方式，你问为什么不用循环？因为我不会… <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>就是<code>s[MAXN]</code>、<code>rs[MAXN]</code>以及<code>ws[MAXN]</code>这几个数组。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>smali 语法</title>
     <url>/2022/03/05/smali-language/</url>
     <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
