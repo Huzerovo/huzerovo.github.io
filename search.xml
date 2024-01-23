@@ -3863,9 +3863,8 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
   <entry>
     <title>替罪羊树</title>
     <url>/2024/01/21/scapegoat-tree/</url>
-    <content><![CDATA[<span id="more"></span>
-<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
-<!-- more -->
+    <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
+<span id="more"></span>
 <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言"><a class="header-anchor" href="#前言"># </a>前言</h2>
 <p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
 写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
@@ -4222,7 +4221,7 @@ bool should_rebuild(int r) &#123;
 </section>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
