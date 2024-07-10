@@ -4229,6 +4229,94 @@ bool should_rebuild(int r) &#123;
       </tags>
   </entry>
   <entry>
+    <title>树莓派上运行的服务</title>
+    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
+    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
+<span id="more"></span>
+<h2 id="nginx%E6%9C%8D%E5%8A%A1%E5%99%A8" tabindex="-1" id="Nginx服务器"><a class="header-anchor" href="#Nginx服务器"># </a>Nginx服务器</h2>
+<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了Nginx，
+用来反代树莓派上所有服务。</p>
+<h2 id="adguard-home-dns%E8%A7%A3%E6%9E%90%E6%9C%8D%E5%8A%A1" tabindex="-1" id="Adguard-Home-DNS解析服务"><a class="header-anchor" href="#Adguard-Home-DNS解析服务"># </a>Adguard Home DNS解析服务</h2>
+<blockquote>
+<p>Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
+</blockquote>
+<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
+一开始是直接改hosts文件的，但这样要改所有会访问树莓派服务的设备的hosts，
+这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
+并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。</p>
+<h2 id="aria2%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1" tabindex="-1" id="Aria2下载服务"><a class="header-anchor" href="#Aria2下载服务"># </a>Aria2下载服务</h2>
+<blockquote>
+<p>Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
+AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+</blockquote>
+<p>Aria2本身只有命令行界面，AriaNg为其提供了web GUI，
+部署在树莓派上就能够通过网页远程管理Aria2了。</p>
+<p>Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
+这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。</p>
+<h2 id="nextcloud%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98" tabindex="-1" id="Nextcloud私有云盘"><a class="header-anchor" href="#Nextcloud私有云盘"># </a>Nextcloud私有云盘</h2>
+<blockquote>
+<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
+</blockquote>
+<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
+此外云盘有时会用Collabora office编辑一些文档，<s>问就是懒得重启到Windows编辑</s>。
+但实际上用的很少，因为还在树莓派部署了Collabora office的内建服务器，
+然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
+<p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
+<h2 id="syncthing%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1" tabindex="-1" id="Syncthing文件同步服务"><a class="header-anchor" href="#Syncthing文件同步服务"># </a>Syncthing文件同步服务</h2>
+<blockquote>
+<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
+</blockquote>
+<p>这个主要用来进行文件同步，但与Nextcloud有一些不同。</p>
+<p>Nextcloud在Android上有个奇奇怪怪的问题。
+在Linux上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
+同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
+但在Android上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
+按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
+<code>Android/media/.../sync/videos</code>。</p>
+<p>这很不合理，因为我在Android也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
+而Syncthing能够满足这个需求。</p>
+<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s></p>
+<h2 id="%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1" tabindex="-1" id="一些不常用的服务"><a class="header-anchor" href="#一些不常用的服务"># </a>一些不常用的服务</h2>
+<h3 id="homeassistant%E6%9C%8D%E5%8A%A1" tabindex="-1" id="Homeassistant服务"><a class="header-anchor" href="#Homeassistant服务"># </a>Homeassistant服务</h3>
+<blockquote>
+<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
+</blockquote>
+<p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
+<h3 id="netdata%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7" tabindex="-1" id="Netdata性能监控"><a class="header-anchor" href="#Netdata性能监控"># </a>Netdata性能监控</h3>
+<blockquote>
+<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
+</blockquote>
+<p>这个服务只是一时兴起部署的，几乎很少使用。
+<s>这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s></p>
+<h3 id="cups%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1" tabindex="-1" id="Cups打印机服务"><a class="header-anchor" href="#Cups打印机服务"># </a>Cups打印机服务</h3>
+<p>有个打印机，用cups在局域网内共享，没啥好说的。
+<s>就是有时会找不到打印机，要重启一下服务</s></p>
+<h3 id="cockpit%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86" tabindex="-1" id="Cockpit网页管理"><a class="header-anchor" href="#Cockpit网页管理"># </a>Cockpit网页管理</h3>
+<blockquote>
+<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
+</blockquote>
+<p>这个是Redhat赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
+但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如aria2.my.domain，adguard.my.domain，地址解析用到了自建的DNS服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>aria2</tag>
+        <tag>云盘</tag>
+        <tag>文件同步</tag>
+        <tag>远程管理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>smali 语法</title>
     <url>/2022/03/05/smali-language/</url>
     <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
