@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Intel x86 汇编语言 - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta
       name="description"
@@ -43,58 +42,37 @@
     <meta property="article:author" content="狐zerOAO" />
     <meta property="article:tag" content="汇编" />
     <meta name="twitter:card" content="summary" />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -113,7 +91,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -122,45 +99,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -168,7 +136,6 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <div id="article-toc">
         <p class="sidebar-list-title">目录</p>
@@ -388,7 +355,6 @@
           </li>
         </ol>
       </div>
-
       <article class="article-container">
         <h1>Intel x86 汇编语言</h1>
         <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言">
@@ -525,16 +491,12 @@
         <pre><code class="language-asm">
 mov     eax, [ebx]              ; 将 EBX 中存储的数据作为内存地址
                                 ; 将内存地址中的数据存入EAX
-
 mov     [var], ebx              ; 将 var 中存储的数据作为内存地址
                                 ; 将 EBX 中的数据存入内存地址
-
 mov     eax, [esi - 4]          ; 将 ESI 中存储的数据加上 -4 作为内存地址
                                 ; 将内存地址中的数据存入EAX
-
 mov     [esi + eax], cl         ; 将 ESI 与 EAX 中的数据相加作为内存地址
                                 ; 将 CL 中存储的数据存入内存地址
-
 mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 EBX 中的数据 * 4 作为内存地址
                                 ; 将内存地址中的数据存入EDX
 </code></pre>
@@ -623,11 +585,8 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 .DATA
     Z       DD  1, 2, 3     ; 声明一个具有 3 个 4 字节元素，名为 Z 的数组
                             ; 值分别为 1, 2 和 3，位于 Z + 8 地址上的值是 3
-
     bytes   DB  10  DUP(?)  ; 声明一个具有 10 个 1 字节元素，名为 bytes 的数组，值未初始化
-
     arr     DD  100 DUP(0)  ; 声明一个具有 100 个 4 字节元素，名为 arr 的数组，值初始化为 0
-
     str     DB  'hello',0   ; 声明一个具有 6 个 1 字节元素，名为 arr 的数组
                             ; 值初始化为 'hello' 的 ASCII 字符编码，以及 0
 </code></pre>
@@ -896,13 +855,11 @@ and     &lt;reg&gt;, &lt;mem&gt;
 and     &lt;mem&gt;, &lt;reg&gt;
 and     &lt;reg&gt;, &lt;con&gt;
 and     &lt;mem&gt;, &lt;con&gt;
-
 or      &lt;reg&gt;, &lt;reg&gt;
 or      &lt;reg&gt;, &lt;mem&gt;
 or      &lt;mem&gt;, &lt;reg&gt;
 or      &lt;reg&gt;, &lt;con&gt;
 or      &lt;mem&gt;, &lt;con&gt;
-
 xor     &lt;reg&gt;, &lt;reg&gt;
 xor     &lt;reg&gt;, &lt;mem&gt;
 xor     &lt;mem&gt;, &lt;reg&gt;
@@ -957,7 +914,6 @@ shl     &lt;reg&gt;,&lt;con8&gt;
 shl     &lt;mem&gt;,&lt;con8&gt;
 shl     &lt;reg&gt;, CL
 shl     &lt;mem&gt;, CL
-
 shr     &lt;reg&gt;,&lt;con8&gt;
 shr     &lt;mem&gt;,&lt;con8&gt;
 shr     &lt;reg&gt;, CL
@@ -1102,7 +1058,6 @@ jeq     loop
         <pre><code class="language-asm">
 ; call 用法
 call    &lt;lable&gt;
-
 ; ret 用法
 ret
 </code></pre>
@@ -1233,9 +1188,7 @@ call    callme              ; 调用 callme
 push    [var]           ; 传递第三个参数
 push    216             ; 传递第二个参数
 push    EAX             ; 传递第一个参数
-
 call    _myFunc         ; 调用子程序
-
 add     ESP, 12         ; 清理传入的参数
 </code></pre>
         <blockquote>
@@ -1378,7 +1331,6 @@ mov      EBP, ESP
           </ol>
         </section>
         <hr />
-
         <div class="article-meta-info">
           <span>分类</span>
           <a
@@ -1390,7 +1342,6 @@ mov      EBP, ESP
             href="/categories/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96/"
             >汇编</a
           >
-
           <span>标签</span>
           <a
             class="article-tags-none-link"
@@ -1399,7 +1350,6 @@ mov      EBP, ESP
             >汇编</a
           >
         </div>
-
         <div class="article-date-info">
           <span>发布日期: 2021-03-26</span>
           <span>更新日期: 2022-04-05</span>
@@ -1414,16 +1364,12 @@ mov      EBP, ESP
         </div>
         <div class="article-comment">
           <div id="gitalk-container"></div>
-
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
           />
-
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
           <script src="/js/md5-2.19.0.min.js"></script>
-
           <script>
             let c = {
               clientID: "8430fc1311285afb9029",
@@ -1442,9 +1388,7 @@ mov      EBP, ESP
         </div>
       </article>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -1460,7 +1404,6 @@ mov      EBP, ESP
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -1487,7 +1430,6 @@ mov      EBP, ESP
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -1495,7 +1437,6 @@ mov      EBP, ESP
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });

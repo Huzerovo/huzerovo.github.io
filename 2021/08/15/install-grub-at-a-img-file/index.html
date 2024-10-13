@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>在磁盘映像文件上安装 Grub 2 - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta
       name="description"
@@ -44,58 +43,37 @@
     <meta property="article:tag" content="Linux" />
     <meta property="article:tag" content="Grub" />
     <meta name="twitter:card" content="summary" />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -114,7 +92,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -123,45 +100,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -169,7 +137,6 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <div id="article-toc">
         <p class="sidebar-list-title">目录</p>
@@ -241,7 +208,6 @@
           </li>
         </ol>
       </div>
-
       <article class="article-container">
         <h1>在磁盘映像文件上安装 Grub 2</h1>
         <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言">
@@ -285,15 +251,12 @@
           如下所示
         </p>
         <pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
-
 Partition table scan:
   MBR: not present
   BSD: not present
   APM: not present
   GPT: not present
-
 Creating new GPT entries in memory.
-
 Command (? for help):
 </code></pre>
         <blockquote>
@@ -322,18 +285,14 @@ Command (? for help):
         <p>可能会出现一个警告，确认即可</p>
         <p><strong>以下为参考：</strong></p>
         <pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
-
 Partition table scan:
   MBR: protective
   BSD: not present
   APM: not present
   GPT: present
-
 Found valid GPT with protective MBR; using GPT.
-
 Command (? for help): d
 Using 1
-
 Command (? for help): n
 Partition number (1-128, default 1):
 First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;:
@@ -341,7 +300,6 @@ Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef02
 Changed type of partition to 'BIOS boot partition'
-
 Command (? for help): n
 Partition number (2-128, default 2):
 First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;:
@@ -349,7 +307,6 @@ Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300):
 Changed type of partition to 'Linux filesystem'
-
 Command (? for help): p
 Disk ./file.img: 40960 sectors, 20.0 MiB
 Sector size (logical): 512 bytes
@@ -359,16 +316,12 @@ Main partition table begins at sector 2 and ends at sector 33
 First usable sector is 34, last usable sector is 40926
 Partitions will be aligned on 2048-sector boundaries
 Total free space is 2014 sectors (1007.0 KiB)
-
 Number  Start (sector)    End (sector)  Size       Code  Name
    1            2048            4095   1024.0 KiB  EF02  BIOS boot partition
    2            4096           40926   18.0 MiB    8300  Linux filesystem
-
 Command (? for help): w
-
 Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
 PARTITIONS!!
-
 Do you want to proceed? (Y/N): Y
 OK; writing new GUID partition table (GPT) to ./file.img.
 Warning: The kernel is still using the old partition table.
@@ -397,9 +350,7 @@ The operation has completed successfully.
         <pre><code class="language-shell">命令(输入 m 获取帮助)：t
 分区号 (1,2, 默认  2): 1
 分区类型或别名（输入 L 列出所有类型）：4
-
 已将分区“Linux filesystem”的类型更改为“BIOS boot”。
-
 命令(输入 m 获取帮助)：
 </code></pre>
         <p>最后输入 <code>w</code> 确认写入文件</p>
@@ -487,13 +438,10 @@ The operation has completed successfully.
         </h3>
         <p>照着手册随便糊的一个，<s>能用就行</s></p>
         <pre><code class="language-shell"># Grub 的配置文件
-
 # 设置根分区
 set root='(hd0,gpt2)'
-
 # 选择启动项超时时间，0 即立即启动
 set timeout=0
-
 # 菜单选项
 menuentry EntryName &#123;
     # 载入 file 并启动
@@ -530,7 +478,6 @@ sudo losetup -d /dev/loop0
           </li>
         </ul>
         <hr />
-
         <div class="article-meta-info">
           <span>分类</span>
           <a
@@ -538,14 +485,12 @@ sudo losetup -d /dev/loop0
             href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"
             >杂货铺</a
           >
-
           <span>标签</span>
           <a class="article-tags-none-link" href="/tags/grub/" rel="tag">Grub</a
           ><a class="article-tags-none-link" href="/tags/linux/" rel="tag"
             >Linux</a
           >
         </div>
-
         <div class="article-date-info">
           <span>发布日期: 2021-08-15</span>
           <span>更新日期: 2021-10-29</span>
@@ -561,16 +506,12 @@ sudo losetup -d /dev/loop0
         </div>
         <div class="article-comment">
           <div id="gitalk-container"></div>
-
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
           />
-
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
           <script src="/js/md5-2.19.0.min.js"></script>
-
           <script>
             let c = {
               clientID: "8430fc1311285afb9029",
@@ -589,9 +530,7 @@ sudo losetup -d /dev/loop0
         </div>
       </article>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -607,7 +546,6 @@ sudo losetup -d /dev/loop0
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -634,7 +572,6 @@ sudo losetup -d /dev/loop0
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -642,7 +579,6 @@ sudo losetup -d /dev/loop0
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });

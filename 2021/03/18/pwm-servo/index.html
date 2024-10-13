@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>PWM 舵机控制 - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta name="description" content="介绍如何在树莓派上控制舵机（servo）" />
     <meta property="og:type" content="article" />
@@ -42,66 +41,43 @@
     <meta property="article:tag" content="Servo" />
     <meta property="article:tag" content="PWM" />
     <meta name="twitter:card" content="summary" />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         renderMathInElement(document.body, {
@@ -118,7 +94,6 @@
         });
       });
     </script>
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -137,7 +112,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -146,45 +120,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -192,7 +157,6 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <div id="article-toc">
         <p class="sidebar-list-title">目录</p>
@@ -312,7 +276,6 @@
           </li>
         </ol>
       </div>
-
       <article class="article-container">
         <h1>PWM 舵机控制</h1>
         <h3
@@ -441,16 +404,12 @@
           >导入 GPIO 包并初始化 GPIO 接口
         </h5>
         <pre><code class="language-python">import RPi.GPIO as GPIO
-
 # 使用编号 18 的 GPIO 接口
 pin = 18
-
 # 设置 GPIO 的编号模式，详情参考树莓派官网
 GPIO.setmode(GPIO.BCM)
-
 # 关闭奇奇怪怪的警告
 GPIO.setwarnings(False)
-
 # 初始化接口
 GPIO.setup(pin, GPIO.OUT, initial=False)
 </code></pre>
@@ -464,22 +423,17 @@ GPIO.setup(pin, GPIO.OUT, initial=False)
         <pre><code class="language-python"># 创建实例
 hz = 50
 p = GPIO.PWM(pin, hz)
-
 # 设置占空比
 # 单位 ms
 t = 1.5
 # 乘以0.1,单位修正为 s，与 Hz 单位匹配
 dc = t * hz * 0.1
-
 # 启动 PWM
 p.start(dc)
-
 # 更改占空比
 p.ChangeDutyCycle(dc)
-
 # 停止 PWM
 p.stop()
-
 # 在程序结束时要释放对 GPIO 接口的控制
 GPIO.cleanup()
 </code></pre>
@@ -561,14 +515,11 @@ p.stop()
           <a class="header-anchor" href="#导入包并初始化"># </a>导入包并初始化
         </h5>
         <pre><code class="language-python">import pigpio
-
 # 使用编号 18 的接口
 # 注意：使用接口的 BCM 编号
 pin = 18
-
 # 创建连接 pigpio 连接
 pi = pigpio.pi()
-
 # 设置 GPIO 接口输出模式
 pi.set_mode(pin, pigpio.OUTPUT)
 </code></pre>
@@ -577,14 +528,11 @@ pi.set_mode(pin, pigpio.OUTPUT)
         </h5>
         <pre><code class="language-python"># 设置 PWM 频率为 50 Hz
 pi.set_PWM_frequency(pin, 50)
-
 # 设置 PWM 范围 0~100
 # 与占空比相结合，范围 0~100
 pi.set_PWM_range(pin, 100)
-
 # 设置占空比设置为 25 即 25/100 = 1/4
 pi.set_PWM_dutycycle(25)
-
 # 关闭 PWM
 pi.set_PWM_dutycycle(0)
 </code></pre>
@@ -596,7 +544,6 @@ pi.set_PWM_dutycycle(0)
           是硬件方式控制的，比较稳定，不易受到干扰。
         </p>
         <hr />
-
         <div class="article-meta-info">
           <span>分类</span>
           <a
@@ -604,7 +551,6 @@ pi.set_PWM_dutycycle(0)
             href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"
             >树莓派</a
           >
-
           <span>标签</span>
           <a class="article-tags-none-link" href="/tags/pwm/" rel="tag">PWM</a
           ><a class="article-tags-none-link" href="/tags/python/" rel="tag"
@@ -613,7 +559,6 @@ pi.set_PWM_dutycycle(0)
             >Servo</a
           >
         </div>
-
         <div class="article-date-info">
           <span>发布日期: 2021-03-18</span>
           <span>更新日期: 2021-10-29</span>
@@ -628,16 +573,12 @@ pi.set_PWM_dutycycle(0)
         </div>
         <div class="article-comment">
           <div id="gitalk-container"></div>
-
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
           />
-
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
           <script src="/js/md5-2.19.0.min.js"></script>
-
           <script>
             let c = {
               clientID: "8430fc1311285afb9029",
@@ -656,9 +597,7 @@ pi.set_PWM_dutycycle(0)
         </div>
       </article>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -674,7 +613,6 @@ pi.set_PWM_dutycycle(0)
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -701,7 +639,6 @@ pi.set_PWM_dutycycle(0)
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -709,7 +646,6 @@ pi.set_PWM_dutycycle(0)
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });

@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>狐灵 - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta name="description" content="这个人什么都没有写，真懒 &#x3D;v&#x3D;" />
     <meta property="og:type" content="website" />
@@ -31,73 +30,50 @@
     <meta property="og:locale" content="zh_CN" />
     <meta
       property="article:published_time"
-      content="2024-10-13T02:16:22.700Z"
+      content="2024-10-13T02:19:49.620Z"
     />
-    <meta property="article:modified_time" content="2024-10-13T02:16:22.700Z" />
+    <meta property="article:modified_time" content="2024-10-13T02:19:49.620Z" />
     <meta property="article:author" content="狐zerOAO" />
     <meta property="article:tag" content="blog" />
     <meta property="article:tag" content="code" />
     <meta name="twitter:card" content="summary" />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         renderMathInElement(document.body, {
@@ -114,7 +90,6 @@
         });
       });
     </script>
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -133,7 +108,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -142,45 +116,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我" id="active-page">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -188,10 +153,8 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <h1 class="page-title">关于我</h1>
-
       <div class="page-about-me">
         <img
           class="page-about-avatar"
@@ -199,20 +162,16 @@
           alt="avatar"
           src="/about/94830124.png"
         />
-
         <div class="article-container page-about-description">
           <p>这个人什么都没有写，真懒 =v=</p>
         </div>
       </div>
-
       <div class="article-container page-about-content">
         <hr />
         <p>这里该写点什么好呢？</p>
       </div>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -228,7 +187,6 @@
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -255,7 +213,6 @@
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -263,7 +220,6 @@
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });

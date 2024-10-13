@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>替罪羊树 - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta
       name="description"
@@ -44,58 +43,37 @@
     <meta property="article:tag" content="算法" />
     <meta property="article:tag" content="二叉树" />
     <meta name="twitter:card" content="summary" />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -114,7 +92,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -123,45 +100,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -169,7 +137,6 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <div id="article-toc">
         <p class="sidebar-list-title">目录</p>
@@ -294,7 +261,6 @@
           </li>
         </ol>
       </div>
-
       <article class="article-container">
         <h1>替罪羊树</h1>
         <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言">
@@ -466,12 +432,10 @@ int ws[MAXN] = &#123;0&#125;;
 // @param val 找的是这个值
 // @return 这个值对应的结点索引是啥，如果为0表示不存在
 int search_node(int r, int val);
-
 // 将一个值插入树中
 // @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
 // @param val 插入的值
 void insert_node(int *r, int val);
-
 // 将一个值从树中删除
 // @note 如果值不存在，则不会发生任何事情
 // @param *r 指针，内容同样是根的值，重构会更新这个值
@@ -680,7 +644,6 @@ void rebuild(int *r) &#123;
 static max(a, b) &#123;
     return a &gt; b ? a : b;
 &#125;
-
 bool should_rebuild(int r) &#123;
     return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
         || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
@@ -839,7 +802,6 @@ bool should_rebuild(int r) &#123;
           </ol>
         </section>
         <hr />
-
         <div class="article-meta-info">
           <span>分类</span>
           <a
@@ -847,7 +809,6 @@ bool should_rebuild(int r) &#123;
             href="/categories/%E7%AE%97%E6%B3%95/"
             >算法</a
           >
-
           <span>标签</span>
           <a
             class="article-tags-none-link"
@@ -861,7 +822,6 @@ bool should_rebuild(int r) &#123;
             >算法</a
           >
         </div>
-
         <div class="article-date-info">
           <span>发布日期: 2024-01-21</span>
           <span>更新日期: 2024-01-23</span>
@@ -876,16 +836,12 @@ bool should_rebuild(int r) &#123;
         </div>
         <div class="article-comment">
           <div id="gitalk-container"></div>
-
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
           />
-
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
           <script src="/js/md5-2.19.0.min.js"></script>
-
           <script>
             let c = {
               clientID: "8430fc1311285afb9029",
@@ -904,9 +860,7 @@ bool should_rebuild(int r) &#123;
         </div>
       </article>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -922,7 +876,6 @@ bool should_rebuild(int r) &#123;
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -949,7 +902,6 @@ bool should_rebuild(int r) &#123;
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -957,7 +909,6 @@ bool should_rebuild(int r) &#123;
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });

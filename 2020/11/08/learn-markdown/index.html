@@ -17,7 +17,6 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Learn Markdown - 狐言狐语 | 记录一段回忆</title>
-
     <meta name="generator" content="Hexo 7.3.0" />
     <meta
       name="description"
@@ -51,58 +50,37 @@
       name="twitter:image"
       content="https://huzerovo.github.io/2020/11/08/learn-markdown/id=89004882_p3.jpg"
     />
-
     <link
       rel="alternate"
       href="/atom.xml"
       title="狐灵"
       type="application/atom+xml"
     />
-
     <!-- jQuery -->
-
     <script src="/js/jquery-3.7.1.min.js"></script>
-
     <!-- fancybox -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-
     <!-- Bootstrap icons -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- highlight.js -->
-
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-
     <!-- site style -->
-
     <link rel="stylesheet" href="/css/light.css" />
-
     <link rel="stylesheet" href="/css/dark.css" />
-
     <link rel="stylesheet" href="/css/huzerovo.css" />
-
     <!-- theme switcher -->
-
     <script src="/js/huzerovo.js"></script>
-
     <!-- searching support -->
-
     <script src="/js/search.js"></script>
-
     <!-- katex renderer -->
-
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -121,7 +99,6 @@
         .addEventListener("change", ThemeSwitcher.follow);
     </script>
   </head>
-
   <body>
     <header id="topbar">
       <div class="topbar-container">
@@ -130,45 +107,36 @@
             <li>
               <a href="/" title="首页">首页</a>
             </li>
-
             <li>
               <a href="/archive" title="归档">归档</a>
             </li>
-
             <li>
               <a href="/categories" title="分类">分类</a>
             </li>
-
             <li>
               <a href="/tagcloud" title="标签云">标签云</a>
             </li>
-
             <li>
               <a href="/about" title="关于我">关于我</a>
             </li>
           </ul>
         </nav>
-
         <div class="topbar-icon-buttons">
           <!-- social link -->
-
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-
           <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-
           <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-
           <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
@@ -176,10 +144,8 @@
         </div>
       </div>
     </header>
-
     <main class="container">
       <div id="article-toc"></div>
-
       <article class="article-container">
         <h1>Learn Markdown</h1>
         <h2 id="%E6%A0%87%E9%A2%98" tabindex="-1" id="标题">
@@ -191,9 +157,7 @@
               用<code>=</code>表示一级标题，或<code>-</code>表示二级标题。这个方式不常见，因为这些符号还有其他用法。
             </p>
             <pre><code class="language-markdown"># 一级标题
-
 ## 二级标题
-
 ## 二级标题
 </code></pre>
             <h1 id="%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98" tabindex="-1">
@@ -220,15 +184,10 @@
               一般使用这个方法。
             </p>
             <pre><code class="language-markdown"># 一级标题
-
 ## 二级标题
-
 ### 三级标题
-
 #### 四级标题
-
 ##### 五级标题
-
 ###### 六级标题
 </code></pre>
             <h1 id="%E4%B8%80%E7%BA%A7" tabindex="-1">一级</h1>
@@ -268,10 +227,8 @@
         <p>我一般使用<code>*</code>。</p>
         <pre><code class="language-markdown">_斜体_
 _斜体_
-
 **粗体**
 **粗体**
-
 **_斜粗体_**
 **_斜粗体_**
 </code></pre>
@@ -297,17 +254,11 @@ _斜体_
         </p>
         <p>我一般使用<code>-</code>作为分割线。</p>
         <pre><code class="language-markdown">---
-
 ---
-
 ---
-
 ---
-
 ---
-
 ---
-
 ## 这个会被当作标题
 </code></pre>
         <hr />
@@ -365,14 +316,10 @@ _斜体_
           >
         </p>
         <pre><code class="language-markdown">1. 第一项
-
 2. 第二项，
    接在后面的文本。
-
 3. 第三项
-
    空行加带缩进的文本可以对齐列表项换行，不过实际上似乎是成为了一个子项。
-
 4. 第四项，这后面有两个空格  
    这会使这行文字带缩进。很难看出来，最好少用。
 </code></pre>
@@ -411,10 +358,8 @@ _斜体_
         <p>我一般使用<code>-</code>。</p>
         <pre><code class="language-markdown">- 第一项
 - 第二项
-
 * 第一项
 * 第二项
-
 - 第一项
 - 第二项
 </code></pre>
@@ -602,10 +547,8 @@ int main()
         <pre><code class="language-markdown">[链接名字](链接地址)
 或者
 &lt;链接地址&gt;
-
 就像这样：
 [ME](https://huzerovo.github.io)
-
 &lt;https://huzerovo.github.io\&gt;
 </code></pre>
         <p><a href="https://huzerovo.github.io">ME</a></p>
@@ -617,7 +560,6 @@ int main()
         </h2>
         <pre><code class="language-markdown">![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)
 标题可写可不写
-
 就像这样：
 ![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
 </code></pre>
@@ -854,7 +796,6 @@ is maintained by the W3C.
           >
         </p>
         <pre><code class="language-markdown">这里有个^上标^
-
 而这里有个~下标~
 </code></pre>
         <p>这里有个<sup>上标</sup></p>
@@ -874,7 +815,6 @@ is maintained by the W3C.
           </ol>
         </section>
         <hr />
-
         <div class="article-meta-info">
           <span>分类</span>
           <a
@@ -886,13 +826,11 @@ is maintained by the W3C.
             href="/categories/%E7%AC%94%E8%AE%B0/markdown/"
             >markdown</a
           >
-
           <span>标签</span>
           <a class="article-tags-none-link" href="/tags/markdown/" rel="tag"
             >Markdown</a
           >
         </div>
-
         <div class="article-date-info">
           <span>发布日期: 2020-11-08</span>
           <span>更新日期: 2023-07-20</span>
@@ -907,16 +845,12 @@ is maintained by the W3C.
         </div>
         <div class="article-comment">
           <div id="gitalk-container"></div>
-
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
           />
-
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
           <script src="/js/md5-2.19.0.min.js"></script>
-
           <script>
             let c = {
               clientID: "8430fc1311285afb9029",
@@ -935,9 +869,7 @@ is maintained by the W3C.
         </div>
       </article>
     </main>
-
     <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
@@ -953,7 +885,6 @@ is maintained by the W3C.
       <br />
     </footer>
   </body>
-
   <script>
     hljs.highlightAll();
     $("#goto-top").hide();
@@ -980,7 +911,6 @@ is maintained by the W3C.
       $("#goto-top").click(function () {
         $("#root").scrollTop(0);
       });
-
       $(window).scroll(function () {
         if ($("#root").scrollTop() > 300) {
           $("#goto-top").show();
@@ -988,7 +918,6 @@ is maintained by the W3C.
           $("#goto-top").hide();
         }
       });
-
       Fancybox.bind(".container img");
       Fancybox.bind("[data-fancybox]");
     });
