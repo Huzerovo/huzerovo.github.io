@@ -10,6 +10,9 @@ main.container {
 main.container .page-title {
   text-align: center;
 }
+main.container a {
+  text-decoration: none;
+}
 main.container .page-about-me {
   width: 60%;
   margin: 16px auto;
@@ -23,6 +26,7 @@ main.container .page-about-me .page-about-description {
   margin-top: 16px;
   overflow-wrap: break-word;
   text-align: left;
+  color: var(--huzerovo-trivial-text);
 }
 main.container .page-about-me .page-about-description > p {
   text-align: center;
@@ -42,6 +46,9 @@ main.container .page-archive {
   width: 80%;
   margin: 16px auto;
 }
+main.container .page-archive a:visited {
+  color: var(--huzerovo-link);
+}
 main.container .page-archive .page-archive-year {
   font-size: 32px;
 }
@@ -51,13 +58,21 @@ main.container .page-archive .page-archive-item {
   font-size: 24px;
   margin: 0 6px;
 }
-main.container .page-archive .page-archive-item a {
+main.container .page-archive .page-archive-item .page-archive-item-date {
+  color: var(--huzerovo-trivial-text);
+}
+main.container .page-archive .page-archive-item a.page-archive-item-link {
   text-decoration: none;
   width: 80%;
   padding: 8px;
   margin-left: 64px;
   border-radius: 8px;
   transition: 100ms;
+  color: var(--huzerovo-normal-text);
+}
+main.container .page-archive .page-archive-item a.page-archive-item-link:hover {
+  background-color: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-notable-text);
 }
 @media (max-width: 480px) {
   main.container .page-archive {
@@ -71,45 +86,60 @@ main.container .articles-list .articles-list-item {
   border-radius: 16px;
   overflow: hidden;
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-background-highlight);
 }
 main.container .articles-list .articles-list-item a {
+  color: var(--huzerovo-normal-text);
   margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
 }
-main.container .articles-list .articles-list-item .item-gallery {
+main.container .articles-list .articles-list-item a:hover {
+  color: var(--huzerovo-notable-text);
+}
+main.container .articles-list .item-gallery {
   margin: 0px;
 }
-main.container .articles-list .articles-list-item .item-gallery img {
+main.container .articles-list .item-gallery img {
   cursor: pointer;
   width: 100%;
 }
-main.container .articles-list .articles-list-item .item-title {
+main.container .articles-list .post-entry-title {
   font-size: 24px;
   margin-top: 0;
 }
-main.container .articles-list .articles-list-item .item-content {
+main.container .articles-list .item-content {
   margin: 0;
+  color: var(--huzerovo-additional-text);
 }
-main.container .articles-list .articles-list-item .item-footer {
+main.container .articles-list .item-footer {
   display: flex;
   justify-content: space-between;
   margin: 32px;
   position: relative;
+  color: var(--huzerovo-trivial-text);
 }
-main.container .articles-list .articles-list-item .item-footer .item-footer-todo {
+main.container .articles-list .item-footer .item-footer-todo {
+  color: var(--huzerovo-warn-color);
   margin: 0px;
   text-align: left;
 }
-main.container .articles-list .articles-list-item .item-footer .item-footer-todo .item-footer-todo-msg {
+main.container
+  .articles-list
+  .item-footer
+  .item-footer-todo
+  .item-footer-todo-msg {
   display: inline;
   margin-right: 8px;
 }
-main.container .articles-list .articles-list-item .item-footer .item-footer-pin {
+main.container .articles-list .item-footer .item-footer-pin {
   position: absolute;
   right: 0px;
   bottom: 0px;
+}
+main.container .articles-list .item-footer .item-footer-finished {
+  color: var(--huzerovo-done-color);
 }
 @media (max-width: 480px) {
   main.container .articles-list .articles-list-item {
@@ -119,6 +149,14 @@ main.container .articles-list .articles-list-item .item-footer .item-footer-pin 
 main.container .page-category {
   width: 80%;
   margin: 0 auto;
+  color: var(--huzerovo-normal-text);
+}
+main.container .page-category a {
+  color: var(--huzerovo-additional-text);
+}
+main.container .page-category a:hover {
+  background-color: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-notable-text);
 }
 main.container .page-category .category-list {
   list-style: none;
@@ -165,6 +203,12 @@ main.container #article-toc {
   overflow: auto;
   padding-right: 8px;
 }
+main.container #article-toc a {
+  color: var(--huzerovo-additional-text);
+}
+main.container #article-toc a:hover {
+  color: var(--huzerovo-notable-text);
+}
 main.container #article-toc .toc {
   padding: 0;
   font-size: small;
@@ -180,22 +224,14 @@ main.container #article-toc .toc-link {
   margin: 6px 0;
   text-decoration: none;
 }
+main.container #article-toc .toc-level-2 > a.toc-link {
+  color: var(--huzerovo-normal-text);
+}
 main.container #article-toc .toc-level-2 > a.toc-link ::before {
   content: "# ";
 }
-main.container #article-toc::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-main.container #article-toc:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-main.container #article-toc::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-main.container #article-toc::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+main.container #article-toc .toc-level-2 > a:hover {
+  color: var(--huzerovo-notable-text);
 }
 @media (max-width: 960px) {
   main.container #article-toc {
@@ -236,13 +272,16 @@ main.container .article-container em {
   padding-right: 3px;
 }
 main.container .article-container blockquote {
-  border-left-width: 3px;
-  border-left-style: solid;
+  background-color: var(--huzerovo-block-background);
+  color: var(--huzerovo-block-text);
+  border-left: solid 3px var(--huzerovo-line);
   margin: 8px 0px;
   padding: 0px 2em;
   width: calc(100% - 64px - 3px);
   display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
 }
 main.container .article-container blockquote p {
   text-indent: 0px;
@@ -258,8 +297,12 @@ main.container .article-container table {
 }
 main.container .article-container table thead {
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-thead-bg);
+  color: var(--huzerovo-thead-text);
 }
 main.container .article-container table tbody {
+  background-color: var(--huzerovo-tbody-bg);
+  color: var(--huzerovo-tbody-text);
   transition: background-color 0.3s;
 }
 main.container .article-container table tbody td {
@@ -281,26 +324,22 @@ main.container .article-container code {
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+main.container .article-container code:not([class*="language"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
 }
 main.container .article-container pre code {
   display: block;
   overflow: auto;
   padding: 16px 32px;
 }
-main.container .article-container pre code::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-main.container .article-container pre code:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-main.container .article-container pre code::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-main.container .article-container pre code::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+main.container .article-container pre code:not([class~="hljs"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
 }
 main.container .article-container figure.highlight {
   overflow-x: auto;
@@ -358,75 +397,251 @@ main.container .article-container figure.highlight table .code pre .hljs {
   background: #0d1117;
 }
 main.container .article-container figure.highlight table .code pre .hljs-doctag,
-main.container .article-container figure.highlight table .code pre .hljs-keyword,
-main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-keyword,
-main.container .article-container figure.highlight table .code pre .hljs-template-tag,
-main.container .article-container figure.highlight table .code pre .hljs-template-variable,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-keyword,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-meta
+  .hljs-keyword,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-template-tag,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-template-variable,
 main.container .article-container figure.highlight table .code pre .hljs-type,
-main.container .article-container figure.highlight table .code pre .hljs-variable.language_ {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-variable.language_ {
   color: #ff7b72;
 }
 main.container .article-container figure.highlight table .code pre .hljs-title,
-main.container .article-container figure.highlight table .code pre .hljs-title.class_,
-main.container .article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
-main.container .article-container figure.highlight table .code pre .hljs-title.function_ {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.class_,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.class_.inherited__,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.function_ {
   color: #d2a8ff;
 }
 main.container .article-container figure.highlight table .code pre .hljs-attr,
-main.container .article-container figure.highlight table .code pre .hljs-attribute,
-main.container .article-container figure.highlight table .code pre .hljs-literal,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-attribute,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-literal,
 main.container .article-container figure.highlight table .code pre .hljs-meta,
 main.container .article-container figure.highlight table .code pre .hljs-number,
-main.container .article-container figure.highlight table .code pre .hljs-operator,
-main.container .article-container figure.highlight table .code pre .hljs-selector-attr,
-main.container .article-container figure.highlight table .code pre .hljs-selector-class,
-main.container .article-container figure.highlight table .code pre .hljs-selector-id,
-main.container .article-container figure.highlight table .code pre .hljs-variable {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-operator,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-attr,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-class,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-id,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-variable {
   color: #79c0ff;
 }
-main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-string,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-meta
+  .hljs-string,
 main.container .article-container figure.highlight table .code pre .hljs-regexp,
-main.container .article-container figure.highlight table .code pre .hljs-string {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-string {
   color: #a5d6ff;
 }
-main.container .article-container figure.highlight table .code pre .hljs-built_in,
-main.container .article-container figure.highlight table .code pre .hljs-symbol {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-built_in,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-symbol {
   color: #ffa657;
 }
 main.container .article-container figure.highlight table .code pre .hljs-code,
-main.container .article-container figure.highlight table .code pre .hljs-comment,
-main.container .article-container figure.highlight table .code pre .hljs-formula {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-comment,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-formula {
   color: #8b949e;
 }
 main.container .article-container figure.highlight table .code pre .hljs-name,
 main.container .article-container figure.highlight table .code pre .hljs-quote,
-main.container .article-container figure.highlight table .code pre .hljs-selector-pseudo,
-main.container .article-container figure.highlight table .code pre .hljs-selector-tag {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-pseudo,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-tag {
   color: #7ee787;
 }
 main.container .article-container figure.highlight table .code pre .hljs-subst {
   color: #c9d1d9;
 }
-main.container .article-container figure.highlight table .code pre .hljs-section {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-section {
   color: #1f6feb;
   font-weight: 700;
 }
-main.container .article-container figure.highlight table .code pre .hljs-bullet {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-bullet {
   color: #f2cc60;
 }
-main.container .article-container figure.highlight table .code pre .hljs-emphasis {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-emphasis {
   color: #c9d1d9;
   font-style: italic;
 }
-main.container .article-container figure.highlight table .code pre .hljs-strong {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-strong {
   color: #c9d1d9;
   font-weight: 700;
 }
-main.container .article-container figure.highlight table .code pre .hljs-addition {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-addition {
   color: #aff5b4;
   background-color: #033a16;
 }
-main.container .article-container figure.highlight table .code pre .hljs-deletion {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
 }
@@ -456,14 +671,23 @@ main.container .article-container .katex-display .katex::-webkit-scrollbar {
   width: 1px;
   height: 1px;
 }
-main.container .article-container .katex-display .katex:hover::-webkit-scrollbar {
+main.container
+  .article-container
+  .katex-display
+  .katex:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-main.container .article-container .katex-display .katex::-webkit-scrollbar-track {
+main.container
+  .article-container
+  .katex-display
+  .katex::-webkit-scrollbar-track {
   border-radius: 8px;
 }
-main.container .article-container .katex-display .katex::-webkit-scrollbar-thumb {
+main.container
+  .article-container
+  .katex-display
+  .katex::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
 main.container .article-container .pullquote {
@@ -496,6 +720,9 @@ main.container .article-container .video-container iframe {
 main.container .article-container .contains-task-list {
   list-style: none;
 }
+main.container .article-meta-info {
+  color: var(--huzerovo-additional-text);
+}
 main.container .article-meta-info span {
   display: block;
 }
@@ -508,6 +735,7 @@ main.container .article-meta-info a {
 }
 main.container .article-date-info {
   margin: 8px auto;
+  color: var(--huzerovo-trivial-text);
 }
 main.container .article-date-info span {
   font-size: small;
@@ -520,6 +748,7 @@ main.container .article-comment {
   padding: 16px;
   margin: 16px 0px;
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-block-background);
 }
 main.container .article-comment #gitalk-container {
   text-align: left;
@@ -528,6 +757,7 @@ main.container .article-comment #gitalk-container img {
   border-radius: 100%;
 }
 main.container .article-comment #gitalk-container blockquote {
+  background: var(--huzerovo-block-background);
   width: 100%;
 }
 main.container .article-comment #gitalk-container .gt-meta {
@@ -540,17 +770,62 @@ main.container .article-comment #gitalk-container .gt-comment-content {
 main.container .article-comment #gitalk-container .gt-comment-content:hover {
   box-shadow: unset;
 }
-main.container .search-input {
+main.container .search-bar {
   display: flex;
 }
-main.container .search-input input {
+main.container #search-input {
   margin: 16px auto;
   height: 40px;
   width: 80%;
   font-size: 16px;
   border: solid 1px;
   border-radius: 16px;
+  border-color: var(--huzerovo-line);
+  background: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-normal-text);
   padding: 0px 16px;
+}
+main.container .tagcloud-0 {
+  color: var(--huzerovo-tagcloud-0);
+}
+main.container .tagcloud-1 {
+  color: var(--huzerovo-tagcloud-1);
+}
+main.container .tagcloud-2 {
+  color: var(--huzerovo-tagcloud-2);
+}
+main.container .tagcloud-3 {
+  color: var(--huzerovo-tagcloud-3);
+}
+main.container .tagcloud-4 {
+  color: var(--huzerovo-tagcloud-4);
+}
+main.container .tagcloud-5 {
+  color: var(--huzerovo-tagcloud-5);
+}
+main.container .tagcloud-6 {
+  color: var(--huzerovo-tagcloud-6);
+}
+main.container .tagcloud-7 {
+  color: var(--huzerovo-tagcloud-7);
+}
+main.container .tagcloud-8 {
+  color: var(--huzerovo-tagcloud-8);
+}
+main.container .tagcloud-9 {
+  color: var(--huzerovo-tagcloud-9);
+}
+main.container .tagcloud-0:hover,
+main.container .tagcloud-1:hover,
+main.container .tagcloud-2:hover,
+main.container .tagcloud-3:hover,
+main.container .tagcloud-4:hover,
+main.container .tagcloud-5:hover,
+main.container .tagcloud-6:hover,
+main.container .tagcloud-7:hover,
+main.container .tagcloud-8:hover,
+main.container .tagcloud-9:hover {
+  color: var(--huzerovo-tagcloud-hover);
 }
 main.container .page-tagcloud {
   width: 80%;

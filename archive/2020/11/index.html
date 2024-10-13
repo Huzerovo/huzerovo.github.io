@@ -1,655 +1,234 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html id="root" lang="zh-CN">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="white"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="dark"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>狐灵 - 狐言狐语 | 记录一段回忆</title>
 
-    <meta name="generator" content="Hexo 7.3.0">
-    <meta name="description" content="记录一段回忆">
-<meta property="og:type" content="website">
-<meta property="og:title" content="狐灵">
-<meta property="og:url" content="https://huzerovo.github.io/archive/2020/11/">
-<meta property="og:site_name" content="狐灵">
-<meta property="og:description" content="记录一段回忆">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="狐zerOAO">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="code">
-<meta name="twitter:card" content="summary">
+    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="description" content="记录一段回忆" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="狐灵" />
+    <meta
+      property="og:url"
+      content="https://huzerovo.github.io/archive/2020/11/"
+    />
+    <meta property="og:site_name" content="狐灵" />
+    <meta property="og:description" content="记录一段回忆" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="article:author" content="狐zerOAO" />
+    <meta property="article:tag" content="blog" />
+    <meta property="article:tag" content="code" />
+    <meta name="twitter:card" content="summary" />
 
-    
-        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
-    
+    <link
+      rel="alternate"
+      href="/atom.xml"
+      title="狐灵"
+      type="application/atom+xml"
+    />
 
     <!-- jQuery -->
-    
-<script src="/js/jquery-3.7.1.min.js"></script>
 
+    <script src="/js/jquery-3.7.1.min.js"></script>
 
     <!-- fancybox -->
-    
-        
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 
-        
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <!-- Bootstrap icons -->
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-    
-    
-        <!-- highlight.js -->
-        
-<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+    <!-- highlight.js -->
 
-        
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
 
-    
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-    
-    
-<link rel="stylesheet" href="/css/huzerovo.css">
+    <!-- site style -->
 
+    <link rel="stylesheet" href="/css/light.css" />
 
-    
-    
-<link rel="stylesheet" href="/css/light/light.css">
+    <link rel="stylesheet" href="/css/dark.css" />
 
-    
-<link rel="stylesheet" href="/css/dark/dark.css">
+    <link rel="stylesheet" href="/css/huzerovo.css" />
 
+    <!-- theme switcher -->
 
-    
-    
-<script src="/js/huzerovo.js"></script>
-<script src="/js/search.js"></script>
+    <script src="/js/huzerovo.js"></script>
 
+    <!-- searching support -->
 
-    
-    
+    <script src="/js/search.js"></script>
+
+    <!-- katex renderer -->
+
     <script>
-        let codeStyle = {};
-        codeStyle.light = "/css/github.min.css";
-        codeStyle.dark = "/css/github-dark.min.css";
-        window.load = myLoading();
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+      const ThemeConf = {
+        rootId: "root",
+        codeId: "code-style",
+        ibtnId: "btn-switch-theme",
+        iconDarkClass: "bi-moon",
+        iconLightClass: "bi-sun",
+        codeStyle: {
+          light: "/css/github.min.css",
+          dark: "/css/github-dark.min.css",
+        },
+      };
+      window.load = ThemeSwitcher.init();
+      window
+        .matchMedia("(prefers-color-scheme: light)")
+        .addEventListener("change", ThemeSwitcher.follow);
     </script>
-</head>
+  </head>
 
-<body>
-    
-
-
-
-
-
-
-
-
-
-
-
-<header class="topbar">
-    <div class="topbar-container">
-        
+  <body>
+    <header id="topbar">
+      <div class="topbar-container">
         <nav class="topbar-menu">
-            <ul>
-            
-                <li>
-                
-                
-                    <a href="/" title="首页">首页</a>
-                
-                </li>
-            
-                <li>
-                
-                 
-                    <a href="/archive" title="归档" id="active-page">归档</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/categories" title="分类">分类</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/tagcloud" title="标签云">标签云</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/about" title="关于我">关于我</a>
-                
-                </li>
-            
-            </ul>
+          <ul>
+            <li>
+              <a href="/" title="首页">首页</a>
+            </li>
+
+            <li>
+              <a href="/archive" title="归档" id="active-page">归档</a>
+            </li>
+
+            <li>
+              <a href="/categories" title="分类">分类</a>
+            </li>
+
+            <li>
+              <a href="/tagcloud" title="标签云">标签云</a>
+            </li>
+
+            <li>
+              <a href="/about" title="关于我">关于我</a>
+            </li>
+          </ul>
         </nav>
 
-        
         <div class="topbar-icon-buttons">
-            <!-- social link -->
-            
-                
-                
-                <a class="icon-button"  title="Github" href="https://github.com/Huzerovo"><i class="bi bi-github"></i></a>
-                
-            
+          <!-- social link -->
 
-            
-                <!-- search link -->
-                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
-            
+          <a
+            class="icon-button"
+            title="Github"
+            href="https://github.com/Huzerovo"
+            ><i class="bi bi-github"></i
+          ></a>
 
-            <!-- change theme btn -->
-            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+          <!-- search link -->
+          <a class="icon-button" id="btn-search" title="搜索" href="/search"
+            ><i class="bi bi-search"></i
+          ></a>
 
-            
-                <!-- feed link -->
-                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
-            
+          <!-- change theme btn -->
+          <a class="icon-button" id="btn-switch-theme" title="切换主题"
+            ><i class="bi bi-sun"></i
+          ></a>
 
+          <!-- feed link -->
+          <a class="icon-button" title="订阅" href="/atom.xml"
+            ><i class="bi bi-rss-fill"></i
+          ></a>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<main class="container">
-    <h1 class="page-title">
-        归档
-    </h1>
-    <div class="page-archive">
-    
-    
-    
-    
-    
-        
-        
-        
-            
-            <div class="page-archive-year">2024</div>
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-10
-            </div>
-            
-            <a href="/2024/07/10/services-running-on-my-raspberrypi/">
-                树莓派上运行的服务
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                01-21
-            </div>
-            
-            <a href="/2024/01/21/scapegoat-tree/">
-                替罪羊树
-            </a>
-        </div>
-    
-        
-        
-        
-            
-            <div class="page-archive-year">2023</div>
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                11-02
-            </div>
-            
-            <a href="/2023/11/02/git-commit-style/">
-                Git提交规范
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-19
-            </div>
-            
-            <a href="https://lug.ustc.edu.cn/wiki/doc/smart-questions/">
-                提问的智慧
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-17
-            </div>
-            
-            <a href="/2023/07/17/introduction-to-my-theme/">
-                我的主题介绍
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-17
-            </div>
-            
-            <a href="/2023/07/17/post-for-gallery-layout-test/">
-                图册展示页
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-16
-            </div>
-            
-            <a href="/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/">
-                使用Hexo从私有仓库部署Github Page
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-05
-            </div>
-            
-            <a href="/2023/07/05/magic-algorithms/">
-                编程魔法学
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                07-03
-            </div>
-            
-            <a href="/2023/07/03/my-neovim-conf/">
-                我的Neovim配置
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                01-15
-            </div>
-            
-            <a href="/2023/01/15/comments-are-enabled/">
-                开启评论
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                01-12
-            </div>
-            
-            <a href="/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/">
-                将init.vim迁移至init.lua
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                01-01
-            </div>
-            
-            <a href="/2023/01/01/time-test/">
-                Github Page时间测试
-            </a>
-        </div>
-    
-        
-        
-        
-            
-            <div class="page-archive-year">2022</div>
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                03-05
-            </div>
-            
-            <a href="/2022/03/05/smali-language/">
-                smali 语法
-            </a>
-        </div>
-    
-        
-        
-        
-            
-            <div class="page-archive-year">2021</div>
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                11-25
-            </div>
-            
-            <a href="/2021/11/25/logistic-regression/">
-                逻辑回归
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                11-04
-            </div>
-            
-            <a href="/2021/11/04/why-use-least-squares/">
-                为什么使用最小二乘法
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                10-30
-            </div>
-            
-            <a href="/2021/10/30/locally-weighted-regression/">
-                局部加权回归
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                10-26
-            </div>
-            
-            <a href="/2021/10/26/underfitting-and-overfitting/">
-                欠拟合与过拟合
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                09-16
-            </div>
-            
-            <a href="/2021/09/16/gradient-descent/">
-                梯度下降算法
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                09-11
-            </div>
-            
-            <a href="/2021/09/11/linear-regression/">
-                线性回归
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                08-15
-            </div>
-            
-            <a href="/2021/08/15/install-grub-at-a-img-file/">
-                在磁盘映像文件上安装 Grub 2
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                03-26
-            </div>
-            
-            <a href="/2021/03/26/intel-asm/">
-                Intel x86 汇编语言
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                03-18
-            </div>
-            
-            <a href="/2021/03/18/pwm-servo/">
-                PWM 舵机控制
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                03-11
-            </div>
-            
-            <a href="/2021/03/11/raspberrypi-access-point/">
-                树莓派热点
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                02-19
-            </div>
-            
-            <a href="/2021/02/19/vim-simple-note/">
-                Vim 简单笔记
-            </a>
-        </div>
-    
-        
-        
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                02-18
-            </div>
-            
-            <a href="/2021/02/18/linux-firewall/">
-                Linux 防火墙
-            </a>
-        </div>
-    
-        
-        
-        
-            
-            <div class="page-archive-year">2020</div>
-        
-        
-        <div class="page-archive-item" >
-            
-            <div class="page-archive-item-date">
-                11-08
-            </div>
-            
-            <a href="/2020/11/08/learn-markdown/">
-                Learn Markdown
-            </a>
-        </div>
-    
-    </div>
-</main>
+    <main class="container">
+      <h1 class="page-title">归档</h1>
+      <div class="page-archive">
+        <div class="page-archive-year">2020</div>
 
-    
-    <button id="goto-top" type="button" title="回到顶部">
-        回到顶部
-    </button>
-    <footer class="site-footer">
-        <p> © 2024 
-        
-            @狐zerOAO
-        
-        </p>
-        <p>
-            如无特殊说明，网站所有原创内容均采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权。
-        </p>
-        <p>
-            Powered by <a href="https://hexo.io">Hexo</a>. 
-            Theme by <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
-        </p>
-        <br>
+        <div class="page-archive-item">
+          <div class="page-archive-item-date">11-08</div>
+
+          <a class="page-archive-item-link" href="/2020/11/08/learn-markdown/">
+            Learn Markdown
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
+
+    <footer id="site-footer">
+      <p>© 2024 @狐zerOAO</p>
+      <p>
+        如无特殊说明，网站所有原创内容均采用<a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+          >CC BY-NC-ND 4.0</a
+        >授权。
+      </p>
+      <p>
+        Powered by <a href="https://hexo.io">Hexo</a>. Theme by
+        <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
+      </p>
+      <br />
     </footer>
-</body>
+  </body>
 
-<script>
-hljs.highlightAll();
-$('#goto-top').hide();
-// 页面载入后设置icon
-setTheme(getStorage('currentTheme'));
-$(document).ready(function() {
-    // 监听事件
-    $('#btn-switch-theme').click(switchTheme);
-    $('#btn-side-menu').click(function() {
-        let e = $('#side-nav');
-        let hide = 'side-menu-hidden'
-        let show = 'side-menu-show'
+  <script>
+    hljs.highlightAll();
+    $("#goto-top").hide();
+    // 页面载入后设置icon
+    ThemeSwitcher.follow();
+    $(document).ready(function () {
+      // 监听事件
+      $("#btn-switch-theme").click(switchThemeClickHandler);
+      $("#btn-side-menu").click(function () {
+        let e = $("#side-nav");
+        let hide = "side-menu-hidden";
+        let show = "side-menu-show";
         if (e.hasClass(hide)) {
-            e.removeClass(hide);
-            e.addClass(show);
+          e.removeClass(hide);
+          e.addClass(show);
         } else {
-            e.removeClass(show);
-            e.addClass(hide);
+          e.removeClass(show);
+          e.addClass(hide);
         }
-    });
-    $('#search').on('input', function() {
+      });
+      $("#search-input").on("input", function () {
         searchArticle("/search.xml");
-    });
-    $('#goto-top').click(function() {
-        $('#root').scrollTop(0);
-    });
+      });
+      $("#goto-top").click(function () {
+        $("#root").scrollTop(0);
+      });
 
-    $(window).scroll(function() {
-        if ($('#root').scrollTop() > 300) {
-            $('#goto-top').show();
+      $(window).scroll(function () {
+        if ($("#root").scrollTop() > 300) {
+          $("#goto-top").show();
         } else {
-            $('#goto-top').hide();
+          $("#goto-top").hide();
         }
-    });
+      });
 
-    Fancybox.bind(".container img");
-    Fancybox.bind('[data-fancybox]');
-});
-</script>
+      Fancybox.bind(".container img");
+      Fancybox.bind("[data-fancybox]");
+    });
+  </script>
 </html>

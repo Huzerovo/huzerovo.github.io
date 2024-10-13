@@ -1,269 +1,350 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html id="root" lang="zh-CN">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="white"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="dark"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>梯度下降算法 - 狐言狐语 | 记录一段回忆</title>
 
-    <meta name="generator" content="Hexo 7.3.0">
-    <meta name="description" content="介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="梯度下降算法">
-<meta property="og:url" content="https://huzerovo.github.io/2021/09/16/gradient-descent/">
-<meta property="og:site_name" content="狐灵">
-<meta property="og:description" content="介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-16T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-21T04:00:00.000Z">
-<meta property="article:author" content="狐zerOAO">
-<meta property="article:tag" content="算法">
-<meta name="twitter:card" content="summary">
+    <meta name="generator" content="Hexo 7.3.0" />
+    <meta
+      name="description"
+      content="介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="梯度下降算法" />
+    <meta
+      property="og:url"
+      content="https://huzerovo.github.io/2021/09/16/gradient-descent/"
+    />
+    <meta property="og:site_name" content="狐灵" />
+    <meta
+      property="og:description"
+      content="介绍 梯度下降算法 (gradient descent algorithm) 并简单解释其原理"
+    />
+    <meta property="og:locale" content="zh_CN" />
+    <meta
+      property="article:published_time"
+      content="2021-09-16T04:00:00.000Z"
+    />
+    <meta property="article:modified_time" content="2023-07-21T04:00:00.000Z" />
+    <meta property="article:author" content="狐zerOAO" />
+    <meta property="article:tag" content="算法" />
+    <meta name="twitter:card" content="summary" />
 
-    
-        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
-    
+    <link
+      rel="alternate"
+      href="/atom.xml"
+      title="狐灵"
+      type="application/atom+xml"
+    />
 
     <!-- jQuery -->
-    
-<script src="/js/jquery-3.7.1.min.js"></script>
 
+    <script src="/js/jquery-3.7.1.min.js"></script>
 
     <!-- fancybox -->
-    
-        
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 
-        
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <!-- Bootstrap icons -->
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-    
-    
-        <!-- highlight.js -->
-        
-<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+    <!-- highlight.js -->
 
-        
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
 
-    
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-    
-    
-<link rel="stylesheet" href="/css/huzerovo.css">
+    <!-- site style -->
 
+    <link rel="stylesheet" href="/css/light.css" />
 
-    
-    
-<link rel="stylesheet" href="/css/light/light.css">
+    <link rel="stylesheet" href="/css/dark.css" />
 
-    
-<link rel="stylesheet" href="/css/dark/dark.css">
+    <link rel="stylesheet" href="/css/huzerovo.css" />
 
+    <!-- theme switcher -->
 
-    
-    
-<script src="/js/huzerovo.js"></script>
-<script src="/js/search.js"></script>
+    <script src="/js/huzerovo.js"></script>
 
+    <!-- searching support -->
 
-    
-    
-        
+    <script src="/js/search.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <!-- katex renderer -->
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    />
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
         renderMathInElement(document.body, {
           // customised options
           // • auto-render specific keys, e.g.:
           delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
           ],
           // • rendering keys, e.g.:
-          throwOnError : false
+          throwOnError: false,
         });
-    });
-</script>
-
-    
-    <script>
-        let codeStyle = {};
-        codeStyle.light = "/css/github.min.css";
-        codeStyle.dark = "/css/github-dark.min.css";
-        window.load = myLoading();
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+      });
     </script>
-</head>
 
-<body>
-    
+    <script>
+      const ThemeConf = {
+        rootId: "root",
+        codeId: "code-style",
+        ibtnId: "btn-switch-theme",
+        iconDarkClass: "bi-moon",
+        iconLightClass: "bi-sun",
+        codeStyle: {
+          light: "/css/github.min.css",
+          dark: "/css/github-dark.min.css",
+        },
+      };
+      window.load = ThemeSwitcher.init();
+      window
+        .matchMedia("(prefers-color-scheme: light)")
+        .addEventListener("change", ThemeSwitcher.follow);
+    </script>
+  </head>
 
-
-
-
-
-
-
-
-
-
-
-
-<header class="topbar">
-    <div class="topbar-container">
-        
+  <body>
+    <header id="topbar">
+      <div class="topbar-container">
         <nav class="topbar-menu">
-            <ul>
-            
-                <li>
-                
-                
-                    <a href="/" title="首页">首页</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/archive" title="归档">归档</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/categories" title="分类">分类</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/tagcloud" title="标签云">标签云</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/about" title="关于我">关于我</a>
-                
-                </li>
-            
-            </ul>
+          <ul>
+            <li>
+              <a href="/" title="首页">首页</a>
+            </li>
+
+            <li>
+              <a href="/archive" title="归档">归档</a>
+            </li>
+
+            <li>
+              <a href="/categories" title="分类">分类</a>
+            </li>
+
+            <li>
+              <a href="/tagcloud" title="标签云">标签云</a>
+            </li>
+
+            <li>
+              <a href="/about" title="关于我">关于我</a>
+            </li>
+          </ul>
         </nav>
 
-        
         <div class="topbar-icon-buttons">
-            <!-- social link -->
-            
-                
-                
-                <a class="icon-button"  title="Github" href="https://github.com/Huzerovo"><i class="bi bi-github"></i></a>
-                
-            
+          <!-- social link -->
 
-            
-                <!-- search link -->
-                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
-            
+          <a
+            class="icon-button"
+            title="Github"
+            href="https://github.com/Huzerovo"
+            ><i class="bi bi-github"></i
+          ></a>
 
-            <!-- change theme btn -->
-            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+          <!-- search link -->
+          <a class="icon-button" id="btn-search" title="搜索" href="/search"
+            ><i class="bi bi-search"></i
+          ></a>
 
-            
-                <!-- feed link -->
-                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
-            
+          <!-- change theme btn -->
+          <a class="icon-button" id="btn-switch-theme" title="切换主题"
+            ><i class="bi bi-sun"></i
+          ></a>
 
+          <!-- feed link -->
+          <a class="icon-button" title="订阅" href="/atom.xml"
+            ><i class="bi bi-rss-fill"></i
+          ></a>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<main class="container">
-    
-    <div id="article-toc">
-    
+    <main class="container">
+      <div id="article-toc">
         <p class="sidebar-list-title">目录</p>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90"><span class="toc-text">数学原理简析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-text">使用条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="toc-text">不足之处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B"><span class="toc-text">改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-text">代码示例</span></a></li></ol>
-    
-    </div>
-    
-    <article class="article-container">
+        <ol class="toc">
+          <li class="toc-item toc-level-2">
+            <a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"
+              ><span class="toc-text">步骤</span></a
+            >
+          </li>
+          <li class="toc-item toc-level-2">
+            <a
+              class="toc-link"
+              href="#%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90"
+              ><span class="toc-text">数学原理简析</span></a
+            >
+            <ol class="toc-child">
+              <li class="toc-item toc-level-3">
+                <a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"
+                  ><span class="toc-text">基本原理</span></a
+                >
+              </li>
+              <li class="toc-item toc-level-3">
+                <a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"
+                  ><span class="toc-text">使用条件</span></a
+                >
+              </li>
+              <li class="toc-item toc-level-3">
+                <a class="toc-link" href="#%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"
+                  ><span class="toc-text">不足之处</span></a
+                >
+              </li>
+              <li class="toc-item toc-level-3">
+                <a class="toc-link" href="#%E6%94%B9%E8%BF%9B"
+                  ><span class="toc-text">改进</span></a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="toc-item toc-level-2">
+            <a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"
+              ><span class="toc-text">代码示例</span></a
+            >
+          </li>
+        </ol>
+      </div>
+
+      <article class="article-container">
         <h1>梯度下降算法</h1>
-        <h2 id="%E6%AD%A5%E9%AA%A4" tabindex="-1" id="步骤"><a class="header-anchor" href="#步骤"># </a>步骤</h2>
-<ol>
-<li>随机选取一个初始位置$ x_{0} $。</li>
-<li>对$ x_{0} $进行更新，即：
-$$
-x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$
-其中$ \alpha $是一个正数，称作 “步长”，
-$ \frac{\mathrm d}{\mathrm dx}f(x_{0}) $是$ f(x) $在$ x_{0} $处的导数。</li>
-<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x_{n} $使得$ f(x_{n}) $最小。</li>
-</ol>
-<h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90" tabindex="-1" id="数学原理简析"><a class="header-anchor" href="#数学原理简析"># </a>数学原理简析</h2>
-<h3 id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86" tabindex="-1" id="基本原理"><a class="header-anchor" href="#基本原理"># </a>基本原理</h3>
-<p>设函数$ f(x) $为二次函数，且在$ x = x_{min} $处取得最小值，
-且设在点$ x_{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x_{n}) = k_{n} $
-随机选取一点$ x_{0} $：</p>
-<ol>
-<li>
-<p>若$ k_{0} &lt; 0 $，则$ x_{0} &lt; x_{min} $，
-令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &lt; x_{0} $，
-即$ x_{1} $向$ x_{min} $靠近。</p>
-</li>
-<li>
-<p>若$ k_{0} &gt; 0 $，则$ x_{0} &gt; x_{min} $，
-令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &gt; x_{0} $，
-即$ x_{1} $向$ x_{min} $靠近。</p>
-</li>
-</ol>
-<p>可知，更新后的$ x_{n} $一定从$ x_{n - 1} $向$ x_{min} $的方向移动。</p>
-<h3 id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6" tabindex="-1" id="使用条件"><a class="header-anchor" href="#使用条件"># </a>使用条件</h3>
-<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
-只需要知道原函数的一阶导函数。
-因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
-可以考虑采取梯度下降算法。</p>
-<h3 id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84" tabindex="-1" id="不足之处"><a class="header-anchor" href="#不足之处"># </a>不足之处</h3>
-<p>设$ f(x) = x^{2} $，
-函数在$ x_{min} = 0 $处取得最小值，可知
-$ k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n $。
-取初始值$ x_{0} = 1 $，则$ x_{1} = x_{0} - k_{0} = -1 $。
-继续对$ x_{1} $进行更新，则$ x_{2} = x_{1} - k_{1} = 1 = x_{0} $。
-这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
-<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
-<h3 id="%E6%94%B9%E8%BF%9B" tabindex="-1" id="改进"><a class="header-anchor" href="#改进"># </a>改进</h3>
-<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
-$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
-一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
-<h2 id="%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B" tabindex="-1" id="代码示例"><a class="header-anchor" href="#代码示例"># </a>代码示例</h2>
-<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
-则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
-最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
-<pre><code class="language-python">#!/usr/bin/env python3
+        <h2 id="%E6%AD%A5%E9%AA%A4" tabindex="-1" id="步骤">
+          <a class="header-anchor" href="#步骤"># </a>步骤
+        </h2>
+        <ol>
+          <li>随机选取一个初始位置$ x_{0} $。</li>
+          <li>
+            对$ x_{0} $进行更新，即： $$ x_{1} = x_{0} - \alpha \frac{\mathrm
+            d}{\mathrm dx}f(x_{0}) $$ 其中$ \alpha $是一个正数，称作 “步长”， $
+            \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0}
+            $处的导数。
+          </li>
+          <li>
+            重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$
+            f(x*{n}) $最小。
+          </li>
+        </ol>
+        <h2
+          id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90"
+          tabindex="-1"
+          id="数学原理简析"
+        >
+          <a class="header-anchor" href="#数学原理简析"># </a>数学原理简析
+        </h2>
+        <h3
+          id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"
+          tabindex="-1"
+          id="基本原理"
+        >
+          <a class="header-anchor" href="#基本原理"># </a>基本原理
+        </h3>
+        <p>
+          设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值， 且设在点$
+          x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
+          随机选取一点$ x_{0} $：
+        </p>
+        <ol>
+          <li>
+            <p>
+              若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $， 令$ x*{1} = x*{0} -
+              k*{0} $，则$ x*{1} &lt; x*{0} $， 即$ x*{1} $向$ x*{min} $靠近。
+            </p>
+          </li>
+          <li>
+            <p>
+              若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $， 令$ x*{1} = x*{0} -
+              k*{0} $，则$ x*{1} &gt; x*{0} $， 即$ x*{1} $向$ x*{min} $靠近。
+            </p>
+          </li>
+        </ol>
+        <p>
+          可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。
+        </p>
+        <h3
+          id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"
+          tabindex="-1"
+          id="使用条件"
+        >
+          <a class="header-anchor" href="#使用条件"># </a>使用条件
+        </h3>
+        <p>
+          在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
+          只需要知道原函数的一阶导函数。
+          因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
+          可以考虑采取梯度下降算法。
+        </p>
+        <h3
+          id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"
+          tabindex="-1"
+          id="不足之处"
+        >
+          <a class="header-anchor" href="#不足之处"># </a>不足之处
+        </h3>
+        <p>
+          设$ f(x) = x^{2} $， 函数在$ x*{min} = 0 $处取得最小值，可知 $ k*{n} =
+          \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。 取初始值$ x*{0} = 1
+          $，则$ x*{1} = x*{0} - k*{0} = -1 $。 继续对$ x*{1} $进行更新，则$
+          x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
+          这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1
+          $两个值，永远无法得到$ x_{min} = 0 $。
+        </p>
+        <p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
+        <h3 id="%E6%94%B9%E8%BF%9B" tabindex="-1" id="改进">
+          <a class="header-anchor" href="#改进"># </a>改进
+        </h3>
+        <p>
+          因此，需要引入$ \alpha $控制$ x $变化的幅度， $ \alpha
+          $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$
+          x_{min} $。 一般来说，$ \alpha $是一个小于 1 但大于 0
+          的值，具体的值需要根据实际情况进行调整。
+        </p>
+        <h2
+          id="%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"
+          tabindex="-1"
+          id="代码示例"
+        >
+          <a class="header-anchor" href="#代码示例"># </a>代码示例
+        </h2>
+        <p>
+          设函数为$ f(x) = 3x^{2} + 4x + 5 $， 则$ \frac{\mathrm d}{\mathrm dx}
+          f(x) = 6x + 4 $， 最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3}
+          $。
+        </p>
+        <pre><code class="language-python">#!/usr/bin/env python3
 
 import numpy as np
 
@@ -298,111 +379,122 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
         <hr />
-        
+
         <div class="article-meta-info">
-            
-                <span>分类</span>
-                <a class="article-categories-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-                
-            
-                <span>标签</span>
-                <a class="article-tags-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
-            
+          <span>分类</span>
+          <a
+            class="article-categories-link"
+            href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"
+            >机器学习</a
+          >
+
+          <span>标签</span>
+          <a
+            class="article-tags-none-link"
+            href="/tags/%E7%AE%97%E6%B3%95/"
+            rel="tag"
+            >算法</a
+          >
         </div>
-        
+
         <div class="article-date-info">
-            <span>发布日期: 2021-09-16</span>
-            <span>更新日期: 2023-07-21</span>
+          <span>发布日期: 2021-09-16</span>
+          <span>更新日期: 2023-07-21</span>
         </div>
         <div class="article-share-link">
-            <span>
+          <span>
             分享文章
-            <a href="https://huzerovo.github.io/2021/09/16/gradient-descent/">https://huzerovo.github.io/2021/09/16/gradient-descent/</a>
-            </span>
+            <a href="https://huzerovo.github.io/2021/09/16/gradient-descent/"
+              >https://huzerovo.github.io/2021/09/16/gradient-descent/</a
+            >
+          </span>
         </div>
         <div class="article-comment">
-            
+          <div id="gitalk-container"></div>
 
-    <div id="gitalk-container"></div>
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
+          />
 
-    
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
-    
-<script src="/js/md5-2.19.0.min.js"></script>
+          <script src="/js/md5-2.19.0.min.js"></script>
 
-    <script>
-        let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"Huzerovo","admin":["Huzerovo"],"distractionFreeMode":false,"number":-1,"title":"Article: 梯度下降算法"};
-        c.id = md5(c.title);
-        let gitalk = new Gitalk(c);
-        gitalk.render("gitalk-container");
-    </script>
-
-
+          <script>
+            let c = {
+              clientID: "8430fc1311285afb9029",
+              clientSecret: "30d89bdade46310cbbb97ca58bdd6f615ddcd699",
+              repo: "huzerovo.github.io",
+              owner: "Huzerovo",
+              admin: ["Huzerovo"],
+              distractionFreeMode: false,
+              number: -1,
+              title: "Article: 梯度下降算法",
+            };
+            c.id = md5(c.title);
+            let gitalk = new Gitalk(c);
+            gitalk.render("gitalk-container");
+          </script>
         </div>
-    </article>
-</main>
+      </article>
+    </main>
 
-    
-    <button id="goto-top" type="button" title="回到顶部">
-        回到顶部
-    </button>
-    <footer class="site-footer">
-        <p> © 2024 
-        
-            @狐zerOAO
-        
-        </p>
-        <p>
-            如无特殊说明，网站所有原创内容均采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权。
-        </p>
-        <p>
-            Powered by <a href="https://hexo.io">Hexo</a>. 
-            Theme by <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
-        </p>
-        <br>
+    <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
+
+    <footer id="site-footer">
+      <p>© 2024 @狐zerOAO</p>
+      <p>
+        如无特殊说明，网站所有原创内容均采用<a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+          >CC BY-NC-ND 4.0</a
+        >授权。
+      </p>
+      <p>
+        Powered by <a href="https://hexo.io">Hexo</a>. Theme by
+        <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
+      </p>
+      <br />
     </footer>
-</body>
+  </body>
 
-<script>
-hljs.highlightAll();
-$('#goto-top').hide();
-// 页面载入后设置icon
-setTheme(getStorage('currentTheme'));
-$(document).ready(function() {
-    // 监听事件
-    $('#btn-switch-theme').click(switchTheme);
-    $('#btn-side-menu').click(function() {
-        let e = $('#side-nav');
-        let hide = 'side-menu-hidden'
-        let show = 'side-menu-show'
+  <script>
+    hljs.highlightAll();
+    $("#goto-top").hide();
+    // 页面载入后设置icon
+    ThemeSwitcher.follow();
+    $(document).ready(function () {
+      // 监听事件
+      $("#btn-switch-theme").click(switchThemeClickHandler);
+      $("#btn-side-menu").click(function () {
+        let e = $("#side-nav");
+        let hide = "side-menu-hidden";
+        let show = "side-menu-show";
         if (e.hasClass(hide)) {
-            e.removeClass(hide);
-            e.addClass(show);
+          e.removeClass(hide);
+          e.addClass(show);
         } else {
-            e.removeClass(show);
-            e.addClass(hide);
+          e.removeClass(show);
+          e.addClass(hide);
         }
-    });
-    $('#search').on('input', function() {
+      });
+      $("#search-input").on("input", function () {
         searchArticle("/search.xml");
-    });
-    $('#goto-top').click(function() {
-        $('#root').scrollTop(0);
-    });
+      });
+      $("#goto-top").click(function () {
+        $("#root").scrollTop(0);
+      });
 
-    $(window).scroll(function() {
-        if ($('#root').scrollTop() > 300) {
-            $('#goto-top').show();
+      $(window).scroll(function () {
+        if ($("#root").scrollTop() > 300) {
+          $("#goto-top").show();
         } else {
-            $('#goto-top').hide();
+          $("#goto-top").hide();
         }
-    });
+      });
 
-    Fancybox.bind(".container img");
-    Fancybox.bind('[data-fancybox]');
-});
-</script>
+      Fancybox.bind(".container img");
+      Fancybox.bind("[data-fancybox]");
+    });
+  </script>
 </html>

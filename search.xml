@@ -61,11 +61,11 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-     deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤2中设置的名字
-     external_repository: UserName/username.github.io # 你的Github Page仓库
-     publish_branch: master # 在Settings =&gt; Page中设置的构建源分支
-     publish_dir: ./public # Hexo _config.yml 中配置的public_dir
-     commit_message: &quot;Deploy by Github Actions&quot; # 随意
+    deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤2中设置的名字
+    external_repository: UserName/username.github.io # 你的Github Page仓库
+    publish_branch: master # 在Settings =&gt; Page中设置的构建源分支
+    publish_dir: ./public # Hexo _config.yml 中配置的public_dir
+    commit_message: &quot;Deploy by Github Actions&quot; # 随意
 </code></pre>
 </li>
 </ol>
@@ -202,27 +202,27 @@ $$
 x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
 $$
 其中$ \alpha $是一个正数，称作 “步长”，
-$ \frac{\mathrm d}{\mathrm dx}f(x_{0}) $是$ f(x) $在$ x_{0} $处的导数。</li>
-<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x_{n} $使得$ f(x_{n}) $最小。</li>
+$ \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0} $处的导数。</li>
+<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$ f(x*{n}) $最小。</li>
 </ol>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90" tabindex="-1" id="数学原理简析"><a class="header-anchor" href="#数学原理简析"># </a>数学原理简析</h2>
 <h3 id="%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86" tabindex="-1" id="基本原理"><a class="header-anchor" href="#基本原理"># </a>基本原理</h3>
-<p>设函数$ f(x) $为二次函数，且在$ x = x_{min} $处取得最小值，
-且设在点$ x_{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x_{n}) = k_{n} $
+<p>设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值，
+且设在点$ x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
 随机选取一点$ x_{0} $：</p>
 <ol>
 <li>
-<p>若$ k_{0} &lt; 0 $，则$ x_{0} &lt; x_{min} $，
-令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &lt; x_{0} $，
-即$ x_{1} $向$ x_{min} $靠近。</p>
+<p>若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &lt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
 </li>
 <li>
-<p>若$ k_{0} &gt; 0 $，则$ x_{0} &gt; x_{min} $，
-令$ x_{1} = x_{0} - k_{0} $，则$ x_{1} &gt; x_{0} $，
-即$ x_{1} $向$ x_{min} $靠近。</p>
+<p>若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &gt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
 </li>
 </ol>
-<p>可知，更新后的$ x_{n} $一定从$ x_{n - 1} $向$ x_{min} $的方向移动。</p>
+<p>可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6" tabindex="-1" id="使用条件"><a class="header-anchor" href="#使用条件"># </a>使用条件</h3>
 <p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
 只需要知道原函数的一阶导函数。
@@ -230,10 +230,10 @@ $ \frac{\mathrm d}{\mathrm dx}f(x_{0}) $是$ f(x) $在$ x_{0} $处的导数。</
 可以考虑采取梯度下降算法。</p>
 <h3 id="%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84" tabindex="-1" id="不足之处"><a class="header-anchor" href="#不足之处"># </a>不足之处</h3>
 <p>设$ f(x) = x^{2} $，
-函数在$ x_{min} = 0 $处取得最小值，可知
-$ k_{n} = \frac{\mathrm d}{\mathrm dx}f(x_{n}) = 2n $。
-取初始值$ x_{0} = 1 $，则$ x_{1} = x_{0} - k_{0} = -1 $。
-继续对$ x_{1} $进行更新，则$ x_{2} = x_{1} - k_{1} = 1 = x_{0} $。
+函数在$ x*{min} = 0 $处取得最小值，可知
+$ k*{n} = \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。
+取初始值$ x*{0} = 1 $，则$ x*{1} = x*{0} - k*{0} = -1 $。
+继续对$ x*{1} $进行更新，则$ x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
 这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
 <p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
 <h3 id="%E6%94%B9%E8%BF%9B" tabindex="-1" id="改进"><a class="header-anchor" href="#改进"># </a>改进</h3>
@@ -352,19 +352,19 @@ Command (? for help): d
 Using 1
 
 Command (? for help): n
-Partition number (1-128, default 1): 
-First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;: 
+Partition number (1-128, default 1):
+First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;:
 Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: +1M
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef02
 Changed type of partition to 'BIOS boot partition'
 
 Command (? for help): n
-Partition number (2-128, default 2): 
-First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;: 
-Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: 
+Partition number (2-128, default 2):
+First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;:
+Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;:
 Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 
+Hex code or GUID (L to show codes, Enter = 8300):
 Changed type of partition to 'Linux filesystem'
 
 Command (? for help): p
@@ -579,7 +579,7 @@ mov     [esi + eax], cl         ; 将 ESI 与 EAX 中的数据相加作为内存
 mov     edx, [esi + 4 * ebx]    ; 将 ESI 中存储的数据加上 EBX 中的数据 * 4 作为内存地址
                                 ; 将内存地址中的数据存入EDX
 </code></pre>
-<p>注意，以下语法是 <em><strong>错误的</strong></em></p>
+<p>注意，以下语法是 <strong><em>错误的</em></strong></p>
 <pre><code class="language-asm">
 mov     eax, [ebx - ecx]            ; 寄存器间只能相加
 mov     [eax + esi + edi], ebx      ; 最多只能有两个寄存器相加
@@ -636,14 +636,14 @@ mov     DWORD PTR   [ebx], 2    ; 将数据 2 储存到由 ebx 指出的内存�
 指令可分为：数据转移指令、算术运算与逻辑指令、流程控制指令三类<br />
 约定在下文中，使用特定的格式表述不同位数的寄存器、数据、以及内存等<br />
 约定如下：<br />
-<code>&lt;reg32&gt;</code>   32位寄存器，如 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>、<code>ESI</code>、<code>EDI</code>、<code>EBP</code><br />
-<code>&lt;reg16&gt;</code>   16位寄存器，如 <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code><br />
-<code>&lt;reg8&gt;</code>    8位寄存器。如 <code>AH</code>、<code>AL</code>、<code>BH</code>、<code>BL</code>、<code>CH</code>、<code>CL</code>、<code>DH</code>、<code>DL</code><br />
-<code>&lt;mem&gt;</code>     内存，如 <code>[eax]</code>、<code>[var + 4]</code><br />
-<code>&lt;con32&gt;</code>   32位常量（4 字节）<br />
-<code>&lt;con16&gt;</code>   32位常量（2 字节）<br />
-<code>&lt;con8&gt;</code>    32位常量（1 字节）<br />
-<code>&lt;con&gt;</code>     任意位数常量</p>
+<code>&lt;reg32&gt;</code> 32位寄存器，如 <code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>、<code>ESI</code>、<code>EDI</code>、<code>EBP</code><br />
+<code>&lt;reg16&gt;</code> 16位寄存器，如 <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code><br />
+<code>&lt;reg8&gt;</code> 8位寄存器。如 <code>AH</code>、<code>AL</code>、<code>BH</code>、<code>BL</code>、<code>CH</code>、<code>CL</code>、<code>DH</code>、<code>DL</code><br />
+<code>&lt;mem&gt;</code> 内存，如 <code>[eax]</code>、<code>[var + 4]</code><br />
+<code>&lt;con32&gt;</code> 32位常量（4 字节）<br />
+<code>&lt;con16&gt;</code> 32位常量（2 字节）<br />
+<code>&lt;con8&gt;</code> 32位常量（1 字节）<br />
+<code>&lt;con&gt;</code> 任意位数常量</p>
 <h3 id="%E6%95%B0%E6%8D%AE%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4" tabindex="-1" id="数据转移指令"><a class="header-anchor" href="#数据转移指令"># </a>数据转移指令</h3>
 <h4 id="mov-%E6%8C%87%E4%BB%A4" tabindex="-1" id="mov-指令"><a class="header-anchor" href="#mov-指令"># </a><code>mov</code> 指令</h4>
 <p>Move (操作码：88, 89, 8A, 8B, 8C, 8E, …)<br />
@@ -1186,9 +1186,9 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <h4 id="%E5%85%A8%E5%B1%80%E5%B0%81%E9%9D%A2" tabindex="-1" id="全局封面"><a class="header-anchor" href="#全局封面"># </a>全局封面</h4>
 <p>如果需要使用全局封面，需要在主题的配置文件中有如下配置：</p>
 <pre><code class="language-yml">covers:
-   - '/covers/cover_1.jpg'
-   - '/covers/cover_2.jpg'
-   - '/covers/cover_3.jpg'
+  - &quot;/covers/cover_1.jpg&quot;
+  - &quot;/covers/cover_2.jpg&quot;
+  - &quot;/covers/cover_3.jpg&quot;
 </code></pre>
 <p>使用绝对路径<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>填写需要作为封面的图片文件路径。
 并需要在文章内启用：使用<code>cover: true</code>表示此文章使用默认封面。
@@ -1200,17 +1200,17 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 这会在创建文章时同时生成一个同名的文件夹，
 把封面图片放入这个文件夹后，在Front matter区域添加：</p>
 <pre><code class="language-yml">photos:
-   - pic1.jpg
-   - pic2.jpg
-   - pic3.jpg
+  - pic1.jpg
+  - pic2.jpg
+  - pic3.jpg
 </code></pre>
 <p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
 <p>这个方法还能使用绝对路径指定不在文章资源文件夹下的文件作为封面：</p>
 <pre><code class="language-yml">photos:
-   - pic1.jpg
-   - pic2.jpg
-   - pic3.jpg
-   - /img/pic4.jpg
+  - pic1.jpg
+  - pic2.jpg
+  - pic3.jpg
+  - /img/pic4.jpg
 </code></pre>
 <p>使用<code>/</code>开始的文件路径，表示从网站根目录开始的绝对路径。</p>
 <blockquote>
@@ -1222,7 +1222,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <h4 id="%E5%A4%96%E9%83%A8%E5%9B%BE%E7%89%87" tabindex="-1" id="外部图片"><a class="header-anchor" href="#外部图片"># </a>外部图片</h4>
 <p>如果不希望在博客上存储封面，还可以从网络上获取。在Front matter区域添加：</p>
 <pre><code class="language-yml">photos:
-   - https://via.placeholder.com/350x150.jpg
+  - https://via.placeholder.com/350x150.jpg
 </code></pre>
 <p>这样子就会从网络中获取封面。这个方式可以和之前的两种方式中的任意一个混合使用。</p>
 <h4 id="%E7%9B%B8%E5%86%8C%E9%9B%86" tabindex="-1" id="相册集"><a class="header-anchor" href="#相册集"># </a>相册集</h4>
@@ -1241,7 +1241,7 @@ ESP 和 EBP 也属于这些寄存器的一部分，但它们在一开始（规�
 <p>带标题的在显示时会显示标题，而不带标题的则直接显示链接。
 使用方式如下：</p>
 <pre><code class="language-yml"># 标题指定了就是带标题的，置空就是无标题的
-title: ''
+title: &quot;&quot;
 link: https://www.google.com
 </code></pre>
 <p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
@@ -1276,20 +1276,20 @@ todo_msg: &quot;&quot;
 <h3 id="%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E6%8E%88%E6%9D%83" tabindex="-1" id="知识共享授权"><a class="header-anchor" href="#知识共享授权"># </a>知识共享授权</h3>
 <p>使用<code>creativecommons</code>字段配置授权。</p>
 <pre><code class="language-yaml">creativecommons:
-  license: 'CC BY-NC-ND 4.0'
-  link: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
-  description: '如无特殊说明，网站所有原创内容均采用#授权。'
+  license: &quot;CC BY-NC-ND 4.0&quot;
+  link: &quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot;
+  description: &quot;如无特殊说明，网站所有原创内容均采用#授权。&quot;
 </code></pre>
 <p><code>description</code>选项用于配置版权说明，
 占位符<code>#</code>会被替换为<code>license</code>指定的授权协议名称，
 并生成指向<code>link</code>配置的链接，</p>
 <p>上述例子最终渲染的结果为：</p>
 <pre><code class="language-html">&lt;p&gt;
-如无特殊说明，网站所有原创内容均采用
-&lt;a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'&gt;
-CC BY-NC-ND 4.0
-&lt;/a&gt;
-授权。
+  如无特殊说明，网站所有原创内容均采用
+  &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot;&gt;
+    CC BY-NC-ND 4.0
+  &lt;/a&gt;
+  授权。
 &lt;/p&gt;
 </code></pre>
 <h3 id="%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" tabindex="-1" id="代码高亮"><a class="header-anchor" href="#代码高亮"># </a>代码高亮</h3>
@@ -1307,11 +1307,11 @@ CC BY-NC-ND 4.0
 <pre><code class="language-yaml">hljs:
   enable: true
   # highlight.js CDN
-  js: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js'
+  js: &quot;https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js&quot;
   # choose from https://github.com/highlightjs/highlight.js/tree/main/src/styles
   css:
-    light: 'css/github.min.css'
-    dark: 'css/github-dark.min.css'
+    light: &quot;css/github.min.css&quot;
+    dark: &quot;css/github-dark.min.css&quot;
 </code></pre>
 </li>
 </ol>
@@ -1327,8 +1327,8 @@ CC BY-NC-ND 4.0
 <blockquote>
 <p>注：这是旧版本的Hexo开启内置高亮的方式。</p>
 <pre><code class="language-yaml">highlight:
-   enable: true
-   hljs: true
+  enable: true
+  hljs: true
 </code></pre>
 </blockquote>
 <p><s>还需要注意的一点是，如果同时启用了主题的高亮与Hexo内置的高亮，
@@ -1360,7 +1360,7 @@ CC BY-NC-ND 4.0
 在启用评论系统的情况下，还应该<strong>在文章中配置开启</strong>。</p>
 <p>在配置文件中：</p>
 <pre><code class="language-yml">gitalk:
-   enable: true
+  enable: true
 </code></pre>
 <p>在文章中：</p>
 <pre><code class="language-yml">gitalk: true
@@ -1369,18 +1369,18 @@ CC BY-NC-ND 4.0
 <h3 id="%E5%A4%96%E9%93%BE" tabindex="-1" id="外链"><a class="header-anchor" href="#外链"># </a>外链</h3>
 <p>你可以在顶栏添加一些社交网页链接。就像这样子：</p>
 <pre><code class="language-yaml">links:
-   github:
-      title: 'Github'
-      class: 'bi bi-github'
-      url: 'https://github.com/HuzerOVO'
+  github:
+    title: &quot;Github&quot;
+    class: &quot;bi bi-github&quot;
+    url: &quot;https://github.com/HuzerOVO&quot;
 </code></pre>
 <p>主题主要使用<strong>Bootstrap Icons</strong>，但主题也使用<strong>Font Awesome</strong>作为图标的补充。</p>
 <p>比如在Bootstrap icons中，没有BiliBili的图标，但在Font awesome中有，于是就可以这样子：</p>
 <pre><code class="language-yml">links:
-   bilibili:
-      title: '哔哩哔哩'
-      class: 'fa-brands fa-bilibili'
-      url: 'https://www.bilibili.com'
+  bilibili:
+    title: &quot;哔哩哔哩&quot;
+    class: &quot;fa-brands fa-bilibili&quot;
+    url: &quot;https://www.bilibili.com&quot;
 </code></pre>
 <p>需要说明的是，<code>class</code>字段根据Bootstrap Icons或者Font Awesome介绍的使用方式填写。</p>
 <h3 id="%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5" tabindex="-1" id="订阅链接"><a class="header-anchor" href="#订阅链接"># </a>订阅链接</h3>
@@ -1444,7 +1444,7 @@ pin: true
 cover: false
 gallery: false
 photos:
-- id=89645004_p0.png
+  - id=89645004_p0.png
 categories:
   - [开发记录]
 tags:
@@ -1501,14 +1501,11 @@ avatar_size: normal
 <ol>
 <li>
 <p>用<code>=</code>表示一级标题，或<code>-</code>表示二级标题。这个方式不常见，因为这些符号还有其他用法。</p>
-<pre><code class="language-markdown">一级标题
-===
+<pre><code class="language-markdown"># 一级标题
 
-二级标题
----
+## 二级标题
 
-二级标题
----
+## 二级标题
 </code></pre>
 <h1 id="%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98" tabindex="-1">一级标题</h1>
 <h2 id="%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98" tabindex="-1" id="二级标题"><a class="header-anchor" href="#二级标题"># </a>二级标题</h2>
@@ -1518,10 +1515,15 @@ avatar_size: normal
 <p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
 一般使用这个方法。</p>
 <pre><code class="language-markdown"># 一级标题
+
 ## 二级标题
+
 ### 三级标题
+
 #### 四级标题
+
 ##### 五级标题
+
 ###### 六级标题
 </code></pre>
 <h1 id="%E4%B8%80%E7%BA%A7" tabindex="-1">一级</h1>
@@ -1540,36 +1542,39 @@ avatar_size: normal
 <p>用 <code>_</code> 或 <code>*</code> 包裹要标注的一段文字，一个 <code>_</code> 或 <code>*</code> 表示斜体，
 两个表示粗体，三个表示斜粗体。</p>
 <p>我一般使用<code>*</code>。</p>
-<pre><code class="language-markdown">*斜体*
+<pre><code class="language-markdown">_斜体_
 _斜体_
 
 **粗体**
-__粗体__
+**粗体**
 
-***斜粗体***
-___斜粗体___
+**_斜粗体_**
+**_斜粗体_**
 </code></pre>
 <p><em>斜体</em>
 <em>斜体</em></p>
 <p><strong>粗体</strong>
 <strong>粗体</strong></p>
-<p><em><strong>斜粗体</strong></em>
-<em><strong>斜粗体</strong></em></p>
+<p><strong><em>斜粗体</em></strong>
+<strong><em>斜粗体</em></strong></p>
 <h2 id="%E5%88%86%E5%89%B2%E7%BA%BF" tabindex="-1" id="分割线"><a class="header-anchor" href="#分割线"># </a>分割线</h2>
 <p><code>_</code>，<code>*</code>，<code>-</code> 还可以用来表示分割线，需要三个或三个以上相同的符号，
 中间可以有空格，<s>但加空格干什么呢？</s>。</p>
 <p><strong>注: <code>-</code> 用作分割线时，上一行最好为空行，有文字的话会识别为二级标题。</strong></p>
 <p>我一般使用<code>-</code>作为分割线。</p>
-<pre><code class="language-markdown">* * *
-- - -
-_ _ _
+<pre><code class="language-markdown">---
 
-***
 ---
-___
 
-这个会被当作标题
 ---
+
+---
+
+---
+
+---
+
+## 这个会被当作标题
 </code></pre>
 <hr />
 <hr />
@@ -1605,7 +1610,7 @@ ___
    空行加带缩进的文本可以对齐列表项换行，不过实际上似乎是成为了一个子项。
 
 4. 第四项，这后面有两个空格  
-这会使这行文字带缩进。很难看出来，最好少用。
+   这会使这行文字带缩进。很难看出来，最好少用。
 </code></pre>
 <ol>
 <li>
@@ -1628,11 +1633,11 @@ ___
 <p>与有序列表类似，改用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记，可以混用。
 注: 实际显示效果可能因主题渲染不同而产生差异</p>
 <p>我一般使用<code>-</code>。</p>
-<pre><code class="language-markdown">* 第一项
-* 第二项
+<pre><code class="language-markdown">- 第一项
+- 第二项
 
-+ 第一项
-+ 第二项
+* 第一项
+* 第二项
 
 - 第一项
 - 第二项
@@ -1653,8 +1658,8 @@ ___
 <p>有序列表与无序列表可以相互嵌套。</p>
 <pre><code class="language-markdown">1. aaa
    - 第一个子项
-      1. aaa
-      2. bbb
+     1. aaa
+     2. bbb
    - 第二个
 2. bbb
    - 子项
@@ -1689,7 +1694,9 @@ ___
 <h2 id="%E5%8C%BA%E5%9D%97%E5%B5%8C%E5%A5%97" tabindex="-1" id="区块嵌套"><a class="header-anchor" href="#区块嵌套"># </a>区块嵌套</h2>
 <p>区块可以嵌套区块</p>
 <pre><code class="language-markdown">&gt; 第一层
+&gt;
 &gt; &gt; 第二层
+&gt; &gt;
 &gt; &gt; &gt; 第三层
 </code></pre>
 <blockquote>
@@ -1720,7 +1727,7 @@ ___
 </blockquote>
 <p>列表里带区块：</p>
 <pre><code class="language-markdown">- 第一项
-   &gt; 区块
+  &gt; 区块
 </code></pre>
 <ul>
 <li>第一项
@@ -1742,8 +1749,8 @@ ___
 #include &lt;stdio.h&gt;
 int main()
 &#123;
-    printf(&quot;Hello world&quot;);
-    return 0;
+printf(&quot;Hello world&quot;);
+return 0;
 &#125;
 \```
 </code></pre>
@@ -1797,10 +1804,10 @@ int main()
 <code>-:</code> 整列右对齐
 <code>:-</code> 整列左对齐
 <code>:-:</code> 整列居中对齐</p>
-<pre><code class="language-markdown">|表头1|表头2|表头3|
-|:----|----:|:---:|
-| 靠左| 靠右| 居中|
-| 列1 | 列2 | 列3 |
+<pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
+| :---- | ----: | :---: |
+| 靠左  |  靠右 | 居中  |
+| 列1   |   列2 |  列3  |
 </code></pre>
 <table>
 <thead>
@@ -1910,13 +1917,15 @@ int main()
 <p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
 <h3 id="%E7%BC%A9%E5%86%99" tabindex="-1" id="缩写"><a class="header-anchor" href="#缩写"># </a>缩写</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
-<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
+<pre><code class="language-markdown">_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
 The HTML specification
 is maintained by the W3C.
 </code></pre>
-<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
-is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+<p>_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.</p>
 <h3 id="%E9%AB%98%E4%BA%AE" tabindex="-1" id="高亮"><a class="header-anchor" href="#高亮"># </a>高亮</h3>
 <p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
 <pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
@@ -1995,23 +2004,23 @@ is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 随后给出“特征”，计算机能够根据模型，给出比较可靠的、推测的“标签”。</p>
 <h3 id="%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%E9%97%AE%E9%A2%98" tabindex="-1" id="使用数学语言描述问题"><a class="header-anchor" href="#使用数学语言描述问题"># </a>使用数学语言描述问题</h3>
 <p>接下来将问题抽象成为一个数学问题。
-设所有的特征的集合为$ (x_{1}, x_{2}, \cdots, x_{n}) $，其中$ n $表示特征的数量，
+设所有的特征的集合为$ (x*{1}, x*{2}, \cdots, x_{n}) $，其中$ n $表示特征的数量，
 $ y $为特征对应的“标签”。
 在比较简单的情况下，假定“特征-标签”是线性关系，并且这个线性关系为函数$ h $，
 则称$ h $为<strong>假设函数（hypotheses）</strong>。
-于是得到的函数：
-$$
+于是得到的函数：</p>
+<p>$$
 \begin{equation}
 h_{\theta}(x) = \theta_{0} + \theta_{1} \cdot x_{1} +
 \theta_{2} \cdot x_{2} + \cdots + \theta_{n} \cdot x_{n}
 \end{equation}
-$$
-其中，$ \theta_{0} $，$ \theta_{1} $，$ \cdots $，$ \theta_{n} $
+$$</p>
+<p>其中，$ \theta*{0} $，$ \theta*{1} $，$ \cdots $，$ \theta_{n} $
 表示<strong>参数（parameters）</strong>，或者说是<strong>权值（weights）</strong>,
 这是我们需要求得的值。</p>
 <h3 id="%E5%BC%95%E5%85%A5%E5%90%91%E9%87%8F%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE" tabindex="-1" id="引入向量进行表达"><a class="header-anchor" href="#引入向量进行表达"># </a>引入向量进行表达</h3>
-<p>若用向量表示$ \theta $：
-$$
+<p>若用向量表示$ \theta $：</p>
+<p>$$
 \vec{\theta} =
 \begin{pmatrix}
 \theta_{0}\\
@@ -2019,9 +2028,9 @@ $$
 \vdots\\
 \theta_{n}
 \end{pmatrix}
-$$
-并将特征集合重新定义为特征向量：
-$$
+$$</p>
+<p>并将特征集合重新定义为特征向量：</p>
+<p>$$
 \vec{x} =
 \begin{pmatrix}
 x_{0}\\
@@ -2029,11 +2038,11 @@ x_{1}\\
 \vdots\\
 x_{n}
 \end{pmatrix}
-$$
-其中$ x_{0} = 1 $，
-<strong>为简化符号，记$ \vec{\theta} $为$ \theta $，$ \vec{x} $为$ x $</strong>，
-则函数可表示为：
-$$
+$$</p>
+<p>其中$ x_{0} = 1 $，
+**为简化符号，记$ \vec{\theta} $为$ \theta $，$ \vec{x} $为$ x $**，
+则函数可表示为：</p>
+<p>$$
 \begin{equation}
 h_{\theta}(x) = \sum_{i=0}^{n}{\theta_{i} x_{i}} = \theta^{T}x
 \end{equation}
@@ -2048,15 +2057,15 @@ $$</p>
 即可以构建出一个<strong>训练集（training set）</strong>，
 那么我们可以使用<strong>训练集</strong>对算法进行<strong>训练</strong>，最终得出$ \theta $。</p>
 <p>定义下面的符号，方便之后的表示：</p>
-<p>设训练集大小为$ m $，令$ x_{i}^{(j)} $表示训练集中第$ j $项数据的第$ i $个特征，
+<p>设训练集大小为$ m $，令$ x*{i}^{(j)} $表示训练集中第$ j $项数据的第$ i $个特征，
 $ x^{(j)} $表示训练集中第$ j $项数据的特征向量。
-同理可得$  \theta_{i}^{(j)}  $与$  \theta^{(j)}  $。</p>
+同理可得$ \theta*{i}^{(j)} $与$ \theta^{(j)} $。</p>
 <h3 id="%E5%BC%95%E5%85%A5%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%BD%AC%E5%8C%96%E9%97%AE%E9%A2%98" tabindex="-1" id="引入最小二乘法转化问题"><a class="header-anchor" href="#引入最小二乘法转化问题"># </a>引入最小二乘法转化问题</h3>
 <p>回顾我们的问题：
 我们希望得到一个函数$ h $能够很好地描述训练集中的每个数据中“特征-标签”的关系
 换句话说，给出“特征”，若“特征”存在于训练集中，那么
-由<strong>函数$ h $<strong>得出的“标签”，与训练集中的“标签”，它们之间的误差最小
-根据</strong>最小二乘法</strong>，得：</p>
+由**函数$ h $<strong>得出的“标签”，与训练集中的“标签”，它们之间的误差最小
+根据</strong>最小二乘法**，得：</p>
 <p>$$
 \begin{equation}
 J(\theta) = \frac{1}{2} \sum_{i=1}^{m} \left( h_{\theta}(x^{(i)}) - y^{(i)} \right)^{2}
@@ -2076,8 +2085,8 @@ $$</p>
 <p>为了得到$ \theta $使函数值$ J(\theta) $最小，可以采取**梯度下降 (gradient descent)**的方法：
 随机选取一个$ \theta $值，随后不断地更新$ \theta $，使$ J(\theta) $不断减小，
 当$ J(\theta) $的值达到最小时，得到的$ \theta $即是问题的解</p>
-<p>我们可以这样进行更新：
-$$
+<p>我们可以这样进行更新：</p>
+<p>$$
 \begin{equation}
 \theta_{j} := \theta_{j} - \alpha \frac {\partial}{\partial \theta_{j}} J(\theta)
 \label{eq4}
@@ -2085,8 +2094,8 @@ $$
 $$</p>
 <p>其中$ := $表示赋值，将右边的值赋予左边，而$ = $是真值判断，表示等号两边的值或结果是相同的
 $ \alpha $表示<strong>学习率 (learning rate)</strong>，或者称<strong>步长</strong>，是自定义的常数</p>
-<p>对$ J(\theta) $进行偏导：
-$$
+<p>对$ J(\theta) $进行偏导：</p>
+<p>$$
 \begin{equation}
 \begin{split}
 \frac{\partial}{\partial \theta_{j}} J(\theta)
@@ -2129,9 +2138,9 @@ $$</p>
 <li>随机在函数$ f(x) $上取一初始点$ P_{0} $</li>
 <li>过点$ P_{0} $作函数$ f(x) $的切线$ L $</li>
 <li>找到切线$ L $与$ x $轴的交点$ Q_{0} $</li>
-<li>过交点$ Q_{0} $作$ x $轴的垂线，并与函数有一交点$ P_{1} $</li>
+<li>过交点$ Q*{0} $作$ x $轴的垂线，并与函数有一交点$ P*{1} $</li>
 <li>将点$ P_{1} $作为初始点，回到步骤 2</li>
-<li>当点$ P_{n} $与点$ Q_{n} $重合时，横坐标即零点</li>
+<li>当点$ P*{n} $与点$ Q*{n} $重合时，横坐标即零点</li>
 </ol>
 </blockquote>
 <h3 id="%E8%A7%A3%E6%9E%90%E8%A7%A3%E6%B3%95" tabindex="-1" id="解析解法"><a class="header-anchor" href="#解析解法"># </a>解析解法</h3>
@@ -2167,13 +2176,13 @@ A_{11} &amp; A_{12} \\
 A_{21} &amp; A_{22}
 \end{bmatrix}
 $，
-函数$ f(A) = \frac{3}{2} A_{11} + 5A_{12}^{2} + A_{21}A_{22} $，
+函数$ f(A) = \frac{3}{2} A*{11} + 5A*{12}^{2} + A*{21}A*{22} $，
 那么
 $
-\nabla_{A} f(A) =
+\nabla*{A} f(A) =
 \begin{bmatrix}
-\frac{3}{2} &amp; 10A_{12} \\
-A_{22} &amp; A_{21}
+\frac{3}{2} &amp; 10A*{12} \\
+A*{22} &amp; A*{21}
 \end{bmatrix}
 $</p>
 <h5 id="%E5%AE%9A%E4%B9%89-trace-%E8%BF%90%E7%AE%97" tabindex="-1" id="定义-trace-运算"><a class="header-anchor" href="#定义-trace-运算"># </a>定义 trace 运算</h5>
@@ -2202,8 +2211,8 @@ $$</p>
 \label{algorithm3}
 \mathrm{tr}aA = a\mathrm{tr}A
 \end{equation}
-$$
-其中$ a $是一个实数</p>
+$$</p>
+<p>其中$ a $是一个实数</p>
 <h4 id="%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86" tabindex="-1" id="一些定理"><a class="header-anchor" href="#一些定理"># </a>一些定理</h4>
 <p>一些<strong>trace 运算</strong>与<strong>矩阵导函数</strong>相关的定理，
 仅列出<strong>解析式推导过程</strong>需要用到的一些定理，不作证明，</p>
@@ -2293,7 +2302,7 @@ h_{\theta}(x^{(m)}) - y^{(m)}
 \end{bmatrix}
 \end{equation}
 $$</p>
-<p>且对于矩阵$ z $，有$ z^{T}z = \sum_{i} z_{i}^{2} $，
+<p>且对于矩阵$ z $，有$ z^{T}z = \sum*{i} z*{i}^{2} $，
 于是可得</p>
 <p>$$
 \begin{equation}
@@ -2340,7 +2349,7 @@ $ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
 <p>第五步中使用了$ \eqref{theorem1} $和$ \eqref{inference1} $，
 视$ A^{T} = \theta $，$ B = B^{T} = X^{T} X $,$ C = I $</p>
 <p>使$ J(\theta) $最小，则令$ \nabla_{\theta} J(\theta) = 0 $，
-所以有$ X^{T}  X \theta = X^{T} Y $
+所以有$ X^{T} X \theta = X^{T} Y $
 因此，得$ \theta = ( X^{T}X )^{-1} X^{T} Y $</p>
 <hr class="footnotes-sep" />
 <section class="footnotes">
@@ -2544,8 +2553,8 @@ The netfilter project is commonly associated with iptables.</em>”</p>
 $
 \sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2}
 $。
-其中$ w^{i} $为权值，且有<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：
-$$
+其中$ w^{i} $为权值，且有<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p>$$
 w^{i} = \exp{(- \frac {1} {2} ( x^{(i)} - x )^{2} )}
 $$</p>
 <p>这里将$ e^{x} $记作$ \exp{(x)} $，$ e $为<strong>自然常数</strong>。$ x $指需要进行预测的位置，可看作是$ x $轴上的一个坐标点。</p>
@@ -2560,11 +2569,11 @@ $
 <p>在示例的函数中则表现为：离$ x = 1 $越近，它的权值越大，越远则权值越小，
 于是，离$ x = 1 $近的点得到重视，而离$ x $较远的点的影响被降低。</p>
 <h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" tabindex="-1" id="一般化"><a class="header-anchor" href="#一般化"># </a>一般化</h3>
-<p>将权值函数写成更一般的方式：
-$$
+<p>将权值函数写成更一般的方式：</p>
+<p>$$
 w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})}
-$$
-其中$ \tau $被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度。
+$$</p>
+<p>其中$ \tau $被称为<strong>波长函数</strong>，它能够控制权值随距离下降的速度。
 下图是一个例子：<img src="Figure_2.svg" alt="Figure 2" title="Figure 2" loading="lazy" /></p>
 <p><em>上图中的$ t $代表$ \tau $</em></p>
 <h2 id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98" tabindex="-1" id="需要注意的问题"><a class="header-anchor" href="#需要注意的问题"># </a>需要注意的问题</h2>
@@ -2610,37 +2619,37 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
 这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" tabindex="-1" id="数学原理"><a class="header-anchor" href="#数学原理"># </a>数学原理</h2>
 <h3 id="%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0" tabindex="-1" id="概率函数"><a class="header-anchor" href="#概率函数"># </a>概率函数</h3>
-<p>设$ h_{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
-$ P(y = 1 \mid x ; \theta) = h_{\theta}(x) $，
+<p>设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
+$ P(y = 1 \mid x ; \theta) = h*{\theta}(x) $，
 $ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
-当$ y \in {0, 1} $时，我们可以这样子优化一下：
-$$
+当$ y \in {0, 1} $时，我们可以这样子优化一下：</p>
+<p>$$
 P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
 $$</p>
 <p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
 <p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
 <p>优雅！</p>
 <h3 id="%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" tabindex="-1" id="进行极大似然估计"><a class="header-anchor" href="#进行极大似然估计"># </a>进行极大似然估计</h3>
-<p>设似然函数：
-$$
+<p>设似然函数：</p>
+<p>$$
 L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
-$$
-$$
+$$</p>
+<p>$$
 l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
-$$
-可得：
-$$
+$$</p>
+<p>可得：</p>
+<p>$$
 \frac{\partial}{\partial \theta_{j}} l(\theta) =
 \sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
 $$</p>
 <h3 id="%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3" tabindex="-1" id="梯度上升求解"><a class="header-anchor" href="#梯度上升求解"># </a>梯度上升求解</h3>
 <p>类似梯度下降，当函数具有最大值时，
-使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
-$$
+使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p>$$
 x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$
-即可得到：
-$$
+$$</p>
+<p>即可得到：</p>
+<p>$$
 \theta_{j} = \theta_{j} +
 \partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
 $$</p>
@@ -3753,12 +3762,12 @@ pi.set_PWM_dutycycle(0)
 <li><code>netfilter-persistent</code>：将 <code>iptables</code> 设置的规则持久化</li>
 <li><code>iptables-persistent</code>：<code>netfilter-persistent</code> 插件</li>
 </ul>
-<h3 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" tabindex="-1" id="安装软件"><a class="header-anchor" href="#安装软件"># </a>安装软件</h3>
+<h2 id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" tabindex="-1" id="安装软件"><a class="header-anchor" href="#安装软件"># </a>安装软件</h2>
 <p>运行命令</p>
 <pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
 </code></pre>
 <p>等待安装完成</p>
-<h3 id="%E9%85%8D%E7%BD%AEhostapd" tabindex="-1" id="配置hostapd"><a class="header-anchor" href="#配置hostapd"># </a>配置hostapd</h3>
+<h2 id="%E9%85%8D%E7%BD%AEhostapd" tabindex="-1" id="配置hostapd"><a class="header-anchor" href="#配置hostapd"># </a>配置hostapd</h2>
 <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
 <pre><code class="language-conf"># 使用的网卡
 interface=wlan0
@@ -3795,16 +3804,16 @@ hw_mode=a
 # 树莓派似乎不支持......
 channel=149
 </code></pre>
-<h3 id="%E9%85%8D%E7%BD%AEdhcpcd" tabindex="-1" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd"># </a>配置dhcpcd</h3>
+<h2 id="%E9%85%8D%E7%BD%AEdhcpcd" tabindex="-1" id="配置dhcpcd"><a class="header-anchor" href="#配置dhcpcd"># </a>配置dhcpcd</h2>
 <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
 <pre><code class="language-conf"># 网卡
 interface=wlan0
 # 网卡地址
 static ip_address=192.168.10.1/24
-# 不要执行这个脚本 
+# 不要执行这个脚本
 nohook wpa_supplicant
 </code></pre>
-<h3 id="%E9%85%8D%E7%BD%AEdnsmasq" tabindex="-1" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq"># </a>配置dnsmasq</h3>
+<h2 id="%E9%85%8D%E7%BD%AEdnsmasq" tabindex="-1" id="配置dnsmasq"><a class="header-anchor" href="#配置dnsmasq"># </a>配置dnsmasq</h2>
 <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
 <pre><code class="language-conf"># 为这个网卡开启服务
 interface=wlan0
@@ -3815,7 +3824,7 @@ domain=wlan
 # IP 地址分配范围
 dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 </code></pre>
-<h3 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" tabindex="-1" id="设置数据包转发"><a class="header-anchor" href="#设置数据包转发"># </a>设置数据包转发</h3>
+<h2 id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91" tabindex="-1" id="设置数据包转发"><a class="header-anchor" href="#设置数据包转发"># </a>设置数据包转发</h2>
 <ol>
 <li>
 <p>允许包转发<br />
@@ -3825,7 +3834,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 <li>
 <p>设置转发规则
 运行命令</p>
-<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE 
+<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 </code></pre>
 </li>
 <li>
@@ -3835,14 +3844,14 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 </code></pre>
 </li>
 </ol>
-<h3 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="设置systemd启动服务"><a class="header-anchor" href="#设置systemd启动服务"># </a>设置systemd启动服务</h3>
+<h2 id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" tabindex="-1" id="设置systemd启动服务"><a class="header-anchor" href="#设置systemd启动服务"># </a>设置systemd启动服务</h2>
 <p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
 禁用 <code>wpa_supplicant.service</code></p>
 <pre><code class="language-shell"># systemctl unmask hostapd.service
 # systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
 # systemctl disable wpa_supplicant
 </code></pre>
-<h3 id="%E9%87%8D%E5%90%AF" tabindex="-1" id="重启"><a class="header-anchor" href="#重启"># </a>重启</h3>
+<h2 id="%E9%87%8D%E5%90%AF" tabindex="-1" id="重启"><a class="header-anchor" href="#重启"># </a>重启</h2>
 <p>设置完成后重启</p>
 <pre><code class="language-shell"># reboot
 </code></pre>
@@ -4151,7 +4160,7 @@ bool should_rebuild(int r) &#123;
         *r = k;
     &#125; else &#123;
         // 现在还在树中
-        if (val == v[*r]) 
+        if (val == v[*r])
             // 重复值
             w[*r]++;
         else if (val &lt; v[*r])
@@ -4170,7 +4179,7 @@ bool should_rebuild(int r) &#123;
 <p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
 需要注意的是不能直接将其赋值为0，因为可能有重复值。</p>
 <pre><code class="language-c">void delete_node(int *r, int val) &#123;
-    if (!r || !*r) 
+    if (!r || !*r)
         return;
     if (val == v[*r]) &#123;
         // 存在，删除一个
@@ -5021,29 +5030,29 @@ String 为 java.lang 包中的一个对象</p>
     <content><![CDATA[<p>解释为什么最小二乘法能减小误差</p>
 <span id="more"></span>
 <h2 id="%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%AF%AF%E5%B7%AE" tabindex="-1" id="了解一下误差"><a class="header-anchor" href="#了解一下误差"># </a>了解一下误差</h2>
-<p>假设预测结果与实际结果存在误差，即
-$$
+<p>假设预测结果与实际结果存在误差，即</p>
+<p>$$
 \begin{equation}
 y^{(i)} = \theta^{T} x^{(i)} + \varepsilon^{(i)}
 \end{equation}
-$$
-其中$ \varepsilon^{(i)} $就称为误差</p>
+$$</p>
+<p>其中$ \varepsilon^{(i)} $就称为误差</p>
 <p>如果$ \varepsilon^{(i)} $存在某种分布，
 于是我们可以假设这个分布为<strong>高斯分布</strong>，或者说是<strong>正态分布</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><br />
-即：
-$$
+即：</p>
+<p>$$
 \varepsilon^{(i)} \sim N(0, \sigma^{2})
 $$</p>
-<p>于是有：
-$$
+<p>于是有：</p>
+<p>$$
 \begin{equation}
 P(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma}
 \exp{(- \frac{ ( \varepsilon^{(i)} )^{2} }{2 \sigma^{2} })}
 \end{equation}
 $$</p>
 <h2 id="%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A2%84%E6%B5%8B%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BB%B7%E4%BA%8E%E6%9C%80%E5%B0%8F%E5%8C%96%E8%AF%AF%E5%B7%AE" tabindex="-1" id="最大化预测期望等价于最小化误差"><a class="header-anchor" href="#最大化预测期望等价于最小化误差"># </a>最大化预测期望等价于最小化误差</h2>
-<p>由$ (1) $和$ (2) $得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：
-$$
+<p>由$ (1) $和$ (2) $得<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p>$$
 \begin{equation}
 P(y^{i} \mid x^{i} ; \theta)
 = \frac{1}{\sqrt{2 \pi} \sigma}
@@ -5056,8 +5065,8 @@ $
 $</p>
 <p>我们又假设，$ \varepsilon^{i} $之间相互独立，且具有相同的分布，
 然后我们使用<strong>极大似然估计</strong>将$ (3) $最大化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
-<p>设
-$$
+<p>设</p>
+<p>$$
 \begin{equation}
 \begin{split}
 L(\theta)
@@ -5068,8 +5077,8 @@ L(\theta)
 \end{split}
 \end{equation}
 $$</p>
-<p>那么
-$$
+<p>那么</p>
+<p>$$
 \begin{equation}
 \begin{split}
 l(\theta)

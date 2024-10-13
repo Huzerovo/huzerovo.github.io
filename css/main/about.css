@@ -11,6 +11,7 @@
   margin-top: 16px;
   overflow-wrap: break-word;
   text-align: left;
+  color: var(--huzerovo-trivial-text);
 }
 .page-about-me .page-about-description > p {
   text-align: center;

@@ -1,277 +1,253 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html id="root" lang="zh-CN">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="author" content="狐zerOAO" />
     <meta name="description" content="记录一段回忆" />
     <meta name="keywords" content="blog,code" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="white"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="dark"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Github Page时间测试 - 狐言狐语 | 记录一段回忆</title>
 
-    <meta name="generator" content="Hexo 7.3.0">
-    <meta name="description" content="时间格式测试">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Github Page时间测试">
-<meta property="og:url" content="https://huzerovo.github.io/2023/01/01/time-test/">
-<meta property="og:site_name" content="狐灵">
-<meta property="og:description" content="时间格式测试">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-01T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-01T04:00:00.000Z">
-<meta property="article:author" content="狐zerOAO">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="code">
-<meta name="twitter:card" content="summary">
+    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="description" content="时间格式测试" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Github Page时间测试" />
+    <meta
+      property="og:url"
+      content="https://huzerovo.github.io/2023/01/01/time-test/"
+    />
+    <meta property="og:site_name" content="狐灵" />
+    <meta property="og:description" content="时间格式测试" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta
+      property="article:published_time"
+      content="2023-01-01T04:00:00.000Z"
+    />
+    <meta property="article:modified_time" content="2023-01-01T04:00:00.000Z" />
+    <meta property="article:author" content="狐zerOAO" />
+    <meta property="article:tag" content="blog" />
+    <meta property="article:tag" content="code" />
+    <meta name="twitter:card" content="summary" />
 
-    
-        <link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml">
-    
+    <link
+      rel="alternate"
+      href="/atom.xml"
+      title="狐灵"
+      type="application/atom+xml"
+    />
 
     <!-- jQuery -->
-    
-<script src="/js/jquery-3.7.1.min.js"></script>
 
+    <script src="/js/jquery-3.7.1.min.js"></script>
 
     <!-- fancybox -->
-    
-        
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 
-        
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <!-- Bootstrap icons -->
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-    
-    
-        <!-- highlight.js -->
-        
-<link rel="stylesheet" href="/css/github.min.css" id="code-style">
+    <!-- highlight.js -->
 
-        
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
 
-    
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-    
-    
-<link rel="stylesheet" href="/css/huzerovo.css">
+    <!-- site style -->
 
+    <link rel="stylesheet" href="/css/light.css" />
 
-    
-    
-<link rel="stylesheet" href="/css/light/light.css">
+    <link rel="stylesheet" href="/css/dark.css" />
 
-    
-<link rel="stylesheet" href="/css/dark/dark.css">
+    <link rel="stylesheet" href="/css/huzerovo.css" />
 
+    <!-- theme switcher -->
 
-    
-    
-<script src="/js/huzerovo.js"></script>
-<script src="/js/search.js"></script>
+    <script src="/js/huzerovo.js"></script>
 
+    <!-- searching support -->
 
-    
-    
+    <script src="/js/search.js"></script>
+
+    <!-- katex renderer -->
+
     <script>
-        let codeStyle = {};
-        codeStyle.light = "/css/github.min.css";
-        codeStyle.dark = "/css/github-dark.min.css";
-        window.load = myLoading();
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener('change', followTheme);
+      const ThemeConf = {
+        rootId: "root",
+        codeId: "code-style",
+        ibtnId: "btn-switch-theme",
+        iconDarkClass: "bi-moon",
+        iconLightClass: "bi-sun",
+        codeStyle: {
+          light: "/css/github.min.css",
+          dark: "/css/github-dark.min.css",
+        },
+      };
+      window.load = ThemeSwitcher.init();
+      window
+        .matchMedia("(prefers-color-scheme: light)")
+        .addEventListener("change", ThemeSwitcher.follow);
     </script>
-</head>
+  </head>
 
-<body>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-<header class="topbar">
-    <div class="topbar-container">
-        
+  <body>
+    <header id="topbar">
+      <div class="topbar-container">
         <nav class="topbar-menu">
-            <ul>
-            
-                <li>
-                
-                
-                    <a href="/" title="首页">首页</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/archive" title="归档">归档</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/categories" title="分类">分类</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/tagcloud" title="标签云">标签云</a>
-                
-                </li>
-            
-                <li>
-                
-                
-                    <a href="/about" title="关于我">关于我</a>
-                
-                </li>
-            
-            </ul>
+          <ul>
+            <li>
+              <a href="/" title="首页">首页</a>
+            </li>
+
+            <li>
+              <a href="/archive" title="归档">归档</a>
+            </li>
+
+            <li>
+              <a href="/categories" title="分类">分类</a>
+            </li>
+
+            <li>
+              <a href="/tagcloud" title="标签云">标签云</a>
+            </li>
+
+            <li>
+              <a href="/about" title="关于我">关于我</a>
+            </li>
+          </ul>
         </nav>
 
-        
         <div class="topbar-icon-buttons">
-            <!-- social link -->
-            
-                
-                
-                <a class="icon-button"  title="Github" href="https://github.com/Huzerovo"><i class="bi bi-github"></i></a>
-                
-            
+          <!-- social link -->
 
-            
-                <!-- search link -->
-                <a class="icon-button"  id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a>
-            
+          <a
+            class="icon-button"
+            title="Github"
+            href="https://github.com/Huzerovo"
+            ><i class="bi bi-github"></i
+          ></a>
 
-            <!-- change theme btn -->
-            <a class="icon-button"  id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a>
+          <!-- search link -->
+          <a class="icon-button" id="btn-search" title="搜索" href="/search"
+            ><i class="bi bi-search"></i
+          ></a>
 
-            
-                <!-- feed link -->
-                <a class="icon-button"  title="订阅" href="/atom.xml"><i class="bi bi-rss-fill"></i></a>
-            
+          <!-- change theme btn -->
+          <a class="icon-button" id="btn-switch-theme" title="切换主题"
+            ><i class="bi bi-sun"></i
+          ></a>
 
+          <!-- feed link -->
+          <a class="icon-button" title="订阅" href="/atom.xml"
+            ><i class="bi bi-rss-fill"></i
+          ></a>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<main class="container">
-    
-    <div id="article-toc">
-    
-    </div>
-    
-    <article class="article-container">
+    <main class="container">
+      <div id="article-toc"></div>
+
+      <article class="article-container">
         <h1>Github Page时间测试</h1>
         <p>发现Github Page上的日期比实际的日期少一天。</p>
-<p>似乎是时区问题？没有验证。</p>
+        <p>似乎是时区问题？没有验证。</p>
         <hr />
-        
-        <div class="article-meta-info">
-                
-            
-        </div>
-        
+
+        <div class="article-meta-info"></div>
+
         <div class="article-date-info">
-            <span>发布日期: 2023-01-01</span>
-            <span>更新日期: 2023-01-01</span>
+          <span>发布日期: 2023-01-01</span>
+          <span>更新日期: 2023-01-01</span>
         </div>
         <div class="article-share-link">
-            <span>
+          <span>
             分享文章
-            <a href="https://huzerovo.github.io/2023/01/01/time-test/">https://huzerovo.github.io/2023/01/01/time-test/</a>
-            </span>
+            <a href="https://huzerovo.github.io/2023/01/01/time-test/"
+              >https://huzerovo.github.io/2023/01/01/time-test/</a
+            >
+          </span>
         </div>
         <div class="article-comment">
-            
-
-    <p>已禁用评论=w=</p>
-
-
+          <p>已禁用评论=w=</p>
         </div>
-    </article>
-</main>
+      </article>
+    </main>
 
-    
-    <button id="goto-top" type="button" title="回到顶部">
-        回到顶部
-    </button>
-    <footer class="site-footer">
-        <p> © 2024 
-        
-            @狐zerOAO
-        
-        </p>
-        <p>
-            如无特殊说明，网站所有原创内容均采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权。
-        </p>
-        <p>
-            Powered by <a href="https://hexo.io">Hexo</a>. 
-            Theme by <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
-        </p>
-        <br>
+    <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
+
+    <footer id="site-footer">
+      <p>© 2024 @狐zerOAO</p>
+      <p>
+        如无特殊说明，网站所有原创内容均采用<a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+          >CC BY-NC-ND 4.0</a
+        >授权。
+      </p>
+      <p>
+        Powered by <a href="https://hexo.io">Hexo</a>. Theme by
+        <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
+      </p>
+      <br />
     </footer>
-</body>
+  </body>
 
-<script>
-hljs.highlightAll();
-$('#goto-top').hide();
-// 页面载入后设置icon
-setTheme(getStorage('currentTheme'));
-$(document).ready(function() {
-    // 监听事件
-    $('#btn-switch-theme').click(switchTheme);
-    $('#btn-side-menu').click(function() {
-        let e = $('#side-nav');
-        let hide = 'side-menu-hidden'
-        let show = 'side-menu-show'
+  <script>
+    hljs.highlightAll();
+    $("#goto-top").hide();
+    // 页面载入后设置icon
+    ThemeSwitcher.follow();
+    $(document).ready(function () {
+      // 监听事件
+      $("#btn-switch-theme").click(switchThemeClickHandler);
+      $("#btn-side-menu").click(function () {
+        let e = $("#side-nav");
+        let hide = "side-menu-hidden";
+        let show = "side-menu-show";
         if (e.hasClass(hide)) {
-            e.removeClass(hide);
-            e.addClass(show);
+          e.removeClass(hide);
+          e.addClass(show);
         } else {
-            e.removeClass(show);
-            e.addClass(hide);
+          e.removeClass(show);
+          e.addClass(hide);
         }
-    });
-    $('#search').on('input', function() {
+      });
+      $("#search-input").on("input", function () {
         searchArticle("/search.xml");
-    });
-    $('#goto-top').click(function() {
-        $('#root').scrollTop(0);
-    });
+      });
+      $("#goto-top").click(function () {
+        $("#root").scrollTop(0);
+      });
 
-    $(window).scroll(function() {
-        if ($('#root').scrollTop() > 300) {
-            $('#goto-top').show();
+      $(window).scroll(function () {
+        if ($("#root").scrollTop() > 300) {
+          $("#goto-top").show();
         } else {
-            $('#goto-top').hide();
+          $("#goto-top").hide();
         }
-    });
+      });
 
-    Fancybox.bind(".container img");
-    Fancybox.bind('[data-fancybox]');
-});
-</script>
+      Fancybox.bind(".container img");
+      Fancybox.bind("[data-fancybox]");
+    });
+  </script>
 </html>

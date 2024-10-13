@@ -1,106 +1,161 @@
-/*
- * 网站整体样式框架，不包括颜色设置
- */
+*::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+*:hover::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--huzerovo-scrollbar-track);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--huzerovo-scrollbar-thumb);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb :hover {
+  background: var(--huzerovo-scrollbar-thumb-hover);
+}
+*::-webkit-scrollbar-corner {
+  background: var(--huzerovo-scrollbar-corner);
+}
 html {
   font-family: sans;
   scroll-behavior: smooth;
   scroll-padding-top: 50px;
 }
-html::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-html::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-html::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-}
 body {
   margin: 0;
   transition: 300ms;
+  background-color: var(--huzerovo-background);
+  color: var(--huzerovo-normal-text);
 }
-body .topbar {
+a {
+  color: var(--huzerovo-link);
+}
+a:visited {
+  color: var(--huzerovo-link-visted);
+}
+a:hover {
+  color: var(--huzerovo-link-hover);
+}
+hr {
+  border: solid 1px var(--huzerovo-line);
+  border-top: none;
+}
+strong {
+  color: var(--huzerovo-notable-text);
+}
+mark {
+  background-color: var(--huzerovo-mark-color);
+}
+#goto-top {
+  background-color: var(--huzerovo-btn-bg);
+  color: var(--huzerovo-btn-text);
+  opacity: 50%;
+  transition: 300ms;
+  position: fixed;
+  right: 8%;
+  bottom: 8%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+#topbar {
   width: 100%;
   margin: 0;
   position: sticky;
   top: 0;
   z-index: 9;
+  background-color: var(--huzerovo-background);
+  border-bottom: solid 1px var(--huzerovo-line);
+  opacity: 0.9;
   transition: background-color 0.3s;
 }
-body .topbar .topbar-container {
+#topbar #active-page {
+  background-color: var(--huzerovo-btn-bg-active);
+  color: var(--huzerovo-btn-text-active);
+}
+#topbar .topbar-container {
   width: 80%;
-  height: 40px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-body .topbar .topbar-container .topbar-menu {
+#topbar .topbar-container .topbar-menu {
   max-width: 70%;
   overflow-x: scroll;
   scrollbar-width: none;
 }
-body .topbar .topbar-container .topbar-menu ul {
+#topbar .topbar-container .topbar-menu ul {
   display: flex;
   align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-body .topbar .topbar-container .topbar-menu ul li {
+#topbar .topbar-container .topbar-menu ul li {
   min-width: fit-content;
 }
-body .topbar .topbar-container .topbar-menu a {
+#topbar .topbar-container .topbar-menu a {
+  color: var(--huzerovo-btn-text);
   display: block;
   padding: 8px 16px;
   text-decoration: none;
 }
-body .topbar .topbar-container .topbar-menu::-webkit-scrollbar {
+#topbar .topbar-container .topbar-menu a:hover {
+  background-color: var(--huzerovo-btn-bg-hover);
+  color: var(--huzerovo-btn-text-hover);
+}
+#topbar .topbar-container .topbar-menu::-webkit-scrollbar {
   display: none;
 }
-body .topbar .topbar-container .topbar-icon-buttons {
+#topbar .topbar-container .topbar-icon-buttons {
   max-width: 30%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
-  scrollbar-width: none;
   transition: color 0.3s;
+  margin: auto 0;
 }
-body .topbar .topbar-container .topbar-icon-buttons .icon-button {
+#topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
   border: none;
+  color: var(--huzerovo-btn-text);
   cursor: pointer;
   background: none;
   font-size: 16px;
 }
-body .topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
+#topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
   display: none;
 }
 @media screen and (max-width: 960px) {
-  body .topbar .topbar-container {
+  #topbar .topbar-container {
     width: 95%;
   }
 }
 @media screen and (max-width: 640px) {
-  body .topbar .topbar-container {
+  #topbar .topbar-container {
     width: 100%;
     justify-content: center;
   }
-  body .topbar .topbar-container .topbar-menu {
+  #topbar .topbar-container .topbar-menu {
     max-width: unset;
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  body .topbar .topbar-container .topbar-icon-buttons {
+  #topbar .topbar-container .topbar-icon-buttons {
     display: grid;
     position: fixed;
     bottom: 5%;
     left: 5%;
   }
 }
-body main.container {
+main.container {
   width: 60%;
   margin: 0 auto;
   /* 目录设置 */
@@ -109,120 +164,158 @@ body main.container {
   /* 日期信息 */
   /* 评论 */
 }
-body main.container .page-title {
+main.container .page-title {
   text-align: center;
 }
-body main.container .page-about-me {
+main.container a {
+  text-decoration: none;
+}
+main.container .page-about-me {
   width: 60%;
   margin: 16px auto;
   text-align: center;
   border-radius: 16px;
 }
-body main.container .page-about-me .page-about-avatar {
+main.container .page-about-me .page-about-avatar {
   border-radius: 100%;
 }
-body main.container .page-about-me .page-about-description {
+main.container .page-about-me .page-about-description {
   margin-top: 16px;
   overflow-wrap: break-word;
   text-align: left;
+  color: var(--huzerovo-trivial-text);
 }
-body main.container .page-about-me .page-about-description > p {
+main.container .page-about-me .page-about-description > p {
   text-align: center;
   margin: 0;
   text-indent: 0;
 }
-body main.container .page-about-me .page-about-description a {
+main.container .page-about-me .page-about-description a {
   text-decoration: none;
   color: #9999ff;
 }
 @media (max-width: 480px) {
-  body main.container .page-about-me {
+  main.container .page-about-me {
     width: 90%;
   }
 }
-body main.container .page-archive {
+main.container .page-archive {
   width: 80%;
   margin: 16px auto;
 }
-body main.container .page-archive .page-archive-year {
+main.container .page-archive a:visited {
+  color: var(--huzerovo-link);
+}
+main.container .page-archive .page-archive-year {
   font-size: 32px;
 }
-body main.container .page-archive .page-archive-item {
+main.container .page-archive .page-archive-item {
   display: flex;
   flex-direction: column;
   font-size: 24px;
   margin: 0 6px;
 }
-body main.container .page-archive .page-archive-item a {
+main.container .page-archive .page-archive-item .page-archive-item-date {
+  color: var(--huzerovo-trivial-text);
+}
+main.container .page-archive .page-archive-item a.page-archive-item-link {
   text-decoration: none;
   width: 80%;
   padding: 8px;
   margin-left: 64px;
   border-radius: 8px;
   transition: 100ms;
+  color: var(--huzerovo-normal-text);
+}
+main.container .page-archive .page-archive-item a.page-archive-item-link:hover {
+  background-color: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-notable-text);
 }
 @media (max-width: 480px) {
-  body main.container .page-archive {
+  main.container .page-archive {
     width: 90%;
   }
 }
-body main.container .articles-list .articles-list-item {
+main.container .articles-list .articles-list-item {
   display: block;
   width: 80%;
   margin: 16px auto;
   border-radius: 16px;
   overflow: hidden;
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-background-highlight);
 }
-body main.container .articles-list .articles-list-item a {
+main.container .articles-list .articles-list-item a {
+  color: var(--huzerovo-normal-text);
   margin: 32px;
   display: block;
   text-decoration: none;
   overflow: hidden;
 }
-body main.container .articles-list .articles-list-item .item-gallery {
+main.container .articles-list .articles-list-item a:hover {
+  color: var(--huzerovo-notable-text);
+}
+main.container .articles-list .item-gallery {
   margin: 0px;
 }
-body main.container .articles-list .articles-list-item .item-gallery img {
+main.container .articles-list .item-gallery img {
   cursor: pointer;
   width: 100%;
 }
-body main.container .articles-list .articles-list-item .item-title {
+main.container .articles-list .post-entry-title {
   font-size: 24px;
   margin-top: 0;
 }
-body main.container .articles-list .articles-list-item .item-content {
+main.container .articles-list .item-content {
   margin: 0;
+  color: var(--huzerovo-additional-text);
 }
-body main.container .articles-list .articles-list-item .item-footer {
+main.container .articles-list .item-footer {
   display: flex;
   justify-content: space-between;
   margin: 32px;
   position: relative;
+  color: var(--huzerovo-trivial-text);
 }
-body main.container .articles-list .articles-list-item .item-footer .item-footer-todo {
+main.container .articles-list .item-footer .item-footer-todo {
+  color: var(--huzerovo-warn-color);
   margin: 0px;
   text-align: left;
 }
-body main.container .articles-list .articles-list-item .item-footer .item-footer-todo .item-footer-todo-msg {
+main.container
+  .articles-list
+  .item-footer
+  .item-footer-todo
+  .item-footer-todo-msg {
   display: inline;
   margin-right: 8px;
 }
-body main.container .articles-list .articles-list-item .item-footer .item-footer-pin {
+main.container .articles-list .item-footer .item-footer-pin {
   position: absolute;
   right: 0px;
   bottom: 0px;
 }
+main.container .articles-list .item-footer .item-footer-finished {
+  color: var(--huzerovo-done-color);
+}
 @media (max-width: 480px) {
-  body main.container .articles-list .articles-list-item {
+  main.container .articles-list .articles-list-item {
     width: 90%;
   }
 }
-body main.container .page-category {
+main.container .page-category {
   width: 80%;
   margin: 0 auto;
+  color: var(--huzerovo-normal-text);
 }
-body main.container .page-category .category-list {
+main.container .page-category a {
+  color: var(--huzerovo-additional-text);
+}
+main.container .page-category a:hover {
+  background-color: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-notable-text);
+}
+main.container .page-category .category-list {
   list-style: none;
   display: inline-block;
   padding: 0px;
@@ -230,18 +323,18 @@ body main.container .page-category .category-list {
   margin: 0;
 }
 @media (max-width: 480px) {
-  body main.container .page-category {
+  main.container .page-category {
     width: 90%;
   }
 }
-body main.container .category-list-item {
+main.container .category-list-item {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
 }
-body main.container .category-list-item .category-list-link {
+main.container .category-list-item .category-list-link {
   box-sizing: border-box;
   display: inline-block;
   padding: 8px 16px;
@@ -250,16 +343,16 @@ body main.container .category-list-item .category-list-link {
   width: 100%;
   margin-right: 32px;
 }
-body main.container .category-list-item .category-list-count {
+main.container .category-list-item .category-list-count {
   padding-top: 8px;
   position: absolute;
   right: 0px;
 }
-body main.container .category-list-item .category-list-child {
+main.container .category-list-item .category-list-child {
   padding-left: 16px;
   width: 100%;
 }
-body main.container #article-toc {
+main.container #article-toc {
   position: fixed;
   left: 5%;
   max-width: 15%;
@@ -267,40 +360,38 @@ body main.container #article-toc {
   overflow: auto;
   padding-right: 8px;
 }
-body main.container #article-toc .toc {
+main.container #article-toc a {
+  color: var(--huzerovo-additional-text);
+}
+main.container #article-toc a:hover {
+  color: var(--huzerovo-notable-text);
+}
+main.container #article-toc .toc {
   padding: 0;
   font-size: small;
   list-style: none;
 }
-body main.container #article-toc .toc-child {
+main.container #article-toc .toc-child {
   padding: 0 8px;
   list-style: none;
 }
-body main.container #article-toc .toc-link {
+main.container #article-toc .toc-link {
   transition: color 0.3s;
   display: block;
   margin: 6px 0;
   text-decoration: none;
 }
-body main.container #article-toc .toc-level-2 > a.toc-link ::before {
+main.container #article-toc .toc-level-2 > a.toc-link {
+  color: var(--huzerovo-normal-text);
+}
+main.container #article-toc .toc-level-2 > a.toc-link ::before {
   content: "# ";
 }
-body main.container #article-toc::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-body main.container #article-toc:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-body main.container #article-toc::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-body main.container #article-toc::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+main.container #article-toc .toc-level-2 > a:hover {
+  color: var(--huzerovo-notable-text);
 }
 @media (max-width: 960px) {
-  body main.container #article-toc {
+  main.container #article-toc {
     position: unset;
     max-width: 30%;
     height: fit-content;
@@ -310,7 +401,7 @@ body main.container #article-toc::-webkit-scrollbar-thumb {
   }
 }
 @media (max-width: 480px) {
-  body main.container #article-toc {
+  main.container #article-toc {
     display: block;
     max-width: 100%;
     height: fit-content;
@@ -319,122 +410,125 @@ body main.container #article-toc::-webkit-scrollbar-thumb {
     margin: 0 auto;
   }
 }
-body main.container .article-container {
+main.container .article-container {
   line-height: 1.7;
   padding: 0 16px;
   /* 从官方主题landscape抄来的 */
 }
-body main.container .article-container h1 {
+main.container .article-container h1 {
   text-align: center;
 }
-body main.container .article-container > p {
+main.container .article-container > p {
   text-indent: 32px;
 }
-body main.container .article-container a {
+main.container .article-container a {
   transition: 0ms;
   text-decoration: none;
 }
-body main.container .article-container em {
+main.container .article-container em {
   padding-right: 3px;
 }
-body main.container .article-container blockquote {
-  border-left-width: 3px;
-  border-left-style: solid;
+main.container .article-container blockquote {
+  background-color: var(--huzerovo-block-background);
+  color: var(--huzerovo-block-text);
+  border-left: solid 3px var(--huzerovo-line);
   margin: 8px 0px;
   padding: 0px 2em;
   width: calc(100% - 64px - 3px);
   display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
 }
-body main.container .article-container blockquote p {
+main.container .article-container blockquote p {
   text-indent: 0px;
 }
-body main.container .article-container blockquote cite {
+main.container .article-container blockquote cite {
   margin: 0px 8px;
 }
-body main.container .article-container table {
+main.container .article-container table {
   width: 90%;
   margin: 8px auto;
   border: 1px solid;
   border-collapse: collapse;
 }
-body main.container .article-container table thead {
+main.container .article-container table thead {
+  transition: background-color 0.3s;
+  background-color: var(--huzerovo-thead-bg);
+  color: var(--huzerovo-thead-text);
+}
+main.container .article-container table tbody {
+  background-color: var(--huzerovo-tbody-bg);
+  color: var(--huzerovo-tbody-text);
   transition: background-color 0.3s;
 }
-body main.container .article-container table tbody {
-  transition: background-color 0.3s;
-}
-body main.container .article-container table tbody td {
+main.container .article-container table tbody td {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main.container .article-container table tbody th {
+main.container .article-container table tbody th {
   border: 1px solid;
   padding: 3px 6px;
 }
-body main.container .article-container img {
+main.container .article-container img {
   max-width: 80%;
   display: block;
   margin: 8px auto;
   cursor: pointer;
 }
-body main.container .article-container code {
+main.container .article-container code {
   padding: 3px 6px;
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
 }
-body main.container .article-container pre code {
+main.container .article-container code:not([class*="language"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
+}
+main.container .article-container pre code {
   display: block;
   overflow: auto;
   padding: 16px 32px;
 }
-body main.container .article-container pre code::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
+main.container .article-container pre code:not([class~="hljs"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
 }
-body main.container .article-container pre code:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-body main.container .article-container pre code::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-body main.container .article-container pre code::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-}
-body main.container .article-container figure.highlight {
+main.container .article-container figure.highlight {
   overflow-x: auto;
   border-radius: 6px;
 }
-body main.container .article-container figure.highlight table {
+main.container .article-container figure.highlight table {
   font-size: 14px;
   width: 100%;
   height: 100%;
   margin: unset;
   border: unset;
 }
-body main.container .article-container figure.highlight table tbody {
+main.container .article-container figure.highlight table tbody {
   background: #0d1117;
 }
-body main.container .article-container figure.highlight table td {
+main.container .article-container figure.highlight table td {
   border: none;
   padding: unset;
 }
-body main.container .article-container figure.highlight table th {
+main.container .article-container figure.highlight table th {
   border: none;
   padding: unset;
 }
-body main.container .article-container figure.highlight table .gutter {
+main.container .article-container figure.highlight table .gutter {
   text-align: right;
   border-right: gray solid 1px;
 }
-body main.container .article-container figure.highlight table .gutter pre {
+main.container .article-container figure.highlight table .gutter pre {
   padding: 0 8px;
   color: green;
 }
-body main.container .article-container figure.highlight table .code pre {
+main.container .article-container figure.highlight table .code pre {
   padding-left: 8px;
   margin: 0;
   /*!
@@ -448,146 +542,331 @@ body main.container .article-container figure.highlight table .code pre {
                  * Current colors taken from GitHub's CSS
                  */
 }
-body main.container .article-container figure.highlight table .code pre code {
+main.container .article-container figure.highlight table .code pre code {
   margin: 0;
   padding: 0;
 }
-body main.container .article-container figure.highlight table .code pre code mark {
+main.container .article-container figure.highlight table .code pre code mark {
   background-color: #505050;
 }
-body main.container .article-container figure.highlight table .code pre .hljs {
+main.container .article-container figure.highlight table .code pre .hljs {
   color: #c9d1d9;
   background: #0d1117;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-doctag,
-body main.container .article-container figure.highlight table .code pre .hljs-keyword,
-body main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-keyword,
-body main.container .article-container figure.highlight table .code pre .hljs-template-tag,
-body main.container .article-container figure.highlight table .code pre .hljs-template-variable,
-body main.container .article-container figure.highlight table .code pre .hljs-type,
-body main.container .article-container figure.highlight table .code pre .hljs-variable.language_ {
+main.container .article-container figure.highlight table .code pre .hljs-doctag,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-keyword,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-meta
+  .hljs-keyword,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-template-tag,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-template-variable,
+main.container .article-container figure.highlight table .code pre .hljs-type,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-variable.language_ {
   color: #ff7b72;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-title,
-body main.container .article-container figure.highlight table .code pre .hljs-title.class_,
-body main.container .article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
-body main.container .article-container figure.highlight table .code pre .hljs-title.function_ {
+main.container .article-container figure.highlight table .code pre .hljs-title,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.class_,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.class_.inherited__,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.function_ {
   color: #d2a8ff;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-attr,
-body main.container .article-container figure.highlight table .code pre .hljs-attribute,
-body main.container .article-container figure.highlight table .code pre .hljs-literal,
-body main.container .article-container figure.highlight table .code pre .hljs-meta,
-body main.container .article-container figure.highlight table .code pre .hljs-number,
-body main.container .article-container figure.highlight table .code pre .hljs-operator,
-body main.container .article-container figure.highlight table .code pre .hljs-selector-attr,
-body main.container .article-container figure.highlight table .code pre .hljs-selector-class,
-body main.container .article-container figure.highlight table .code pre .hljs-selector-id,
-body main.container .article-container figure.highlight table .code pre .hljs-variable {
+main.container .article-container figure.highlight table .code pre .hljs-attr,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-attribute,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-literal,
+main.container .article-container figure.highlight table .code pre .hljs-meta,
+main.container .article-container figure.highlight table .code pre .hljs-number,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-operator,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-attr,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-class,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-id,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-variable {
   color: #79c0ff;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-string,
-body main.container .article-container figure.highlight table .code pre .hljs-regexp,
-body main.container .article-container figure.highlight table .code pre .hljs-string {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-meta
+  .hljs-string,
+main.container .article-container figure.highlight table .code pre .hljs-regexp,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-string {
   color: #a5d6ff;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-built_in,
-body main.container .article-container figure.highlight table .code pre .hljs-symbol {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-built_in,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-symbol {
   color: #ffa657;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-code,
-body main.container .article-container figure.highlight table .code pre .hljs-comment,
-body main.container .article-container figure.highlight table .code pre .hljs-formula {
+main.container .article-container figure.highlight table .code pre .hljs-code,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-comment,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-formula {
   color: #8b949e;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-name,
-body main.container .article-container figure.highlight table .code pre .hljs-quote,
-body main.container .article-container figure.highlight table .code pre .hljs-selector-pseudo,
-body main.container .article-container figure.highlight table .code pre .hljs-selector-tag {
+main.container .article-container figure.highlight table .code pre .hljs-name,
+main.container .article-container figure.highlight table .code pre .hljs-quote,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-pseudo,
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-selector-tag {
   color: #7ee787;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-subst {
+main.container .article-container figure.highlight table .code pre .hljs-subst {
   color: #c9d1d9;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-section {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-section {
   color: #1f6feb;
   font-weight: 700;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-bullet {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-bullet {
   color: #f2cc60;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-emphasis {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-emphasis {
   color: #c9d1d9;
   font-style: italic;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-strong {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-strong {
   color: #c9d1d9;
   font-weight: 700;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-addition {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-addition {
   color: #aff5b4;
   background-color: #033a16;
 }
-body main.container .article-container figure.highlight table .code pre .hljs-deletion {
+main.container
+  .article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
 }
-body main.container .article-container span.katex {
+main.container .article-container span.katex {
   padding-left: 3px;
   padding-right: 3px;
 }
-body main.container .article-container .katex-display {
+main.container .article-container .katex-display {
   width: 100%;
   padding: 8px 0;
 }
-body main.container .article-container .katex-display > .katex {
+main.container .article-container .katex-display > .katex {
   overflow: auto visible;
 }
-body main.container .article-container .katex-display > .katex .katex-html {
+main.container .article-container .katex-display > .katex .katex-html {
   min-width: fit-content;
   width: 75%;
   margin: 8px auto;
 }
-body main.container .article-container .katex-display > .katex .katex-html .tag {
+main.container .article-container .katex-display > .katex .katex-html .tag {
   position: absolute;
   left: 100%;
   margin-left: 16px;
   width: fit-content;
 }
-body main.container .article-container .katex-display .katex::-webkit-scrollbar {
+main.container .article-container .katex-display .katex::-webkit-scrollbar {
   width: 1px;
   height: 1px;
 }
-body main.container .article-container .katex-display .katex:hover::-webkit-scrollbar {
+main.container
+  .article-container
+  .katex-display
+  .katex:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-body main.container .article-container .katex-display .katex::-webkit-scrollbar-track {
+main.container
+  .article-container
+  .katex-display
+  .katex::-webkit-scrollbar-track {
   border-radius: 8px;
 }
-body main.container .article-container .katex-display .katex::-webkit-scrollbar-thumb {
+main.container
+  .article-container
+  .katex-display
+  .katex::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
-body main.container .article-container .pullquote {
+main.container .article-container .pullquote {
   display: inline-block;
   border: none;
   width: 45%;
   margin: 16px;
   padding: 0 16px;
 }
-body main.container .article-container .pullquote.left {
+main.container .article-container .pullquote.left {
   float: left;
 }
-body main.container .article-container .pullquote.right {
+main.container .article-container .pullquote.right {
   float: right;
 }
-body main.container .article-container .video-container {
+main.container .article-container .video-container {
   position: relative;
   padding-top: 50%;
   height: 0;
   overflow: hidden;
 }
-body main.container .article-container .video-container iframe {
+main.container .article-container .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -595,116 +874,166 @@ body main.container .article-container .video-container iframe {
   height: 100%;
   margin-top: 0;
 }
-body main.container .article-container .contains-task-list {
+main.container .article-container .contains-task-list {
   list-style: none;
 }
-body main.container .article-meta-info span {
+main.container .article-meta-info {
+  color: var(--huzerovo-additional-text);
+}
+main.container .article-meta-info span {
   display: block;
 }
-body main.container .article-meta-info a {
+main.container .article-meta-info a {
   position: relative;
   left: 16px;
   transition: 0ms;
   text-decoration: none;
   margin-left: 16px;
 }
-body main.container .article-date-info {
+main.container .article-date-info {
   margin: 8px auto;
+  color: var(--huzerovo-trivial-text);
 }
-body main.container .article-date-info span {
+main.container .article-date-info span {
   font-size: small;
   font-style: italic;
   display: block;
 }
-body main.container .article-comment {
+main.container .article-comment {
   text-align: center;
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0px;
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-block-background);
 }
-body main.container .article-comment #gitalk-container {
+main.container .article-comment #gitalk-container {
   text-align: left;
 }
-body main.container .article-comment #gitalk-container img {
+main.container .article-comment #gitalk-container img {
   border-radius: 100%;
 }
-body main.container .article-comment #gitalk-container blockquote {
+main.container .article-comment #gitalk-container blockquote {
+  background: var(--huzerovo-block-background);
   width: 100%;
 }
-body main.container .article-comment #gitalk-container .gt-meta {
+main.container .article-comment #gitalk-container .gt-meta {
   margin-top: 0px;
   padding-top: 0px;
 }
-body main.container .article-comment #gitalk-container .gt-comment-content {
+main.container .article-comment #gitalk-container .gt-comment-content {
   border-radius: 8px;
 }
-body main.container .article-comment #gitalk-container .gt-comment-content:hover {
+main.container .article-comment #gitalk-container .gt-comment-content:hover {
   box-shadow: unset;
 }
-body main.container .search-input {
+main.container .search-bar {
   display: flex;
 }
-body main.container .search-input input {
+main.container #search-input {
   margin: 16px auto;
   height: 40px;
   width: 80%;
   font-size: 16px;
   border: solid 1px;
   border-radius: 16px;
+  border-color: var(--huzerovo-line);
+  background: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-normal-text);
   padding: 0px 16px;
 }
-body main.container .page-tagcloud {
+main.container .tagcloud-0 {
+  color: var(--huzerovo-tagcloud-0);
+}
+main.container .tagcloud-1 {
+  color: var(--huzerovo-tagcloud-1);
+}
+main.container .tagcloud-2 {
+  color: var(--huzerovo-tagcloud-2);
+}
+main.container .tagcloud-3 {
+  color: var(--huzerovo-tagcloud-3);
+}
+main.container .tagcloud-4 {
+  color: var(--huzerovo-tagcloud-4);
+}
+main.container .tagcloud-5 {
+  color: var(--huzerovo-tagcloud-5);
+}
+main.container .tagcloud-6 {
+  color: var(--huzerovo-tagcloud-6);
+}
+main.container .tagcloud-7 {
+  color: var(--huzerovo-tagcloud-7);
+}
+main.container .tagcloud-8 {
+  color: var(--huzerovo-tagcloud-8);
+}
+main.container .tagcloud-9 {
+  color: var(--huzerovo-tagcloud-9);
+}
+main.container .tagcloud-0:hover,
+main.container .tagcloud-1:hover,
+main.container .tagcloud-2:hover,
+main.container .tagcloud-3:hover,
+main.container .tagcloud-4:hover,
+main.container .tagcloud-5:hover,
+main.container .tagcloud-6:hover,
+main.container .tagcloud-7:hover,
+main.container .tagcloud-8:hover,
+main.container .tagcloud-9:hover {
+  color: var(--huzerovo-tagcloud-hover);
+}
+main.container .page-tagcloud {
   width: 80%;
   margin: 16px auto;
 }
-body main.container .page-tagcloud a {
+main.container .page-tagcloud a {
   display: inline-block;
   text-decoration: none;
   margin: 0 6px;
 }
 @media (max-width: 480px) {
-  body main.container .page-tagcloud {
+  main.container .page-tagcloud {
     width: 90%;
   }
 }
 @media screen and (max-width: 960px) {
-  body main.container {
+  main.container {
     width: 80%;
   }
 }
 @media screen and (max-width: 640px) {
-  body main.container {
+  main.container {
     width: 100%;
   }
 }
-body #goto-top {
-  transition: 300ms;
-  position: fixed;
-  right: 8%;
-  bottom: 8%;
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-body footer.site-footer {
-  text-align: center;
-  font-size: smaller;
-}
-body .pager {
+.pager {
   display: flex;
   overflow: auto;
   margin: 16px 0;
 }
-body .pager .page-list {
+.pager .page-list {
   margin: 0 auto;
   display: flex;
 }
-body .pager .page-list span,
-body .pager .page-list a {
+.pager .page-list span,
+.pager .page-list a {
+  color: var(--huzerovo-additional-text);
   text-align: center;
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
+}
+.pager .page-list span:hover,
+.pager .page-list a:hover {
+  color: var(--huzerovo-notable-text);
+}
+.pager .page-list .current {
+  color: var(--huzerovo-normal-text);
+}
+#site-footer {
+  color: var(--huzerovo-trivial-text);
+  text-align: center;
+  font-size: smaller;
 }

@@ -9,8 +9,16 @@
 }
 .pager .page-list span,
 .pager .page-list a {
+  color: var(--huzerovo-additional-text);
   text-align: center;
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
+}
+.pager .page-list span:hover,
+.pager .page-list a:hover {
+  color: var(--huzerovo-notable-text);
+}
+.pager .page-list .current {
+  color: var(--huzerovo-normal-text);
 }

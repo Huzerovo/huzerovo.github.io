@@ -1,6 +1,14 @@
 .page-category {
   width: 80%;
   margin: 0 auto;
+  color: var(--huzerovo-normal-text);
+}
+.page-category a {
+  color: var(--huzerovo-additional-text);
+}
+.page-category a:hover {
+  background-color: var(--huzerovo-background-highlight);
+  color: var(--huzerovo-notable-text);
 }
 .page-category .category-list {
   list-style: none;

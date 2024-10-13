@@ -7,6 +7,12 @@
   overflow: auto;
   padding-right: 8px;
 }
+#article-toc a {
+  color: var(--huzerovo-additional-text);
+}
+#article-toc a:hover {
+  color: var(--huzerovo-notable-text);
+}
 #article-toc .toc {
   padding: 0;
   font-size: small;
@@ -22,22 +28,14 @@
   margin: 6px 0;
   text-decoration: none;
 }
+#article-toc .toc-level-2 > a.toc-link {
+  color: var(--huzerovo-normal-text);
+}
 #article-toc .toc-level-2 > a.toc-link ::before {
   content: "# ";
 }
-#article-toc::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-#article-toc:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-#article-toc::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-#article-toc::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+#article-toc .toc-level-2 > a:hover {
+  color: var(--huzerovo-notable-text);
 }
 @media (max-width: 960px) {
   #article-toc {
@@ -79,13 +77,16 @@
   padding-right: 3px;
 }
 .article-container blockquote {
-  border-left-width: 3px;
-  border-left-style: solid;
+  background-color: var(--huzerovo-block-background);
+  color: var(--huzerovo-block-text);
+  border-left: solid 3px var(--huzerovo-line);
   margin: 8px 0px;
   padding: 0px 2em;
   width: calc(100% - 64px - 3px);
   display: inline-block;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
 }
 .article-container blockquote p {
   text-indent: 0px;
@@ -101,8 +102,12 @@
 }
 .article-container table thead {
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-thead-bg);
+  color: var(--huzerovo-thead-text);
 }
 .article-container table tbody {
+  background-color: var(--huzerovo-tbody-bg);
+  color: var(--huzerovo-tbody-text);
   transition: background-color 0.3s;
 }
 .article-container table tbody td {
@@ -124,26 +129,22 @@
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
-  transition: color 0.3s, background-color 0.3s;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+.article-container code:not([class*="language"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
 }
 .article-container pre code {
   display: block;
   overflow: auto;
   padding: 16px 32px;
 }
-.article-container pre code::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-.article-container pre code:hover::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.article-container pre code::-webkit-scrollbar-track {
-  border-radius: 8px;
-}
-.article-container pre code::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+.article-container pre code:not([class~="hljs"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
 }
 .article-container figure.highlight {
   overflow-x: auto;
@@ -211,7 +212,12 @@
 }
 .article-container figure.highlight table .code pre .hljs-title,
 .article-container figure.highlight table .code pre .hljs-title.class_,
-.article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
+.article-container
+  figure.highlight
+  table
+  .code
+  pre
+  .hljs-title.class_.inherited__,
 .article-container figure.highlight table .code pre .hljs-title.function_ {
   color: #d2a8ff;
 }
@@ -340,6 +346,9 @@
   list-style: none;
 }
 /* 文章标签 */
+.article-meta-info {
+  color: var(--huzerovo-additional-text);
+}
 .article-meta-info span {
   display: block;
 }
@@ -353,6 +362,7 @@
 /* 日期信息 */
 .article-date-info {
   margin: 8px auto;
+  color: var(--huzerovo-trivial-text);
 }
 .article-date-info span {
   font-size: small;
@@ -366,6 +376,7 @@
   padding: 16px;
   margin: 16px 0px;
   transition: background-color 0.3s;
+  background-color: var(--huzerovo-block-background);
 }
 .article-comment #gitalk-container {
   text-align: left;
@@ -374,6 +385,7 @@
   border-radius: 100%;
 }
 .article-comment #gitalk-container blockquote {
+  background: var(--huzerovo-block-background);
   width: 100%;
 }
 .article-comment #gitalk-container .gt-meta {

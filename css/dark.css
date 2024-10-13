@@ -1,0 +1,47 @@
+html.dark {
+  --huzerovo-background: black;
+  --huzerovo-background-highlight: #323232;
+  --huzerovo-btn-text: white;
+  --huzerovo-btn-bg: lightgray;
+  --huzerovo-btn-text-active: black;
+  --huzerovo-btn-bg-active: white;
+  --huzerovo-btn-text-hover: white;
+  --huzerovo-btn-bg-hover: gray;
+  --huzerovo-notable-text: white;
+  --huzerovo-normal-text: #c0c0c0;
+  --huzerovo-additional-text: #808080;
+  --huzerovo-trivial-text: gray;
+  --huzerovo-done-color: limegreen;
+  --huzerovo-warn-color: orange;
+  --huzerovo-mark-color: tan;
+  --huzerovo-line: #505050;
+  --huzerovo-link: #9999ff;
+  --huzerovo-link-visted: orchid;
+  --huzerovo-link-hover: sandybrown;
+  --huzerovo-block-background: #191919;
+  --huzerovo-block-text: gray;
+  --huzerovo-code-background: var(--huzerovo-block-background);
+  --huzerovo-code-text: peru;
+  --huzerovo-thead-bg: #141414;
+  --huzerovo-thead-text: #c0c0c0;
+  --huzerovo-tbody-bg: #232323;
+  --huzerovo-tbody-text: #c0c0c0;
+  --huzerovo-scrollbar-track: var(--huzerovo-line);
+  --huzerovo-scrollbar-thumb: gray;
+  --huzerovo-scrollbar-thumb-hover: white;
+  --huzerovo-scrillbar-corner: dimgray;
+  --huzerovo-tagcloud-0: #787878;
+  --huzerovo-tagcloud-1: #878787;
+  --huzerovo-tagcloud-2: #969696;
+  --huzerovo-tagcloud-3: #a5a5a5;
+  --huzerovo-tagcloud-4: #b4b4b4;
+  --huzerovo-tagcloud-5: #c3c3c3;
+  --huzerovo-tagcloud-6: #d2d2d2;
+  --huzerovo-tagcloud-7: #e1e1e1;
+  --huzerovo-tagcloud-8: #f0f0f0;
+  --huzerovo-tagcloud-9: #ffffff;
+  --huzerovo-tagcloud-hover: white;
+}
+html.dark img {
+  filter: brightness(0.8);
+}

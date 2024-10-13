@@ -1,77 +1,89 @@
-.topbar {
+#topbar {
   width: 100%;
   margin: 0;
   position: sticky;
   top: 0;
   z-index: 9;
+  background-color: var(--huzerovo-background);
+  border-bottom: solid 1px var(--huzerovo-line);
+  opacity: 0.9;
   transition: background-color 0.3s;
 }
-.topbar .topbar-container {
+#topbar #active-page {
+  background-color: var(--huzerovo-btn-bg-active);
+  color: var(--huzerovo-btn-text-active);
+}
+#topbar .topbar-container {
   width: 80%;
-  height: 40px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.topbar .topbar-container .topbar-menu {
+#topbar .topbar-container .topbar-menu {
   max-width: 70%;
   overflow-x: scroll;
   scrollbar-width: none;
 }
-.topbar .topbar-container .topbar-menu ul {
+#topbar .topbar-container .topbar-menu ul {
   display: flex;
   align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.topbar .topbar-container .topbar-menu ul li {
+#topbar .topbar-container .topbar-menu ul li {
   min-width: fit-content;
 }
-.topbar .topbar-container .topbar-menu a {
+#topbar .topbar-container .topbar-menu a {
+  color: var(--huzerovo-btn-text);
   display: block;
   padding: 8px 16px;
   text-decoration: none;
 }
-.topbar .topbar-container .topbar-menu::-webkit-scrollbar {
+#topbar .topbar-container .topbar-menu a:hover {
+  background-color: var(--huzerovo-btn-bg-hover);
+  color: var(--huzerovo-btn-text-hover);
+}
+#topbar .topbar-container .topbar-menu::-webkit-scrollbar {
   display: none;
 }
-.topbar .topbar-container .topbar-icon-buttons {
+#topbar .topbar-container .topbar-icon-buttons {
   max-width: 30%;
   overflow-x: scroll;
   display: flex;
   align-content: center;
-  scrollbar-width: none;
   transition: color 0.3s;
+  margin: auto 0;
 }
-.topbar .topbar-container .topbar-icon-buttons .icon-button {
+#topbar .topbar-container .topbar-icon-buttons .icon-button {
   padding: 8px 16px;
   border: none;
+  color: var(--huzerovo-btn-text);
   cursor: pointer;
   background: none;
   font-size: 16px;
 }
-.topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
+#topbar .topbar-container .topbar-icon-buttons::-webkit-scrollbar {
   display: none;
 }
 @media screen and (max-width: 960px) {
-  .topbar .topbar-container {
+  #topbar .topbar-container {
     width: 95%;
   }
 }
 @media screen and (max-width: 640px) {
-  .topbar .topbar-container {
+  #topbar .topbar-container {
     width: 100%;
     justify-content: center;
   }
-  .topbar .topbar-container .topbar-menu {
+  #topbar .topbar-container .topbar-menu {
     max-width: unset;
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .topbar .topbar-container .topbar-icon-buttons {
+  #topbar .topbar-container .topbar-icon-buttons {
     display: grid;
     position: fixed;
     bottom: 5%;

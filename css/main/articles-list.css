@@ -1,0 +1,63 @@
+.articles-list .articles-list-item {
+  display: block;
+  width: 80%;
+  margin: 16px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: background-color 0.3s;
+  background-color: var(--huzerovo-background-highlight);
+}
+.articles-list .articles-list-item a {
+  color: var(--huzerovo-normal-text);
+  margin: 32px;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+}
+.articles-list .articles-list-item a:hover {
+  color: var(--huzerovo-notable-text);
+}
+.articles-list .item-gallery {
+  margin: 0px;
+}
+.articles-list .item-gallery img {
+  cursor: pointer;
+  width: 100%;
+}
+.articles-list .post-entry-title {
+  font-size: 24px;
+  margin-top: 0;
+}
+.articles-list .item-content {
+  margin: 0;
+  color: var(--huzerovo-additional-text);
+}
+.articles-list .item-footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
+  position: relative;
+  color: var(--huzerovo-trivial-text);
+}
+.articles-list .item-footer .item-footer-todo {
+  color: var(--huzerovo-warn-color);
+  margin: 0px;
+  text-align: left;
+}
+.articles-list .item-footer .item-footer-todo .item-footer-todo-msg {
+  display: inline;
+  margin-right: 8px;
+}
+.articles-list .item-footer .item-footer-pin {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.articles-list .item-footer .item-footer-finished {
+  color: var(--huzerovo-done-color);
+}
+@media (max-width: 480px) {
+  .articles-list .articles-list-item {
+    width: 90%;
+  }
+}
