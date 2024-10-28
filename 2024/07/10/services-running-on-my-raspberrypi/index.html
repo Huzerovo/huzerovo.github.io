@@ -49,31 +49,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -115,22 +107,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -142,35 +130,35 @@
         <p class="sidebar-list-title">目录</p>
         <ol class="toc">
           <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#nginx%E6%9C%8D%E5%8A%A1%E5%99%A8"
+            <a class="toc-link" href="#Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8"
               ><span class="toc-text">Nginx服务器</span></a
             >
           </li>
           <li class="toc-item toc-level-2">
             <a
               class="toc-link"
-              href="#adguard-home-dns%E8%A7%A3%E6%9E%90%E6%9C%8D%E5%8A%A1"
+              href="#Adguard-Home-DNS%E8%A7%A3%E6%9E%90%E6%9C%8D%E5%8A%A1"
               ><span class="toc-text">Adguard Home DNS解析服务</span></a
             >
           </li>
           <li class="toc-item toc-level-2">
             <a
               class="toc-link"
-              href="#aria2%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1"
+              href="#Aria2%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1"
               ><span class="toc-text">Aria2下载服务</span></a
             >
           </li>
           <li class="toc-item toc-level-2">
             <a
               class="toc-link"
-              href="#nextcloud%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98"
+              href="#Nextcloud%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98"
               ><span class="toc-text">Nextcloud私有云盘</span></a
             >
           </li>
           <li class="toc-item toc-level-2">
             <a
               class="toc-link"
-              href="#syncthing%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1"
+              href="#Syncthing%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1"
               ><span class="toc-text">Syncthing文件同步服务</span></a
             >
           </li>
@@ -182,28 +170,28 @@
             >
             <ol class="toc-child">
               <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#homeassistant%E6%9C%8D%E5%8A%A1"
+                <a class="toc-link" href="#Homeassistant%E6%9C%8D%E5%8A%A1"
                   ><span class="toc-text">Homeassistant服务</span></a
                 >
               </li>
               <li class="toc-item toc-level-3">
                 <a
                   class="toc-link"
-                  href="#netdata%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"
+                  href="#Netdata%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"
                   ><span class="toc-text">Netdata性能监控</span></a
                 >
               </li>
               <li class="toc-item toc-level-3">
                 <a
                   class="toc-link"
-                  href="#cups%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1"
+                  href="#Cups%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1"
                   ><span class="toc-text">Cups打印机服务</span></a
                 >
               </li>
               <li class="toc-item toc-level-3">
                 <a
                   class="toc-link"
-                  href="#cockpit%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86"
+                  href="#Cockpit%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86"
                   ><span class="toc-text">Cockpit网页管理</span></a
                 >
               </li>
@@ -213,27 +201,14 @@
       </div>
       <article class="article-container">
         <h1>树莓派上运行的服务</h1>
-        <h2
-          id="nginx%E6%9C%8D%E5%8A%A1%E5%99%A8"
-          tabindex="-1"
-          id="Nginx服务器"
-        >
-          <a class="header-anchor" href="#Nginx服务器"># </a>Nginx服务器
-        </h2>
+        <h2 id="Nginx服务器">Nginx服务器</h2>
         <p>
           我用域名<sup class="footnote-ref"
             ><a href="#fn1" id="fnref1">[1]</a></sup
           >来访问树莓派上运行的所有服务，因此我搭建了Nginx，
           用来反代树莓派上所有服务。
         </p>
-        <h2
-          id="adguard-home-dns%E8%A7%A3%E6%9E%90%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="Adguard-Home-DNS解析服务"
-        >
-          <a class="header-anchor" href="#Adguard-Home-DNS解析服务"># </a
-          >Adguard Home DNS解析服务
-        </h2>
+        <h2 id="Adguard-Home-DNS解析服务">Adguard Home DNS解析服务</h2>
         <blockquote>
           <p>
             Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome"
@@ -247,13 +222,7 @@
           这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
           并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。
         </p>
-        <h2
-          id="aria2%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="Aria2下载服务"
-        >
-          <a class="header-anchor" href="#Aria2下载服务"># </a>Aria2下载服务
-        </h2>
+        <h2 id="Aria2下载服务">Aria2下载服务</h2>
         <blockquote>
           <p>
             Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
@@ -271,14 +240,7 @@
           Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
           这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。
         </p>
-        <h2
-          id="nextcloud%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98"
-          tabindex="-1"
-          id="Nextcloud私有云盘"
-        >
-          <a class="header-anchor" href="#Nextcloud私有云盘"># </a
-          >Nextcloud私有云盘
-        </h2>
+        <h2 id="Nextcloud私有云盘">Nextcloud私有云盘</h2>
         <blockquote>
           <p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
         </blockquote>
@@ -290,14 +252,7 @@
           然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。
         </p>
         <p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
-        <h2
-          id="syncthing%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="Syncthing文件同步服务"
-        >
-          <a class="header-anchor" href="#Syncthing文件同步服务"># </a
-          >Syncthing文件同步服务
-        </h2>
+        <h2 id="Syncthing文件同步服务">Syncthing文件同步服务</h2>
         <blockquote>
           <p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
         </blockquote>
@@ -319,22 +274,8 @@
         <p>
           <s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s>
         </p>
-        <h2
-          id="%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="一些不常用的服务"
-        >
-          <a class="header-anchor" href="#一些不常用的服务"># </a
-          >一些不常用的服务
-        </h2>
-        <h3
-          id="homeassistant%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="Homeassistant服务"
-        >
-          <a class="header-anchor" href="#Homeassistant服务"># </a
-          >Homeassistant服务
-        </h3>
+        <h2 id="一些不常用的服务">一些不常用的服务</h2>
+        <h3 id="Homeassistant服务">Homeassistant服务</h3>
         <blockquote>
           <p>
             官网：<a href="https://www.home-assistant.io"
@@ -343,13 +284,7 @@
           </p>
         </blockquote>
         <p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
-        <h3
-          id="netdata%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"
-          tabindex="-1"
-          id="Netdata性能监控"
-        >
-          <a class="header-anchor" href="#Netdata性能监控"># </a>Netdata性能监控
-        </h3>
+        <h3 id="Netdata性能监控">Netdata性能监控</h3>
         <blockquote>
           <p>
             官网：<a href="https://www.netdata.cloud"
@@ -363,24 +298,12 @@
             >这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s
           >
         </p>
-        <h3
-          id="cups%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="Cups打印机服务"
-        >
-          <a class="header-anchor" href="#Cups打印机服务"># </a>Cups打印机服务
-        </h3>
+        <h3 id="Cups打印机服务">Cups打印机服务</h3>
         <p>
           有个打印机，用cups在局域网内共享，没啥好说的。
           <s>就是有时会找不到打印机，要重启一下服务</s>
         </p>
-        <h3
-          id="cockpit%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86"
-          tabindex="-1"
-          id="Cockpit网页管理"
-        >
-          <a class="header-anchor" href="#Cockpit网页管理"># </a>Cockpit网页管理
-        </h3>
+        <h3 id="Cockpit网页管理">Cockpit网页管理</h3>
         <blockquote>
           <p>
             官网：<a href="https://cockpit-project.org/"
@@ -479,10 +402,10 @@
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

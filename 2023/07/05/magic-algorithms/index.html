@@ -48,31 +48,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -114,22 +106,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -215,14 +203,7 @@
       </div>
       <article class="article-container">
         <h1>编程魔法学</h1>
-        <h2
-          id="%E8%AE%A1%E7%AE%97%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%AF%94%E7%89%B91%E7%9A%84%E6%95%B0%E9%87%8F"
-          tabindex="-1"
-          id="计算数据中比特1的数量"
-        >
-          <a class="header-anchor" href="#计算数据中比特1的数量"># </a
-          >计算数据中比特1的数量
-        </h2>
+        <h2 id="计算数据中比特1的数量">计算数据中比特1的数量</h2>
         <p>
           在数据中比特<code>1</code>的数量也称为数据的汉明权重<sup
             class="footnote-ref"
@@ -230,13 +211,7 @@
           >
         </p>
         <p>在这里我们探讨一下<strong>计算32位数据的汉明权重</strong>。</p>
-        <h3
-          id="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"
-          tabindex="-1"
-          id="从零开始"
-        >
-          <a class="header-anchor" href="#从零开始"># </a>从零开始
-        </h3>
+        <h3 id="从零开始">从零开始</h3>
         <p>
           虽然叫从零开始，但如果数据为“0”，那我们也没有问题可以解决。
           从“1”开始呢？假设数据只有1比特位，那我们直接使用“瞪眼法”，
@@ -283,13 +258,7 @@
         <pre><code class="language-c">// 假设n表示汉明权重，x为2比特位的数据
 n = x + (x &gt;&gt; 1);
 </code></pre>
-        <h3
-          id="%E9%80%90%E6%AD%A5%E5%89%8D%E8%BF%9B"
-          tabindex="-1"
-          id="逐步前进"
-        >
-          <a class="header-anchor" href="#逐步前进"># </a>逐步前进
-        </h3>
+        <h3 id="逐步前进">逐步前进</h3>
         <p>
           现在，我们将其拓展至4个比特位。 <strong>但让我们先约定好</strong>：
         </p>
@@ -359,13 +328,7 @@ nz = (z &amp; 0b0011) + ((z &amp; 0b1100) &gt;&gt; 2);
           这与计算<code>x</code>的汉明权重几乎是一模一样：<strong>提取高位，并与低位相加，结果存储在低位</strong>，
           唯一的区别就是我们从2比特位提升到了4比特位！
         </p>
-        <h3
-          id="%E5%90%91%E6%9B%B4%E9%AB%98%E4%BD%8D%E6%8B%93%E5%B1%95"
-          tabindex="-1"
-          id="向更高位拓展"
-        >
-          <a class="header-anchor" href="#向更高位拓展"># </a>向更高位拓展
-        </h3>
+        <h3 id="向更高位拓展">向更高位拓展</h3>
         <p>我们正在向更高位前进，于是我们的约定也会相应地改变。</p>
         <p>
           经过前两步的分析，我们可以做出这样的推断：对于一个8比特位，也就是一个字节的数据，
@@ -397,13 +360,7 @@ char z = (y &amp; 0x33) + ((y &amp; (~0x33)) &gt;&gt; 2);
 char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
 </code></pre>
         <p>这样子我们就得到了计算一字节数据的汉明权重的方法。</p>
-        <h3
-          id="%E6%80%BB%E7%BB%93%E8%A7%84%E5%BE%8B"
-          tabindex="-1"
-          id="总结规律"
-        >
-          <a class="header-anchor" href="#总结规律"># </a>总结规律
-        </h3>
+        <h3 id="总结规律">总结规律</h3>
         <p>
           在之前我们逐步分析的向高位拓展的过程，
           实际上是逐渐从低到高的方向，计算汉明权重。
@@ -447,16 +404,8 @@ unsigned int ones(unsigned int x) &#123;
 &#125;
 </code></pre>
         <p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
-        <h3 id="%E4%BC%98%E5%8C%96" tabindex="-1" id="优化">
-          <a class="header-anchor" href="#优化"># </a>优化
-        </h3>
-        <h4
-          id="%E4%BC%98%E5%8C%96%E5%8F%96%E5%8F%8D%E6%93%8D%E4%BD%9C"
-          tabindex="-1"
-          id="优化取反操作"
-        >
-          <a class="header-anchor" href="#优化取反操作"># </a>优化取反操作
-        </h4>
+        <h3 id="优化">优化</h3>
+        <h4 id="优化取反操作">优化取反操作</h4>
         <p>
           在之前我们提到，处于高位的比特位可能会被移入低位，因此需要将其置为<code>0</code>。
           但实际上，我们还可以换一种思维方式：等到它被移入下一位数据后，我们再忽略它。
@@ -469,13 +418,7 @@ x = (x &amp; MASK) + ((x &gt;&gt; 1) &amp; MASK);
           代码似乎没有太大变化，但实际上，这使得我们无需使用<code>~</code>运算符对掩码进行取反，
           节省了一点宝贵的时间。
         </p>
-        <h4
-          id="%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"
-          tabindex="-1"
-          id="特殊优化"
-        >
-          <a class="header-anchor" href="#特殊优化"># </a>特殊优化
-        </h4>
+        <h4 id="特殊优化">特殊优化</h4>
         <p>我们接着进行优化。</p>
         <p>
           现在让我们回到最初对于2比特位数据的探讨中，现在我们再将穷举的表格列出来。
@@ -556,13 +499,7 @@ x = x - ((x &gt;&gt; 1) &amp; MASK);
           那么<code>a - b = 0b0011</code
           >，对应十进制数<code>3</code>，显然不正确。
         </p>
-        <h4
-          id="%E4%BC%98%E5%8C%96%E5%8A%A0%E6%B3%95"
-          tabindex="-1"
-          id="优化加法"
-        >
-          <a class="header-anchor" href="#优化加法"># </a>优化加法
-        </h4>
+        <h4 id="优化加法">优化加法</h4>
         <p>
           接下来我们思考一个问题：
           我们现在是用<code>&amp;</code>操作，忽略掉我们不需要的比特位，借此来保证后续的加法能够得出正确的结果。
@@ -611,13 +548,7 @@ x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
 printf(&quot;x = 0x%08X\n&quot;, x);  // x = 0x08080808
 </code></pre>
         <p>我们再一次节省了一个<code>&amp;</code>操作。</p>
-        <h4
-          id="%E6%9B%B4%E9%AB%98%E4%BD%8D%E7%9A%84%E4%BC%98%E5%8C%96"
-          tabindex="-1"
-          id="更高位的优化"
-        >
-          <a class="header-anchor" href="#更高位的优化"># </a>更高位的优化
-        </h4>
+        <h4 id="更高位的优化">更高位的优化</h4>
         <p>
           现在到更高的位数看看，我们现在将<code>x</code>视为2个16比特位的数据，
           每个数据的高位和低位是更低位数据的汉明权重。
@@ -669,13 +600,7 @@ unsigned int n = x &amp; 0xFF;
 // 或者
 unsigned int n = x &amp; 0x3f;
 </code></pre>
-        <h3
-          id="%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C"
-          tabindex="-1"
-          id="最终结果"
-        >
-          <a class="header-anchor" href="#最终结果"># </a>最终结果
-        </h3>
+        <h3 id="最终结果">最终结果</h3>
         <p>我们现在将上述的优化都写下来：</p>
         <pre><code class="language-c">unsigned int ones(unsigned int x) &#123;
     x -= (x &gt;&gt; 1) &amp; 0x55555555;
@@ -758,10 +683,10 @@ unsigned int n = x &amp; 0x3f;
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

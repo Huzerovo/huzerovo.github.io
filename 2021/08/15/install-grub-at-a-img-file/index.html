@@ -49,31 +49,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -115,22 +107,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -156,7 +144,7 @@
           <li class="toc-item toc-level-3">
             <a
               class="toc-link"
-              href="#%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"
+              href="#%E5%9C%A8-os-img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"
               ><span class="toc-text">在 os.img 上创建分区</span></a
             >
             <ol class="toc-child">
@@ -175,7 +163,7 @@
           <li class="toc-item toc-level-3">
             <a
               class="toc-link"
-              href="#%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"
+              href="#%E5%B0%86-os-img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"
               ><span class="toc-text">将 os.img 挂载为 loop 设备</span></a
             >
           </li>
@@ -187,7 +175,7 @@
             >
           </li>
           <li class="toc-item toc-level-3">
-            <a class="toc-link" href="#%E5%AE%89%E8%A3%85-grub"
+            <a class="toc-link" href="#%E5%AE%89%E8%A3%85-Grub"
               ><span class="toc-text">安装 Grub</span></a
             >
           </li>
@@ -210,9 +198,7 @@
       </div>
       <article class="article-container">
         <h1>在磁盘映像文件上安装 Grub 2</h1>
-        <h3 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言">
-          <a class="header-anchor" href="#前言"># </a>前言
-        </h3>
+        <h3 id="前言">前言</h3>
         <ol>
           <li>文中的 Grub 均指 Grub 2，而非 Grub Legacy</li>
           <li>文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki</li>
@@ -221,29 +207,13 @@
           </li>
           <li>请在了解执行的命令的作用之后再执行操作</li>
         </ol>
-        <h3
-          id="%E4%BD%BF%E7%94%A8-dd-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"
-          tabindex="-1"
-          id="使用-dd-创建一个映像文件"
-        >
-          <a class="header-anchor" href="#使用-dd-创建一个映像文件"># </a>使用
-          dd 创建一个映像文件
-        </h3>
+        <h3 id="使用-dd-创建一个映像文件">使用 dd 创建一个映像文件</h3>
         <pre><code class="language-shell">dd if=/dev/zero of=os.img bs=1M count=20
 </code></pre>
         <p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
-        <h3
-          id="%E5%9C%A8-os.img-%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA"
-          tabindex="-1"
-          id="在-os-img-上创建分区"
-        >
-          <a class="header-anchor" href="#在-os-img-上创建分区"># </a>在 os.img
-          上创建分区
-        </h3>
+        <h3 id="在-os-img-上创建分区">在 os.img 上创建分区</h3>
         <p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
-        <h4 id="%E4%BD%BF%E7%94%A8-gdisk" tabindex="-1" id="使用-gdisk">
-          <a class="header-anchor" href="#使用-gdisk"># </a>使用 gdisk
-        </h4>
+        <h4 id="使用-gdisk">使用 gdisk</h4>
         <pre><code class="language-shell">gdisk os.img
 </code></pre>
         <p>
@@ -329,9 +299,7 @@ The new table will be used at the next reboot or after you
 run partprobe(8) or kpartx(8)
 The operation has completed successfully.
 </code></pre>
-        <h4 id="%E4%BD%BF%E7%94%A8-fdisk" tabindex="-1" id="使用-fdisk">
-          <a class="header-anchor" href="#使用-fdisk"># </a>使用 fdisk
-        </h4>
+        <h4 id="使用-fdisk">使用 fdisk</h4>
         <pre><code class="language-shell">fdisk ./os.img
 </code></pre>
         <p>进入 fdisk 交互界面</p>
@@ -354,14 +322,7 @@ The operation has completed successfully.
 命令(输入 m 获取帮助)：
 </code></pre>
         <p>最后输入 <code>w</code> 确认写入文件</p>
-        <h3
-          id="%E5%B0%86-os.img-%E6%8C%82%E8%BD%BD%E4%B8%BA-loop-%E8%AE%BE%E5%A4%87"
-          tabindex="-1"
-          id="将-os-img-挂载为-loop-设备"
-        >
-          <a class="header-anchor" href="#将-os-img-挂载为-loop-设备"># </a>将
-          os.img 挂载为 loop 设备
-        </h3>
+        <h3 id="将-os-img-挂载为-loop-设备">将 os.img 挂载为 loop 设备</h3>
         <pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
 /dev/loop0
 </code></pre>
@@ -375,14 +336,7 @@ The operation has completed successfully.
           显示的设备名不一定是 <code>/dev/loop0</code><br />
           在后文出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称
         </p>
-        <h3
-          id="%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"
-          tabindex="-1"
-          id="格式化并挂载分区"
-        >
-          <a class="header-anchor" href="#格式化并挂载分区"># </a
-          >格式化并挂载分区
-        </h3>
+        <h3 id="格式化并挂载分区">格式化并挂载分区</h3>
         <blockquote>
           <p>
             在文中实例中，需要格式化的是第二个分区<br />
@@ -404,9 +358,7 @@ The operation has completed successfully.
         <pre><code class="language-shell">sudo mount /dev/loop0p2 /mnt
 </code></pre>
         <p>没有消息就是最好的消息</p>
-        <h3 id="%E5%AE%89%E8%A3%85-grub" tabindex="-1" id="安装-Grub">
-          <a class="header-anchor" href="#安装-Grub"># </a>安装 Grub
-        </h3>
+        <h3 id="安装-Grub">安装 Grub</h3>
         <blockquote>
           <p>
             下面的操作在执行命令前一定要确认 误操作可能会影响本机的
@@ -433,9 +385,7 @@ The operation has completed successfully.
           安装需要 13M 左右的空间<br />
           完成后会提示成功
         </p>
-        <h3 id="%E9%85%8D%E7%BD%AE" tabindex="-1" id="配置">
-          <a class="header-anchor" href="#配置"># </a>配置
-        </h3>
+        <h3 id="配置">配置</h3>
         <p>照着手册随便糊的一个，<s>能用就行</s></p>
         <pre><code class="language-shell"># Grub 的配置文件
 # 设置根分区
@@ -449,13 +399,7 @@ menuentry EntryName &#123;
     boot
 &#125;
 </code></pre>
-        <h3
-          id="%E5%8D%B8%E8%BD%BD%E8%AE%BE%E5%A4%87"
-          tabindex="-1"
-          id="卸载设备"
-        >
-          <a class="header-anchor" href="#卸载设备"># </a>卸载设备
-        </h3>
+        <h3 id="卸载设备">卸载设备</h3>
         <pre><code class="language-shell">sudo umount /mnt
 sudo losetup -d /dev/loop0
 </code></pre>
@@ -463,13 +407,7 @@ sudo losetup -d /dev/loop0
           上面的命令将从挂载点卸载 loop 设备<br />
           并释放 loop 设备与文件的关联
         </p>
-        <h3
-          id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"
-          tabindex="-1"
-          id="参考资料"
-        >
-          <a class="header-anchor" href="#参考资料"># </a>参考资料
-        </h3>
+        <h3 id="参考资料">参考资料</h3>
         <ul>
           <li>
             <a href="https://www.gnu.org/software/grub/manual/grub/grub.html"
@@ -534,10 +472,10 @@ sudo losetup -d /dev/loop0
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

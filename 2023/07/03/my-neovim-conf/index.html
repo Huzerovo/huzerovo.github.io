@@ -40,9 +40,9 @@
     />
     <meta property="article:modified_time" content="2023-07-19T04:00:00.000Z" />
     <meta property="article:author" content="狐zerOAO" />
+    <meta property="article:tag" content="neovim" />
     <meta property="article:tag" content="配置" />
     <meta property="article:tag" content="nvim" />
-    <meta property="article:tag" content="neovim" />
     <meta name="twitter:card" content="summary" />
     <link
       rel="alternate"
@@ -50,31 +50,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -116,22 +108,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -160,21 +148,21 @@
                 >
               </li>
               <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#lsp%E5%BF%AB%E6%8D%B7%E9%94%AE"
+                <a class="toc-link" href="#LSP%E5%BF%AB%E6%8D%B7%E9%94%AE"
                   ><span class="toc-text">LSP快捷键</span></a
                 >
                 <ol class="toc-child">
                   <li class="toc-item toc-level-4">
                     <a
                       class="toc-link"
-                      href="#lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE"
+                      href="#Lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE"
                       ><span class="toc-text">Lspsaga快捷键</span></a
                     >
                   </li>
                 </ol>
               </li>
               <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE"
+                <a class="toc-link" href="#Floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE"
                   ><span class="toc-text">Floaterm快捷键</span></a
                 >
               </li>
@@ -184,14 +172,14 @@
                 >
               </li>
               <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#telescope%E5%BF%AB%E6%8D%B7%E9%94%AE"
+                <a class="toc-link" href="#Telescope%E5%BF%AB%E6%8D%B7%E9%94%AE"
                   ><span class="toc-text">Telescope快捷键</span></a
                 >
               </li>
               <li class="toc-item toc-level-3">
                 <a
                   class="toc-link"
-                  href="#nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE"
+                  href="#Nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE"
                   ><span class="toc-text">Nerdcommter快捷键</span></a
                 >
               </li>
@@ -201,20 +189,12 @@
       </div>
       <article class="article-container">
         <h1>我的Neovim配置</h1>
-        <h2
-          id="%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE"
-          tabindex="-1"
-          id="快捷键配置"
-        >
-          <a class="header-anchor" href="#快捷键配置"># </a>快捷键配置
-        </h2>
+        <h2 id="快捷键配置">快捷键配置</h2>
         <p>
           按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
           详细内容参考<code>:help keycodes</code>。
         </p>
-        <h3 id="nvim%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="nvim快捷键">
-          <a class="header-anchor" href="#nvim快捷键"># </a>nvim快捷键
-        </h3>
+        <h3 id="nvim快捷键">nvim快捷键</h3>
         <p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
         <table>
           <thead>
@@ -275,13 +255,7 @@
             </tr>
           </tbody>
         </table>
-        <h3
-          id="gitsigns%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="gitsigns快捷键"
-        >
-          <a class="header-anchor" href="#gitsigns快捷键"># </a>gitsigns快捷键
-        </h3>
+        <h3 id="gitsigns快捷键">gitsigns快捷键</h3>
         <p>
           gitsigns是在文件内对git记录进行快速操作的插件，
           可以快速地重置、保存和查看更改记录<sup class="footnote-ref"
@@ -363,9 +337,7 @@
             </tr>
           </tbody>
         </table>
-        <h3 id="lsp%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1" id="LSP快捷键">
-          <a class="header-anchor" href="#LSP快捷键"># </a>LSP快捷键
-        </h3>
+        <h3 id="LSP快捷键">LSP快捷键</h3>
         <p>
           LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。
         </p>
@@ -439,13 +411,7 @@
             </tr>
           </tbody>
         </table>
-        <h4
-          id="lspsaga%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="Lspsaga快捷键"
-        >
-          <a class="header-anchor" href="#Lspsaga快捷键"># </a>Lspsaga快捷键
-        </h4>
+        <h4 id="Lspsaga快捷键">Lspsaga快捷键</h4>
         <p>
           Lspsaga为neovim内置的LSP提供了更友好的界面，
           因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
@@ -524,13 +490,7 @@
           但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code
           Action。
         </p>
-        <h3
-          id="floaterm%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="Floaterm快捷键"
-        >
-          <a class="header-anchor" href="#Floaterm快捷键"># </a>Floaterm快捷键
-        </h3>
+        <h3 id="Floaterm快捷键">Floaterm快捷键</h3>
         <p>这是个悬浮终端的插件。</p>
         <table>
           <thead>
@@ -553,13 +513,7 @@
             </tr>
           </tbody>
         </table>
-        <h3
-          id="nvim-tree%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="nvim-tree快捷键"
-        >
-          <a class="header-anchor" href="#nvim-tree快捷键"># </a>nvim-tree快捷键
-        </h3>
+        <h3 id="nvim-tree快捷键">nvim-tree快捷键</h3>
         <p>
           nvim-tree在自己的窗口中有自己的快捷键，使用<code
             >:help nvim-tree-mapping-default</code
@@ -586,13 +540,7 @@
             </tr>
           </tbody>
         </table>
-        <h3
-          id="telescope%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="Telescope快捷键"
-        >
-          <a class="header-anchor" href="#Telescope快捷键"># </a>Telescope快捷键
-        </h3>
+        <h3 id="Telescope快捷键">Telescope快捷键</h3>
         <p>快捷键都处于normal模式使用。</p>
         <table>
           <thead>
@@ -624,14 +572,7 @@
             </tr>
           </tbody>
         </table>
-        <h3
-          id="nerdcommter%E5%BF%AB%E6%8D%B7%E9%94%AE"
-          tabindex="-1"
-          id="Nerdcommter快捷键"
-        >
-          <a class="header-anchor" href="#Nerdcommter快捷键"># </a
-          >Nerdcommter快捷键
-        </h3>
+        <h3 id="Nerdcommter快捷键">Nerdcommter快捷键</h3>
         <p>用于快速注释。</p>
         <table>
           <thead>
@@ -745,10 +686,10 @@
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

@@ -50,31 +50,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -116,22 +108,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -204,20 +192,12 @@
             插件
           </li>
         </ul>
-        <h2
-          id="%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"
-          tabindex="-1"
-          id="安装软件"
-        >
-          <a class="header-anchor" href="#安装软件"># </a>安装软件
-        </h2>
+        <h2 id="安装软件">安装软件</h2>
         <p>运行命令</p>
         <pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
 </code></pre>
         <p>等待安装完成</p>
-        <h2 id="%E9%85%8D%E7%BD%AEhostapd" tabindex="-1" id="配置hostapd">
-          <a class="header-anchor" href="#配置hostapd"># </a>配置hostapd
-        </h2>
+        <h2 id="配置hostapd">配置hostapd</h2>
         <p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
         <pre><code class="language-conf"># 使用的网卡
 interface=wlan0
@@ -258,9 +238,7 @@ hw_mode=a
 # 树莓派似乎不支持......
 channel=149
 </code></pre>
-        <h2 id="%E9%85%8D%E7%BD%AEdhcpcd" tabindex="-1" id="配置dhcpcd">
-          <a class="header-anchor" href="#配置dhcpcd"># </a>配置dhcpcd
-        </h2>
+        <h2 id="配置dhcpcd">配置dhcpcd</h2>
         <p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
         <pre><code class="language-conf"># 网卡
 interface=wlan0
@@ -269,9 +247,7 @@ static ip_address=192.168.10.1/24
 # 不要执行这个脚本
 nohook wpa_supplicant
 </code></pre>
-        <h2 id="%E9%85%8D%E7%BD%AEdnsmasq" tabindex="-1" id="配置dnsmasq">
-          <a class="header-anchor" href="#配置dnsmasq"># </a>配置dnsmasq
-        </h2>
+        <h2 id="配置dnsmasq">配置dnsmasq</h2>
         <p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
         <pre><code class="language-conf"># 为这个网卡开启服务
 interface=wlan0
@@ -282,13 +258,7 @@ domain=wlan
 # IP 地址分配范围
 dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 </code></pre>
-        <h2
-          id="%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%8C%85%E8%BD%AC%E5%8F%91"
-          tabindex="-1"
-          id="设置数据包转发"
-        >
-          <a class="header-anchor" href="#设置数据包转发"># </a>设置数据包转发
-        </h2>
+        <h2 id="设置数据包转发">设置数据包转发</h2>
         <ol>
           <li>
             <p>
@@ -308,14 +278,7 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 </code></pre>
           </li>
         </ol>
-        <h2
-          id="%E8%AE%BE%E7%BD%AEsystemd%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"
-          tabindex="-1"
-          id="设置systemd启动服务"
-        >
-          <a class="header-anchor" href="#设置systemd启动服务"># </a
-          >设置systemd启动服务
-        </h2>
+        <h2 id="设置systemd启动服务">设置systemd启动服务</h2>
         <p>
           启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code
             >netfilter-persistent.service</code
@@ -326,20 +289,12 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
 # systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
 # systemctl disable wpa_supplicant
 </code></pre>
-        <h2 id="%E9%87%8D%E5%90%AF" tabindex="-1" id="重启">
-          <a class="header-anchor" href="#重启"># </a>重启
-        </h2>
+        <h2 id="重启">重启</h2>
         <p>设置完成后重启</p>
         <pre><code class="language-shell"># reboot
 </code></pre>
         <p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
-        <h2
-          id="%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"
-          tabindex="-1"
-          id="参考链接"
-        >
-          <a class="header-anchor" href="#参考链接"># </a>参考链接
-        </h2>
+        <h2 id="参考链接">参考链接</h2>
         <p>
           <a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf"
             >hostapd.conf 设置说明</a
@@ -408,10 +363,10 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

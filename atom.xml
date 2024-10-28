@@ -198,11 +198,11 @@
     <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
     
     
+    <category term="neovim" scheme="https://huzerovo.github.io/tags/neovim/"/>
+    
     <category term="配置" scheme="https://huzerovo.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
     
     <category term="nvim" scheme="https://huzerovo.github.io/tags/nvim/"/>
-    
-    <category term="neovim" scheme="https://huzerovo.github.io/tags/neovim/"/>
     
   </entry>
   
@@ -218,7 +218,9 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;%E6%AD%A3%E5%BC%8F%E5%AE%8C%E6%88%90%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD&quot; tabindex=&quot;-</summary>
+    <summary type="html">&lt;h2 id=&quot;正式完成主题的评论功能&quot;&gt;正式完成主题的评论功能&lt;/h2&gt;
+&lt;p&gt;嘻嘻&lt;/p&gt;
+</summary>
         
       
     
@@ -247,11 +249,11 @@
     <category term="事记" scheme="https://huzerovo.github.io/categories/%E4%BA%8B%E8%AE%B0/"/>
     
     
-    <category term="配置" scheme="https://huzerovo.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
+    <category term="vim" scheme="https://huzerovo.github.io/tags/vim/"/>
     
     <category term="neovim" scheme="https://huzerovo.github.io/tags/neovim/"/>
     
-    <category term="vim" scheme="https://huzerovo.github.io/tags/vim/"/>
+    <category term="配置" scheme="https://huzerovo.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
     
     <category term="lua" scheme="https://huzerovo.github.io/tags/lua/"/>
     

@@ -56,31 +56,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
@@ -144,22 +136,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -203,13 +191,7 @@
       </div>
       <article class="article-container">
         <h1>局部加权回归</h1>
-        <h2
-          id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"
-          tabindex="-1"
-          id="基本思想"
-        >
-          <a class="header-anchor" href="#基本思想"># </a>基本思想
-        </h2>
+        <h2 id="基本思想">基本思想</h2>
         <p>
           文章<a
             href="/2021/10/26/underfitting-and-overfitting/"
@@ -227,20 +209,8 @@
           如果把样本局限在预测点的附近，就可以将这些样本点<strong>近似</strong>看做是线性的
           （这有点像微分的概念），这样就可以使用线性模型进行拟合，而无需考虑模型的阶。
         </p>
-        <h2
-          id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"
-          tabindex="-1"
-          id="数学原理"
-        >
-          <a class="header-anchor" href="#数学原理"># </a>数学原理
-        </h2>
-        <h3
-          id="%E5%BC%95%E5%85%A5%E6%9D%83%E5%80%BC"
-          tabindex="-1"
-          id="引入权值"
-        >
-          <a class="header-anchor" href="#引入权值"># </a>引入权值
-        </h3>
+        <h2 id="数学原理">数学原理</h2>
+        <h3 id="引入权值">引入权值</h3>
         <p>
           在这个算法中， 我们设<strong>假设函数（hypotheses）</strong>： $
           \sum_{i=1}^{m} w^{i} ( y^{i} - \theta^{T} x^{i} )^{2} $。 其中$ w^{i}
@@ -271,9 +241,7 @@
           $越近，它的权值越大，越远则权值越小， 于是，离$ x = 1
           $近的点得到重视，而离$ x $较远的点的影响被降低。
         </p>
-        <h3 id="%E4%B8%80%E8%88%AC%E5%8C%96" tabindex="-1" id="一般化">
-          <a class="header-anchor" href="#一般化"># </a>一般化
-        </h3>
+        <h3 id="一般化">一般化</h3>
         <p>将权值函数写成更一般的方式：</p>
         <p>$$ w^{i} = \exp{(- \frac {( x^{(i)} - x )^{2}} {2 \tau^{2}})} $$</p>
         <p>
@@ -287,13 +255,7 @@
           />
         </p>
         <p><em>上图中的$ t $代表$ \tau $</em></p>
-        <h2
-          id="%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"
-          tabindex="-1"
-          id="需要注意的问题"
-        >
-          <a class="header-anchor" href="#需要注意的问题"># </a>需要注意的问题
-        </h2>
+        <h2 id="需要注意的问题">需要注意的问题</h2>
         <p>
           首先，需要明确指出，局部加权回归<strong>不能完全避免</strong>欠拟合与过拟合的问题，
           原因在于，算法实际上还是在使用线性回归，如果权值随距离下降的速度很慢，
@@ -392,10 +354,10 @@
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

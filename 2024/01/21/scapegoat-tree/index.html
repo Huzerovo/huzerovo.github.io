@@ -49,31 +49,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <script>
       const ThemeConf = {
         rootId: "root",
@@ -115,22 +107,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -263,9 +251,7 @@
       </div>
       <article class="article-container">
         <h1>替罪羊树</h1>
-        <h2 id="%E5%89%8D%E8%A8%80" tabindex="-1" id="前言">
-          <a class="header-anchor" href="#前言"># </a>前言
-        </h2>
+        <h2 id="前言">前言</h2>
         <p>
           偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
           写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
@@ -286,13 +272,7 @@
             >
           </li>
         </ul>
-        <h2
-          id="%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91"
-          tabindex="-1"
-          id="什么是替罪羊树"
-        >
-          <a class="header-anchor" href="#什么是替罪羊树"># </a>什么是替罪羊树
-        </h2>
+        <h2 id="什么是替罪羊树">什么是替罪羊树</h2>
         <p>
           简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
           因为它允许不平衡的结点存在，
@@ -306,21 +286,8 @@
         <blockquote>
           <p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
         </blockquote>
-        <h2
-          id="%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9A%E4%B9%89"
-          tabindex="-1"
-          id="替罪羊树的代码定义"
-        >
-          <a class="header-anchor" href="#替罪羊树的代码定义"># </a
-          >替罪羊树的代码定义
-        </h2>
-        <h3
-          id="%E4%B8%80%E4%BA%9B%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89"
-          tabindex="-1"
-          id="一些变量定义"
-        >
-          <a class="header-anchor" href="#一些变量定义"># </a>一些变量定义
-        </h3>
+        <h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
+        <h3 id="一些变量定义">一些变量定义</h3>
         <p>
           在我的代码实现里，我使用数组形式构造替罪羊树， 并且数组下标<strong
             >将从<code>1</code>开始，而不是<code>0</code></strong
@@ -399,13 +366,7 @@ int ws[MAXN] = &#123;0&#125;;
           在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
           一般来说都指的是<code>s</code>数组表示的大小。
         </p>
-        <h3
-          id="%E6%8F%90%E4%BE%9B%E7%9A%84%E6%A0%91%E6%93%8D%E4%BD%9C"
-          tabindex="-1"
-          id="提供的树操作"
-        >
-          <a class="header-anchor" href="#提供的树操作"># </a>提供的树操作
-        </h3>
+        <h3 id="提供的树操作">提供的树操作</h3>
         <p>
           由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。
         </p>
@@ -442,13 +403,7 @@ void insert_node(int *r, int val);
 // @param val 删除的值
 void delete_node(int *r, int val);
 </code></pre>
-        <h3
-          id="%E9%87%8D%E6%9E%84%E7%9B%B8%E5%85%B3%E7%9A%84%E5%87%BD%E6%95%B0"
-          tabindex="-1"
-          id="重构相关的函数"
-        >
-          <a class="header-anchor" href="#重构相关的函数"># </a>重构相关的函数
-        </h3>
+        <h3 id="重构相关的函数">重构相关的函数</h3>
         <p>我们首先定义重构的入口函数：</p>
         <pre><code class="language-c">// 重构树
 // @param *r 指针，重构的树以此为根
@@ -481,27 +436,13 @@ static int generate_tree(int *flat_tree, int l, int r);
 // @return ture表示需要重构，false表示不需要重构
 static bool should_rebuild(int r);
 </code></pre>
-        <h2
-          id="%E7%9D%80%E6%89%8B%E5%AE%9E%E7%8E%B0"
-          tabindex="-1"
-          id="着手实现"
-        >
-          <a class="header-anchor" href="#着手实现"># </a>着手实现
-        </h2>
-        <h3 id="%E9%87%8D%E6%9E%84" tabindex="-1" id="重构">
-          <a class="header-anchor" href="#重构"># </a>重构
-        </h3>
+        <h2 id="着手实现">着手实现</h2>
+        <h3 id="重构">重构</h3>
         <p>
           在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
           <strong>重构的条件是什么？</strong>
         </p>
-        <h4
-          id="%E9%87%8D%E6%9E%84%E7%9A%84%E6%9D%A1%E4%BB%B6"
-          tabindex="-1"
-          id="重构的条件"
-        >
-          <a class="header-anchor" href="#重构的条件"># </a>重构的条件
-        </h4>
+        <h4 id="重构的条件">重构的条件</h4>
         <p>
           首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
           在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
@@ -532,13 +473,7 @@ static bool should_rebuild(int r);
           >， 还提到已删除结点过多也可能影响树的查找效率，
           因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。
         </p>
-        <h4
-          id="%E8%AE%A1%E7%AE%97%E6%A0%91%E7%9A%84%E5%A4%A7%E5%B0%8F"
-          tabindex="-1"
-          id="计算树的大小"
-        >
-          <a class="header-anchor" href="#计算树的大小"># </a>计算树的大小
-        </h4>
+        <h4 id="计算树的大小">计算树的大小</h4>
         <p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
         <pre><code class="language-c">// 计算树的大小
 // @param r 树的根结点索引
@@ -559,13 +494,7 @@ void gen_size(int r) &#123;
           <code>s[0] == rs[0] == ws[0] == 0</code
           >，这样在叶子结点也可以保证计算正确。
         </p>
-        <h4
-          id="%E7%94%9F%E6%88%90%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97"
-          tabindex="-1"
-          id="生成中序序列"
-        >
-          <a class="header-anchor" href="#生成中序序列"># </a>生成中序序列
-        </h4>
+        <h4 id="生成中序序列">生成中序序列</h4>
         <p>
           生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
           就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
@@ -587,13 +516,7 @@ void gen_size(int r) &#123;
     flat(rt[r], flat_tree, tree_size);
 &#125;
 </code></pre>
-        <h4
-          id="%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"
-          tabindex="-1"
-          id="反序列化"
-        >
-          <a class="header-anchor" href="#反序列化"># </a>反序列化
-        </h4>
+        <h4 id="反序列化">反序列化</h4>
         <p>从中序序列反序列化出一棵树也比较简单：</p>
         <pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) &#123;
     if (l &gt;= r || !flat_tree)
@@ -609,13 +532,7 @@ void gen_size(int r) &#123;
     return k;
 &#125;
 </code></pre>
-        <h4
-          id="%E9%87%8D%E6%9E%84%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0"
-          tabindex="-1"
-          id="重构入口函数"
-        >
-          <a class="header-anchor" href="#重构入口函数"># </a>重构入口函数
-        </h4>
+        <h4 id="重构入口函数">重构入口函数</h4>
         <p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
         <pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
 void rebuild(int *r) &#123;
@@ -631,14 +548,7 @@ void rebuild(int *r) &#123;
     gen_size(*r);
 &#125;
 </code></pre>
-        <h4
-          id="%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E9%87%8D%E6%9E%84"
-          tabindex="-1"
-          id="判断是否需要重构"
-        >
-          <a class="header-anchor" href="#判断是否需要重构"># </a
-          >判断是否需要重构
-        </h4>
+        <h4 id="判断是否需要重构">判断是否需要重构</h4>
         <p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
         <pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
 static max(a, b) &#123;
@@ -649,9 +559,7 @@ bool should_rebuild(int r) &#123;
         || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
 &#125;
 </code></pre>
-        <h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1" id="搜索">
-          <a class="header-anchor" href="#搜索"># </a>搜索
-        </h3>
+        <h3 id="搜索">搜索</h3>
         <p>和一般二叉树的搜索无异：</p>
         <pre><code class="language-c">int search_node(int r, int val) &#123;
     if (!r)
@@ -670,9 +578,7 @@ bool should_rebuild(int r) &#123;
     retrurn search_node(child, val);
 &#125;
 </code></pre>
-        <h3 id="%E6%8F%92%E5%85%A5" tabindex="-1" id="插入">
-          <a class="header-anchor" href="#插入"># </a>插入
-        </h3>
+        <h3 id="插入">插入</h3>
         <p>
           之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
           如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
@@ -720,9 +626,7 @@ bool should_rebuild(int r) &#123;
         rebuild(r);
 &#125;
 </code></pre>
-        <h3 id="%E5%88%A0%E9%99%A4" tabindex="-1" id="删除">
-          <a class="header-anchor" href="#删除"># </a>删除
-        </h3>
+        <h3 id="删除">删除</h3>
         <p>
           由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
           需要注意的是不能直接将其赋值为0，因为可能有重复值。
@@ -747,13 +651,7 @@ bool should_rebuild(int r) &#123;
         rebuild(r);
 &#125;
 </code></pre>
-        <h2
-          id="%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"
-          tabindex="-1"
-          id="一些问题"
-        >
-          <a class="header-anchor" href="#一些问题"># </a>一些问题
-        </h2>
+        <h2 id="一些问题">一些问题</h2>
         <blockquote>
           <p>这里的内容尚未完善…</p>
         </blockquote>
@@ -864,10 +762,10 @@ bool should_rebuild(int r) &#123;
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by

@@ -56,31 +56,23 @@
       title="狐灵"
       type="application/atom+xml"
     />
-    <!-- jQuery -->
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <!-- fancybox -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <!-- highlight.js -->
     <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <!-- site style -->
     <link rel="stylesheet" href="/css/light.css" />
     <link rel="stylesheet" href="/css/dark.css" />
     <link rel="stylesheet" href="/css/huzerovo.css" />
-    <!-- theme switcher -->
     <script src="/js/huzerovo.js"></script>
-    <!-- searching support -->
     <script src="/js/search.js"></script>
-    <!-- katex renderer -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
@@ -144,22 +136,18 @@
           </ul>
         </nav>
         <div class="topbar-icon-buttons">
-          <!-- social link -->
           <a
             class="icon-button"
             title="Github"
             href="https://github.com/Huzerovo"
             ><i class="bi bi-github"></i
           ></a>
-          <!-- search link -->
           <a class="icon-button" id="btn-search" title="搜索" href="/search"
             ><i class="bi bi-search"></i
           ></a>
-          <!-- change theme btn -->
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <!-- feed link -->
           <a class="icon-button" title="订阅" href="/atom.xml"
             ><i class="bi bi-rss-fill"></i
           ></a>
@@ -214,13 +202,7 @@
       </div>
       <article class="article-container">
         <h1>逻辑回归</h1>
-        <h2
-          id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%B8%8D%E8%B6%B3"
-          tabindex="-1"
-          id="线性回归的不足"
-        >
-          <a class="header-anchor" href="#线性回归的不足"># </a>线性回归的不足
-        </h2>
+        <h2 id="线性回归的不足">线性回归的不足</h2>
         <p>
           当数据的分布情况是这样子的时候， 线性回归得出的模型效果不好：
           <img
@@ -236,20 +218,8 @@
             ><a href="#fn1" id="fnref1">[1]</a></sup
           >
         </p>
-        <h2
-          id="%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"
-          tabindex="-1"
-          id="数学原理"
-        >
-          <a class="header-anchor" href="#数学原理"># </a>数学原理
-        </h2>
-        <h3
-          id="%E6%A6%82%E7%8E%87%E5%87%BD%E6%95%B0"
-          tabindex="-1"
-          id="概率函数"
-        >
-          <a class="header-anchor" href="#概率函数"># </a>概率函数
-        </h3>
+        <h2 id="数学原理">数学原理</h2>
+        <h3 id="概率函数">概率函数</h3>
         <p>
           设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $， $ P(y = 1
           \mid x ; \theta) = h*{\theta}(x) $， $ P(y = 0 \mid x ; \theta) = 1 -
@@ -268,14 +238,7 @@
           $的概率。
         </p>
         <p>优雅！</p>
-        <h3
-          id="%E8%BF%9B%E8%A1%8C%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"
-          tabindex="-1"
-          id="进行极大似然估计"
-        >
-          <a class="header-anchor" href="#进行极大似然估计"># </a
-          >进行极大似然估计
-        </h3>
+        <h3 id="进行极大似然估计">进行极大似然估计</h3>
         <p>设似然函数：</p>
         <p>$$ L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta) $$</p>
         <p>$$ l(\theta) = \frac{\partial}{\partial \theta} L(\theta) $$</p>
@@ -284,13 +247,7 @@
           $$ \frac{\partial}{\partial \theta_{j}} l(\theta) = \sum_{i=1}^{m}
           (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)} $$
         </p>
-        <h3
-          id="%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87%E6%B1%82%E8%A7%A3"
-          tabindex="-1"
-          id="梯度上升求解"
-        >
-          <a class="header-anchor" href="#梯度上升求解"># </a>梯度上升求解
-        </h3>
+        <h3 id="梯度上升求解">梯度上升求解</h3>
         <p>
           类似梯度下降，当函数具有最大值时， 使随机选取的点$ x{0}
           $进行如下更新<sup class="footnote-ref"
@@ -303,14 +260,7 @@
           $$ \theta_{j} = \theta_{j} + \partial \sum_{i=1}^{m} {(y^{(i)} -
           h_{\theta} (x^{(i)}))} x_{j}^{(i)} $$
         </p>
-        <h2
-          id="%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E5%AF%B9%E6%AF%94"
-          tabindex="-1"
-          id="与线性回归的对比"
-        >
-          <a class="header-anchor" href="#与线性回归的对比"># </a
-          >与线性回归的对比
-        </h2>
+        <h2 id="与线性回归的对比">与线性回归的对比</h2>
         <p>
           最后推导得出的公式与线性回归的推导公式十分相似， 但实际上$
           h_{\theta}(x) $表示的函数不再是线性的，
@@ -395,10 +345,10 @@
     <footer id="site-footer">
       <p>© 2024 @狐zerOAO</p>
       <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-          >CC BY-NC-ND 4.0</a
-        >授权。
+        如无特殊说明，网站所有原创内容均采用<br /><a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >署名—非商业性使用—相同方式共享 4.0 协议国际版 (CC BY-NC-SA 4.0)</a
+        ><br />授权。
       </p>
       <p>
         Powered by <a href="https://hexo.io">Hexo</a>. Theme by
