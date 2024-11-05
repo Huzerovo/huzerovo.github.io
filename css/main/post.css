@@ -2,10 +2,12 @@
 #article-toc {
   position: fixed;
   left: 5%;
+  min-width: 10%;
   max-width: 15%;
   height: 80vh;
   overflow: auto;
-  padding-right: 8px;
+  padding-right: 2px;
+  margin-right: 6px;
 }
 #article-toc a {
   color: var(--huzerovo-additional-text);
@@ -19,7 +21,7 @@
   list-style: none;
 }
 #article-toc .toc-child {
-  padding: 0 8px;
+  padding: 0 4px;
   list-style: none;
 }
 #article-toc .toc-link {
@@ -37,29 +39,9 @@
 #article-toc .toc-level-2 > a:hover {
   color: var(--huzerovo-notable-text);
 }
-@media (max-width: 960px) {
-  #article-toc {
-    position: unset;
-    max-width: 30%;
-    height: fit-content;
-    max-height: 60vh;
-    float: left;
-    margin: 0 16px;
-  }
-}
-@media (max-width: 480px) {
-  #article-toc {
-    display: block;
-    max-width: 100%;
-    height: fit-content;
-    width: 80%;
-    float: unset;
-    margin: 0 auto;
-  }
-}
 /* 文章内容 */
 .article-container {
-  line-height: 1.7;
+  line-height: 1.5;
   padding: 0 16px;
   /* 从官方主题landscape抄来的 */
 }
@@ -376,7 +358,7 @@
   padding: 16px;
   margin: 16px 0px;
   transition: background-color 0.3s;
-  background-color: var(--huzerovo-block-background);
+  background-color: var(--huzerovo-background-highlight);
 }
 .article-comment #gitalk-container {
   text-align: left;
@@ -385,7 +367,7 @@
   border-radius: 100%;
 }
 .article-comment #gitalk-container blockquote {
-  background: var(--huzerovo-block-background);
+  background: var(--huzerovo-background-highlight);
   width: 100%;
 }
 .article-comment #gitalk-container .gt-meta {
@@ -397,4 +379,24 @@
 }
 .article-comment #gitalk-container .gt-comment-content:hover {
   box-shadow: unset;
+}
+@media (max-width: 960px) {
+  #article-toc {
+    position: unset;
+    max-width: 30%;
+    height: fit-content;
+    max-height: 60vh;
+    float: left;
+    margin: 0 16px;
+  }
+}
+@media (max-width: 480px) {
+  #article-toc {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+    width: 80%;
+    float: unset;
+    margin: 0 auto;
+  }
 }

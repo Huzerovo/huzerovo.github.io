@@ -20,11 +20,11 @@
   --huzerovo-link-hover: tomato;
   --huzerovo-block-background: #ececec;
   --huzerovo-block-text: gray;
-  --huzerovo-code-background: var(--huzerovo-block-background);
+  --huzerovo-code-background: var(--huzerovo-background-highlight);
   --huzerovo-code-text: peru;
   --huzerovo-thead-bg: lightgray;
   --huzerovo-thead-text: black;
-  --huzerovo-tbody-bg: white;
+  --huzerovo-tbody-bg: var(--huzerovo-background);
   --huzerovo-tbody-text: black;
   --huzerovo-scrollbar-track: var(--huzerovo-line);
   --huzerovo-scrollbar-thumb: #c0c0c0;

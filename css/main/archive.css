@@ -5,6 +5,9 @@
 .page-archive a:visited {
   color: var(--huzerovo-link);
 }
+.page-archive a:hover {
+  color: var(--huzerovo-link-hover);
+}
 .page-archive .page-archive-year {
   font-size: 32px;
 }

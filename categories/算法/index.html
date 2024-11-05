@@ -130,9 +130,6 @@
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <a class="icon-button" title="订阅" href="/atom.xml"
-            ><i class="bi bi-rss-fill"></i
-          ></a>
         </div>
       </div>
     </header>
@@ -148,7 +145,7 @@
           ></span>
         </div>
       </div>
-      <article class="articles-list">
+      <div class="articles-list">
         <article class="articles-list-item">
           <a href="/2024/01/21/scapegoat-tree/">
             <p class="post-entry-title">替罪羊树</p>
@@ -167,7 +164,7 @@
             </div>
           </footer>
         </article>
-      </article>
+      </div>
       <div class="pager">
         <div class="page-list">
           <span class="extend prev" rel="prev"
@@ -203,18 +200,18 @@
     $(document).ready(function () {
       // 监听事件
       $("#btn-switch-theme").click(switchThemeClickHandler);
-      $("#btn-side-menu").click(function () {
-        let e = $("#side-nav");
-        let hide = "side-menu-hidden";
-        let show = "side-menu-show";
-        if (e.hasClass(hide)) {
-          e.removeClass(hide);
-          e.addClass(show);
-        } else {
-          e.removeClass(show);
-          e.addClass(hide);
-        }
-      });
+      // $("#btn-side-menu").click(function () {
+      //   let e = $("#side-nav");
+      //   let hide = "side-menu-hidden";
+      //   let show = "side-menu-show";
+      //   if (e.hasClass(hide)) {
+      //     e.removeClass(hide);
+      //     e.addClass(show);
+      //   } else {
+      //     e.removeClass(show);
+      //     e.addClass(hide);
+      //   }
+      // });
       $("#search-input").on("input", function () {
         searchArticle("/search.xml");
       });

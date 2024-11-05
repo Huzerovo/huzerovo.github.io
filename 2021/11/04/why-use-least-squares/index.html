@@ -136,9 +136,6 @@
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <a class="icon-button" title="订阅" href="/atom.xml"
-            ><i class="bi bi-rss-fill"></i
-          ></a>
         </div>
       </div>
     </header>
@@ -287,8 +284,8 @@
           >
         </div>
         <div class="article-date-info">
-          <span>发布日期: 2021-11-04</span>
-          <span>更新日期: 2021-11-04</span>
+          <span> 发布日期:2021-11-04 </span>
+          <span>更新日期:2021-11-04</span>
         </div>
         <div class="article-share-link">
           <span>
@@ -349,18 +346,18 @@
     $(document).ready(function () {
       // 监听事件
       $("#btn-switch-theme").click(switchThemeClickHandler);
-      $("#btn-side-menu").click(function () {
-        let e = $("#side-nav");
-        let hide = "side-menu-hidden";
-        let show = "side-menu-show";
-        if (e.hasClass(hide)) {
-          e.removeClass(hide);
-          e.addClass(show);
-        } else {
-          e.removeClass(show);
-          e.addClass(hide);
-        }
-      });
+      // $("#btn-side-menu").click(function () {
+      //   let e = $("#side-nav");
+      //   let hide = "side-menu-hidden";
+      //   let show = "side-menu-show";
+      //   if (e.hasClass(hide)) {
+      //     e.removeClass(hide);
+      //     e.addClass(show);
+      //   } else {
+      //     e.removeClass(show);
+      //     e.addClass(hide);
+      //   }
+      // });
       $("#search-input").on("input", function () {
         searchArticle("/search.xml");
       });

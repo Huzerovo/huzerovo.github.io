@@ -108,9 +108,6 @@
           <a class="icon-button" id="btn-switch-theme" title="切换主题"
             ><i class="bi bi-sun"></i
           ></a>
-          <a class="icon-button" title="订阅" href="/atom.xml"
-            ><i class="bi bi-rss-fill"></i
-          ></a>
         </div>
       </div>
     </header>
@@ -120,7 +117,7 @@
         <div class="page-archive-year">2021</div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="11"> 11-25 </a>
+            <a href="11">11-25</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -131,7 +128,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="11"> 11-04 </a>
+            <a href="11">11-04</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -142,7 +139,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="10"> 10-30 </a>
+            <a href="10">10-30</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -153,7 +150,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="10"> 10-26 </a>
+            <a href="10">10-26</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -164,7 +161,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="09"> 09-16 </a>
+            <a href="09">09-16</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -175,7 +172,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="09"> 09-11 </a>
+            <a href="09">09-11</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -186,7 +183,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="08"> 08-15 </a>
+            <a href="08">08-15</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -197,7 +194,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="03"> 03-26 </a>
+            <a href="03">03-26</a>
           </div>
           <a class="page-archive-item-link" href="/2021/03/26/intel-asm/">
             Intel x86 汇编语言
@@ -205,7 +202,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="03"> 03-18 </a>
+            <a href="03">03-18</a>
           </div>
           <a class="page-archive-item-link" href="/2021/03/18/pwm-servo/">
             PWM 舵机控制
@@ -213,7 +210,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="03"> 03-11 </a>
+            <a href="03">03-11</a>
           </div>
           <a
             class="page-archive-item-link"
@@ -224,7 +221,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="02"> 02-19 </a>
+            <a href="02">02-19</a>
           </div>
           <a class="page-archive-item-link" href="/2021/02/19/vim-simple-note/">
             Vim 简单笔记
@@ -232,7 +229,7 @@
         </div>
         <div class="page-archive-item">
           <div class="page-archive-item-date">
-            <a href="02"> 02-18 </a>
+            <a href="02">02-18</a>
           </div>
           <a class="page-archive-item-link" href="/2021/02/18/linux-firewall/">
             Linux 防火墙
@@ -264,18 +261,18 @@
     $(document).ready(function () {
       // 监听事件
       $("#btn-switch-theme").click(switchThemeClickHandler);
-      $("#btn-side-menu").click(function () {
-        let e = $("#side-nav");
-        let hide = "side-menu-hidden";
-        let show = "side-menu-show";
-        if (e.hasClass(hide)) {
-          e.removeClass(hide);
-          e.addClass(show);
-        } else {
-          e.removeClass(show);
-          e.addClass(hide);
-        }
-      });
+      // $("#btn-side-menu").click(function () {
+      //   let e = $("#side-nav");
+      //   let hide = "side-menu-hidden";
+      //   let show = "side-menu-show";
+      //   if (e.hasClass(hide)) {
+      //     e.removeClass(hide);
+      //     e.addClass(show);
+      //   } else {
+      //     e.removeClass(show);
+      //     e.addClass(hide);
+      //   }
+      // });
       $("#search-input").on("input", function () {
         searchArticle("/search.xml");
       });

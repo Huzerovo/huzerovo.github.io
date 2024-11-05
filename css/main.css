@@ -49,6 +49,9 @@ main.container .page-archive {
 main.container .page-archive a:visited {
   color: var(--huzerovo-link);
 }
+main.container .page-archive a:hover {
+  color: var(--huzerovo-link-hover);
+}
 main.container .page-archive .page-archive-year {
   font-size: 32px;
 }
@@ -198,10 +201,12 @@ main.container .category-list-item .category-list-child {
 main.container #article-toc {
   position: fixed;
   left: 5%;
+  min-width: 10%;
   max-width: 15%;
   height: 80vh;
   overflow: auto;
-  padding-right: 8px;
+  padding-right: 2px;
+  margin-right: 6px;
 }
 main.container #article-toc a {
   color: var(--huzerovo-additional-text);
@@ -215,7 +220,7 @@ main.container #article-toc .toc {
   list-style: none;
 }
 main.container #article-toc .toc-child {
-  padding: 0 8px;
+  padding: 0 4px;
   list-style: none;
 }
 main.container #article-toc .toc-link {
@@ -233,28 +238,8 @@ main.container #article-toc .toc-level-2 > a.toc-link ::before {
 main.container #article-toc .toc-level-2 > a:hover {
   color: var(--huzerovo-notable-text);
 }
-@media (max-width: 960px) {
-  main.container #article-toc {
-    position: unset;
-    max-width: 30%;
-    height: fit-content;
-    max-height: 60vh;
-    float: left;
-    margin: 0 16px;
-  }
-}
-@media (max-width: 480px) {
-  main.container #article-toc {
-    display: block;
-    max-width: 100%;
-    height: fit-content;
-    width: 80%;
-    float: unset;
-    margin: 0 auto;
-  }
-}
 main.container .article-container {
-  line-height: 1.7;
+  line-height: 1.5;
   padding: 0 16px;
   /* 从官方主题landscape抄来的 */
 }
@@ -748,7 +733,7 @@ main.container .article-comment {
   padding: 16px;
   margin: 16px 0px;
   transition: background-color 0.3s;
-  background-color: var(--huzerovo-block-background);
+  background-color: var(--huzerovo-background-highlight);
 }
 main.container .article-comment #gitalk-container {
   text-align: left;
@@ -757,7 +742,7 @@ main.container .article-comment #gitalk-container img {
   border-radius: 100%;
 }
 main.container .article-comment #gitalk-container blockquote {
-  background: var(--huzerovo-block-background);
+  background: var(--huzerovo-background-highlight);
   width: 100%;
 }
 main.container .article-comment #gitalk-container .gt-meta {
@@ -769,6 +754,26 @@ main.container .article-comment #gitalk-container .gt-comment-content {
 }
 main.container .article-comment #gitalk-container .gt-comment-content:hover {
   box-shadow: unset;
+}
+@media (max-width: 960px) {
+  main.container #article-toc {
+    position: unset;
+    max-width: 30%;
+    height: fit-content;
+    max-height: 60vh;
+    float: left;
+    margin: 0 16px;
+  }
+}
+@media (max-width: 480px) {
+  main.container #article-toc {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+    width: 80%;
+    float: unset;
+    margin: 0 auto;
+  }
 }
 main.container .search-bar {
   display: flex;
