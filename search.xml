@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>开启评论</title>
-    <url>/2023/01/15/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="正式完成主题的评论功能">正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
@@ -78,6 +67,17 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       <tags>
         <tag>Hexo</tag>
         <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启评论</title>
+    <url>/2023/01/15/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="正式完成主题的评论功能">正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
       </tags>
   </entry>
   <entry>
@@ -187,103 +187,6 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>梯度下降算法</title>
-    <url>/2021/09/16/gradient-descent/</url>
-    <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
-<span id="more"></span>
-<h2 id="步骤">步骤</h2>
-<ol>
-<li>随机选取一个初始位置$ x_{0} $。</li>
-<li>对$ x_{0} $进行更新，即：
-$$
-x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$
-其中$ \alpha $是一个正数，称作 “步长”，
-$ \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0} $处的导数。</li>
-<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$ f(x*{n}) $最小。</li>
-</ol>
-<h2 id="数学原理简析">数学原理简析</h2>
-<h3 id="基本原理">基本原理</h3>
-<p>设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值，
-且设在点$ x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
-随机选取一点$ x_{0} $：</p>
-<ol>
-<li>
-<p>若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $，
-令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &lt; x*{0} $，
-即$ x*{1} $向$ x*{min} $靠近。</p>
-</li>
-<li>
-<p>若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $，
-令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &gt; x*{0} $，
-即$ x*{1} $向$ x*{min} $靠近。</p>
-</li>
-</ol>
-<p>可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。</p>
-<h3 id="使用条件">使用条件</h3>
-<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
-只需要知道原函数的一阶导函数。
-因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
-可以考虑采取梯度下降算法。</p>
-<h3 id="不足之处">不足之处</h3>
-<p>设$ f(x) = x^{2} $，
-函数在$ x*{min} = 0 $处取得最小值，可知
-$ k*{n} = \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。
-取初始值$ x*{0} = 1 $，则$ x*{1} = x*{0} - k*{0} = -1 $。
-继续对$ x*{1} $进行更新，则$ x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
-这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
-<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
-<h3 id="改进">改进</h3>
-<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
-$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
-一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
-<h2 id="代码示例">代码示例</h2>
-<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
-则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
-最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
-<pre><code class="language-python">#!/usr/bin/env python3
-
-import numpy as np
-
-a = 3
-b = 4
-c = 5
-
-# f(x) = ax^2 + bx + c
-def f(x):
-    return a*(x**2) + b*x + c
-
-# df(x) = 2ax + b
-def df(x):
-    return 2*a*x + b
-
-def main():
-    # 最低点
-    xmin = - b/(2*a)
-    # 步长
-    alpha = 0.1
-    # 随机初始值
-    x = np.random.randint(5)
-    # 递减 100 次
-    for i in range(100):
-        x = x - alpha * df(x)
-
-    # 输出结果
-    print(&quot;x_n is:&quot; , x)
-    print(&quot;x_min is:&quot;, xmin)
-
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -494,6 +397,103 @@ sudo losetup -d /dev/loop0
       <tags>
         <tag>Linux</tag>
         <tag>Grub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梯度下降算法</title>
+    <url>/2021/09/16/gradient-descent/</url>
+    <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
+<span id="more"></span>
+<h2 id="步骤">步骤</h2>
+<ol>
+<li>随机选取一个初始位置$ x_{0} $。</li>
+<li>对$ x_{0} $进行更新，即：
+$$
+x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
+$$
+其中$ \alpha $是一个正数，称作 “步长”，
+$ \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0} $处的导数。</li>
+<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$ f(x*{n}) $最小。</li>
+</ol>
+<h2 id="数学原理简析">数学原理简析</h2>
+<h3 id="基本原理">基本原理</h3>
+<p>设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值，
+且设在点$ x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
+随机选取一点$ x_{0} $：</p>
+<ol>
+<li>
+<p>若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &lt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
+</li>
+<li>
+<p>若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &gt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
+</li>
+</ol>
+<p>可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。</p>
+<h3 id="使用条件">使用条件</h3>
+<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
+只需要知道原函数的一阶导函数。
+因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
+可以考虑采取梯度下降算法。</p>
+<h3 id="不足之处">不足之处</h3>
+<p>设$ f(x) = x^{2} $，
+函数在$ x*{min} = 0 $处取得最小值，可知
+$ k*{n} = \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。
+取初始值$ x*{0} = 1 $，则$ x*{1} = x*{0} - k*{0} = -1 $。
+继续对$ x*{1} $进行更新，则$ x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
+这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
+<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
+<h3 id="改进">改进</h3>
+<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
+$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
+一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
+<h2 id="代码示例">代码示例</h2>
+<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
+则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
+最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import numpy as np
+
+a = 3
+b = 4
+c = 5
+
+# f(x) = ax^2 + bx + c
+def f(x):
+    return a*(x**2) + b*x + c
+
+# df(x) = 2ax + b
+def df(x):
+    return 2*a*x + b
+
+def main():
+    # 最低点
+    xmin = - b/(2*a)
+    # 步长
+    alpha = 0.1
+    # 随机初始值
+    x = np.random.randint(5)
+    # 递减 100 次
+    for i in range(100):
+        x = x - alpha * df(x)
+
+    # 输出结果
+    print(&quot;x_n is:&quot; , x)
+    print(&quot;x_min is:&quot;, xmin)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
