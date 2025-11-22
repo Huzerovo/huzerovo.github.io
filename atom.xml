@@ -6,7 +6,7 @@
   <link href="https://huzerovo.github.io/atom.xml" rel="self"/>
   
   <link href="https://huzerovo.github.io/"/>
-  <updated>2024-07-10T11:54:36.000Z</updated>
+  <updated>2025-11-08T01:01:46.000Z</updated>
   <id>https://huzerovo.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为小米6编译RisingOS</title>
+    <link href="https://huzerovo.github.io/2025/11/08/build-risingos-for-xiaomi-mi-6/"/>
+    <id>https://huzerovo.github.io/2025/11/08/build-risingos-for-xiaomi-mi-6/</id>
+    <published>2025-11-08T01:01:46.000Z</published>
+    <updated>2025-11-08T01:01:46.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录如何从源码开始编译RisingOS。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="编译" scheme="https://huzerovo.github.io/tags/%E7%BC%96%E8%AF%91/"/>
+    
+    <category term="Android" scheme="https://huzerovo.github.io/tags/android/"/>
+    
+    <category term="RisingOS" scheme="https://huzerovo.github.io/tags/risingos/"/>
+    
+    <category term="类原生" scheme="https://huzerovo.github.io/tags/%E7%B1%BB%E5%8E%9F%E7%94%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>树莓派上运行的服务</title>
@@ -289,9 +314,9 @@
     <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
     
     
-    <category term="smali" scheme="https://huzerovo.github.io/tags/smali/"/>
-    
     <category term="Android" scheme="https://huzerovo.github.io/tags/android/"/>
+    
+    <category term="smali" scheme="https://huzerovo.github.io/tags/smali/"/>
     
   </entry>
   
@@ -419,27 +444,6 @@
     <category term="监督学习" scheme="https://huzerovo.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="线性回归" scheme="https://huzerovo.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在磁盘映像文件上安装 Grub 2</title>
-    <link href="https://huzerovo.github.io/2021/08/15/install-grub-at-a-img-file/"/>
-    <id>https://huzerovo.github.io/2021/08/15/install-grub-at-a-img-file/</id>
-    <published>2021-08-15T04:00:00.000Z</published>
-    <updated>2021-10-29T04:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;记录一下我在一个磁盘文件上安装Grub作为启动引导的过程&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
-    
-    
-    <category term="Linux" scheme="https://huzerovo.github.io/tags/linux/"/>
-    
-    <category term="Grub" scheme="https://huzerovo.github.io/tags/grub/"/>
     
   </entry>
   

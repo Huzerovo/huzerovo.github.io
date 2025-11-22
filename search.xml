@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>为小米6编译RisingOS</title>
+    <url>/2025/11/08/build-risingos-for-xiaomi-mi-6/</url>
+    <content><![CDATA[<p>记录如何从源码开始编译RisingOS。</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>由于小米6没有RisingOS的官方支持，只好自己从源码编译。</p>
+<h2 id="准备">准备</h2>
+<p>首先需要安装<code>repo</code>，在Arch Linux上仅需<code>sudo pacman -S repo</code>即可安装。
+可能还需要安装Github的大文件优化插件，在Arch Linux也是只需要<code>sudo pacman -S git-lfs</code>。
+其次需要约300G左右的空间，为之后拉取源码以及编译预留空间（主要占大头的还是RisingOS的源码）。</p>
+<h3 id="获取RisingOS源码">获取RisingOS源码</h3>
+<p>在安装<code>repo</code>后，根据<a href="https://github.com/RisingOS-Revived/android">RisingOS Android源码仓库</a>的提示获取源码。</p>
+<pre><code class="language-bash">repo init -u https://github.com/RisingOS-Revived/android -b sixteen --git-lfs
+repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
+</code></pre>
+<h3 id="获取设备相关源码">获取设备相关源码</h3>
+<p>在获取了基本的源码后还需要一些设备专有代码。
+添加的方式是在RisingOS源码目录下的<code>.repo/local_manifests/roomservice.xml</code>中定义。</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;manifest&gt;
+    &lt;project path=&quot;device/xiaomi/sagit&quot; name=&quot;LineageOS/android_device_xiaomi_sagit&quot; revision=&quot;lineage-22.2&quot; /&gt;
+    &lt;project path=&quot;device/xiaomi/msm8998-common&quot; name=&quot;LineageOS/android_device_xiaomi_msm8998-common&quot; revision=&quot;lineage-22.2&quot; /&gt;
+    &lt;project path=&quot;hardware/xiaomi&quot; name=&quot;Lineageos/android_hardware_xiaomi&quot; /&gt;
+    &lt;project path=&quot;kernel/xiaomi/msm8998&quot; name=&quot;Lineageos/android_kernel_xiaomi_msm8998&quot; revision=&quot;lineage-22.2&quot;/&gt;
+&lt;/manifest&gt;
+</code></pre>
+<p>之后再进行一下<code>repo sync</code>，同步源码。</p>
+<h3 id="补丁">补丁</h3>
+<p>不打补丁会报错：<code>vendor_camera_prop</code>未定义，以及找不到AntHalService-Soong。
+<code>verndor_camera_prop</code>问题由<a href="https://github.com/RisingOS-Revived/android_device_lineage_sepolicy/commit/8be2f42baccd385f35df95ecaaba71b3c3731d5b">此提交</a>引入导致。
+AntHalService-Soong没有找到相关的源码，<s>反正注释了能过编译就行，BUG以后再说。</s></p>
+<p>补丁参考：</p>
+<pre><code class="language-diff">project device/lineage/sepolicy/
+diff --git a/common/private/property_contexts b/common/private/property_contexts
+index 81c9784..8a65320 100644
+--- a/common/private/property_contexts
++++ b/common/private/property_contexts
+@@ -6,8 +6,8 @@ ro.odm.cast.ssid_suffix u:object_r:odm_cast_prop:s0
+ vendor.camera.aux.packageexcludelist   u:object_r:vendor_persist_camera_prop:s0
+ vendor.camera.aux.packagelist          u:object_r:vendor_persist_camera_prop:s0
+ vendor.camera.skip_unconfigure.packagelist  u:object_r:vendor_persist_camera_prop:s0
+-ro.vendor.camera.res.fmq.size          u:object_r:vendor_camera_prop:s0
+-ro.vendor.camera.req.fmq.size          u:object_r:vendor_camera_prop:s0
++# ro.vendor.camera.res.fmq.size          u:object_r:vendor_camera_prop:s0
++# ro.vendor.camera.req.fmq.size          u:object_r:vendor_camera_prop:s0
+ 
+ # Bluetooth
+ bluetooth.hci.disabled_commands        u:object_r:bluetooth_config_prop:s0
+
+project device/xiaomi/msm8998-common/
+diff --git a/msm8998.mk b/msm8998.mk
+index 804ee64..eed6381 100644
+--- a/msm8998.mk
++++ b/msm8998.mk
+@@ -126,8 +126,8 @@ PRODUCT_COPY_FILES += \
+     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
+ 
+ # ANT+
+-PRODUCT_PACKAGES += \
+-    AntHalService-Soong
++# PRODUCT_PACKAGES += \
++#     AntHalService-Soong
+ 
+ # Bluetooth
+ PRODUCT_PACKAGES += \
+
+</code></pre>
+<blockquote>
+<p>注意：源码更新可能会引入其他问题，本文不保证时效性。</p>
+</blockquote>
+<h2 id="编译">编译</h2>
+<p>编译命令参考：</p>
+<pre><code class="language-bash"># 首先保证你在RisingOS源码目录下
+source build/envsetup.sh
+riseup sagit userdebug
+rise b -j$(nproc --all)
+</code></pre>
+<p>等待编译完成即可。</p>
+<p>附带一张编译完成截图。
+<img src="success.png" alt="success.png" loading="lazy" /></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>编译</tag>
+        <tag>Android</tag>
+        <tag>RisingOS</tag>
+        <tag>类原生</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开启评论</title>
     <url>/2023/01/15/comments-are-enabled/</url>
     <content><![CDATA[<h2 id="正式完成主题的评论功能">正式完成主题的评论功能</h2>
@@ -1493,333 +1585,6 @@ avatar_size: normal
       </tags>
   </entry>
   <entry>
-    <title>Learn Markdown</title>
-    <url>/2020/11/08/learn-markdown/</url>
-    <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
-<span id="more"></span>
-<blockquote>
-<p>注意，使用<a href="https://github.com/markdown-it/markdown-it">markdown-it</a>作为渲染
-引擎，因此部分语法可能略有差异。</p>
-</blockquote>
-<h2 id="好习惯">好习惯</h2>
-<p>在每个不同的Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间使用空行或许是个好习惯。</p>
-<h2 id="标题">标题</h2>
-<p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
-一般使用这个方法。</p>
-<pre><code class="language-markdown"># 一级标题
-
-## 二级标题
-
-### 三级标题
-
-#### 四级标题
-
-##### 五级标题
-
-###### 六级标题
-</code></pre>
-<blockquote>
-<p>使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>，
-我并不推荐使用这种方式。
-个人习惯是在标题的上下都添加一个空行。
-此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a>。</p>
-</blockquote>
-<h2 id="段落">段落</h2>
-<p>在段落之间添加一个空行，另外，在行尾添加空格，
-下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。</p>
-<pre><code class="language-markdown">这是一个段落
-
-这是另一个段落
-</code></pre>
-<h2 id="粗体与斜体">粗体与斜体</h2>
-<p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p>
-<pre><code class="language-markdown">*斜体*
-*斜体*
-
-**粗体**
-**粗体**
-
-***斜粗体***
-***斜粗体***
-</code></pre>
-<blockquote>
-<p>注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。
-但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。</p>
-</blockquote>
-<h2 id="分隔线">分隔线</h2>
-<p>我一般使用<code>-</code>作为分割线。</p>
-<pre><code class="language-markdown">---
-</code></pre>
-<blockquote>
-<p><code>_</code>与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式，
-因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行，
-因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a></p>
-</blockquote>
-<h2 id="删除线">删除线</h2>
-<p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
-<pre><code class="language-markdown">~~可以单独一行~~
-
-也可以~~行内~~使用。
-</code></pre>
-<h2 id="脚注">脚注</h2>
-<blockquote>
-<p>使用<code>markdown-it-footnote</code></p>
-</blockquote>
-<p>可以对文本进行补充说明，也可以说是注释。</p>
-<pre><code class="language-markdown">后面的是脚注[^脚注]
-
-[^脚注]: 这是一个脚注!
-</code></pre>
-<h2 id="列表">列表</h2>
-<h3 id="有序列表">有序列表</h3>
-<p>数字加<code>.</code>可表示一个有序列表。</p>
-<blockquote>
-<p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。
-<s>谁会用乱序数字当有序列表啊。</s></p>
-</blockquote>
-<pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
-1. 后面可以随便使用数字
-1. 第二项，
-   接在后面的文本。
-1. 第三项
-
-   空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
-   那么整个列表会被认为带有*标题*，也就是序号后面的那段文字。
-   而后面这些会被认为是这一个*标题*下的内容。
-1. 第四项，这后面有两个空格  
-   这会使这行文字带缩进。很难看出来，最好少用。
-
-空行加一段没有缩进的一句话，可以表示列表结束
-
-1. 这里又是新的列表
-2. 序号重新从1开始
-3. 由于没有出现空行+缩进，
-   这个列表是没有标题的。
-4. 这后面有两个空格  
-   也会使这行文字带缩进。很难看出来，最好少用。
-</code></pre>
-<p>以上代码的渲染效果：</p>
-<ol>
-<li>
-<p>第一项使用数字<code>1</code>作为起始序号</p>
-</li>
-<li>
-<p>后面可以随便使用数字</p>
-</li>
-<li>
-<p>第二项，
-接在后面的文本。</p>
-</li>
-<li>
-<p>第三项</p>
-<p>空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
-那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。
-而后面这些内容会被认为是这一个<em>标题</em>下的内容</p>
-</li>
-<li>
-<p>第四项，这后面有两个空格<br />
-这会使这行文字带缩进。很难看出来，最好少用。</p>
-</li>
-</ol>
-<p>空行加一段没有缩进的一句话，可以表示列表结束</p>
-<ol>
-<li>这里又是新的列表</li>
-<li>序号重新从1开始</li>
-<li>由于没有出现空行+缩进，
-这个列表是没有标题的。</li>
-<li>这后面有两个空格<br />
-也会使这行文字带缩进。很难看出来，最好少用。</li>
-</ol>
-<h3 id="无序列表">无序列表</h3>
-<p>用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。</p>
-<pre><code class="language-markdown">- 第一项
-- 第二项
-
-* 第一项
-* 第二项
-
-- 第一项
-- 第二项
-</code></pre>
-<h2 id="注释块">注释块</h2>
-<p>用 <code>&gt;</code> 表示注释块。</p>
-<pre><code class="language-markdown">&gt; 注释块
-</code></pre>
-<h2 id="代码">代码</h2>
-<h3 id="行内代码">行内代码</h3>
-<p>在段落上嵌入的代码，用反引号包裹代码。</p>
-<pre><code class="language-markdown">C语言入口函数:`main()`
-</code></pre>
-<h3 id="代码块">代码块</h3>
-<p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
-这里由于渲染原因，使用<code>'</code>代替例子中的反引号。</p>
-<pre><code class="language-markdown">'''c
-#include &lt;stdio.h&gt;
-int main()
-&#123;
-  printf(&quot;Hello world&quot;);
-  return 0;
-&#125;
-'''
-</code></pre>
-<p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p>
-<h2 id="嵌套">嵌套</h2>
-<p>大部分Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup>都能够相互嵌套。
-但在Markdown代码块中不能嵌套另一个代码块，
-这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a>中使用<code>'</code>代替的原因。</p>
-<h2 id="链接">链接</h2>
-<p><code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code></p>
-<pre><code class="language-markdown">就像这样：
-[ME](https://huzerovo.github.io)
-
-&lt;https://huzerovo.github.io\&gt;
-</code></pre>
-<blockquote>
-<p>如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。</p>
-</blockquote>
-<h2 id="图片">图片</h2>
-<p><code>![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)</code>，标题可写可不写。</p>
-<pre><code class="language-markdown">就像这样：
-![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
-</code></pre>
-<h2 id="表格">表格</h2>
-<p>用 <code>|</code> 划分列
-用 <code>-</code> 划分表头和其他行</p>
-<p>可以设置对其方式:
-<code>-:</code> 整列右对齐
-<code>:-</code> 整列左对齐
-<code>:-:</code> 整列居中对齐</p>
-<pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
-| :---- | ----: | :---: |
-| 靠左  |  靠右 | 居中  |
-| 列1   |   列2 |  列3  |
-</code></pre>
-<h2 id="其他">其他</h2>
-<h3 id="使用HTML标签">使用HTML标签</h3>
-<p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p>
-<h3 id="反斜杠转义">反斜杠转义</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">符号</th>
-<th style="text-align:left">符号名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">\</td>
-<td style="text-align:left">反斜线</td>
-</tr>
-<tr>
-<td style="text-align:left">`</td>
-<td style="text-align:left">反引号</td>
-</tr>
-<tr>
-<td style="text-align:left">*</td>
-<td style="text-align:left">星号</td>
-</tr>
-<tr>
-<td style="text-align:left">_</td>
-<td style="text-align:left">下划线</td>
-</tr>
-<tr>
-<td style="text-align:left">{}</td>
-<td style="text-align:left">花括号</td>
-</tr>
-<tr>
-<td style="text-align:left">[]</td>
-<td style="text-align:left">方括号</td>
-</tr>
-<tr>
-<td style="text-align:left">()</td>
-<td style="text-align:left">小括号</td>
-</tr>
-<tr>
-<td style="text-align:left">#</td>
-<td style="text-align:left">井字号</td>
-</tr>
-<tr>
-<td style="text-align:left">+</td>
-<td style="text-align:left">加号</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">减号</td>
-</tr>
-<tr>
-<td style="text-align:left">.</td>
-<td style="text-align:left">英文句点</td>
-</tr>
-<tr>
-<td style="text-align:left">!</td>
-<td style="text-align:left">感叹号</td>
-</tr>
-</tbody>
-</table>
-<h2 id="拓展语法">拓展语法</h2>
-<p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p>
-<h3 id="任务列表">任务列表</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p>
-<pre><code class="language-markdown">- [x] first
-- [ ] seconde
-- [ ] next
-</code></pre>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> first</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> seconde</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> next</li>
-</ul>
-<h3 id="下划线">下划线</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p>
-<pre><code class="language-markdown">++下划线在这里++
-</code></pre>
-<p><ins>下划线在这里</ins></p>
-<h3 id="行内脚注">行内脚注</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p>
-<pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
-</code></pre>
-<p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
-<h3 id="缩写">缩写</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
-<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
-*[W3C]: World Wide Web Consortium
-The HTML specification
-is maintained by the W3C.
-</code></pre>
-<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
-is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-<h3 id="高亮">高亮</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
-<pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
-</code></pre>
-<p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
-<h3 id="上-下标">上/下标</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p>
-<pre><code class="language-markdown">这里有个^上标^
-
-而这里有个~下标~
-</code></pre>
-<p>这里有个<sup>上标</sup></p>
-<p>而这里有个<sub>下标</sub></p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。 <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>不需要为脚注命名了 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>线性回归</title>
     <url>/2021/09/11/linear-regression/</url>
     <content><![CDATA[<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
@@ -2230,6 +1995,333 @@ $ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
       </tags>
   </entry>
   <entry>
+    <title>Learn Markdown</title>
+    <url>/2020/11/08/learn-markdown/</url>
+    <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
+<span id="more"></span>
+<blockquote>
+<p>注意，使用<a href="https://github.com/markdown-it/markdown-it">markdown-it</a>作为渲染
+引擎，因此部分语法可能略有差异。</p>
+</blockquote>
+<h2 id="好习惯">好习惯</h2>
+<p>在每个不同的Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间使用空行或许是个好习惯。</p>
+<h2 id="标题">标题</h2>
+<p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
+一般使用这个方法。</p>
+<pre><code class="language-markdown"># 一级标题
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+
+##### 五级标题
+
+###### 六级标题
+</code></pre>
+<blockquote>
+<p>使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>，
+我并不推荐使用这种方式。
+个人习惯是在标题的上下都添加一个空行。
+此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a>。</p>
+</blockquote>
+<h2 id="段落">段落</h2>
+<p>在段落之间添加一个空行，另外，在行尾添加空格，
+下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。</p>
+<pre><code class="language-markdown">这是一个段落
+
+这是另一个段落
+</code></pre>
+<h2 id="粗体与斜体">粗体与斜体</h2>
+<p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p>
+<pre><code class="language-markdown">*斜体*
+*斜体*
+
+**粗体**
+**粗体**
+
+***斜粗体***
+***斜粗体***
+</code></pre>
+<blockquote>
+<p>注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。
+但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。</p>
+</blockquote>
+<h2 id="分隔线">分隔线</h2>
+<p>我一般使用<code>-</code>作为分割线。</p>
+<pre><code class="language-markdown">---
+</code></pre>
+<blockquote>
+<p><code>_</code>与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式，
+因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行，
+因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a></p>
+</blockquote>
+<h2 id="删除线">删除线</h2>
+<p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
+<pre><code class="language-markdown">~~可以单独一行~~
+
+也可以~~行内~~使用。
+</code></pre>
+<h2 id="脚注">脚注</h2>
+<blockquote>
+<p>使用<code>markdown-it-footnote</code></p>
+</blockquote>
+<p>可以对文本进行补充说明，也可以说是注释。</p>
+<pre><code class="language-markdown">后面的是脚注[^脚注]
+
+[^脚注]: 这是一个脚注!
+</code></pre>
+<h2 id="列表">列表</h2>
+<h3 id="有序列表">有序列表</h3>
+<p>数字加<code>.</code>可表示一个有序列表。</p>
+<blockquote>
+<p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。
+<s>谁会用乱序数字当有序列表啊。</s></p>
+</blockquote>
+<pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
+1. 后面可以随便使用数字
+1. 第二项，
+   接在后面的文本。
+1. 第三项
+
+   空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
+   那么整个列表会被认为带有*标题*，也就是序号后面的那段文字。
+   而后面这些会被认为是这一个*标题*下的内容。
+1. 第四项，这后面有两个空格  
+   这会使这行文字带缩进。很难看出来，最好少用。
+
+空行加一段没有缩进的一句话，可以表示列表结束
+
+1. 这里又是新的列表
+2. 序号重新从1开始
+3. 由于没有出现空行+缩进，
+   这个列表是没有标题的。
+4. 这后面有两个空格  
+   也会使这行文字带缩进。很难看出来，最好少用。
+</code></pre>
+<p>以上代码的渲染效果：</p>
+<ol>
+<li>
+<p>第一项使用数字<code>1</code>作为起始序号</p>
+</li>
+<li>
+<p>后面可以随便使用数字</p>
+</li>
+<li>
+<p>第二项，
+接在后面的文本。</p>
+</li>
+<li>
+<p>第三项</p>
+<p>空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
+那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。
+而后面这些内容会被认为是这一个<em>标题</em>下的内容</p>
+</li>
+<li>
+<p>第四项，这后面有两个空格<br />
+这会使这行文字带缩进。很难看出来，最好少用。</p>
+</li>
+</ol>
+<p>空行加一段没有缩进的一句话，可以表示列表结束</p>
+<ol>
+<li>这里又是新的列表</li>
+<li>序号重新从1开始</li>
+<li>由于没有出现空行+缩进，
+这个列表是没有标题的。</li>
+<li>这后面有两个空格<br />
+也会使这行文字带缩进。很难看出来，最好少用。</li>
+</ol>
+<h3 id="无序列表">无序列表</h3>
+<p>用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。</p>
+<pre><code class="language-markdown">- 第一项
+- 第二项
+
+* 第一项
+* 第二项
+
+- 第一项
+- 第二项
+</code></pre>
+<h2 id="注释块">注释块</h2>
+<p>用 <code>&gt;</code> 表示注释块。</p>
+<pre><code class="language-markdown">&gt; 注释块
+</code></pre>
+<h2 id="代码">代码</h2>
+<h3 id="行内代码">行内代码</h3>
+<p>在段落上嵌入的代码，用反引号包裹代码。</p>
+<pre><code class="language-markdown">C语言入口函数:`main()`
+</code></pre>
+<h3 id="代码块">代码块</h3>
+<p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
+这里由于渲染原因，使用<code>'</code>代替例子中的反引号。</p>
+<pre><code class="language-markdown">'''c
+#include &lt;stdio.h&gt;
+int main()
+&#123;
+  printf(&quot;Hello world&quot;);
+  return 0;
+&#125;
+'''
+</code></pre>
+<p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p>
+<h2 id="嵌套">嵌套</h2>
+<p>大部分Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup>都能够相互嵌套。
+但在Markdown代码块中不能嵌套另一个代码块，
+这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a>中使用<code>'</code>代替的原因。</p>
+<h2 id="链接">链接</h2>
+<p><code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code></p>
+<pre><code class="language-markdown">就像这样：
+[ME](https://huzerovo.github.io)
+
+&lt;https://huzerovo.github.io\&gt;
+</code></pre>
+<blockquote>
+<p>如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。</p>
+</blockquote>
+<h2 id="图片">图片</h2>
+<p><code>![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)</code>，标题可写可不写。</p>
+<pre><code class="language-markdown">就像这样：
+![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
+</code></pre>
+<h2 id="表格">表格</h2>
+<p>用 <code>|</code> 划分列
+用 <code>-</code> 划分表头和其他行</p>
+<p>可以设置对其方式:
+<code>-:</code> 整列右对齐
+<code>:-</code> 整列左对齐
+<code>:-:</code> 整列居中对齐</p>
+<pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
+| :---- | ----: | :---: |
+| 靠左  |  靠右 | 居中  |
+| 列1   |   列2 |  列3  |
+</code></pre>
+<h2 id="其他">其他</h2>
+<h3 id="使用HTML标签">使用HTML标签</h3>
+<p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p>
+<h3 id="反斜杠转义">反斜杠转义</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">符号名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\</td>
+<td style="text-align:left">反斜线</td>
+</tr>
+<tr>
+<td style="text-align:left">`</td>
+<td style="text-align:left">反引号</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">星号</td>
+</tr>
+<tr>
+<td style="text-align:left">_</td>
+<td style="text-align:left">下划线</td>
+</tr>
+<tr>
+<td style="text-align:left">{}</td>
+<td style="text-align:left">花括号</td>
+</tr>
+<tr>
+<td style="text-align:left">[]</td>
+<td style="text-align:left">方括号</td>
+</tr>
+<tr>
+<td style="text-align:left">()</td>
+<td style="text-align:left">小括号</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">井字号</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">加号</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">减号</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">英文句点</td>
+</tr>
+<tr>
+<td style="text-align:left">!</td>
+<td style="text-align:left">感叹号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="拓展语法">拓展语法</h2>
+<p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p>
+<h3 id="任务列表">任务列表</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p>
+<pre><code class="language-markdown">- [x] first
+- [ ] seconde
+- [ ] next
+</code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> first</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> seconde</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> next</li>
+</ul>
+<h3 id="下划线">下划线</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p>
+<pre><code class="language-markdown">++下划线在这里++
+</code></pre>
+<p><ins>下划线在这里</ins></p>
+<h3 id="行内脚注">行内脚注</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p>
+<pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
+</code></pre>
+<p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
+<h3 id="缩写">缩写</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
+<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.
+</code></pre>
+<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+<h3 id="高亮">高亮</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
+<pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
+</code></pre>
+<p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
+<h3 id="上-下标">上/下标</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p>
+<pre><code class="language-markdown">这里有个^上标^
+
+而这里有个~下标~
+</code></pre>
+<p>这里有个<sup>上标</sup></p>
+<p>而这里有个<sub>下标</sub></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。 <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>不需要为脚注命名了 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 防火墙</title>
     <url>/2021/02/18/linux-firewall/</url>
     <content><![CDATA[<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
@@ -2466,74 +2558,6 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
         <tag>算法</tag>
         <tag>回归算法</tag>
         <tag>算法优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>逻辑回归</title>
-    <url>/2021/11/25/logistic-regression/</url>
-    <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
-<span id="more"></span>
-<h2 id="线性回归的不足">线性回归的不足</h2>
-<p>当数据的分布情况是这样子的时候，
-线性回归得出的模型效果不好：
-<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
-<p>于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<h2 id="数学原理">数学原理</h2>
-<h3 id="概率函数">概率函数</h3>
-<p>设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
-$ P(y = 1 \mid x ; \theta) = h*{\theta}(x) $，
-$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
-当$ y \in {0, 1} $时，我们可以这样子优化一下：</p>
-<p>$$
-P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
-$$</p>
-<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
-<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
-<p>优雅！</p>
-<h3 id="进行极大似然估计">进行极大似然估计</h3>
-<p>设似然函数：</p>
-<p>$$
-L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
-$$</p>
-<p>$$
-l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
-$$</p>
-<p>可得：</p>
-<p>$$
-\frac{\partial}{\partial \theta_{j}} l(\theta) =
-\sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
-$$</p>
-<h3 id="梯度上升求解">梯度上升求解</h3>
-<p>类似梯度下降，当函数具有最大值时，
-使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p>$$
-x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$</p>
-<p>即可得到：</p>
-<p>$$
-\theta_{j} = \theta_{j} +
-\partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
-$$</p>
-<h2 id="与线性回归的对比">与线性回归的对比</h2>
-<p>最后推导得出的公式与线性回归的推导公式十分相似，
-但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
-因此，逻辑回归与线性回归实际上是不相同的。</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2884,6 +2908,74 @@ unsigned int n = x &amp; 0x3f;
 ]]></content>
       <categories>
         <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>逻辑回归</title>
+    <url>/2021/11/25/logistic-regression/</url>
+    <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
+<span id="more"></span>
+<h2 id="线性回归的不足">线性回归的不足</h2>
+<p>当数据的分布情况是这样子的时候，
+线性回归得出的模型效果不好：
+<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
+<p>于是我们希望有数学模型能够描述这种关系，
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h2 id="数学原理">数学原理</h2>
+<h3 id="概率函数">概率函数</h3>
+<p>设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
+$ P(y = 1 \mid x ; \theta) = h*{\theta}(x) $，
+$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
+当$ y \in {0, 1} $时，我们可以这样子优化一下：</p>
+<p>$$
+P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
+$$</p>
+<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
+<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
+<p>优雅！</p>
+<h3 id="进行极大似然估计">进行极大似然估计</h3>
+<p>设似然函数：</p>
+<p>$$
+L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
+$$</p>
+<p>$$
+l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
+$$</p>
+<p>可得：</p>
+<p>$$
+\frac{\partial}{\partial \theta_{j}} l(\theta) =
+\sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
+$$</p>
+<h3 id="梯度上升求解">梯度上升求解</h3>
+<p>类似梯度下降，当函数具有最大值时，
+使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p>$$
+x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
+$$</p>
+<p>即可得到：</p>
+<p>$$
+\theta_{j} = \theta_{j} +
+\partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
+$$</p>
+<h2 id="与线性回归的对比">与线性回归的对比</h2>
+<p>最后推导得出的公式与线性回归的推导公式十分相似，
+但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
+因此，逻辑回归与线性回归实际上是不相同的。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -3732,94 +3824,6 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
       </tags>
   </entry>
   <entry>
-    <title>树莓派上运行的服务</title>
-    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
-    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
-<span id="more"></span>
-<h2 id="Nginx服务器">Nginx服务器</h2>
-<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了Nginx，
-用来反代树莓派上所有服务。</p>
-<h2 id="Adguard-Home-DNS解析服务">Adguard Home DNS解析服务</h2>
-<blockquote>
-<p>Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
-</blockquote>
-<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
-一开始是直接改hosts文件的，但这样要改所有会访问树莓派服务的设备的hosts，
-这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
-并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。</p>
-<h2 id="Aria2下载服务">Aria2下载服务</h2>
-<blockquote>
-<p>Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
-AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
-</blockquote>
-<p>Aria2本身只有命令行界面，AriaNg为其提供了web GUI，
-部署在树莓派上就能够通过网页远程管理Aria2了。</p>
-<p>Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
-这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。</p>
-<h2 id="Nextcloud私有云盘">Nextcloud私有云盘</h2>
-<blockquote>
-<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
-</blockquote>
-<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
-此外云盘有时会用Collabora office编辑一些文档，<s>问就是懒得重启到Windows编辑</s>。
-但实际上用的很少，因为还在树莓派部署了Collabora office的内建服务器，
-然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
-<p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
-<h2 id="Syncthing文件同步服务">Syncthing文件同步服务</h2>
-<blockquote>
-<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
-</blockquote>
-<p>这个主要用来进行文件同步，但与Nextcloud有一些不同。</p>
-<p>Nextcloud在Android上有个奇奇怪怪的问题。
-在Linux上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
-同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
-但在Android上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
-按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
-<code>Android/media/.../sync/videos</code>。</p>
-<p>这很不合理，因为我在Android也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
-而Syncthing能够满足这个需求。</p>
-<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s></p>
-<h2 id="一些不常用的服务">一些不常用的服务</h2>
-<h3 id="Homeassistant服务">Homeassistant服务</h3>
-<blockquote>
-<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
-</blockquote>
-<p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
-<h3 id="Netdata性能监控">Netdata性能监控</h3>
-<blockquote>
-<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
-</blockquote>
-<p>这个服务只是一时兴起部署的，几乎很少使用。
-<s>这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s></p>
-<h3 id="Cups打印机服务">Cups打印机服务</h3>
-<p>有个打印机，用cups在局域网内共享，没啥好说的。
-<s>就是有时会找不到打印机，要重启一下服务</s></p>
-<h3 id="Cockpit网页管理">Cockpit网页管理</h3>
-<blockquote>
-<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
-</blockquote>
-<p>这个是Redhat赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
-但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>如aria2.my.domain，adguard.my.domain，地址解析用到了自建的DNS服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>树莓派</category>
-      </categories>
-      <tags>
-        <tag>树莓派</tag>
-        <tag>aria2</tag>
-        <tag>云盘</tag>
-        <tag>文件同步</tag>
-        <tag>远程管理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>替罪羊树</title>
     <url>/2024/01/21/scapegoat-tree/</url>
     <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
@@ -4188,6 +4192,94 @@ bool should_rebuild(int r) &#123;
       </tags>
   </entry>
   <entry>
+    <title>树莓派上运行的服务</title>
+    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
+    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
+<span id="more"></span>
+<h2 id="Nginx服务器">Nginx服务器</h2>
+<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了Nginx，
+用来反代树莓派上所有服务。</p>
+<h2 id="Adguard-Home-DNS解析服务">Adguard Home DNS解析服务</h2>
+<blockquote>
+<p>Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
+</blockquote>
+<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
+一开始是直接改hosts文件的，但这样要改所有会访问树莓派服务的设备的hosts，
+这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
+并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。</p>
+<h2 id="Aria2下载服务">Aria2下载服务</h2>
+<blockquote>
+<p>Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
+AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+</blockquote>
+<p>Aria2本身只有命令行界面，AriaNg为其提供了web GUI，
+部署在树莓派上就能够通过网页远程管理Aria2了。</p>
+<p>Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
+这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。</p>
+<h2 id="Nextcloud私有云盘">Nextcloud私有云盘</h2>
+<blockquote>
+<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
+</blockquote>
+<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
+此外云盘有时会用Collabora office编辑一些文档，<s>问就是懒得重启到Windows编辑</s>。
+但实际上用的很少，因为还在树莓派部署了Collabora office的内建服务器，
+然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
+<p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
+<h2 id="Syncthing文件同步服务">Syncthing文件同步服务</h2>
+<blockquote>
+<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
+</blockquote>
+<p>这个主要用来进行文件同步，但与Nextcloud有一些不同。</p>
+<p>Nextcloud在Android上有个奇奇怪怪的问题。
+在Linux上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
+同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
+但在Android上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
+按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
+<code>Android/media/.../sync/videos</code>。</p>
+<p>这很不合理，因为我在Android也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
+而Syncthing能够满足这个需求。</p>
+<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s></p>
+<h2 id="一些不常用的服务">一些不常用的服务</h2>
+<h3 id="Homeassistant服务">Homeassistant服务</h3>
+<blockquote>
+<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
+</blockquote>
+<p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
+<h3 id="Netdata性能监控">Netdata性能监控</h3>
+<blockquote>
+<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
+</blockquote>
+<p>这个服务只是一时兴起部署的，几乎很少使用。
+<s>这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s></p>
+<h3 id="Cups打印机服务">Cups打印机服务</h3>
+<p>有个打印机，用cups在局域网内共享，没啥好说的。
+<s>就是有时会找不到打印机，要重启一下服务</s></p>
+<h3 id="Cockpit网页管理">Cockpit网页管理</h3>
+<blockquote>
+<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
+</blockquote>
+<p>这个是Redhat赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
+但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如aria2.my.domain，adguard.my.domain，地址解析用到了自建的DNS服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>aria2</tag>
+        <tag>云盘</tag>
+        <tag>文件同步</tag>
+        <tag>远程管理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>smali 语法</title>
     <url>/2022/03/05/smali-language/</url>
     <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
@@ -4376,15 +4468,9 @@ String 为 java.lang 包中的一个对象</p>
         <category>杂货铺</category>
       </categories>
       <tags>
-        <tag>smali</tag>
         <tag>Android</tag>
+        <tag>smali</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>提问的智慧</title>
-    <url>/2023/07/19/smart-questions/</url>
-    <content><![CDATA[<!-- more -->
-]]></content>
   </entry>
   <entry>
     <title>Github Page时间测试</title>
@@ -4393,6 +4479,12 @@ String 为 java.lang 包中的一个对象</p>
 <span id="more"></span>
 <p>发现Github Page上的日期比实际的日期少一天。</p>
 <p>似乎是时区问题？没有验证。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>提问的智慧</title>
+    <url>/2023/07/19/smart-questions/</url>
+    <content><![CDATA[<!-- more -->
 ]]></content>
   </entry>
   <entry>
