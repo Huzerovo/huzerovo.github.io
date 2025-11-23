@@ -17,7 +17,7 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>将init.vim迁移至init.lua - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="generator" content="Hexo 8.1.1" />
     <meta
       name="description"
       content="本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。 详细的内容可在nvim中使用命令:help lua-guide进行查看。"
@@ -40,10 +40,10 @@
     />
     <meta property="article:modified_time" content="2023-01-14T04:00:00.000Z" />
     <meta property="article:author" content="狐zerOAO" />
-    <meta property="article:tag" content="vim" />
-    <meta property="article:tag" content="neovim" />
-    <meta property="article:tag" content="配置" />
     <meta property="article:tag" content="lua" />
+    <meta property="article:tag" content="neovim" />
+    <meta property="article:tag" content="vim" />
+    <meta property="article:tag" content="配置" />
     <meta name="twitter:card" content="summary" />
     <link
       rel="alternate"
@@ -222,7 +222,7 @@
     \ coc#refresh()
 </code></pre>
         <p>在lua中则可以这样子配置</p>
-        <pre><code class="language-lua">local opts = &#123;silent = true, noremap = true, expr = true&#125;
+        <pre><code class="language-lua">local opts = {silent = true, noremap = true, expr = true}
 vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, &quot;pumvisable() ? '\&lt;C-n&gt;' : &lt;SID&gt;check_back_space() ? '\&lt;TAB&gt;' : coc#refresh()&quot;, opts)
 -- 这个实际上是直接使用了vim的配置，大部分的配置都可以像这样子进行迁移
 -- 但我喜欢直接使用lua函数，就像下面这样
@@ -289,15 +289,15 @@ vim.fn['plug#end']()
             >coc的配置例子</a
           >后， 使用的配置如下：
         </p>
-        <pre><code class="language-json">&#123;
-  &quot;languageserver&quot;: &#123;
-    &quot;lua&quot;: &#123;
+        <pre><code class="language-json">{
+  &quot;languageserver&quot;: {
+    &quot;lua&quot;: {
       &quot;command&quot;: &quot;lua-language-server&quot;,
       &quot;args&quot;: [],
       &quot;filetypes&quot;: [&quot;lua&quot;]
-    &#125;
-  &#125;
-&#125;
+    }
+  }
+}
 </code></pre>
         <p>
           <strong>注</strong

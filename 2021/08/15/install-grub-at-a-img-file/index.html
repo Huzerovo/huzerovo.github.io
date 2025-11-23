@@ -17,7 +17,7 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>在磁盘映像文件上安装 Grub 2 - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="generator" content="Hexo 8.1.1" />
     <meta
       name="description"
       content="记录一下我在一个磁盘文件上安装Grub作为启动引导的过程"
@@ -40,8 +40,8 @@
     />
     <meta property="article:modified_time" content="2021-10-29T04:00:00.000Z" />
     <meta property="article:author" content="狐zerOAO" />
-    <meta property="article:tag" content="Linux" />
     <meta property="article:tag" content="Grub" />
+    <meta property="article:tag" content="Linux" />
     <meta name="twitter:card" content="summary" />
     <link
       rel="alternate"
@@ -262,15 +262,15 @@ Command (? for help): d
 Using 1
 Command (? for help): n
 Partition number (1-128, default 1):
-First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;:
-Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: +1M
+First sector (34-40926, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-40926, default = 40926) or {+-}size{KMGTP}: +1M
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef02
 Changed type of partition to 'BIOS boot partition'
 Command (? for help): n
 Partition number (2-128, default 2):
-First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;:
-Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;:
+First sector (34-40926, default = 4096) or {+-}size{KMGTP}:
+Last sector (4096-40926, default = 40926) or {+-}size{KMGTP}:
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300):
 Changed type of partition to 'Linux filesystem'
@@ -390,11 +390,11 @@ set root='(hd0,gpt2)'
 # 选择启动项超时时间，0 即立即启动
 set timeout=0
 # 菜单选项
-menuentry EntryName &#123;
+menuentry EntryName {
     # 载入 file 并启动
     multiboot ($root)/boot/file
     boot
-&#125;
+}
 </code></pre>
         <h3 id="卸载设备">卸载设备</h3>
         <pre><code class="language-shell">sudo umount /mnt

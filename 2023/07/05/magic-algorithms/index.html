@@ -17,7 +17,7 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>编程魔法学 - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="generator" content="Hexo 8.1.1" />
     <meta
       name="description"
       content="在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。"
@@ -391,14 +391,14 @@ char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
 #define MASK_4  0x0F0F0F0F
 #define MASK_8  0x00FF00FF
 #define MASK_16 0x0000FFFF
-unsigned int ones(unsigned int x) &#123;
+unsigned int ones(unsigned int x) {
     x = (x &amp; MASK_1) + ((x &amp; (~MASK_1)) &gt;&gt; 1);
     x = (x &amp; MASK_2) + ((x &amp; (~MASK_2)) &gt;&gt; 2);
     x = (x &amp; MASK_4) + ((x &amp; (~MASK_4)) &gt;&gt; 4);
     x = (x &amp; MASK_8) + ((x &amp; (~MASK_8)) &gt;&gt; 8);
     x = (x &amp; MASK_16) + ((x &amp; (~MASK_16)) &gt;&gt; 16);
     return (unsigned int)x;
-&#125;
+}
 </code></pre>
         <p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
         <h3 id="优化">优化</h3>
@@ -599,14 +599,14 @@ unsigned int n = x &amp; 0x3f;
 </code></pre>
         <h3 id="最终结果">最终结果</h3>
         <p>我们现在将上述的优化都写下来：</p>
-        <pre><code class="language-c">unsigned int ones(unsigned int x) &#123;
+        <pre><code class="language-c">unsigned int ones(unsigned int x) {
     x -= (x &gt;&gt; 1) &amp; 0x55555555;
     x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
     x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
     x += x &gt;&gt; 8;
     x += x &gt;&gt; 16;
     rerurn x &amp; 0xFF;
-&#125;
+}
 </code></pre>
         <hr class="footnotes-sep" />
         <section class="footnotes">

@@ -17,7 +17,7 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>替罪羊树 - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="generator" content="Hexo 8.1.1" />
     <meta
       name="description"
       content="简单介绍一下替罪羊树算法，以及代码实现。"
@@ -40,8 +40,8 @@
     />
     <meta property="article:modified_time" content="2024-01-23T00:54:06.000Z" />
     <meta property="article:author" content="狐zerOAO" />
-    <meta property="article:tag" content="算法" />
     <meta property="article:tag" content="二叉树" />
+    <meta property="article:tag" content="算法" />
     <meta name="twitter:card" content="summary" />
     <link
       rel="alternate"
@@ -301,12 +301,12 @@ double alpha = 0.75;
         <p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
         <p>接下来是树结构定义：</p>
         <pre><code class="language-c">// 结点值
-int v[MAXN] = &#123;0&#125;;
+int v[MAXN] = {0};
 // 结点权值，定义为结点的重复次数。
-int w[MAXN] = &#123;0&#125;;
+int w[MAXN] = {0};
 // 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
-int lt[MAXN] = &#123;0&#125;;
-int rt[MAXN] = &#123;0&#125;;
+int lt[MAXN] = {0};
+int rt[MAXN] = {0};
 </code></pre>
         <p>
           树以数组的形式表达，
@@ -332,11 +332,11 @@ int rt[MAXN] = &#123;0&#125;;
         </p>
         <p>下面这些数组有助于我们更方便地对树进行操作：</p>
         <pre><code class="language-c">// 树的存储大小
-int s[MAXN] = &#123;0&#125;;
+int s[MAXN] = {0};
 // 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
-int rs[MAXN] = &#123;0&#125;;
+int rs[MAXN] = {0};
 // 树的带权大小，与`w`数组密切相关
-int ws[MAXN] = &#123;0&#125;;
+int ws[MAXN] = {0};
 </code></pre>
         <p>
           这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
@@ -474,7 +474,7 @@ static bool should_rebuild(int r);
         <p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
         <pre><code class="language-c">// 计算树的大小
 // @param r 树的根结点索引
-void gen_size(int r) &#123;
+void gen_size(int r) {
     if (!r)
         return;
     // 直接递归把子树大小计算出来
@@ -484,7 +484,7 @@ void gen_size(int r) &#123;
     s[r] = s[lt[r]] + s[rt[r]] + 1;
     rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
     ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
-&#125;
+}
 </code></pre>
         <p>
           值得注意的是，由于数组索引从<code>0</code>开始，于是有：
@@ -497,25 +497,25 @@ void gen_size(int r) &#123;
           就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
           不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：
         </p>
-        <pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) &#123;
+        <pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) {
     if (!r)
         return;
     // 遍历左子树
     flat(lt[r], flat_tree, tree_size);
     // 访问根
-    if (w[r] &gt; 0) &#123;
+    if (w[r] &gt; 0) {
         // 进入中序序列
         flat_tree[*tree_size] = r;
         // 序列长度加一
         *tree_size += 1;
-    &#125;
+    }
     // 遍历右子树
     flat(rt[r], flat_tree, tree_size);
-&#125;
+}
 </code></pre>
         <h4 id="反序列化">反序列化</h4>
         <p>从中序序列反序列化出一棵树也比较简单：</p>
-        <pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) &#123;
+        <pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) {
     if (l &gt;= r || !flat_tree)
         return 0;
     // 中间的为根，需要注意，flat_tree中保存的才是结点索引
@@ -527,14 +527,14 @@ void gen_size(int r) &#123;
     rt[k] = generate_tree(flat_tree, mid + 1, r);
     // 返回根
     return k;
-&#125;
+}
 </code></pre>
         <h4 id="重构入口函数">重构入口函数</h4>
         <p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
         <pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
-void rebuild(int *r) &#123;
+void rebuild(int *r) {
     // flat tree
-    int ft[MAXN] = &#123;0&#125;;
+    int ft[MAXN] = {0};
     // tree size
     int ts = 0;
     // 序列化
@@ -543,22 +543,22 @@ void rebuild(int *r) &#123;
     *r = generate_tree(ft, 0, ts);
     // 重新计算结点大小
     gen_size(*r);
-&#125;
+}
 </code></pre>
         <h4 id="判断是否需要重构">判断是否需要重构</h4>
         <p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
         <pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
-static max(a, b) &#123;
+static max(a, b) {
     return a &gt; b ? a : b;
-&#125;
-bool should_rebuild(int r) &#123;
+}
+bool should_rebuild(int r) {
     return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
         || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
-&#125;
+}
 </code></pre>
         <h3 id="搜索">搜索</h3>
         <p>和一般二叉树的搜索无异：</p>
-        <pre><code class="language-c">int search_node(int r, int val) &#123;
+        <pre><code class="language-c">int search_node(int r, int val) {
     if (!r)
         return 0;
     int child = 0;
@@ -573,7 +573,7 @@ bool should_rebuild(int r) &#123;
         return w[r] ? r : 0;
     // 与当前结点值不同，则向子树递归搜索
     retrurn search_node(child, val);
-&#125;
+}
 </code></pre>
         <h3 id="插入">插入</h3>
         <p>
@@ -592,10 +592,10 @@ bool should_rebuild(int r) &#123;
             >加一。
           </li>
         </ul>
-        <pre><code class="language-c">void insert_node(int *r, int val) &#123;
+        <pre><code class="language-c">void insert_node(int *r, int val) {
     if (!r)
         return;
-    if (!*r) &#123;
+    if (!*r) {
         // 到达叶子结点
         // 结点计数加一
         int k = ++count;
@@ -606,7 +606,7 @@ bool should_rebuild(int r) &#123;
         v[k] = val;
         // 更新结点
         *r = k;
-    &#125; else &#123;
+    } else {
         // 现在还在树中
         if (val == v[*r])
             // 重复值
@@ -615,38 +615,38 @@ bool should_rebuild(int r) &#123;
             insert_node(&amp;lt[*r], val);
         else
             insert_node(&amp;lt[*r], val);
-    &#125;
+    }
     // 重新计算结点大小
     gen_size(*r);
     // 判断是否重构
     if (should_rebuild(*r))
         rebuild(r);
-&#125;
+}
 </code></pre>
         <h3 id="删除">删除</h3>
         <p>
           由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
           需要注意的是不能直接将其赋值为0，因为可能有重复值。
         </p>
-        <pre><code class="language-c">void delete_node(int *r, int val) &#123;
+        <pre><code class="language-c">void delete_node(int *r, int val) {
     if (!r || !*r)
         return;
-    if (val == v[*r]) &#123;
+    if (val == v[*r]) {
         // 存在，删除一个
         if (w[*r] &gt; 0) w[*r]--;
-    &#125; else &#123;
+    } else {
         // 与结点值不同，在子树递归删除
         if (val &lt; v[*r])
             delete_node(&amp;lt[*r], val);
         else
             delete_node(&amp;rt[*r], val);
-    &#125;
+    }
     // 更新结点大小
     gen_size(*r);
     // 检查是否重构
     if (should_rebuild(*r))
         rebuild(r);
-&#125;
+}
 </code></pre>
         <h2 id="一些问题">一些问题</h2>
         <blockquote>

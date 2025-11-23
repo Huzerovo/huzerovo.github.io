@@ -104,75 +104,6 @@ rise b -j$(nproc --all)
       </tags>
   </entry>
   <entry>
-    <title>使用Hexo从私有仓库部署Github Page</title>
-    <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
-    <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
-<span id="more"></span>
-<h2 id="起因">起因</h2>
-<p>在开始搭建博客时，为了能够自动部署Github Page，
-我参考<a href="https://hexo.io/zh-cn/docs/github-pages">Hexo提供的教程</a>创建了Github Actions进行自动构建。
-但这导致源文件也要上传到仓库，然而我并不想把没写完的也传上去，
-于是导致没写完的文章积压在本地。</p>
-<p>不幸的是之前博客主要是存储在树莓派上，电脑上的是远古版本了。
-在毕业后清理了一些在上面写的课程设计，不小心把博客也删掉了。
-不过还好
-折腾了几次树莓派的备份脚本，<s>虽然折腾完就没用过多少次，幸好期间也没怎么开新的坑</s>，
-总算是没有完全丢失草稿。</p>
-<p>于是就想着把博客源文件与Github Page仓库分离，把全部文件都上传到私有仓库里。</p>
-<h2 id="过程">过程</h2>
-<p>其实在之前也想过把仓库变成私有的，但改了之后发现网站没了，去Github Docs看了才知道，
-只有付费账户才能使用私有仓库构建Github Page。</p>
-<p>但我想保留原有的提交记录，于是我想着把当前存放源文件的分支上传到一个新的仓库，
-在Github Page的仓库中创建Actions，让它从我的私有仓库构建。
-但转念一想：Github Actions也没法访问我的私有仓库啊，
-虽然能通过Personal Token可以做到，
-但这玩意也不能放公开仓库用啊。</p>
-<p>于是我又想：那我能不能在私有仓库构建好再推送过去。</p>
-<p>本着能偷懒就不干活的精神，在搜索了一番后我发现，
-Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可以完成这个任务
-（我还想着找不到就直接配置<code>hexo deploy</code>）。</p>
-<p>于是参考<a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-deploy-to-external-repository-external_repository">peaceiris/actions-gh-pages</a>进行了配置。</p>
-<h2 id="配置">配置</h2>
-<ol>
-<li>
-<p>在配置中的<code>deploy_key</code>其实就是ssh的私匙，
-通过<code>ssh-keygen</code>生成一个就行：</p>
-<pre><code class="language-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
-</code></pre>
-</li>
-<li>
-<p>在私有仓库的<code>Settings =&gt; Secrets and variables =&gt; Actions</code>把私匙添加进去，
-命个记得住的名（这个要用到的），在这里我用<code>HEXO_DEPLOY_KEY</code>命名。</p>
-</li>
-<li>
-<p>在Github Page仓库中的<code>Settings =&gt; Deploy keys</code>把公匙添加进去。</p>
-</li>
-<li>
-<p>配置<code>actions-gh-pages</code>，参考如下：</p>
-<pre><code class="language-yaml"># 前面的省略，与Hexo教程中的一样
-- name: Deploy
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤2中设置的名字
-    external_repository: UserName/username.github.io # 你的Github Page仓库
-    publish_branch: master # 在Settings =&gt; Page中设置的构建源分支
-    publish_dir: ./public # Hexo _config.yml 中配置的public_dir
-    commit_message: &quot;Deploy by Github Actions&quot; # 随意
-</code></pre>
-</li>
-</ol>
-<h2 id="完事">完事</h2>
-<p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
-]]></content>
-      <categories>
-        <category>事记</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git提交规范</title>
     <url>/2023/11/02/git-commit-style/</url>
     <content><![CDATA[<p>记录一下我自己的commit注释规范</p>
@@ -279,6 +210,75 @@ Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可�
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Hexo从私有仓库部署Github Page</title>
+    <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
+    <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
+<span id="more"></span>
+<h2 id="起因">起因</h2>
+<p>在开始搭建博客时，为了能够自动部署Github Page，
+我参考<a href="https://hexo.io/zh-cn/docs/github-pages">Hexo提供的教程</a>创建了Github Actions进行自动构建。
+但这导致源文件也要上传到仓库，然而我并不想把没写完的也传上去，
+于是导致没写完的文章积压在本地。</p>
+<p>不幸的是之前博客主要是存储在树莓派上，电脑上的是远古版本了。
+在毕业后清理了一些在上面写的课程设计，不小心把博客也删掉了。
+不过还好
+折腾了几次树莓派的备份脚本，<s>虽然折腾完就没用过多少次，幸好期间也没怎么开新的坑</s>，
+总算是没有完全丢失草稿。</p>
+<p>于是就想着把博客源文件与Github Page仓库分离，把全部文件都上传到私有仓库里。</p>
+<h2 id="过程">过程</h2>
+<p>其实在之前也想过把仓库变成私有的，但改了之后发现网站没了，去Github Docs看了才知道，
+只有付费账户才能使用私有仓库构建Github Page。</p>
+<p>但我想保留原有的提交记录，于是我想着把当前存放源文件的分支上传到一个新的仓库，
+在Github Page的仓库中创建Actions，让它从我的私有仓库构建。
+但转念一想：Github Actions也没法访问我的私有仓库啊，
+虽然能通过Personal Token可以做到，
+但这玩意也不能放公开仓库用啊。</p>
+<p>于是我又想：那我能不能在私有仓库构建好再推送过去。</p>
+<p>本着能偷懒就不干活的精神，在搜索了一番后我发现，
+Hexo教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可以完成这个任务
+（我还想着找不到就直接配置<code>hexo deploy</code>）。</p>
+<p>于是参考<a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-deploy-to-external-repository-external_repository">peaceiris/actions-gh-pages</a>进行了配置。</p>
+<h2 id="配置">配置</h2>
+<ol>
+<li>
+<p>在配置中的<code>deploy_key</code>其实就是ssh的私匙，
+通过<code>ssh-keygen</code>生成一个就行：</p>
+<pre><code class="language-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
+</code></pre>
+</li>
+<li>
+<p>在私有仓库的<code>Settings =&gt; Secrets and variables =&gt; Actions</code>把私匙添加进去，
+命个记得住的名（这个要用到的），在这里我用<code>HEXO_DEPLOY_KEY</code>命名。</p>
+</li>
+<li>
+<p>在Github Page仓库中的<code>Settings =&gt; Deploy keys</code>把公匙添加进去。</p>
+</li>
+<li>
+<p>配置<code>actions-gh-pages</code>，参考如下：</p>
+<pre><code class="language-yaml"># 前面的省略，与Hexo教程中的一样
+- name: Deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤2中设置的名字
+    external_repository: UserName/username.github.io # 你的Github Page仓库
+    publish_branch: master # 在Settings =&gt; Page中设置的构建源分支
+    publish_dir: ./public # Hexo _config.yml 中配置的public_dir
+    commit_message: &quot;Deploy by Github Actions&quot; # 随意
+</code></pre>
+</li>
+</ol>
+<h2 id="完事">完事</h2>
+<p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
+]]></content>
+      <categories>
+        <category>事记</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -445,16 +445,16 @@ Using 1
 
 Command (? for help): n
 Partition number (1-128, default 1):
-First sector (34-40926, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;:
-Last sector (2048-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;: +1M
+First sector (34-40926, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-40926, default = 40926) or {+-}size{KMGTP}: +1M
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef02
 Changed type of partition to 'BIOS boot partition'
 
 Command (? for help): n
 Partition number (2-128, default 2):
-First sector (34-40926, default = 4096) or &#123;+-&#125;size&#123;KMGTP&#125;:
-Last sector (4096-40926, default = 40926) or &#123;+-&#125;size&#123;KMGTP&#125;:
+First sector (34-40926, default = 4096) or {+-}size{KMGTP}:
+Last sector (4096-40926, default = 40926) or {+-}size{KMGTP}:
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300):
 Changed type of partition to 'Linux filesystem'
@@ -563,11 +563,11 @@ set root='(hd0,gpt2)'
 set timeout=0
 
 # 菜单选项
-menuentry EntryName &#123;
+menuentry EntryName {
     # 载入 file 并启动
     multiboot ($root)/boot/file
     boot
-&#125;
+}
 </code></pre>
 <h3 id="卸载设备">卸载设备</h3>
 <pre><code class="language-shell">sudo umount /mnt
@@ -1585,6 +1585,333 @@ avatar_size: normal
       </tags>
   </entry>
   <entry>
+    <title>Learn Markdown</title>
+    <url>/2020/11/08/learn-markdown/</url>
+    <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
+<span id="more"></span>
+<blockquote>
+<p>注意，使用<a href="https://github.com/markdown-it/markdown-it">markdown-it</a>作为渲染
+引擎，因此部分语法可能略有差异。</p>
+</blockquote>
+<h2 id="好习惯">好习惯</h2>
+<p>在每个不同的Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间使用空行或许是个好习惯。</p>
+<h2 id="标题">标题</h2>
+<p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
+一般使用这个方法。</p>
+<pre><code class="language-markdown"># 一级标题
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+
+##### 五级标题
+
+###### 六级标题
+</code></pre>
+<blockquote>
+<p>使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>，
+我并不推荐使用这种方式。
+个人习惯是在标题的上下都添加一个空行。
+此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a>。</p>
+</blockquote>
+<h2 id="段落">段落</h2>
+<p>在段落之间添加一个空行，另外，在行尾添加空格，
+下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。</p>
+<pre><code class="language-markdown">这是一个段落
+
+这是另一个段落
+</code></pre>
+<h2 id="粗体与斜体">粗体与斜体</h2>
+<p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p>
+<pre><code class="language-markdown">*斜体*
+*斜体*
+
+**粗体**
+**粗体**
+
+***斜粗体***
+***斜粗体***
+</code></pre>
+<blockquote>
+<p>注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。
+但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。</p>
+</blockquote>
+<h2 id="分隔线">分隔线</h2>
+<p>我一般使用<code>-</code>作为分割线。</p>
+<pre><code class="language-markdown">---
+</code></pre>
+<blockquote>
+<p><code>_</code>与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式，
+因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行，
+因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a></p>
+</blockquote>
+<h2 id="删除线">删除线</h2>
+<p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
+<pre><code class="language-markdown">~~可以单独一行~~
+
+也可以~~行内~~使用。
+</code></pre>
+<h2 id="脚注">脚注</h2>
+<blockquote>
+<p>使用<code>markdown-it-footnote</code></p>
+</blockquote>
+<p>可以对文本进行补充说明，也可以说是注释。</p>
+<pre><code class="language-markdown">后面的是脚注[^脚注]
+
+[^脚注]: 这是一个脚注!
+</code></pre>
+<h2 id="列表">列表</h2>
+<h3 id="有序列表">有序列表</h3>
+<p>数字加<code>.</code>可表示一个有序列表。</p>
+<blockquote>
+<p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。
+<s>谁会用乱序数字当有序列表啊。</s></p>
+</blockquote>
+<pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
+1. 后面可以随便使用数字
+1. 第二项，
+   接在后面的文本。
+1. 第三项
+
+   空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
+   那么整个列表会被认为带有*标题*，也就是序号后面的那段文字。
+   而后面这些会被认为是这一个*标题*下的内容。
+1. 第四项，这后面有两个空格  
+   这会使这行文字带缩进。很难看出来，最好少用。
+
+空行加一段没有缩进的一句话，可以表示列表结束
+
+1. 这里又是新的列表
+2. 序号重新从1开始
+3. 由于没有出现空行+缩进，
+   这个列表是没有标题的。
+4. 这后面有两个空格  
+   也会使这行文字带缩进。很难看出来，最好少用。
+</code></pre>
+<p>以上代码的渲染效果：</p>
+<ol>
+<li>
+<p>第一项使用数字<code>1</code>作为起始序号</p>
+</li>
+<li>
+<p>后面可以随便使用数字</p>
+</li>
+<li>
+<p>第二项，
+接在后面的文本。</p>
+</li>
+<li>
+<p>第三项</p>
+<p>空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
+那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。
+而后面这些内容会被认为是这一个<em>标题</em>下的内容</p>
+</li>
+<li>
+<p>第四项，这后面有两个空格<br />
+这会使这行文字带缩进。很难看出来，最好少用。</p>
+</li>
+</ol>
+<p>空行加一段没有缩进的一句话，可以表示列表结束</p>
+<ol>
+<li>这里又是新的列表</li>
+<li>序号重新从1开始</li>
+<li>由于没有出现空行+缩进，
+这个列表是没有标题的。</li>
+<li>这后面有两个空格<br />
+也会使这行文字带缩进。很难看出来，最好少用。</li>
+</ol>
+<h3 id="无序列表">无序列表</h3>
+<p>用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。</p>
+<pre><code class="language-markdown">- 第一项
+- 第二项
+
+* 第一项
+* 第二项
+
+- 第一项
+- 第二项
+</code></pre>
+<h2 id="注释块">注释块</h2>
+<p>用 <code>&gt;</code> 表示注释块。</p>
+<pre><code class="language-markdown">&gt; 注释块
+</code></pre>
+<h2 id="代码">代码</h2>
+<h3 id="行内代码">行内代码</h3>
+<p>在段落上嵌入的代码，用反引号包裹代码。</p>
+<pre><code class="language-markdown">C语言入口函数:`main()`
+</code></pre>
+<h3 id="代码块">代码块</h3>
+<p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
+这里由于渲染原因，使用<code>'</code>代替例子中的反引号。</p>
+<pre><code class="language-markdown">'''c
+#include &lt;stdio.h&gt;
+int main()
+{
+  printf(&quot;Hello world&quot;);
+  return 0;
+}
+'''
+</code></pre>
+<p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p>
+<h2 id="嵌套">嵌套</h2>
+<p>大部分Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup>都能够相互嵌套。
+但在Markdown代码块中不能嵌套另一个代码块，
+这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a>中使用<code>'</code>代替的原因。</p>
+<h2 id="链接">链接</h2>
+<p><code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code></p>
+<pre><code class="language-markdown">就像这样：
+[ME](https://huzerovo.github.io)
+
+&lt;https://huzerovo.github.io\&gt;
+</code></pre>
+<blockquote>
+<p>如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。</p>
+</blockquote>
+<h2 id="图片">图片</h2>
+<p><code>![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)</code>，标题可写可不写。</p>
+<pre><code class="language-markdown">就像这样：
+![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
+</code></pre>
+<h2 id="表格">表格</h2>
+<p>用 <code>|</code> 划分列
+用 <code>-</code> 划分表头和其他行</p>
+<p>可以设置对其方式:
+<code>-:</code> 整列右对齐
+<code>:-</code> 整列左对齐
+<code>:-:</code> 整列居中对齐</p>
+<pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
+| :---- | ----: | :---: |
+| 靠左  |  靠右 | 居中  |
+| 列1   |   列2 |  列3  |
+</code></pre>
+<h2 id="其他">其他</h2>
+<h3 id="使用HTML标签">使用HTML标签</h3>
+<p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p>
+<h3 id="反斜杠转义">反斜杠转义</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">符号名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\</td>
+<td style="text-align:left">反斜线</td>
+</tr>
+<tr>
+<td style="text-align:left">`</td>
+<td style="text-align:left">反引号</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">星号</td>
+</tr>
+<tr>
+<td style="text-align:left">_</td>
+<td style="text-align:left">下划线</td>
+</tr>
+<tr>
+<td style="text-align:left">{}</td>
+<td style="text-align:left">花括号</td>
+</tr>
+<tr>
+<td style="text-align:left">[]</td>
+<td style="text-align:left">方括号</td>
+</tr>
+<tr>
+<td style="text-align:left">()</td>
+<td style="text-align:left">小括号</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">井字号</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">加号</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">减号</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">英文句点</td>
+</tr>
+<tr>
+<td style="text-align:left">!</td>
+<td style="text-align:left">感叹号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="拓展语法">拓展语法</h2>
+<p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p>
+<h3 id="任务列表">任务列表</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p>
+<pre><code class="language-markdown">- [x] first
+- [ ] seconde
+- [ ] next
+</code></pre>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> first</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> seconde</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> next</li>
+</ul>
+<h3 id="下划线">下划线</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p>
+<pre><code class="language-markdown">++下划线在这里++
+</code></pre>
+<p><ins>下划线在这里</ins></p>
+<h3 id="行内脚注">行内脚注</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p>
+<pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
+</code></pre>
+<p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
+<h3 id="缩写">缩写</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
+<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.
+</code></pre>
+<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+<h3 id="高亮">高亮</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
+<pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
+</code></pre>
+<p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
+<h3 id="上-下标">上/下标</h3>
+<p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p>
+<pre><code class="language-markdown">这里有个^上标^
+
+而这里有个~下标~
+</code></pre>
+<p>这里有个<sup>上标</sup></p>
+<p>而这里有个<sub>下标</sub></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。 <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>不需要为脚注命名了 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线性回归</title>
     <url>/2021/09/11/linear-regression/</url>
     <content><![CDATA[<p>基于Andrew NG机器学习公开课程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。
@@ -1995,333 +2322,6 @@ $ 1 \times 1 $的矩阵$ A = \begin{bmatrix}a\end{bmatrix} $，
       </tags>
   </entry>
   <entry>
-    <title>Learn Markdown</title>
-    <url>/2020/11/08/learn-markdown/</url>
-    <content><![CDATA[<p><s>Markdown学习笔记</s>，更新后算是个人习惯写法，使用<code>hexo-randerer-markdown-it</code>渲染。</p>
-<span id="more"></span>
-<blockquote>
-<p>注意，使用<a href="https://github.com/markdown-it/markdown-it">markdown-it</a>作为渲染
-引擎，因此部分语法可能略有差异。</p>
-</blockquote>
-<h2 id="好习惯">好习惯</h2>
-<p>在每个不同的Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间使用空行或许是个好习惯。</p>
-<h2 id="标题">标题</h2>
-<p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
-一般使用这个方法。</p>
-<pre><code class="language-markdown"># 一级标题
-
-## 二级标题
-
-### 三级标题
-
-#### 四级标题
-
-##### 五级标题
-
-###### 六级标题
-</code></pre>
-<blockquote>
-<p>使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>，
-我并不推荐使用这种方式。
-个人习惯是在标题的上下都添加一个空行。
-此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a>。</p>
-</blockquote>
-<h2 id="段落">段落</h2>
-<p>在段落之间添加一个空行，另外，在行尾添加空格，
-下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。</p>
-<pre><code class="language-markdown">这是一个段落
-
-这是另一个段落
-</code></pre>
-<h2 id="粗体与斜体">粗体与斜体</h2>
-<p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p>
-<pre><code class="language-markdown">*斜体*
-*斜体*
-
-**粗体**
-**粗体**
-
-***斜粗体***
-***斜粗体***
-</code></pre>
-<blockquote>
-<p>注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。
-但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。</p>
-</blockquote>
-<h2 id="分隔线">分隔线</h2>
-<p>我一般使用<code>-</code>作为分割线。</p>
-<pre><code class="language-markdown">---
-</code></pre>
-<blockquote>
-<p><code>_</code>与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式，
-因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行，
-因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a></p>
-</blockquote>
-<h2 id="删除线">删除线</h2>
-<p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
-<pre><code class="language-markdown">~~可以单独一行~~
-
-也可以~~行内~~使用。
-</code></pre>
-<h2 id="脚注">脚注</h2>
-<blockquote>
-<p>使用<code>markdown-it-footnote</code></p>
-</blockquote>
-<p>可以对文本进行补充说明，也可以说是注释。</p>
-<pre><code class="language-markdown">后面的是脚注[^脚注]
-
-[^脚注]: 这是一个脚注!
-</code></pre>
-<h2 id="列表">列表</h2>
-<h3 id="有序列表">有序列表</h3>
-<p>数字加<code>.</code>可表示一个有序列表。</p>
-<blockquote>
-<p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。
-<s>谁会用乱序数字当有序列表啊。</s></p>
-</blockquote>
-<pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
-1. 后面可以随便使用数字
-1. 第二项，
-   接在后面的文本。
-1. 第三项
-
-   空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
-   那么整个列表会被认为带有*标题*，也就是序号后面的那段文字。
-   而后面这些会被认为是这一个*标题*下的内容。
-1. 第四项，这后面有两个空格  
-   这会使这行文字带缩进。很难看出来，最好少用。
-
-空行加一段没有缩进的一句话，可以表示列表结束
-
-1. 这里又是新的列表
-2. 序号重新从1开始
-3. 由于没有出现空行+缩进，
-   这个列表是没有标题的。
-4. 这后面有两个空格  
-   也会使这行文字带缩进。很难看出来，最好少用。
-</code></pre>
-<p>以上代码的渲染效果：</p>
-<ol>
-<li>
-<p>第一项使用数字<code>1</code>作为起始序号</p>
-</li>
-<li>
-<p>后面可以随便使用数字</p>
-</li>
-<li>
-<p>第二项，
-接在后面的文本。</p>
-</li>
-<li>
-<p>第三项</p>
-<p>空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
-那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。
-而后面这些内容会被认为是这一个<em>标题</em>下的内容</p>
-</li>
-<li>
-<p>第四项，这后面有两个空格<br />
-这会使这行文字带缩进。很难看出来，最好少用。</p>
-</li>
-</ol>
-<p>空行加一段没有缩进的一句话，可以表示列表结束</p>
-<ol>
-<li>这里又是新的列表</li>
-<li>序号重新从1开始</li>
-<li>由于没有出现空行+缩进，
-这个列表是没有标题的。</li>
-<li>这后面有两个空格<br />
-也会使这行文字带缩进。很难看出来，最好少用。</li>
-</ol>
-<h3 id="无序列表">无序列表</h3>
-<p>用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。</p>
-<pre><code class="language-markdown">- 第一项
-- 第二项
-
-* 第一项
-* 第二项
-
-- 第一项
-- 第二项
-</code></pre>
-<h2 id="注释块">注释块</h2>
-<p>用 <code>&gt;</code> 表示注释块。</p>
-<pre><code class="language-markdown">&gt; 注释块
-</code></pre>
-<h2 id="代码">代码</h2>
-<h3 id="行内代码">行内代码</h3>
-<p>在段落上嵌入的代码，用反引号包裹代码。</p>
-<pre><code class="language-markdown">C语言入口函数:`main()`
-</code></pre>
-<h3 id="代码块">代码块</h3>
-<p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
-这里由于渲染原因，使用<code>'</code>代替例子中的反引号。</p>
-<pre><code class="language-markdown">'''c
-#include &lt;stdio.h&gt;
-int main()
-&#123;
-  printf(&quot;Hello world&quot;);
-  return 0;
-&#125;
-'''
-</code></pre>
-<p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p>
-<h2 id="嵌套">嵌套</h2>
-<p>大部分Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup>都能够相互嵌套。
-但在Markdown代码块中不能嵌套另一个代码块，
-这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a>中使用<code>'</code>代替的原因。</p>
-<h2 id="链接">链接</h2>
-<p><code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code></p>
-<pre><code class="language-markdown">就像这样：
-[ME](https://huzerovo.github.io)
-
-&lt;https://huzerovo.github.io\&gt;
-</code></pre>
-<blockquote>
-<p>如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。</p>
-</blockquote>
-<h2 id="图片">图片</h2>
-<p><code>![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)</code>，标题可写可不写。</p>
-<pre><code class="language-markdown">就像这样：
-![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
-</code></pre>
-<h2 id="表格">表格</h2>
-<p>用 <code>|</code> 划分列
-用 <code>-</code> 划分表头和其他行</p>
-<p>可以设置对其方式:
-<code>-:</code> 整列右对齐
-<code>:-</code> 整列左对齐
-<code>:-:</code> 整列居中对齐</p>
-<pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
-| :---- | ----: | :---: |
-| 靠左  |  靠右 | 居中  |
-| 列1   |   列2 |  列3  |
-</code></pre>
-<h2 id="其他">其他</h2>
-<h3 id="使用HTML标签">使用HTML标签</h3>
-<p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p>
-<h3 id="反斜杠转义">反斜杠转义</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">符号</th>
-<th style="text-align:left">符号名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">\</td>
-<td style="text-align:left">反斜线</td>
-</tr>
-<tr>
-<td style="text-align:left">`</td>
-<td style="text-align:left">反引号</td>
-</tr>
-<tr>
-<td style="text-align:left">*</td>
-<td style="text-align:left">星号</td>
-</tr>
-<tr>
-<td style="text-align:left">_</td>
-<td style="text-align:left">下划线</td>
-</tr>
-<tr>
-<td style="text-align:left">{}</td>
-<td style="text-align:left">花括号</td>
-</tr>
-<tr>
-<td style="text-align:left">[]</td>
-<td style="text-align:left">方括号</td>
-</tr>
-<tr>
-<td style="text-align:left">()</td>
-<td style="text-align:left">小括号</td>
-</tr>
-<tr>
-<td style="text-align:left">#</td>
-<td style="text-align:left">井字号</td>
-</tr>
-<tr>
-<td style="text-align:left">+</td>
-<td style="text-align:left">加号</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">减号</td>
-</tr>
-<tr>
-<td style="text-align:left">.</td>
-<td style="text-align:left">英文句点</td>
-</tr>
-<tr>
-<td style="text-align:left">!</td>
-<td style="text-align:left">感叹号</td>
-</tr>
-</tbody>
-</table>
-<h2 id="拓展语法">拓展语法</h2>
-<p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p>
-<h3 id="任务列表">任务列表</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p>
-<pre><code class="language-markdown">- [x] first
-- [ ] seconde
-- [ ] next
-</code></pre>
-<ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> first</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> seconde</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> next</li>
-</ul>
-<h3 id="下划线">下划线</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p>
-<pre><code class="language-markdown">++下划线在这里++
-</code></pre>
-<p><ins>下划线在这里</ins></p>
-<h3 id="行内脚注">行内脚注</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p>
-<pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
-</code></pre>
-<p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
-<h3 id="缩写">缩写</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p>
-<pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
-*[W3C]: World Wide Web Consortium
-The HTML specification
-is maintained by the W3C.
-</code></pre>
-<p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
-is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-<h3 id="高亮">高亮</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p>
-<pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
-</code></pre>
-<p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
-<h3 id="上-下标">上/下标</h3>
-<p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p>
-<pre><code class="language-markdown">这里有个^上标^
-
-而这里有个~下标~
-</code></pre>
-<p>这里有个<sup>上标</sup></p>
-<p>而这里有个<sub>下标</sub></p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。 <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>不需要为脚注命名了 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 防火墙</title>
     <url>/2021/02/18/linux-firewall/</url>
     <content><![CDATA[<p>本文仅对防火墙进行简单的介绍，方便回顾</p>
@@ -2561,6 +2561,74 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
       </tags>
   </entry>
   <entry>
+    <title>逻辑回归</title>
+    <url>/2021/11/25/logistic-regression/</url>
+    <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
+<span id="more"></span>
+<h2 id="线性回归的不足">线性回归的不足</h2>
+<p>当数据的分布情况是这样子的时候，
+线性回归得出的模型效果不好：
+<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
+<p>于是我们希望有数学模型能够描述这种关系，
+这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h2 id="数学原理">数学原理</h2>
+<h3 id="概率函数">概率函数</h3>
+<p>设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
+$ P(y = 1 \mid x ; \theta) = h*{\theta}(x) $，
+$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
+当$ y \in {0, 1} $时，我们可以这样子优化一下：</p>
+<p>$$
+P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
+$$</p>
+<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
+<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
+<p>优雅！</p>
+<h3 id="进行极大似然估计">进行极大似然估计</h3>
+<p>设似然函数：</p>
+<p>$$
+L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
+$$</p>
+<p>$$
+l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
+$$</p>
+<p>可得：</p>
+<p>$$
+\frac{\partial}{\partial \theta_{j}} l(\theta) =
+\sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
+$$</p>
+<h3 id="梯度上升求解">梯度上升求解</h3>
+<p>类似梯度下降，当函数具有最大值时，
+使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p>$$
+x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
+$$</p>
+<p>即可得到：</p>
+<p>$$
+\theta_{j} = \theta_{j} +
+\partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
+$$</p>
+<h2 id="与线性回归的对比">与线性回归的对比</h2>
+<p>最后推导得出的公式与线性回归的推导公式十分相似，
+但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
+因此，逻辑回归与线性回归实际上是不相同的。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>编程魔法学</title>
     <url>/2023/07/05/magic-algorithms/</url>
     <content><![CDATA[<p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
@@ -2718,14 +2786,14 @@ char n = (z &amp; 0x0F) + ((z &amp; (~0x0F)) &gt;&gt; 4);
 #define MASK_8  0x00FF00FF
 #define MASK_16 0x0000FFFF
 
-unsigned int ones(unsigned int x) &#123;
+unsigned int ones(unsigned int x) {
     x = (x &amp; MASK_1) + ((x &amp; (~MASK_1)) &gt;&gt; 1);
     x = (x &amp; MASK_2) + ((x &amp; (~MASK_2)) &gt;&gt; 2);
     x = (x &amp; MASK_4) + ((x &amp; (~MASK_4)) &gt;&gt; 4);
     x = (x &amp; MASK_8) + ((x &amp; (~MASK_8)) &gt;&gt; 8);
     x = (x &amp; MASK_16) + ((x &amp; (~MASK_16)) &gt;&gt; 16);
     return (unsigned int)x;
-&#125;
+}
 </code></pre>
 <p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
 <h3 id="优化">优化</h3>
@@ -2889,14 +2957,14 @@ unsigned int n = x &amp; 0x3f;
 </code></pre>
 <h3 id="最终结果">最终结果</h3>
 <p>我们现在将上述的优化都写下来：</p>
-<pre><code class="language-c">unsigned int ones(unsigned int x) &#123;
+<pre><code class="language-c">unsigned int ones(unsigned int x) {
     x -= (x &gt;&gt; 1) &amp; 0x55555555;
     x = (x &amp; 0x33333333) + ((x &gt;&gt; 2) &amp; 0x33333333);
     x = (x + (x &gt;&gt; 4)) &amp; 0x0F0F0F0F;
     x += x &gt;&gt; 8;
     x += x &gt;&gt; 16;
     rerurn x &amp; 0xFF;
-&#125;
+}
 </code></pre>
 <hr class="footnotes-sep" />
 <section class="footnotes">
@@ -2908,74 +2976,6 @@ unsigned int n = x &amp; 0x3f;
 ]]></content>
       <categories>
         <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>逻辑回归</title>
-    <url>/2021/11/25/logistic-regression/</url>
-    <content><![CDATA[<p>逻辑回归是不同于线性回归的另一种机器学习的算法</p>
-<span id="more"></span>
-<h2 id="线性回归的不足">线性回归的不足</h2>
-<p>当数据的分布情况是这样子的时候，
-线性回归得出的模型效果不好：
-<img src="Figure_1.svg" alt="&quot;Figure 1&quot;" title="Figure 1" loading="lazy" /></p>
-<p>于是我们希望有数学模型能够描述这种关系，
-这个函数模型即：$ h(x) = \frac{1}{1 + e^{- \theta^{T} x}} $<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<h2 id="数学原理">数学原理</h2>
-<h3 id="概率函数">概率函数</h3>
-<p>设$ h*{\theta}(x) = \frac{1}{1 + e^{- \theta^{T} x}} $，
-$ P(y = 1 \mid x ; \theta) = h*{\theta}(x) $，
-$ P(y = 0 \mid x ; \theta) = 1 - h_{\theta}(x) $，
-当$ y \in {0, 1} $时，我们可以这样子优化一下：</p>
-<p>$$
-P(y \mid x; \theta) = h_{\theta}(x)^{y} (1 - h_{\theta}(x))^{1 - y}
-$$</p>
-<p>当$ y = 1 $时，$ P(y \mid x; \theta) = h_{\theta}(x) $，即$ y = 1 $的概率。</p>
-<p>当$ y = 0 $时，$ P(y \mid x; \theta) = 1 - h_{\theta}(x) $，即$ y = 0 $的概率。</p>
-<p>优雅！</p>
-<h3 id="进行极大似然估计">进行极大似然估计</h3>
-<p>设似然函数：</p>
-<p>$$
-L(\theta) = \prod_{i=1}^{m} P(y^{(i)} \mid x^{(i)}; \theta)
-$$</p>
-<p>$$
-l(\theta) = \frac{\partial}{\partial \theta} L(\theta)
-$$</p>
-<p>可得：</p>
-<p>$$
-\frac{\partial}{\partial \theta_{j}} l(\theta) =
-\sum_{i=1}^{m} (y^{(i)} - h_{\theta}(x^{(i)})) x_{j}^{(i)}
-$$</p>
-<h3 id="梯度上升求解">梯度上升求解</h3>
-<p>类似梯度下降，当函数具有最大值时，
-使随机选取的点$ x{0} $进行如下更新<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p>$$
-x_{1} = x_{0} + \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$</p>
-<p>即可得到：</p>
-<p>$$
-\theta_{j} = \theta_{j} +
-\partial \sum_{i=1}^{m} {(y^{(i)} - h_{\theta} (x^{(i)}))} x_{j}^{(i)}
-$$</p>
-<h2 id="与线性回归的对比">与线性回归的对比</h2>
-<p>最后推导得出的公式与线性回归的推导公式十分相似，
-但实际上$ h_{\theta}(x) $表示的函数不再是线性的，
-因此，逻辑回归与线性回归实际上是不相同的。</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>别问为什么，问就是经验公式。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>详情见文章<a href="/2021/09/16/gradient-descent/" title="梯度下降算法">梯度下降算法</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>机器学习</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -3028,7 +3028,7 @@ $$</p>
     \ coc#refresh()
 </code></pre>
 <p>在lua中则可以这样子配置</p>
-<pre><code class="language-lua">local opts = &#123;silent = true, noremap = true, expr = true&#125;
+<pre><code class="language-lua">local opts = {silent = true, noremap = true, expr = true}
 vim.keymap.set(&quot;i&quot;, &quot;&lt;TAB&gt;&quot;, &quot;pumvisable() ? '\&lt;C-n&gt;' : &lt;SID&gt;check_back_space() ? '\&lt;TAB&gt;' : coc#refresh()&quot;, opts)
 -- 这个实际上是直接使用了vim的配置，大部分的配置都可以像这样子进行迁移
 
@@ -3073,15 +3073,15 @@ vim.fn['plug#end']()
 <p>最后为了能格式化lua的配置文件，使用<a href="https://github.com/sumneko/lua-language-server">sumneko/lua-language-server</a>
 作为LSP服务器，在参考了<a href="https://github.com/neoclide/coc.nvim/wiki/Language-servers#lua">coc的配置例子</a>后，
 使用的配置如下：</p>
-<pre><code class="language-json">&#123;
-  &quot;languageserver&quot;: &#123;
-    &quot;lua&quot;: &#123;
+<pre><code class="language-json">{
+  &quot;languageserver&quot;: {
+    &quot;lua&quot;: {
       &quot;command&quot;: &quot;lua-language-server&quot;,
       &quot;args&quot;: [],
       &quot;filetypes&quot;: [&quot;lua&quot;]
-    &#125;
-  &#125;
-&#125;
+    }
+  }
+}
 </code></pre>
 <p><strong>注</strong>：我是从ArchLinux软件源中安装的，因此<code>lua-language-server</code>可直接调用 =w=</p>
 <hr class="footnotes-sep" />
@@ -3100,403 +3100,6 @@ vim.fn['plug#end']()
         <tag>neovim</tag>
         <tag>配置</tag>
         <tag>lua</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的Neovim配置</title>
-    <url>/2023/07/03/my-neovim-conf/</url>
-    <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
-<p>持续更新中…</p>
-<span id="more"></span>
-<h2 id="快捷键配置">快捷键配置</h2>
-<p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
-详细内容参考<code>:help keycodes</code>。</p>
-<h3 id="nvim快捷键">nvim快捷键</h3>
-<p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;A-t&gt;</code></td>
-<td style="text-align:left">关闭标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>t</code></td>
-<td style="text-align:left">下一个标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-t&gt;</code></td>
-<td style="text-align:left">新建标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;S-t&gt;</code></td>
-<td style="text-align:left">上一个标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-j&gt;</code></td>
-<td style="text-align:left">向上滚动，映射为<code>&lt;C-E&gt;&lt;C-E&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
-<td style="text-align:left">向下滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;TAB&gt;</code></td>
-<td style="text-align:left">下/右窗口，映射为<code>&lt;C-W&gt;w</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;S-TAB&gt;</code></td>
-<td style="text-align:left">上/左窗口，映射为<code>&lt;C-W&gt;W</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="gitsigns快捷键">gitsigns快捷键</h3>
-<p>gitsigns是在文件内对git记录进行快速操作的插件，
-可以快速地重置、保存和查看更改记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<p>快捷键大部分在normal模式下使用。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>]c</code></td>
-<td style="text-align:left">下一个记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[c</code></td>
-<td style="text-align:left">上一个记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsu</code></td>
-<td style="text-align:left">撤销保存记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gss</code></td>
-<td style="text-align:left">暂存记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsr</code></td>
-<td style="text-align:left">重置记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsS</code></td>
-<td style="text-align:left">暂存缓冲区所有记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsR</code></td>
-<td style="text-align:left">重置缓冲区所有记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsp</code></td>
-<td style="text-align:left">预览修改</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsd</code></td>
-<td style="text-align:left">相当于<code>git diff</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsD</code></td>
-<td style="text-align:left">相当于<code>git diff HEAD</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gst</code></td>
-<td style="text-align:left">查看/隐藏删除的记录</td>
-</tr>
-</tbody>
-</table>
-<p>这个快捷键使用的模式比较特殊。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">ox</td>
-<td style="text-align:left"><code>gsc</code></td>
-<td style="text-align:left">选择整个记录块（<strong>G</strong>it<strong>S</strong>aga <strong>S</strong>elect <strong>C</strong>hunk）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="LSP快捷键">LSP快捷键</h3>
-<p>LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;el</code></td>
-<td style="text-align:left">显示行诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ec</code></td>
-<td style="text-align:left">显示光标处诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ea</code></td>
-<td style="text-align:left">显示缓冲区诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
-<td style="text-align:left">格式化代码</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
-<td style="text-align:left">符号重命名，可在visual模式使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
-<td style="text-align:left">查看符号引用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
-<td style="text-align:left">查看实现</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
-<td style="text-align:left">大纲</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>]e</code></td>
-<td style="text-align:left">下一个问题诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[e</code></td>
-<td style="text-align:left">上一个问题诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;M-CR&gt;</code></td>
-<td style="text-align:left">显示代码建议，可在visual模式使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gc</code></td>
-<td style="text-align:left">跳转到声明</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gd</code></td>
-<td style="text-align:left">跳转到定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gt</code></td>
-<td style="text-align:left">跳转到类型定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>K</code></td>
-<td style="text-align:left">查看文档</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Lspsaga快捷键">Lspsaga快捷键</h4>
-<p>Lspsaga为neovim内置的LSP提供了更友好的界面，
-因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
-在这里列出Lspsaga专有的快捷键。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ls</code></td>
-<td style="text-align:left">列出符号的所有定义、引用与实现</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;pd</code></td>
-<td style="text-align:left">在悬浮窗口查看符号定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;pt</code></td>
-<td style="text-align:left">在悬浮窗口查看类型定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>]E</code></td>
-<td style="text-align:left">下一个错误（忽略警告）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[E</code></td>
-<td style="text-align:left">上一个错误（忽略警告）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ci</code></td>
-<td style="text-align:left">列出所有调用符号的位置</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;co</code></td>
-<td style="text-align:left">列出符号调用的方法</td>
-</tr>
-</tbody>
-</table>
-<p>Lspsaga在预览窗口的快捷键有些混乱，大部分快捷键作用是相同的，
-但有个别在不同类型的窗口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>内不同，
-加上个人习惯修改了部分按键，这里只列个大概。</p>
-<ul>
-<li><code>&lt;C-d&gt;</code>、<code>&lt;C-u&gt;</code>：窗口内容滚动。对应<code>down</code>和<code>up</code>的意思。</li>
-<li><code>&lt;C-t&gt;</code>：跳出窗口。</li>
-<li><code>q</code>、<code>&lt;ESC&gt;</code>、<code>&lt;C-c&gt;</code>：这些基本都有退出或取消操作的意思。</li>
-<li><code>g</code>：这个大部分情况下是跳转。</li>
-<li><code>o</code>：这个是展示预览或者编辑的意思，如果只是展示则不会跳转，此外还有打开折叠栏的意思。</li>
-<li><code>&lt;CR&gt;</code>：表示执行、跳转等意思。</li>
-<li><code>v</code>、<code>x</code>、<code>t</code>、<code>r</code>：这些都是新建窗口进行下一步操作。
-分别对应<code>vsplit</code>、<code>split</code>、<code>tabedit</code>、<code>tabnew</code>。</li>
-</ul>
-<p><code>o</code>指令与<code>&lt;CR&gt;</code>有功能上的重复，但还是有一些区别。
-如在大纲窗口中，<code>o</code>与<code>&lt;CR&gt;</code>都表现为在编辑区域打开并跳转到函数所在位置。
-但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code Action。</p>
-<h3 id="Floaterm快捷键">Floaterm快捷键</h3>
-<p>这是个悬浮终端的插件。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">nt</td>
-<td style="text-align:left"><code>&lt;F12&gt;</code></td>
-<td style="text-align:left">显示/隐藏悬浮终端</td>
-</tr>
-<tr>
-<td style="text-align:left">nt</td>
-<td style="text-align:left"><code>&lt;leader&gt;f12</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-</tbody>
-</table>
-<h3 id="nvim-tree快捷键">nvim-tree快捷键</h3>
-<p>nvim-tree在自己的窗口中有自己的快捷键，使用<code>:help nvim-tree-mapping-default</code>查看。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">niv</td>
-<td style="text-align:left"><code>&lt;F2&gt;</code></td>
-<td style="text-align:left">打开/隐藏文件树</td>
-</tr>
-<tr>
-<td style="text-align:left">niv</td>
-<td style="text-align:left"><code>&lt;leader&gt;f2</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Telescope快捷键">Telescope快捷键</h3>
-<p>快捷键都处于normal模式使用。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;F3&gt;</code></td>
-<td style="text-align:left">查找文件，同时可用于关闭窗口</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;F3</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
-<td style="text-align:left">查看register内容</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ch</code></td>
-<td style="text-align:left">查看历史命令</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;sh</code></td>
-<td style="text-align:left">查看搜索历史</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Nerdcommter快捷键">Nerdcommter快捷键</h3>
-<p>用于快速注释。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;leader&gt;ca</code></td>
-<td style="text-align:left">切换注释风格，如C的<code>//</code>和<code>/* */</code></td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cc</code></td>
-<td style="text-align:left">注释/取消注释</td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cs</code></td>
-<td style="text-align:left">块注释</td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cu</code></td>
-<td style="text-align:left">取消注释</td>
-</tr>
-</tbody>
-</table>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>在Git中，修改过的记录称为hunk，我习惯称为chunk。此外我还习惯称之为记录块，简称记录。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>指的是“定义预览”、“引用预览”、“实现预览”等窗口。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>neovim</tag>
-        <tag>配置</tag>
-        <tag>nvim</tag>
       </tags>
   </entry>
   <entry>
@@ -3824,374 +3427,6 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
       </tags>
   </entry>
   <entry>
-    <title>替罪羊树</title>
-    <url>/2024/01/21/scapegoat-tree/</url>
-    <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
-写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
-也不能保证代码是对的，有错再更新。</p>
-<p>参考：</p>
-<ul>
-<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
-<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
-</ul>
-<h2 id="什么是替罪羊树">什么是替罪羊树</h2>
-<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
-因为它允许不平衡的结点存在，
-只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
-它处理不平衡的方式很简单：
-将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
-这个过程称为<strong>重构</strong>。
-此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
-只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
-<blockquote>
-<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
-</blockquote>
-<h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
-<h3 id="一些变量定义">一些变量定义</h3>
-<p>在我的代码实现里，我使用数组形式构造替罪羊树，
-并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
-<p>首先是一些辅助用的定义：</p>
-<pre><code class="language-c">// 最大结点数
-#define MAXN 1024
-// 记录插入的结点数量
-int count = 0;
-// alpha
-double alpha = 0.75;
-</code></pre>
-<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
-<p>接下来是树结构定义：</p>
-<pre><code class="language-c">// 结点值
-int v[MAXN] = &#123;0&#125;;
-// 结点权值，定义为结点的重复次数。
-int w[MAXN] = &#123;0&#125;;
-// 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
-int lt[MAXN] = &#123;0&#125;;
-int rt[MAXN] = &#123;0&#125;;
-</code></pre>
-<p>树以数组的形式表达，
-<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
-结点并不真实存在，能用于表示结点的只有它的编号，
-我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
-<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
-若<code>lt[k]==i</code>，这表明<strong>索引为k</strong>的结点，其左子树的<strong>索引为i</strong>。
-根结点的索引则由调用方负责保存。</p>
-<p>数组<code>v</code>负责保存结点值（value）。</p>
-<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
-在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
-若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
-这个结点只出现了一次。
-若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
-根本<strong>不存在</strong>。
-没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
-<p>下面这些数组有助于我们更方便地对树进行操作：</p>
-<pre><code class="language-c">// 树的存储大小
-int s[MAXN] = &#123;0&#125;;
-// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
-int rs[MAXN] = &#123;0&#125;;
-// 树的带权大小，与`w`数组密切相关
-int ws[MAXN] = &#123;0&#125;;
-</code></pre>
-<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
-所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
-<ul>
-<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
-只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
-那么在存储结构上自然也只记录一次。</li>
-<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
-也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
-<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
-也就是<code>w</code>数组中对应索引的值。</li>
-</ul>
-<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
-一般来说都指的是<code>s</code>数组表示的大小。</p>
-<h3 id="提供的树操作">提供的树操作</h3>
-<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
-<p>首先让我们简单地梳理一下：</p>
-<ol>
-<li>替罪羊树处理不平衡结点的方式是重构。</li>
-<li>不平衡结点的产生会在什么时候？
-显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
-<li>发生重构后，树的根可能会发生改变，如何更新这个根？
-答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
-</ol>
-<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
-重构在插入或删除时进行。</p>
-<p>至于重构的条件，我们很快就会知道。</p>
-<p>函数定义如下：</p>
-<pre><code class="language-c">// 在树中查找值
-// @param r 结点索引，表示在以此结点为根的树中找
-// @param val 找的是这个值
-// @return 这个值对应的结点索引是啥，如果为0表示不存在
-int search_node(int r, int val);
-
-// 将一个值插入树中
-// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
-// @param val 插入的值
-void insert_node(int *r, int val);
-
-// 将一个值从树中删除
-// @note 如果值不存在，则不会发生任何事情
-// @param *r 指针，内容同样是根的值，重构会更新这个值
-// @param val 删除的值
-void delete_node(int *r, int val);
-</code></pre>
-<h3 id="重构相关的函数">重构相关的函数</h3>
-<p>我们首先定义重构的入口函数：</p>
-<pre><code class="language-c">// 重构树
-// @param *r 指针，重构的树以此为根
-static void rebuild(int *r);
-</code></pre>
-<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
-<pre><code class="language-c">// 序列化树
-// @param r 以此为根的树
-// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里
-// @param *tree_size 中序序列的长度
-static void flat(int r, int *flat_tree, int *tree_size);
-</code></pre>
-<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<pre><code class="language-c">// 生成树
-// @param *flat_tree 树的中序序列
-// @param l 反序列化起点，即左边界（left）
-// @param r 反序列化终点，即右边界（right）
-static int generate_tree(int *flat_tree, int l, int r);
-</code></pre>
-<p>最后，我们使用一个函数来判断是否进行重构：</p>
-<pre><code class="language-c">// 是否应该重构
-// @param r 以该结点为根
-// @return ture表示需要重构，false表示不需要重构
-static bool should_rebuild(int r);
-</code></pre>
-<h2 id="着手实现">着手实现</h2>
-<h3 id="重构">重构</h3>
-<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
-<strong>重构的条件是什么？</strong></p>
-<h4 id="重构的条件">重构的条件</h4>
-<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
-在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
-我们记较大的那个为$n$，此时，父结点的大小可以粗略认为是$m \coloneqq 2n + 1$。
-显然有$0.5 \cdot m &gt; n$，我们将这个$0.5$记作$\alpha$，也就是之前定义的变量<code>alpha</code>。</p>
-<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
-在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
-但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
-而这个阈值与<code>alpha</code>相关。</p>
-<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
-当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为$50\%$。
-此时<code>alpha</code>取值<code>0.5</code>。
-然而经验表明<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，在平衡二叉树中，这个比例在$70\% \sim 80\%$间，
-平衡二叉树仍能保持其时间复杂度不变。</p>
-<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
-而重构的条件则是<code>alpha * s[k] &lt; max(s[rt[k]], s[lt[k]])</code>。
-在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki的这篇文章中</a>，
-还提到已删除结点过多也可能影响树的查找效率，
-因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。</p>
-<h4 id="计算树的大小">计算树的大小</h4>
-<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
-<pre><code class="language-c">// 计算树的大小
-// @param r 树的根结点索引
-void gen_size(int r) &#123;
-    if (!r)
-        return;
-    // 直接递归把子树大小计算出来
-    gen_size(lt[r]);
-    gen_size(rt[r]);
-    // 现在子树的大小已经计算好了
-    s[r] = s[lt[r]] + s[rt[r]] + 1;
-    rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
-    ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
-&#125;
-</code></pre>
-<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
-<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
-<h4 id="生成中序序列">生成中序序列</h4>
-<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
-就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
-不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
-<pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) &#123;
-    if (!r)
-        return;
-    // 遍历左子树
-    flat(lt[r], flat_tree, tree_size);
-    // 访问根
-    if (w[r] &gt; 0) &#123;
-        // 进入中序序列
-        flat_tree[*tree_size] = r;
-        // 序列长度加一
-        *tree_size += 1;
-    &#125;
-    // 遍历右子树
-    flat(rt[r], flat_tree, tree_size);
-&#125;
-</code></pre>
-<h4 id="反序列化">反序列化</h4>
-<p>从中序序列反序列化出一棵树也比较简单：</p>
-<pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) &#123;
-    if (l &gt;= r || !flat_tree)
-        return 0;
-    // 中间的为根，需要注意，flat_tree中保存的才是结点索引
-    int mid = (l + r) / 2;
-    int k = flat_tree[mid];
-    // 左子树
-    lt[k] = generate_tree(flat_tree, l, mid);
-    // 右子树
-    rt[k] = generate_tree(flat_tree, mid + 1, r);
-    // 返回根
-    return k;
-&#125;
-</code></pre>
-<h4 id="重构入口函数">重构入口函数</h4>
-<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
-<pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
-void rebuild(int *r) &#123;
-    // flat tree
-    int ft[MAXN] = &#123;0&#125;;
-    // tree size
-    int ts = 0;
-    // 序列化
-    flat(*r, ft, &amp;ts);
-    // 反序列化
-    *r = generate_tree(ft, 0, ts);
-    // 重新计算结点大小
-    gen_size(*r);
-&#125;
-</code></pre>
-<h4 id="判断是否需要重构">判断是否需要重构</h4>
-<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
-<pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
-static max(a, b) &#123;
-    return a &gt; b ? a : b;
-&#125;
-
-bool should_rebuild(int r) &#123;
-    return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
-        || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
-&#125;
-</code></pre>
-<h3 id="搜索">搜索</h3>
-<p>和一般二叉树的搜索无异：</p>
-<pre><code class="language-c">int search_node(int r, int val) &#123;
-    if (!r)
-        return 0;
-    int child = 0;
-    if (val &lt; v[r])
-        // 小于结点值，在左子树搜
-        child = lt[r];
-    else if (val &gt; v[r])
-        // 大于结点值，在右子树搜
-        child = rt[t];
-    else
-        // 找到了值，但需要判断结点是否已经删除
-        return w[r] ? r : 0;
-    // 与当前结点值不同，则向子树递归搜索
-    retrurn search_node(child, val);
-&#125;
-</code></pre>
-<h3 id="插入">插入</h3>
-<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
-如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
-那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
-<ul>
-<li>值在树中，更新<code>w</code>数组</li>
-<li>值不再树中，新建结点：更新所有<strong>size数组</strong><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，
-更新<code>v</code>和<code>w</code>数组，结点计数<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>加一。</li>
-</ul>
-<pre><code class="language-c">void insert_node(int *r, int val) &#123;
-    if (!r)
-        return;
-    if (!*r) &#123;
-        // 到达叶子结点
-        // 结点计数加一
-        int k = ++count;
-        // 这是我的实现存在的一个问题，需要判断一下
-        if (k &gt; MAXN)
-            return;
-        w[k] = s[k] = rs[k] = ws[k] = 1;
-        v[k] = val;
-        // 更新结点
-        *r = k;
-    &#125; else &#123;
-        // 现在还在树中
-        if (val == v[*r])
-            // 重复值
-            w[*r]++;
-        else if (val &lt; v[*r])
-            insert_node(&amp;lt[*r], val);
-        else
-            insert_node(&amp;lt[*r], val);
-    &#125;
-    // 重新计算结点大小
-    gen_size(*r);
-    // 判断是否重构
-    if (should_rebuild(*r))
-        rebuild(r);
-&#125;
-</code></pre>
-<h3 id="删除">删除</h3>
-<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
-需要注意的是不能直接将其赋值为0，因为可能有重复值。</p>
-<pre><code class="language-c">void delete_node(int *r, int val) &#123;
-    if (!r || !*r)
-        return;
-    if (val == v[*r]) &#123;
-        // 存在，删除一个
-        if (w[*r] &gt; 0) w[*r]--;
-    &#125; else &#123;
-        // 与结点值不同，在子树递归删除
-        if (val &lt; v[*r])
-            delete_node(&amp;lt[*r], val);
-        else
-            delete_node(&amp;rt[*r], val);
-    &#125;
-    // 更新结点大小
-    gen_size(*r);
-    // 检查是否重构
-    if (should_rebuild(*r))
-        rebuild(r);
-&#125;
-</code></pre>
-<h2 id="一些问题">一些问题</h2>
-<blockquote>
-<p>这里的内容尚未完善…</p>
-</blockquote>
-<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
-新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
-我想到的一个处理方式就是：在删除结点时，
-将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
-<blockquote>
-<p>不过还没实现这个想法…</p>
-</blockquote>
-<blockquote>
-<p>alpha取值的由来还没去了解…</p>
-</blockquote>
-<blockquote>
-<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
-</blockquote>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>这个过程将使用递归方式，你问为什么不用循环？因为我不会… <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>就是<code>s[MAXN]</code>、<code>rs[MAXN]</code>以及<code>ws[MAXN]</code>这几个数组。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>树莓派上运行的服务</title>
     <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
     <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
@@ -4280,6 +3515,12 @@ AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind
       </tags>
   </entry>
   <entry>
+    <title>提问的智慧</title>
+    <url>/2023/07/19/smart-questions/</url>
+    <content><![CDATA[<!-- more -->
+]]></content>
+  </entry>
+  <entry>
     <title>smali 语法</title>
     <url>/2022/03/05/smali-language/</url>
     <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
@@ -4345,8 +3586,8 @@ String 为 java.lang 包中的一个对象</p>
 <h2 id="流程控制">流程控制</h2>
 <h3 id="条件判断">条件判断</h3>
 <p>语法如下：<br />
-<code>if-&#123;cond&#125; v1, v0, :cond_0</code></p>
-<p><code>&#123;cond&#125;</code> 是判断条件，在后面会列出<br />
+<code>if-{cond} v1, v0, :cond_0</code></p>
+<p><code>{cond}</code> 是判断条件，在后面会列出<br />
 <code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
 <p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
 <code>if-ge v0, v1, :cond_0</code></p>
@@ -4359,22 +3600,22 @@ String 为 java.lang 包中的一个对象</p>
 <code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
 <h3 id="循环">循环</h3>
 <p>直接代码解释比较方便，例子来源参见文末链接1</p>
-<pre><code class="language-java">public void smaliWhile() &#123;
+<pre><code class="language-java">public void smaliWhile() {
     int a = 0;
-    while(a &lt;= 3) &#123;
+    while(a &lt;= 3) {
         a++;
-    &#125;
+    }
 
     int b = 0;
-    for(int i = 0;i&lt;3;i++)&#123;
+    for(int i = 0;i&lt;3;i++){
         b++;
-    &#125;
+    }
 
     int c = 0;
-    do&#123;
+    do{
         c++;
-    &#125;while (c &lt;= 3);
-&#125;
+    }while (c &lt;= 3);
+}
 </code></pre>
 <p>对应的 smali 语法</p>
 <pre><code class="language-smali">.method public smaliWhile()V
@@ -4482,12 +3723,6 @@ String 为 java.lang 包中的一个对象</p>
 ]]></content>
   </entry>
   <entry>
-    <title>提问的智慧</title>
-    <url>/2023/07/19/smart-questions/</url>
-    <content><![CDATA[<!-- more -->
-]]></content>
-  </entry>
-  <entry>
     <title>欠拟合与过拟合</title>
     <url>/2021/10/26/underfitting-and-overfitting/</url>
     <content><![CDATA[<p>机器学习中遭遇的问题</p>
@@ -4527,6 +3762,374 @@ String 为 java.lang 包中的一个对象</p>
       <tags>
         <tag>算法</tag>
         <tag>算法优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>替罪羊树</title>
+    <url>/2024/01/21/scapegoat-tree/</url>
+    <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
+写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
+也不能保证代码是对的，有错再更新。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
+<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
+</ul>
+<h2 id="什么是替罪羊树">什么是替罪羊树</h2>
+<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
+因为它允许不平衡的结点存在，
+只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
+它处理不平衡的方式很简单：
+将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
+这个过程称为<strong>重构</strong>。
+此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
+只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
+<blockquote>
+<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
+</blockquote>
+<h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
+<h3 id="一些变量定义">一些变量定义</h3>
+<p>在我的代码实现里，我使用数组形式构造替罪羊树，
+并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
+<p>首先是一些辅助用的定义：</p>
+<pre><code class="language-c">// 最大结点数
+#define MAXN 1024
+// 记录插入的结点数量
+int count = 0;
+// alpha
+double alpha = 0.75;
+</code></pre>
+<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
+<p>接下来是树结构定义：</p>
+<pre><code class="language-c">// 结点值
+int v[MAXN] = {0};
+// 结点权值，定义为结点的重复次数。
+int w[MAXN] = {0};
+// 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
+int lt[MAXN] = {0};
+int rt[MAXN] = {0};
+</code></pre>
+<p>树以数组的形式表达，
+<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
+结点并不真实存在，能用于表示结点的只有它的编号，
+我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
+<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
+若<code>lt[k]==i</code>，这表明<strong>索引为k</strong>的结点，其左子树的<strong>索引为i</strong>。
+根结点的索引则由调用方负责保存。</p>
+<p>数组<code>v</code>负责保存结点值（value）。</p>
+<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
+在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
+若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
+这个结点只出现了一次。
+若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
+根本<strong>不存在</strong>。
+没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
+<p>下面这些数组有助于我们更方便地对树进行操作：</p>
+<pre><code class="language-c">// 树的存储大小
+int s[MAXN] = {0};
+// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
+int rs[MAXN] = {0};
+// 树的带权大小，与`w`数组密切相关
+int ws[MAXN] = {0};
+</code></pre>
+<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
+所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
+<ul>
+<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
+只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
+那么在存储结构上自然也只记录一次。</li>
+<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
+也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
+<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
+也就是<code>w</code>数组中对应索引的值。</li>
+</ul>
+<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
+一般来说都指的是<code>s</code>数组表示的大小。</p>
+<h3 id="提供的树操作">提供的树操作</h3>
+<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
+<p>首先让我们简单地梳理一下：</p>
+<ol>
+<li>替罪羊树处理不平衡结点的方式是重构。</li>
+<li>不平衡结点的产生会在什么时候？
+显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
+<li>发生重构后，树的根可能会发生改变，如何更新这个根？
+答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
+</ol>
+<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
+重构在插入或删除时进行。</p>
+<p>至于重构的条件，我们很快就会知道。</p>
+<p>函数定义如下：</p>
+<pre><code class="language-c">// 在树中查找值
+// @param r 结点索引，表示在以此结点为根的树中找
+// @param val 找的是这个值
+// @return 这个值对应的结点索引是啥，如果为0表示不存在
+int search_node(int r, int val);
+
+// 将一个值插入树中
+// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
+// @param val 插入的值
+void insert_node(int *r, int val);
+
+// 将一个值从树中删除
+// @note 如果值不存在，则不会发生任何事情
+// @param *r 指针，内容同样是根的值，重构会更新这个值
+// @param val 删除的值
+void delete_node(int *r, int val);
+</code></pre>
+<h3 id="重构相关的函数">重构相关的函数</h3>
+<p>我们首先定义重构的入口函数：</p>
+<pre><code class="language-c">// 重构树
+// @param *r 指针，重构的树以此为根
+static void rebuild(int *r);
+</code></pre>
+<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
+<pre><code class="language-c">// 序列化树
+// @param r 以此为根的树
+// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里
+// @param *tree_size 中序序列的长度
+static void flat(int r, int *flat_tree, int *tree_size);
+</code></pre>
+<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<pre><code class="language-c">// 生成树
+// @param *flat_tree 树的中序序列
+// @param l 反序列化起点，即左边界（left）
+// @param r 反序列化终点，即右边界（right）
+static int generate_tree(int *flat_tree, int l, int r);
+</code></pre>
+<p>最后，我们使用一个函数来判断是否进行重构：</p>
+<pre><code class="language-c">// 是否应该重构
+// @param r 以该结点为根
+// @return ture表示需要重构，false表示不需要重构
+static bool should_rebuild(int r);
+</code></pre>
+<h2 id="着手实现">着手实现</h2>
+<h3 id="重构">重构</h3>
+<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
+<strong>重构的条件是什么？</strong></p>
+<h4 id="重构的条件">重构的条件</h4>
+<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
+在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
+我们记较大的那个为$n$，此时，父结点的大小可以粗略认为是$m \coloneqq 2n + 1$。
+显然有$0.5 \cdot m &gt; n$，我们将这个$0.5$记作$\alpha$，也就是之前定义的变量<code>alpha</code>。</p>
+<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
+在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
+但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
+而这个阈值与<code>alpha</code>相关。</p>
+<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
+当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为$50\%$。
+此时<code>alpha</code>取值<code>0.5</code>。
+然而经验表明<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，在平衡二叉树中，这个比例在$70\% \sim 80\%$间，
+平衡二叉树仍能保持其时间复杂度不变。</p>
+<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
+而重构的条件则是<code>alpha * s[k] &lt; max(s[rt[k]], s[lt[k]])</code>。
+在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki的这篇文章中</a>，
+还提到已删除结点过多也可能影响树的查找效率，
+因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。</p>
+<h4 id="计算树的大小">计算树的大小</h4>
+<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
+<pre><code class="language-c">// 计算树的大小
+// @param r 树的根结点索引
+void gen_size(int r) {
+    if (!r)
+        return;
+    // 直接递归把子树大小计算出来
+    gen_size(lt[r]);
+    gen_size(rt[r]);
+    // 现在子树的大小已经计算好了
+    s[r] = s[lt[r]] + s[rt[r]] + 1;
+    rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
+    ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
+}
+</code></pre>
+<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
+<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
+<h4 id="生成中序序列">生成中序序列</h4>
+<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
+就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
+不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
+<pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) {
+    if (!r)
+        return;
+    // 遍历左子树
+    flat(lt[r], flat_tree, tree_size);
+    // 访问根
+    if (w[r] &gt; 0) {
+        // 进入中序序列
+        flat_tree[*tree_size] = r;
+        // 序列长度加一
+        *tree_size += 1;
+    }
+    // 遍历右子树
+    flat(rt[r], flat_tree, tree_size);
+}
+</code></pre>
+<h4 id="反序列化">反序列化</h4>
+<p>从中序序列反序列化出一棵树也比较简单：</p>
+<pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) {
+    if (l &gt;= r || !flat_tree)
+        return 0;
+    // 中间的为根，需要注意，flat_tree中保存的才是结点索引
+    int mid = (l + r) / 2;
+    int k = flat_tree[mid];
+    // 左子树
+    lt[k] = generate_tree(flat_tree, l, mid);
+    // 右子树
+    rt[k] = generate_tree(flat_tree, mid + 1, r);
+    // 返回根
+    return k;
+}
+</code></pre>
+<h4 id="重构入口函数">重构入口函数</h4>
+<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
+<pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
+void rebuild(int *r) {
+    // flat tree
+    int ft[MAXN] = {0};
+    // tree size
+    int ts = 0;
+    // 序列化
+    flat(*r, ft, &amp;ts);
+    // 反序列化
+    *r = generate_tree(ft, 0, ts);
+    // 重新计算结点大小
+    gen_size(*r);
+}
+</code></pre>
+<h4 id="判断是否需要重构">判断是否需要重构</h4>
+<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
+<pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
+static max(a, b) {
+    return a &gt; b ? a : b;
+}
+
+bool should_rebuild(int r) {
+    return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
+        || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
+}
+</code></pre>
+<h3 id="搜索">搜索</h3>
+<p>和一般二叉树的搜索无异：</p>
+<pre><code class="language-c">int search_node(int r, int val) {
+    if (!r)
+        return 0;
+    int child = 0;
+    if (val &lt; v[r])
+        // 小于结点值，在左子树搜
+        child = lt[r];
+    else if (val &gt; v[r])
+        // 大于结点值，在右子树搜
+        child = rt[t];
+    else
+        // 找到了值，但需要判断结点是否已经删除
+        return w[r] ? r : 0;
+    // 与当前结点值不同，则向子树递归搜索
+    retrurn search_node(child, val);
+}
+</code></pre>
+<h3 id="插入">插入</h3>
+<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
+如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
+那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
+<ul>
+<li>值在树中，更新<code>w</code>数组</li>
+<li>值不再树中，新建结点：更新所有<strong>size数组</strong><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>，
+更新<code>v</code>和<code>w</code>数组，结点计数<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>加一。</li>
+</ul>
+<pre><code class="language-c">void insert_node(int *r, int val) {
+    if (!r)
+        return;
+    if (!*r) {
+        // 到达叶子结点
+        // 结点计数加一
+        int k = ++count;
+        // 这是我的实现存在的一个问题，需要判断一下
+        if (k &gt; MAXN)
+            return;
+        w[k] = s[k] = rs[k] = ws[k] = 1;
+        v[k] = val;
+        // 更新结点
+        *r = k;
+    } else {
+        // 现在还在树中
+        if (val == v[*r])
+            // 重复值
+            w[*r]++;
+        else if (val &lt; v[*r])
+            insert_node(&amp;lt[*r], val);
+        else
+            insert_node(&amp;lt[*r], val);
+    }
+    // 重新计算结点大小
+    gen_size(*r);
+    // 判断是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+}
+</code></pre>
+<h3 id="删除">删除</h3>
+<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
+需要注意的是不能直接将其赋值为0，因为可能有重复值。</p>
+<pre><code class="language-c">void delete_node(int *r, int val) {
+    if (!r || !*r)
+        return;
+    if (val == v[*r]) {
+        // 存在，删除一个
+        if (w[*r] &gt; 0) w[*r]--;
+    } else {
+        // 与结点值不同，在子树递归删除
+        if (val &lt; v[*r])
+            delete_node(&amp;lt[*r], val);
+        else
+            delete_node(&amp;rt[*r], val);
+    }
+    // 更新结点大小
+    gen_size(*r);
+    // 检查是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+}
+</code></pre>
+<h2 id="一些问题">一些问题</h2>
+<blockquote>
+<p>这里的内容尚未完善…</p>
+</blockquote>
+<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
+新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
+我想到的一个处理方式就是：在删除结点时，
+将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
+<blockquote>
+<p>不过还没实现这个想法…</p>
+</blockquote>
+<blockquote>
+<p>alpha取值的由来还没去了解…</p>
+</blockquote>
+<blockquote>
+<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
+</blockquote>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这个过程将使用递归方式，你问为什么不用循环？因为我不会… <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>就是<code>s[MAXN]</code>、<code>rs[MAXN]</code>以及<code>ws[MAXN]</code>这几个数组。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -5067,6 +4670,403 @@ $$</p>
         <tag>算法</tag>
         <tag>最小二乘法</tag>
         <tag>概率论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的Neovim配置</title>
+    <url>/2023/07/03/my-neovim-conf/</url>
+    <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
+<p>持续更新中…</p>
+<span id="more"></span>
+<h2 id="快捷键配置">快捷键配置</h2>
+<p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
+详细内容参考<code>:help keycodes</code>。</p>
+<h3 id="nvim快捷键">nvim快捷键</h3>
+<p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;A-t&gt;</code></td>
+<td style="text-align:left">关闭标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>t</code></td>
+<td style="text-align:left">下一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-t&gt;</code></td>
+<td style="text-align:left">新建标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-t&gt;</code></td>
+<td style="text-align:left">上一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-j&gt;</code></td>
+<td style="text-align:left">向上滚动，映射为<code>&lt;C-E&gt;&lt;C-E&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
+<td style="text-align:left">向下滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;TAB&gt;</code></td>
+<td style="text-align:left">下/右窗口，映射为<code>&lt;C-W&gt;w</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-TAB&gt;</code></td>
+<td style="text-align:left">上/左窗口，映射为<code>&lt;C-W&gt;W</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gitsigns快捷键">gitsigns快捷键</h3>
+<p>gitsigns是在文件内对git记录进行快速操作的插件，
+可以快速地重置、保存和查看更改记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>快捷键大部分在normal模式下使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>]c</code></td>
+<td style="text-align:left">下一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c</code></td>
+<td style="text-align:left">上一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsu</code></td>
+<td style="text-align:left">撤销保存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gss</code></td>
+<td style="text-align:left">暂存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsr</code></td>
+<td style="text-align:left">重置记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsS</code></td>
+<td style="text-align:left">暂存缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsR</code></td>
+<td style="text-align:left">重置缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsp</code></td>
+<td style="text-align:left">预览修改</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsd</code></td>
+<td style="text-align:left">相当于<code>git diff</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsD</code></td>
+<td style="text-align:left">相当于<code>git diff HEAD</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gst</code></td>
+<td style="text-align:left">查看/隐藏删除的记录</td>
+</tr>
+</tbody>
+</table>
+<p>这个快捷键使用的模式比较特殊。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ox</td>
+<td style="text-align:left"><code>gsc</code></td>
+<td style="text-align:left">选择整个记录块（<strong>G</strong>it<strong>S</strong>aga <strong>S</strong>elect <strong>C</strong>hunk）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="LSP快捷键">LSP快捷键</h3>
+<p>LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;el</code></td>
+<td style="text-align:left">显示行诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ec</code></td>
+<td style="text-align:left">显示光标处诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ea</code></td>
+<td style="text-align:left">显示缓冲区诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
+<td style="text-align:left">格式化代码</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
+<td style="text-align:left">符号重命名，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
+<td style="text-align:left">查看符号引用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
+<td style="text-align:left">查看实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
+<td style="text-align:left">大纲</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]e</code></td>
+<td style="text-align:left">下一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[e</code></td>
+<td style="text-align:left">上一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;M-CR&gt;</code></td>
+<td style="text-align:left">显示代码建议，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gc</code></td>
+<td style="text-align:left">跳转到声明</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gd</code></td>
+<td style="text-align:left">跳转到定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gt</code></td>
+<td style="text-align:left">跳转到类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>K</code></td>
+<td style="text-align:left">查看文档</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Lspsaga快捷键">Lspsaga快捷键</h4>
+<p>Lspsaga为neovim内置的LSP提供了更友好的界面，
+因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
+在这里列出Lspsaga专有的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ls</code></td>
+<td style="text-align:left">列出符号的所有定义、引用与实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pd</code></td>
+<td style="text-align:left">在悬浮窗口查看符号定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pt</code></td>
+<td style="text-align:left">在悬浮窗口查看类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]E</code></td>
+<td style="text-align:left">下一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[E</code></td>
+<td style="text-align:left">上一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ci</code></td>
+<td style="text-align:left">列出所有调用符号的位置</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;co</code></td>
+<td style="text-align:left">列出符号调用的方法</td>
+</tr>
+</tbody>
+</table>
+<p>Lspsaga在预览窗口的快捷键有些混乱，大部分快捷键作用是相同的，
+但有个别在不同类型的窗口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>内不同，
+加上个人习惯修改了部分按键，这里只列个大概。</p>
+<ul>
+<li><code>&lt;C-d&gt;</code>、<code>&lt;C-u&gt;</code>：窗口内容滚动。对应<code>down</code>和<code>up</code>的意思。</li>
+<li><code>&lt;C-t&gt;</code>：跳出窗口。</li>
+<li><code>q</code>、<code>&lt;ESC&gt;</code>、<code>&lt;C-c&gt;</code>：这些基本都有退出或取消操作的意思。</li>
+<li><code>g</code>：这个大部分情况下是跳转。</li>
+<li><code>o</code>：这个是展示预览或者编辑的意思，如果只是展示则不会跳转，此外还有打开折叠栏的意思。</li>
+<li><code>&lt;CR&gt;</code>：表示执行、跳转等意思。</li>
+<li><code>v</code>、<code>x</code>、<code>t</code>、<code>r</code>：这些都是新建窗口进行下一步操作。
+分别对应<code>vsplit</code>、<code>split</code>、<code>tabedit</code>、<code>tabnew</code>。</li>
+</ul>
+<p><code>o</code>指令与<code>&lt;CR&gt;</code>有功能上的重复，但还是有一些区别。
+如在大纲窗口中，<code>o</code>与<code>&lt;CR&gt;</code>都表现为在编辑区域打开并跳转到函数所在位置。
+但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code Action。</p>
+<h3 id="Floaterm快捷键">Floaterm快捷键</h3>
+<p>这是个悬浮终端的插件。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;F12&gt;</code></td>
+<td style="text-align:left">显示/隐藏悬浮终端</td>
+</tr>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;leader&gt;f12</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nvim-tree快捷键">nvim-tree快捷键</h3>
+<p>nvim-tree在自己的窗口中有自己的快捷键，使用<code>:help nvim-tree-mapping-default</code>查看。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;F2&gt;</code></td>
+<td style="text-align:left">打开/隐藏文件树</td>
+</tr>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;leader&gt;f2</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Telescope快捷键">Telescope快捷键</h3>
+<p>快捷键都处于normal模式使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;F3&gt;</code></td>
+<td style="text-align:left">查找文件，同时可用于关闭窗口</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;F3</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
+<td style="text-align:left">查看register内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ch</code></td>
+<td style="text-align:left">查看历史命令</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;sh</code></td>
+<td style="text-align:left">查看搜索历史</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Nerdcommter快捷键">Nerdcommter快捷键</h3>
+<p>用于快速注释。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;leader&gt;ca</code></td>
+<td style="text-align:left">切换注释风格，如C的<code>//</code>和<code>/* */</code></td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cc</code></td>
+<td style="text-align:left">注释/取消注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cs</code></td>
+<td style="text-align:left">块注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cu</code></td>
+<td style="text-align:left">取消注释</td>
+</tr>
+</tbody>
+</table>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>在Git中，修改过的记录称为hunk，我习惯称为chunk。此外我还习惯称之为记录块，简称记录。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>指的是“定义预览”、“引用预览”、“实现预览”等窗口。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>neovim</tag>
+        <tag>配置</tag>
+        <tag>nvim</tag>
       </tags>
   </entry>
 </search>

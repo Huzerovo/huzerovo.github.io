@@ -17,7 +17,7 @@
     />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>smali 语法 - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 7.3.0" />
+    <meta name="generator" content="Hexo 8.1.1" />
     <meta name="description" content="记录一下 smali 的基本语法，方便回顾" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="smali 语法" />
@@ -234,10 +234,10 @@
         <h3 id="条件判断">条件判断</h3>
         <p>
           语法如下：<br />
-          <code>if-&#123;cond&#125; v1, v0, :cond_0</code>
+          <code>if-{cond} v1, v0, :cond_0</code>
         </p>
         <p>
-          <code>&#123;cond&#125;</code> 是判断条件，在后面会列出<br />
+          <code>{cond}</code> 是判断条件，在后面会列出<br />
           <code>:cond_0</code> 是跳转的位置，类似与 C 语言中的
           <code>goto</code> 标签
         </p>
@@ -262,20 +262,20 @@
         </p>
         <h3 id="循环">循环</h3>
         <p>直接代码解释比较方便，例子来源参见文末链接1</p>
-        <pre><code class="language-java">public void smaliWhile() &#123;
+        <pre><code class="language-java">public void smaliWhile() {
     int a = 0;
-    while(a &lt;= 3) &#123;
+    while(a &lt;= 3) {
         a++;
-    &#125;
+    }
     int b = 0;
-    for(int i = 0;i&lt;3;i++)&#123;
+    for(int i = 0;i&lt;3;i++){
         b++;
-    &#125;
+    }
     int c = 0;
-    do&#123;
+    do{
         c++;
-    &#125;while (c &lt;= 3);
-&#125;
+    }while (c &lt;= 3);
+}
 </code></pre>
         <p>对应的 smali 语法</p>
         <pre><code class="language-smali">.method public smaliWhile()V
