@@ -84,9 +84,7 @@
   padding: 0px 2em;
   width: calc(100% - 64px - 3px);
   display: inline-block;
-  transition:
-    color 0.3s,
-    background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 .article-container blockquote p {
   text-indent: 0px;
@@ -129,9 +127,7 @@
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
-  transition:
-    color 0.3s,
-    background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 .article-container code:not([class*="language"]) {
   background-color: var(--huzerovo-code-background);
@@ -212,12 +208,7 @@
 }
 .article-container figure.highlight table .code pre .hljs-title,
 .article-container figure.highlight table .code pre .hljs-title.class_,
-.article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-title.class_.inherited__,
+.article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
 .article-container figure.highlight table .code pre .hljs-title.function_ {
   color: #d2a8ff;
 }

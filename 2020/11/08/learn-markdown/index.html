@@ -1,462 +1,63 @@
-<!doctype html>
-<html id="root" lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="author" content="狐zerOAO" />
-    <meta name="description" content="记录一段回忆" />
-    <meta name="keywords" content="blog,code" />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="white"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="dark"
-    />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Learn Markdown - 狐言狐语 | 记录一段回忆</title>
-    <meta name="generator" content="Hexo 8.1.1" />
-    <meta
-      name="description"
-      content="Markdown学习笔记，更新后算是个人习惯写法，使用hexo-randerer-markdown-it渲染。"
-    />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Learn Markdown" />
-    <meta
-      property="og:url"
-      content="https://huzerovo.github.io/2020/11/08/learn-markdown/"
-    />
-    <meta property="og:site_name" content="狐灵" />
-    <meta
-      property="og:description"
-      content="Markdown学习笔记，更新后算是个人习惯写法，使用hexo-randerer-markdown-it渲染。"
-    />
-    <meta property="og:locale" content="zh_CN" />
-    <meta
-      property="article:published_time"
-      content="2020-11-08T04:00:00.000Z"
-    />
-    <meta property="article:modified_time" content="2023-07-20T04:00:00.000Z" />
-    <meta property="article:author" content="狐zerOAO" />
-    <meta property="article:tag" content="Markdown" />
-    <meta name="twitter:card" content="summary" />
-    <link
-      rel="alternate"
-      href="/atom.xml"
-      title="狐灵"
-      type="application/atom+xml"
-    />
-    <script src="/js/jquery-3.7.1.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <link rel="stylesheet" href="/css/github.min.css" id="code-style" />
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-    <link rel="stylesheet" href="/css/light.css" />
-    <link rel="stylesheet" href="/css/dark.css" />
-    <link rel="stylesheet" href="/css/huzerovo.css" />
-    <script src="/js/huzerovo.js"></script>
-    <script src="/js/search.js"></script>
-    <script>
-      const ThemeConf = {
-        rootId: "root",
-        codeId: "code-style",
-        ibtnId: "btn-switch-theme",
-        iconDarkClass: "bi-moon",
-        iconLightClass: "bi-sun",
-        codeStyle: {
-          light: "/css/github.min.css",
-          dark: "/css/github-dark.min.css",
-        },
-      };
-      window.load = ThemeSwitcher.init();
-      window
-        .matchMedia("(prefers-color-scheme: light)")
-        .addEventListener("change", ThemeSwitcher.follow);
-    </script>
-  </head>
-  <body>
-    <header id="topbar">
-      <div class="topbar-container">
-        <nav class="topbar-menu">
-          <ul>
-            <li>
-              <a href="/" title="首页">首页</a>
-            </li>
-            <li>
-              <a href="/archive" title="归档">归档</a>
-            </li>
-            <li>
-              <a href="/categories" title="分类">分类</a>
-            </li>
-            <li>
-              <a href="/tagcloud" title="标签云">标签云</a>
-            </li>
-            <li>
-              <a href="/about" title="关于我">关于我</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="topbar-icon-buttons">
-          <a
-            class="icon-button"
-            title="Github"
-            href="https://github.com/Huzerovo"
-            ><i class="bi bi-github"></i
-          ></a>
-          <a class="icon-button" id="btn-search" title="搜索" href="/search"
-            ><i class="bi bi-search"></i
-          ></a>
-          <a class="icon-button" id="btn-switch-theme" title="切换主题"
-            ><i class="bi bi-sun"></i
-          ></a>
-        </div>
-      </div>
-    </header>
-    <main class="container">
-      <div id="article-toc">
-        <p class="sidebar-list-title">目录</p>
-        <ol class="toc">
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%A5%BD%E4%B9%A0%E6%83%AF"
-              ><span class="toc-text">好习惯</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E6%A0%87%E9%A2%98"
-              ><span class="toc-text">标题</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E6%AE%B5%E8%90%BD"
-              ><span class="toc-text">段落</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a
-              class="toc-link"
-              href="#%E7%B2%97%E4%BD%93%E4%B8%8E%E6%96%9C%E4%BD%93"
-              ><span class="toc-text">粗体与斜体</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"
-              ><span class="toc-text">分隔线</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"
-              ><span class="toc-text">删除线</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E8%84%9A%E6%B3%A8"
-              ><span class="toc-text">脚注</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%88%97%E8%A1%A8"
-              ><span class="toc-text">列表</span></a
-            >
-            <ol class="toc-child">
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"
-                  ><span class="toc-text">有序列表</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"
-                  ><span class="toc-text">无序列表</span></a
-                >
-              </li>
-            </ol>
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E5%9D%97"
-              ><span class="toc-text">注释块</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E4%BB%A3%E7%A0%81"
-              ><span class="toc-text">代码</span></a
-            >
-            <ol class="toc-child">
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%BB%A3%E7%A0%81"
-                  ><span class="toc-text">行内代码</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"
-                  ><span class="toc-text">代码块</span></a
-                >
-              </li>
-            </ol>
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%B5%8C%E5%A5%97"
-              ><span class="toc-text">嵌套</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E9%93%BE%E6%8E%A5"
-              ><span class="toc-text">链接</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%9B%BE%E7%89%87"
-              ><span class="toc-text">图片</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"
-              ><span class="toc-text">表格</span></a
-            >
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E5%85%B6%E4%BB%96"
-              ><span class="toc-text">其他</span></a
-            >
-            <ol class="toc-child">
-              <li class="toc-item toc-level-3">
-                <a
-                  class="toc-link"
-                  href="#%E4%BD%BF%E7%94%A8HTML%E6%A0%87%E7%AD%BE"
-                  ><span class="toc-text">使用HTML标签</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a
-                  class="toc-link"
-                  href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%BD%AC%E4%B9%89"
-                  ><span class="toc-text">反斜杠转义</span></a
-                >
-              </li>
-            </ol>
-          </li>
-          <li class="toc-item toc-level-2">
-            <a class="toc-link" href="#%E6%8B%93%E5%B1%95%E8%AF%AD%E6%B3%95"
-              ><span class="toc-text">拓展语法</span></a
-            >
-            <ol class="toc-child">
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"
-                  ><span class="toc-text">任务列表</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E4%B8%8B%E5%88%92%E7%BA%BF"
-                  ><span class="toc-text">下划线</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E8%A1%8C%E5%86%85%E8%84%9A%E6%B3%A8"
-                  ><span class="toc-text">行内脚注</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E7%BC%A9%E5%86%99"
-                  ><span class="toc-text">缩写</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E9%AB%98%E4%BA%AE"
-                  ><span class="toc-text">高亮</span></a
-                >
-              </li>
-              <li class="toc-item toc-level-3">
-                <a class="toc-link" href="#%E4%B8%8A-%E4%B8%8B%E6%A0%87"
-                  ><span class="toc-text">上&#x2F;下标</span></a
-                >
-              </li>
-            </ol>
-          </li>
-        </ol>
-      </div>
-      <article class="article-container">
-        <h1>Learn Markdown</h1>
-        <blockquote>
-          <p>
-            注意，使用<a href="https://github.com/markdown-it/markdown-it"
-              >markdown-it</a
-            >作为渲染 引擎，因此部分语法可能略有差异。
-          </p>
-        </blockquote>
-        <h2 id="好习惯">好习惯</h2>
-        <p>
-          在每个不同的Markdown文本块<sup class="footnote-ref"
-            ><a href="#fn1" id="fnref1">[1]</a></sup
-          >之间使用空行或许是个好习惯。
-        </p>
-        <h2 id="标题">标题</h2>
-        <p>
-          用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。
-          一般使用这个方法。
-        </p>
-        <pre><code class="language-markdown"># 一级标题
+<!doctype html><html id="root" lang="zh-CN"><head><meta charset="UTF-8"><meta name="author" content="狐zerOAO"><meta name="description" content="记录一段回忆"><meta name="keywords" content="blog,code"><meta name="theme-color" media="(prefers-color-scheme: light)" content="white"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="dark"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Learn Markdown - 狐言狐语 | 记录一段回忆</title><meta name="generator" content="Hexo 8.1.1"><meta name="description" content="Markdown学习笔记，更新后算是个人习惯写法，使用hexo-randerer-markdown-it渲染。"><meta property="og:type" content="article"><meta property="og:title" content="Learn Markdown"><meta property="og:url" content="https://huzerovo.github.io/2020/11/08/learn-markdown/"><meta property="og:site_name" content="狐灵"><meta property="og:description" content="Markdown学习笔记，更新后算是个人习惯写法，使用hexo-randerer-markdown-it渲染。"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-11-08T04:00:00.000Z"><meta property="article:modified_time" content="2023-07-20T04:00:00.000Z"><meta property="article:author" content="狐zerOAO"><meta property="article:tag" content="Markdown"><meta name="twitter:card" content="summary"><link rel="alternate" href="/atom.xml" title="狐灵" type="application/atom+xml"><script src="/js/jquery-3.7.1.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" href="/css/github.min.css" id="code-style"><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script><link rel="stylesheet" href="/css/light.css"><link rel="stylesheet" href="/css/dark.css"><link rel="stylesheet" href="/css/huzerovo.css"><script src="/js/huzerovo.js"></script><script src="/js/search.js"></script><script>const ThemeConf={rootId:"root",codeId:"code-style",ibtnId:"btn-switch-theme",iconDarkClass:"bi-moon",iconLightClass:"bi-sun",codeStyle:{light:"/css/github.min.css",dark:"/css/github-dark.min.css"}};window.load=ThemeSwitcher.init(),window.matchMedia("(prefers-color-scheme: light)").addEventListener("change",ThemeSwitcher.follow)</script></head><body><header id="topbar"><div class="topbar-container"><nav class="topbar-menu"><ul><li><a href="/" title="首页">首页</a></li><li><a href="/archive" title="归档">归档</a></li><li><a href="/categories" title="分类">分类</a></li><li><a href="/tagcloud" title="标签云">标签云</a></li><li><a href="/about" title="关于我">关于我</a></li></ul></nav><div class="topbar-icon-buttons"><a class="icon-button" title="Github" href="https://github.com/Huzerovo"><i class="bi bi-github"></i></a><a class="icon-button" id="btn-search" title="搜索" href="/search"><i class="bi bi-search"></i></a><a class="icon-button" id="btn-switch-theme" title="切换主题"><i class="bi bi-sun"></i></a></div></div></header><main class="container"><div id="article-toc"><p class="sidebar-list-title">目录</p><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E4%B9%A0%E6%83%AF"><span class="toc-text">好习惯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-text">标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-text">段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%97%E4%BD%93%E4%B8%8E%E6%96%9C%E4%BD%93"><span class="toc-text">粗体与斜体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"><span class="toc-text">分隔线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="toc-text">删除线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%B3%A8"><span class="toc-text">脚注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">无序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E5%9D%97"><span class="toc-text">注释块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E4%BB%A3%E7%A0%81"><span class="toc-text">行内代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">代码块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97"><span class="toc-text">嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-text">图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8HTML%E6%A0%87%E7%AD%BE"><span class="toc-text">使用HTML标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%BD%AC%E4%B9%89"><span class="toc-text">反斜杠转义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E8%AF%AD%E6%B3%95"><span class="toc-text">拓展语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="toc-text">任务列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="toc-text">下划线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E8%84%9A%E6%B3%A8"><span class="toc-text">行内脚注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E5%86%99"><span class="toc-text">缩写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE"><span class="toc-text">高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A-%E4%B8%8B%E6%A0%87"><span class="toc-text">上&#x2F;下标</span></a></li></ol></li></ol></div><article class="article-container"><h1>Learn Markdown</h1><blockquote><p>注意，使用<a href="https://github.com/markdown-it/markdown-it">markdown-it</a>作为渲染 引擎，因此部分语法可能略有差异。</p></blockquote><h2 id="好习惯">好习惯</h2><p>在每个不同的Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>之间使用空行或许是个好习惯。</p><h2 id="标题">标题</h2><p>用不同数量的<code>#</code>标记，一个<code>#</code>表示一级标题，两个表示二级，以此类推。 一般使用这个方法。</p><pre><code class="language-markdown"># 一级标题
+
 ## 二级标题
+
 ### 三级标题
+
 #### 四级标题
+
 ##### 五级标题
+
 ###### 六级标题
-</code></pre>
-        <blockquote>
-          <p>
-            使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a
-              href="#%E5%A5%BD%E4%B9%A0%E6%83%AF"
-              >好习惯</a
-            >， 我并不推荐使用这种方式。 个人习惯是在标题的上下都添加一个空行。
-            此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF"
-              >分隔线</a
-            >。
-          </p>
-        </blockquote>
-        <h2 id="段落">段落</h2>
-        <p>
-          在段落之间添加一个空行，另外，在行尾添加空格，
-          下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。
-        </p>
-        <pre><code class="language-markdown">这是一个段落
+</code></pre><blockquote><p>使用<code>---</code>或者<code>===</code>会识别将上一行为一级标题。由于<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>， 我并不推荐使用这种方式。 个人习惯是在标题的上下都添加一个空行。 此外<code>---</code>还能用作<a href="#%E5%88%86%E9%9A%94%E7%BA%BF">分隔线</a>。</p></blockquote><h2 id="段落">段落</h2><p>在段落之间添加一个空行，另外，在行尾添加空格， 下一行也会被识别为新的段落，因此需要注意避免在行尾留后空格。</p><pre><code class="language-markdown">这是一个段落
+
 这是另一个段落
-</code></pre>
-        <h2 id="粗体与斜体">粗体与斜体</h2>
-        <p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p>
-        <pre><code class="language-markdown">*斜体*
+</code></pre><h2 id="粗体与斜体">粗体与斜体</h2><p>使用<code>*</code>可将一段文字标注为粗体或者斜体。</p><pre><code class="language-markdown">*斜体*
 *斜体*
+
 **粗体**
 **粗体**
+
 ***斜粗体***
 ***斜粗体***
-</code></pre>
-        <blockquote>
-          <p>
-            注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。
-            但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。
-          </p>
-        </blockquote>
-        <h2 id="分隔线">分隔线</h2>
-        <p>我一般使用<code>-</code>作为分割线。</p>
-        <pre><code class="language-markdown">---
-</code></pre>
-        <blockquote>
-          <p>
-            <code>_</code
-            >与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式，
-            因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行，
-            因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a>
-          </p>
-        </blockquote>
-        <h2 id="删除线">删除线</h2>
-        <p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p>
-        <pre><code class="language-markdown">~~可以单独一行~~
+</code></pre><blockquote><p>注意<code>_</code>也能够用于以上目的，且可与<code>*</code>混用。 但考虑到在一般的写作中<code>_</code>比<code>*</code>常用，因此我不推荐使用。</p></blockquote><h2 id="分隔线">分隔线</h2><p>我一般使用<code>-</code>作为分割线。</p><pre><code class="language-markdown">---
+</code></pre><blockquote><p><code>_</code>与<code>*</code>也能够用于以上目的，由于<code>_</code>在一般的写作中比较常用，<code>*</code>用于字体样式， 因此推荐使用<code>-</code>。需要注意的是，<code>-</code>会将上一行作为空行， 因此使用空行是一个<a href="#%E5%A5%BD%E4%B9%A0%E6%83%AF">好习惯</a></p></blockquote><h2 id="删除线">删除线</h2><p>显示删除线效果，用两个 <code>~</code> 包裹要标注的文字</p><pre><code class="language-markdown">~~可以单独一行~~
+
 也可以~~行内~~使用。
-</code></pre>
-        <h2 id="脚注">脚注</h2>
-        <blockquote>
-          <p>使用<code>markdown-it-footnote</code></p>
-        </blockquote>
-        <p>可以对文本进行补充说明，也可以说是注释。</p>
-        <pre><code class="language-markdown">后面的是脚注[^脚注]
+</code></pre><h2 id="脚注">脚注</h2><blockquote><p>使用<code>markdown-it-footnote</code></p></blockquote><p>可以对文本进行补充说明，也可以说是注释。</p><pre><code class="language-markdown">后面的是脚注[^脚注]
+
 [^脚注]: 这是一个脚注!
-</code></pre>
-        <h2 id="列表">列表</h2>
-        <h3 id="有序列表">有序列表</h3>
-        <p>数字加<code>.</code>可表示一个有序列表。</p>
-        <blockquote>
-          <p>
-            注意，数字可以不按数学顺序排列，但应以数字 1 开始。
-            <s>谁会用乱序数字当有序列表啊。</s>
-          </p>
-        </blockquote>
-        <pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
+</code></pre><h2 id="列表">列表</h2><h3 id="有序列表">有序列表</h3><p>数字加<code>.</code>可表示一个有序列表。</p><blockquote><p>注意，数字可以不按数学顺序排列，但应以数字 1 开始。 <s>谁会用乱序数字当有序列表啊。</s></p></blockquote><pre><code class="language-markdown">1. 第一项使用数字`1`作为起始序号
 1. 后面可以随便使用数字
 1. 第二项，
    接在后面的文本。
 1. 第三项
+
    空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
    那么整个列表会被认为带有*标题*，也就是序号后面的那段文字。
    而后面这些会被认为是这一个*标题*下的内容。
 1. 第四项，这后面有两个空格  
    这会使这行文字带缩进。很难看出来，最好少用。
+
 空行加一段没有缩进的一句话，可以表示列表结束
+
 1. 这里又是新的列表
 2. 序号重新从1开始
 3. 由于没有出现空行+缩进，
    这个列表是没有标题的。
 4. 这后面有两个空格  
    也会使这行文字带缩进。很难看出来，最好少用。
-</code></pre>
-        <p>以上代码的渲染效果：</p>
-        <ol>
-          <li>
-            <p>第一项使用数字<code>1</code>作为起始序号</p>
-          </li>
-          <li>
-            <p>后面可以随便使用数字</p>
-          </li>
-          <li>
-            <p>第二项， 接在后面的文本。</p>
-          </li>
-          <li>
-            <p>第三项</p>
-            <p>
-              空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式，
-              那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。
-              而后面这些内容会被认为是这一个<em>标题</em>下的内容
-            </p>
-          </li>
-          <li>
-            <p>
-              第四项，这后面有两个空格<br />
-              这会使这行文字带缩进。很难看出来，最好少用。
-            </p>
-          </li>
-        </ol>
-        <p>空行加一段没有缩进的一句话，可以表示列表结束</p>
-        <ol>
-          <li>这里又是新的列表</li>
-          <li>序号重新从1开始</li>
-          <li>由于没有出现空行+缩进， 这个列表是没有标题的。</li>
-          <li>
-            这后面有两个空格<br />
-            也会使这行文字带缩进。很难看出来，最好少用。
-          </li>
-        </ol>
-        <h3 id="无序列表">无序列表</h3>
-        <p>
-          用 <code>*</code> 或 <code>-</code> 或
-          <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。
-        </p>
-        <pre><code class="language-markdown">- 第一项
+</code></pre><p>以上代码的渲染效果：</p><ol><li><p>第一项使用数字<code>1</code>作为起始序号</p></li><li><p>后面可以随便使用数字</p></li><li><p>第二项， 接在后面的文本。</p></li><li><p>第三项</p><p>空行加带缩进的文本可以对齐列表项换行。如果出现了这种格式， 那么整个列表会被认为带有<em>标题</em>，也就是序号后面的那段文字。 而后面这些内容会被认为是这一个<em>标题</em>下的内容</p></li><li><p>第四项，这后面有两个空格<br>这会使这行文字带缩进。很难看出来，最好少用。</p></li></ol><p>空行加一段没有缩进的一句话，可以表示列表结束</p><ol><li>这里又是新的列表</li><li>序号重新从1开始</li><li>由于没有出现空行+缩进， 这个列表是没有标题的。</li><li>这后面有两个空格<br>也会使这行文字带缩进。很难看出来，最好少用。</li></ol><h3 id="无序列表">无序列表</h3><p>用 <code>*</code> 或 <code>-</code> 或 <code>+</code> 标记一个无序列表，可以混用，我一般使用<code>-</code>。</p><pre><code class="language-markdown">- 第一项
 - 第二项
+
 * 第一项
 * 第二项
+
 - 第一项
 - 第二项
-</code></pre>
-        <h2 id="注释块">注释块</h2>
-        <p>用 <code>&gt;</code> 表示注释块。</p>
-        <pre><code class="language-markdown">&gt; 注释块
-</code></pre>
-        <h2 id="代码">代码</h2>
-        <h3 id="行内代码">行内代码</h3>
-        <p>在段落上嵌入的代码，用反引号包裹代码。</p>
-        <pre><code class="language-markdown">C语言入口函数:`main()`
-</code></pre>
-        <h3 id="代码块">代码块</h3>
-        <p>
-          一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言，
-          这里由于渲染原因，使用<code>'</code>代替例子中的反引号。
-        </p>
-        <pre><code class="language-markdown">'''c
+</code></pre><h2 id="注释块">注释块</h2><p>用 <code>&gt;</code> 表示注释块。</p><pre><code class="language-markdown">&gt; 注释块
+</code></pre><h2 id="代码">代码</h2><h3 id="行内代码">行内代码</h3><p>在段落上嵌入的代码，用反引号包裹代码。</p><pre><code class="language-markdown">C语言入口函数:`main()`
+</code></pre><h3 id="代码块">代码块</h3><p>一段代码可以使用三个反引号包裹代码段，可以在前三个反引号后指定代码语言， 这里由于渲染原因，使用<code>'</code>代替例子中的反引号。</p><pre><code class="language-markdown">'''c
 #include &lt;stdio.h&gt;
 int main()
 {
@@ -464,335 +65,27 @@ int main()
   return 0;
 }
 '''
-</code></pre>
-        <p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p>
-        <h2 id="嵌套">嵌套</h2>
-        <p>
-          大部分Markdown文本块<sup class="footnote-ref"
-            ><a href="#fn1" id="fnref1:1">[1:1]</a></sup
-          >都能够相互嵌套。 但在Markdown代码块中不能嵌套另一个代码块，
-          这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a
-          >中使用<code>'</code>代替的原因。
-        </p>
-        <h2 id="链接">链接</h2>
-        <p>
-          <code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code>
-        </p>
-        <pre><code class="language-markdown">就像这样：
+</code></pre><p>还有一个不推荐的方法：使用空格或者制表符（TAB键）缩进。</p><h2 id="嵌套">嵌套</h2><p>大部分Markdown文本块<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup>都能够相互嵌套。 但在Markdown代码块中不能嵌套另一个代码块， 这也是在<a href="#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块</a>中使用<code>'</code>代替的原因。</p><h2 id="链接">链接</h2><p><code>[链接名字](链接地址)</code>或者<code>&lt;链接地址&gt;</code></p><pre><code class="language-markdown">就像这样：
 [ME](https://huzerovo.github.io)
+
 &lt;https://huzerovo.github.io\&gt;
-</code></pre>
-        <blockquote>
-          <p>
-            如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。
-          </p>
-        </blockquote>
-        <h2 id="图片">图片</h2>
-        <p>
-          <code
-            >![alt属性文本(注:找不到图片时显示的文字)](图片地址
-            &quot;标题&quot;)</code
-          >，标题可写可不写。
-        </p>
-        <pre><code class="language-markdown">就像这样：
+</code></pre><blockquote><p>如果使用了anchor，还可以<code>[标题](#标题)</code>这样子在文章内进行跳转。</p></blockquote><h2 id="图片">图片</h2><p><code>![alt属性文本(注:找不到图片时显示的文字)](图片地址 &quot;标题&quot;)</code>，标题可写可不写。</p><pre><code class="language-markdown">就像这样：
 ![不愧是我.jpg](https://pixiv.cat/89004882-4.jpg)
-</code></pre>
-        <h2 id="表格">表格</h2>
-        <p>用 <code>|</code> 划分列 用 <code>-</code> 划分表头和其他行</p>
-        <p>
-          可以设置对其方式: <code>-:</code> 整列右对齐
-          <code>:-</code> 整列左对齐 <code>:-:</code> 整列居中对齐
-        </p>
-        <pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
+</code></pre><h2 id="表格">表格</h2><p>用 <code>|</code> 划分列 用 <code>-</code> 划分表头和其他行</p><p>可以设置对其方式: <code>-:</code> 整列右对齐 <code>:-</code> 整列左对齐 <code>:-:</code> 整列居中对齐</p><pre><code class="language-markdown">| 表头1 | 表头2 | 表头3 |
 | :---- | ----: | :---: |
 | 靠左  |  靠右 | 居中  |
 | 列1   |   列2 |  列3  |
-</code></pre>
-        <h2 id="其他">其他</h2>
-        <h3 id="使用HTML标签">使用HTML标签</h3>
-        <p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p>
-        <h3 id="反斜杠转义">反斜杠转义</h3>
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: left">符号</th>
-              <th style="text-align: left">符号名</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: left">\</td>
-              <td style="text-align: left">反斜线</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">`</td>
-              <td style="text-align: left">反引号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">*</td>
-              <td style="text-align: left">星号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">_</td>
-              <td style="text-align: left">下划线</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">{}</td>
-              <td style="text-align: left">花括号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">[]</td>
-              <td style="text-align: left">方括号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">()</td>
-              <td style="text-align: left">小括号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">#</td>
-              <td style="text-align: left">井字号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">+</td>
-              <td style="text-align: left">加号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">-</td>
-              <td style="text-align: left">减号</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">.</td>
-              <td style="text-align: left">英文句点</td>
-            </tr>
-            <tr>
-              <td style="text-align: left">!</td>
-              <td style="text-align: left">感叹号</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 id="拓展语法">拓展语法</h2>
-        <p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p>
-        <h3 id="任务列表">任务列表</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-task-lists"
-            >markdown-it-task-lists</a
-          >
-        </p>
-        <pre><code class="language-markdown">- [x] first
+</code></pre><h2 id="其他">其他</h2><h3 id="使用HTML标签">使用HTML标签</h3><p>Markdown支持部分html标签，直接在文件写HTML标签即可。</p><h3 id="反斜杠转义">反斜杠转义</h3><table><thead><tr><th style="text-align:left">符号</th><th style="text-align:left">符号名</th></tr></thead><tbody><tr><td style="text-align:left">\</td><td style="text-align:left">反斜线</td></tr><tr><td style="text-align:left">`</td><td style="text-align:left">反引号</td></tr><tr><td style="text-align:left">*</td><td style="text-align:left">星号</td></tr><tr><td style="text-align:left">_</td><td style="text-align:left">下划线</td></tr><tr><td style="text-align:left">{}</td><td style="text-align:left">花括号</td></tr><tr><td style="text-align:left">[]</td><td style="text-align:left">方括号</td></tr><tr><td style="text-align:left">()</td><td style="text-align:left">小括号</td></tr><tr><td style="text-align:left">#</td><td style="text-align:left">井字号</td></tr><tr><td style="text-align:left">+</td><td style="text-align:left">加号</td></tr><tr><td style="text-align:left">-</td><td style="text-align:left">减号</td></tr><tr><td style="text-align:left">.</td><td style="text-align:left">英文句点</td></tr><tr><td style="text-align:left">!</td><td style="text-align:left">感叹号</td></tr></tbody></table><h2 id="拓展语法">拓展语法</h2><p>拓展语法，可能不受一些Markdown编辑器或渲染器的支持，附带渲染效果</p><h3 id="任务列表">任务列表</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-task-lists">markdown-it-task-lists</a></p><pre><code class="language-markdown">- [x] first
 - [ ] seconde
 - [ ] next
-</code></pre>
-        <ul class="contains-task-list">
-          <li class="task-list-item">
-            <input
-              class="task-list-item-checkbox"
-              checked=""
-              disabled=""
-              type="checkbox"
-            />
-            first
-          </li>
-          <li class="task-list-item">
-            <input
-              class="task-list-item-checkbox"
-              disabled=""
-              type="checkbox"
-            />
-            seconde
-          </li>
-          <li class="task-list-item">
-            <input
-              class="task-list-item-checkbox"
-              disabled=""
-              type="checkbox"
-            />
-            next
-          </li>
-        </ul>
-        <h3 id="下划线">下划线</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-ins"
-            >markdown-it-ins</a
-          >
-        </p>
-        <pre><code class="language-markdown">++下划线在这里++
-</code></pre>
-        <p><ins>下划线在这里</ins></p>
-        <h3 id="行内脚注">行内脚注</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-footnote"
-            >markdown-it-footnote</a
-          >
-        </p>
-        <pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
-</code></pre>
-        <p>
-          这是一个行内脚注<sup class="footnote-ref"
-            ><a href="#fn2" id="fnref2">[2]</a></sup
-          >。
-        </p>
-        <h3 id="缩写">缩写</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-abbr"
-            >markdown-it-abbr</a
-          >
-        </p>
-        <pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
+</code></pre><ul class="contains-task-list"><li class="task-list-item"><input class="task-list-item-checkbox" checked disabled type="checkbox"> first</li><li class="task-list-item"><input class="task-list-item-checkbox" disabled type="checkbox"> seconde</li><li class="task-list-item"><input class="task-list-item-checkbox" disabled type="checkbox"> next</li></ul><h3 id="下划线">下划线</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-ins">markdown-it-ins</a></p><pre><code class="language-markdown">++下划线在这里++
+</code></pre><p><ins>下划线在这里</ins></p><h3 id="行内脚注">行内脚注</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-footnote">markdown-it-footnote</a></p><pre><code class="language-markdown">这是一个行内脚注^[不需要为脚注命名了]。
+</code></pre><p>这是一个行内脚注<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p><h3 id="缩写">缩写</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-abbr">markdown-it-abbr</a></p><pre><code class="language-markdown">*[HTML]: Hyper Text Markup Language
 *[W3C]: World Wide Web Consortium
 The HTML specification
 is maintained by the W3C.
-</code></pre>
-        <p>
-          The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
-          is maintained by the
-          <abbr title="World Wide Web Consortium">W3C</abbr>.
-        </p>
-        <h3 id="高亮">高亮</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-mark"
-            >markdown-it-mark</a
-          >
-        </p>
-        <pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
-</code></pre>
-        <p>在这一行文字中，<mark>这里</mark>会被高亮。</p>
-        <h3 id="上-下标">上/下标</h3>
-        <p>
-          使用<a href="https://github.com/markdown-it/markdown-it-sup"
-            >markdown-it-sup</a
-          >以及<a href="https://github.com/markdown-it/markdown-it-sub"
-            >makrdown-it-sub</a
-          >
-        </p>
-        <pre><code class="language-markdown">这里有个^上标^
+</code></pre><p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p><h3 id="高亮">高亮</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-mark">markdown-it-mark</a></p><pre><code class="language-markdown">在这一行文字中，==这里==会被高亮。
+</code></pre><p>在这一行文字中，<mark>这里</mark>会被高亮。</p><h3 id="上-下标">上/下标</h3><p>使用<a href="https://github.com/markdown-it/markdown-it-sup">markdown-it-sup</a>以及<a href="https://github.com/markdown-it/markdown-it-sub">makrdown-it-sub</a></p><pre><code class="language-markdown">这里有个^上标^
+
 而这里有个~下标~
-</code></pre>
-        <p>这里有个<sup>上标</sup></p>
-        <p>而这里有个<sub>下标</sub></p>
-        <hr class="footnotes-sep" />
-        <section class="footnotes">
-          <ol class="footnotes-list">
-            <li id="fn1" class="footnote-item">
-              <p>
-                指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。
-                <a href="#fnref1" class="footnote-backref">↩︎</a>
-                <a href="#fnref1:1" class="footnote-backref">↩︎</a>
-              </p>
-            </li>
-            <li id="fn2" class="footnote-item">
-              <p>
-                不需要为脚注命名了
-                <a href="#fnref2" class="footnote-backref">↩︎</a>
-              </p>
-            </li>
-          </ol>
-        </section>
-        <hr />
-        <div class="article-meta-info">
-          <span>分类</span>
-          <a
-            class="article-categories-link"
-            href="/categories/%E7%AC%94%E8%AE%B0/"
-            >笔记</a
-          ><a
-            class="article-categories-link"
-            href="/categories/%E7%AC%94%E8%AE%B0/markdown/"
-            >markdown</a
-          >
-          <span>标签</span>
-          <a class="article-tags-none-link" href="/tags/markdown/" rel="tag"
-            >Markdown</a
-          >
-        </div>
-        <div class="article-date-info">
-          <span>发布日期: 2020-11-08</span>
-          <span>更新日期: 2023-07-20</span>
-        </div>
-        <div class="article-share-link">
-          <span>
-            分享文章
-            <a href="https://huzerovo.github.io/2020/11/08/learn-markdown/"
-              >https://huzerovo.github.io/2020/11/08/learn-markdown/</a
-            >
-          </span>
-        </div>
-        <div class="article-comment">
-          <div id="gitalk-container"></div>
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
-          />
-          <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-          <script src="/js/md5-2.19.0.min.js"></script>
-          <script>
-            let c = {
-              clientID: "8430fc1311285afb9029",
-              clientSecret: "30d89bdade46310cbbb97ca58bdd6f615ddcd699",
-              repo: "huzerovo.github.io",
-              owner: "Huzerovo",
-              admin: ["Huzerovo"],
-              distractionFreeMode: false,
-              number: -1,
-              title: "Article: Learn Markdown",
-            };
-            c.id = md5(c.title);
-            let gitalk = new Gitalk(c);
-            gitalk.render("gitalk-container");
-          </script>
-        </div>
-      </article>
-    </main>
-    <button id="goto-top" type="button" title="回到顶部">回到顶部</button>
-    <footer id="site-footer">
-      <p>© 2025 @狐zerOAO</p>
-      <p>
-        如无特殊说明，网站所有原创内容均采用<a
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
-          >CC BY-NC-SA 4.0</a
-        >协议授权。
-      </p>
-      <p>
-        Powered by <a href="https://hexo.io">Hexo</a>. Theme by
-        <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.
-      </p>
-      <br />
-    </footer>
-  </body>
-  <script>
-    hljs.highlightAll();
-    $("#goto-top").hide();
-    // 页面载入后设置icon
-    ThemeSwitcher.follow();
-    $(document).ready(function () {
-      // 监听事件
-      $("#btn-switch-theme").click(switchThemeClickHandler);
-      // $("#btn-side-menu").click(function () {
-      //   let e = $("#side-nav");
-      //   let hide = "side-menu-hidden";
-      //   let show = "side-menu-show";
-      //   if (e.hasClass(hide)) {
-      //     e.removeClass(hide);
-      //     e.addClass(show);
-      //   } else {
-      //     e.removeClass(show);
-      //     e.addClass(hide);
-      //   }
-      // });
-      $("#search-input").on("input", function () {
-        searchArticle("/search.xml");
-      });
-      $("#goto-top").click(function () {
-        $("#root").scrollTop(0);
-      });
-      $(window).scroll(function () {
-        if ($("#root").scrollTop() > 300) {
-          $("#goto-top").show();
-        } else {
-          $("#goto-top").hide();
-        }
-      });
-      Fancybox.bind(".container img");
-      Fancybox.bind("[data-fancybox]");
-    });
-  </script>
-</html>
+</code></pre><p>这里有个<sup>上标</sup></p><p>而这里有个<sub>下标</sub></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p>指的是“标题”、“段落”、“分隔线”、“引用块”、“列表”等等。 <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p></li><li id="fn2" class="footnote-item"><p>不需要为脚注命名了 <a href="#fnref2" class="footnote-backref">↩︎</a></p></li></ol></section><hr><div class="article-meta-info"><span>分类</span> <a class="article-categories-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><a class="article-categories-link" href="/categories/%E7%AC%94%E8%AE%B0/markdown/">markdown</a> <span>标签</span> <a class="article-tags-none-link" href="/tags/markdown/" rel="tag">Markdown</a></div><div class="article-date-info"><span>发布日期: 2020-11-08</span> <span>更新日期: 2023-07-20</span></div><div class="article-share-link"><span>分享文章 <a href="https://huzerovo.github.io/2020/11/08/learn-markdown/">https://huzerovo.github.io/2020/11/08/learn-markdown/</a></span></div><div class="article-comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script src="/js/md5-2.19.0.min.js"></script><script>let c={clientID:"8430fc1311285afb9029",clientSecret:"30d89bdade46310cbbb97ca58bdd6f615ddcd699",repo:"huzerovo.github.io",owner:"Huzerovo",admin:["Huzerovo"],distractionFreeMode:!1,number:-1,title:"Article: Learn Markdown"};c.id=md5(c.title);let gitalk=new Gitalk(c);gitalk.render("gitalk-container")</script></div></article></main><button id="goto-top" type="button" title="回到顶部">回到顶部</button><footer id="site-footer"><p>© 2026 @狐zerOAO</p><p>如无特殊说明，网站所有原创内容均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>协议授权。</p><p>Powered by <a href="https://hexo.io">Hexo</a>. Theme by <a href="https://github.com/Huzerovo/hexo-theme-huzerovo">狐zerOAO</a>.</p><br></footer></body><script>hljs.highlightAll(),$("#goto-top").hide(),ThemeSwitcher.follow(),$(document).ready(function(){$("#btn-switch-theme").click(switchThemeClickHandler),$("#search-input").on("input",function(){searchArticle("/search.xml")}),$("#goto-top").click(function(){$("#root").scrollTop(0)}),$(window).scroll(function(){$("#root").scrollTop()>300?$("#goto-top").show():$("#goto-top").hide()}),Fancybox.bind(".container img"),Fancybox.bind("[data-fancybox]")})</script></html>

@@ -1,450 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>狐灵</title>
-  
   <subtitle>狐言狐语</subtitle>
   <link href="https://huzerovo.github.io/atom.xml" rel="self"/>
-  
   <link href="https://huzerovo.github.io/"/>
   <updated>2025-11-08T01:01:46.000Z</updated>
   <id>https://huzerovo.github.io/</id>
-  
   <author>
     <name>狐zerOAO</name>
-    
   </author>
-  
   <generator uri="https://hexo.io/">Hexo</generator>
-  
   <entry>
     <title>为小米6编译RisingOS</title>
     <link href="https://huzerovo.github.io/2025/11/08/build-risingos-for-xiaomi-mi-6/"/>
     <id>https://huzerovo.github.io/2025/11/08/build-risingos-for-xiaomi-mi-6/</id>
     <published>2025-11-08T01:01:46.000Z</published>
     <updated>2025-11-08T01:01:46.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;记录如何从源码开始编译RisingOS。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="笔记" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
     <category term="编译" scheme="https://huzerovo.github.io/tags/%E7%BC%96%E8%AF%91/"/>
-    
     <category term="Android" scheme="https://huzerovo.github.io/tags/android/"/>
-    
     <category term="RisingOS" scheme="https://huzerovo.github.io/tags/risingos/"/>
-    
     <category term="类原生" scheme="https://huzerovo.github.io/tags/%E7%B1%BB%E5%8E%9F%E7%94%9F/"/>
-    
   </entry>
-  
   <entry>
     <title>树莓派上运行的服务</title>
     <link href="https://huzerovo.github.io/2024/07/10/services-running-on-my-raspberrypi/"/>
     <id>https://huzerovo.github.io/2024/07/10/services-running-on-my-raspberrypi/</id>
     <published>2024-07-10T10:25:15.000Z</published>
     <updated>2024-07-10T11:54:36.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;记录一下在树莓派上运行的一些服务&lt;/p&gt;</summary>
-    
-    
-    
     <category term="树莓派" scheme="https://huzerovo.github.io/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-    
     <category term="树莓派" scheme="https://huzerovo.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
     <category term="aria2" scheme="https://huzerovo.github.io/tags/aria2/"/>
-    
     <category term="云盘" scheme="https://huzerovo.github.io/tags/%E4%BA%91%E7%9B%98/"/>
-    
     <category term="文件同步" scheme="https://huzerovo.github.io/tags/%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5/"/>
-    
     <category term="远程管理" scheme="https://huzerovo.github.io/tags/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/"/>
-    
   </entry>
-  
   <entry>
     <title>替罪羊树</title>
     <link href="https://huzerovo.github.io/2024/01/21/scapegoat-tree/"/>
     <id>https://huzerovo.github.io/2024/01/21/scapegoat-tree/</id>
     <published>2024-01-21T07:13:51.000Z</published>
     <updated>2024-01-23T00:54:06.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;简单介绍一下替罪羊树算法，以及代码实现。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="二叉树" scheme="https://huzerovo.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
   </entry>
-  
   <entry>
     <title>Git提交规范</title>
     <link href="https://huzerovo.github.io/2023/11/02/git-commit-style/"/>
     <id>https://huzerovo.github.io/2023/11/02/git-commit-style/</id>
     <published>2023-11-02T09:33:50.000Z</published>
     <updated>2023-12-30T18:08:56.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;记录一下我自己的commit注释规范&lt;/p&gt;</summary>
-    
-    
-    
     <category term="笔记" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="git" scheme="https://huzerovo.github.io/categories/%E7%AC%94%E8%AE%B0/git/"/>
-    
-    
     <category term="git" scheme="https://huzerovo.github.io/tags/git/"/>
-    
   </entry>
-  
   <entry>
     <title>提问的智慧</title>
     <link href="https://huzerovo.github.io/2023/07/19/smart-questions/"/>
     <id>https://huzerovo.github.io/2023/07/19/smart-questions/</id>
     <published>2023-07-19T04:00:00.000Z</published>
     <updated>2023-07-19T04:00:00.000Z</updated>
-    
-    
     <summary type="html">来自LUG@USTC，原版见链接文章</summary>
-    
-    
-    
-    
   </entry>
-  
   <entry>
     <title>我的主题介绍</title>
     <link href="https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/"/>
     <id>https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/</id>
     <published>2023-07-17T04:00:00.000Z</published>
     <updated>2024-01-21T15:36:23.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;关于主题的介绍&lt;/p&gt;</summary>
-    
-    
-    
     <category term="开发记录" scheme="https://huzerovo.github.io/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"/>
-    
-    
     <category term="Hexo" scheme="https://huzerovo.github.io/tags/hexo/"/>
-    
     <category term="主题" scheme="https://huzerovo.github.io/tags/%E4%B8%BB%E9%A2%98/"/>
-    
   </entry>
-  
   <entry>
     <title>图册展示页</title>
     <link href="https://huzerovo.github.io/2023/07/17/post-for-gallery-layout-test/"/>
     <id>https://huzerovo.github.io/2023/07/17/post-for-gallery-layout-test/</id>
     <published>2023-07-17T04:00:00.000Z</published>
     <updated>2023-07-17T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;用于展示一些图片，在Front matter区域中使用&lt;code&gt;photos&lt;/code&gt;添加图片。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="相册" scheme="https://huzerovo.github.io/categories/%E7%9B%B8%E5%86%8C/"/>
-    
-    
     <category term="相册" scheme="https://huzerovo.github.io/tags/%E7%9B%B8%E5%86%8C/"/>
-    
     <category term="展示" scheme="https://huzerovo.github.io/tags/%E5%B1%95%E7%A4%BA/"/>
-    
   </entry>
-  
   <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <link href="https://huzerovo.github.io/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/"/>
     <id>https://huzerovo.github.io/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</id>
     <published>2023-07-16T04:00:00.000Z</published>
     <updated>2023-07-16T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;将博客源文件迁移至私有仓库&lt;/p&gt;</summary>
-    
-    
-    
     <category term="事记" scheme="https://huzerovo.github.io/categories/%E4%BA%8B%E8%AE%B0/"/>
-    
-    
     <category term="Hexo" scheme="https://huzerovo.github.io/tags/hexo/"/>
-    
     <category term="Github" scheme="https://huzerovo.github.io/tags/github/"/>
-    
   </entry>
-  
   <entry>
     <title>编程魔法学</title>
     <link href="https://huzerovo.github.io/2023/07/05/magic-algorithms/"/>
     <id>https://huzerovo.github.io/2023/07/05/magic-algorithms/</id>
     <published>2023-07-05T04:00:00.000Z</published>
     <updated>2023-07-05T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
   </entry>
-  
   <entry>
     <title>我的Neovim配置</title>
     <link href="https://huzerovo.github.io/2023/07/03/my-neovim-conf/"/>
     <id>https://huzerovo.github.io/2023/07/03/my-neovim-conf/</id>
     <published>2023-07-03T04:00:00.000Z</published>
     <updated>2023-07-19T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;在这里记录一下我的nvim配置。&lt;/p&gt;
 &lt;p&gt;持续更新中…&lt;/p&gt;</summary>
-    
-    
-    
     <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
-    
-    
     <category term="neovim" scheme="https://huzerovo.github.io/tags/neovim/"/>
-    
     <category term="配置" scheme="https://huzerovo.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
-    
     <category term="nvim" scheme="https://huzerovo.github.io/tags/nvim/"/>
-    
   </entry>
-  
   <entry>
     <title>开启评论</title>
     <link href="https://huzerovo.github.io/2023/01/15/comments-are-enabled/"/>
     <id>https://huzerovo.github.io/2023/01/15/comments-are-enabled/</id>
     <published>2023-01-15T04:00:00.000Z</published>
     <updated>2023-01-15T04:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
     <summary type="html">&lt;h2 id=&quot;正式完成主题的评论功能&quot;&gt;正式完成主题的评论功能&lt;/h2&gt;
 &lt;p&gt;嘻嘻&lt;/p&gt;
 </summary>
-        
-      
-    
-    
-    
-    
     <category term="Gitalk" scheme="https://huzerovo.github.io/tags/gitalk/"/>
-    
     <category term="开发" scheme="https://huzerovo.github.io/tags/%E5%BC%80%E5%8F%91/"/>
-    
   </entry>
-  
   <entry>
     <title>将init.vim迁移至init.lua</title>
     <link href="https://huzerovo.github.io/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/"/>
     <id>https://huzerovo.github.io/2023/01/12/migrate-init-vim-to-init-lua-for-neovim/</id>
     <published>2023-01-12T04:00:00.000Z</published>
     <updated>2023-01-14T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;本文是根据neovim手册写的一些笔记，是我在迁移时遇到的一些问题，记录下来方便回顾。
 详细的内容可在nvim中使用命令&lt;code&gt;:help lua-guide&lt;/code&gt;进行查看。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="事记" scheme="https://huzerovo.github.io/categories/%E4%BA%8B%E8%AE%B0/"/>
-    
-    
     <category term="vim" scheme="https://huzerovo.github.io/tags/vim/"/>
-    
     <category term="neovim" scheme="https://huzerovo.github.io/tags/neovim/"/>
-    
     <category term="配置" scheme="https://huzerovo.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
-    
     <category term="lua" scheme="https://huzerovo.github.io/tags/lua/"/>
-    
   </entry>
-  
   <entry>
     <title>Github Page时间测试</title>
     <link href="https://huzerovo.github.io/2023/01/01/time-test/"/>
     <id>https://huzerovo.github.io/2023/01/01/time-test/</id>
     <published>2023-01-01T04:00:00.000Z</published>
     <updated>2023-01-01T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;时间格式测试&lt;/p&gt;</summary>
-    
-    
-    
-    
   </entry>
-  
   <entry>
     <title>smali 语法</title>
     <link href="https://huzerovo.github.io/2022/03/05/smali-language/"/>
     <id>https://huzerovo.github.io/2022/03/05/smali-language/</id>
     <published>2022-03-05T04:00:00.000Z</published>
     <updated>2022-03-05T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;记录一下 smali 的基本语法，方便回顾&lt;/p&gt;</summary>
-    
-    
-    
     <category term="杂货铺" scheme="https://huzerovo.github.io/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"/>
-    
-    
     <category term="Android" scheme="https://huzerovo.github.io/tags/android/"/>
-    
     <category term="smali" scheme="https://huzerovo.github.io/tags/smali/"/>
-    
   </entry>
-  
   <entry>
     <title>逻辑回归</title>
     <link href="https://huzerovo.github.io/2021/11/25/logistic-regression/"/>
     <id>https://huzerovo.github.io/2021/11/25/logistic-regression/</id>
     <published>2021-11-25T04:00:00.000Z</published>
     <updated>2023-07-21T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;逻辑回归是不同于线性回归的另一种机器学习的算法&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
   </entry>
-  
   <entry>
     <title>为什么使用最小二乘法</title>
     <link href="https://huzerovo.github.io/2021/11/04/why-use-least-squares/"/>
     <id>https://huzerovo.github.io/2021/11/04/why-use-least-squares/</id>
     <published>2021-11-04T04:00:00.000Z</published>
     <updated>2021-11-04T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;解释为什么最小二乘法能减小误差&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="最小二乘法" scheme="https://huzerovo.github.io/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/"/>
-    
     <category term="概率论" scheme="https://huzerovo.github.io/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/"/>
-    
   </entry>
-  
   <entry>
     <title>局部加权回归</title>
     <link href="https://huzerovo.github.io/2021/10/30/locally-weighted-regression/"/>
     <id>https://huzerovo.github.io/2021/10/30/locally-weighted-regression/</id>
     <published>2021-10-30T04:00:00.000Z</published>
     <updated>2023-07-21T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;简单介绍局部加权回归算法的思想&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="回归算法" scheme="https://huzerovo.github.io/tags/%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95/"/>
-    
     <category term="算法优化" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/"/>
-    
   </entry>
-  
   <entry>
     <title>欠拟合与过拟合</title>
     <link href="https://huzerovo.github.io/2021/10/26/underfitting-and-overfitting/"/>
     <id>https://huzerovo.github.io/2021/10/26/underfitting-and-overfitting/</id>
     <published>2021-10-26T04:00:00.000Z</published>
     <updated>2021-10-30T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;机器学习中遭遇的问题&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="算法优化" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/"/>
-    
   </entry>
-  
   <entry>
     <title>梯度下降算法</title>
     <link href="https://huzerovo.github.io/2021/09/16/gradient-descent/"/>
     <id>https://huzerovo.github.io/2021/09/16/gradient-descent/</id>
     <published>2021-09-16T04:00:00.000Z</published>
     <updated>2023-07-21T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;介绍 &lt;strong&gt;梯度下降算法 (gradient descent algorithm)&lt;/strong&gt; 并简单解释其原理&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="算法" scheme="https://huzerovo.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
   </entry>
-  
   <entry>
     <title>线性回归</title>
     <link href="https://huzerovo.github.io/2021/09/11/linear-regression/"/>
     <id>https://huzerovo.github.io/2021/09/11/linear-regression/</id>
     <published>2021-09-11T04:00:00.000Z</published>
     <updated>2023-07-21T04:00:00.000Z</updated>
-    
-    
     <summary type="html">&lt;p&gt;基于Andrew NG机器学习公开课程&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;。
 线性回归是一种&lt;strong&gt;监督学习&lt;/strong&gt;的模型。&lt;/p&gt;</summary>
-    
-    
-    
     <category term="机器学习" scheme="https://huzerovo.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
     <category term="监督学习" scheme="https://huzerovo.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="线性回归" scheme="https://huzerovo.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
-    
   </entry>
-  
 </feed>

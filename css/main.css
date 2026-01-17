@@ -125,11 +125,7 @@ main.container .articles-list .item-footer .item-footer-todo {
   margin: 0px;
   text-align: left;
 }
-main.container
-  .articles-list
-  .item-footer
-  .item-footer-todo
-  .item-footer-todo-msg {
+main.container .articles-list .item-footer .item-footer-todo .item-footer-todo-msg {
   display: inline;
   margin-right: 8px;
 }
@@ -279,9 +275,7 @@ main.container .article-container blockquote {
   padding: 0px 2em;
   width: calc(100% - 64px - 3px);
   display: inline-block;
-  transition:
-    color 0.3s,
-    background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 main.container .article-container blockquote p {
   text-indent: 0px;
@@ -324,9 +318,7 @@ main.container .article-container code {
   font-size: 14px;
   border-radius: 6px;
   margin: 3px;
-  transition:
-    color 0.3s,
-    background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 main.container .article-container code:not([class*="language"]) {
   background-color: var(--huzerovo-code-background);
@@ -397,251 +389,75 @@ main.container .article-container figure.highlight table .code pre .hljs {
   background: #0d1117;
 }
 main.container .article-container figure.highlight table .code pre .hljs-doctag,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-keyword,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-meta
-  .hljs-keyword,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-template-tag,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-template-variable,
+main.container .article-container figure.highlight table .code pre .hljs-keyword,
+main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-keyword,
+main.container .article-container figure.highlight table .code pre .hljs-template-tag,
+main.container .article-container figure.highlight table .code pre .hljs-template-variable,
 main.container .article-container figure.highlight table .code pre .hljs-type,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-variable.language_ {
+main.container .article-container figure.highlight table .code pre .hljs-variable.language_ {
   color: #ff7b72;
 }
 main.container .article-container figure.highlight table .code pre .hljs-title,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-title.class_,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-title.class_.inherited__,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-title.function_ {
+main.container .article-container figure.highlight table .code pre .hljs-title.class_,
+main.container .article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
+main.container .article-container figure.highlight table .code pre .hljs-title.function_ {
   color: #d2a8ff;
 }
 main.container .article-container figure.highlight table .code pre .hljs-attr,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-attribute,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-literal,
+main.container .article-container figure.highlight table .code pre .hljs-attribute,
+main.container .article-container figure.highlight table .code pre .hljs-literal,
 main.container .article-container figure.highlight table .code pre .hljs-meta,
 main.container .article-container figure.highlight table .code pre .hljs-number,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-operator,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-selector-attr,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-selector-class,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-selector-id,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-variable {
+main.container .article-container figure.highlight table .code pre .hljs-operator,
+main.container .article-container figure.highlight table .code pre .hljs-selector-attr,
+main.container .article-container figure.highlight table .code pre .hljs-selector-class,
+main.container .article-container figure.highlight table .code pre .hljs-selector-id,
+main.container .article-container figure.highlight table .code pre .hljs-variable {
   color: #79c0ff;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-meta
-  .hljs-string,
+main.container .article-container figure.highlight table .code pre .hljs-meta .hljs-string,
 main.container .article-container figure.highlight table .code pre .hljs-regexp,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-string {
+main.container .article-container figure.highlight table .code pre .hljs-string {
   color: #a5d6ff;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-built_in,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-symbol {
+main.container .article-container figure.highlight table .code pre .hljs-built_in,
+main.container .article-container figure.highlight table .code pre .hljs-symbol {
   color: #ffa657;
 }
 main.container .article-container figure.highlight table .code pre .hljs-code,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-comment,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-formula {
+main.container .article-container figure.highlight table .code pre .hljs-comment,
+main.container .article-container figure.highlight table .code pre .hljs-formula {
   color: #8b949e;
 }
 main.container .article-container figure.highlight table .code pre .hljs-name,
 main.container .article-container figure.highlight table .code pre .hljs-quote,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-selector-pseudo,
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-selector-tag {
+main.container .article-container figure.highlight table .code pre .hljs-selector-pseudo,
+main.container .article-container figure.highlight table .code pre .hljs-selector-tag {
   color: #7ee787;
 }
 main.container .article-container figure.highlight table .code pre .hljs-subst {
   color: #c9d1d9;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-section {
+main.container .article-container figure.highlight table .code pre .hljs-section {
   color: #1f6feb;
   font-weight: 700;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-bullet {
+main.container .article-container figure.highlight table .code pre .hljs-bullet {
   color: #f2cc60;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-emphasis {
+main.container .article-container figure.highlight table .code pre .hljs-emphasis {
   color: #c9d1d9;
   font-style: italic;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-strong {
+main.container .article-container figure.highlight table .code pre .hljs-strong {
   color: #c9d1d9;
   font-weight: 700;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-addition {
+main.container .article-container figure.highlight table .code pre .hljs-addition {
   color: #aff5b4;
   background-color: #033a16;
 }
-main.container
-  .article-container
-  figure.highlight
-  table
-  .code
-  pre
-  .hljs-deletion {
+main.container .article-container figure.highlight table .code pre .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
 }
@@ -671,23 +487,14 @@ main.container .article-container .katex-display .katex::-webkit-scrollbar {
   width: 1px;
   height: 1px;
 }
-main.container
-  .article-container
-  .katex-display
-  .katex:hover::-webkit-scrollbar {
+main.container .article-container .katex-display .katex:hover::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-main.container
-  .article-container
-  .katex-display
-  .katex::-webkit-scrollbar-track {
+main.container .article-container .katex-display .katex::-webkit-scrollbar-track {
   border-radius: 8px;
 }
-main.container
-  .article-container
-  .katex-display
-  .katex::-webkit-scrollbar-thumb {
+main.container .article-container .katex-display .katex::-webkit-scrollbar-thumb {
   border-radius: 8px;
 }
 main.container .article-container .pullquote {

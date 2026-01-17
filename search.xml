@@ -104,115 +104,6 @@ rise b -j$(nproc --all)
       </tags>
   </entry>
   <entry>
-    <title>Git提交规范</title>
-    <url>/2023/11/02/git-commit-style/</url>
-    <content><![CDATA[<p>记录一下我自己的commit注释规范</p>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>仅仅用于自己的一些比较大的项目，或者说提交量比较多的项目中，
-尽可能遵守这里记录的提交风格，<s>不然我自己都看不懂提交了些啥玩意</s>。</p>
-<h2 id="博客文章提交">博客文章提交</h2>
-<p>基本格式：<code>&lt;type&gt;(type, type): &lt;msg&gt;</code>。其中的<code>type</code>为以下类型：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">draft</td>
-<td style="text-align:left">创建新的草稿</td>
-</tr>
-<tr>
-<td style="text-align:left">post</td>
-<td style="text-align:left">创建新文章</td>
-</tr>
-<tr>
-<td style="text-align:left">corr</td>
-<td style="text-align:left">文章错误更正</td>
-</tr>
-<tr>
-<td style="text-align:left">theme</td>
-<td style="text-align:left">主题更新</td>
-</tr>
-<tr>
-<td style="text-align:left">config</td>
-<td style="text-align:left">配置更新</td>
-</tr>
-<tr>
-<td style="text-align:left">update</td>
-<td style="text-align:left">文章内容更新</td>
-</tr>
-<tr>
-<td style="text-align:left">others</td>
-<td style="text-align:left">其他操作</td>
-</tr>
-</tbody>
-</table>
-<p><code>&lt;type&gt;</code>表示此次提交的主要操作，<code>(type)</code>表示此次提交中还进行其他附加操作。
-<code>&lt;msg&gt;</code>描述<strong>主要操作</strong>都干了啥，
-对于<strong>其他操作</strong>应该有比较详细的描述，
-对于<strong>附加操作</strong>可以不说明。</p>
-<h2 id="自己项目的代码提交">自己项目的代码提交</h2>
-<p>基本格式：<code>&lt;type&gt;: &lt;msg&gt;</code>。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">feat</td>
-<td style="text-align:left">新功能实现</td>
-</tr>
-<tr>
-<td style="text-align:left">fix</td>
-<td style="text-align:left">缺陷修复</td>
-</tr>
-<tr>
-<td style="text-align:left">typo</td>
-<td style="text-align:left">错别字更正</td>
-</tr>
-<tr>
-<td style="text-align:left">revert</td>
-<td style="text-align:left">版本回退</td>
-</tr>
-<tr>
-<td style="text-align:left">style</td>
-<td style="text-align:left">代码风格变更</td>
-</tr>
-<tr>
-<td style="text-align:left">refact</td>
-<td style="text-align:left">代码重构</td>
-</tr>
-<tr>
-<td style="text-align:left">docs</td>
-<td style="text-align:left">修改注释</td>
-</tr>
-<tr>
-<td style="text-align:left">merge</td>
-<td style="text-align:left">代码合并</td>
-</tr>
-<tr>
-<td style="text-align:left">others</td>
-<td style="text-align:left">其他操作</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Hexo从私有仓库部署Github Page</title>
     <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
     <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
@@ -376,6 +267,115 @@ if __name__ == &quot;__main__&quot;:
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git提交规范</title>
+    <url>/2023/11/02/git-commit-style/</url>
+    <content><![CDATA[<p>记录一下我自己的commit注释规范</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>仅仅用于自己的一些比较大的项目，或者说提交量比较多的项目中，
+尽可能遵守这里记录的提交风格，<s>不然我自己都看不懂提交了些啥玩意</s>。</p>
+<h2 id="博客文章提交">博客文章提交</h2>
+<p>基本格式：<code>&lt;type&gt;(type, type): &lt;msg&gt;</code>。其中的<code>type</code>为以下类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">draft</td>
+<td style="text-align:left">创建新的草稿</td>
+</tr>
+<tr>
+<td style="text-align:left">post</td>
+<td style="text-align:left">创建新文章</td>
+</tr>
+<tr>
+<td style="text-align:left">corr</td>
+<td style="text-align:left">文章错误更正</td>
+</tr>
+<tr>
+<td style="text-align:left">theme</td>
+<td style="text-align:left">主题更新</td>
+</tr>
+<tr>
+<td style="text-align:left">config</td>
+<td style="text-align:left">配置更新</td>
+</tr>
+<tr>
+<td style="text-align:left">update</td>
+<td style="text-align:left">文章内容更新</td>
+</tr>
+<tr>
+<td style="text-align:left">others</td>
+<td style="text-align:left">其他操作</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;type&gt;</code>表示此次提交的主要操作，<code>(type)</code>表示此次提交中还进行其他附加操作。
+<code>&lt;msg&gt;</code>描述<strong>主要操作</strong>都干了啥，
+对于<strong>其他操作</strong>应该有比较详细的描述，
+对于<strong>附加操作</strong>可以不说明。</p>
+<h2 id="自己项目的代码提交">自己项目的代码提交</h2>
+<p>基本格式：<code>&lt;type&gt;: &lt;msg&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">feat</td>
+<td style="text-align:left">新功能实现</td>
+</tr>
+<tr>
+<td style="text-align:left">fix</td>
+<td style="text-align:left">缺陷修复</td>
+</tr>
+<tr>
+<td style="text-align:left">typo</td>
+<td style="text-align:left">错别字更正</td>
+</tr>
+<tr>
+<td style="text-align:left">revert</td>
+<td style="text-align:left">版本回退</td>
+</tr>
+<tr>
+<td style="text-align:left">style</td>
+<td style="text-align:left">代码风格变更</td>
+</tr>
+<tr>
+<td style="text-align:left">refact</td>
+<td style="text-align:left">代码重构</td>
+</tr>
+<tr>
+<td style="text-align:left">docs</td>
+<td style="text-align:left">修改注释</td>
+</tr>
+<tr>
+<td style="text-align:left">merge</td>
+<td style="text-align:left">代码合并</td>
+</tr>
+<tr>
+<td style="text-align:left">others</td>
+<td style="text-align:left">其他操作</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -3103,6 +3103,403 @@ vim.fn['plug#end']()
       </tags>
   </entry>
   <entry>
+    <title>我的Neovim配置</title>
+    <url>/2023/07/03/my-neovim-conf/</url>
+    <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
+<p>持续更新中…</p>
+<span id="more"></span>
+<h2 id="快捷键配置">快捷键配置</h2>
+<p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
+详细内容参考<code>:help keycodes</code>。</p>
+<h3 id="nvim快捷键">nvim快捷键</h3>
+<p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;A-t&gt;</code></td>
+<td style="text-align:left">关闭标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>t</code></td>
+<td style="text-align:left">下一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-t&gt;</code></td>
+<td style="text-align:left">新建标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-t&gt;</code></td>
+<td style="text-align:left">上一个标签页</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-j&gt;</code></td>
+<td style="text-align:left">向上滚动，映射为<code>&lt;C-E&gt;&lt;C-E&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
+<td style="text-align:left">向下滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;TAB&gt;</code></td>
+<td style="text-align:left">下/右窗口，映射为<code>&lt;C-W&gt;w</code></td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;S-TAB&gt;</code></td>
+<td style="text-align:left">上/左窗口，映射为<code>&lt;C-W&gt;W</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gitsigns快捷键">gitsigns快捷键</h3>
+<p>gitsigns是在文件内对git记录进行快速操作的插件，
+可以快速地重置、保存和查看更改记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>快捷键大部分在normal模式下使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>]c</code></td>
+<td style="text-align:left">下一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c</code></td>
+<td style="text-align:left">上一个记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsu</code></td>
+<td style="text-align:left">撤销保存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gss</code></td>
+<td style="text-align:left">暂存记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsr</code></td>
+<td style="text-align:left">重置记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsS</code></td>
+<td style="text-align:left">暂存缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsR</code></td>
+<td style="text-align:left">重置缓冲区所有记录</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsp</code></td>
+<td style="text-align:left">预览修改</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsd</code></td>
+<td style="text-align:left">相当于<code>git diff</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gsD</code></td>
+<td style="text-align:left">相当于<code>git diff HEAD</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gst</code></td>
+<td style="text-align:left">查看/隐藏删除的记录</td>
+</tr>
+</tbody>
+</table>
+<p>这个快捷键使用的模式比较特殊。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ox</td>
+<td style="text-align:left"><code>gsc</code></td>
+<td style="text-align:left">选择整个记录块（<strong>G</strong>it<strong>S</strong>aga <strong>S</strong>elect <strong>C</strong>hunk）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="LSP快捷键">LSP快捷键</h3>
+<p>LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;el</code></td>
+<td style="text-align:left">显示行诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ec</code></td>
+<td style="text-align:left">显示光标处诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ea</code></td>
+<td style="text-align:left">显示缓冲区诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
+<td style="text-align:left">格式化代码</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
+<td style="text-align:left">符号重命名，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
+<td style="text-align:left">查看符号引用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
+<td style="text-align:left">查看实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
+<td style="text-align:left">大纲</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]e</code></td>
+<td style="text-align:left">下一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[e</code></td>
+<td style="text-align:left">上一个问题诊断</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;M-CR&gt;</code></td>
+<td style="text-align:left">显示代码建议，可在visual模式使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gc</code></td>
+<td style="text-align:left">跳转到声明</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gd</code></td>
+<td style="text-align:left">跳转到定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>gt</code></td>
+<td style="text-align:left">跳转到类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>K</code></td>
+<td style="text-align:left">查看文档</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Lspsaga快捷键">Lspsaga快捷键</h4>
+<p>Lspsaga为neovim内置的LSP提供了更友好的界面，
+因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
+在这里列出Lspsaga专有的快捷键。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ls</code></td>
+<td style="text-align:left">列出符号的所有定义、引用与实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pd</code></td>
+<td style="text-align:left">在悬浮窗口查看符号定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;pt</code></td>
+<td style="text-align:left">在悬浮窗口查看类型定义</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>]E</code></td>
+<td style="text-align:left">下一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[E</code></td>
+<td style="text-align:left">上一个错误（忽略警告）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ci</code></td>
+<td style="text-align:left">列出所有调用符号的位置</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;co</code></td>
+<td style="text-align:left">列出符号调用的方法</td>
+</tr>
+</tbody>
+</table>
+<p>Lspsaga在预览窗口的快捷键有些混乱，大部分快捷键作用是相同的，
+但有个别在不同类型的窗口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>内不同，
+加上个人习惯修改了部分按键，这里只列个大概。</p>
+<ul>
+<li><code>&lt;C-d&gt;</code>、<code>&lt;C-u&gt;</code>：窗口内容滚动。对应<code>down</code>和<code>up</code>的意思。</li>
+<li><code>&lt;C-t&gt;</code>：跳出窗口。</li>
+<li><code>q</code>、<code>&lt;ESC&gt;</code>、<code>&lt;C-c&gt;</code>：这些基本都有退出或取消操作的意思。</li>
+<li><code>g</code>：这个大部分情况下是跳转。</li>
+<li><code>o</code>：这个是展示预览或者编辑的意思，如果只是展示则不会跳转，此外还有打开折叠栏的意思。</li>
+<li><code>&lt;CR&gt;</code>：表示执行、跳转等意思。</li>
+<li><code>v</code>、<code>x</code>、<code>t</code>、<code>r</code>：这些都是新建窗口进行下一步操作。
+分别对应<code>vsplit</code>、<code>split</code>、<code>tabedit</code>、<code>tabnew</code>。</li>
+</ul>
+<p><code>o</code>指令与<code>&lt;CR&gt;</code>有功能上的重复，但还是有一些区别。
+如在大纲窗口中，<code>o</code>与<code>&lt;CR&gt;</code>都表现为在编辑区域打开并跳转到函数所在位置。
+但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code Action。</p>
+<h3 id="Floaterm快捷键">Floaterm快捷键</h3>
+<p>这是个悬浮终端的插件。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;F12&gt;</code></td>
+<td style="text-align:left">显示/隐藏悬浮终端</td>
+</tr>
+<tr>
+<td style="text-align:left">nt</td>
+<td style="text-align:left"><code>&lt;leader&gt;f12</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nvim-tree快捷键">nvim-tree快捷键</h3>
+<p>nvim-tree在自己的窗口中有自己的快捷键，使用<code>:help nvim-tree-mapping-default</code>查看。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;F2&gt;</code></td>
+<td style="text-align:left">打开/隐藏文件树</td>
+</tr>
+<tr>
+<td style="text-align:left">niv</td>
+<td style="text-align:left"><code>&lt;leader&gt;f2</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Telescope快捷键">Telescope快捷键</h3>
+<p>快捷键都处于normal模式使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>&lt;F3&gt;</code></td>
+<td style="text-align:left">查找文件，同时可用于关闭窗口</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;F3</code></td>
+<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
+<td style="text-align:left">查看register内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;ch</code></td>
+<td style="text-align:left">查看历史命令</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;leader&gt;sh</code></td>
+<td style="text-align:left">查看搜索历史</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Nerdcommter快捷键">Nerdcommter快捷键</h3>
+<p>用于快速注释。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">按键</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left"><code>&lt;leader&gt;ca</code></td>
+<td style="text-align:left">切换注释风格，如C的<code>//</code>和<code>/* */</code></td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cc</code></td>
+<td style="text-align:left">注释/取消注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cs</code></td>
+<td style="text-align:left">块注释</td>
+</tr>
+<tr>
+<td style="text-align:left">nx</td>
+<td style="text-align:left"><code>&lt;leader&gt;cu</code></td>
+<td style="text-align:left">取消注释</td>
+</tr>
+</tbody>
+</table>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>在Git中，修改过的记录称为hunk，我习惯称为chunk。此外我还习惯称之为记录块，简称记录。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>指的是“定义预览”、“引用预览”、“实现预览”等窗口。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>neovim</tag>
+        <tag>配置</tag>
+        <tag>nvim</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图册展示页</title>
     <url>/2023/07/17/post-for-gallery-layout-test/</url>
     <content><![CDATA[<p>用于展示一些图片，在Front matter区域中使用<code>photos</code>添加图片。</p>
@@ -3424,344 +3821,6 @@ dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
         <tag>hostapd</tag>
         <tag>dnsmasq</tag>
         <tag>Access Point</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派上运行的服务</title>
-    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
-    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
-<span id="more"></span>
-<h2 id="Nginx服务器">Nginx服务器</h2>
-<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了Nginx，
-用来反代树莓派上所有服务。</p>
-<h2 id="Adguard-Home-DNS解析服务">Adguard Home DNS解析服务</h2>
-<blockquote>
-<p>Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
-</blockquote>
-<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
-一开始是直接改hosts文件的，但这样要改所有会访问树莓派服务的设备的hosts，
-这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
-并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。</p>
-<h2 id="Aria2下载服务">Aria2下载服务</h2>
-<blockquote>
-<p>Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
-AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
-</blockquote>
-<p>Aria2本身只有命令行界面，AriaNg为其提供了web GUI，
-部署在树莓派上就能够通过网页远程管理Aria2了。</p>
-<p>Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
-这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。</p>
-<h2 id="Nextcloud私有云盘">Nextcloud私有云盘</h2>
-<blockquote>
-<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
-</blockquote>
-<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
-此外云盘有时会用Collabora office编辑一些文档，<s>问就是懒得重启到Windows编辑</s>。
-但实际上用的很少，因为还在树莓派部署了Collabora office的内建服务器，
-然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
-<p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
-<h2 id="Syncthing文件同步服务">Syncthing文件同步服务</h2>
-<blockquote>
-<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
-</blockquote>
-<p>这个主要用来进行文件同步，但与Nextcloud有一些不同。</p>
-<p>Nextcloud在Android上有个奇奇怪怪的问题。
-在Linux上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
-同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
-但在Android上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
-按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
-<code>Android/media/.../sync/videos</code>。</p>
-<p>这很不合理，因为我在Android也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
-而Syncthing能够满足这个需求。</p>
-<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s></p>
-<h2 id="一些不常用的服务">一些不常用的服务</h2>
-<h3 id="Homeassistant服务">Homeassistant服务</h3>
-<blockquote>
-<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
-</blockquote>
-<p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
-<h3 id="Netdata性能监控">Netdata性能监控</h3>
-<blockquote>
-<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
-</blockquote>
-<p>这个服务只是一时兴起部署的，几乎很少使用。
-<s>这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s></p>
-<h3 id="Cups打印机服务">Cups打印机服务</h3>
-<p>有个打印机，用cups在局域网内共享，没啥好说的。
-<s>就是有时会找不到打印机，要重启一下服务</s></p>
-<h3 id="Cockpit网页管理">Cockpit网页管理</h3>
-<blockquote>
-<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
-</blockquote>
-<p>这个是Redhat赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
-但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>如aria2.my.domain，adguard.my.domain，地址解析用到了自建的DNS服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>树莓派</category>
-      </categories>
-      <tags>
-        <tag>树莓派</tag>
-        <tag>aria2</tag>
-        <tag>云盘</tag>
-        <tag>文件同步</tag>
-        <tag>远程管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>提问的智慧</title>
-    <url>/2023/07/19/smart-questions/</url>
-    <content><![CDATA[<!-- more -->
-]]></content>
-  </entry>
-  <entry>
-    <title>smali 语法</title>
-    <url>/2022/03/05/smali-language/</url>
-    <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>smali 语法与汇编语法挺相似的，
-简要做一些笔记，仅仅只是一些简单的语法，
-更多信息请查看文末的链接</p>
-<h2 id="数据类型">数据类型</h2>
-<p>以下是一些基本数据类型的表示</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">smali</th>
-<th style="text-align:left">Java</th>
-<th style="text-align:left">smali</th>
-<th style="text-align:left">Java</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">I</td>
-<td style="text-align:left">int</td>
-<td style="text-align:left">C</td>
-<td style="text-align:left">char</td>
-</tr>
-<tr>
-<td style="text-align:left">S</td>
-<td style="text-align:left">short</td>
-<td style="text-align:left">Z</td>
-<td style="text-align:left">boolean</td>
-</tr>
-<tr>
-<td style="text-align:left">J</td>
-<td style="text-align:left">long</td>
-<td style="text-align:left">V</td>
-<td style="text-align:left">void</td>
-</tr>
-<tr>
-<td style="text-align:left">F</td>
-<td style="text-align:left">float</td>
-<td style="text-align:left">L</td>
-<td style="text-align:left">object</td>
-</tr>
-<tr>
-<td style="text-align:left">D</td>
-<td style="text-align:left">double</td>
-<td style="text-align:left">B</td>
-<td style="text-align:left">byte</td>
-</tr>
-<tr>
-<td style="text-align:left">[</td>
-<td style="text-align:left">数组</td>
-<td style="text-align:left">[[</td>
-<td style="text-align:left">二维数组</td>
-</tr>
-</tbody>
-</table>
-<p>例子</p>
-<p><code>[I</code> 表示 int[] ，整型数组<br />
-<code>Ljava/lang/String</code> 表示 String 类型，在 Java 中，
-String 为 java.lang 包中的一个对象</p>
-<h2 id="流程控制">流程控制</h2>
-<h3 id="条件判断">条件判断</h3>
-<p>语法如下：<br />
-<code>if-{cond} v1, v0, :cond_0</code></p>
-<p><code>{cond}</code> 是判断条件，在后面会列出<br />
-<code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
-<p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
-<code>if-ge v0, v1, :cond_0</code></p>
-<p>全部条件判断语句：<br />
-<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <strong>eq</strong>ual<br />
-<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <strong>n</strong>o <strong>e</strong>qula<br />
-<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <strong>g</strong>reater than or <strong>e</strong>qual<br />
-<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <strong>l</strong>ess than or <strong>e</strong>qual<br />
-<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <strong>g</strong>reater <strong>t</strong>han<br />
-<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
-<h3 id="循环">循环</h3>
-<p>直接代码解释比较方便，例子来源参见文末链接1</p>
-<pre><code class="language-java">public void smaliWhile() {
-    int a = 0;
-    while(a &lt;= 3) {
-        a++;
-    }
-
-    int b = 0;
-    for(int i = 0;i&lt;3;i++){
-        b++;
-    }
-
-    int c = 0;
-    do{
-        c++;
-    }while (c &lt;= 3);
-}
-</code></pre>
-<p>对应的 smali 语法</p>
-<pre><code class="language-smali">.method public smaliWhile()V
-    .locals 5
-
-    .line 62
-    // 4 字节常量，值为 0
-    const/4 v0, 0x0
-
-    // 赋值给 a
-    move v1, v0
-
-    .line 63
-    .local v1, &quot;a&quot;:I
-    // goto 标签
-    :goto_0
-    const/4 v2, 0x3
-
-    // if (a &gt; 3), goto cond_0
-    if-gt v1, v2, :cond_0
-
-    .line 64
-    // else v1 = v1 + 1
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 68
-    :cond_0
-    const/4 v3, 0x0
-
-    .line 69
-    .local v3, &quot;b&quot;:I
-    move v4, v3
-
-    move v3, v0
-
-    .local v3, &quot;i&quot;:I
-    .local v4, &quot;b&quot;:I
-    :goto_1
-    if-ge v3, v2, :cond_1
-
-    .line 70
-    add-int/lit8 v4, v4, 0x1
-
-    .line 69
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_1
-
-    .line 74
-    .end local v3
-    :cond_1
-    nop
-
-    .line 76
-    .local v0, &quot;c&quot;:I
-    :cond_2
-    add-int/lit8 v0, v0, 0x1
-
-    .line 77
-    if-le v0, v2, :cond_2
-
-    .line 78
-    return-void
-.end method
-</code></pre>
-<p>与汇编语法挺相似的，不多解释<br />
-<s>其实是懒得写笔记</s></p>
-<h2 id="函数定义">函数定义</h2>
-<p>一般定义长这个样子:
-<code>funcName (paraType1paraType2...)returnType</code></p>
-<ul>
-<li><code>funcName</code> 表示函数名</li>
-<li><code>paraType1</code> 和 <code>paraType2</code> 表示传入参数的类型，他们之间<strong>没有</strong>空格</li>
-<li><code>returnType</code> 表示返回值类型</li>
-</ul>
-<p>例子</p>
-<p><code>foo (IF)Z</code> 是 <code>boolean foo (int, float)</code></p>
-<p><code>bar([ILjava/lang/String)Z</code> 是 <code>boolean bar(int[], String)</code></p>
-<h2 id="内部类">内部类</h2>
-<p>smali 使用 <code>$</code> 表示内部类，像这样子
-<code>LpackageName/objectName$subObjName</code></p>
-<h2 id="参考">参考</h2>
-<ol>
-<li><a href="https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735">Smali coding guide for beginners</a></li>
-<li><a href="https://programmer.help/blogs/smali-introduction-manual.html">Smali Introduction Manual</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>smali</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Page时间测试</title>
-    <url>/2023/01/01/time-test/</url>
-    <content><![CDATA[<p>时间格式测试</p>
-<span id="more"></span>
-<p>发现Github Page上的日期比实际的日期少一天。</p>
-<p>似乎是时区问题？没有验证。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>欠拟合与过拟合</title>
-    <url>/2021/10/26/underfitting-and-overfitting/</url>
-    <content><![CDATA[<p>机器学习中遭遇的问题</p>
-<span id="more"></span>
-<h2 id="欠拟合与过拟合">欠拟合与过拟合</h2>
-<h3 id="欠拟合">欠拟合</h3>
-<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
-<p>问题的原因在于训练时，用于训练的模型不是很好，
-当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
-比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" loading="lazy" /></p>
-<h3 id="过拟合">过拟合</h3>
-<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
-但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
-<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
-下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" loading="lazy" /></p>
-<p>或许加上原数据之间的连线更能体现：</p>
-<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" loading="lazy" /></p>
-<h2 id="解决方法">解决方法</h2>
-<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
-<strong>局部加权回归算法</strong> 则属于这一类算法<br />
-详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>算法优化</tag>
       </tags>
   </entry>
   <entry>
@@ -4131,6 +4190,302 @@ bool should_rebuild(int r) {
         <tag>算法</tag>
         <tag>二叉树</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>树莓派上运行的服务</title>
+    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
+    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
+<span id="more"></span>
+<h2 id="Nginx服务器">Nginx服务器</h2>
+<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了Nginx，
+用来反代树莓派上所有服务。</p>
+<h2 id="Adguard-Home-DNS解析服务">Adguard Home DNS解析服务</h2>
+<blockquote>
+<p>Github仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
+</blockquote>
+<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
+一开始是直接改hosts文件的，但这样要改所有会访问树莓派服务的设备的hosts，
+这导致Android和ios都没办法使用树莓派服务。后来是改树莓派上的hosts文件，
+并配合dnsmasq进行解析，但是由于dnsmasq没办法用网页管理，于是就弃用了。</p>
+<h2 id="Aria2下载服务">Aria2下载服务</h2>
+<blockquote>
+<p>Aria2：<a href="https://aria2.github.io">https://aria2.github.io</a>
+AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+</blockquote>
+<p>Aria2本身只有命令行界面，AriaNg为其提供了web GUI，
+部署在树莓派上就能够通过网页远程管理Aria2了。</p>
+<p>Aria2用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
+这样就不需要：开终端，wget一下，然后进入漫长的等待，最后关终端。</p>
+<h2 id="Nextcloud私有云盘">Nextcloud私有云盘</h2>
+<blockquote>
+<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
+</blockquote>
+<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
+此外云盘有时会用Collabora office编辑一些文档，<s>问就是懒得重启到Windows编辑</s>。
+但实际上用的很少，因为还在树莓派部署了Collabora office的内建服务器，
+然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
+<p>此外，云盘还被用来与Aria2配合，这样就能管理用Aria2下载的文件了。</p>
+<h2 id="Syncthing文件同步服务">Syncthing文件同步服务</h2>
+<blockquote>
+<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
+</blockquote>
+<p>这个主要用来进行文件同步，但与Nextcloud有一些不同。</p>
+<p>Nextcloud在Android上有个奇奇怪怪的问题。
+在Linux上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
+同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
+但在Android上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
+按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
+<code>Android/media/.../sync/videos</code>。</p>
+<p>这很不合理，因为我在Android也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
+而Syncthing能够满足这个需求。</p>
+<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为syncthing的中介人…</s></p>
+<h2 id="一些不常用的服务">一些不常用的服务</h2>
+<h3 id="Homeassistant服务">Homeassistant服务</h3>
+<blockquote>
+<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
+</blockquote>
+<p>现已停用，原因：非常占内存，我的树莓派只有可怜的2G。</p>
+<h3 id="Netdata性能监控">Netdata性能监控</h3>
+<blockquote>
+<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
+</blockquote>
+<p>这个服务只是一时兴起部署的，几乎很少使用。
+<s>这个服务最大的共享就是让我发现Nextcloud的PHP后台真消耗性能，还有HASS</s></p>
+<h3 id="Cups打印机服务">Cups打印机服务</h3>
+<p>有个打印机，用cups在局域网内共享，没啥好说的。
+<s>就是有时会找不到打印机，要重启一下服务</s></p>
+<h3 id="Cockpit网页管理">Cockpit网页管理</h3>
+<blockquote>
+<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
+</blockquote>
+<p>这个是Redhat赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
+但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如aria2.my.domain，adguard.my.domain，地址解析用到了自建的DNS服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>aria2</tag>
+        <tag>云盘</tag>
+        <tag>文件同步</tag>
+        <tag>远程管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>smali 语法</title>
+    <url>/2022/03/05/smali-language/</url>
+    <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>smali 语法与汇编语法挺相似的，
+简要做一些笔记，仅仅只是一些简单的语法，
+更多信息请查看文末的链接</p>
+<h2 id="数据类型">数据类型</h2>
+<p>以下是一些基本数据类型的表示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">char</td>
+</tr>
+<tr>
+<td style="text-align:left">S</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">J</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">V</td>
+<td style="text-align:left">void</td>
+</tr>
+<tr>
+<td style="text-align:left">F</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">L</td>
+<td style="text-align:left">object</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">byte</td>
+</tr>
+<tr>
+<td style="text-align:left">[</td>
+<td style="text-align:left">数组</td>
+<td style="text-align:left">[[</td>
+<td style="text-align:left">二维数组</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<p><code>[I</code> 表示 int[] ，整型数组<br />
+<code>Ljava/lang/String</code> 表示 String 类型，在 Java 中，
+String 为 java.lang 包中的一个对象</p>
+<h2 id="流程控制">流程控制</h2>
+<h3 id="条件判断">条件判断</h3>
+<p>语法如下：<br />
+<code>if-{cond} v1, v0, :cond_0</code></p>
+<p><code>{cond}</code> 是判断条件，在后面会列出<br />
+<code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
+<p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
+<code>if-ge v0, v1, :cond_0</code></p>
+<p>全部条件判断语句：<br />
+<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <strong>eq</strong>ual<br />
+<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <strong>n</strong>o <strong>e</strong>qula<br />
+<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <strong>g</strong>reater than or <strong>e</strong>qual<br />
+<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <strong>l</strong>ess than or <strong>e</strong>qual<br />
+<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <strong>g</strong>reater <strong>t</strong>han<br />
+<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
+<h3 id="循环">循环</h3>
+<p>直接代码解释比较方便，例子来源参见文末链接1</p>
+<pre><code class="language-java">public void smaliWhile() {
+    int a = 0;
+    while(a &lt;= 3) {
+        a++;
+    }
+
+    int b = 0;
+    for(int i = 0;i&lt;3;i++){
+        b++;
+    }
+
+    int c = 0;
+    do{
+        c++;
+    }while (c &lt;= 3);
+}
+</code></pre>
+<p>对应的 smali 语法</p>
+<pre><code class="language-smali">.method public smaliWhile()V
+    .locals 5
+
+    .line 62
+    // 4 字节常量，值为 0
+    const/4 v0, 0x0
+
+    // 赋值给 a
+    move v1, v0
+
+    .line 63
+    .local v1, &quot;a&quot;:I
+    // goto 标签
+    :goto_0
+    const/4 v2, 0x3
+
+    // if (a &gt; 3), goto cond_0
+    if-gt v1, v2, :cond_0
+
+    .line 64
+    // else v1 = v1 + 1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 68
+    :cond_0
+    const/4 v3, 0x0
+
+    .line 69
+    .local v3, &quot;b&quot;:I
+    move v4, v3
+
+    move v3, v0
+
+    .local v3, &quot;i&quot;:I
+    .local v4, &quot;b&quot;:I
+    :goto_1
+    if-ge v3, v2, :cond_1
+
+    .line 70
+    add-int/lit8 v4, v4, 0x1
+
+    .line 69
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_1
+
+    .line 74
+    .end local v3
+    :cond_1
+    nop
+
+    .line 76
+    .local v0, &quot;c&quot;:I
+    :cond_2
+    add-int/lit8 v0, v0, 0x1
+
+    .line 77
+    if-le v0, v2, :cond_2
+
+    .line 78
+    return-void
+.end method
+</code></pre>
+<p>与汇编语法挺相似的，不多解释<br />
+<s>其实是懒得写笔记</s></p>
+<h2 id="函数定义">函数定义</h2>
+<p>一般定义长这个样子:
+<code>funcName (paraType1paraType2...)returnType</code></p>
+<ul>
+<li><code>funcName</code> 表示函数名</li>
+<li><code>paraType1</code> 和 <code>paraType2</code> 表示传入参数的类型，他们之间<strong>没有</strong>空格</li>
+<li><code>returnType</code> 表示返回值类型</li>
+</ul>
+<p>例子</p>
+<p><code>foo (IF)Z</code> 是 <code>boolean foo (int, float)</code></p>
+<p><code>bar([ILjava/lang/String)Z</code> 是 <code>boolean bar(int[], String)</code></p>
+<h2 id="内部类">内部类</h2>
+<p>smali 使用 <code>$</code> 表示内部类，像这样子
+<code>LpackageName/objectName$subObjName</code></p>
+<h2 id="参考">参考</h2>
+<ol>
+<li><a href="https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735">Smali coding guide for beginners</a></li>
+<li><a href="https://programmer.help/blogs/smali-introduction-manual.html">Smali Introduction Manual</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>smali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>提问的智慧</title>
+    <url>/2023/07/19/smart-questions/</url>
+    <content><![CDATA[<!-- more -->
+]]></content>
+  </entry>
+  <entry>
+    <title>Github Page时间测试</title>
+    <url>/2023/01/01/time-test/</url>
+    <content><![CDATA[<p>时间格式测试</p>
+<span id="more"></span>
+<p>发现Github Page上的日期比实际的日期少一天。</p>
+<p>似乎是时区问题？没有验证。</p>
+]]></content>
   </entry>
   <entry>
     <title>Vim 简单笔记</title>
@@ -4582,6 +4937,48 @@ bool should_rebuild(int r) {
       </tags>
   </entry>
   <entry>
+    <title>欠拟合与过拟合</title>
+    <url>/2021/10/26/underfitting-and-overfitting/</url>
+    <content><![CDATA[<p>机器学习中遭遇的问题</p>
+<span id="more"></span>
+<h2 id="欠拟合与过拟合">欠拟合与过拟合</h2>
+<h3 id="欠拟合">欠拟合</h3>
+<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
+<p>问题的原因在于训练时，用于训练的模型不是很好，
+当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
+比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" loading="lazy" /></p>
+<h3 id="过拟合">过拟合</h3>
+<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
+但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
+<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
+下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" loading="lazy" /></p>
+<p>或许加上原数据之间的连线更能体现：</p>
+<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" loading="lazy" /></p>
+<h2 id="解决方法">解决方法</h2>
+<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
+<strong>局部加权回归算法</strong> 则属于这一类算法<br />
+详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>算法优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>为什么使用最小二乘法</title>
     <url>/2021/11/04/why-use-least-squares/</url>
     <content><![CDATA[<p>解释为什么最小二乘法能减小误差</p>
@@ -4670,403 +5067,6 @@ $$</p>
         <tag>算法</tag>
         <tag>最小二乘法</tag>
         <tag>概率论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的Neovim配置</title>
-    <url>/2023/07/03/my-neovim-conf/</url>
-    <content><![CDATA[<p>在这里记录一下我的nvim配置。</p>
-<p>持续更新中…</p>
-<span id="more"></span>
-<h2 id="快捷键配置">快捷键配置</h2>
-<p>按键符号采用nvim内的示例，如<code>A</code>表示<code>alt</code>、<code>C</code>表示<code>ctrl</code>、<code>&lt;CR&gt;</code>表示回车等。
-详细内容参考<code>:help keycodes</code>。</p>
-<h3 id="nvim快捷键">nvim快捷键</h3>
-<p>这些是nvim自身的快捷键，而不是插件相关的快捷键。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;A-t&gt;</code></td>
-<td style="text-align:left">关闭标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>t</code></td>
-<td style="text-align:left">下一个标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-t&gt;</code></td>
-<td style="text-align:left">新建标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;S-t&gt;</code></td>
-<td style="text-align:left">上一个标签页</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-j&gt;</code></td>
-<td style="text-align:left">向上滚动，映射为<code>&lt;C-E&gt;&lt;C-E&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;C-k&gt;</code></td>
-<td style="text-align:left">向下滚动，映射为<code>&lt;C-Y&gt;&lt;C-Y&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;TAB&gt;</code></td>
-<td style="text-align:left">下/右窗口，映射为<code>&lt;C-W&gt;w</code></td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;S-TAB&gt;</code></td>
-<td style="text-align:left">上/左窗口，映射为<code>&lt;C-W&gt;W</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="gitsigns快捷键">gitsigns快捷键</h3>
-<p>gitsigns是在文件内对git记录进行快速操作的插件，
-可以快速地重置、保存和查看更改记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-<p>快捷键大部分在normal模式下使用。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>]c</code></td>
-<td style="text-align:left">下一个记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[c</code></td>
-<td style="text-align:left">上一个记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsu</code></td>
-<td style="text-align:left">撤销保存记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gss</code></td>
-<td style="text-align:left">暂存记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsr</code></td>
-<td style="text-align:left">重置记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsS</code></td>
-<td style="text-align:left">暂存缓冲区所有记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsR</code></td>
-<td style="text-align:left">重置缓冲区所有记录</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsp</code></td>
-<td style="text-align:left">预览修改</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsd</code></td>
-<td style="text-align:left">相当于<code>git diff</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gsD</code></td>
-<td style="text-align:left">相当于<code>git diff HEAD</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gst</code></td>
-<td style="text-align:left">查看/隐藏删除的记录</td>
-</tr>
-</tbody>
-</table>
-<p>这个快捷键使用的模式比较特殊。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">ox</td>
-<td style="text-align:left"><code>gsc</code></td>
-<td style="text-align:left">选择整个记录块（<strong>G</strong>it<strong>S</strong>aga <strong>S</strong>elect <strong>C</strong>hunk）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="LSP快捷键">LSP快捷键</h3>
-<p>LSP快捷键大部分处于normal模式。一些功能会使用到光标处的单词作为符号。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;el</code></td>
-<td style="text-align:left">显示行诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ec</code></td>
-<td style="text-align:left">显示光标处诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ea</code></td>
-<td style="text-align:left">显示缓冲区诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;fa</code></td>
-<td style="text-align:left">格式化代码</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;rn</code></td>
-<td style="text-align:left">符号重命名，可在visual模式使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;lr</code></td>
-<td style="text-align:left">查看符号引用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;li</code></td>
-<td style="text-align:left">查看实现</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ol</code></td>
-<td style="text-align:left">大纲</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>]e</code></td>
-<td style="text-align:left">下一个问题诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[e</code></td>
-<td style="text-align:left">上一个问题诊断</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;M-CR&gt;</code></td>
-<td style="text-align:left">显示代码建议，可在visual模式使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gc</code></td>
-<td style="text-align:left">跳转到声明</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gd</code></td>
-<td style="text-align:left">跳转到定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gt</code></td>
-<td style="text-align:left">跳转到类型定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>K</code></td>
-<td style="text-align:left">查看文档</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Lspsaga快捷键">Lspsaga快捷键</h4>
-<p>Lspsaga为neovim内置的LSP提供了更友好的界面，
-因此在Lspsaga中配置的快捷键与LSP的基本相同，并会覆盖LSP的快捷键。
-在这里列出Lspsaga专有的快捷键。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ls</code></td>
-<td style="text-align:left">列出符号的所有定义、引用与实现</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;pd</code></td>
-<td style="text-align:left">在悬浮窗口查看符号定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;pt</code></td>
-<td style="text-align:left">在悬浮窗口查看类型定义</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>]E</code></td>
-<td style="text-align:left">下一个错误（忽略警告）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[E</code></td>
-<td style="text-align:left">上一个错误（忽略警告）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ci</code></td>
-<td style="text-align:left">列出所有调用符号的位置</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;co</code></td>
-<td style="text-align:left">列出符号调用的方法</td>
-</tr>
-</tbody>
-</table>
-<p>Lspsaga在预览窗口的快捷键有些混乱，大部分快捷键作用是相同的，
-但有个别在不同类型的窗口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>内不同，
-加上个人习惯修改了部分按键，这里只列个大概。</p>
-<ul>
-<li><code>&lt;C-d&gt;</code>、<code>&lt;C-u&gt;</code>：窗口内容滚动。对应<code>down</code>和<code>up</code>的意思。</li>
-<li><code>&lt;C-t&gt;</code>：跳出窗口。</li>
-<li><code>q</code>、<code>&lt;ESC&gt;</code>、<code>&lt;C-c&gt;</code>：这些基本都有退出或取消操作的意思。</li>
-<li><code>g</code>：这个大部分情况下是跳转。</li>
-<li><code>o</code>：这个是展示预览或者编辑的意思，如果只是展示则不会跳转，此外还有打开折叠栏的意思。</li>
-<li><code>&lt;CR&gt;</code>：表示执行、跳转等意思。</li>
-<li><code>v</code>、<code>x</code>、<code>t</code>、<code>r</code>：这些都是新建窗口进行下一步操作。
-分别对应<code>vsplit</code>、<code>split</code>、<code>tabedit</code>、<code>tabnew</code>。</li>
-</ul>
-<p><code>o</code>指令与<code>&lt;CR&gt;</code>有功能上的重复，但还是有一些区别。
-如在大纲窗口中，<code>o</code>与<code>&lt;CR&gt;</code>都表现为在编辑区域打开并跳转到函数所在位置。
-但在诊断窗口中，<code>o</code>被配置为展开折叠栏，而<code>&lt;CR&gt;</code>被配置为执行Code Action。</p>
-<h3 id="Floaterm快捷键">Floaterm快捷键</h3>
-<p>这是个悬浮终端的插件。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">nt</td>
-<td style="text-align:left"><code>&lt;F12&gt;</code></td>
-<td style="text-align:left">显示/隐藏悬浮终端</td>
-</tr>
-<tr>
-<td style="text-align:left">nt</td>
-<td style="text-align:left"><code>&lt;leader&gt;f12</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-</tbody>
-</table>
-<h3 id="nvim-tree快捷键">nvim-tree快捷键</h3>
-<p>nvim-tree在自己的窗口中有自己的快捷键，使用<code>:help nvim-tree-mapping-default</code>查看。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">niv</td>
-<td style="text-align:left"><code>&lt;F2&gt;</code></td>
-<td style="text-align:left">打开/隐藏文件树</td>
-</tr>
-<tr>
-<td style="text-align:left">niv</td>
-<td style="text-align:left"><code>&lt;leader&gt;f2</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Telescope快捷键">Telescope快捷键</h3>
-<p>快捷键都处于normal模式使用。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&lt;F3&gt;</code></td>
-<td style="text-align:left">查找文件，同时可用于关闭窗口</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;F3</code></td>
-<td style="text-align:left">同上，但在没有Fn键的时候使用</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;clp</code></td>
-<td style="text-align:left">查看register内容</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;ch</code></td>
-<td style="text-align:left">查看历史命令</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;leader&gt;sh</code></td>
-<td style="text-align:left">查看搜索历史</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Nerdcommter快捷键">Nerdcommter快捷键</h3>
-<p>用于快速注释。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式</th>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left"><code>&lt;leader&gt;ca</code></td>
-<td style="text-align:left">切换注释风格，如C的<code>//</code>和<code>/* */</code></td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cc</code></td>
-<td style="text-align:left">注释/取消注释</td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cs</code></td>
-<td style="text-align:left">块注释</td>
-</tr>
-<tr>
-<td style="text-align:left">nx</td>
-<td style="text-align:left"><code>&lt;leader&gt;cu</code></td>
-<td style="text-align:left">取消注释</td>
-</tr>
-</tbody>
-</table>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>在Git中，修改过的记录称为hunk，我习惯称为chunk。此外我还习惯称之为记录块，简称记录。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>指的是“定义预览”、“引用预览”、“实现预览”等窗口。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>neovim</tag>
-        <tag>配置</tag>
-        <tag>nvim</tag>
       </tags>
   </entry>
 </search>
