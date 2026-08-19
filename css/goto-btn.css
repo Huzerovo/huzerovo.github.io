@@ -1,0 +1,13 @@
+#goto-top {
+  background-color: var(--huzerovo-btn-bg);
+  color: var(--huzerovo-btn-text);
+  opacity: 50%;
+  transition: 300ms;
+  position: fixed;
+  right: 8%;
+  bottom: 8%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

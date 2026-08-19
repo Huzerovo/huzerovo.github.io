@@ -1,0 +1,395 @@
+/* 目录设置 */
+#article-toc {
+  position: fixed;
+  left: 5%;
+  max-width: 15%;
+  height: 80vh;
+  overflow: auto;
+  padding-right: 8px;
+}
+#article-toc a {
+  color: var(--huzerovo-additional-text);
+}
+#article-toc a:hover {
+  color: var(--huzerovo-notable-text);
+}
+#article-toc .toc {
+  padding: 0;
+  font-size: small;
+  list-style: none;
+}
+#article-toc .toc-child {
+  padding: 0 8px;
+  list-style: none;
+}
+#article-toc .toc-link {
+  transition: color 0.3s;
+  display: block;
+  margin: 6px 0;
+  text-decoration: none;
+}
+#article-toc .toc-level-2 > a.toc-link {
+  color: var(--huzerovo-normal-text);
+}
+#article-toc .toc-level-2 > a.toc-link ::before {
+  content: "# ";
+}
+#article-toc .toc-level-2 > a:hover {
+  color: var(--huzerovo-notable-text);
+}
+@media (max-width: 960px) {
+  #article-toc {
+    position: unset;
+    max-width: 30%;
+    height: fit-content;
+    max-height: 60vh;
+    float: left;
+    margin: 0 16px;
+  }
+}
+@media (max-width: 480px) {
+  #article-toc {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+    width: 80%;
+    float: unset;
+    margin: 0 auto;
+  }
+}
+/* 文章内容 */
+.article-container {
+  line-height: 1.7;
+  padding: 0 16px;
+  /* 从官方主题landscape抄来的 */
+}
+.article-container h1 {
+  text-align: center;
+}
+.article-container > p {
+  text-indent: 32px;
+}
+.article-container a {
+  transition: 0ms;
+  text-decoration: none;
+}
+.article-container em {
+  padding-right: 3px;
+}
+.article-container blockquote {
+  background-color: var(--huzerovo-block-background);
+  color: var(--huzerovo-block-text);
+  border-left: solid 3px var(--huzerovo-line);
+  margin: 8px 0px;
+  padding: 0px 2em;
+  width: calc(100% - 64px - 3px);
+  display: inline-block;
+  transition: color 0.3s, background-color 0.3s;
+}
+.article-container blockquote p {
+  text-indent: 0px;
+}
+.article-container blockquote cite {
+  margin: 0px 8px;
+}
+.article-container table {
+  width: 90%;
+  margin: 8px auto;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+.article-container table thead {
+  transition: background-color 0.3s;
+  background-color: var(--huzerovo-thead-bg);
+  color: var(--huzerovo-thead-text);
+}
+.article-container table tbody {
+  background-color: var(--huzerovo-tbody-bg);
+  color: var(--huzerovo-tbody-text);
+  transition: background-color 0.3s;
+}
+.article-container table tbody td {
+  border: 1px solid;
+  padding: 3px 6px;
+}
+.article-container table tbody th {
+  border: 1px solid;
+  padding: 3px 6px;
+}
+.article-container img {
+  max-width: 80%;
+  display: block;
+  margin: 8px auto;
+  cursor: pointer;
+}
+.article-container code {
+  padding: 3px 6px;
+  font-size: 14px;
+  border-radius: 6px;
+  margin: 3px;
+  transition: color 0.3s, background-color 0.3s;
+}
+.article-container code:not([class*="language"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
+}
+.article-container pre code {
+  display: block;
+  overflow: auto;
+  padding: 16px 32px;
+}
+.article-container pre code:not([class~="hljs"]) {
+  background-color: var(--huzerovo-code-background);
+  color: var(--huzerovo-code-text);
+}
+.article-container figure.highlight {
+  overflow-x: auto;
+  border-radius: 6px;
+}
+.article-container figure.highlight table {
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  margin: unset;
+  border: unset;
+}
+.article-container figure.highlight table tbody {
+  background: #0d1117;
+}
+.article-container figure.highlight table td {
+  border: none;
+  padding: unset;
+}
+.article-container figure.highlight table th {
+  border: none;
+  padding: unset;
+}
+.article-container figure.highlight table .gutter {
+  text-align: right;
+  border-right: gray solid 1px;
+}
+.article-container figure.highlight table .gutter pre {
+  padding: 0 8px;
+  color: green;
+}
+.article-container figure.highlight table .code pre {
+  padding-left: 8px;
+  margin: 0;
+  /*!
+                 * Theme: GitHub Dark
+                 * Description: Dark theme as seen on github.com
+                 * Author: github.com
+                 * Maintainer: @Hirse
+                 * Updated: 2021-05-15
+                 *
+                 * Outdated base version: https://github.com/primer/github-syntax-dark
+                 * Current colors taken from GitHub's CSS
+                 */
+}
+.article-container figure.highlight table .code pre code {
+  margin: 0;
+  padding: 0;
+}
+.article-container figure.highlight table .code pre code mark {
+  background-color: #505050;
+}
+.article-container figure.highlight table .code pre .hljs {
+  color: #c9d1d9;
+  background: #0d1117;
+}
+.article-container figure.highlight table .code pre .hljs-doctag,
+.article-container figure.highlight table .code pre .hljs-keyword,
+.article-container figure.highlight table .code pre .hljs-meta .hljs-keyword,
+.article-container figure.highlight table .code pre .hljs-template-tag,
+.article-container figure.highlight table .code pre .hljs-template-variable,
+.article-container figure.highlight table .code pre .hljs-type,
+.article-container figure.highlight table .code pre .hljs-variable.language_ {
+  color: #ff7b72;
+}
+.article-container figure.highlight table .code pre .hljs-title,
+.article-container figure.highlight table .code pre .hljs-title.class_,
+.article-container figure.highlight table .code pre .hljs-title.class_.inherited__,
+.article-container figure.highlight table .code pre .hljs-title.function_ {
+  color: #d2a8ff;
+}
+.article-container figure.highlight table .code pre .hljs-attr,
+.article-container figure.highlight table .code pre .hljs-attribute,
+.article-container figure.highlight table .code pre .hljs-literal,
+.article-container figure.highlight table .code pre .hljs-meta,
+.article-container figure.highlight table .code pre .hljs-number,
+.article-container figure.highlight table .code pre .hljs-operator,
+.article-container figure.highlight table .code pre .hljs-selector-attr,
+.article-container figure.highlight table .code pre .hljs-selector-class,
+.article-container figure.highlight table .code pre .hljs-selector-id,
+.article-container figure.highlight table .code pre .hljs-variable {
+  color: #79c0ff;
+}
+.article-container figure.highlight table .code pre .hljs-meta .hljs-string,
+.article-container figure.highlight table .code pre .hljs-regexp,
+.article-container figure.highlight table .code pre .hljs-string {
+  color: #a5d6ff;
+}
+.article-container figure.highlight table .code pre .hljs-built_in,
+.article-container figure.highlight table .code pre .hljs-symbol {
+  color: #ffa657;
+}
+.article-container figure.highlight table .code pre .hljs-code,
+.article-container figure.highlight table .code pre .hljs-comment,
+.article-container figure.highlight table .code pre .hljs-formula {
+  color: #8b949e;
+}
+.article-container figure.highlight table .code pre .hljs-name,
+.article-container figure.highlight table .code pre .hljs-quote,
+.article-container figure.highlight table .code pre .hljs-selector-pseudo,
+.article-container figure.highlight table .code pre .hljs-selector-tag {
+  color: #7ee787;
+}
+.article-container figure.highlight table .code pre .hljs-subst {
+  color: #c9d1d9;
+}
+.article-container figure.highlight table .code pre .hljs-section {
+  color: #1f6feb;
+  font-weight: 700;
+}
+.article-container figure.highlight table .code pre .hljs-bullet {
+  color: #f2cc60;
+}
+.article-container figure.highlight table .code pre .hljs-emphasis {
+  color: #c9d1d9;
+  font-style: italic;
+}
+.article-container figure.highlight table .code pre .hljs-strong {
+  color: #c9d1d9;
+  font-weight: 700;
+}
+.article-container figure.highlight table .code pre .hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+.article-container figure.highlight table .code pre .hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+.article-container span.katex {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.article-container .katex-display {
+  width: 100%;
+  padding: 8px 0;
+}
+.article-container .katex-display > .katex {
+  overflow: auto visible;
+}
+.article-container .katex-display > .katex .katex-html {
+  min-width: fit-content;
+  width: 75%;
+  margin: 8px auto;
+}
+.article-container .katex-display > .katex .katex-html .tag {
+  position: absolute;
+  left: 100%;
+  margin-left: 16px;
+  width: fit-content;
+}
+.article-container .katex-display .katex::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+.article-container .katex-display .katex:hover::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+.article-container .katex-display .katex::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}
+.article-container .pullquote {
+  display: inline-block;
+  border: none;
+  width: 45%;
+  margin: 16px;
+  padding: 0 16px;
+}
+.article-container .pullquote.left {
+  float: left;
+}
+.article-container .pullquote.right {
+  float: right;
+}
+.article-container .video-container {
+  position: relative;
+  padding-top: 50%;
+  height: 0;
+  overflow: hidden;
+}
+.article-container .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+.article-container .contains-task-list {
+  list-style: none;
+}
+/* 文章标签 */
+.article-meta-info {
+  color: var(--huzerovo-additional-text);
+}
+.article-meta-info span {
+  display: block;
+}
+.article-meta-info a {
+  position: relative;
+  left: 16px;
+  transition: 0ms;
+  text-decoration: none;
+  margin-left: 16px;
+}
+/* 日期信息 */
+.article-date-info {
+  margin: 8px auto;
+  color: var(--huzerovo-trivial-text);
+}
+.article-date-info span {
+  font-size: small;
+  font-style: italic;
+  display: block;
+}
+/* 评论 */
+.article-comment {
+  text-align: center;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0px;
+  transition: background-color 0.3s;
+  background-color: var(--huzerovo-block-background);
+}
+.article-comment #gitalk-container {
+  text-align: left;
+}
+.article-comment #gitalk-container img {
+  border-radius: 100%;
+}
+.article-comment #gitalk-container blockquote {
+  background: var(--huzerovo-block-background);
+  width: 100%;
+}
+.article-comment #gitalk-container .gt-meta {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.article-comment #gitalk-container .gt-comment-content {
+  border-radius: 5px;
+}
+.article-comment #gitalk-container .gt-avatar-github {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.article-comment #gitalk-container .gt-comment-content:hover {
+  box-shadow: unset;
+}

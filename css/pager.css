@@ -1,0 +1,24 @@
+.pager {
+  display: flex;
+  overflow: auto;
+  margin: 16px 0;
+}
+.pager .page-list {
+  margin: 0 auto;
+  display: flex;
+}
+.pager .page-list span,
+.pager .page-list a {
+  color: var(--huzerovo-additional-text);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+.pager .page-list span:hover,
+.pager .page-list a:hover {
+  color: var(--huzerovo-notable-text);
+}
+.pager .page-list .current {
+  color: var(--huzerovo-normal-text);
+}

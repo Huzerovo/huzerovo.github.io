@@ -1,0 +1,56 @@
+.tagcloud-0 {
+  color: var(--huzerovo-tagcloud-0);
+}
+.tagcloud-1 {
+  color: var(--huzerovo-tagcloud-1);
+}
+.tagcloud-2 {
+  color: var(--huzerovo-tagcloud-2);
+}
+.tagcloud-3 {
+  color: var(--huzerovo-tagcloud-3);
+}
+.tagcloud-4 {
+  color: var(--huzerovo-tagcloud-4);
+}
+.tagcloud-5 {
+  color: var(--huzerovo-tagcloud-5);
+}
+.tagcloud-6 {
+  color: var(--huzerovo-tagcloud-6);
+}
+.tagcloud-7 {
+  color: var(--huzerovo-tagcloud-7);
+}
+.tagcloud-8 {
+  color: var(--huzerovo-tagcloud-8);
+}
+.tagcloud-9 {
+  color: var(--huzerovo-tagcloud-9);
+}
+.tagcloud-0:hover,
+.tagcloud-1:hover,
+.tagcloud-2:hover,
+.tagcloud-3:hover,
+.tagcloud-4:hover,
+.tagcloud-5:hover,
+.tagcloud-6:hover,
+.tagcloud-7:hover,
+.tagcloud-8:hover,
+.tagcloud-9:hover {
+  color: var(--huzerovo-tagcloud-hover);
+}
+.page-tagcloud {
+  width: 80%;
+  margin: 16px auto;
+}
+.page-tagcloud a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 6px;
+}
+@media (max-width: 480px) {
+  .page-tagcloud {
+    width: 90%;
+  }
+}
