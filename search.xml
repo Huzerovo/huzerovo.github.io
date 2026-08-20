@@ -93,6 +93,86 @@ rise b -j$(nproc --all)
       </tags>
   </entry>
   <entry>
+    <title>开启评论</title>
+    <url>/2023/01/15/comments-are-enabled/</url>
+    <content><![CDATA[<h2 id="正式完成主题的评论功能">正式完成主题的评论功能</h2>
+<p>嘻嘻</p>
+]]></content>
+      <tags>
+        <tag>Gitalk</tag>
+        <tag>开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Hexo 从私有仓库部署 Github Page</title>
+    <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
+    <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
+<span id="more"></span>
+<h2 id="起因">起因</h2>
+<p>在开始搭建博客时，为了能够自动部署 Github Page，
+我参考<a href="https://hexo.io/zh-cn/docs/github-pages">Hexo 提供的教程</a>创建了 Github Actions 进行自动构建。
+但这导致源文件也要上传到仓库，然而我并不想把没写完的也传上去，
+于是导致没写完的文章积压在本地。</p>
+<p>不幸的是之前博客主要是存储在树莓派上，电脑上的是远古版本了。
+在毕业后清理了一些在上面写的课程设计，不小心把博客也删掉了。
+不过还好
+折腾了几次树莓派的备份脚本，<s>虽然折腾完就没用过多少次，幸好期间也没怎么开新的坑</s>，
+总算是没有完全丢失草稿。</p>
+<p>于是就想着把博客源文件与 Github Page 仓库分离，把全部文件都上传到私有仓库里。</p>
+<h2 id="过程">过程</h2>
+<p>其实在之前也想过把仓库变成私有的，但改了之后发现网站没了，去 Github Docs 看了才知道，
+只有付费账户才能使用私有仓库构建 Github Page。</p>
+<p>但我想保留原有的提交记录，于是我想着把当前存放源文件的分支上传到一个新的仓库，
+在 Github Page 的仓库中创建 Actions，让它从我的私有仓库构建。
+但转念一想：Github Actions 也没法访问我的私有仓库啊，
+虽然能通过 Personal Token 可以做到，
+但这玩意也不能放公开仓库用啊。</p>
+<p>于是我又想：那我能不能在私有仓库构建好再推送过去。</p>
+<p>本着能偷懒就不干活的精神，在搜索了一番后我发现，
+Hexo 教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可以完成这个任务
+（我还想着找不到就直接配置<code>hexo deploy</code>）。</p>
+<p>于是参考<a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-deploy-to-external-repository-external_repository">peaceiris/actions-gh-pages</a>进行了配置。</p>
+<h2 id="配置">配置</h2>
+<ol>
+<li>
+<p>在配置中的<code>deploy_key</code>其实就是 ssh 的私匙，
+通过<code>ssh-keygen</code>生成一个就行：</p>
+<pre><code class="language-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
+</code></pre>
+</li>
+<li>
+<p>在私有仓库的<code>Settings =&gt; Secrets and variables =&gt; Actions</code>把私匙添加进去，
+命个记得住的名（这个要用到的），在这里我用<code>HEXO_DEPLOY_KEY</code>命名。</p>
+</li>
+<li>
+<p>在 Github Page 仓库中的<code>Settings =&gt; Deploy keys</code>把公匙添加进去。</p>
+</li>
+<li>
+<p>配置<code>actions-gh-pages</code>，参考如下：</p>
+<pre><code class="language-yaml"># 前面的省略，与 Hexo 教程中的一样
+- name: Deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤 2 中设置的名字
+    external_repository: UserName/username.github.io # 你的 Github Page 仓库
+    publish_branch: master # 在 Settings =&gt; Page 中设置的构建源分支
+    publish_dir: ./public # Hexo _config.yml 中配置的 public_dir
+    commit_message: &quot;Deploy by Github Actions&quot; # 随意
+</code></pre>
+</li>
+</ol>
+<h2 id="完事">完事</h2>
+<p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
+]]></content>
+      <categories>
+        <category>事记</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GFM 语法示例</title>
     <url>/2026/08/07/gfm-syntax/</url>
     <content><![CDATA[<h1>GFM 语法示例</h1>
@@ -337,86 +417,6 @@ $$</p>
       </tags>
   </entry>
   <entry>
-    <title>使用 Hexo 从私有仓库部署 Github Page</title>
-    <url>/2023/07/16/deploy-github-page-from-a-private-repo-by-hexo/</url>
-    <content><![CDATA[<p>将博客源文件迁移至私有仓库</p>
-<span id="more"></span>
-<h2 id="起因">起因</h2>
-<p>在开始搭建博客时，为了能够自动部署 Github Page，
-我参考<a href="https://hexo.io/zh-cn/docs/github-pages">Hexo 提供的教程</a>创建了 Github Actions 进行自动构建。
-但这导致源文件也要上传到仓库，然而我并不想把没写完的也传上去，
-于是导致没写完的文章积压在本地。</p>
-<p>不幸的是之前博客主要是存储在树莓派上，电脑上的是远古版本了。
-在毕业后清理了一些在上面写的课程设计，不小心把博客也删掉了。
-不过还好
-折腾了几次树莓派的备份脚本，<s>虽然折腾完就没用过多少次，幸好期间也没怎么开新的坑</s>，
-总算是没有完全丢失草稿。</p>
-<p>于是就想着把博客源文件与 Github Page 仓库分离，把全部文件都上传到私有仓库里。</p>
-<h2 id="过程">过程</h2>
-<p>其实在之前也想过把仓库变成私有的，但改了之后发现网站没了，去 Github Docs 看了才知道，
-只有付费账户才能使用私有仓库构建 Github Page。</p>
-<p>但我想保留原有的提交记录，于是我想着把当前存放源文件的分支上传到一个新的仓库，
-在 Github Page 的仓库中创建 Actions，让它从我的私有仓库构建。
-但转念一想：Github Actions 也没法访问我的私有仓库啊，
-虽然能通过 Personal Token 可以做到，
-但这玩意也不能放公开仓库用啊。</p>
-<p>于是我又想：那我能不能在私有仓库构建好再推送过去。</p>
-<p>本着能偷懒就不干活的精神，在搜索了一番后我发现，
-Hexo 教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可以完成这个任务
-（我还想着找不到就直接配置<code>hexo deploy</code>）。</p>
-<p>于是参考<a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-deploy-to-external-repository-external_repository">peaceiris/actions-gh-pages</a>进行了配置。</p>
-<h2 id="配置">配置</h2>
-<ol>
-<li>
-<p>在配置中的<code>deploy_key</code>其实就是 ssh 的私匙，
-通过<code>ssh-keygen</code>生成一个就行：</p>
-<pre><code class="language-shell">$ ssh-keygen -t rsa -b 4096 -f &quot;hexo-deploy-action-key&quot;
-</code></pre>
-</li>
-<li>
-<p>在私有仓库的<code>Settings =&gt; Secrets and variables =&gt; Actions</code>把私匙添加进去，
-命个记得住的名（这个要用到的），在这里我用<code>HEXO_DEPLOY_KEY</code>命名。</p>
-</li>
-<li>
-<p>在 Github Page 仓库中的<code>Settings =&gt; Deploy keys</code>把公匙添加进去。</p>
-</li>
-<li>
-<p>配置<code>actions-gh-pages</code>，参考如下：</p>
-<pre><code class="language-yaml"># 前面的省略，与 Hexo 教程中的一样
-- name: Deploy
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    deploy_key: $&#123;&#123; secrets.HEXO_DEPLOY_KEY &#125;&#125; # 这里的名字填你在步骤 2 中设置的名字
-    external_repository: UserName/username.github.io # 你的 Github Page 仓库
-    publish_branch: master # 在 Settings =&gt; Page 中设置的构建源分支
-    publish_dir: ./public # Hexo _config.yml 中配置的 public_dir
-    commit_message: &quot;Deploy by Github Actions&quot; # 随意
-</code></pre>
-</li>
-</ol>
-<h2 id="完事">完事</h2>
-<p>没出错的话，当写完东西并推送到博客的源文件仓库后，就会开始构建。</p>
-]]></content>
-      <categories>
-        <category>事记</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启评论</title>
-    <url>/2023/01/15/comments-are-enabled/</url>
-    <content><![CDATA[<h2 id="正式完成主题的评论功能">正式完成主题的评论功能</h2>
-<p>嘻嘻</p>
-]]></content>
-      <tags>
-        <tag>Gitalk</tag>
-        <tag>开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 提交规范</title>
     <url>/2023/11/02/git-commit-style/</url>
     <content><![CDATA[<p>记录一下我自己的 commit 注释规范</p>
@@ -525,213 +525,100 @@ Hexo 教程中使用到的<code>peaceiris/actions-gh-pages@v3</code>本身就可
       </tags>
   </entry>
   <entry>
-    <title>在磁盘映像文件上安装 Grub 2</title>
-    <url>/2021/08/15/install-grub-at-a-img-file/</url>
-    <content><![CDATA[<p>记录一下我在一个磁盘文件上安装 Grub 作为启动引导的过程</p>
+    <title>梯度下降算法</title>
+    <url>/2021/09/16/gradient-descent/</url>
+    <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
 <span id="more"></span>
-<h3 id="前言">前言</h3>
+<h2 id="步骤">步骤</h2>
 <ol>
-<li>文中的 Grub 均指 Grub 2，而非 Grub Legacy</li>
-<li>文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki</li>
-<li>分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M</li>
-<li>请在了解执行的命令的作用之后再执行操作</li>
+<li>随机选取一个初始位置$ x_{0} $。</li>
+<li>对$ x_{0} $进行更新，即：
+$$
+x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
+$$
+其中$ \alpha $是一个正数，称作“步长”，
+$ \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0} $处的导数。</li>
+<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$ f(x*{n}) $最小。</li>
 </ol>
-<h3 id="使用-dd-创建一个映像文件">使用 dd 创建一个映像文件</h3>
-<pre><code class="language-shell">dd if=/dev/zero of=os.img bs=1M count=20
+<h2 id="数学原理简析">数学原理简析</h2>
+<h3 id="基本原理">基本原理</h3>
+<p>设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值，
+且设在点$ x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
+随机选取一点$ x_{0} $：</p>
+<ol>
+<li>
+<p>若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &lt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
+</li>
+<li>
+<p>若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $，
+令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &gt; x*{0} $，
+即$ x*{1} $向$ x*{min} $靠近。</p>
+</li>
+</ol>
+<p>可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。</p>
+<h3 id="使用条件">使用条件</h3>
+<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
+只需要知道原函数的一阶导函数。
+因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
+可以考虑采取梯度下降算法。</p>
+<h3 id="不足之处">不足之处</h3>
+<p>设$ f(x) = x^{2} $，
+函数在$ x*{min} = 0 $处取得最小值，可知
+$ k*{n} = \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。
+取初始值$ x*{0} = 1 $，则$ x*{1} = x*{0} - k*{0} = -1 $。
+继续对$ x*{1} $进行更新，则$ x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
+这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
+<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
+<h3 id="改进">改进</h3>
+<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
+$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
+一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
+<h2 id="代码示例">代码示例</h2>
+<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
+则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
+最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+import numpy as np
+
+a = 3
+b = 4
+c = 5
+
+# f(x) = ax^2 + bx + c
+def f(x):
+    return a*(x**2) + b*x + c
+
+# df(x) = 2ax + b
+def df(x):
+    return 2*a*x + b
+
+def main():
+    # 最低点
+    xmin = - b/(2*a)
+    # 步长
+    alpha = 0.1
+    # 随机初始值
+    x = np.random.randint(5)
+    # 递减 100 次
+    for i in range(100):
+        x = x - alpha * df(x)
+
+    # 输出结果
+    print(&quot;x_n is:&quot; , x)
+    print(&quot;x_min is:&quot;, xmin)
+
+if __name__ == &quot;__main__&quot;:
+    main()
 </code></pre>
-<p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
-<h3 id="在-os-img-上创建分区">在 os.img 上创建分区</h3>
-<p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
-<h4 id="使用-gdisk">使用 gdisk</h4>
-<pre><code class="language-shell">gdisk os.img
-</code></pre>
-<p>进入 gdisk 交互界面<br />
-如下所示</p>
-<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
-
-Partition table scan:
-  MBR: not present
-  BSD: not present
-  APM: not present
-  GPT: not present
-
-Creating new GPT entries in memory.
-
-Command (? for help):
-</code></pre>
-<blockquote>
-<p>根据 <a href="https://wiki.archlinux.org/title/GRUB#BIOS_systems">Arch Linux Wiki</a><br />
-需要腾出 1M 空间给 Grub 使用</p>
-</blockquote>
-<p><strong>创建分区简要步骤：</strong></p>
-<ul>
-<li>输入 <code>n</code> 创建新的分区</li>
-<li>回车选择默认的分区号</li>
-<li>再次回车选择默认的起始块</li>
-<li>输入 <code>+1M</code> 将分区大小设置为 1M</li>
-<li>输入 <code>ef02</code> 将分区类型设置为 Boot 启动分区</li>
-<li>输入 <code>n</code> 创建新的分区</li>
-<li>之后全部回车，将剩余空间创建为一个分区</li>
-<li>输入 <code>p</code> 确认分区无误后，最后输入 <code>w</code> 确认写入文件</li>
-</ul>
-<p>可能会出现一个警告，确认即可</p>
-<p><strong>以下为参考：</strong></p>
-<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
-
-Partition table scan:
-  MBR: protective
-  BSD: not present
-  APM: not present
-  GPT: present
-
-Found valid GPT with protective MBR; using GPT.
-
-Command (? for help): d
-Using 1
-
-Command (? for help): n
-Partition number (1-128, default 1):
-First sector (34-40926, default = 2048) or {+-}size{KMGTP}:
-Last sector (2048-40926, default = 40926) or {+-}size{KMGTP}: +1M
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): ef02
-Changed type of partition to 'BIOS boot partition'
-
-Command (? for help): n
-Partition number (2-128, default 2):
-First sector (34-40926, default = 4096) or {+-}size{KMGTP}:
-Last sector (4096-40926, default = 40926) or {+-}size{KMGTP}:
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300):
-Changed type of partition to 'Linux filesystem'
-
-Command (? for help): p
-Disk ./file.img: 40960 sectors, 20.0 MiB
-Sector size (logical): 512 bytes
-Disk identifier (GUID): 8AECC85A-5E21-48E1-AB62-1684A9A8BF0D
-Partition table holds up to 128 entries
-Main partition table begins at sector 2 and ends at sector 33
-First usable sector is 34, last usable sector is 40926
-Partitions will be aligned on 2048-sector boundaries
-Total free space is 2014 sectors (1007.0 KiB)
-
-Number  Start (sector)    End (sector)  Size       Code  Name
-   1            2048            4095   1024.0 KiB  EF02  BIOS boot partition
-   2            4096           40926   18.0 MiB    8300  Linux filesystem
-
-Command (? for help): w
-
-Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
-PARTITIONS!!
-
-Do you want to proceed? (Y/N): Y
-OK; writing new GUID partition table (GPT) to ./file.img.
-Warning: The kernel is still using the old partition table.
-The new table will be used at the next reboot or after you
-run partprobe(8) or kpartx(8)
-The operation has completed successfully.
-</code></pre>
-<h4 id="使用-fdisk">使用 fdisk</h4>
-<pre><code class="language-shell">fdisk ./os.img
-</code></pre>
-<p>进入 fdisk 交互界面</p>
-<p>输入 <code>g</code> 新建一个 GPT 分区表</p>
-<p>创建分区过程与 <strong>使用 gdisk</strong> 一节类似<br />
-但创建分区过程无法选择分区类型，需要在创建分区后进行更改</p>
-<p>在创建分区后</p>
-<ul>
-<li>输入 <code>t</code> 更改分区类型</li>
-<li>随后会要求选择分区，输入 <code>1</code> 选择第一个分区</li>
-<li>然后输入 <code>4</code> 将分区类型更改为 BIOS Boot</li>
-</ul>
-<p><strong>参考：</strong></p>
-<pre><code class="language-shell">命令(输入 m 获取帮助)：t
-分区号 (1,2, 默认  2): 1
-分区类型或别名（输入 L 列出所有类型）：4
-
-已将分区“Linux filesystem”的类型更改为“BIOS boot”。
-
-命令(输入 m 获取帮助)：
-</code></pre>
-<p>最后输入 <code>w</code> 确认写入文件</p>
-<h3 id="将-os-img-挂载为-loop-设备">将 os.img 挂载为 loop 设备</h3>
-<pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
-/dev/loop0
-</code></pre>
-<p>命令解释：</p>
-<ul>
-<li><code>--show</code> 在挂载成功后，显示挂载的设备名</li>
-<li><code>-P</code> 创建带分区的 loop 设备</li>
-<li><code>-f</code> 查找第一个未使用的设备</li>
-</ul>
-<p>显示的设备名不一定是 <code>/dev/loop0</code><br />
-在后文出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称</p>
-<h3 id="格式化并挂载分区">格式化并挂载分区</h3>
-<blockquote>
-<p>在文中实例中，需要格式化的是第二个分区<br />
-对应的 loop 设备为 <code>/dev/loop0p2</code><br />
-如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
-</blockquote>
-<pre><code class="language-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
-</code></pre>
-<p>不出意外的话，格式化很快就能完成<br />
-随后挂载分区</p>
-<p>请选择一个没有正在使用的文件夹<br />
-在本文中选择 <code>/mnt</code> 作为挂载点<br />
-这个文件夹在之后会使用到</p>
-<pre><code class="language-shell">sudo mount /dev/loop0p2 /mnt
-</code></pre>
-<p>没有消息就是最好的消息</p>
-<h3 id="安装-Grub">安装 Grub</h3>
-<blockquote>
-<p>下面的操作在执行命令前一定要确认
-误操作可能会影响本机的 <code>/boot</code> 分区</p>
-</blockquote>
-<p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br />
-使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
-<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
-</code></pre>
-<p>命令解释：</p>
-<ul>
-<li><code>target=i386-pc</code> 指出安装架构为 i386</li>
-<li><code>boot-directory=/mnt/boot</code> 指出安装到 <code>/mnt/boot</code> 而不是默认的 <code>/boot</code></li>
-</ul>
-<p>安装需要 13M 左右的空间<br />
-完成后会提示成功</p>
-<h3 id="配置">配置</h3>
-<p>照着手册随便糊的一个，<s>能用就行</s></p>
-<pre><code class="language-shell"># Grub 的配置文件
-
-# 设置根分区
-set root='(hd0,gpt2)'
-
-# 选择启动项超时时间，0 即立即启动
-set timeout=0
-
-# 菜单选项
-menuentry EntryName {
-    # 载入 file 并启动
-    multiboot ($root)/boot/file
-    boot
-}
-</code></pre>
-<h3 id="卸载设备">卸载设备</h3>
-<pre><code class="language-shell">sudo umount /mnt
-sudo losetup -d /dev/loop0
-</code></pre>
-<p>上面的命令将从挂载点卸载 loop 设备<br />
-并释放 loop 设备与文件的关联</p>
-<h3 id="参考资料">参考资料</h3>
-<ul>
-<li><a href="https://www.gnu.org/software/grub/manual/grub/grub.html">Grub 手册</a></li>
-</ul>
 ]]></content>
       <categories>
-        <category>杂货铺</category>
+        <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>Grub</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2688,9 +2575,9 @@ $ \theta $也被称为权值，但注意，这两者是不同的。$ \theta $指
         <category>机器学习</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>回归算法</tag>
         <tag>算法优化</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3236,1148 +3123,6 @@ vim.fn['plug#end']()
       </tags>
   </entry>
   <entry>
-    <title>图册展示页</title>
-    <url>/2023/07/17/post-for-gallery-layout-test/</url>
-    <content><![CDATA[<p>用于展示一些图片，在 Front matter 区域中使用<code>photos</code>添加图片。</p>
-<span id="more"></span>
-<p>然而并不能在文章里面看到，可以用作封面用途。</p>
-<p>可以添加多张，随机挑选。</p>
-<p>这张图片
-<img src="https://placehold.co/600x400" alt="600x400.jpg" loading="lazy" />
-是从这里来的：<a href="https://placehold.co/600x400">https://placehold.co/600x400</a></p>
-]]></content>
-      <categories>
-        <category>相册</category>
-      </categories>
-      <tags>
-        <tag>相册</tag>
-        <tag>展示</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>梯度下降算法</title>
-    <url>/2021/09/16/gradient-descent/</url>
-    <content><![CDATA[<p>介绍 <strong>梯度下降算法 (gradient descent algorithm)</strong> 并简单解释其原理</p>
-<span id="more"></span>
-<h2 id="步骤">步骤</h2>
-<ol>
-<li>随机选取一个初始位置$ x_{0} $。</li>
-<li>对$ x_{0} $进行更新，即：
-$$
-x_{1} = x_{0} - \alpha \frac{\mathrm d}{\mathrm dx}f(x_{0})
-$$
-其中$ \alpha $是一个正数，称作“步长”，
-$ \frac{\mathrm d}{\mathrm dx}f(x*{0}) $是$ f(x) $在$ x*{0} $处的导数。</li>
-<li>重复进行 <code>步骤2</code> 中的更新操作，最终得到$ x*{n} $使得$ f(x*{n}) $最小。</li>
-</ol>
-<h2 id="数学原理简析">数学原理简析</h2>
-<h3 id="基本原理">基本原理</h3>
-<p>设函数$ f(x) $为二次函数，且在$ x = x*{min} $处取得最小值，
-且设在点$ x*{n} $处的导数$ \frac{\mathrm d}{\mathrm dx}f(x*{n}) = k*{n} $
-随机选取一点$ x_{0} $：</p>
-<ol>
-<li>
-<p>若$ k*{0} &lt; 0 $，则$ x*{0} &lt; x*{min} $，
-令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &lt; x*{0} $，
-即$ x*{1} $向$ x*{min} $靠近。</p>
-</li>
-<li>
-<p>若$ k*{0} &gt; 0 $，则$ x*{0} &gt; x*{min} $，
-令$ x*{1} = x*{0} - k*{0} $，则$ x*{1} &gt; x*{0} $，
-即$ x*{1} $向$ x*{min} $靠近。</p>
-</li>
-</ol>
-<p>可知，更新后的$ x*{n} $一定从$ x*{n - 1} $向$ x_{min} $的方向移动。</p>
-<h3 id="使用条件">使用条件</h3>
-<p>在基本原理中可以发现，获得$ x_{n} $的过程不依赖于原函数，
-只需要知道原函数的一阶导函数。
-因此，在原函数为二次函数且存在最小值，导函数比原函数更容易获得时，
-可以考虑采取梯度下降算法。</p>
-<h3 id="不足之处">不足之处</h3>
-<p>设$ f(x) = x^{2} $，
-函数在$ x*{min} = 0 $处取得最小值，可知
-$ k*{n} = \frac{\mathrm d}{\mathrm dx}f(x*{n}) = 2n $。
-取初始值$ x*{0} = 1 $，则$ x*{1} = x*{0} - k*{0} = -1 $。
-继续对$ x*{1} $进行更新，则$ x*{2} = x*{1} - k*{1} = 1 = x*{0} $。
-这导致无论如何更新，最终结果都只是$ x = 1 $和$ x = -1 $两个值，永远无法得到$ x_{min} = 0 $。</p>
-<p>此外，在复杂的函数中，梯度下降算法只能得到局部最优解。</p>
-<h3 id="改进">改进</h3>
-<p>因此，需要引入$ \alpha $控制$ x $变化的幅度，
-$ \alpha $的值越小，需要进行递减的次数越多，这才能保证得出的结果接近最小值$ x_{min} $。
-一般来说，$ \alpha $是一个小于 1 但大于 0 的值，具体的值需要根据实际情况进行调整。</p>
-<h2 id="代码示例">代码示例</h2>
-<p>设函数为$ f(x) = 3x^{2} + 4x + 5 $，
-则$ \frac{\mathrm d}{\mathrm dx} f(x) = 6x + 4 $，
-最低点为$ x_{min} = - \frac{B}{2A} = - \frac{2}{3} $。</p>
-<pre><code class="language-python">#!/usr/bin/env python3
-
-import numpy as np
-
-a = 3
-b = 4
-c = 5
-
-# f(x) = ax^2 + bx + c
-def f(x):
-    return a*(x**2) + b*x + c
-
-# df(x) = 2ax + b
-def df(x):
-    return 2*a*x + b
-
-def main():
-    # 最低点
-    xmin = - b/(2*a)
-    # 步长
-    alpha = 0.1
-    # 随机初始值
-    x = np.random.randint(5)
-    # 递减 100 次
-    for i in range(100):
-        x = x - alpha * df(x)
-
-    # 输出结果
-    print(&quot;x_n is:&quot; , x)
-    print(&quot;x_min is:&quot;, xmin)
-
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派热点</title>
-    <url>/2021/03/11/raspberrypi-access-point/</url>
-    <content><![CDATA[<p>简单介绍如何在树莓派开启热点<br />
-<em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
-<span id="more"></span>
-<p>需要的软件列表：</p>
-<ul>
-<li><code>hostapd</code>：用于开启热点</li>
-<li><code>dnsmasq</code>：用于开启 DHCP 服务与 DNS 服务</li>
-<li><code>iptables</code>：设置数据包转发规则</li>
-<li><code>netfilter-persistent</code>：将 <code>iptables</code> 设置的规则持久化</li>
-<li><code>iptables-persistent</code>：<code>netfilter-persistent</code> 插件</li>
-</ul>
-<h2 id="安装软件">安装软件</h2>
-<p>运行命令</p>
-<pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
-</code></pre>
-<p>等待安装完成</p>
-<h2 id="配置-hostapd">配置 hostapd</h2>
-<p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
-<pre><code class="language-conf"># 使用的网卡
-interface=wlan0
-# WiFi 名字
-ssid=YOUR_WIFI_NAME
-# 驱动
-driver=nl80211
-# WiFi 频率模式
-hw_mode=g
-# 信道
-channel=7
-# 是否 mac 过滤
-macaddr_acl=0
-# 认证算法
-auth_algs=1
-# 是否广播 SSID
-ignore_broadcast_ssid=0
-# 加密相关
-wpa=2
-wpa_passphrase=YOUR_WIFI_PASSWORD
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP
-rsn_pairwise=CCMP
-</code></pre>
-<p><strong>警告</strong>:
-channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
-<p>注：上面的配置启用的为 2.4GHz 的 WiFi
-如需使用 5GHz 的 WiFi，修改以下配置：</p>
-<pre><code class="language-conf">#hw_mode=g
-hw_mode=a
-#channel=7
-# 在内核启 CONFIG_ACS 编译选项后
-# 该选项设置为 0 时会自动选择信道
-# 树莓派似乎不支持......
-channel=149
-</code></pre>
-<h2 id="配置-dhcpcd">配置 dhcpcd</h2>
-<p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
-<pre><code class="language-conf"># 网卡
-interface=wlan0
-# 网卡地址
-static ip_address=192.168.10.1/24
-# 不要执行这个脚本
-nohook wpa_supplicant
-</code></pre>
-<h2 id="配置-dnsmasq">配置 dnsmasq</h2>
-<p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
-<pre><code class="language-conf"># 为这个网卡开启服务
-interface=wlan0
-# 不要在这个网卡开启服务
-no-dhcp-interface=eth0
-# 本机域
-domain=wlan
-# IP 地址分配范围
-dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
-</code></pre>
-<h2 id="设置数据包转发">设置数据包转发</h2>
-<ol>
-<li>
-<p>允许包转发<br />
-编辑配置文件 <code>/etc/sysctl.conf</code><br />
-将 <code>net.ipv4.ip_forward=1</code> 取消注释</p>
-</li>
-<li>
-<p>设置转发规则
-运行命令</p>
-<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-</code></pre>
-</li>
-<li>
-<p>保存规则
-运行命令</p>
-<pre><code class="language-shell"># netfilter-persistent save
-</code></pre>
-</li>
-</ol>
-<h2 id="设置-systemd-启动服务">设置 systemd 启动服务</h2>
-<p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
-禁用 <code>wpa_supplicant.service</code></p>
-<pre><code class="language-shell"># systemctl unmask hostapd.service
-# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
-# systemctl disable wpa_supplicant
-</code></pre>
-<h2 id="重启">重启</h2>
-<p>设置完成后重启</p>
-<pre><code class="language-shell"># reboot
-</code></pre>
-<p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
-<h2 id="参考链接">参考链接</h2>
-<p><a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf 设置说明</a><br />
-<a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科：WLAN channel</a></p>
-]]></content>
-      <categories>
-        <category>树莓派</category>
-      </categories>
-      <tags>
-        <tag>hostapd</tag>
-        <tag>dnsmasq</tag>
-        <tag>Access Point</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>替罪羊树</title>
-    <url>/2024/01/21/scapegoat-tree/</url>
-    <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
-写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
-也不能保证代码是对的，有错再更新。</p>
-<p>参考：</p>
-<ul>
-<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
-<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
-</ul>
-<h2 id="什么是替罪羊树">什么是替罪羊树</h2>
-<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
-因为它允许不平衡的结点存在，
-只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
-它处理不平衡的方式很简单：
-将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
-这个过程称为<strong>重构</strong>。
-此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
-只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
-<blockquote>
-<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
-</blockquote>
-<h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
-<h3 id="一些变量定义">一些变量定义</h3>
-<p>在我的代码实现里，我使用数组形式构造替罪羊树，
-并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
-<p>首先是一些辅助用的定义：</p>
-<pre><code class="language-c">// 最大结点数
-#define MAXN 1024
-// 记录插入的结点数量
-int count = 0;
-// alpha
-double alpha = 0.75;
-</code></pre>
-<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
-<p>接下来是树结构定义：</p>
-<pre><code class="language-c">// 结点值
-int v[MAXN] = {0};
-// 结点权值，定义为结点的重复次数。
-int w[MAXN] = {0};
-// 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
-int lt[MAXN] = {0};
-int rt[MAXN] = {0};
-</code></pre>
-<p>树以数组的形式表达，
-<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
-结点并不真实存在，能用于表示结点的只有它的编号，
-我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
-<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
-若<code>lt[k]==i</code>，这表明<strong>索引为 k</strong>的结点，其左子树的<strong>索引为 i</strong>。
-根结点的索引则由调用方负责保存。</p>
-<p>数组<code>v</code>负责保存结点值（value）。</p>
-<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
-在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
-若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
-这个结点只出现了一次。
-若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
-根本<strong>不存在</strong>。
-没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
-<p>下面这些数组有助于我们更方便地对树进行操作：</p>
-<pre><code class="language-c">// 树的存储大小
-int s[MAXN] = {0};
-// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
-int rs[MAXN] = {0};
-// 树的带权大小，与 `w` 数组密切相关
-int ws[MAXN] = {0};
-</code></pre>
-<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
-所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
-<ul>
-<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
-只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
-那么在存储结构上自然也只记录一次。</li>
-<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
-也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
-<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
-也就是<code>w</code>数组中对应索引的值。</li>
-</ul>
-<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
-一般来说都指的是<code>s</code>数组表示的大小。</p>
-<h3 id="提供的树操作">提供的树操作</h3>
-<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
-<p>首先让我们简单地梳理一下：</p>
-<ol>
-<li>替罪羊树处理不平衡结点的方式是重构。</li>
-<li>不平衡结点的产生会在什么时候？
-显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
-<li>发生重构后，树的根可能会发生改变，如何更新这个根？
-答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
-</ol>
-<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
-重构在插入或删除时进行。</p>
-<p>至于重构的条件，我们很快就会知道。</p>
-<p>函数定义如下：</p>
-<pre><code class="language-c">// 在树中查找值
-// @param r 结点索引，表示在以此结点为根的树中找
-// @param val 找的是这个值
-// @return 这个值对应的结点索引是啥，如果为 0 表示不存在
-int search_node(int r, int val);
-
-// 将一个值插入树中
-// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
-// @param val 插入的值
-void insert_node(int *r, int val);
-
-// 将一个值从树中删除
-// @note 如果值不存在，则不会发生任何事情
-// @param *r 指针，内容同样是根的值，重构会更新这个值
-// @param val 删除的值
-void delete_node(int *r, int val);
-</code></pre>
-<h3 id="重构相关的函数">重构相关的函数</h3>
-<p>我们首先定义重构的入口函数：</p>
-<pre><code class="language-c">// 重构树
-// @param *r 指针，重构的树以此为根
-static void rebuild(int *r);
-</code></pre>
-<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
-<pre><code class="language-c">// 序列化树
-// @param r 以此为根的树
-// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里
-// @param *tree_size 中序序列的长度
-static void flat(int r, int *flat_tree, int *tree_size);
-</code></pre>
-<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<pre><code class="language-c">// 生成树
-// @param *flat_tree 树的中序序列
-// @param l 反序列化起点，即左边界（left）
-// @param r 反序列化终点，即右边界（right）
-static int generate_tree(int *flat_tree, int l, int r);
-</code></pre>
-<p>最后，我们使用一个函数来判断是否进行重构：</p>
-<pre><code class="language-c">// 是否应该重构
-// @param r 以该结点为根
-// @return ture 表示需要重构，false 表示不需要重构
-static bool should_rebuild(int r);
-</code></pre>
-<h2 id="着手实现">着手实现</h2>
-<h3 id="重构">重构</h3>
-<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
-<strong>重构的条件是什么？</strong></p>
-<h4 id="重构的条件">重构的条件</h4>
-<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
-在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
-我们记较大的那个为$n$，此时，父结点的大小可以粗略认为是$m \coloneqq 2n + 1$。
-显然有$0.5 \cdot m &gt; n$，我们将这个$0.5$记作$\alpha$，也就是之前定义的变量<code>alpha</code>。</p>
-<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
-在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
-但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
-而这个阈值与<code>alpha</code>相关。</p>
-<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
-当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为$50%$。
-此时<code>alpha</code>取值<code>0.5</code>。
-然而经验表明<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，在平衡二叉树中，这个比例在$70% \sim 80%$间，
-平衡二叉树仍能保持其时间复杂度不变。</p>
-<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
-而重构的条件则是<code>alpha * s[k] &lt; max(s[rt[k]], s[lt[k]])</code>。
-在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki 的这篇文章中</a>，
-还提到已删除结点过多也可能影响树的查找效率，
-因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。</p>
-<h4 id="计算树的大小">计算树的大小</h4>
-<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
-<pre><code class="language-c">// 计算树的大小
-// @param r 树的根结点索引
-void gen_size(int r) {
-    if (!r)
-        return;
-    // 直接递归把子树大小计算出来
-    gen_size(lt[r]);
-    gen_size(rt[r]);
-    // 现在子树的大小已经计算好了
-    s[r] = s[lt[r]] + s[rt[r]] + 1;
-    rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
-    ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
-}
-</code></pre>
-<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
-<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
-<h4 id="生成中序序列">生成中序序列</h4>
-<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
-就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
-不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
-<pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) {
-    if (!r)
-        return;
-    // 遍历左子树
-    flat(lt[r], flat_tree, tree_size);
-    // 访问根
-    if (w[r] &gt; 0) {
-        // 进入中序序列
-        flat_tree[*tree_size] = r;
-        // 序列长度加一
-        *tree_size += 1;
-    }
-    // 遍历右子树
-    flat(rt[r], flat_tree, tree_size);
-}
-</code></pre>
-<h4 id="反序列化">反序列化</h4>
-<p>从中序序列反序列化出一棵树也比较简单：</p>
-<pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) {
-    if (l &gt;= r || !flat_tree)
-        return 0;
-    // 中间的为根，需要注意，flat_tree 中保存的才是结点索引
-    int mid = (l + r) / 2;
-    int k = flat_tree[mid];
-    // 左子树
-    lt[k] = generate_tree(flat_tree, l, mid);
-    // 右子树
-    rt[k] = generate_tree(flat_tree, mid + 1, r);
-    // 返回根
-    return k;
-}
-</code></pre>
-<h4 id="重构入口函数">重构入口函数</h4>
-<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
-<pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
-void rebuild(int *r) {
-    // flat tree
-    int ft[MAXN] = {0};
-    // tree size
-    int ts = 0;
-    // 序列化
-    flat(*r, ft, &amp;ts);
-    // 反序列化
-    *r = generate_tree(ft, 0, ts);
-    // 重新计算结点大小
-    gen_size(*r);
-}
-</code></pre>
-<h4 id="判断是否需要重构">判断是否需要重构</h4>
-<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
-<pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
-static max(a, b) {
-    return a &gt; b ? a : b;
-}
-
-bool should_rebuild(int r) {
-    return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
-        || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
-}
-</code></pre>
-<h3 id="搜索">搜索</h3>
-<p>和一般二叉树的搜索无异：</p>
-<pre><code class="language-c">int search_node(int r, int val) {
-    if (!r)
-        return 0;
-    int child = 0;
-    if (val &lt; v[r])
-        // 小于结点值，在左子树搜
-        child = lt[r];
-    else if (val &gt; v[r])
-        // 大于结点值，在右子树搜
-        child = rt[t];
-    else
-        // 找到了值，但需要判断结点是否已经删除
-        return w[r] ? r : 0;
-    // 与当前结点值不同，则向子树递归搜索
-    retrurn search_node(child, val);
-}
-</code></pre>
-<h3 id="插入">插入</h3>
-<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
-如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
-那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
-<ul>
-<li>值在树中，更新<code>w</code>数组</li>
-<li>值不再树中，新建结点：更新所有<strong>size 数组</strong><a href="%E5%B0%B1%E6%98%AF%60s%5BMAXN%5D%60%E3%80%81%60rs%5BMAXN%5D%60%E4%BB%A5%E5%8F%8A%60ws%5BMAXN%5D%60%E8%BF%99%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E3%80%82">^size 数组</a>，
-更新<code>v</code>和<code>w</code>数组，结点计数<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>加一。</li>
-</ul>
-<pre><code class="language-c">void insert_node(int *r, int val) {
-    if (!r)
-        return;
-    if (!*r) {
-        // 到达叶子结点
-        // 结点计数加一
-        int k = ++count;
-        // 这是我的实现存在的一个问题，需要判断一下
-        if (k &gt; MAXN)
-            return;
-        w[k] = s[k] = rs[k] = ws[k] = 1;
-        v[k] = val;
-        // 更新结点
-        *r = k;
-    } else {
-        // 现在还在树中
-        if (val == v[*r])
-            // 重复值
-            w[*r]++;
-        else if (val &lt; v[*r])
-            insert_node(&amp;lt[*r], val);
-        else
-            insert_node(&amp;lt[*r], val);
-    }
-    // 重新计算结点大小
-    gen_size(*r);
-    // 判断是否重构
-    if (should_rebuild(*r))
-        rebuild(r);
-}
-</code></pre>
-<h3 id="删除">删除</h3>
-<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
-需要注意的是不能直接将其赋值为 0，因为可能有重复值。</p>
-<pre><code class="language-c">void delete_node(int *r, int val) {
-    if (!r || !*r)
-        return;
-    if (val == v[*r]) {
-        // 存在，删除一个
-        if (w[*r] &gt; 0) w[*r]--;
-    } else {
-        // 与结点值不同，在子树递归删除
-        if (val &lt; v[*r])
-            delete_node(&amp;lt[*r], val);
-        else
-            delete_node(&amp;rt[*r], val);
-    }
-    // 更新结点大小
-    gen_size(*r);
-    // 检查是否重构
-    if (should_rebuild(*r))
-        rebuild(r);
-}
-</code></pre>
-<h2 id="一些问题">一些问题</h2>
-<blockquote>
-<p>这里的内容尚未完善…</p>
-</blockquote>
-<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
-新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
-我想到的一个处理方式就是：在删除结点时，
-将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
-<blockquote>
-<p>不过还没实现这个想法…</p>
-</blockquote>
-<blockquote>
-<p>alpha 取值的由来还没去了解…</p>
-</blockquote>
-<blockquote>
-<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
-</blockquote>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>这个过程将使用递归方式，你问为什么不用循环？因为我不会… <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派上运行的服务</title>
-    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
-    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
-<span id="more"></span>
-<h2 id="Nginx-服务器">Nginx 服务器</h2>
-<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了 Nginx，
-用来反代树莓派上所有服务。</p>
-<h2 id="Adguard-Home-DNS-解析服务">Adguard Home DNS 解析服务</h2>
-<blockquote>
-<p>Github 仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
-</blockquote>
-<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
-一开始是直接改 hosts 文件的，但这样要改所有会访问树莓派服务的设备的 hosts，
-这导致 Android 和 ios 都没办法使用树莓派服务。后来是改树莓派上的 hosts 文件，
-并配合 dnsmasq 进行解析，但是由于 dnsmasq 没办法用网页管理，于是就弃用了。</p>
-<h2 id="Aria2-下载服务">Aria2 下载服务</h2>
-<blockquote>
-<p>Aria2:<a href="https://aria2.github.io">https://aria2.github.io</a>
-AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
-</blockquote>
-<p>Aria2 本身只有命令行界面，AriaNg 为其提供了 web GUI，
-部署在树莓派上就能够通过网页远程管理 Aria2 了。</p>
-<p>Aria2 用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
-这样就不需要：开终端，wget 一下，然后进入漫长的等待，最后关终端。</p>
-<h2 id="Nextcloud-私有云盘">Nextcloud 私有云盘</h2>
-<blockquote>
-<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
-</blockquote>
-<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
-此外云盘有时会用 Collabora office 编辑一些文档，<s>问就是懒得重启到 Windows 编辑</s>。
-但实际上用的很少，因为还在树莓派部署了 Collabora office 的内建服务器，
-然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
-<p>此外，云盘还被用来与 Aria2 配合，这样就能管理用 Aria2 下载的文件了。</p>
-<h2 id="Syncthing-文件同步服务">Syncthing 文件同步服务</h2>
-<blockquote>
-<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
-</blockquote>
-<p>这个主要用来进行文件同步，但与 Nextcloud 有一些不同。</p>
-<p>Nextcloud 在 Android 上有个奇奇怪怪的问题。
-在 Linux 上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
-同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
-但在 Android 上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
-按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
-<code>Android/media/.../sync/videos</code>。</p>
-<p>这很不合理，因为我在 Android 也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
-而 Syncthing 能够满足这个需求。</p>
-<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为 syncthing 的中介人…</s></p>
-<h2 id="一些不常用的服务">一些不常用的服务</h2>
-<h3 id="Homeassistant-服务">Homeassistant 服务</h3>
-<blockquote>
-<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
-</blockquote>
-<p>现已停用，原因：非常占内存，我的树莓派只有可怜的 2G。</p>
-<h3 id="Netdata-性能监控">Netdata 性能监控</h3>
-<blockquote>
-<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
-</blockquote>
-<p>这个服务只是一时兴起部署的，几乎很少使用。
-<s>这个服务最大的共享就是让我发现 Nextcloud 的 PHP 后台真消耗性能，还有 HASS</s></p>
-<h3 id="Cups-打印机服务">Cups 打印机服务</h3>
-<p>有个打印机，用 cups 在局域网内共享，没啥好说的。
-<s>就是有时会找不到打印机，要重启一下服务</s></p>
-<h3 id="Cockpit-网页管理">Cockpit 网页管理</h3>
-<blockquote>
-<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
-</blockquote>
-<p>这个是 Redhat 赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
-但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>如 aria2.my.domain，adguard.my.domain，地址解析用到了自建的 DNS 服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>树莓派</category>
-      </categories>
-      <tags>
-        <tag>树莓派</tag>
-        <tag>aria2</tag>
-        <tag>云盘</tag>
-        <tag>文件同步</tag>
-        <tag>远程管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PWM 舵机控制</title>
-    <url>/2021/03/18/pwm-servo/</url>
-    <content><![CDATA[<p>介绍如何在树莓派上控制舵机（servo）</p>
-<span id="more"></span>
-<h3 id="PWM-基础知识">PWM 基础知识</h3>
-<blockquote>
-<p>PWM（Pulse Width Modulation）即脉宽调制，
-是一种利用数字信号对模拟电路进行控制的一种方法。
-详情自行搜索，<s>主要是我也不会</s>。</p>
-</blockquote>
-<h4 id="频率">频率</h4>
-<p>指$ 1s $内，脉冲信号变化（高电平$ \to $低电平$ \to $高电平）的次数。</p>
-<h4 id="周期">周期</h4>
-<p>脉冲信号完成一次变化的时间称作一个周期。</p>
-<h4 id="频率与周期的关系">频率与周期的关系</h4>
-<p>$$
-f = \frac{1}{T}
-$$</p>
-<p>一个周期为$ 20ms $脉冲信号，其频率为$ \frac{1}{20 \times 10^{-3}s} $，即$ 50Hz $。</p>
-<h4 id="占空比">占空比</h4>
-<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比。
-设整个周期的时间为$ T $，高电平持续的时间为$ t $，则占空比$ D $为：</p>
-<p>$$
-D = \frac{t}{T} \times 100%
-$$</p>
-<p>或</p>
-<p>$$
-D = t \cdot f \times 100%
-$$</p>
-<p>一个周期为$ 20ms $的脉冲信号，其中高电平持续时间为$ 1.5ms $，
-则占空比为$ \frac{1.5ms}{20ms} \times 100% = 7.5% $。</p>
-<h3 id="PWM-控制舵机">PWM 控制舵机</h3>
-<p>使用 PWM 控制舵机时，一般使用频率为$ 50Hz $的 PWM 信号，
-在$ 180^{\circ} $的舵机中，一般以$ 1.5ms $的高电平持续时间作为基准，
-高电平持续时间$ 1.5ms\pm1ms $作分别为舵机旋转$ \mp90^{\circ} $的控制信号。</p>
-<p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">高电平持续时间</th>
-<th style="text-align:left">占空比</th>
-<th style="text-align:left">角度（顺时针为正）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">$ 0.5ms $</td>
-<td style="text-align:left">$2.5%$</td>
-<td style="text-align:left">$ +90^{\circ} $</td>
-</tr>
-<tr>
-<td style="text-align:left">$ 1.5ms $</td>
-<td style="text-align:left">$7.5%$</td>
-<td style="text-align:left">$ 0^{\circ} $</td>
-</tr>
-<tr>
-<td style="text-align:left">$ 2.5ms $</td>
-<td style="text-align:left">$12.5%$</td>
-<td style="text-align:left">$ -90^{\circ} $</td>
-</tr>
-</tbody>
-</table>
-<h3 id="使用-Python-实现-PWM-控制">使用 Python 实现 PWM 控制</h3>
-<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>，
-可以通过 Python 来对这些 GPIO 接口进行控制。</p>
-<h4 id="使用-RPi-GPIO-库">使用 RPi.GPIO 库</h4>
-<p>参考<a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
-<h5 id="导入-GPIO-包并初始化-GPIO-接口">导入 GPIO 包并初始化 GPIO 接口</h5>
-<pre><code class="language-python">import RPi.GPIO as GPIO
-
-# 使用编号 18 的 GPIO 接口
-pin = 18
-
-# 设置 GPIO 的编号模式，详情参考树莓派官网
-GPIO.setmode(GPIO.BCM)
-
-# 关闭奇奇怪怪的警告
-GPIO.setwarnings(False)
-
-# 初始化接口
-GPIO.setup(pin, GPIO.OUT, initial=False)
-</code></pre>
-<h5 id="创建-PWM-实例">创建 PWM 实例</h5>
-<pre><code class="language-python"># 创建实例
-hz = 50
-p = GPIO.PWM(pin, hz)
-
-# 设置占空比
-# 单位 ms
-t = 1.5
-# 乘以 0.1，单位修正为 s，与 Hz 单位匹配
-dc = t * hz * 0.1
-
-# 启动 PWM
-p.start(dc)
-
-# 更改占空比
-p.ChangeDutyCycle(dc)
-
-# 停止 PWM
-p.stop()
-
-# 在程序结束时要释放对 GPIO 接口的控制
-GPIO.cleanup()
-</code></pre>
-<h5 id="会产生的问题">会产生的问题</h5>
-<p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
-因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
-在使用<code>p.ChangeDutyCycle(dc)</code>函数时也可能发生抖动，导致舵机不能转到指定角度。
-在<code>p.start(dc)</code>后，即使没有任何操作，也仍可能发生抖动，
-同时控制多个舵机时，不同接口还会产生干扰。</p>
-<h5 id="解决方法">解决方法</h5>
-<p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
-<pre><code class="language-python">p.start(dc)
-sleep(0.5)
-for i in range(0.5, 2.5 + 0.1, 0.1):
-  dc = i * hz * 0.1
-  p.ChangeDutyCycle(dc)
-  sleep(0.5)
-p.stop()
-</code></pre>
-<p>但这种方法并不能解决在空闲时出现的抖动，
-也不能去除其他端口的干扰。</p>
-<p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
-<pre><code class="language-python">p.start(dc)
-sleep(0.5)
-for i in range(0.5, 2.5 + 0.1, 0.1):
-  dc = i * hz * 0.1
-  p.start(dc)
-  sleep(0.5)
-  p.stop()
-p.stop()
-</code></pre>
-<p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动。</p>
-<p>还有一种方法：使用 pigpio 库。</p>
-<h4 id="使用-pigpio">使用 pigpio</h4>
-<p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
-能显著地提高 PWM 的抗干扰性。</p>
-<p>参考 <a href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
-<h5 id="启动服务">启动服务</h5>
-<p>使用 pigpio 库需要启动 pigpiod 服务。</p>
-<pre><code class="language-shell">sudo systemctl start pigpiod.service
-</code></pre>
-<h5 id="导入包并初始化">导入包并初始化</h5>
-<pre><code class="language-python">import pigpio
-
-# 使用编号 18 的接口
-# 注意：使用接口的 BCM 编号
-pin = 18
-
-# 创建连接 pigpio 连接
-pi = pigpio.pi()
-
-# 设置 GPIO 接口输出模式
-pi.set_mode(pin, pigpio.OUTPUT)
-</code></pre>
-<h5 id="PWM-设置">PWM 设置</h5>
-<pre><code class="language-python"># 设置 PWM 频率为 50 Hz
-pi.set_PWM_frequency(pin, 50)
-
-# 设置 PWM 范围 0~100
-# 与占空比相结合，范围 0~100
-pi.set_PWM_range(pin, 100)
-
-# 设置占空比设置为 25 即 25/100 = 1/4
-pi.set_PWM_dutycycle(25)
-
-# 关闭 PWM
-pi.set_PWM_dutycycle(0)
-</code></pre>
-<h5 id="优缺点">优缺点</h5>
-<p>使用 pigpio 时必须启动 pigpiod 服务，
-但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰。</p>
-]]></content>
-      <categories>
-        <category>树莓派</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Servo</tag>
-        <tag>PWM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Page 时间测试</title>
-    <url>/2023/01/01/time-test/</url>
-    <content><![CDATA[<p>时间格式测试</p>
-<span id="more"></span>
-<p>发现 Github Page 上的日期比实际的日期少一天。</p>
-<p>似乎是时区问题？没有验证。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>欠拟合与过拟合</title>
-    <url>/2021/10/26/underfitting-and-overfitting/</url>
-    <content><![CDATA[<p>机器学习中遭遇的问题</p>
-<span id="more"></span>
-<h2 id="欠拟合与过拟合">欠拟合与过拟合</h2>
-<h3 id="欠拟合">欠拟合</h3>
-<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
-<p>问题的原因在于训练时，用于训练的模型不是很好，
-当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
-比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
-<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" loading="lazy" /></p>
-<h3 id="过拟合">过拟合</h3>
-<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
-但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
-<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
-下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
-<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" loading="lazy" /></p>
-<p>或许加上原数据之间的连线更能体现：</p>
-<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" loading="lazy" /></p>
-<h2 id="解决方法">解决方法</h2>
-<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
-<strong>局部加权回归算法</strong> 则属于这一类算法<br />
-详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
-<hr class="footnotes-sep" />
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>算法优化</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>smali 语法</title>
-    <url>/2022/03/05/smali-language/</url>
-    <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>smali 语法与汇编语法挺相似的，
-简要做一些笔记，仅仅只是一些简单的语法，
-更多信息请查看文末的链接</p>
-<h2 id="数据类型">数据类型</h2>
-<p>以下是一些基本数据类型的表示</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">smali</th>
-<th style="text-align:left">Java</th>
-<th style="text-align:left">smali</th>
-<th style="text-align:left">Java</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">I</td>
-<td style="text-align:left">int</td>
-<td style="text-align:left">C</td>
-<td style="text-align:left">char</td>
-</tr>
-<tr>
-<td style="text-align:left">S</td>
-<td style="text-align:left">short</td>
-<td style="text-align:left">Z</td>
-<td style="text-align:left">boolean</td>
-</tr>
-<tr>
-<td style="text-align:left">J</td>
-<td style="text-align:left">long</td>
-<td style="text-align:left">V</td>
-<td style="text-align:left">void</td>
-</tr>
-<tr>
-<td style="text-align:left">F</td>
-<td style="text-align:left">float</td>
-<td style="text-align:left">L</td>
-<td style="text-align:left">object</td>
-</tr>
-<tr>
-<td style="text-align:left">D</td>
-<td style="text-align:left">double</td>
-<td style="text-align:left">B</td>
-<td style="text-align:left">byte</td>
-</tr>
-<tr>
-<td style="text-align:left">[</td>
-<td style="text-align:left">数组</td>
-<td style="text-align:left">[[</td>
-<td style="text-align:left">二维数组</td>
-</tr>
-</tbody>
-</table>
-<p>例子</p>
-<p><code>[I</code> 表示 int[] ，整型数组<br />
-<code>Ljava/lang/String</code> 表示 String 类型，在 Java 中，
-String 为 java.lang 包中的一个对象</p>
-<h2 id="流程控制">流程控制</h2>
-<h3 id="条件判断">条件判断</h3>
-<p>语法如下：<br />
-<code>if-{cond} v1, v0, :cond_0</code></p>
-<p><code>{cond}</code> 是判断条件，在后面会列出<br />
-<code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
-<p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
-<code>if-ge v0, v1, :cond_0</code></p>
-<p>全部条件判断语句：<br />
-<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <strong>eq</strong>ual<br />
-<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <strong>n</strong>o <strong>e</strong>qula<br />
-<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <strong>g</strong>reater than or <strong>e</strong>qual<br />
-<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <strong>l</strong>ess than or <strong>e</strong>qual<br />
-<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <strong>g</strong>reater <strong>t</strong>han<br />
-<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
-<h3 id="循环">循环</h3>
-<p>直接代码解释比较方便，例子来源参见文末链接 1</p>
-<pre><code class="language-java">public void smaliWhile() {
-    int a = 0;
-    while(a &lt;= 3) {
-        a++;
-    }
-
-    int b = 0;
-    for(int i = 0;i&lt;3;i++){
-        b++;
-    }
-
-    int c = 0;
-    do{
-        c++;
-    }while (c &lt;= 3);
-}
-</code></pre>
-<p>对应的 smali 语法</p>
-<pre><code class="language-smali">.method public smaliWhile()V
-    .locals 5
-
-    .line 62
-    // 4 字节常量，值为 0
-    const/4 v0, 0x0
-
-    // 赋值给 a
-    move v1, v0
-
-    .line 63
-    .local v1, &quot;a&quot;:I
-    // goto 标签
-    :goto_0
-    const/4 v2, 0x3
-
-    // if (a &gt; 3), goto cond_0
-    if-gt v1, v2, :cond_0
-
-    .line 64
-    // else v1 = v1 + 1
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-
-    .line 68
-    :cond_0
-    const/4 v3, 0x0
-
-    .line 69
-    .local v3, &quot;b&quot;:I
-    move v4, v3
-
-    move v3, v0
-
-    .local v3, &quot;i&quot;:I
-    .local v4, &quot;b&quot;:I
-    :goto_1
-    if-ge v3, v2, :cond_1
-
-    .line 70
-    add-int/lit8 v4, v4, 0x1
-
-    .line 69
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_1
-
-    .line 74
-    .end local v3
-    :cond_1
-    nop
-
-    .line 76
-    .local v0, &quot;c&quot;:I
-    :cond_2
-    add-int/lit8 v0, v0, 0x1
-
-    .line 77
-    if-le v0, v2, :cond_2
-
-    .line 78
-    return-void
-.end method
-</code></pre>
-<p>与汇编语法挺相似的，不多解释<br />
-<s>其实是懒得写笔记</s></p>
-<h2 id="函数定义">函数定义</h2>
-<p>一般定义长这个样子：
-<code>funcName (paraType1paraType2...)returnType</code></p>
-<ul>
-<li><code>funcName</code> 表示函数名</li>
-<li><code>paraType1</code> 和 <code>paraType2</code> 表示传入参数的类型，他们之间<strong>没有</strong>空格</li>
-<li><code>returnType</code> 表示返回值类型</li>
-</ul>
-<p>例子</p>
-<p><code>foo (IF)Z</code> 是 <code>boolean foo (int, float)</code></p>
-<p><code>bar([ILjava/lang/String)Z</code> 是 <code>boolean bar(int[], String)</code></p>
-<h2 id="内部类">内部类</h2>
-<p>smali 使用 <code>$</code> 表示内部类，像这样子
-<code>LpackageName/objectName$subObjName</code></p>
-<h2 id="参考">参考</h2>
-<ol>
-<li><a href="https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735">Smali coding guide for beginners</a></li>
-<li><a href="https://programmer.help/blogs/smali-introduction-manual.html">Smali Introduction Manual</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>杂货铺</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>smali</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pacman 笔记</title>
-    <url>/2026/08/05/pacman-note/</url>
-    <content><![CDATA[<p>记录一些奇奇怪怪的 pacman 技巧。</p>
-<span id="more"></span>
-<h2 id="查询包">查询包</h2>
-<ol>
-<li>查询不在已同步仓库中的软件包：</li>
-</ol>
-<pre><code class="language-bash">pacman -Qmq
-</code></pre>
-<ol start="2">
-<li>查询已安装的在 AUR 仓库中的软件包：</li>
-</ol>
-<pre><code class="language-bash">echo &quot;$(pacman -Qmq | yay -Si - 2&gt; /dev/null)&quot; | grep -A 1 &quot;Repository&quot; -
-</code></pre>
-<ol start="3">
-<li>查询不在已同步仓库以及 AUR 仓库中的软件包：</li>
-</ol>
-<pre><code class="language-bash">pacman -Qmq | yay -Si - 1&gt; /dev/null
-</code></pre>
-]]></content>
-  </entry>
-  <entry>
     <title>我的 Neovim 配置</title>
     <url>/2023/07/03/my-neovim-conf/</url>
     <content><![CDATA[<p>在这里记录一下我的 nvim 配置。</p>
@@ -4771,6 +3516,1267 @@ String 为 java.lang 包中的一个对象</p>
         <tag>neovim</tag>
         <tag>配置</tag>
         <tag>nvim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pacman 笔记</title>
+    <url>/2026/08/05/pacman-note/</url>
+    <content><![CDATA[<p>记录一些奇奇怪怪的 pacman 技巧。</p>
+<span id="more"></span>
+<h2 id="查询包">查询包</h2>
+<ol>
+<li>查询不在已同步仓库中的软件包：</li>
+</ol>
+<pre><code class="language-bash">pacman -Qmq
+</code></pre>
+<ol start="2">
+<li>查询已安装的在 AUR 仓库中的软件包：</li>
+</ol>
+<pre><code class="language-bash">echo &quot;$(pacman -Qmq | yay -Si - 2&gt; /dev/null)&quot; | grep -A 1 &quot;Repository&quot; -
+</code></pre>
+<ol start="3">
+<li>查询不在已同步仓库以及 AUR 仓库中的软件包：</li>
+</ol>
+<pre><code class="language-bash">pacman -Qmq | yay -Si - 1&gt; /dev/null
+</code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>图册展示页</title>
+    <url>/2023/07/17/post-for-gallery-layout-test/</url>
+    <content><![CDATA[<p>用于展示一些图片，在 Front matter 区域中使用<code>photos</code>添加图片。</p>
+<span id="more"></span>
+<p>然而并不能在文章里面看到，可以用作封面用途。</p>
+<p>可以添加多张，随机挑选。</p>
+<p>这张图片
+<img src="https://placehold.co/600x400" alt="600x400.jpg" loading="lazy" />
+是从这里来的：<a href="https://placehold.co/600x400">https://placehold.co/600x400</a></p>
+]]></content>
+      <categories>
+        <category>相册</category>
+      </categories>
+      <tags>
+        <tag>相册</tag>
+        <tag>展示</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树莓派热点</title>
+    <url>/2021/03/11/raspberrypi-access-point/</url>
+    <content><![CDATA[<p>简单介绍如何在树莓派开启热点<br />
+<em>参考自<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point">Setting up a routed wireless access point</a></em></p>
+<span id="more"></span>
+<p>需要的软件列表：</p>
+<ul>
+<li><code>hostapd</code>：用于开启热点</li>
+<li><code>dnsmasq</code>：用于开启 DHCP 服务与 DNS 服务</li>
+<li><code>iptables</code>：设置数据包转发规则</li>
+<li><code>netfilter-persistent</code>：将 <code>iptables</code> 设置的规则持久化</li>
+<li><code>iptables-persistent</code>：<code>netfilter-persistent</code> 插件</li>
+</ul>
+<h2 id="安装软件">安装软件</h2>
+<p>运行命令</p>
+<pre><code class="language-shell"># apt-get install hostapd dnsmasq iptables netfilter-persistent iptables-persistent
+</code></pre>
+<p>等待安装完成</p>
+<h2 id="配置-hostapd">配置 hostapd</h2>
+<p>编辑配置文件 <code>/etc/hostapd/hostapd.conf</code>，添加配置</p>
+<pre><code class="language-conf"># 使用的网卡
+interface=wlan0
+# WiFi 名字
+ssid=YOUR_WIFI_NAME
+# 驱动
+driver=nl80211
+# WiFi 频率模式
+hw_mode=g
+# 信道
+channel=7
+# 是否 mac 过滤
+macaddr_acl=0
+# 认证算法
+auth_algs=1
+# 是否广播 SSID
+ignore_broadcast_ssid=0
+# 加密相关
+wpa=2
+wpa_passphrase=YOUR_WIFI_PASSWORD
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+</code></pre>
+<p><strong>警告</strong>:
+channel 不可随意选择，不同的国家与地区允许使用的信道不同</p>
+<p>注：上面的配置启用的为 2.4GHz 的 WiFi
+如需使用 5GHz 的 WiFi，修改以下配置：</p>
+<pre><code class="language-conf">#hw_mode=g
+hw_mode=a
+#channel=7
+# 在内核启 CONFIG_ACS 编译选项后
+# 该选项设置为 0 时会自动选择信道
+# 树莓派似乎不支持......
+channel=149
+</code></pre>
+<h2 id="配置-dhcpcd">配置 dhcpcd</h2>
+<p>编辑配置文件 <code>/etc/dhcpcd.conf</code>，添加配置</p>
+<pre><code class="language-conf"># 网卡
+interface=wlan0
+# 网卡地址
+static ip_address=192.168.10.1/24
+# 不要执行这个脚本
+nohook wpa_supplicant
+</code></pre>
+<h2 id="配置-dnsmasq">配置 dnsmasq</h2>
+<p>编辑配置文件 <code>/etc/dnsmasp.conf</code></p>
+<pre><code class="language-conf"># 为这个网卡开启服务
+interface=wlan0
+# 不要在这个网卡开启服务
+no-dhcp-interface=eth0
+# 本机域
+domain=wlan
+# IP 地址分配范围
+dhcp-range=192.168.10.1,192.168.10.20,255.255.255.0,24h
+</code></pre>
+<h2 id="设置数据包转发">设置数据包转发</h2>
+<ol>
+<li>
+<p>允许包转发<br />
+编辑配置文件 <code>/etc/sysctl.conf</code><br />
+将 <code>net.ipv4.ip_forward=1</code> 取消注释</p>
+</li>
+<li>
+<p>设置转发规则
+运行命令</p>
+<pre><code class="language-shell"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+</li>
+<li>
+<p>保存规则
+运行命令</p>
+<pre><code class="language-shell"># netfilter-persistent save
+</code></pre>
+</li>
+</ol>
+<h2 id="设置-systemd-启动服务">设置 systemd 启动服务</h2>
+<p>启用 <code>hostapd.service</code>，<code>dnsmasq.service</code>，<code>netfilter-persistent.service</code><br />
+禁用 <code>wpa_supplicant.service</code></p>
+<pre><code class="language-shell"># systemctl unmask hostapd.service
+# systemctl enable hostapd.service dnsmasq.service netfilter-persistent.service
+# systemctl disable wpa_supplicant
+</code></pre>
+<h2 id="重启">重启</h2>
+<p>设置完成后重启</p>
+<pre><code class="language-shell"># reboot
+</code></pre>
+<p>不出意外，就能在 WiFi 列表里找到树莓派开启的 WiFi 了</p>
+<h2 id="参考链接">参考链接</h2>
+<p><a href="https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf">hostapd.conf 设置说明</a><br />
+<a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">维基百科：WLAN channel</a></p>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>hostapd</tag>
+        <tag>dnsmasq</tag>
+        <tag>Access Point</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树莓派上运行的服务</title>
+    <url>/2024/07/10/services-running-on-my-raspberrypi/</url>
+    <content><![CDATA[<p>记录一下在树莓派上运行的一些服务</p>
+<span id="more"></span>
+<h2 id="Nginx-服务器">Nginx 服务器</h2>
+<p>我用域名<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来访问树莓派上运行的所有服务，因此我搭建了 Nginx，
+用来反代树莓派上所有服务。</p>
+<h2 id="Adguard-Home-DNS-解析服务">Adguard Home DNS 解析服务</h2>
+<blockquote>
+<p>Github 仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
+</blockquote>
+<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
+一开始是直接改 hosts 文件的，但这样要改所有会访问树莓派服务的设备的 hosts，
+这导致 Android 和 ios 都没办法使用树莓派服务。后来是改树莓派上的 hosts 文件，
+并配合 dnsmasq 进行解析，但是由于 dnsmasq 没办法用网页管理，于是就弃用了。</p>
+<h2 id="Aria2-下载服务">Aria2 下载服务</h2>
+<blockquote>
+<p>Aria2:<a href="https://aria2.github.io">https://aria2.github.io</a>
+AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+</blockquote>
+<p>Aria2 本身只有命令行界面，AriaNg 为其提供了 web GUI，
+部署在树莓派上就能够通过网页远程管理 Aria2 了。</p>
+<p>Aria2 用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
+这样就不需要：开终端，wget 一下，然后进入漫长的等待，最后关终端。</p>
+<h2 id="Nextcloud-私有云盘">Nextcloud 私有云盘</h2>
+<blockquote>
+<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
+</blockquote>
+<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
+此外云盘有时会用 Collabora office 编辑一些文档，<s>问就是懒得重启到 Windows 编辑</s>。
+但实际上用的很少，因为还在树莓派部署了 Collabora office 的内建服务器，
+然而树莓派的性能有点不够用，<s>能用就行，要啥自行车</s>。</p>
+<p>此外，云盘还被用来与 Aria2 配合，这样就能管理用 Aria2 下载的文件了。</p>
+<h2 id="Syncthing-文件同步服务">Syncthing 文件同步服务</h2>
+<blockquote>
+<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
+</blockquote>
+<p>这个主要用来进行文件同步，但与 Nextcloud 有一些不同。</p>
+<p>Nextcloud 在 Android 上有个奇奇怪怪的问题。
+在 Linux 上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
+同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
+但在 Android 上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
+按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
+<code>Android/media/.../sync/videos</code>。</p>
+<p>这很不合理，因为我在 Android 也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
+而 Syncthing 能够满足这个需求。</p>
+<p><s>为什么会在树莓派上部署呢？因为树莓派只是作为 syncthing 的中介人…</s></p>
+<h2 id="一些不常用的服务">一些不常用的服务</h2>
+<h3 id="Homeassistant-服务">Homeassistant 服务</h3>
+<blockquote>
+<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
+</blockquote>
+<p>现已停用，原因：非常占内存，我的树莓派只有可怜的 2G。</p>
+<h3 id="Netdata-性能监控">Netdata 性能监控</h3>
+<blockquote>
+<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
+</blockquote>
+<p>这个服务只是一时兴起部署的，几乎很少使用。
+<s>这个服务最大的共享就是让我发现 Nextcloud 的 PHP 后台真消耗性能，还有 HASS</s></p>
+<h3 id="Cups-打印机服务">Cups 打印机服务</h3>
+<p>有个打印机，用 cups 在局域网内共享，没啥好说的。
+<s>就是有时会找不到打印机，要重启一下服务</s></p>
+<h3 id="Cockpit-网页管理">Cockpit 网页管理</h3>
+<blockquote>
+<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
+</blockquote>
+<p>这个是 Redhat 赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
+但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>如 aria2.my.domain，adguard.my.domain，地址解析用到了自建的 DNS 服务。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+        <tag>aria2</tag>
+        <tag>云盘</tag>
+        <tag>文件同步</tag>
+        <tag>远程管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>替罪羊树</title>
+    <url>/2024/01/21/scapegoat-tree/</url>
+    <content><![CDATA[<p>简单介绍一下替罪羊树算法，以及代码实现。</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
+写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
+也不能保证代码是对的，有错再更新。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
+<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
+</ul>
+<h2 id="什么是替罪羊树">什么是替罪羊树</h2>
+<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
+因为它允许不平衡的结点存在，
+只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
+它处理不平衡的方式很简单：
+将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
+这个过程称为<strong>重构</strong>。
+此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
+只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
+<blockquote>
+<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
+</blockquote>
+<h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
+<h3 id="一些变量定义">一些变量定义</h3>
+<p>在我的代码实现里，我使用数组形式构造替罪羊树，
+并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
+<p>首先是一些辅助用的定义：</p>
+<pre><code class="language-c">// 最大结点数
+#define MAXN 1024
+// 记录插入的结点数量
+int count = 0;
+// alpha
+double alpha = 0.75;
+</code></pre>
+<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
+<p>接下来是树结构定义：</p>
+<pre><code class="language-c">// 结点值
+int v[MAXN] = {0};
+// 结点权值，定义为结点的重复次数。
+int w[MAXN] = {0};
+// 结点的左右子树索引，&quot;left(right) tree&quot;取首字母
+int lt[MAXN] = {0};
+int rt[MAXN] = {0};
+</code></pre>
+<p>树以数组的形式表达，
+<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
+结点并不真实存在，能用于表示结点的只有它的编号，
+我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
+<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
+若<code>lt[k]==i</code>，这表明<strong>索引为 k</strong>的结点，其左子树的<strong>索引为 i</strong>。
+根结点的索引则由调用方负责保存。</p>
+<p>数组<code>v</code>负责保存结点值（value）。</p>
+<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
+在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
+若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
+这个结点只出现了一次。
+若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
+根本<strong>不存在</strong>。
+没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
+<p>下面这些数组有助于我们更方便地对树进行操作：</p>
+<pre><code class="language-c">// 树的存储大小
+int s[MAXN] = {0};
+// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）
+int rs[MAXN] = {0};
+// 树的带权大小，与 `w` 数组密切相关
+int ws[MAXN] = {0};
+</code></pre>
+<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
+所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
+<ul>
+<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
+只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
+那么在存储结构上自然也只记录一次。</li>
+<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
+也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
+<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
+也就是<code>w</code>数组中对应索引的值。</li>
+</ul>
+<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
+一般来说都指的是<code>s</code>数组表示的大小。</p>
+<h3 id="提供的树操作">提供的树操作</h3>
+<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
+<p>首先让我们简单地梳理一下：</p>
+<ol>
+<li>替罪羊树处理不平衡结点的方式是重构。</li>
+<li>不平衡结点的产生会在什么时候？
+显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
+<li>发生重构后，树的根可能会发生改变，如何更新这个根？
+答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
+</ol>
+<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
+重构在插入或删除时进行。</p>
+<p>至于重构的条件，我们很快就会知道。</p>
+<p>函数定义如下：</p>
+<pre><code class="language-c">// 在树中查找值
+// @param r 结点索引，表示在以此结点为根的树中找
+// @param val 找的是这个值
+// @return 这个值对应的结点索引是啥，如果为 0 表示不存在
+int search_node(int r, int val);
+
+// 将一个值插入树中
+// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值
+// @param val 插入的值
+void insert_node(int *r, int val);
+
+// 将一个值从树中删除
+// @note 如果值不存在，则不会发生任何事情
+// @param *r 指针，内容同样是根的值，重构会更新这个值
+// @param val 删除的值
+void delete_node(int *r, int val);
+</code></pre>
+<h3 id="重构相关的函数">重构相关的函数</h3>
+<p>我们首先定义重构的入口函数：</p>
+<pre><code class="language-c">// 重构树
+// @param *r 指针，重构的树以此为根
+static void rebuild(int *r);
+</code></pre>
+<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
+<pre><code class="language-c">// 序列化树
+// @param r 以此为根的树
+// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里
+// @param *tree_size 中序序列的长度
+static void flat(int r, int *flat_tree, int *tree_size);
+</code></pre>
+<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<pre><code class="language-c">// 生成树
+// @param *flat_tree 树的中序序列
+// @param l 反序列化起点，即左边界（left）
+// @param r 反序列化终点，即右边界（right）
+static int generate_tree(int *flat_tree, int l, int r);
+</code></pre>
+<p>最后，我们使用一个函数来判断是否进行重构：</p>
+<pre><code class="language-c">// 是否应该重构
+// @param r 以该结点为根
+// @return ture 表示需要重构，false 表示不需要重构
+static bool should_rebuild(int r);
+</code></pre>
+<h2 id="着手实现">着手实现</h2>
+<h3 id="重构">重构</h3>
+<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
+<strong>重构的条件是什么？</strong></p>
+<h4 id="重构的条件">重构的条件</h4>
+<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
+在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
+我们记较大的那个为$n$，此时，父结点的大小可以粗略认为是$m \coloneqq 2n + 1$。
+显然有$0.5 \cdot m &gt; n$，我们将这个$0.5$记作$\alpha$，也就是之前定义的变量<code>alpha</code>。</p>
+<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
+在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
+但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
+而这个阈值与<code>alpha</code>相关。</p>
+<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
+当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为$50%$。
+此时<code>alpha</code>取值<code>0.5</code>。
+然而经验表明<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，在平衡二叉树中，这个比例在$70% \sim 80%$间，
+平衡二叉树仍能保持其时间复杂度不变。</p>
+<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
+而重构的条件则是<code>alpha * s[k] &lt; max(s[rt[k]], s[lt[k]])</code>。
+在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki 的这篇文章中</a>，
+还提到已删除结点过多也可能影响树的查找效率，
+因此在删除结点过多时也重构：<code>rs[k] &lt; alpha * s[r]</code>。</p>
+<h4 id="计算树的大小">计算树的大小</h4>
+<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
+<pre><code class="language-c">// 计算树的大小
+// @param r 树的根结点索引
+void gen_size(int r) {
+    if (!r)
+        return;
+    // 直接递归把子树大小计算出来
+    gen_size(lt[r]);
+    gen_size(rt[r]);
+    // 现在子树的大小已经计算好了
+    s[r] = s[lt[r]] + s[rt[r]] + 1;
+    rs[r] = rs[lt[r]] + rs[rt[r]] + (w[r] &gt; 0 ? 1 : 0);
+    ws[r] = ws[lt[r]] + ws[rt[r]] + w[r];
+}
+</code></pre>
+<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
+<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
+<h4 id="生成中序序列">生成中序序列</h4>
+<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
+就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
+不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
+<pre><code class="language-c">void flat(int r, int *flat_tree, int *tree_size) {
+    if (!r)
+        return;
+    // 遍历左子树
+    flat(lt[r], flat_tree, tree_size);
+    // 访问根
+    if (w[r] &gt; 0) {
+        // 进入中序序列
+        flat_tree[*tree_size] = r;
+        // 序列长度加一
+        *tree_size += 1;
+    }
+    // 遍历右子树
+    flat(rt[r], flat_tree, tree_size);
+}
+</code></pre>
+<h4 id="反序列化">反序列化</h4>
+<p>从中序序列反序列化出一棵树也比较简单：</p>
+<pre><code class="language-c">int generate_tree(int *flat_tree, int l, int r) {
+    if (l &gt;= r || !flat_tree)
+        return 0;
+    // 中间的为根，需要注意，flat_tree 中保存的才是结点索引
+    int mid = (l + r) / 2;
+    int k = flat_tree[mid];
+    // 左子树
+    lt[k] = generate_tree(flat_tree, l, mid);
+    // 右子树
+    rt[k] = generate_tree(flat_tree, mid + 1, r);
+    // 返回根
+    return k;
+}
+</code></pre>
+<h4 id="重构入口函数">重构入口函数</h4>
+<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
+<pre><code class="language-c">// 我们需要更新的根，因此需要使用指针
+void rebuild(int *r) {
+    // flat tree
+    int ft[MAXN] = {0};
+    // tree size
+    int ts = 0;
+    // 序列化
+    flat(*r, ft, &amp;ts);
+    // 反序列化
+    *r = generate_tree(ft, 0, ts);
+    // 重新计算结点大小
+    gen_size(*r);
+}
+</code></pre>
+<h4 id="判断是否需要重构">判断是否需要重构</h4>
+<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
+<pre><code class="language-c">// 只是个选最大值的函数，其实可以不用
+static max(a, b) {
+    return a &gt; b ? a : b;
+}
+
+bool should_rebuild(int r) {
+    return alpha * s[r] &lt; (double)max(s[lt[r]], s[rt[r]]) // 树不平衡
+        || (double)rs[r] &lt; alpha * s[r]; // 删除的结点过多
+}
+</code></pre>
+<h3 id="搜索">搜索</h3>
+<p>和一般二叉树的搜索无异：</p>
+<pre><code class="language-c">int search_node(int r, int val) {
+    if (!r)
+        return 0;
+    int child = 0;
+    if (val &lt; v[r])
+        // 小于结点值，在左子树搜
+        child = lt[r];
+    else if (val &gt; v[r])
+        // 大于结点值，在右子树搜
+        child = rt[t];
+    else
+        // 找到了值，但需要判断结点是否已经删除
+        return w[r] ? r : 0;
+    // 与当前结点值不同，则向子树递归搜索
+    retrurn search_node(child, val);
+}
+</code></pre>
+<h3 id="插入">插入</h3>
+<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
+如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
+那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
+<ul>
+<li>值在树中，更新<code>w</code>数组</li>
+<li>值不再树中，新建结点：更新所有<strong>size 数组</strong><a href="%E5%B0%B1%E6%98%AF%60s%5BMAXN%5D%60%E3%80%81%60rs%5BMAXN%5D%60%E4%BB%A5%E5%8F%8A%60ws%5BMAXN%5D%60%E8%BF%99%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E3%80%82">^size 数组</a>，
+更新<code>v</code>和<code>w</code>数组，结点计数<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>加一。</li>
+</ul>
+<pre><code class="language-c">void insert_node(int *r, int val) {
+    if (!r)
+        return;
+    if (!*r) {
+        // 到达叶子结点
+        // 结点计数加一
+        int k = ++count;
+        // 这是我的实现存在的一个问题，需要判断一下
+        if (k &gt; MAXN)
+            return;
+        w[k] = s[k] = rs[k] = ws[k] = 1;
+        v[k] = val;
+        // 更新结点
+        *r = k;
+    } else {
+        // 现在还在树中
+        if (val == v[*r])
+            // 重复值
+            w[*r]++;
+        else if (val &lt; v[*r])
+            insert_node(&amp;lt[*r], val);
+        else
+            insert_node(&amp;lt[*r], val);
+    }
+    // 重新计算结点大小
+    gen_size(*r);
+    // 判断是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+}
+</code></pre>
+<h3 id="删除">删除</h3>
+<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
+需要注意的是不能直接将其赋值为 0，因为可能有重复值。</p>
+<pre><code class="language-c">void delete_node(int *r, int val) {
+    if (!r || !*r)
+        return;
+    if (val == v[*r]) {
+        // 存在，删除一个
+        if (w[*r] &gt; 0) w[*r]--;
+    } else {
+        // 与结点值不同，在子树递归删除
+        if (val &lt; v[*r])
+            delete_node(&amp;lt[*r], val);
+        else
+            delete_node(&amp;rt[*r], val);
+    }
+    // 更新结点大小
+    gen_size(*r);
+    // 检查是否重构
+    if (should_rebuild(*r))
+        rebuild(r);
+}
+</code></pre>
+<h2 id="一些问题">一些问题</h2>
+<blockquote>
+<p>这里的内容尚未完善…</p>
+</blockquote>
+<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
+新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
+我想到的一个处理方式就是：在删除结点时，
+将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
+<blockquote>
+<p>不过还没实现这个想法…</p>
+</blockquote>
+<blockquote>
+<p>alpha 取值的由来还没去了解…</p>
+</blockquote>
+<blockquote>
+<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
+</blockquote>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这个过程将使用递归方式，你问为什么不用循环？因为我不会… <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>smali 语法</title>
+    <url>/2022/03/05/smali-language/</url>
+    <content><![CDATA[<p>记录一下 smali 的基本语法，方便回顾</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>smali 语法与汇编语法挺相似的，
+简要做一些笔记，仅仅只是一些简单的语法，
+更多信息请查看文末的链接</p>
+<h2 id="数据类型">数据类型</h2>
+<p>以下是一些基本数据类型的表示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+<th style="text-align:left">smali</th>
+<th style="text-align:left">Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">char</td>
+</tr>
+<tr>
+<td style="text-align:left">S</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">J</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">V</td>
+<td style="text-align:left">void</td>
+</tr>
+<tr>
+<td style="text-align:left">F</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">L</td>
+<td style="text-align:left">object</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">byte</td>
+</tr>
+<tr>
+<td style="text-align:left">[</td>
+<td style="text-align:left">数组</td>
+<td style="text-align:left">[[</td>
+<td style="text-align:left">二维数组</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<p><code>[I</code> 表示 int[] ，整型数组<br />
+<code>Ljava/lang/String</code> 表示 String 类型，在 Java 中，
+String 为 java.lang 包中的一个对象</p>
+<h2 id="流程控制">流程控制</h2>
+<h3 id="条件判断">条件判断</h3>
+<p>语法如下：<br />
+<code>if-{cond} v1, v0, :cond_0</code></p>
+<p><code>{cond}</code> 是判断条件，在后面会列出<br />
+<code>:cond_0</code> 是跳转的位置，类似与 C 语言中的 <code>goto</code> 标签</p>
+<p>比如，当 v0 &gt;= v1 时，跳转到 <code>cond_0</code> 是这样写的：
+<code>if-ge v0, v1, :cond_0</code></p>
+<p>全部条件判断语句：<br />
+<code>if-eq v0, v1</code>: <code>if (v0 == v1)</code>，eq 指 <strong>eq</strong>ual<br />
+<code>if-ne v0, v1</code>: <code>if (v0 != v1)</code>，ne 指 <strong>n</strong>o <strong>e</strong>qula<br />
+<code>if-ge v0, v1</code>: <code>if (v0 &gt;= v1)</code>，ge 指 <strong>g</strong>reater than or <strong>e</strong>qual<br />
+<code>if-le v0, v1</code>: <code>if (v0 &lt;= v1)</code>，le 指 <strong>l</strong>ess than or <strong>e</strong>qual<br />
+<code>if-gt v0, v1</code>: <code>if (v0 &gt; v1)</code>，gt 指 <strong>g</strong>reater <strong>t</strong>han<br />
+<code>if-lt v0, v1</code>: <code>if (v0 &lt; v1)</code>，le 指 <strong>l</strong>ess <strong>t</strong>han</p>
+<h3 id="循环">循环</h3>
+<p>直接代码解释比较方便，例子来源参见文末链接 1</p>
+<pre><code class="language-java">public void smaliWhile() {
+    int a = 0;
+    while(a &lt;= 3) {
+        a++;
+    }
+
+    int b = 0;
+    for(int i = 0;i&lt;3;i++){
+        b++;
+    }
+
+    int c = 0;
+    do{
+        c++;
+    }while (c &lt;= 3);
+}
+</code></pre>
+<p>对应的 smali 语法</p>
+<pre><code class="language-smali">.method public smaliWhile()V
+    .locals 5
+
+    .line 62
+    // 4 字节常量，值为 0
+    const/4 v0, 0x0
+
+    // 赋值给 a
+    move v1, v0
+
+    .line 63
+    .local v1, &quot;a&quot;:I
+    // goto 标签
+    :goto_0
+    const/4 v2, 0x3
+
+    // if (a &gt; 3), goto cond_0
+    if-gt v1, v2, :cond_0
+
+    .line 64
+    // else v1 = v1 + 1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 68
+    :cond_0
+    const/4 v3, 0x0
+
+    .line 69
+    .local v3, &quot;b&quot;:I
+    move v4, v3
+
+    move v3, v0
+
+    .local v3, &quot;i&quot;:I
+    .local v4, &quot;b&quot;:I
+    :goto_1
+    if-ge v3, v2, :cond_1
+
+    .line 70
+    add-int/lit8 v4, v4, 0x1
+
+    .line 69
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_1
+
+    .line 74
+    .end local v3
+    :cond_1
+    nop
+
+    .line 76
+    .local v0, &quot;c&quot;:I
+    :cond_2
+    add-int/lit8 v0, v0, 0x1
+
+    .line 77
+    if-le v0, v2, :cond_2
+
+    .line 78
+    return-void
+.end method
+</code></pre>
+<p>与汇编语法挺相似的，不多解释<br />
+<s>其实是懒得写笔记</s></p>
+<h2 id="函数定义">函数定义</h2>
+<p>一般定义长这个样子：
+<code>funcName (paraType1paraType2...)returnType</code></p>
+<ul>
+<li><code>funcName</code> 表示函数名</li>
+<li><code>paraType1</code> 和 <code>paraType2</code> 表示传入参数的类型，他们之间<strong>没有</strong>空格</li>
+<li><code>returnType</code> 表示返回值类型</li>
+</ul>
+<p>例子</p>
+<p><code>foo (IF)Z</code> 是 <code>boolean foo (int, float)</code></p>
+<p><code>bar([ILjava/lang/String)Z</code> 是 <code>boolean bar(int[], String)</code></p>
+<h2 id="内部类">内部类</h2>
+<p>smali 使用 <code>$</code> 表示内部类，像这样子
+<code>LpackageName/objectName$subObjName</code></p>
+<h2 id="参考">参考</h2>
+<ol>
+<li><a href="https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735">Smali coding guide for beginners</a></li>
+<li><a href="https://programmer.help/blogs/smali-introduction-manual.html">Smali Introduction Manual</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>smali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PWM 舵机控制</title>
+    <url>/2021/03/18/pwm-servo/</url>
+    <content><![CDATA[<p>介绍如何在树莓派上控制舵机（servo）</p>
+<span id="more"></span>
+<h3 id="PWM-基础知识">PWM 基础知识</h3>
+<blockquote>
+<p>PWM（Pulse Width Modulation）即脉宽调制，
+是一种利用数字信号对模拟电路进行控制的一种方法。
+详情自行搜索，<s>主要是我也不会</s>。</p>
+</blockquote>
+<h4 id="频率">频率</h4>
+<p>指$ 1s $内，脉冲信号变化（高电平$ \to $低电平$ \to $高电平）的次数。</p>
+<h4 id="周期">周期</h4>
+<p>脉冲信号完成一次变化的时间称作一个周期。</p>
+<h4 id="频率与周期的关系">频率与周期的关系</h4>
+<p>$$
+f = \frac{1}{T}
+$$</p>
+<p>一个周期为$ 20ms $脉冲信号，其频率为$ \frac{1}{20 \times 10^{-3}s} $，即$ 50Hz $。</p>
+<h4 id="占空比">占空比</h4>
+<p>在一个周期内，高电平持续的时间与整个周期的总时间的比例为占空比。
+设整个周期的时间为$ T $，高电平持续的时间为$ t $，则占空比$ D $为：</p>
+<p>$$
+D = \frac{t}{T} \times 100%
+$$</p>
+<p>或</p>
+<p>$$
+D = t \cdot f \times 100%
+$$</p>
+<p>一个周期为$ 20ms $的脉冲信号，其中高电平持续时间为$ 1.5ms $，
+则占空比为$ \frac{1.5ms}{20ms} \times 100% = 7.5% $。</p>
+<h3 id="PWM-控制舵机">PWM 控制舵机</h3>
+<p>使用 PWM 控制舵机时，一般使用频率为$ 50Hz $的 PWM 信号，
+在$ 180^{\circ} $的舵机中，一般以$ 1.5ms $的高电平持续时间作为基准，
+高电平持续时间$ 1.5ms\pm1ms $作分别为舵机旋转$ \mp90^{\circ} $的控制信号。</p>
+<p>据此可得出相应的占空比，并通过设置 PWM 信号的占空比来控制舵机转动的角度。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">高电平持续时间</th>
+<th style="text-align:left">占空比</th>
+<th style="text-align:left">角度（顺时针为正）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$ 0.5ms $</td>
+<td style="text-align:left">$2.5%$</td>
+<td style="text-align:left">$ +90^{\circ} $</td>
+</tr>
+<tr>
+<td style="text-align:left">$ 1.5ms $</td>
+<td style="text-align:left">$7.5%$</td>
+<td style="text-align:left">$ 0^{\circ} $</td>
+</tr>
+<tr>
+<td style="text-align:left">$ 2.5ms $</td>
+<td style="text-align:left">$12.5%$</td>
+<td style="text-align:left">$ -90^{\circ} $</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用-Python-实现-PWM-控制">使用 Python 实现 PWM 控制</h3>
+<p>树莓派上的 GPIO 可实现 PWM，<s>虽然抖动很大</s>，
+可以通过 Python 来对这些 GPIO 接口进行控制。</p>
+<h4 id="使用-RPi-GPIO-库">使用 RPi.GPIO 库</h4>
+<p>参考<a href="https://pypi.org/project/RPi.GPIO">PRi.GPIO PyPI</a>。</p>
+<h5 id="导入-GPIO-包并初始化-GPIO-接口">导入 GPIO 包并初始化 GPIO 接口</h5>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+
+# 使用编号 18 的 GPIO 接口
+pin = 18
+
+# 设置 GPIO 的编号模式，详情参考树莓派官网
+GPIO.setmode(GPIO.BCM)
+
+# 关闭奇奇怪怪的警告
+GPIO.setwarnings(False)
+
+# 初始化接口
+GPIO.setup(pin, GPIO.OUT, initial=False)
+</code></pre>
+<h5 id="创建-PWM-实例">创建 PWM 实例</h5>
+<pre><code class="language-python"># 创建实例
+hz = 50
+p = GPIO.PWM(pin, hz)
+
+# 设置占空比
+# 单位 ms
+t = 1.5
+# 乘以 0.1，单位修正为 s，与 Hz 单位匹配
+dc = t * hz * 0.1
+
+# 启动 PWM
+p.start(dc)
+
+# 更改占空比
+p.ChangeDutyCycle(dc)
+
+# 停止 PWM
+p.stop()
+
+# 在程序结束时要释放对 GPIO 接口的控制
+GPIO.cleanup()
+</code></pre>
+<h5 id="会产生的问题">会产生的问题</h5>
+<p>正如前面所说，使用 PRi.GPIO 实现的 PWM 抖动很大，
+因为这属于软件控制的 PWM，在频繁地更改占空比时会更明显，
+在使用<code>p.ChangeDutyCycle(dc)</code>函数时也可能发生抖动，导致舵机不能转到指定角度。
+在<code>p.start(dc)</code>后，即使没有任何操作，也仍可能发生抖动，
+同时控制多个舵机时，不同接口还会产生干扰。</p>
+<h5 id="解决方法">解决方法</h5>
+<p>一种解决的方法是使用<code>time</code>模块中的<code>sleep()</code>函数进行延时。</p>
+<pre><code class="language-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+  dc = i * hz * 0.1
+  p.ChangeDutyCycle(dc)
+  sleep(0.5)
+p.stop()
+</code></pre>
+<p>但这种方法并不能解决在空闲时出现的抖动，
+也不能去除其他端口的干扰。</p>
+<p>另一种方法则是在启动 PWM 后，进过延时就将其关闭。</p>
+<pre><code class="language-python">p.start(dc)
+sleep(0.5)
+for i in range(0.5, 2.5 + 0.1, 0.1):
+  dc = i * hz * 0.1
+  p.start(dc)
+  sleep(0.5)
+  p.stop()
+p.stop()
+</code></pre>
+<p>这种方法需要频繁的开启关闭 PWM，且仍不稳定，但在空闲时不会发生抖动。</p>
+<p>还有一种方法：使用 pigpio 库。</p>
+<h4 id="使用-pigpio">使用 pigpio</h4>
+<p>使用 pigpio 库，可以实现硬件方式控制的 PWM，
+能显著地提高 PWM 的抗干扰性。</p>
+<p>参考 <a href="http://abyz.me.uk/rpi/pigpio/python.html">pigpio library</a></p>
+<h5 id="启动服务">启动服务</h5>
+<p>使用 pigpio 库需要启动 pigpiod 服务。</p>
+<pre><code class="language-shell">sudo systemctl start pigpiod.service
+</code></pre>
+<h5 id="导入包并初始化">导入包并初始化</h5>
+<pre><code class="language-python">import pigpio
+
+# 使用编号 18 的接口
+# 注意：使用接口的 BCM 编号
+pin = 18
+
+# 创建连接 pigpio 连接
+pi = pigpio.pi()
+
+# 设置 GPIO 接口输出模式
+pi.set_mode(pin, pigpio.OUTPUT)
+</code></pre>
+<h5 id="PWM-设置">PWM 设置</h5>
+<pre><code class="language-python"># 设置 PWM 频率为 50 Hz
+pi.set_PWM_frequency(pin, 50)
+
+# 设置 PWM 范围 0~100
+# 与占空比相结合，范围 0~100
+pi.set_PWM_range(pin, 100)
+
+# 设置占空比设置为 25 即 25/100 = 1/4
+pi.set_PWM_dutycycle(25)
+
+# 关闭 PWM
+pi.set_PWM_dutycycle(0)
+</code></pre>
+<h5 id="优缺点">优缺点</h5>
+<p>使用 pigpio 时必须启动 pigpiod 服务，
+但使用这个方式输出的 PWM 是硬件方式控制的，比较稳定，不易受到干扰。</p>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Servo</tag>
+        <tag>PWM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>提问的智慧</title>
+    <url>/2023/07/19/smart-questions/</url>
+    <content><![CDATA[<!-- more -->
+]]></content>
+  </entry>
+  <entry>
+    <title>Github Page 时间测试</title>
+    <url>/2023/01/01/time-test/</url>
+    <content><![CDATA[<p>时间格式测试</p>
+<span id="more"></span>
+<p>发现 Github Page 上的日期比实际的日期少一天。</p>
+<p>似乎是时区问题？没有验证。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>欠拟合与过拟合</title>
+    <url>/2021/10/26/underfitting-and-overfitting/</url>
+    <content><![CDATA[<p>机器学习中遭遇的问题</p>
+<span id="more"></span>
+<h2 id="欠拟合与过拟合">欠拟合与过拟合</h2>
+<h3 id="欠拟合">欠拟合</h3>
+<p>欠拟合指学习得出的模型并不能很好地模拟出数据的分布规律</p>
+<p>问题的原因在于训练时，用于训练的模型不是很好，
+当尝试用低阶模型去拟合高阶模型时，就会出现欠拟合的情况<br />
+比如<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<p><img src="Figure_1.svg" alt="&quot;Figure_1&quot;" title="Figure 1" loading="lazy" /></p>
+<h3 id="过拟合">过拟合</h3>
+<p>过拟合指的是通过学习得出的模型，能很好地描述训练集中“特征与标签”的关系，
+但是进行预测的结果很差，或者模型本身过于负责，并不适合实际应用</p>
+<p>也就是说，过拟合就是对训练集中的数据的拟合效果好，但实际用的时候效果并不理想<br />
+下面是一个不太明显的例子，但我想应该足够体现出过拟合的概念了<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<p><img src="Figure_2.svg" alt="&quot;Figure_2&quot;" title="Figure 2" loading="lazy" /></p>
+<p>或许加上原数据之间的连线更能体现：</p>
+<p><img src="Figure_3.svg" alt="&quot;Figure_3&quot;" title="Figure 3" loading="lazy" /></p>
+<h2 id="解决方法">解决方法</h2>
+<p>一个解决方法是使用 <strong>非参数学习算法</strong> ，
+<strong>局部加权回归算法</strong> 则属于这一类算法<br />
+详情参考 <a href="/2021/10/30/locally-weighted-regression/" title="局部加权回归">这篇文章</a></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>图中数据为随机生成，使用解析式法得出结果 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>同上 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>算法优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在磁盘映像文件上安装 Grub 2</title>
+    <url>/2021/08/15/install-grub-at-a-img-file/</url>
+    <content><![CDATA[<p>记录一下我在一个磁盘文件上安装 Grub 作为启动引导的过程</p>
+<span id="more"></span>
+<h3 id="前言">前言</h3>
+<ol>
+<li>文中的 Grub 均指 Grub 2，而非 Grub Legacy</li>
+<li>文中涉及的安装操作仅限于 Arch Linux，其他发行版请参考 Wiki</li>
+<li>分区大小以及文件大小并不一定按照下面所示的设置，但推荐至少 15 M</li>
+<li>请在了解执行的命令的作用之后再执行操作</li>
+</ol>
+<h3 id="使用-dd-创建一个映像文件">使用 dd 创建一个映像文件</h3>
+<pre><code class="language-shell">dd if=/dev/zero of=os.img bs=1M count=20
+</code></pre>
+<p>此命令将在当前目录创建一个大小为 20M，文件名为 os.img 的文件</p>
+<h3 id="在-os-img-上创建分区">在 os.img 上创建分区</h3>
+<p>此处提供 <code>gdisk</code> 和 <code>fdisk</code> 命令参考</p>
+<h4 id="使用-gdisk">使用 gdisk</h4>
+<pre><code class="language-shell">gdisk os.img
+</code></pre>
+<p>进入 gdisk 交互界面<br />
+如下所示</p>
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+
+Creating new GPT entries in memory.
+
+Command (? for help):
+</code></pre>
+<blockquote>
+<p>根据 <a href="https://wiki.archlinux.org/title/GRUB#BIOS_systems">Arch Linux Wiki</a><br />
+需要腾出 1M 空间给 Grub 使用</p>
+</blockquote>
+<p><strong>创建分区简要步骤：</strong></p>
+<ul>
+<li>输入 <code>n</code> 创建新的分区</li>
+<li>回车选择默认的分区号</li>
+<li>再次回车选择默认的起始块</li>
+<li>输入 <code>+1M</code> 将分区大小设置为 1M</li>
+<li>输入 <code>ef02</code> 将分区类型设置为 Boot 启动分区</li>
+<li>输入 <code>n</code> 创建新的分区</li>
+<li>之后全部回车，将剩余空间创建为一个分区</li>
+<li>输入 <code>p</code> 确认分区无误后，最后输入 <code>w</code> 确认写入文件</li>
+</ul>
+<p>可能会出现一个警告，确认即可</p>
+<p><strong>以下为参考：</strong></p>
+<pre><code class="language-shell">GPT fdisk (gdisk) version 1.0.8
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): d
+Using 1
+
+Command (? for help): n
+Partition number (1-128, default 1):
+First sector (34-40926, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-40926, default = 40926) or {+-}size{KMGTP}: +1M
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): ef02
+Changed type of partition to 'BIOS boot partition'
+
+Command (? for help): n
+Partition number (2-128, default 2):
+First sector (34-40926, default = 4096) or {+-}size{KMGTP}:
+Last sector (4096-40926, default = 40926) or {+-}size{KMGTP}:
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): p
+Disk ./file.img: 40960 sectors, 20.0 MiB
+Sector size (logical): 512 bytes
+Disk identifier (GUID): 8AECC85A-5E21-48E1-AB62-1684A9A8BF0D
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 40926
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            4095   1024.0 KiB  EF02  BIOS boot partition
+   2            4096           40926   18.0 MiB    8300  Linux filesystem
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to ./file.img.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot or after you
+run partprobe(8) or kpartx(8)
+The operation has completed successfully.
+</code></pre>
+<h4 id="使用-fdisk">使用 fdisk</h4>
+<pre><code class="language-shell">fdisk ./os.img
+</code></pre>
+<p>进入 fdisk 交互界面</p>
+<p>输入 <code>g</code> 新建一个 GPT 分区表</p>
+<p>创建分区过程与 <strong>使用 gdisk</strong> 一节类似<br />
+但创建分区过程无法选择分区类型，需要在创建分区后进行更改</p>
+<p>在创建分区后</p>
+<ul>
+<li>输入 <code>t</code> 更改分区类型</li>
+<li>随后会要求选择分区，输入 <code>1</code> 选择第一个分区</li>
+<li>然后输入 <code>4</code> 将分区类型更改为 BIOS Boot</li>
+</ul>
+<p><strong>参考：</strong></p>
+<pre><code class="language-shell">命令(输入 m 获取帮助)：t
+分区号 (1,2, 默认  2): 1
+分区类型或别名（输入 L 列出所有类型）：4
+
+已将分区“Linux filesystem”的类型更改为“BIOS boot”。
+
+命令(输入 m 获取帮助)：
+</code></pre>
+<p>最后输入 <code>w</code> 确认写入文件</p>
+<h3 id="将-os-img-挂载为-loop-设备">将 os.img 挂载为 loop 设备</h3>
+<pre><code class="language-shell">$ sudo losetup --show -P -f ./os.img
+/dev/loop0
+</code></pre>
+<p>命令解释：</p>
+<ul>
+<li><code>--show</code> 在挂载成功后，显示挂载的设备名</li>
+<li><code>-P</code> 创建带分区的 loop 设备</li>
+<li><code>-f</code> 查找第一个未使用的设备</li>
+</ul>
+<p>显示的设备名不一定是 <code>/dev/loop0</code><br />
+在后文出现的 <code>/dev/loop0</code> 更改为你实际操作时显示的名称</p>
+<h3 id="格式化并挂载分区">格式化并挂载分区</h3>
+<blockquote>
+<p>在文中实例中，需要格式化的是第二个分区<br />
+对应的 loop 设备为 <code>/dev/loop0p2</code><br />
+如上一个步骤中的显示的 loop 设备不同，请自行更改</p>
+</blockquote>
+<pre><code class="language-shell">sudo mkfs.vfat -n &quot;BOOT&quot; /dev/loop0p2
+</code></pre>
+<p>不出意外的话，格式化很快就能完成<br />
+随后挂载分区</p>
+<p>请选择一个没有正在使用的文件夹<br />
+在本文中选择 <code>/mnt</code> 作为挂载点<br />
+这个文件夹在之后会使用到</p>
+<pre><code class="language-shell">sudo mount /dev/loop0p2 /mnt
+</code></pre>
+<p>没有消息就是最好的消息</p>
+<h3 id="安装-Grub">安装 Grub</h3>
+<blockquote>
+<p>下面的操作在执行命令前一定要确认
+误操作可能会影响本机的 <code>/boot</code> 分区</p>
+</blockquote>
+<p>此处示例将安装以 <strong>BIOS 方式启动</strong>的<strong>i386 平台</strong>的 Grub<br />
+使用上一个步骤的挂载点 <code>/mnt</code> 作为安装目录</p>
+<pre><code class="language-shell">sudo grub-install --target=i386-pc --boot-directory=/mnt/boot /dev/loop0
+</code></pre>
+<p>命令解释：</p>
+<ul>
+<li><code>target=i386-pc</code> 指出安装架构为 i386</li>
+<li><code>boot-directory=/mnt/boot</code> 指出安装到 <code>/mnt/boot</code> 而不是默认的 <code>/boot</code></li>
+</ul>
+<p>安装需要 13M 左右的空间<br />
+完成后会提示成功</p>
+<h3 id="配置">配置</h3>
+<p>照着手册随便糊的一个，<s>能用就行</s></p>
+<pre><code class="language-shell"># Grub 的配置文件
+
+# 设置根分区
+set root='(hd0,gpt2)'
+
+# 选择启动项超时时间，0 即立即启动
+set timeout=0
+
+# 菜单选项
+menuentry EntryName {
+    # 载入 file 并启动
+    multiboot ($root)/boot/file
+    boot
+}
+</code></pre>
+<h3 id="卸载设备">卸载设备</h3>
+<pre><code class="language-shell">sudo umount /mnt
+sudo losetup -d /dev/loop0
+</code></pre>
+<p>上面的命令将从挂载点卸载 loop 设备<br />
+并释放 loop 设备与文件的关联</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://www.gnu.org/software/grub/manual/grub/grub.html">Grub 手册</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>杂货铺</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Grub</tag>
       </tags>
   </entry>
   <entry>
@@ -5220,12 +5226,6 @@ String 为 java.lang 包中的一个对象</p>
       <tags>
         <tag>Vim</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>提问的智慧</title>
-    <url>/2023/07/19/smart-questions/</url>
-    <content><![CDATA[<!-- more -->
-]]></content>
   </entry>
   <entry>
     <title>为什么使用最小二乘法</title>
