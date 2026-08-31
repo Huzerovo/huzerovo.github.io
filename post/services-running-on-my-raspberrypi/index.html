@@ -1,0 +1,170 @@
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>树莓派上运行的服务 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-2"><a href="#nginx-服务器">Nginx 服务器</a></li><li class="toc-item toc-level-2"><a href="#adguard-home-dns-解析服务">Adguard Home DNS 解析服务</a></li><li class="toc-item toc-level-2"><a href="#aria2-下载服务">Aria2 下载服务</a></li><li class="toc-item toc-level-2"><a href="#nextcloud-私有云盘">Nextcloud 私有云盘</a></li><li class="toc-item toc-level-2"><a href="#syncthing-文件同步服务">Syncthing 文件同步服务</a></li><li class="toc-item toc-level-2"><a href="#一些不常用的服务">一些不常用的服务</a></li><li class="toc-item toc-level-3"><a href="#homeassistant-服务">Homeassistant 服务</a></li><li class="toc-item toc-level-3"><a href="#netdata-性能监控">Netdata 性能监控</a></li><li class="toc-item toc-level-3"><a href="#cups-打印机服务">Cups 打印机服务</a></li><li class="toc-item toc-level-3"><a href="#cockpit-网页管理">Cockpit 网页管理</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>树莓派上运行的服务</h1><div class="article-head-meta"><span>发布日期: 2024-07-10</span><span>更新日期: 2024-07-10</span></div></header><div><p>记录一下在树莓派上运行的一些服务</p>
+<!-- more -->
+<h2 id="nginx-服务器">Nginx 服务器</h2>
+<p>我用域名<sup><a href="#user-content-fn-my_domain" id="user-content-fnref-my_domain" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>来访问树莓派上运行的所有服务，因此我搭建了 Nginx，
+用来反代树莓派上所有服务。</p>
+<h2 id="adguard-home-dns-解析服务">Adguard Home DNS 解析服务</h2>
+<blockquote>
+<p>Github 仓库：<a href="https://github.com/AdguardTeam/AdguardHome">https://github.com/AdguardTeam/AdguardHome</a></p>
+</blockquote>
+<p>这个服务其实主要是用来解析树莓派的服务域名地址，广告过滤只是顺带的。
+一开始是直接改 hosts 文件的，但这样要改所有会访问树莓派服务的设备的 hosts，
+这导致 Android 和 ios 都没办法使用树莓派服务。后来是改树莓派上的 hosts 文件，
+并配合 dnsmasq 进行解析，但是由于 dnsmasq 没办法用网页管理，于是就弃用了。</p>
+<h2 id="aria2-下载服务">Aria2 下载服务</h2>
+<blockquote>
+<p>Aria2:<a href="https://aria2.github.io">https://aria2.github.io</a>
+AriaNg: <a href="https://github.com/mayswind/AriaNg">https://github.com/mayswind/AriaNg</a></p>
+</blockquote>
+<p>Aria2 本身只有命令行界面，AriaNg 为其提供了 web GUI，
+部署在树莓派上就能够通过网页远程管理 Aria2 了。</p>
+<p>Aria2 用的频率其实不高，基本上只是用来下载一些需要在树莓派上使用的东西，
+这样就不需要：开终端，wget 一下，然后进入漫长的等待，最后关终端。</p>
+<h2 id="nextcloud-私有云盘">Nextcloud 私有云盘</h2>
+<blockquote>
+<p>官网：<a href="https://nextcloud.com">https://nextcloud.com</a></p>
+</blockquote>
+<p>云盘主要是用来自动上传文件，作为云端备份，比如这个博客的源文件就存在上面。
+此外云盘有时会用 Collabora office 编辑一些文档，<del>问就是懒得重启到 Windows 编辑</del>。
+但实际上用的很少，因为还在树莓派部署了 Collabora office 的内建服务器，
+然而树莓派的性能有点不够用，<del>能用就行，要啥自行车</del>。</p>
+<p>此外，云盘还被用来与 Aria2 配合，这样就能管理用 Aria2 下载的文件了。</p>
+<h2 id="syncthing-文件同步服务">Syncthing 文件同步服务</h2>
+<blockquote>
+<p>官网：<a href="https://syncthing.net">https://syncthing.net</a></p>
+</blockquote>
+<p>这个主要用来进行文件同步，但与 Nextcloud 有一些不同。</p>
+<p>Nextcloud 在 Android 上有个奇奇怪怪的问题。
+在 Linux 上，我能将本地的不同位置的文件夹，比如<code>$HOME/Pictures/sync</code>、<code>$HOME/Videos/sync</code>
+同步到云端的一个文件夹内，比如<code>sync/pictures</code>、<code>sync/videos</code>。
+但在 Android 上，我只能将云端的文件夹<code>sync/pictures</code>、<code>sync/videos</code>，
+按照云端的结构同步到本地，如<code>Android/media/.../sync/pictures</code>、
+<code>Android/media/.../sync/videos</code>。</p>
+<p>这很不合理，因为我在 Android 也有<code>Pictures/sync</code>与<code>Videos/sync</code>，
+而 Syncthing 能够满足这个需求。</p>
+<p><del>为什么会在树莓派上部署呢？因为树莓派只是作为 syncthing 的中介人...</del></p>
+<h2 id="一些不常用的服务">一些不常用的服务</h2>
+<h3 id="homeassistant-服务">Homeassistant 服务</h3>
+<blockquote>
+<p>官网：<a href="https://www.home-assistant.io">https://www.home-assistant.io</a></p>
+</blockquote>
+<p>现已停用，原因：非常占内存，我的树莓派只有可怜的 2G。</p>
+<h3 id="netdata-性能监控">Netdata 性能监控</h3>
+<blockquote>
+<p>官网：<a href="https://www.netdata.cloud">https://www.netdata.cloud</a></p>
+</blockquote>
+<p>这个服务只是一时兴起部署的，几乎很少使用。
+<del>这个服务最大的共享就是让我发现 Nextcloud 的 PHP 后台真消耗性能，还有 HASS</del></p>
+<h3 id="cups-打印机服务">Cups 打印机服务</h3>
+<p>有个打印机，用 cups 在局域网内共享，没啥好说的。
+<del>就是有时会找不到打印机，要重启一下服务</del></p>
+<h3 id="cockpit-网页管理">Cockpit 网页管理</h3>
+<blockquote>
+<p>官网：<a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
+</blockquote>
+<p>这个是 Redhat 赞助的一个项目，可以在网页上管理树莓派，比如更新软件，启动服务等。
+但我还是更喜欢在终端中进行这些操作，偶尔会在手机上使用一下。</p>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-my_domain">
+<p>如 aria2.my.domain，adguard.my.domain，地址解析用到了自建的 DNS 服务。 <a href="#user-content-fnref-my_domain" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div><footer class="article-foot"><div class="article-taxonomies"><p class="article-cats">分类: <a class="article-category" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></p><p class="article-tags">标签: <a class="article-tag" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><a class="article-tag" href="/tags/aria2/"> · aria2</a><a class="article-tag" href="/tags/%E4%BA%91%E7%9B%98/"> · 云盘</a><a class="article-tag" href="/tags/%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5/"> · 文件同步</a><a class="article-tag" href="/tags/%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/"> · 远程管理</a></p></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/post/services-running-on-my-raspberrypi/">https://huzerovo.github.io/post/services-running-on-my-raspberrypi/</a></p></footer><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"/><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script></script><script>let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"Huzerovo","admin":["Huzerovo"],"distractionFreeMode":false,"number":-1,"title":"树莓派上运行的服务","id":"树莓派上运行的服务"}; let gitalk = new Gitalk(c); gitalk.render("gitalk-container");</script></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    document
+      .querySelectorAll("a.img-link, .post-card-cover")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>

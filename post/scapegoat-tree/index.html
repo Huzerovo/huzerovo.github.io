@@ -1,0 +1,437 @@
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>替罪羊树 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-2"><a href="#前言">前言</a></li><li class="toc-item toc-level-2"><a href="#什么是替罪羊树">什么是替罪羊树</a></li><li class="toc-item toc-level-2"><a href="#替罪羊树的代码定义">替罪羊树的代码定义</a></li><li class="toc-item toc-level-3"><a href="#一些变量定义">一些变量定义</a></li><li class="toc-item toc-level-3"><a href="#提供的树操作">提供的树操作</a></li><li class="toc-item toc-level-3"><a href="#重构相关的函数">重构相关的函数</a></li><li class="toc-item toc-level-2"><a href="#着手实现">着手实现</a></li><li class="toc-item toc-level-3"><a href="#重构">重构</a></li><li class="toc-item toc-level-3"><a href="#搜索">搜索</a></li><li class="toc-item toc-level-3"><a href="#插入">插入</a></li><li class="toc-item toc-level-3"><a href="#删除">删除</a></li><li class="toc-item toc-level-2"><a href="#一些问题">一些问题</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>替罪羊树</h1><div class="article-head-meta"><span>发布日期: 2024-01-21</span><span>更新日期: 2024-01-23</span></div></header><div><p>简单介绍一下替罪羊树算法，以及代码实现。</p>
+<!-- more -->
+<h2 id="前言">前言</h2>
+<p>偶然听说了替罪羊树，在看了几篇文章后发现似懂非懂，就自己上手边写边尝试理解。
+写出来的代码虽然能跑，看着结果似乎也是对的，但因为是边学边写的，
+也不能保证代码是对的，有错再更新。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://oi-wiki.org/ds/sgt/">替罪羊树 - OI Wiki</a></li>
+<li><a href="https://www.luogu.com.cn/blog/12755/ti-zui-yang-shu-jiang-yi">替罪羊树讲义 - 洛谷博客</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scapegoat_tree">Scapegoat tree - Wikipedia</a></li>
+</ul>
+<h2 id="什么是替罪羊树">什么是替罪羊树</h2>
+<p>简单来说，替罪羊树是平衡二叉树的一种，但又不是严格意义上的平衡二叉树，
+因为它允许不平衡的结点存在，
+只在必要的时候会处理不平衡的结点（后面会提到什么时候处理）。
+它处理不平衡的方式很简单：
+将以不平衡结点为根的树中序展开，再将这个中序序列反序列化为树，
+这个过程称为<strong>重构</strong>。
+此外，它的删除操作也非常简单：将结点标记为<em>已删除</em>即可，也就是逻辑删除。
+只有在重构时才会真正移除标记为<em>已删除</em>的结点。</p>
+<blockquote>
+<p>这里还有一些细节问题，不过等到后面在详细解释吧。=w=</p>
+</blockquote>
+<h2 id="替罪羊树的代码定义">替罪羊树的代码定义</h2>
+<h3 id="一些变量定义">一些变量定义</h3>
+<p>在我的代码实现里，我使用数组形式构造替罪羊树，
+并且数组下标<strong>将从<code>1</code>开始，而不是<code>0</code></strong>。</p>
+<p>首先是一些辅助用的定义：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 最大结点数</span></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MAXN</span><span style="color:#79B8FF"> 1024</span></span>
+<span class="line"><span style="color:#6A737D">// 记录插入的结点数量</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#E1E4E8"> count </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// alpha</span></span>
+<span class="line"><span style="color:#F97583">double</span><span style="color:#E1E4E8"> alpha </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0.75</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>这些变量的含义在后文会解释，现在就只需要知道它们的存在就行了。=w=</p>
+<p>接下来是树结构定义：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 结点值</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// 结点权值，定义为结点的重复次数。</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> w</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// 结点的左右子树索引，"left(right) tree"取首字母</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> lt</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> rt</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>树以数组的形式表达，
+<strong>树结点</strong>（在之后简称结点）按照插入顺序编号，
+结点并不真实存在，能用于表示结点的只有它的编号，
+我将这个编号称为<strong>结点索引</strong>（在之后简称为索引）。</p>
+<p>在<code>lt</code>和<code>rt</code>数组中存储的就是索引。
+若<code>lt[k]==i</code>，这表明<strong>索引为 k</strong>的结点，其左子树的<strong>索引为 i</strong>。
+根结点的索引则由调用方负责保存。</p>
+<p>数组<code>v</code>负责保存结点值（value）。</p>
+<p>需要额外解释的是<code>w</code>数组，这是由<code>weight</code>取首字母而来。
+在具体的代码实现中，如果数据出现重复，这些重复的数据只会存储在一个结点上。
+若<code>w[k] == 2</code>则表明数据<code>v[k]</code>出现了两次，从树的逻辑结构上来看，
+这个结点只出现了一次。
+若<code>w[k] == 0</code>则表明数据出现了零次，实际上就意味着结点<strong>被删除</strong>或者结点
+根本<strong>不存在</strong>。
+没错，这个数组的一个重要作用就是用于标记<em>已删除</em>的结点。</p>
+<p>下面这些数组有助于我们更方便地对树进行操作：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 树的存储大小</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// 树的逻辑上存在的结点大小，我将其视为树的实际大小（real size）</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> rs</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// 树的带权大小，与 `w` 数组密切相关</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#FFAB70"> ws</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>这些数组的意义其实是相同的：给出索引，得出以该结点为根的子树大小。
+所谓树的大小，就是树所包含的结点数量，也是这些数组的差别所在：</p>
+<ul>
+<li><code>s</code>数组记录子树下所有结点的个数，包括逻辑删除的结点，
+只有在重构时才不计删除结点。对于重复结点，逻辑上，该结点只出现了一次，
+那么在存储结构上自然也只记录一次。</li>
+<li><code>rs</code>数组记录子树的逻辑大小，与<code>s</code>数组不同，只记录逻辑上存在的结点数量，
+也意味着已经删除的结点不计入，此外，重复结点只记录了一次。</li>
+<li><code>ws</code>数组记录子树的带权大小，它与<code>rs</code>的差别只有：记录重复结点的重复次数，
+也就是<code>w</code>数组中对应索引的值。</li>
+</ul>
+<p>在之后，这些数组代表的意思我会使用<strong>结点大小</strong>或者<strong>树大小</strong>代替，
+一般来说都指的是<code>s</code>数组表示的大小。</p>
+<h3 id="提供的树操作">提供的树操作</h3>
+<p>由于我写替罪羊树的初衷只是了解它，因此只实现了树的插入、删除与查找。</p>
+<p>首先让我们简单地梳理一下：</p>
+<ol>
+<li>替罪羊树处理不平衡结点的方式是重构。</li>
+<li>不平衡结点的产生会在什么时候？
+显然，在插入与删除这类会修改结点的操作可能导致不平衡结点的产生。</li>
+<li>发生重构后，树的根可能会发生改变，如何更新这个根？
+答案是在函数内更新，不需要通知调用方更新，因此需要指针。</li>
+</ol>
+<p>于是有这样的初步想法：调用方只需要关心调用结果，无需担心树是否需要重构，
+重构在插入或删除时进行。</p>
+<p>至于重构的条件，我们很快就会知道。</p>
+<p>函数定义如下：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 在树中查找值</span></span>
+<span class="line"><span style="color:#6A737D">// @param r 结点索引，表示在以此结点为根的树中找</span></span>
+<span class="line"><span style="color:#6A737D">// @param val 找的是这个值</span></span>
+<span class="line"><span style="color:#6A737D">// @return 这个值对应的结点索引是啥，如果为 0 表示不存在</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> search_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 将一个值插入树中</span></span>
+<span class="line"><span style="color:#6A737D">// @param *r 指针，内容是树的根，如果插入中发生了重构，则会更新根的值</span></span>
+<span class="line"><span style="color:#6A737D">// @param val 插入的值</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> insert_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 将一个值从树中删除</span></span>
+<span class="line"><span style="color:#6A737D">// @note 如果值不存在，则不会发生任何事情</span></span>
+<span class="line"><span style="color:#6A737D">// @param *r 指针，内容同样是根的值，重构会更新这个值</span></span>
+<span class="line"><span style="color:#6A737D">// @param val 删除的值</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> delete_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="重构相关的函数">重构相关的函数</h3>
+<p>我们首先定义重构的入口函数：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 重构树</span></span>
+<span class="line"><span style="color:#6A737D">// @param *r 指针，重构的树以此为根</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>前面我们提到，重构的过程首先是将树进行中序展开，我们定义一个函数来实现这个操作：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 序列化树</span></span>
+<span class="line"><span style="color:#6A737D">// @param r 以此为根的树</span></span>
+<span class="line"><span style="color:#6A737D">// @param *flat_tree 树的中序序列，序列化后的结果会保存在这里</span></span>
+<span class="line"><span style="color:#6A737D">// @param *tree_size 中序序列的长度</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> flat</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">flat_tree</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">tree_size</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>现在，我们需要一个函数，将得到的中序序列反序列化为树<sup><a href="#user-content-fn-%E9%80%92%E5%BD%92%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" id="user-content-fnref-%E9%80%92%E5%BD%92%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 生成树</span></span>
+<span class="line"><span style="color:#6A737D">// @param *flat_tree 树的中序序列</span></span>
+<span class="line"><span style="color:#6A737D">// @param l 反序列化起点，即左边界（left）</span></span>
+<span class="line"><span style="color:#6A737D">// @param r 反序列化终点，即右边界（right）</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> generate_tree</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">flat_tree</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> l</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>最后，我们使用一个函数来判断是否进行重构：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 是否应该重构</span></span>
+<span class="line"><span style="color:#6A737D">// @param r 以该结点为根</span></span>
+<span class="line"><span style="color:#6A737D">// @return ture 表示需要重构，false 表示不需要重构</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> bool</span><span style="color:#B392F0"> should_rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="着手实现">着手实现</h2>
+<h3 id="重构">重构</h3>
+<p>在有了上面的思路后，就该开始实现定义的函数功能了。但是我们还遗留了一个问题：
+<strong>重构的条件是什么？</strong></p>
+<h4 id="重构的条件">重构的条件</h4>
+<p>首先让我们回忆一下，一个平衡结点的理想状态应该是左右子树大小完全相同，
+在替罪羊树中，这个条件放宽松一些：左右子树的结点数，也就是子树大小相差不大就行，
+我们记较大的那个为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>，此时，父结点的大小可以粗略认为是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo><mi mathvariant="normal">≔</mi></mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m \coloneqq 2n + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mop" style="position:relative;top:-0.0347em;">:</span></span><span class="mrel"><span class="mspace" style="margin-right:-0.0667em;"></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。
+显然有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn><mo>⋅</mo><mi>m</mi><mo>></mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0.5 \cdot m > n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>，我们将这个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn></mrow><annotation encoding="application/x-tex">0.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span></span></span></span>记作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>，也就是之前定义的变量<code>alpha</code>。</p>
+<p>上面提到的是树处于平衡状态的理想情况，然而实际上树不会一直保持平衡。
+在严格的平衡二叉树中，一般通过旋转结点来保持平衡，
+但在替罪羊树，只需要在子树的不平衡程度到了一定阈值时，将其重构即可，
+而这个阈值与<code>alpha</code>相关。</p>
+<p><code>alpha</code>本质上表达的意思是：最大的子树大小占根树大小的比例。
+当树平衡时，左右子树的大小相差不大，因此最大子树大小占比约为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>50</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">50\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">50%</span></span></span></span>。
+此时<code>alpha</code>取值<code>0.5</code>。
+然而经验表明<sup><a href="#user-content-fn-%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE" id="user-content-fnref-%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>，在平衡二叉树中，这个比例在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>70</mn><mi mathvariant="normal">%</mi><mo>∼</mo><mn>80</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">70\% \sim 80\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">70%</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">80%</span></span></span></span>间，
+平衡二叉树仍能保持其时间复杂度不变。</p>
+<p>因此，在之前的定义中，<code>alpha</code>赋值为<code>0.75</code>。
+而重构的条件则是<code>alpha * s[k] &#x3C; max(s[rt[k]], s[lt[k]])</code>。
+在<a href="https://oi-wiki.org/ds/sgt/#%E8%BF%87%E7%A8%8B">OI Wiki 的这篇文章中</a>，
+还提到已删除结点过多也可能影响树的查找效率，
+因此在删除结点过多时也重构：<code>rs[k] &#x3C; alpha * s[r]</code>。</p>
+<h4 id="计算树的大小">计算树的大小</h4>
+<p>在重构过程中需要使用到树的大小，因此先实现计算树大小的函数。</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 计算树的大小</span></span>
+<span class="line"><span style="color:#6A737D">// @param r 树的根结点索引</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">r)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // 直接递归把子树大小计算出来</span></span>
+<span class="line"><span style="color:#B392F0">    gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r]);</span></span>
+<span class="line"><span style="color:#B392F0">    gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r]);</span></span>
+<span class="line"><span style="color:#6A737D">    // 现在子树的大小已经计算好了</span></span>
+<span class="line"><span style="color:#FFAB70">    s</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    rs</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> rs</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#FFAB70"> rs</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">w</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span><span style="color:#F97583"> ?</span><span style="color:#79B8FF"> 1</span><span style="color:#F97583"> :</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#FFAB70">    ws</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> ws</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#FFAB70"> ws</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r]] </span><span style="color:#F97583">+</span><span style="color:#FFAB70"> w</span><span style="color:#E1E4E8">[r];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>值得注意的是，由于数组索引从<code>0</code>开始，于是有：
+<code>s[0] == rs[0] == ws[0] == 0</code>，这样在叶子结点也可以保证计算正确。</p>
+<h4 id="生成中序序列">生成中序序列</h4>
+<p>生成中序序列其实就是将树中序遍历一次，非常容易实现，不过有个细节问题，
+就是如何处理标记为<em>已删除</em>的结点，在我的实现里是将其忽略，
+不过这会有一些问题，在最后面再详细讲讲吧。具体的实现如下：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> flat</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">flat_tree</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">tree_size</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">r)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // 遍历左子树</span></span>
+<span class="line"><span style="color:#B392F0">    flat</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r], flat_tree, tree_size);</span></span>
+<span class="line"><span style="color:#6A737D">    // 访问根</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">w</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">        // 进入中序序列</span></span>
+<span class="line"><span style="color:#FFAB70">        flat_tree</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">tree_size] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> r;</span></span>
+<span class="line"><span style="color:#6A737D">        // 序列长度加一</span></span>
+<span class="line"><span style="color:#F97583">        *</span><span style="color:#E1E4E8">tree_size </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // 遍历右子树</span></span>
+<span class="line"><span style="color:#B392F0">    flat</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r], flat_tree, tree_size);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="反序列化">反序列化</h4>
+<p>从中序序列反序列化出一棵树也比较简单：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> generate_tree</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">flat_tree</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> l</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (l </span><span style="color:#F97583">>=</span><span style="color:#E1E4E8"> r </span><span style="color:#F97583">||</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">flat_tree)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // 中间的为根，需要注意，flat_tree 中保存的才是结点索引</span></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#E1E4E8"> mid </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (l </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> r) </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#E1E4E8"> k </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> flat_tree</span><span style="color:#E1E4E8">[mid];</span></span>
+<span class="line"><span style="color:#6A737D">    // 左子树</span></span>
+<span class="line"><span style="color:#FFAB70">    lt</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> generate_tree</span><span style="color:#E1E4E8">(flat_tree, l, mid);</span></span>
+<span class="line"><span style="color:#6A737D">    // 右子树</span></span>
+<span class="line"><span style="color:#FFAB70">    rt</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> generate_tree</span><span style="color:#E1E4E8">(flat_tree, mid </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">, r);</span></span>
+<span class="line"><span style="color:#6A737D">    // 返回根</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> k;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="重构入口函数">重构入口函数</h4>
+<p>入口函数只需要调用上面的两个函数即可完成树的重构：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 我们需要更新的根，因此需要使用指针</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // flat tree</span></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#FFAB70"> ft</span><span style="color:#E1E4E8">[MAXN] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">    // tree size</span></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#E1E4E8"> ts </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // 序列化</span></span>
+<span class="line"><span style="color:#B392F0">    flat</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r, ft, </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">ts);</span></span>
+<span class="line"><span style="color:#6A737D">    // 反序列化</span></span>
+<span class="line"><span style="color:#F97583">    *</span><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#B392F0"> generate_tree</span><span style="color:#E1E4E8">(ft, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, ts);</span></span>
+<span class="line"><span style="color:#6A737D">    // 重新计算结点大小</span></span>
+<span class="line"><span style="color:#B392F0">    gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="判断是否需要重构">判断是否需要重构</h4>
+<p>在之前我们已经分析过重构条件了，现在只要写出相应的代码就好了：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 只是个选最大值的函数，其实可以不用</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#B392F0"> max</span><span style="color:#E1E4E8">(a, b) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> b;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">bool</span><span style="color:#B392F0"> should_rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> alpha </span><span style="color:#F97583">*</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">double</span><span style="color:#E1E4E8">)</span><span style="color:#B392F0">max</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">s</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[r]], </span><span style="color:#FFAB70">s</span><span style="color:#E1E4E8">[</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[r]])</span><span style="color:#6A737D"> // 树不平衡</span></span>
+<span class="line"><span style="color:#F97583">        ||</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">double</span><span style="color:#E1E4E8">)</span><span style="color:#FFAB70">rs</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> alpha </span><span style="color:#F97583">*</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[r];</span><span style="color:#6A737D"> // 删除的结点过多</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="搜索">搜索</h3>
+<p>和一般二叉树的搜索无异：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> search_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">r)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    int</span><span style="color:#E1E4E8"> child </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">&#x3C;</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[r])</span></span>
+<span class="line"><span style="color:#6A737D">        // 小于结点值，在左子树搜</span></span>
+<span class="line"><span style="color:#E1E4E8">        child </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> lt</span><span style="color:#E1E4E8">[r];</span></span>
+<span class="line"><span style="color:#F97583">    else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">></span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[r])</span></span>
+<span class="line"><span style="color:#6A737D">        // 大于结点值，在右子树搜</span></span>
+<span class="line"><span style="color:#E1E4E8">        child </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> rt</span><span style="color:#E1E4E8">[t];</span></span>
+<span class="line"><span style="color:#F97583">    else</span></span>
+<span class="line"><span style="color:#6A737D">        // 找到了值，但需要判断结点是否已经删除</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#FFAB70"> w</span><span style="color:#E1E4E8">[r] </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> r </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // 与当前结点值不同，则向子树递归搜索</span></span>
+<span class="line"><span style="color:#E1E4E8">    retrurn </span><span style="color:#B392F0">search_node</span><span style="color:#E1E4E8">(child, val);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="插入">插入</h3>
+<p>之前提到，相同值的结点在逻辑上只存在一个，并且使用<code>w</code>数组进行标识，
+如果插入的值已经存在，那只需要更新<code>w</code>数组，若插入的值不存在，
+那这个值一定会出现在叶子结点，于是我们有这两种情况：</p>
+<ul>
+<li>值在树中，更新<code>w</code>数组</li>
+<li>值不再树中，新建结点：更新所有<strong>size 数组</strong><a href="%E5%B0%B1%E6%98%AF%60s%5BMAXN%5D%60%E3%80%81%60rs%5BMAXN%5D%60%E4%BB%A5%E5%8F%8A%60ws%5BMAXN%5D%60%E8%BF%99%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E3%80%82">^size 数组</a>，
+更新<code>v</code>和<code>w</code>数组，结点计数<sup><a href="#user-content-fn-%E7%BB%93%E7%82%B9%E8%AE%A1%E6%95%B0" id="user-content-fnref-%E7%BB%93%E7%82%B9%E8%AE%A1%E6%95%B0" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>加一。</li>
+</ul>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> insert_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">r)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!*</span><span style="color:#E1E4E8">r) {</span></span>
+<span class="line"><span style="color:#6A737D">        // 到达叶子结点</span></span>
+<span class="line"><span style="color:#6A737D">        // 结点计数加一</span></span>
+<span class="line"><span style="color:#F97583">        int</span><span style="color:#E1E4E8"> k </span><span style="color:#F97583">=</span><span style="color:#F97583"> ++</span><span style="color:#E1E4E8">count;</span></span>
+<span class="line"><span style="color:#6A737D">        // 这是我的实现存在的一个问题，需要判断一下</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (k </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> MAXN)</span></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">        w</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> s</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> rs</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#FFAB70"> ws</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">        v</span><span style="color:#E1E4E8">[k] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> val;</span></span>
+<span class="line"><span style="color:#6A737D">        // 更新结点</span></span>
+<span class="line"><span style="color:#F97583">        *</span><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> k;</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">        // 现在还在树中</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">==</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r])</span></span>
+<span class="line"><span style="color:#6A737D">            // 重复值</span></span>
+<span class="line"><span style="color:#FFAB70">            w</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r]</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">        else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">&#x3C;</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r])</span></span>
+<span class="line"><span style="color:#B392F0">            insert_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r], val);</span></span>
+<span class="line"><span style="color:#F97583">        else</span></span>
+<span class="line"><span style="color:#B392F0">            insert_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r], val);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // 重新计算结点大小</span></span>
+<span class="line"><span style="color:#B392F0">    gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r);</span></span>
+<span class="line"><span style="color:#6A737D">    // 判断是否重构</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">should_rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r))</span></span>
+<span class="line"><span style="color:#B392F0">        rebuild</span><span style="color:#E1E4E8">(r);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="删除">删除</h3>
+<p>由于我们使用逻辑删除，于是我们的删除函数只需要更新<code>w</code>数组即可，
+需要注意的是不能直接将其赋值为 0，因为可能有重复值。</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> delete_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> val</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">r </span><span style="color:#F97583">||</span><span style="color:#F97583"> !*</span><span style="color:#E1E4E8">r)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">==</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r]) {</span></span>
+<span class="line"><span style="color:#6A737D">        // 存在，删除一个</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">w</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r] </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#FFAB70">w</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r]</span><span style="color:#F97583">--</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">        // 与结点值不同，在子树递归删除</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (val </span><span style="color:#F97583">&#x3C;</span><span style="color:#FFAB70"> v</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r])</span></span>
+<span class="line"><span style="color:#B392F0">            delete_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70">lt</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r], val);</span></span>
+<span class="line"><span style="color:#F97583">        else</span></span>
+<span class="line"><span style="color:#B392F0">            delete_node</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#FFAB70">rt</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r], val);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // 更新结点大小</span></span>
+<span class="line"><span style="color:#B392F0">    gen_size</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r);</span></span>
+<span class="line"><span style="color:#6A737D">    // 检查是否重构</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">should_rebuild</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">r))</span></span>
+<span class="line"><span style="color:#B392F0">        rebuild</span><span style="color:#E1E4E8">(r);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="一些问题">一些问题</h2>
+<blockquote>
+<p>这里的内容尚未完善...</p>
+</blockquote>
+<p>这个代码实现存在这么一个问题：结点被删除后，其索引不会被回收。
+新的结点使用<code>count</code>获取结点索引，而<code>count</code>会不断增长，直到上限。
+我想到的一个处理方式就是：在删除结点时，
+将其与最新的<code>count</code>所代表的结点进行交换，并更新相应的数组以及其父节点的指向。</p>
+<blockquote>
+<p>不过还没实现这个想法...</p>
+</blockquote>
+<blockquote>
+<p>alpha 取值的由来还没去了解...</p>
+</blockquote>
+<blockquote>
+<p>虽然还有那么多东西没写完，但还是发出来先，嘻嘻。</p>
+</blockquote>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-%E9%80%92%E5%BD%92%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">
+<p>这个过程将使用递归方式，你问为什么不用循环？因为我不会... <a href="#user-content-fnref-%E9%80%92%E5%BD%92%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE">
+<p>在参考的文章中有提到过，但没深入研究原因。=w= <a href="#user-content-fnref-%E7%BB%8F%E9%AA%8C%E6%95%B0%E6%8D%AE" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E7%BB%93%E7%82%B9%E8%AE%A1%E6%95%B0">
+<p>在定义变量一节中，我们定义的<code>count</code>变量。 <a href="#user-content-fnref-%E7%BB%93%E7%82%B9%E8%AE%A1%E6%95%B0" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div><footer class="article-foot"><div class="article-taxonomies"><p class="article-cats">分类: <a class="article-category" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></p><p class="article-tags">标签: <a class="article-tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><a class="article-tag" href="/tags/%E7%AE%97%E6%B3%95/"> · 算法</a></p></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/post/scapegoat-tree/">https://huzerovo.github.io/post/scapegoat-tree/</a></p></footer><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"/><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script></script><script>let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"Huzerovo","admin":["Huzerovo"],"distractionFreeMode":false,"number":-1,"title":"替罪羊树","id":"替罪羊树"}; let gitalk = new Gitalk(c); gitalk.render("gitalk-container");</script></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    document
+      .querySelectorAll("a.img-link, .post-card-cover")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>

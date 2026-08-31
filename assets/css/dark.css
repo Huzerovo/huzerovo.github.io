@@ -1,0 +1,28 @@
+/* default 主题 · 暗色（huzerovo #121212 基调 → 微紫深灰） */
+html.dark {
+  --hulog-bg: #141416;
+  --hulog-bg-elevated: #1d1d21;
+  --hulog-bg-subtle: #232329;
+  --hulog-text: #c9c9cf;
+  --hulog-text-strong: #f1f1f4;
+  --hulog-text-muted: #8e8e97;
+  --hulog-text-faint: #67676f;
+  --hulog-line: #2e2e35;
+  --hulog-line-strong: #3a3a43;
+  --hulog-accent: #a3a4ff;
+  --hulog-accent-strong: #b9baff;
+  --hulog-accent-visited: #c792ea;
+  --hulog-warm: #f0a35e;
+  --hulog-code-bg: #1b1b20;
+  --hulog-code-text: #d08a50;
+  --hulog-thead-bg: #26262d;
+  --hulog-done: #4cc36a;
+  --hulog-warn: #e8a23d;
+  --hulog-mark: #4a3b20;
+  --hulog-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --hulog-shadow-hover: 0 4px 14px rgba(0, 0, 0, 0.55);
+  --hulog-topbar-bg: rgba(20, 20, 22, 0.85);
+}
+html.dark img {
+  filter: brightness(0.9);
+}

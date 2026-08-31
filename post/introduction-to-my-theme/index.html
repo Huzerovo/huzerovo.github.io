@@ -1,0 +1,443 @@
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>我的主题介绍 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-2"><a href="#前言">前言</a></li><li class="toc-item toc-level-2"><a href="#写作">写作</a></li><li class="toc-item toc-level-2"><a href="#文章列表">文章列表</a></li><li class="toc-item toc-level-3"><a href="#一般文章">一般文章</a></li><li class="toc-item toc-level-3"><a href="#无标题文章">无标题文章</a></li><li class="toc-item toc-level-3"><a href="#无分类文章">无分类文章</a></li><li class="toc-item toc-level-3"><a href="#带封面文章">带封面文章</a></li><li class="toc-item toc-level-3"><a href="#外部文章">外部文章</a></li><li class="toc-item toc-level-3"><a href="#置顶文章">置顶文章</a></li><li class="toc-item toc-level-3"><a href="#还在完善的文章">还在完善的文章</a></li><li class="toc-item toc-level-2"><a href="#一些功能">一些功能</a></li><li class="toc-item toc-level-3"><a href="#知识共享授权">知识共享授权</a></li><li class="toc-item toc-level-3"><a href="#代码高亮">代码高亮</a></li><li class="toc-item toc-level-3"><a href="#搜索">搜索</a></li><li class="toc-item toc-level-3"><a href="#评论">评论</a></li><li class="toc-item toc-level-3"><a href="#外链">外链</a></li><li class="toc-item toc-level-3"><a href="#订阅链接">订阅链接</a></li><li class="toc-item toc-level-3"><a href="#电子邮件">电子邮件</a></li><li class="toc-item toc-level-2"><a href="#关于页面">“关于”页面</a></li><li class="toc-item toc-level-2"><a href="#front-matter-参考手册">Front matter 参考手册</a></li><li class="toc-item toc-level-2"><a href="#配置文件参考手册">配置文件参考手册</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>我的主题介绍</h1><div class="article-head-meta"><span>发布日期: 2023-07-17</span><span>更新日期: 2024-01-21</span></div></header><div><p>关于主题的介绍</p>
+<!-- more -->
+<h2 id="前言">前言</h2>
+<p>这篇文章算是我在开发过程中的一些总结与吐槽。</p>
+<p>其实一开始我认为对于博客来说，应当注重于文章本身，而不是花哨的样式，
+这也是我一开始打算写一个自己的主题的原因。
+但后面我发现，过于单调的界面很难让我阅读下去，
+于是我在文章中为特殊的元素，如：链接、表格、代码等地方使用了彩色。
+这确实使得文章好看了一些，也促使我为主题添加更多东西。</p>
+<h2 id="写作">写作</h2>
+<p>主题一开始就是基于 Markdown 渲染出的 HTML 文档进行开发，
+因此对于普通的，用 Markdown 写出来的文章，主题的样式应该都是没什么问题的。</p>
+<p>需要特别说明的是，在 Hexo 的文档<a href="https://hexo.io/docs/tag-plugins">标签插件</a>中提到了许多写作格式（或许可以这样子称呼？），
+如：各种不同的引用、代码块以及图片视频等。
+在我一开始开发主题时并没有看中这些方面的适配，但最近在对主题进行了一系列更新期间，
+我发现了官方用于主题测试的一个<a href="https://hexojs.github.io/hexo-theme-landscape">示例</a>，
+于是我决定重新设计一些主题的的样式，并现在几乎能够适配示例中提到的各种写作风格。</p>
+<p><del><strong>除了那个<code>diff</code>样式，还有 Hexo 内置的带行号的代码高亮</strong>。</del>
+现在 gist 的 diff 样式强制使用亮色，Hexo 内置的代码高亮使用暗色。具体的介绍在后面有说。
+<del>HTML 标签一层又一层，真的难写，我本来就不会前端，越写越觉得写了个垃圾</del>。</p>
+<h2 id="文章列表">文章列表</h2>
+<p>主页文章列表以更新日期为顺序，展示了博客的所有文章，并提供访问文章的入口。</p>
+<p>在 Hexo 中还有两种页面：标签页与分类页，这两种页面用于展示具有相同标签或者分类的文章。
+在这两个页面中文章以发布时间作为排序顺序。</p>
+<p>需要注意注意的是，在导航栏中指向的页面是用于展示博客拥有的标签或者分类，而不是展示文章的。</p>
+<p>在官方示例中，我看到了几个我非常想要的样式：文章摘要、无标题文章、带封面文章<sup><a href="#user-content-fn-%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" id="user-content-fnref-%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>，
+在主题中也实现了这些样式。</p>
+<h3 id="一般文章">一般文章</h3>
+<p>摘要<sup><a href="#user-content-fn-%E6%91%98%E8%A6%81" id="user-content-fnref-%E6%91%98%E8%A6%81" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>其实就是文章前的一小段文字，比如这篇文章的摘要就是“关于主题的介绍”，
+不过我在这里使用了样式，但在文章列表里只会显示文字。</p>
+<p>在一开始设计的主页文章列表中，所有的文章都显示为一个标题加上一段截取的文章内容。
+其实我挺不满意这样的实现，因为 Hexo 提供的辅助函数会把标题也截进去，
+更难受的是一些数学公式会因为被截断导致不能渲染出来。
+而我又不想自己写函数处理这些文字，于是我决定采用摘要作为显示方式。</p>
+<p>想要使用摘要，只需在文章内这样写：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-markdown"><span class="line"><span style="color:#E1E4E8">这一段文字是摘要。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">&#x3C;!-- more --></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">这里开始是正文</span></span></code></pre>
+<p>在标签<code>&#x3C;!-- more --></code>上的内容会作为摘要显示在文章列表中，同时在文章内也会显示。
+需要注意的是，文章 Front matter 区域里边可以设置变量<code>excerpt</code>，
+这将文章列表中代替文章内的摘要进行显示，而文章内的摘要不变。</p>
+<h3 id="无标题文章">无标题文章</h3>
+<p>对于一篇没有标题文章，我认为它的用途就像是能在列表的一篇篇的文章中，
+起到类似于文章内“引用”的作用，你可以写一小段简短的话，作为一个“引用”插入到文章列表中，
+不过其实好像没什么必要。</p>
+<p>此外，我选择实现这种布局另一个原因是为了适配一下出现无标题文章的情况。
+由于评论功能使用到了文章标题，因此在没有标题的文章里不能使用评论功能（这是强制性的）。</p>
+<p>只需要把文章标题，也就是<code>title</code>设为空字符串就能使用这种样式。</p>
+<h3 id="无分类文章">无分类文章</h3>
+<p>在 Hexo 的配置文件中，设置<code>default_category: uncategorized</code>，
+并使用<code>hexo new page uncategorized</code>创建页面。</p>
+<p>在“分类”页面即可看到“未分类”选项，即可查看所有无分类的文章。</p>
+<h3 id="带封面文章">带封面文章</h3>
+<p>一开始其实是想写个像幻灯片一样布局来着的，
+不过我发现这些图片只能在首页显示<sup><a href="#user-content-fn-%E5%8F%AA%E8%83%BD%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA" id="user-content-fnref-%E5%8F%AA%E8%83%BD%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>，或许更适合拿来作为文章封面。</p>
+<blockquote>
+<p>值得一提的是，关于这个样式使用到的变量<code>photos</code>只是在<a href="https://hexo.io/docs/variables.html#Page-Variables">这里</a>提到过，
+<strong>而且还没告诉你怎么用...</strong></p>
+</blockquote>
+<p>要为文章添加封面，可以有以下几种方式</p>
+<h4 id="全局封面">全局封面</h4>
+<p>如果需要使用全局封面，需要在主题的配置文件中有如下配置：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">covers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">"/covers/cover_1.jpg"</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">"/covers/cover_2.jpg"</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">"/covers/cover_3.jpg"</span></span></code></pre>
+<p>使用绝对路径<sup><a href="#user-content-fn-%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84" id="user-content-fnref-%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup>填写需要作为封面的图片文件路径。
+并需要在文章内启用：使用<code>cover: true</code>表示此文章使用默认封面。
+如果文章还使用了<code>photos</code>指定封面，
+那么设置<code>cover: true</code>会将全局封面添加进文章的封面列表。</p>
+<h4 id="文章专有封面">文章专有封面</h4>
+<p>所谓文章专有封面，其实就是使用<strong>文章资源文件夹</strong>下的图片作为封面。</p>
+<p>这个方法需要在 Hexo 配置文件中启用<code>post_asset_folder</code>，
+这会在创建文章时同时生成一个同名的文件夹，
+把封面图片放入这个文件夹后，在 Front matter 区域添加：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">photos</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic1.jpg</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic2.jpg</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic3.jpg</span></span></code></pre>
+<p>这样就能使用封面了，如果有多个封面，则会随机选取。</p>
+<p>这个方法还能使用绝对路径指定不在文章资源文件夹下的文件作为封面：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">photos</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic1.jpg</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic2.jpg</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">pic3.jpg</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">/img/pic4.jpg</span></span></code></pre>
+<p>使用<code>/</code>开始的文件路径，表示从网站根目录开始的绝对路径。</p>
+<blockquote>
+<p>比如：网站地址为<code>https://blog.example.com/</code>，
+则表示<code>https://blog.example.com/img/pic4.jpg</code>。
+网站地址为<code>https://example.com/blog/</code>，
+则表示<code>https://example.com/blog/img/pic4.jpg</code>。</p>
+</blockquote>
+<h4 id="外部图片">外部图片</h4>
+<p>如果不希望在博客上存储封面，还可以从网络上获取。在 Front matter 区域添加：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">photos</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">https://via.placeholder.com/350x150.jpg</span></span></code></pre>
+<p>这样子就会从网络中获取封面。这个方式可以和之前的两种方式中的任意一个混合使用。</p>
+<h4 id="相册集">相册集</h4>
+<p>相册集可以看作是一种特殊的文章，它主要用于展示一些照片。
+与普通的带封面的文章不同，相册集能够展示所有配置的照片，
+而不是使用随机一张作为封面。
+在使用<code>photos</code>配置好希望展示的图片后，
+使用<code>gallery: true</code>启用相册集。</p>
+<blockquote>
+<p>你也可以同时启用<code>cover: true</code>，这将会展示网站配置的所有默认封面。
+此外，也能够在<code>photo</code>使用网络图片。</p>
+</blockquote>
+<h3 id="外部文章">外部文章</h3>
+<p>外部文章指的是不在自己博客网站上的文章，也可以是一般的其他网页。
+外部文章有两种：一种是带标题的，另一种是不带标题的。</p>
+<p>带标题的在显示时会显示标题，而不带标题的则直接显示链接。
+使用方式如下：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#6A737D"># 标题指定了就是带标题的，置空就是无标题的</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span class="line"><span style="color:#85E89D">link</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https://www.google.com</span></span></code></pre>
+<p>当点击时就会跳转到对应的网页，文章本身不会被访问（在考虑要不要实现访问的方式）。</p>
+<h3 id="置顶文章">置顶文章</h3>
+<p>这个功能其实本来不想写的，但就觉得主题里都塞那么多东西了，再加个文章置顶也无所谓，
+于是就写了。</p>
+<p>在文章 Front matter 区域添加如下字段即可：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">pin</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<p>如果有多个置顶的文章，文章将会按照更新日期排序。</p>
+<h3 id="还在完善的文章">还在完善的文章</h3>
+<p>先说怎么用吧，在文章 Front matter 区域添加：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">todo</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">todo_msg</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span></code></pre>
+<p>这样就行了，在文章列表中就能看到效果了。顺便解释一下：
+<code>todo</code>设置为<code>true</code>表示文章还未完善，<code>todo_msg</code>可以写一些原因，留空表示使用默认消息。</p>
+<blockquote>
+<p>后面是关于这个功能实现的原因，不感兴趣的话就跳过吧。</p>
+</blockquote>
+<p>这个功能的实现纯属是突发奇想。原因就是这篇文章写到一半时又想着实现置顶、
+修改一些样式或者更改一些其他的功能。导致这篇文章修修改改了几次。
+闲着无聊实现了文章入口的那个更新日期指示后，就想着加多一个样式，
+然后就选了这个。</p>
+<p>其实本来想着按照更新日期来决定样式的，最近更新的就显示绿色，
+一段时间前更新的就显示橙色，长时间没有更新的就显示红色。</p>
+<p>但转念一想，文章写好了就是写好了，顶多来点错别字修改，
+一般不需要一直修改或者更新，那时间长了都变成橙色或者红色，就感觉怪怪的。
+于是就想到了这样的情况：文章没有写完，但已经能够发布了，后面只需要慢慢更新就行。
+这就是这个功能实现的由来了。<del>实际上<code>todo_msg</code>还是在写这一小节时想出来的。</del></p>
+<h2 id="一些功能">一些功能</h2>
+<h3 id="知识共享授权">知识共享授权</h3>
+<p>使用<code>creativecommons</code>字段配置授权。</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yaml"><span class="line"><span style="color:#85E89D">creativecommons</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  license</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"CC BY-NC-ND 4.0"</span></span>
+<span class="line"><span style="color:#85E89D">  link</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://creativecommons.org/licenses/by-nc-nd/4.0/"</span></span>
+<span class="line"><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"如无特殊说明，网站所有原创内容均采用#授权。"</span></span></code></pre>
+<p><code>description</code>选项用于配置版权说明，
+占位符<code>#</code>会被替换为<code>license</code>指定的授权协议名称，
+并生成指向<code>link</code>配置的链接，</p>
+<p>上述例子最终渲染的结果为：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-html"><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  如无特殊说明，网站所有原创内容均采用</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">a</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://creativecommons.org/licenses/by-nc-nd/4.0/"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    CC BY-NC-ND 4.0</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">a</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  授权。</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="代码高亮">代码高亮</h3>
+<h4 id="使用主题提供的代码高亮">使用主题提供的代码高亮</h4>
+<ol>
+<li>
+<p>使用<a href="https://github.com/hexojs/hexo-renderer-markdown-it">hexo-renderer-markdown-it</a>
+进行 markdown 文件渲染。</p>
+</li>
+<li>
+<p>在<code>_config.yaml</code>中配置<a href="https://github.com/hexojs/hexo-renderer-markdown-it#options">hexo-renderer-markdown-it 选项</a></p>
+</li>
+<li>
+<p>在主题的配置文件中启用代码高亮</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yaml"><span class="line"><span style="color:#85E89D">hljs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  enable</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#6A737D">  # highlight.js CDN</span></span>
+<span class="line"><span style="color:#85E89D">  js</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"</span></span>
+<span class="line"><span style="color:#6A737D">  # choose from https://github.com/highlightjs/highlight.js/tree/main/src/styles</span></span>
+<span class="line"><span style="color:#85E89D">  css</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    light</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"css/github.min.css"</span></span>
+<span class="line"><span style="color:#85E89D">    dark</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"css/github-dark.min.css"</span></span></code></pre>
+</li>
+</ol>
+<p>主题配置中，js 和 CSS 资源可使用 CDN 或者本地资源
+（上面的参考配置中，CSS 使用的即本地资源）。</p>
+<h4 id="使用-hexo-内置的代码高亮">使用 Hexo 内置的代码高亮</h4>
+<blockquote>
+<p>目前主题对 Hexo 内置代码高亮的样式尚未实现，
+仅支持使用 highlght.js 在浏览器进行渲染。
+禁用 Hexo 内置高亮请参考：<a href="https://hexo.io/docs/syntax-highlight.html#Disabled">https://hexo.io/docs/syntax-highlight.html#Disabled</a>。</p>
+</blockquote>
+<p><del>如果需要使用 Hexo 内置的代码高亮，需要启用 Hexo 配置中的这两个选项：</del></p>
+<blockquote>
+<p>注：这是旧版本的 Hexo 开启内置高亮的方式。</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yaml"><span class="line"><span style="color:#85E89D">highlight</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  enable</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  hljs</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+</blockquote>
+<p><del>还需要注意的一点是，如果同时启用了主题的高亮与 Hexo 内置的高亮，
+那么将会优先使用 Hexo 内置的代码高亮样式。</del></p>
+<h3 id="搜索">搜索</h3>
+<blockquote>
+<p>搜索功能可能还会继续完善。</p>
+</blockquote>
+<p>搜索功能在主题的 README.md 中似乎说完了，不过还是在这里再一遍。</p>
+<p>目前主题提供两种方式：关键字搜索以及正则搜索。</p>
+<h4 id="关键字搜索">关键字搜索</h4>
+<p>对于关键字搜索来说，可以使用<strong>查询规则</strong>。</p>
+<h5 id="语法">语法</h5>
+<ul>
+<li><code>key1 + key2</code>将会搜索包含<code>key1</code>或者<code>key2</code>的文章，它们的并集作为搜索结果。</li>
+<li><code>key1 &#x26; key2</code>将会搜索同时包含<code>key1</code>和<code>key2</code>的文章。</li>
+</ul>
+<h5 id="优先级">优先级</h5>
+<p><code>&#x26;</code>符号优先级最高，其次是<code>+</code>，这意味着<code>key1 + key2 &#x26; key3</code>的结果为：
+<strong>包含 key1 的文章</strong>，以及<strong>同时包含 key2 和 key3 的文章</strong>。</p>
+<blockquote>
+<p>注：这个优先级规则可能会考虑更改，比如添加<code>()</code>来改变优先级。</p>
+</blockquote>
+<h4 id="正则搜索">正则搜索</h4>
+<p>目前正则搜索<strong>不支持</strong>标记<sup><a href="#user-content-fn-%E6%AD%A3%E5%88%99%E6%A0%87%E8%AE%B0" id="user-content-fnref-%E6%AD%A3%E5%88%99%E6%A0%87%E8%AE%B0" data-footnote-ref="" aria-describedby="footnote-label">5</a></sup>，在搜索过程中强制使用<code>g</code>标记进行搜索。</p>
+<p>关于正则的语法请参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">正则表达式</a>。</p>
+<h3 id="评论">评论</h3>
+<p>评论系统使用<a href="https://github.com/gitalk/gitalk">Gitalk</a>，可以在主题的配置文件中选择开启，
+在启用评论系统的情况下，还应该<strong>在文章中配置开启</strong>。</p>
+<p>在配置文件中：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">gitalk</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  enable</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<p>在文章中：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">gitalk</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<p><strong>只在配置文件中开启</strong>或者<strong>只在文章中开启</strong>将<strong>不会启用</strong>评论，此外没有标题的文章<strong>强制不启用</strong>。</p>
+<h3 id="外链">外链</h3>
+<p>你可以在顶栏添加一些社交网页链接。就像这样子：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yaml"><span class="line"><span style="color:#85E89D">links</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  github</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Github"</span></span>
+<span class="line"><span style="color:#85E89D">    class</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"bi bi-github"</span></span>
+<span class="line"><span style="color:#85E89D">    url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://github.com/HuzerOVO"</span></span></code></pre>
+<p>主题主要使用<strong>Bootstrap Icons</strong>，但主题也使用<strong>Font Awesome</strong>作为图标的补充。</p>
+<p>比如在 Bootstrap icons 中，没有 BiliBili 的图标，但在 Font awesome 中有，于是就可以这样子：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">links</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  bilibili</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"哔哩哔哩"</span></span>
+<span class="line"><span style="color:#85E89D">    class</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"fa-brands fa-bilibili"</span></span>
+<span class="line"><span style="color:#85E89D">    url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://www.bilibili.com"</span></span></code></pre>
+<p>需要说明的是，<code>class</code>字段根据 Bootstrap Icons 或者 Font Awesome 介绍的使用方式填写。</p>
+<h3 id="订阅链接">订阅链接</h3>
+<p>订阅链接可以使用<code>hexo-generator-feed</code>自动生成。</p>
+<p>配置请参考：<a href="https://github.com/hexojs/hexo-generator-feed#options">hexo-generator-feed</a></p>
+<h3 id="电子邮件">电子邮件</h3>
+<p>字段<code>email</code>可以设置你的电子邮件，如果设置了电子邮件地址，
+那么在网页的 footer 区域会显示一个链接用于向你发送邮件。</p>
+<h2 id="关于页面">“关于”页面</h2>
+<p>“关于”页面比较特殊，它几乎是套用了“文章”（post）的模板。
+根据主题的页面配置指南，
+应该存在这么一个文件：<code>your-blog-root-dir/source/about/index.md</code>。
+这个文件可以像文章一样编辑，不过有这些不同：
+你的<code>excerpt</code>会被作为个人的描述，并显示在头像下方，
+其余内容则会像正常文章一样显示。</p>
+<p>在关于页面，你可以使用<code>gitalk</code>和<code>katex</code>这两个变量。
+不过不同于文章，你禁用了 Gitalk 后并不会显示“评论已禁用”这样子的提示框。</p>
+<p>此外，不同与普通文章的是，你可以指定“关于”页面中的头像，
+并在 Front matter 区域使用<code>avatar</code>指定头像文件名。</p>
+<p>假设你此时文件夹结构如下：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-text"><span class="line"><span>your-blog-root-dir</span></span>
+<span class="line"><span>+--scaffolds</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>+--source</span></span>
+<span class="line"><span>   +--about</span></span>
+<span class="line"><span>      +--index.md</span></span>
+<span class="line"><span>      +--avatar.jpg</span></span></code></pre>
+<p>此时 index.md 文件的 Front matter 区域可以这样设置：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#6A737D"># 在关于页面，你可以使用一些文章布局的 Front matter 变量</span></span>
+<span class="line"><span style="color:#6A737D"># 比如 gitalk、katex</span></span>
+<span class="line"><span style="color:#85E89D">gitalk</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">katex</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 这些是专有的</span></span>
+<span class="line"><span style="color:#85E89D">avatar</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">avatar.jpg</span></span>
+<span class="line"><span style="color:#85E89D">avatar_size</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">normal</span></span></code></pre>
+<p>对于变量<code>avatar_size</code>，主题内置了 3 个预设值：<code>small</code>、<code>normal</code>（这是默认值）以及<code>large</code>。
+对应头像大小：64px，125px 和 256px。
+此外你还可以设定一个数字指定头像大小，单位为<code>px</code>，如：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">avatar_size</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">120</span></span></code></pre>
+<blockquote>
+<p>需要注意的是，头像文件<strong>只能</strong>放在 about 文件夹里，并且不能指定多个头像。</p>
+<p>此外，头像的长宽比应当是 1:1 的，否则显示会很怪。</p>
+</blockquote>
+<h2 id="front-matter-参考手册">Front matter 参考手册</h2>
+<p>这里列出主题使用到的，可能会影响文章布局的变量作为参考：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">我的主题介绍</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2023-07-17 12:00:00</span></span>
+<span class="line"><span style="color:#85E89D">updated</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2023-12-31 09:17:43</span></span>
+<span class="line"><span style="color:#85E89D">toc</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">katex</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">gitalk</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#6A737D">#issue_id: 46 # 指定 issue 用作评论区</span></span>
+<span class="line"><span style="color:#85E89D">todo</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">todo_msg</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">主题仍在开发中</span></span>
+<span class="line"><span style="color:#6A737D">#excerpt: 主题仍在持续开发中 =v= # 这个会覆盖文章内摘要</span></span>
+<span class="line"><span style="color:#85E89D">pin</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">cover</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">gallery</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">photos</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">id=89645004_p0.png</span></span>
+<span class="line"><span style="color:#85E89D">categories</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - [</span><span style="color:#9ECBFF">开发记录</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#85E89D">tags</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">主题</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">Hexo</span></span>
+<span class="line"><span style="color:#6A737D"># 这个作为外部文章引用</span></span>
+<span class="line"><span style="color:#6A737D">#link: https://huzerovo.github.io/2023/07/17/introduction-to-my-theme/</span></span></code></pre>
+<p>对于“关于”页面则有：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-yml"><span class="line"><span style="color:#85E89D">gitalk</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#6A737D">#issue_id: 45</span></span>
+<span class="line"><span style="color:#85E89D">katex</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">avatar</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">avatar.jpg</span></span>
+<span class="line"><span style="color:#85E89D">avatar_size</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">normal</span></span></code></pre>
+<p>除了以上的变量，主题还用到了 Hexo 提供的一些内置变量，
+比如<code>path</code>表示页面路径，<code>content</code>表示文章内容等。
+不过这些变量并不影响文章布局，因此不一一列出了。</p>
+<h2 id="配置文件参考手册">配置文件参考手册</h2>
+<p>见<a href="https://github.com/HuzerOVO/hexo-theme-huzerovo">主题项目的 README.md</a></p>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0">
+<p>其实是示例中的 Gallery，但我发现这些图片没有在文章中出现，或许更适合作为封面。 <a href="#user-content-fnref-%E5%B8%A6%E5%B0%81%E9%9D%A2%E6%96%87%E7%AB%A0" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E6%91%98%E8%A6%81">
+<p>在官方文档中，
+摘要在<a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">标签插件</a>一节中被提到。<strong>为什么不是写在“写作”一节呢？？？</strong> <a href="#user-content-fnref-%E6%91%98%E8%A6%81" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E5%8F%AA%E8%83%BD%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA">
+<p>其实可以通过主题模板，使这些图片也能在文章内显示，但我还是更想让它作为文章封面。 <a href="#user-content-fnref-%E5%8F%AA%E8%83%BD%E5%9C%A8%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84">
+<p>本篇文章的绝对路径指的是博客文件夹作为根目录的路径，
+如果博客处于网站的一个子路径下：“<a href="https://example.com/blog/%E2%80%9D%EF%BC%8C">https://example.com/blog/”，</a>
+那“/covers/cover_1.jpg”会解析为“<a href="https://example.com/blog/covers/cover_1.jpg%E2%80%9D">https://example.com/blog/covers/cover_1.jpg”</a> <a href="#user-content-fnref-%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84" data-footnote-backref="" aria-label="Back to reference 4" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-%E6%AD%A3%E5%88%99%E6%A0%87%E8%AE%B0">
+<p>一个正则表达式可以视为这种结构<code>/regex/flags</code>，这里的标记就是指<code>flags</code>，如<code>g</code>，<code>i</code>等。 <a href="#user-content-fnref-%E6%AD%A3%E5%88%99%E6%A0%87%E8%AE%B0" data-footnote-backref="" aria-label="Back to reference 5" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div><footer class="article-foot"><div class="article-taxonomies"><p class="article-cats">分类: <a class="article-category" href="/categories/%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">开发记录</a></p><p class="article-tags">标签: <a class="article-tag" href="/tags/%E4%B8%BB%E9%A2%98/">主题</a><a class="article-tag" href="/tags/Hexo/"> · Hexo</a></p></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/post/introduction-to-my-theme/">https://huzerovo.github.io/post/introduction-to-my-theme/</a></p></footer><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"/><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script></script><script>let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"Huzerovo","admin":["Huzerovo"],"distractionFreeMode":false,"number":-1,"title":"我的主题介绍","id":"我的主题介绍"}; let gitalk = new Gitalk(c); gitalk.render("gitalk-container");</script></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    document
+      .querySelectorAll("a.img-link, .post-card-cover")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>

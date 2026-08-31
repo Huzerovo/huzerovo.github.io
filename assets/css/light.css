@@ -1,0 +1,25 @@
+/* default 主题 · 亮色（huzerovo 色系再打磨：靛蓝主色 + 暖橙点缀） */
+:root {
+  --hulog-bg: #f7f7f5;
+  --hulog-bg-elevated: #ffffff;
+  --hulog-bg-subtle: #f0eee9;
+  --hulog-text: #333333;
+  --hulog-text-strong: #161616;
+  --hulog-text-muted: #6d6d6d;
+  --hulog-text-faint: #9b9b9b;
+  --hulog-line: #e5e3de;
+  --hulog-line-strong: #d3d0c8;
+  --hulog-accent: #4a5cd4;
+  --hulog-accent-strong: #3d4fc4;
+  --hulog-accent-visited: #7d6fb8;
+  --hulog-warm: #d9582e;
+  --hulog-code-bg: #f1efe9;
+  --hulog-code-text: #9a4f1f;
+  --hulog-thead-bg: #ecebe5;
+  --hulog-done: #2e9e44;
+  --hulog-warn: #d98a00;
+  --hulog-mark: #f7e8c8;
+  --hulog-shadow: 0 1px 3px rgba(20, 20, 30, 0.06), 0 4px 16px rgba(20, 20, 30, 0.05);
+  --hulog-shadow-hover: 0 2px 6px rgba(20, 20, 30, 0.08), 0 10px 28px rgba(20, 20, 30, 0.1);
+  --hulog-topbar-bg: rgba(247, 247, 245, 0.85);
+}

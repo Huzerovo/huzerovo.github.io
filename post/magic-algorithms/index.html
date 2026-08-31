@@ -1,0 +1,420 @@
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>编程魔法学 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-2"><a href="#计算数据中比特-1-的数量">计算数据中比特 1 的数量</a></li><li class="toc-item toc-level-3"><a href="#从零开始">从零开始</a></li><li class="toc-item toc-level-3"><a href="#逐步前进">逐步前进</a></li><li class="toc-item toc-level-3"><a href="#向更高位拓展">向更高位拓展</a></li><li class="toc-item toc-level-3"><a href="#总结规律">总结规律</a></li><li class="toc-item toc-level-3"><a href="#优化">优化</a></li><li class="toc-item toc-level-3"><a href="#最终结果">最终结果</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>编程魔法学</h1><div class="article-head-meta"><span>发布日期: 2023-07-05</span><span>更新日期: 2023-07-05</span></div></header><div><p>在这篇文章中记录一些奇奇怪怪的编程技巧。可能的话，会基于自己的理解进行一些解释。</p>
+<!-- more -->
+<h2 id="计算数据中比特-1-的数量">计算数据中比特 1 的数量</h2>
+<p>在数据中比特<code>1</code>的数量也称为数据的汉明权重<sup><a href="#user-content-fn-%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D" id="user-content-fnref-%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
+<p>在这里我们探讨一下<strong>计算 32 位数据的汉明权重</strong>。</p>
+<h3 id="从零开始">从零开始</h3>
+<p>虽然叫从零开始，但如果数据为“0”，那我们也没有问题可以解决。
+从“1”开始呢？假设数据只有 1 比特位，那我们直接使用“瞪眼法”，
+根据“显然理论”，能够直接得出答案，也没有问题需要解决了。</p>
+<p>于是我们从 2 个比特位的数据出发。由于只有两位，我们可以轻松地列出所有可能。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">x</th><th align="left">汉明权重</th><th align="left">汉明权重二进制表示</th></tr></thead><tbody><tr><td align="left">00B</td><td align="left">0</td><td align="left">00B</td></tr><tr><td align="left">01B</td><td align="left">1</td><td align="left">01B</td></tr><tr><td align="left">10B</td><td align="left">1</td><td align="left">01B</td></tr><tr><td align="left">11B</td><td align="left">2</td><td align="left">10B</td></tr></tbody></table>
+<p>我们可以发现，对于 2 个比特位而言，其汉明权重可以由它 2 个比特位的高位和低位相加，
+结果就是其对应的汉明权重。我们可以这样实现：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 假设 n 表示汉明权重，x 为 2 比特位的数据</span></span>
+<span class="line"><span style="color:#E1E4E8">n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="逐步前进">逐步前进</h3>
+<p>现在，我们将其拓展至 4 个比特位。
+<strong>但让我们先约定好</strong>：</p>
+<ul>
+<li>对于处于高位的两个比特位，在此后我们简称为“<strong>高位</strong>”。</li>
+<li>与之对应的，处于低 2 位的两个比特位，我们称为“<strong>低位</strong>”。</li>
+<li>4 比特位的数据，相对与 2 比特位数据来说，是“<strong>高位数据</strong>”，因为它具有更多的比特位。</li>
+<li>自然而然地，2 比特位数据相对于 4 比特位数据来说，就是“<strong>低位数据</strong>”。</li>
+</ul>
+<p>有一个问题，当我们将其扩展时，如扩展到 4 位<code>b3 b2 b1 b0</code>，
+我们进行移位时，<code>b2</code>会被移入原先的<code>b1 b0</code>所在的两位数据中，
+这破坏了两个数据的独立性，我们应当避免。</p>
+<p>我们知道移位运算符会使用<code>0</code>填充空缺位，因此我们可以使<code>b2</code>恒为<code>0</code>，
+这样即使它被移入了下个数据中，也不会对问题造成影响，
+我们可以使用<code>&#x26;</code>运算符轻松地解决这个问题：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 我们将 4 位数据 x 视为 2 个 2 位数据 x1 与 x2，并将每个 2 位数据的最低位置 0</span></span>
+<span class="line"><span style="color:#E1E4E8">y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">1010</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 z 还并不是 x 的汉明权重</span></span>
+<span class="line"><span style="color:#E1E4E8">z </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y;</span></span></code></pre>
+<p>在经过上面的计算后，z 在高位和低位分别保存了对应 2 比特位数据的汉明权重。
+现在我们将它们相加：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 我们将 z 视为 4 位数据，并获取低 2 位</span></span>
+<span class="line"><span style="color:#E1E4E8">tmp </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">0011</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 低 2 位与高 2 位相加，由于右移会将低 2 位数据丢弃，我们现在可以忽略它</span></span>
+<span class="line"><span style="color:#E1E4E8">n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> tmp </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>写成一行则是：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#E1E4E8">n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">0011</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>似乎很熟悉？让我们将其整理一下：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 假设 x 为 2 比特位的数据</span></span>
+<span class="line"><span style="color:#E1E4E8">nx </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 或者我们写复杂一点</span></span>
+<span class="line"><span style="color:#E1E4E8">nx </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">01</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // 注意两次与的掩码不同</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 假设 y 为 4 比特位的数据，同样地我们稍微写得复杂一些</span></span>
+<span class="line"><span style="color:#6A737D">// 此时我们不再忽略低位数据，因为它可能会被移入下一个数据</span></span>
+<span class="line"><span style="color:#E1E4E8">z </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">0101</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">1010</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">nz </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">0011</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">1100</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>在计算<code>x</code>的汉明权重时，我们使用<code>&#x26;</code>运算符与掩码<code>0b10</code>提取出高位，并将其与低位相加。</p>
+<p>我们再看看生成<code>z</code>的过程，我们先是使用<code>&#x26;</code>运算符与掩码<code>0b1010</code>提取出两个低位数据的高位，
+并将其与各自的低位相加。这实际上与计算<code>x</code>的汉明权重的过程是等价的，
+只不过在这里同时进行了两次计算。</p>
+<p>我们在看看计算<code>z</code>的汉明权重：用<code>&#x26;</code>运算符与掩码<code>0b1100</code>提取出高位，并与低位相加。</p>
+<p>这与计算<code>x</code>的汉明权重几乎是一模一样：<strong>提取高位，并与低位相加，结果存储在低位</strong>，
+唯一的区别就是我们从 2 比特位提升到了 4 比特位！</p>
+<h3 id="向更高位拓展">向更高位拓展</h3>
+<p>我们正在向更高位前进，于是我们的约定也会相应地改变。</p>
+<p>经过前两步的分析，我们可以做出这样的推断：对于一个 8 比特位，也就是一个字节的数据，
+我们能够通过这样子得到它的汉明权重：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// x 为一字节的数据</span></span>
+<span class="line"><span style="color:#E1E4E8">y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">01010101</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">10101010</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // x 对应的 4 个数据的汉明权重：y3 y2 y1 y0</span></span>
+<span class="line"><span style="color:#E1E4E8">z </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">00110011</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">11001100</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // z1 = y3 + y2, z0 = y1 + y0</span></span>
+<span class="line"><span style="color:#E1E4E8">n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">00001111</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0b</span><span style="color:#79B8FF">11110000</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // n = z1 + z0</span></span></code></pre>
+<p>在上述例子中，<code>x</code>为一字节的数据，将其视为 4 个 2 比特位的数据，
+并进行我们的计算：<strong>提取高位，与低位相加，并将结果存储在低位</strong>。
+得到的<code>y</code>则存储了<code>x</code>中 4 个数据对应的汉明权重，此时再将<code>y</code>视为 2 个 4 比特位的数据，
+重复我们的计算。
+随后得到<code>z</code>，在<code>z</code>中存储了<code>y</code>中的 2 个数据对应的汉明权重，我们再一次地进行计算。
+最后我们得到了原始数据<code>x</code>的汉明权重。
+将上述的代码写成十六进制后：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#6A737D">// 此处 x 为一字节的任意数据</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">=</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">AB</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">0x</span><span style="color:#79B8FF">AA</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> z </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((y </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">0x</span><span style="color:#79B8FF">CC</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">0F</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((z </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">0x</span><span style="color:#79B8FF">F0</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 或者</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">=</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">AB</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~0x</span><span style="color:#79B8FF">55</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> z </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (y </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((y </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~0x</span><span style="color:#79B8FF">33</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">char</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (z </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">0F</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((z </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~0x</span><span style="color:#79B8FF">0F</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>这样子我们就得到了计算一字节数据的汉明权重的方法。</p>
+<h3 id="总结规律">总结规律</h3>
+<p>在之前我们逐步分析的向高位拓展的过程，
+实际上是逐渐从低到高的方向，计算汉明权重。
+得出的汉明权重实际上保存在新的数据上了。
+我们之后所做，其实只是将这些结果相加。
+于是我们能得出这样子的规律：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-text"><span class="line"><span>x7  x6  x5  x4  x3  x2  x1  x0  x</span></span>
+<span class="line"><span>|   |   |   |   |   |   |   |</span></span>
+<span class="line"><span>+---+   +---+   +---+   +---+</span></span>
+<span class="line"><span>  |       |       |       |</span></span>
+<span class="line"><span>  y3      y2      y1      y0    y</span></span>
+<span class="line"><span>  |       |       |       |</span></span>
+<span class="line"><span>  +-------+       +-------+</span></span>
+<span class="line"><span>      |               |</span></span>
+<span class="line"><span>      z1              z0        z</span></span>
+<span class="line"><span>      |               |</span></span>
+<span class="line"><span>      +---------------+</span></span>
+<span class="line"><span>              |</span></span>
+<span class="line"><span>              n</span></span></code></pre>
+<p>这是一个 8 比特位数据的汉明权重计算过程。
+对于<code>x</code>来说，它可以看作 4 个 2 比特位的数据，
+这 4 个数据的汉明权重存储在了<code>y</code>中，<code>y</code>又被视作 2 个 4 比特位的数据。
+之后我们将其逐渐相加，最终得出原始数据的汉明权重。
+对于更高位来说，只不过是将这颗树向上拓展而已，
+于是我们可以直接得出 32 位数据的汉明权重计算函数：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK_1</span><span style="color:#F97583">  0x</span><span style="color:#79B8FF">55555555</span></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK_2</span><span style="color:#F97583">  0x</span><span style="color:#79B8FF">33333333</span></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK_4</span><span style="color:#F97583">  0x</span><span style="color:#79B8FF">0F0F0F0F</span></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK_8</span><span style="color:#F97583">  0x</span><span style="color:#79B8FF">00FF00FF</span></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK_16</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">0000FFFF</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> ones</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> x</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK_1) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">MASK_1)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK_2) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">MASK_2)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK_4) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">MASK_4)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK_8) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">MASK_8)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 8</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK_16) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">MASK_16)) </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">)x;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>上面给出的示例函数已经能够胜任计算“1”这项工作了。</p>
+<h3 id="优化">优化</h3>
+<h4 id="优化取反操作">优化取反操作</h4>
+<p>在之前我们提到，处于高位的比特位可能会被移入低位，因此需要将其置为<code>0</code>。
+但实际上，我们还可以换一种思维方式：等到它被移入下一位数据后，我们再忽略它。
+于是我们能够得出这样子的方法：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55555555</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK);</span></span></code></pre>
+<p>代码似乎没有太大变化，但实际上，这使得我们无需使用<code>~</code>运算符对掩码进行取反，
+节省了一点宝贵的时间。</p>
+<h4 id="特殊优化">特殊优化</h4>
+<p>我们接着进行优化。</p>
+<p>现在让我们回到最初对于 2 比特位数据的探讨中，现在我们再将穷举的表格列出来。
+不过这次我们只列出二进制格式：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">x</th><th align="left">汉明权重</th></tr></thead><tbody><tr><td align="left">00</td><td align="left">00</td></tr><tr><td align="left">01</td><td align="left">01</td></tr><tr><td align="left">10</td><td align="left">01</td></tr><tr><td align="left">11</td><td align="left">10</td></tr></tbody></table>
+<p>我们再看看 2 比特位的二进制减法的表格，这里我们只列出需要用到的：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">a</th><th align="left">b</th><th align="left">a - b</th></tr></thead><tbody><tr><td align="left">00</td><td align="left">00</td><td align="left">00</td></tr><tr><td align="left">01</td><td align="left">00</td><td align="left">01</td></tr><tr><td align="left">10</td><td align="left">01</td><td align="left">01</td></tr><tr><td align="left">11</td><td align="left">01</td><td align="left">10</td></tr></tbody></table>
+<p>我们发现什么？倘若我们将<code>a</code>视为数据<code>x</code>，而<code>b</code>视为右移一位之后的数据，
+那么<code>a - b</code>的结果将直接是数据<code>x</code>的汉明权重！
+于是就有一个针对 2 比特位数据的特殊优化：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MASK</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55555555</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> MASK);</span></span></code></pre>
+<p>这使得我们直接省掉了一次<code>&#x26;</code>操作，再一次节省了一点宝贵的时间。
+不同于第一个优化，这个优化无法拓展到更高位。
+举个简单的例子：对于 4 比特位的数据<code>a = 0b0100</code>，它的汉明权重是<code>1</code>。
+接下来它会进行右移两位的操作，于是有<code>b = 0b0001</code>，
+那么<code>a - b = 0b0011</code>，对应十进制数<code>3</code>，显然不正确。</p>
+<h4 id="优化加法">优化加法</h4>
+<p>接下来我们思考一个问题：
+我们现在是用<code>&#x26;</code>操作，忽略掉我们不需要的比特位，借此来保证后续的加法能够得出正确的结果。
+但当高位或者低位全是 0 时，在我们进行加法操作后，这些比特位会保持不变。
+换句话说，它不产生进位，于是我们可以把忽略它的时机推迟到加法之后。</p>
+<p>那我们能够在那些情况下忽略掉<code>&#x26;</code>操作呢？
+答案是：进行加法后，产生的进位不会越过高位和低位“分界线”。</p>
+<p>让我们慢慢进行分析：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">int</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">=</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">FFFFFFFF</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 16 个 2 比特位</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">-=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55555555</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 8 个 4 比特位</span></span>
+<span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0xAAAAAAAA</span></span></code></pre>
+<p>此时 x 的二进制格式：<code>10'10 ...</code>（<code>'</code>只是用作分隔，便于观察），
+显然，此时 x 的高位与低位相加会越界：<code>10b + 10b = 01'00b</code>
+因此我们不对它进行优化：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0xAAAAAAAA</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 8 个 4 比特位</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33333333</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33333333</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 4 个 8 比特位</span></span>
+<span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x44444444</span></span></code></pre>
+<p>经过上面的计算后，此时 x 的二进制格式：<code>0100'0100 ...</code>，高位与低位相加，不会产生越界。</p>
+<p>那存在产生越界可能性吗？让我们看看当<code>x</code>视为 4 个 8 比特位数据时怎样才会越界：
+<code>1000b + 1000b = 10000b</code>，也就是说当汉明权重满足<code>max(高位，低位) >= 8</code>时才可能发生越界。
+而此时，我们拥有的比特位也才只有 8 个，不可能从更低比特位的数据中获得大于或等于 8 的汉明权重。
+因此我们可以将<code>&#x26;</code>操作推迟：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x44444444</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 4 个 8 比特位</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">0F0F0F0F</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 2 个 16 比特位</span></span>
+<span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08080808</span></span></code></pre>
+<p>我们再一次节省了一个<code>&#x26;</code>操作。</p>
+<h4 id="更高位的优化">更高位的优化</h4>
+<p>现在到更高的位数看看，我们现在将<code>x</code>视为 2 个 16 比特位的数据，
+每个数据的高位和低位是更低位数据的汉明权重。</p>
+<p>在上一步优化中，我们注意到，<del>加法的力量，是有极限的</del>，我们在进行加法前进行<code>&#x26;</code>操作，
+实际上是避免存在因为进位而破坏数据的独立性，而我们现在以及拥有了 16 比特位的数据，
+能够存储的最大数字远远超过了 32 位数据所能拥有的最大的汉明权重。
+也就是说，我们或许可以忽略<strong>可能因为进位导致数据独立性被破坏</strong>这个问题。</p>
+<p>那我们就分析一下，是否可以忽略加法后的<code>&#x26;</code>操作：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08080808</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 2 个 16 比特位</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 8</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 1 个 32 为比特位</span></span>
+<span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08100810</span></span></code></pre>
+<p>我们发现，结果虽然发生了进位，但进位仍处于低位，而没有发生越界。
+并且，此时我们存储汉明权重的比特位是 16 个比特位数据的低 8 位，
+显然足够我们容纳所有求和的结果。那我们继续：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08100810</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 视为 1 个 32 为比特位</span></span>
+<span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 此时 x 的最低 8 位存储的就是汉明权重</span></span>
+<span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08101020</span></span></code></pre>
+<p>现在，我们能够发现：实际上存储汉明权重的只有低 8 位（实际上只有 6 比特位，但这样子看着比较方便），
+其余位的均可忽略。那我们可以得知，当我们在将低 8 位作为存储结果的位置，
+也就是我们将 32 位数据视为 2 个 16 位数据时，我们就可以不进行<code>&#x26;</code>操作了。</p>
+<p>为什么是 16 位数据呢？因为在我们将其视作 16 位数据时，会进行这样的操作：
+<code>x >> 8</code>，这实际上就是把结果存入低 8 位，并将整个 16 位数据视为了一个整体。
+即使是更高位数据，我们求和的结果也不会超过这 8 个比特位。</p>
+<blockquote>
+<p>题外话，实际上这还能够拓展到 64 位数据，我们只需要加多一行：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#E1E4E8">x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 32</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>即可。当然，前面出现的掩码也需要相应地拓展到 64 位。</p>
+</blockquote>
+<p>最后我们可以这样子得到结果：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#B392F0">printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"x = 0x</span><span style="color:#79B8FF">%08X\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, x);</span><span style="color:#6A737D">  // x = 0x08101020</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">FF</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 或者</span></span>
+<span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">3f</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<h3 id="最终结果">最终结果</h3>
+<p>我们现在将上述的优化都写下来：</p>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-c"><span class="line"><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> ones</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">unsigned</span><span style="color:#F97583"> int</span><span style="color:#FFAB70"> x</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">-=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">55555555</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33333333</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> ((x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">33333333</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">0F0F0F0F</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 8</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    x </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    rerurn x </span><span style="color:#F97583">&#x26;</span><span style="color:#F97583"> 0x</span><span style="color:#79B8FF">FF</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D">
+<p>参考<a href="https://zh.wikipedia.org/wiki/%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D">Wikipedia</a> <a href="#user-content-fnref-%E6%B1%89%E6%98%8E%E6%9D%83%E9%87%8D" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div><footer class="article-foot"><div class="article-taxonomies"><p class="article-cats">分类: <a class="article-category" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/">杂货铺</a></p><p class="article-tags">标签: <a class="article-tag" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></p></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/post/magic-algorithms/">https://huzerovo.github.io/post/magic-algorithms/</a></p></footer><div class="comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"/><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script></script><script>let c = {"clientID":"8430fc1311285afb9029","clientSecret":"30d89bdade46310cbbb97ca58bdd6f615ddcd699","repo":"huzerovo.github.io","owner":"Huzerovo","admin":["Huzerovo"],"distractionFreeMode":false,"number":-1,"title":"编程魔法学","id":"编程魔法学"}; let gitalk = new Gitalk(c); gitalk.render("gitalk-container");</script></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    document
+      .querySelectorAll("a.img-link, .post-card-cover")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>
