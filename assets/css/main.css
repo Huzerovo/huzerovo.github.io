@@ -760,6 +760,7 @@ main.container {
 }
 .page-archive .archive-item .archive-item-link {
   color: var(--hulog-text);
+  width: 100%;
 }
 .page-archive .archive-item .archive-item-link:hover {
   color: var(--hulog-accent);
@@ -821,6 +822,7 @@ main.container {
   border-radius: 8px;
   color: var(--hulog-text);
   transition: color 0.2s, background-color 0.2s;
+  width: 100%;
 }
 .category-list .category-list-item .category-list-link:hover {
   color: var(--hulog-accent);
@@ -830,8 +832,11 @@ main.container {
   font-size: 12px;
   color: var(--hulog-text-faint);
   background: var(--hulog-bg-subtle);
-  border-radius: 999px;
-  padding: 1px 8px;
+  border-radius: 100%;
+  padding: 0px 8px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }
 .category-list .category-list-item .category-list-child {
   list-style: none;
