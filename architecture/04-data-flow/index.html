@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>数据流与数据模型 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+(function () {
+  try {
+    let root = ThemeSwitcher.root();
+    let current = ThemeSwitcher.current();
+    let dark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'dark' : 'light';
+    root.style.colorScheme = dark ? 'dark' : 'light';
+  } catch (e) {};
+})();
+window.load = ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/architecture">主题架构</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-1"><a href="#04--数据流与数据模型">04 · 数据流与数据模型</a></li><li class="toc-item toc-level-2"><a href="#阶段间数据流转">阶段间数据流转</a></li><li class="toc-item toc-level-2"><a href="#数据模型">数据模型</a></li><li class="toc-item toc-level-2"><a href="#配置数据与优先级">配置数据与优先级</a></li><li class="toc-item toc-level-2"><a href="#url-生成规则">URL 生成规则</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>数据流与数据模型</h1><div class="article-head-meta"><div class="meta-date"><span>发布日期: 2026-09-01</span></div></div></header><div><h1 id="04--数据流与数据模型">04 · 数据流与数据模型</h1>
+<h2 id="阶段间数据流转">阶段间数据流转</h2>
+<pre class="mermaid">flowchart LR
+  content["content/ 目录&#x3C;br/>Markdown + 资源"] --> read
+  read["read&#x3C;br/>seqRead"] -->|"FileEntry[]"| parse
+  parse["parse&#x3C;br/>seqParse"] -->|"Page[]（物理页）"| filter
+  filter["filter&#x3C;br/>去 draft"] -->|"filteredPages"| c1
+  c1["collect①&#x3C;br/>seqCollect"] -->|"Collection[]"| siteCols["site.collections"]
+  c1 --> gen
+  gen["generate&#x3C;br/>seqGenerate"] -->|"virtualPages"| merge
+  filter --> merge
+  merge["merge&#x3C;br/>allPages"] -->|"Page[]"| proc
+  merge --> c2["collect②&#x3C;br/>collectVirtual"]
+  c2 --> siteCols
+  proc["process&#x3C;br/>scanAssets + 主题资源"] -->|"Asset[]"| render
+  render["render&#x3C;br/>renderer + renderPage"] -->|"RenderResult[]"| write
+  write["write&#x3C;br/>seqWrite"] --> dist["dist/ + public 复制"]
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>产物</th><th>类型</th><th>产生阶段</th><th>消费方</th></tr></thead><tbody><tr><td><code>FileEntry[]</code></td><td><code>types/sequence.ts</code></td><td>read</td><td>parse、<code>afterRead</code></td></tr><tr><td><code>Page[]</code>（物理）</td><td><code>types/page.ts</code></td><td>parse</td><td>filter、<code>afterParse</code></td></tr><tr><td><code>filteredPages</code></td><td><code>Page[]</code></td><td>filter</td><td>collect①、merge、<code>afterFilter</code></td></tr><tr><td><code>Collection[]</code>（物理）</td><td><code>types/collection.ts</code></td><td>collect①</td><td><code>site.collections</code>、<code>afterCollectPhysical</code></td></tr><tr><td><code>virtualPages</code></td><td><code>Page[]</code></td><td>generate</td><td>merge、collect②、<code>afterGenerate</code></td></tr><tr><td><code>allPages</code></td><td><code>Page[]</code></td><td>merge</td><td>process、render、<code>afterMerge</code></td></tr><tr><td><code>Asset[]</code></td><td><code>types/asset.ts</code></td><td>process</td><td>render（引用解析）、write、<code>afterProcess</code></td></tr><tr><td><code>RenderResult[]</code></td><td><code>types/sequence.ts</code></td><td>render</td><td>write</td></tr><tr><td><code>dist/**</code></td><td>文件</td><td>write</td><td>—</td></tr></tbody></table></div>
+<h2 id="数据模型">数据模型</h2>
+<pre class="mermaid">classDiagram
+  class Page {
+    +id: string
+    +url: string
+    +title: string
+    +layout: string
+    +collection: string
+    +sourcePath: string|null
+    +aliases: string[]
+    +slug: string
+    +date?: Date
+    +updated?: Date
+    +draft?: boolean
+    +tags?: string[]
+    +categories?: CategoryPath[]
+    +link?: string
+    +cover?: string|string[]
+    +excerpt?: string
+    +rawContent: string
+    +content: string
+    +data: Record
+    +metadata: Record
+  }
+  class Collection {
+    +name: string
+    +config: CollectionConfig
+    +pages: Page[]
+    +getPages(sorted?)
+  }
+  class Site {
+    +collections: Map
+    +pages: Page[]
+    +posts: Page[]
+    +assets: Asset[]
+    +config: SiteConfig
+    +theme: Theme
+  }
+  class Asset {
+    +sourcePath: string
+    +url: string
+    +buffer: Buffer
+    +type: string
+    +belongsTo: string
+  }
+  class FileEntry {
+    +path: string
+    +absolutePath: string
+    +isAsset: boolean
+    +type: string
+  }
+  class RenderResult {
+    +page: Page
+    +html: string
+  }
+  Site "1" o-- "many" Collection
+  Collection "1" o-- "many" Page
+  Site "1" o-- "many" Asset
+  RenderResult --> Page
+</pre>
+<ul>
+<li><code>Page = PageBase &#x26; Partial&#x3C;PagePostOptional> &#x26; PageOptional</code>（<code>types/page.ts</code>）。</li>
+<li>虚拟页集合常量：<code>VIRTUAL_PAGE_COLLECTION = "core:virtual"</code>；front-matter 保留键 <code>RESERVED_KEYS</code>。</li>
+<li><code>Site.posts</code>：从 <code>posts</code>（<code>renderDraft</code> 时叠加 <code>drafts</code>）聚合；<code>Site.pages</code> 为所有集合扁平化。</li>
+</ul>
+<h2 id="配置数据与优先级">配置数据与优先级</h2>
+<pre class="mermaid">flowchart TD
+  subgraph site["站点配置"]
+    sd["loadSiteConfig defaults"] --> sc["SiteConfig"]
+    bc["blog.config.*"] --> sc
+  end
+  subgraph theme["主题配置"]
+    td["theme.config 默认（Theme.config）"] --> tc["theme.config"]
+    tcf["theme.config.*"] --> tc
+  end
+  sc --> api1["api.site.config"]
+  tc --> api2["api.theme.config"]
+  sc -. themeAssetsMode/theme .-> helper["themeAsset helper"]
+</pre>
+<ul>
+<li>站点配置：<code>loadSiteConfig</code> 先内置 defaults，再 <code>...result.config</code> 覆盖（<code>contentDir</code> / <code>assetsDir</code> / <code>pluginsDir</code> / <code>archivesDir</code> / <code>paginationDir</code> / <code>perPage</code> / <code>themeAssetsMode</code> / <code>renderDraft</code> …）。</li>
+<li>主题配置：<code>loadTheme</code> 内 <code>theme.config = { ...theme.config, ...loadThemeConfig(cwd) }</code>，经 <code>api.theme.config</code> 访问。</li>
+<li>站点配置与主题配置<strong>分离</strong>（<code>SiteConfig</code> 不再含 <code>themeConfig</code>）。</li>
+</ul>
+<h2 id="url-生成规则">URL 生成规则</h2>
+<pre class="mermaid">flowchart LR
+  permalink["front-matter permalink"] -->|最高| u["Page.url"]
+  route["collection.routePattern"] -->|次之| u
+  fs["文件系统默认映射&#x3C;br/>index.md → 父目录"] -->|兜底| u
+  u --> conflict["merge: checkUrlConflicts&#x3C;br/>（去尾斜杠归一化比较）"]
+</pre>
+<ul>
+<li><code>resolveUrl</code>（<code>route.ts</code>）支持占位符 <code>:slug :collection :year :month :day</code>。</li>
+<li>虚拟页（<code>core:virtual</code>）URL 在 generate 阶段补尾斜杠 <code>/</code>（<code>seqGenerate</code>），便于输出为 <code>index.html</code>。</li>
+</ul></div><footer class="article-foot"><div class="article-taxonomies"></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/architecture/04-data-flow/">https://huzerovo.github.io/architecture/04-data-flow/</a></p></footer><div class="comment-disabled"><p>评论已关闭</p></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script type="module" src="/assets/js/mermaid.js" data-hulog-mermaid data-src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs" data-theme="default"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    document
+      .querySelectorAll("a.img-link, .post-card-cover")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>
