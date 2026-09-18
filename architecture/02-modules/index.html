@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="author" content="狐zerovo"/><meta name="description" content="记录一段回忆"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141416"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>模块清单与职责 - 狐言狐语 | 记录一段回忆</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><link rel="stylesheet" href="/assets/css/light.css"/><link rel="stylesheet" href="/assets/css/dark.css"/><link rel="stylesheet" href="/assets/css/main.css"/><script>
+const ThemeSwitcher = (() => {
+  const KEY = "df-theme-prefer";
+  const root = () => document.documentElement;
+  const isDark = () => root().classList.contains("dark");
+  const apply = (mode) => {
+    if (mode === "dark") root().classList.add("dark");
+    else if (mode === "light") root().classList.remove("dark");
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root().classList.add("dark");
+    else root().classList.remove("dark");
+    localStorage.setItem(KEY, mode);
+  };
+  const current = () => localStorage.getItem(KEY) || "auto";
+  const toggle = () => {
+    const dark = isDark();
+    const devDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if ((!dark && devDark) || (dark && !devDark)) apply("auto");
+    else if (dark) apply("light");
+    else apply("dark");
+  };
+  return { init: () => apply(current()), toggle, follow: () => apply(current()) };
+})();
+(function () {
+  try {
+    let root = ThemeSwitcher.root();
+    let current = ThemeSwitcher.current();
+    let dark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'dark' : 'light';
+    root.style.colorScheme = dark ? 'dark' : 'light';
+  } catch (e) {};
+})();
+window.load = ThemeSwitcher.init();
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", ThemeSwitcher.follow);
+</script></head><body><header id="topbar"><div class="topbar-container"><a class="topbar-brand" href="/">狐萝柏</a><nav class="topbar-menu"><ul><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tagcloud">标签云</a></li><li><a href="/gallery">图册</a></li><li><a href="/architecture">主题架构</a></li><li><a href="/about">关于</a></li></ul></nav><div class="topbar-icons"><a class="icon-button" title="Github" href="https://github.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a><a class="icon-button" title="RSS" href="/atom.xml" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></a><a id="btn-search" class="icon-button" title="搜索" href="/search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a><button id="btn-switch-theme" class="icon-button icon-theme" type="button" title="切换主题"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header><main class="container post-container"><div class="post-main toc-left"><aside id="article-toc"><button type="button" class="toc-toggle" aria-expanded="true"><span class="toc-title">目录</span><svg class="toc-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button><div class="toc-body"><ul class="toc-list"><li class="toc-item toc-level-1"><a href="#02--模块清单与职责">02 · 模块清单与职责</a></li><li class="toc-item toc-level-2"><a href="#一览表">一览表</a></li><li class="toc-item toc-level-2"><a href="#编排层">编排层</a></li><li class="toc-item toc-level-3"><a href="#buildts">build.ts</a></li><li class="toc-item toc-level-3"><a href="#core-apits">core-api.ts</a></li><li class="toc-item toc-level-3"><a href="#pluginsindexts">plugins/index.ts</a></li><li class="toc-item toc-level-2"><a href="#领域模型">领域模型</a></li><li class="toc-item toc-level-3"><a href="#sitets--collectionts">site.ts / collection.ts</a></li><li class="toc-item toc-level-3"><a href="#assetsts">assets.ts</a></li><li class="toc-item toc-level-3"><a href="#markdownts">markdown.ts</a></li><li class="toc-item toc-level-3"><a href="#themeindexts--themerenderts">theme/index.ts + theme/render.ts</a></li><li class="toc-item toc-level-2"><a href="#类型types">类型（types/）</a></li></ul></div></aside><article class="article-container"><header class="article-head"><h1>模块清单与职责</h1><div class="article-head-meta"><div class="meta-date"><span>发布日期: 2026-09-01</span><span>更新日期: 2026-09-01</span></div></div></header><div><h1 id="02--模块清单与职责">02 · 模块清单与职责</h1>
+<p><code>packages/core/src</code> 共 25 个实现文件 + <code>types/</code> 类型目录。</p>
+<h2 id="一览表">一览表</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>模块</th><th>职责</th><th>关键导出</th></tr></thead><tbody><tr><td><code>index.ts</code></td><td>公共 API 出口</td><td><code>build</code>、<code>*Impl</code>、类型</td></tr><tr><td><code>build.ts</code></td><td>管线编排（唯一入口）</td><td><code>build</code>、<code>BuildOptions</code>、<code>BuildResult</code></td></tr><tr><td><code>core-api.ts</code></td><td>构造主题布局用的 <code>CoreAPI</code></td><td><code>CoreApiImpl</code></td></tr><tr><td><code>plugins/index.ts</code></td><td>插件发现/加载、内置注册、scoped API 组装</td><td><code>initCorePlugins</code>、<code>registerCoreGenerators</code>、<code>loadThemePlugins</code>、<code>loadSitePlugins</code>、<code>loadPlugins</code></td></tr><tr><td><code>config.ts</code></td><td>站点/主题配置加载（cosmiconfig + jiti）</td><td><code>loadSiteConfig</code>、<code>loadThemeConfig</code></td></tr><tr><td><code>theme/index.ts</code></td><td>主题定位/bundle/加载</td><td><code>loadTheme</code>、<code>resolveThemeDir</code></td></tr><tr><td><code>theme/render.ts</code></td><td>单页渲染</td><td><code>renderPage</code></td></tr><tr><td><code>site.ts</code></td><td><code>Site</code> 实现</td><td><code>SiteImpl</code></td></tr><tr><td><code>collection.ts</code></td><td><code>Collection</code> 实现（排序）</td><td><code>CollectionImpl</code></td></tr><tr><td><code>plugins/generator.ts</code></td><td>生成器注册表</td><td><code>GeneratorRegistryImpl</code></td></tr><tr><td><code>plugins/helper.ts</code></td><td>helper 注册表 + 核心 helper 注册</td><td><code>HelperRegistryImpl</code>、<code>registerCoreHelpers</code></td></tr><tr><td><code>plugins/hook.ts</code></td><td>tapable 异步钩子</td><td><code>AsyncHookImpl</code>、<code>initHooks</code></td></tr><tr><td><code>plugins/renderer.ts</code></td><td>渲染器注册表</td><td><code>RendererRegistryImpl</code></td></tr><tr><td><code>assets.ts</code></td><td>资源扫描与引用解析</td><td><code>scanAssets</code>、<code>resolveAssetRef</code>、<code>assetType</code>、<code>isExternalRef</code>、<code>scanDirectoryAssets</code></td></tr><tr><td><code>markdown.ts</code></td><td>unified/remark/rehype 渲染管线</td><td><code>renderMarkdown</code></td></tr><tr><td><code>route.ts</code></td><td>slug / URL / 路由占位符</td><td><code>parseSlugFromFilename</code>、<code>slugFromFile</code>、<code>fillRoutePattern</code>、<code>resolveUrl</code>、<code>siteUrl</code></td></tr><tr><td><code>category.ts</code></td><td>分类解析、分类树</td><td><code>parseCategories</code>、<code>categoryPathToString</code>、<code>categoryPathToUrl</code>、<code>buildCategoryTree</code></td></tr><tr><td><code>pagination.ts</code></td><td>分页工具（以 helper 注册）</td><td><code>pageUrl</code>、<code>paginate</code>、<code>pinSort</code></td></tr><tr><td><code>path.ts</code></td><td>路径归一化</td><td><code>toPosixPath</code></td></tr><tr><td><code>sequence/read.ts</code></td><td>read 阶段</td><td><code>seqRead</code>（默认导出）、<code>scanContent</code>、<code>getFileType</code></td></tr><tr><td><code>sequence/parse.ts</code></td><td>parse 阶段</td><td><code>seqParse</code>、<code>parseFile</code></td></tr><tr><td><code>sequence/collect.ts</code></td><td>collect①/②</td><td><code>seqCollect</code>、<code>collectVirtual</code></td></tr><tr><td><code>sequence/generate.ts</code></td><td>generate 阶段</td><td><code>seqGenerate</code></td></tr><tr><td><code>sequence/write.ts</code></td><td>write 阶段</td><td><code>seqWrite</code></td></tr><tr><td><code>plugins/builtin/generator-home.ts</code></td><td>内置首页分页</td><td>默认导出 <code>(api: GeneratorAPI) => void</code></td></tr><tr><td><code>plugins/builtin/generator-archive.ts</code></td><td>内置归档页</td><td>同上</td></tr><tr><td><code>plugins/builtin/generator-taxonomy.ts</code></td><td>内置分类/标签页</td><td>同上</td></tr><tr><td><code>types/*</code></td><td>全部公共类型</td><td>见下</td></tr></tbody></table></div>
+<h2 id="编排层">编排层</h2>
+<h3 id="buildts"><code>build.ts</code></h3>
+<ul>
+<li><code>build(options)</code>：串起全部阶段，内联 filter / merge 逻辑。</li>
+<li>内部工具：<code>checkUrlConflicts</code>、<code>resolveCover</code>、<code>copyDir</code>、<code>walkFiles</code>、<code>compileLess</code>、<code>dumpMiddle</code>（调试落盘）。</li>
+</ul>
+<h3 id="core-apits"><code>core-api.ts</code></h3>
+<pre class="shiki github-dark" style="background-color:#24292e;color:#e1e4e8" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> CoreApiImpl</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> CoreAPI</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> root</span><span style="color:#E1E4E8">()   </span><span style="color:#6A737D">// 项目根</span></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> site</span><span style="color:#E1E4E8">()   </span><span style="color:#6A737D">// Site（config / pages / posts / assets）</span></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> theme</span><span style="color:#E1E4E8">()  </span><span style="color:#6A737D">// Theme（含 config）</span></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> helper</span><span style="color:#E1E4E8">() </span><span style="color:#6A737D">// HelperRegistry</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<blockquote>
+<p><code>build()</code> 直接调用 <code>initCorePlugins</code> / <code>loadThemePlugins</code> / <code>loadSitePlugins</code> 完成初始化，并 <code>new CoreApiImpl(...)</code> 得到主题用 <code>CoreAPI</code>。</p>
+</blockquote>
+<h3 id="pluginsindexts"><code>plugins/index.ts</code></h3>
+<ul>
+<li><code>initCorePlugins(site, cwd)</code>：建 <code>HelperRegistryImpl(site)</code> 并注册核心 helper；建 generator/renderer/hooks；注册内置 <code>markdown</code> renderer；组装 scoped API（<code>generator/hook/renderer/helper</code>）；<code>registerCoreGenerators(scoped.generator)</code>；返回 <code>{ registries, scoped }</code>。</li>
+<li><code>loadPlugins(dir, scoped)</code>：扫描目录，按文件名前缀 <code>generator-|hook-|renderer-|helper-</code> 经 jiti 动态 import，按前缀注入对应 scoped API。</li>
+<li>scoped 类型定义在 <code>types/api.ts</code>：<code>GeneratorAPI</code> / <code>HookAPI</code> / <code>RendererAPI</code> / <code>HelperAPI</code>；内部编排类型 <code>Registries</code>。</li>
+</ul>
+<h2 id="领域模型">领域模型</h2>
+<h3 id="sitets--collectionts"><code>site.ts</code> / <code>collection.ts</code></h3>
+<ul>
+<li><code>SiteImpl(config)</code>：持有 <code>collections: Map</code>、<code>_assets</code>、<code>_config</code>（<strong>不含 theme</strong>）；<code>pages</code> 为所有集合扁平化；<code>posts</code> 从 <code>posts</code>（+ <code>renderDraft</code> 时的 <code>drafts</code>）聚合。</li>
+<li><code>CollectionImpl(name, config, pages)</code>：<code>getPages(sorted?)</code> 按 <code>sortBy</code>(date/title) 与 <code>sortOrder</code> 排序。</li>
+</ul>
+<h3 id="assetsts"><code>assets.ts</code></h3>
+<ul>
+<li><code>scanAssets({contentRoot, assetsDirAbs, pages})</code>：文章专属目录（与页面源文件同名目录）→ 专属 Asset；<code>assetsDir</code> → 全局 Asset；其余 → <code>stray</code>。</li>
+<li><code>resolveAssetRef(ref, page, ctx)</code>：外部/锚点原样；<code>/assets/</code> 校验；相对路径先专属目录后全局；未命中 <code>null</code>。</li>
+</ul>
+<h3 id="markdownts"><code>markdown.ts</code></h3>
+<ul>
+<li><code>renderMarkdown(raw, page, ctx)</code>：<code>remark-parse → gfm → math → rehype(allowDangerousHtml) → raw → slug → toc 收集 → 资源解析 → mermaid → katex → shiki → stringify</code>。</li>
+<li>资源解析经 <code>ctx.assets.resolve(ref, page)</code>；shiki 高亮器模块级单例；<code>config.markdown</code> 控制 highlight/katex/mermaid/clientHighlight。</li>
+</ul>
+<h3 id="themeindexts--themerenderts"><code>theme/index.ts</code> + <code>theme/render.ts</code></h3>
+<ul>
+<li><code>resolveThemeDir</code>（index.ts）：<code>themes/&#x3C;name></code> → <code>node_modules/&#x3C;name></code>（向上查找）。</li>
+<li><code>loadTheme</code>（index.ts）：esbuild bundle 入口为 ESM（preact 系列与 <code>@hulog/core</code> external），动态 import，合并 <code>loadThemeConfig</code> 到 <code>theme.config</code>。</li>
+<li><code>renderPage</code>（render.ts）：选布局（<code>page.layout → default → page</code>），<code>preact-render-to-string</code> 输出，前缀 <code>&#x3C;!DOCTYPE html>\n</code>。</li>
+</ul>
+<h2 id="类型types">类型（<code>types/</code>）</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>文件</th><th>主要类型/常量</th></tr></thead><tbody><tr><td><code>api.ts</code></td><td><code>CoreAPI</code>、<code>Registries</code>、<code>GeneratorAPI</code>、<code>HookAPI</code>、<code>RendererAPI</code>、<code>HelperAPI</code>、<code>RuntimeContext</code></td></tr><tr><td><code>site.ts</code></td><td><code>Site</code></td></tr><tr><td><code>collection.ts</code></td><td><code>Collection</code>、<code>CollectionConfig</code></td></tr><tr><td><code>page.ts</code></td><td><code>Page</code>、<code>PageBase</code>、<code>PagePostOptional</code>、<code>PageOptional</code>、<code>CategoryPath</code>、<code>CategoryNode</code>、<code>VIRTUAL_PAGE_COLLECTION</code>、<code>RESERVED_KEYS</code></td></tr><tr><td><code>config.ts</code></td><td><code>SiteConfig</code>、<code>MarkdownConfig</code>、<code>ServerConfig</code>、<code>ThemeAssetsMode</code>、<code>ThemeCustomConfig</code>、<code>*_BASE</code>/<code>*_NAME</code> 常量</td></tr><tr><td><code>generator.ts</code></td><td><code>GeneratorCallback</code>、<code>GeneratorRegistry</code></td></tr><tr><td><code>helper.ts</code></td><td><code>HelperRegistry</code></td></tr><tr><td><code>hook.ts</code></td><td><code>AsyncHook</code>、<code>Hooks</code></td></tr><tr><td><code>renderer.ts</code></td><td><code>Renderer</code>、<code>RendererRegistry</code>、<code>RenderContext</code>、<code>AssetRegistry</code>、<code>MarkdownResult</code>、<code>TocEntry</code></td></tr><tr><td><code>asset.ts</code></td><td><code>Asset</code></td></tr><tr><td><code>sequence.ts</code></td><td><code>FileEntry</code>、<code>RenderResult</code></td></tr><tr><td><code>pagination.ts</code></td><td><code>PaginationData</code>、<code>PaginateOptions</code></td></tr><tr><td><code>theme.ts</code></td><td><code>Theme</code>、<code>LayoutProps</code>、<code>LayoutComponent</code>、<code>LayoutsConfig</code></td></tr><tr><td><code>index.ts</code></td><td>汇总再导出</td></tr></tbody></table></div></div><footer class="article-foot"><div class="article-taxonomies"></div><p class="article-share">分享文章 <a href="https://huzerovo.github.io/architecture/02-modules/">https://huzerovo.github.io/architecture/02-modules/</a></p></footer><div class="comment-disabled"><p>评论已关闭</p></div></article></div></main><button id="goto-top" type="button" title="回到顶部" aria-label="回到顶部"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg></button><footer id="site-footer"><p>© 2026@狐zerovo</p><p><span>如无特殊说明，网站内容采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>授权</span></p><p>Powered by Huzerovo Blog.</p></footer><div id="lightbox"><img alt/></div><script src="/assets/js/search.js"></script><script>
+(function () {
+  var btn = document.getElementById("btn-switch-theme");
+  if (btn) btn.addEventListener("click", ThemeSwitcher.toggle);
+
+  var searchInput = document.getElementById("search-input");
+  if (searchInput && window.searchArticles) {
+    searchInput.addEventListener("input", function () {
+      window.searchArticles(this.value, "/search.json");
+    });
+  }
+
+  var menu = document.querySelector(".topbar-menu ul");
+  if (menu) {
+    var updateMenuFade = function () {
+      menu.classList.toggle("scrollable", menu.scrollWidth > menu.clientWidth + 1);
+    };
+    updateMenuFade();
+    window.addEventListener("resize", updateMenuFade);
+  }
+
+  var toc = document.getElementById("article-toc");
+  var tocBtn = document.querySelector(".toc-toggle");
+  if (toc && tocBtn) {
+    var applyToc = function (collapsed) {
+      toc.classList.toggle("collapsed", collapsed);
+      tocBtn.setAttribute("aria-expanded", String(!collapsed));
+    };
+    // 恢复上次折叠状态（localStorage）
+    applyToc(localStorage.getItem("df-toc-collapsed") === "1");
+    tocBtn.addEventListener("click", function () {
+      var next = !toc.classList.contains("collapsed");
+      applyToc(next);
+      localStorage.setItem("df-toc-collapsed", next ? "1" : "0");
+    });
+  }
+
+  var topBtn = document.getElementById("goto-top");
+  if (topBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    });
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // 构建时已把正文图片包为 .img-link（无 JS 时点击新标签打开原图）
+    // 首页卡片封面 .post-card-cover 同样：href 指向图片，JS 拦截后走灯箱
+    // 图册页 .gallery-item 同样（gallery.lightbox 关闭时不加该类）
+    document
+      .querySelectorAll("a.img-link, .post-card-cover, .gallery-item")
+      .forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          var inner = link.querySelector("img");
+          var src = inner ? inner.src : link.href;
+          lightbox.querySelector("img").src = src;
+          lightbox.classList.add("open");
+        });
+      });
+    // 仅点击遮罩背景关闭（点图片本身不关，避免冒泡闪关）
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") lightbox.classList.remove("open");
+    });
+  }
+})();
+</script></body></html>
